@@ -34,7 +34,7 @@ with open("README.md") as f:
 setup(
     name="simzoo",
     setup_requires=["setuptools_scm"],
-    use_scm_version={"root": "..", "relative_to": os.path.dirname(__file__)},
+    use_scm_version=True,
     description=("A python package containing several openai gym environments."),
     long_description=readme,
     long_description_content_type="text/markdown",
