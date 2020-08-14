@@ -1,0 +1,3 @@
+[submodule "simzoo/envs/oscillator"]
+	path = simzoo/envs/oscillator
+	url = git@github.com:rickstaa/oscillator.git
