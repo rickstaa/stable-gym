@@ -7,7 +7,7 @@ from gym import envs
 import pytest
 
 # Import panda openai sim task environments
-import simzoo.envs
+import machine_learning_control.simzoo.envs
 
 # Script Parameters
 ENVS = ["Oscillator-v0"]

@@ -4,11 +4,9 @@
 # Standard library imports
 import logging
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 import sys
-import re
 from distutils.sysconfig import get_python_lib
-import subprocess
 
 # Get the relative path for including (data) files with the package
 relative_site_packages = get_python_lib().split(sys.prefix + os.sep)[1]
@@ -55,6 +53,7 @@ setup(
         "dev": ["pytest", "bumpversion", "flake8", "black"],
         "build": ["gym==0.17.2", "matplotlib==3.3.1"],
     },
+    packages=find_packages(),
     include_package_data=True,
     data_files=[(date_files_relative_path, ["README.md"])],
 )

@@ -1,0 +1,7 @@
+# Folders to ignore
+vscode/
+__pycache__/
+*.pytest_cache/
+*.egg-info/
+
+# Files to ignore
