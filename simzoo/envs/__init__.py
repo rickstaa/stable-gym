@@ -17,7 +17,7 @@ namespace_prefix = "" if "simzoo" in sys.modules else "machine_learning_control.
 # Environments
 envs = {
     "name": ["Oscillator-v0"],
-    "module": ["simzoo.envs.oscillator:Oscillator",],
+    "module": ["simzoo.envs.oscillator:Oscillator"],
 }
 
 # Register environments
@@ -26,5 +26,5 @@ for idx, env in enumerate(envs["name"]):
         register(
             id=env,
             entry_point=namespace_prefix + envs["module"][idx],
-            max_episode_steps=50,
+            max_episode_steps=400,
         )
