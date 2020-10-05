@@ -16,8 +16,12 @@ namespace_prefix = "" if "simzoo" in sys.modules else "machine_learning_control.
 
 # Environments
 envs = {
-    "name": ["Oscillator-v0"],
-    "module": ["simzoo.envs.oscillator:Oscillator"],
+    "name": ["Oscillator-v0", "Ex3_EKF-v0", "Ex3_EKA_negative-v0"],
+    "module": [
+        "simzoo.envs.oscillator:Oscillator",
+        "simzoo.envs.Ex3_EKF:Ex3_EKF",
+        "simzoo.envs.Ex3_EKF:Ex3_EKF_negative",
+    ],
 }
 
 # Register environments

@@ -10,8 +10,7 @@ import pytest
 import machine_learning_control.simzoo.envs
 
 # Script Parameters
-ENVS = ["Oscillator-v0"]
-
+ENVS = ["Oscillator-v0", "Ex3_EKF-v0"]
 
 #################################################
 # Test script ###################################
