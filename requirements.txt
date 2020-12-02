@@ -1,2 +1,2 @@
-gym==0.17.2
-matplotlib==3.3.1
+# The pinned down dependencies are found under the [build] category of the setup.py file.
+-e ./[build]
