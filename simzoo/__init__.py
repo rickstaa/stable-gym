@@ -12,18 +12,18 @@ if importlib.util.find_spec("simzoo") is not None:
 else:
     namespace_prefix = "machine_learning_control.simzoo."
 
-envs = {
+ENVS = {
     "name": ["Oscillator-v1", "Ex3_EKF-v0"],
     "module": ["simzoo.envs.oscillator:Oscillator", "simzoo.envs.Ex3_EKF:Ex3_EKF"],
     "max_step": [800, 800],
 }
 
-for idx, env in enumerate(envs["name"]):
+for idx, env in enumerate(ENVS["name"]):
     if (
         env not in gym.envs.registry.env_specs
     ):  # NOTE (rickstaa): Required because of namespace package
         register(
             id=env,
-            entry_point=namespace_prefix + envs["module"][idx],
-            max_episode_steps=envs["max_step"][idx],
+            entry_point=namespace_prefix + ENVS["module"][idx],
+            max_episode_steps=ENVS["max_step"][idx],
         )
