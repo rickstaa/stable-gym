@@ -6,6 +6,7 @@ __pycache__/
 .eggs/
 
 # Files to ignore
+.coverage
 *.pyc
 *.code-workspace
 *.egg-info

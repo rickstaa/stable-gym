@@ -2,19 +2,23 @@
 registered.
 """
 
-# Main python imports
-from gym import envs
+import importlib
+import sys
+
 import pytest
+from gym import envs
 
-# Import panda openai sim task environments
-import machine_learning_control.simzoo.envs
+# Import simzoo stand-alone package or name_space package (mlc)
+if "simzoo" in sys.modules:
+    pass
+elif importlib.util.find_spec("simzoo") is not None:
+    importlib.import_module("simzoo")
+else:
+    importlib.import_module("machine_learning_control.simzoo")
 
-# Script Parameters
 ENVS = ["Oscillator-v0", "Ex3_EKF-v0"]
 
-#################################################
-# Test script ###################################
-#################################################
+
 @pytest.mark.parametrize("env_name", ENVS)
 def test_env_reg(env_name):
     env = envs.make(env_name)

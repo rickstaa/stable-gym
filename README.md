@@ -3,7 +3,7 @@
 A python package containing several openai gym environments. It currently contains the
 following environments:
 
-- **Oscillator:** A gym environment for a synthetic oscillatory network of transcriptional regulators called a repressilator
+-   [Oscillator:](https://github.com/rickstaa/oscillator/tree/master) A gym environment for a synthetic oscillatory network of transcriptional regulators called a repressilator.
 
 ## Clone the repository
 
