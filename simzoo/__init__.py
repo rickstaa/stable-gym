@@ -14,7 +14,7 @@ else:
 
 ENVS = {
     "name": ["Oscillator-v1", "Ex3_EKF-v0"],
-    "module": ["simzoo.envs.oscillator:Oscillator", "simzoo.envs.Ex3_EKF:Ex3_EKF"],
+    "module": ["simzoo.envs.oscillator:Oscillator", "simzoo.envs.ex3_ekf:Ex3_EKF"],
     "max_step": [800, 800],
 }
 

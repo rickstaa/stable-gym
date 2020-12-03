@@ -4,6 +4,7 @@ A python package containing several openai gym environments. It currently contai
 following environments:
 
 -   [Oscillator:](https://github.com/rickstaa/oscillator/tree/master) A gym environment for a synthetic oscillatory network of transcriptional regulators called a repressilator.
+-   [Ex3_EKF:](https://github.com/rickstaa/ex3_ekf) A noisy master slave environment that can be used to train a RL based stationary Kalman estimator.
 
 ## Clone the repository
 
