@@ -7,7 +7,6 @@ import sys
 
 import pytest
 from gym import envs
-
 from simzoo import ENVS
 
 # Import simzoo stand-alone package or name_space package (mlc)
