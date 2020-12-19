@@ -7,15 +7,16 @@ import sys
 
 import pytest
 from gym import envs
-from simzoo import ENVS
 
 # Import simzoo stand-alone package or name_space package (mlc)
 if "simzoo" in sys.modules:
-    pass
+    from simzoo import ENVS
 elif importlib.util.find_spec("simzoo") is not None:
     importlib.import_module("simzoo")
+    from simzoo import ENVS
 else:
     importlib.import_module("machine_learning_control.simzoo")
+    from machine_learning_control.simzoo.simzoo import ENVS
 
 
 @pytest.mark.parametrize("env_name", ENVS["name"])
