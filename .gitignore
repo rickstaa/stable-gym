@@ -1,13 +1,19 @@
-# Folders to ignore
-.vscode/
+# Tests
+pytest/
+*.pytest_cache/
+.coverage
+
+# Cache
 __pycache__/
 *.pytest_cache/
 *.egg-info/
 .eggs/
-
-# Files to ignore
-.coverage
 *.pyc
-*.code-workspace
 *.egg-info
+
+# IDE
+.vscode/
+*.code-workspace
+
+# Other
 MUJOCO_LOG.TXT

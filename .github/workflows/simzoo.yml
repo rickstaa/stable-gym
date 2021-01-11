@@ -73,7 +73,7 @@ jobs:
       - name: Install the mlc package with its dependencies
         if: steps.cache-python-env.outputs.cache-hit != 'true'
         run: |
-            pip install -e .[dev]
+          pip install -e .[dev]
       - name: flake8 Lint
         uses: reviewdog/action-flake8@v2
         with:
@@ -111,13 +111,15 @@ jobs:
         run: |
           pip install -e .[dev]
       - name: Test with Pytest
-        run: pytest . --doctest-modules --html=pytest/${{ matrix.python-version }}/html/results.html --junitxml=pytest/${{ matrix.python-version }}/xml/results.xml --cov=./machine_learning_control --cov-report=html:pytest/${{ matrix.python-version }}/cov/
+        run: pytest . --doctest-modules --html=pytest/${{ matrix.python-version }}/html/results.html --junitxml=pytest/${{ matrix.python-version }}/xml/results.xml --cov=./machine_learning_control --cov-report=html:pytest/${{ matrix.python-version }}/cov/pytest-coverage.txt
       - name: Upload Pytest test results to artifacts
         uses: actions/upload-artifact@v2
+        if: ${{ always() }}
         with:
           name: pytest-results-${{ matrix.python-version }}
           path: pytest/
-        if: ${{ always() }}
       - name: Comment coverage
         uses: coroo/pytest-coverage-commentator@v1.0.2
         if: ${{ always() }}
+        with:
+          pytest-coverage: pytest/${{ matrix.python-version }}/cov/pytest-coverage.txt
