@@ -1,0 +1,21 @@
+{
+  "name": "Simzoo",
+  "version": "0.2.2",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rickstaa/simzoo.git"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "auto-changelog": "^2.2.1"
+  },
+  "scripts": {
+    "auto-changelog": "auto-changelog -p && git add CHANGELOG.md"
+  },
+  "auto-changelog": {
+    "output": "CHANGELOG.md",
+    "template": "keepachangelog",
+    "unreleased": false,
+    "commitLimit": false
+  }
+}
