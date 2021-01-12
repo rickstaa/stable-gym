@@ -1,6 +1,6 @@
 # Github action that makes sure that all the version tags are up to date when
 # A new version tag is added.
-name: Ex3_ekf release CI
+name: Simzoo release CI
 on:
   push:
     tags:
