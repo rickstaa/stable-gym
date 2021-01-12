@@ -9,7 +9,7 @@ on:
     types:
       - labeled
 jobs:
-  release:
+  autotag:
     if: github.event.action != 'labeled'
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +27,7 @@ jobs:
         if: "!steps.bumpr.outputs.skip"
         with:
           tag: ${{ steps.bumpr.outputs.next_version }}
-  release-check:
+  autotag-check:
     if: github.event.action == 'labeled'
     runs-on: ubuntu-latest
     steps:
