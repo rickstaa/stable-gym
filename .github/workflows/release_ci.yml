@@ -1,14 +1,28 @@
-# Github action that makes sure that all the version tags are up to date when
-# A new version tag is added.
+# Github action that updates the code version tags, adds a changelog and drafts a release when
+# a new version tag is added.
 name: Simzoo release CI
 on:
   push:
     tags:
       - v*.*.*
 jobs:
+  on-main-branch-check:
+    runs-on: ubuntu-latest
+    outputs:
+      on_main: ${{ steps.contains_tag.outputs.retval }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: rickstaa/action-contains-tag@v1
+        id: contains_tag
+        with:
+          reference: "main"
+          tag: "${{ github.ref }}"
   update-code-version:
     runs-on: ubuntu-latest
-    if: github.event.action != 'labeled'
+    needs: on-main-branch-check
+    if: ${{ needs.on-main-branch-check.outputs.on_main == 'true' }}
     steps:
       # NOTE: Updates the version that is specified in the code files.
       - name: Checkout repository
@@ -53,7 +67,6 @@ jobs:
   release-changelog:
     runs-on: ubuntu-latest
     needs: update-code-version
-    if: github.event.action != 'labeled'
     steps:
       # NOTE: Makes sure the changelog is up to date.
       - name: Checkout repository
@@ -77,7 +90,6 @@ jobs:
   move-semver-tags:
     runs-on: ubuntu-latest
     needs: release-changelog
-    if: github.event.action != 'labeled'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -98,7 +110,6 @@ jobs:
     # NOTE: Drafts a release for the new tag
     runs-on: ubuntu-latest
     needs: move-semver-tags
-    if: github.event.action != 'labeled'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
