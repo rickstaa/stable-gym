@@ -2,6 +2,7 @@
 pytest/
 *.pytest_cache/
 .coverage
+pytest-coverage.txt
 
 # Cache
 __pycache__/

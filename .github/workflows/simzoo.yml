@@ -1,5 +1,5 @@
-# MAin MLC github action. Performs linting and formatting checks. It also runs tests.
-name: simzoo CI
+# Main Simsoo github action. Performs linting and formatting checks. It also runs tests.
+name: Simzoo CI
 on:
   push:
     branches:
@@ -111,15 +111,15 @@ jobs:
         run: |
           pip install -e .[dev]
       - name: Test with Pytest
-        run: pytest . --doctest-modules --html=pytest/${{ matrix.python-version }}/html/results.html --junitxml=pytest/${{ matrix.python-version }}/xml/results.xml --cov=./machine_learning_control --cov-report=html:pytest/${{ matrix.python-version }}/cov/pytest-coverage.txt
+        run: pytest . --cache-clear --doctest-modules --html=pytest/${{ matrix.python-version }}/html/results.html --junitxml=pytest/${{ matrix.python-version }}/xml/results.xml --cov=./simzoo --cov-report=html:pytest/${{ matrix.python-version }}/cov/pytest-coverage.txt --cov-report=term-missing | tee pytest-coverage.txt
       - name: Upload Pytest test results to artifacts
         uses: actions/upload-artifact@v2
-        if: ${{ always() }}
+        if: always()
         with:
           name: pytest-results-${{ matrix.python-version }}
           path: pytest/
       - name: Comment coverage
         uses: coroo/pytest-coverage-commentator@v1.0.2
-        if: ${{ always() }}
+        if: always() && github.event_name == 'pull_request'
         with:
-          pytest-coverage: pytest/${{ matrix.python-version }}/cov/pytest-coverage.txt
+          pytest-coverage: pytest-coverage.txt

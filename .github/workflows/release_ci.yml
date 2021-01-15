@@ -1,0 +1,139 @@
+# Github action that updates the code version tags, adds a changelog and drafts a release when
+# a new version tag is added.
+name: Simzoo release CI
+on:
+  push:
+    tags:
+      - v*.*.*
+jobs:
+  on-main-branch-check:
+    runs-on: ubuntu-latest
+    outputs:
+      on_main: ${{ steps.contains_tag.outputs.retval }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: rickstaa/action-contains-tag@v1
+        id: contains_tag
+        with:
+          reference: "main"
+          tag: "${{ github.ref }}"
+  update-code-version:
+    runs-on: ubuntu-latest
+    needs: on-main-branch-check
+    if: ${{ needs.on-main-branch-check.outputs.on_main == 'true' }}
+    steps:
+      # NOTE: Updates the version that is specified in the code files.
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+      - name: Get current semver tag
+        id: get_semver
+        uses: rickstaa/action-get-semver@v1
+        with:
+          verbose: "true"
+      # Use bumpversion to update version in code
+      # See. https://pypi.org/project/bump2version/
+      - name: Set up Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Cache python environment
+        uses: actions/cache@v2
+        id: cache-python-env
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('setup.cfg') }}-${{ hashFiles('pyproject.toml') }}-bumpversion
+      - name: Update pip
+        if: steps.cache-python-env.outputs.cache-hit != 'true'
+        run: |
+          python -m pip install --upgrade pip
+      - name: Install bump2version
+        if: steps.cache-python-env.outputs.cache-hit != 'true'
+        run: |
+          pip install bump2version
+      - name: Make sure the version in all code files is correct
+        run: |
+          bumpversion --no-tag --no-commit --new-version ${{ steps.get_semver.outputs.current_version }} patch
+      - name: Commit code version changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: main
+          file_pattern: simzoo/version.py setup.cfg .bumpversion.cfg package.json package-lock.json
+          commit_message: ":bookmark: Updates code version to ${{ steps.get_semver.outputs.current_version }}"
+  release-changelog:
+    runs-on: ubuntu-latest
+    needs: update-code-version
+    steps:
+      # NOTE: Makes sure the changelog is up to date.
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+      - name: Install auto-changelog
+        run: npm install
+      - name: Create CHANGELOG.md file using auto-changelog
+        run: npm run auto-changelog
+      - name: Commit changelog changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: main
+          file_pattern: CHANGELOG.md
+          commit_message: ":memo: Updates CHANGELOG.md"
+  move-semver-tags:
+    runs-on: ubuntu-latest
+    needs: release-changelog
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Get latest semver tag
+        id: get_semver
+        uses: rickstaa/action-get-semver@v1
+        with:
+          verbose: "true"
+      - name: Updates major and minor version tags
+        uses: rickstaa/action-update-semver@v1
+        with:
+          tag: "${{ steps.get_semver.outputs.current_version }}"
+          move_patch_tag: "true"
+  create-release-draft:
+    # NOTE: Drafts a release for the new tag
+    runs-on: ubuntu-latest
+    needs: move-semver-tags
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Get latest semver tag
+        id: get_semver
+        uses: rickstaa/action-get-semver@v1
+        with:
+          verbose: "true"
+      - name: Build release changelog
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@main
+        with:
+          configuration: ".github/workflows/release_changelog_config.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Draft release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.get_semver.outputs.current_version }}
+          release_name: ${{ steps.get_semver.outputs.current_version }}
+          body: ${{ steps.build_changelog.outputs.changelog }}
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

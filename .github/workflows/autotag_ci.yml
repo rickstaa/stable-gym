@@ -9,7 +9,7 @@ on:
     types:
       - labeled
 jobs:
-  release:
+  autotag:
     if: github.event.action != 'labeled'
     runs-on: ubuntu-latest
     steps:
@@ -21,13 +21,7 @@ jobs:
       - id: bumpr
         if: "!startsWith(github.ref, 'refs/tags/')"
         uses: haya14busa/action-bumpr@v1
-      # Update corresponding major and minor tag.
-      # e.g. Update v1 and v1.2 when releasing v1.2.3
-      - uses: rickstaa/action-update-semver@v1
-        if: "!steps.bumpr.outputs.skip"
-        with:
-          tag: ${{ steps.bumpr.outputs.next_version }}
-  release-check:
+  autotag-check:
     if: github.event.action == 'labeled'
     runs-on: ubuntu-latest
     steps:
