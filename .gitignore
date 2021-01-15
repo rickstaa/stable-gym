@@ -12,6 +12,9 @@ __pycache__/
 *.pyc
 *.egg-info
 
+# npm
+node_modules/
+
 # IDE
 .vscode/
 *.code-workspace
