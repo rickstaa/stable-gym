@@ -21,7 +21,7 @@ ENVS = {
 for idx, env in enumerate(ENVS["name"]):
     if (
         env not in gym.envs.registry.env_specs
-    ):  # NOTE (rickstaa): Required because of namespace package
+    ):  # NOTE: Required because we use namespace packages
         register(
             id=env,
             entry_point=namespace_prefix + ENVS["module"][idx],
