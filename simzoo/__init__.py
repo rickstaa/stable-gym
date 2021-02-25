@@ -1,4 +1,4 @@
-"""Register the simzoo gym environments.
+"""Module that register the Simzoo gym environments.
 """
 
 import importlib
