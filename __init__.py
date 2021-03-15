@@ -1,1 +1,1 @@
-"""Subpackage that contains the Machine Learning Control gym environments"""
+"""Subpackage that contains the Bayesian Learning Control gym environments"""

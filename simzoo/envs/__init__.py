@@ -14,13 +14,13 @@ elif importlib.util.find_spec("simzoo") is not None:
 else:
     Oscillator = getattr(
         importlib.import_module(
-            "machine_learning_control.simzoo.simzoo.envs.oscillator.oscillator"
+            "bayesian_learning_control.simzoo.simzoo.envs.oscillator.oscillator"
         ),
         "Oscillator",
     )
     Ex3_EKF = getattr(
         importlib.import_module(
-            "machine_learning_control.simzoo.simzoo.envs.ex3_ekf.ex3_ekf"
+            "bayesian_learning_control.simzoo.simzoo.envs.ex3_ekf.ex3_ekf"
         ),
         "Ex3_EKF",
     )

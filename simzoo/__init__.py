@@ -10,7 +10,7 @@ from gym.envs.registration import register
 if importlib.util.find_spec("simzoo") is not None:
     namespace_prefix = ""
 else:
-    namespace_prefix = "machine_learning_control.simzoo."
+    namespace_prefix = "bayesian_learning_control.simzoo."
 
 ENVS = {
     "name": ["Oscillator-v1", "Ex3_EKF-v0"],

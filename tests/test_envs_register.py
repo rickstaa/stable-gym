@@ -15,8 +15,8 @@ elif importlib.util.find_spec("simzoo") is not None:
     importlib.import_module("simzoo")
     from simzoo import ENVS
 else:
-    importlib.import_module("machine_learning_control.simzoo")
-    from machine_learning_control.simzoo.simzoo import ENVS
+    importlib.import_module("bayesian_learning_control.simzoo")
+    from bayesian_learning_control.simzoo.simzoo import ENVS
 
 
 @pytest.mark.parametrize("env_name", ENVS["name"])

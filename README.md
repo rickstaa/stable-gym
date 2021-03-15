@@ -1,6 +1,6 @@
 # Simzoo
 
-A python package containing the machine_learning_control openai gym environments. It currently contains the following environments:
+A python package containing the bayesian_learning_control Openai gym environments. It currently contains the following environments:
 
 -   [Oscillator:](https://github.com/rickstaa/oscillator) A gym environment for a synthetic oscillatory network of transcriptional regulators called a repressilator.
 -   [Ex3_EKF:](https://github.com/rickstaa/ex3_ekf) A noisy master-slave environment that can be used to train a RL based stationary Kalman estimator.
