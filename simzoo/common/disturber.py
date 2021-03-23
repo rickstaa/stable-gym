@@ -1,9 +1,9 @@
 """A simple disturber class from which a OpenAi Gym Environment can inherit in order
 to be able to use it with the Robustness Evaluation tool of the Bayesian Learning
-Control package. For more information see
-https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html.
-"""
-# TODO: Check sphinx autodocs.
+Control package. For more information see the
+`Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_
+documentation.
+"""  # noqa: E501
 
 import gym
 import numpy as np
@@ -42,20 +42,22 @@ DISTURBER_CFG = {
         # The env variable which you want to disturb
         "variable": "_c1",
         # The range of values you want to use for each disturbance iteration
-        "variable_range": np.linspace(1.0, 3.0, num=5, dtype=np.float32),
+        "variable_range": np.linspace(1.6, 3.0, num=5, dtype=np.float32),
         # Label used in robustness plots.
         "label": "r: %s",
     },
     # Disturbance applied to the environment step function
     "step_disturbance": {
+        # The variant used when no variant is given by the user.
+        "default_variant": "impulse",
         # Impulse disturbance applied in the opposite direction of the action at a given
         # timestep.
         "impulse": {
-            "description": "Impulse disturbance disturbance",
+            "description": "Impulse disturbance",
             # The step at which you want to apply the impulse.
             "impulse_instant": 100,
             # The magnitudes you want to apply.
-            "magnitude_range": np.linspace(80, 155, num=3, dtype=np.int),
+            "magnitude_range": np.linspace(0.0, 3.0, num=5, dtype=np.float),
             # Label used in robustness plots.
             "label": "M: %s",
         },
@@ -106,14 +108,25 @@ class Disturber:
             available disturbances.
         disturbance_info (dict): Some additional information about the disturbances the
             Disturber applied. Usefull for plotting.
+        disturber_cfg (dict): The disturber configuration used by the disturber to
+            generate the disturbances. This configuration can be supplied as a argument
+            to the :meth:`Disturber.init_disturber` method during the disturber
+            initiation. It can not be changed during runtime. By default it uses the
+            ``DISTURBANCE_CFG`` disturbance configuration that is present in the file
+            of the :class:`Disturber` class.
+        disturbance_cfg (dict): The disturbance config used to generate the currently
+            selected disturber. This variable is retrieved from the
+            :obj:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber.disturber_cfg`
+            using the currently set ``disturbance_type`` and/or ``disturbance_variant``.
 
     .. seealso::
-    For more information see the `Robustness Evaluation Documentation`_.
 
-    .. _`Robustness Evaluation Documentation`:https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html.
+        For more information see the
+        `Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_
+        documentation.
     """  # noqa: E501
 
-    def __init__(self, disturber_cfg=DISTURBER_CFG):
+    def __init__(self, disturber_cfg=None):
         """Initiate disturber object.
 
         Args:
@@ -121,23 +134,33 @@ class Disturber:
                 disturbances the :class:`Disturber` supports. This dictionary can be
                 used to update values of the ``DISTURBANCE_CFG`` configuration which is
                 present in the :class:`Disturber` class file.
-
-            .. seealso::
-                For more information see the `Robustness Evaluation documentation`_.
-
-            .. _`Robustness Evaluation documentation`: https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html
         """  # noqa: E501
         assert any([issubclass(item, gym.Env) for item in self.__class__.__bases__]), (
             "Only classes that also inherit from the 'gym.Env' class can inherit from "
             "the 'Disturber' class."
         )
         self.disturber_done = False
-        self.disturbance_info = {"description": None, "labels": []}
+        self.disturbance_info = {
+            "type": None,
+            "variant": None,
+            "variable": None,
+            "value": None,
+            "values": [],
+            "description": None,
+            "label": [],
+            "labels": [],
+            "cfg": {},
+        }
         self._disturbance_done_warned = False
-        self._disturber_cfg = {
-            **DISTURBER_CFG,
-            **disturber_cfg,
-        }  # Allow users to update the disturber_cfg
+        self._disturber_cfg = (
+            {
+                **DISTURBER_CFG,
+                **disturber_cfg,
+            }
+            if disturber_cfg is not None
+            else None
+        )  # Allow users to overwrite the default config
+        self._disturbance_cfg = None
         self._disturbance_type = None
         self._disturbance_variant = None
         self._disturbance_range = None
@@ -350,8 +373,12 @@ class Disturber:
                 wrong type.
         """
         self._disturbance_type = disturbance_type
+        self.disturbance_info["type"] = self._disturbance_type.replace(
+            "_disturbance", ""
+        )
         if disturbance_type == "step_disturbance":
             self._disturbance_variant = disturbance_variant
+            self.disturbance_info["variant"] = self._disturbance_variant
             self._disturbance_cfg = self._disturber_cfg[disturbance_type][
                 disturbance_variant
             ]
@@ -366,20 +393,27 @@ class Disturber:
             self._disturbance_range_key = range_keys[0]
             if isinstance(self._disturbance_cfg[self._disturbance_range_key], dict):
                 self._disturbance_range = {
-                    k: np.insert(v, 0, 0.0, axis=0)
+                    k: np.insert(v, 0, 0.0, axis=0) if v[0] != 0.0 else v
                     for k, v in self._disturbance_cfg[
                         self._disturbance_range_key
                     ].items()
-                }  # Add undisturbed state
+                }  # Add undisturbed state if not yet present
                 self._disturbance_iter_length = len(
                     list(self._disturbance_range.values())[0]
                 )
             elif isinstance(
                 self._disturbance_cfg[self._disturbance_range_key], (list, np.ndarray)
             ):
-                self._disturbance_range = np.insert(
-                    self._disturbance_cfg[self._disturbance_range_key], 0, 0.0, axis=0
-                )  # Add undisturbed state
+                self._disturbance_range = (
+                    np.insert(
+                        self._disturbance_cfg[self._disturbance_range_key],
+                        0,
+                        0.0,
+                        axis=0,
+                    )
+                    if self._disturbance_cfg[self._disturbance_range_key][0] != 0.0
+                    else self._disturbance_cfg[self._disturbance_range_key]
+                )  # Add undisturbed state if not yet present
                 self._disturbance_iter_length = len(self._disturbance_range)
             else:
                 raise TypeError(
@@ -400,6 +434,8 @@ class Disturber:
                         bold=True,
                     )
                 )
+            self._disturbance_variant = "environment"
+            self.disturbance_info["variant"] = self._disturbance_variant
             self._disturbance_cfg = self._disturber_cfg[disturbance_type]
 
             # Retrieve disturbance range and range length
@@ -407,13 +443,36 @@ class Disturber:
                 key for key in self._disturbance_cfg.keys() if "_range" in key
             ]
             self._disturbance_range_key = range_keys[0]
-            self._disturbance_range = np.insert(
-                self._disturbance_cfg[self._disturbance_range_key],
-                0,
-                getattr(self, self._disturbance_cfg["variable"]),
-                axis=0,
-            )
+            self._disturbance_range = (
+                np.insert(
+                    self._disturbance_cfg[self._disturbance_range_key],
+                    0,
+                    getattr(self, self._disturbance_cfg["variable"]),
+                    axis=0,
+                )
+                if round(
+                    float(self._disturbance_cfg[self._disturbance_range_key][0]), 3
+                )
+                != round(float(getattr(self, self._disturbance_cfg["variable"])), 3)
+                else self._disturbance_cfg[self._disturbance_range_key]
+            )  # Add undisturbed state if not yet present
             self._disturbance_iter_length = len(self._disturbance_range)
+
+        # Store disturbance information
+        self.disturbance_info["cfg"] = self._disturbance_cfg
+        self.disturbance_info["variable"] = self._disturbance_range_key.replace(
+            "_range", ""
+        )
+        if isinstance(self._disturbance_range, dict):
+            self.disturbance_info["value"] = {
+                k: v[self._disturbance_iter_idx]
+                for k, v in self._disturbance_range.items()
+            }
+        else:
+            self.disturbance_info["value"] = self._disturbance_range[
+                self._disturbance_iter_idx
+            ]
+        self.disturbance_info["values"] = self._disturbance_range
 
     def _set_disturbance_info(self):
         """Puts information about the requested disturbance onto the
@@ -439,10 +498,16 @@ class Disturber:
                         self._disturbance_cfg["label"] % item
                         for item in zip(*self._disturbance_range.values())
                     ]
+                    self.disturbance_info["label"] = self.disturbance_info["labels"][
+                        self._disturbance_iter_idx
+                    ]
                 else:
                     self.disturbance_info["labels"] = [
                         self._disturbance_cfg["label"] % item
                         for item in self._disturbance_range
+                    ]
+                    self.disturbance_info["label"] = self.disturbance_info["labels"][
+                        self._disturbance_iter_idx
                     ]
             else:  # If no label was specified use first letter of disturbance variant
                 if isinstance(self._disturbance_range, dict):
@@ -457,10 +522,16 @@ class Disturber:
                     self.disturbance_info["labels"] = [
                         ", ".join(item) for item in list(zip(*label_list))
                     ]
+                    self.disturbance_info["label"] = self.disturbance_info["labels"][
+                        self._disturbance_iter_idx
+                    ]
                 else:
                     self.disturbance_info["labels"] = [
                         self._disturbance_range_key[0].upper() + ": %s" % item
                         for item in self._disturbance_range
+                    ]
+                    self.disturbance_info["label"] = self.disturbance_info["labels"][
+                        self._disturbance_iter_idx
                     ]
         else:
             disturbed_var = (
@@ -471,8 +542,13 @@ class Disturber:
             self.disturbance_info["labels"] = [
                 disturbed_var + ": %s" % item for item in self._disturbance_range
             ]
+            self.disturbance_info["label"] = self.disturbance_info["labels"][
+                self._disturbance_iter_idx
+            ]
 
-    def init_disturber(self, disturbance_type, disturbance_variant=None):
+    def init_disturber(
+        self, disturbance_type, disturbance_variant=None, disturber_cfg=None
+    ):  # noqa E901
         """Initializes the environment/step disturber.
 
         Args:
@@ -480,21 +556,34 @@ class Disturber:
                 ``env_disturbance`` and ``step_disturbance``.
             disturbance_variant (string, optional): The disturbance variant you want to
                 use. Only required when you use a ``step_disturbance``.
+            disturber_cfg (dict, optional): A dictionary that describes the disturbances
+                the :class:`Disturber` supports. This dictionary can be used to update
+                values of the ``DISTURBANCE_CFG`` configuration which is present in the
+                :class:`Disturber` class file.
 
         Raises:
             ValueError: Thrown when the disturbance type or variant is not supported by
                 by the disturber.
+            TypeError: Thrown when the disturbance variant is not specified but while
+                required for the given disturbance_type.
         """
+        # Overwrite disturbance config if passed as a argument
+        if disturber_cfg is not None:
+            self._disturber_cfg = {
+                **DISTURBER_CFG,
+                **disturber_cfg,
+            }  # Allow users to update the disturber_cfg
+        else:
+            # Set default disturber if no disturber was given with the environment
+            # initiation.
+            if self._disturber_cfg is None:
+                self._disturber_cfg = DISTURBER_CFG
+
         # Validate disturbance type and/or variant input arguments
         disturbance_type = (
             disturbance_type.lower() + "_disturbance"
             if "_disturbance" not in disturbance_type.lower()
             else disturbance_type.lower()
-        )
-        disturbance_variant = (
-            disturbance_variant.lower()
-            if disturbance_variant is not None
-            else disturbance_variant
         )
         if disturbance_type not in self._disturber_cfg.keys():
             try:
@@ -506,6 +595,36 @@ class Disturber:
                     f"'{environment_name}' environment. Please specify a valid "
                     f"disturbance type {self._disturber_cfg.keys()}."
                 )
+        if disturbance_type != "env_disturbance":
+            if disturbance_variant is None:
+                if "default_variant" in self._disturber_cfg[disturbance_type].keys():
+                    print(
+                        colorize(
+                            (
+                                "INFO: No disturbance variant given default variant ("
+                                + "{}) used instead.".format(
+                                    self._disturber_cfg[disturbance_type][
+                                        "default_variant"
+                                    ]
+                                )
+                            ),
+                            "green",
+                            bold=True,
+                        )
+                    )
+                    disturbance_variant = self._disturber_cfg[disturbance_type][
+                        "default_variant"
+                    ]
+                else:
+                    raise TypeError(
+                        "init_disturber(): is missing one required positional "
+                        "argument: 'disturbance_variant'. This argument is required "
+                        f"for disturbance type {disturbance_type}. Please specify a "
+                        f"valid disturbance variant "
+                        f"{list(self._disturber_cfg[disturbance_type].keys())}."
+                    )
+            else:
+                disturbance_variant = disturbance_variant.lower()
         if (
             disturbance_type == "step_disturbance"
             and disturbance_variant is not None
@@ -643,7 +762,7 @@ class Disturber:
 
     def next_disturbance(self):
         """Function used to request the next disturbance that is specified in the
-        ``disturber_cfg``.
+        :obj:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber.disturbance_cfg`.
 
         Raises:
             RuntimeError: Thrown when this method is called before the
@@ -652,7 +771,7 @@ class Disturber:
         Returns:
             bool: A boolean specifying whether the disturber has already used all
                 specified disturbances.
-        """
+        """  # noqa: E501
         if not self._disturbance_type:
             raise RuntimeError(
                 "No disturbance found. Please call the 'init_disturber' method before "
@@ -667,16 +786,36 @@ class Disturber:
             self.disturber_done = True
             return self.disturber_done
 
+        # Add info about the current disturbance
+        self.disturbance_info["label"] = self.disturbance_info["labels"][
+            self._disturbance_iter_idx
+        ]
+        if isinstance(self._disturbance_range, dict):
+            self.disturbance_info["value"] = {
+                k: v[self._disturbance_iter_idx]
+                for k, v in self._disturbance_range.items()
+            }
+        else:
+            self.disturbance_info["value"] = self._disturbance_range[
+                self._disturbance_iter_idx
+            ]
+
         # Apply environment disturbance
         if self._disturbance_type == "env_disturbance":
             self._apply_env_disturbance()
         else:
+            time_instant = [
+                key for key in self._disturbance_cfg.keys() if "_instant" in key
+            ]
             print(
                 colorize(
                     (
-                        "INFO: Apply {} disturbance ({}).".format(
+                        "INFO: Apply {} disturbance ({}){}.".format(
                             self._disturbance_variant,
                             self.disturbance_info["labels"][self._disturbance_iter_idx],
+                            f" at step {self._disturbance_cfg[time_instant[0]]}"
+                            if time_instant
+                            else "",
                         )
                     ),
                     "green",
@@ -686,3 +825,51 @@ class Disturber:
 
         # Return disturber not finished boolean
         return False
+
+    @property
+    def disturber_cfg(self):
+        """The disturber configuration used by the disturber to generate the
+        disturbances.
+        """
+        if self._disturber_cfg is None:
+            error_msg = (
+                f"'{self.__class__.__name__}' object does not yet have attribute "
+                "'disturber_cfg'. Please make  sure you initialized the disturber "
+                "using the 'init_disturber' method and try again."
+            )
+            raise AttributeError(error_msg)
+
+        return self._disturber_cfg
+
+    @disturber_cfg.setter
+    def disturber_cfg(self, set_val):
+        error_msg = (
+            "Changing the 'disturber_cfg' value during runtime is not allowed. Please "
+            "set your disturbance config before training or pass a disturbance config "
+            "to the init_disturber method."
+        )
+        raise AttributeError(error_msg)
+
+    @property
+    def disturbance_cfg(self):
+        """The disturbance config used to generate the currently selected disturber.
+        This variable is retrieved from the
+        :obj:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber.disturber_cfg`
+        using the currently set ``disturbance_type`` and/or ``disturbance_variant``.
+        """  # noqa: E501
+        if self._disturbance_cfg is None:
+            error_msg = (
+                f"'{self.__class__.__name__}' object does not yet have attribute "
+                "'disturbance_cfg'. Please make  sure you initialized the disturber "
+                "using the 'init_disturber' method and try again."
+            )
+            raise AttributeError(error_msg)
+
+        return self._disturber_cfg
+
+    @disturbance_cfg.setter
+    def disturber_cfg(self, set_val):
+        error_msg = (
+            "Changing the 'disturbance_cfg' value during runtime is not allowed. "
+        )
+        raise AttributeError(error_msg)
