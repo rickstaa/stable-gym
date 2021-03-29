@@ -13,9 +13,9 @@ else:
     namespace_prefix = "bayesian_learning_control.simzoo."
 
 ENVS = {
-    "name": ["Oscillator-v1", "Ex3_EKF-v0"],
-    "module": ["simzoo.envs.oscillator:Oscillator", "simzoo.envs.ex3_ekf:Ex3_EKF"],
-    "max_step": [800, 800],
+    "name": ["Oscillator-v1", "Ex3_EKF-v0", "CartPoleCustom-v0"],
+    "module": ["simzoo.envs.oscillator:Oscillator", "simzoo.envs.ex3_ekf:Ex3_EKF", "simzoo.envs.cart_pole.CartPole:CartPoleCustom"],
+    "max_step": [800, 800, 800],
 }
 
 for idx, env in enumerate(ENVS["name"]):
