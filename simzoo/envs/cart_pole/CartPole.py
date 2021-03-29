@@ -390,12 +390,12 @@ if __name__ == "__main__":
     env = CartPoleCustom()
 
     # Take T steps in the environment
-    T = 60000
+    T = 1000
     path = []
     t1 = []
     s = env.reset()
     print(f"Taking {T} steps in the Cartpole environment.")
-    for i in range(int(T / env.dt)):
+    for i in range(T):
         action = (
             env.np_random.uniform(
                 env.action_space.low, env.action_space.high, env.action_space.shape
@@ -404,24 +404,20 @@ if __name__ == "__main__":
             else np.zeros(env.action_space.shape)
         )
         s, r, done, info = env.step(action)
+        env.render()
         path.append(s)
-        t1.append(i * env.dt)
+        t1.append(i)
     print("Finished Cartpole environment simulation.")
 
     # Plot results
     print("Plot results.")
     fig = plt.figure(figsize=(9, 6))
     ax = fig.add_subplot(111)
-    # ax.plot(t1, np.array(path)[:, 0], color="orange", label="mRNA1")
-    # ax.plot(t1, np.array(path)[:, 1], color="magenta", label="mRNA2")
-    # ax.plot(t1, np.array(path)[:, 2], color="sienna", label="mRNA3")
-    ax.plot(t1, np.array(path)[:, 3], color="blue", label="protein1")
-    # ax.plot(t1, np.array(path)[:, 4], color="cyan", label="protein2")
-    # ax.plot(t1, np.array(path)[:, 5], color="green", label="protein3")
-    # ax.plot(t1, np.array(path)[:, 0:3], color="blue", label="mRNA")
-    # ax.plot(t1, np.array(path)[:, 3:6], color="blue", label="protein")
-    ax.plot(t1, np.array(path)[:, 6], color="yellow", label="reference")
-    ax.plot(t1, np.array(path)[:, 7], color="red", label="error")
+    ax.plot(t1, np.array(path)[:, 0], color="orange", label="x")
+    ax.plot(t1, np.array(path)[:, 1], color="magenta", label="x_dot")
+    ax.plot(t1, np.array(path)[:, 2], color="sienna", label="theta")
+    ax.plot(t1, np.array(path)[:, 3], color="blue", label=" theat_dot1")
+
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, labels, loc=2, fancybox=False, shadow=False)
     plt.show()
