@@ -1,2 +1,2 @@
 gym==0.18.0
-matplotlib==3.3.4
+matplotlib==3.4.0
