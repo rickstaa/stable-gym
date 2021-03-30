@@ -36,6 +36,8 @@ def periodic_disturbance(time):
 # See https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html
 # for more information.
 DISTURBER_CFG = {
+    # Disturbance type when no type has been given
+    "default_type": "step_disturbance",
     # Disturbance applied to environment variables
     "env_disturbance": {
         "description": "Lacl mRNA decay rate disturbance",
@@ -546,9 +548,9 @@ class Disturber:
                 self._disturbance_iter_idx
             ]
 
-    def init_disturber(
+    def init_disturber(  # noqa E901
         self, disturbance_type, disturbance_variant=None, disturber_cfg=None
-    ):  # noqa E901
+    ):
         """Initializes the environment/step disturber.
 
         Args:
@@ -580,6 +582,27 @@ class Disturber:
                 self._disturber_cfg = DISTURBER_CFG
 
         # Validate disturbance type and/or variant input arguments
+        if disturbance_type is None:
+            if "default_type" in self._disturber_cfg.keys():
+                print(
+                    colorize(
+                        (
+                            "INFO: No disturbance type given default type '{}' ".format(
+                                self._disturber_cfg["default_type"]
+                            )
+                            + "used instead."
+                        ),
+                        "green",
+                        bold=True,
+                    )
+                )
+                disturbance_type = self._disturber_cfg["default_type"]
+            else:
+                raise TypeError(
+                    "init_disturber(): is missing one required positional "
+                    "argument: 'disturbance_type'.",
+                    "disturbance_type",
+                )
         disturbance_type = (
             disturbance_type.lower() + "_disturbance"
             if "_disturbance" not in disturbance_type.lower()
@@ -601,8 +624,8 @@ class Disturber:
                     print(
                         colorize(
                             (
-                                "INFO: No disturbance variant given default variant ("
-                                + "{}) used instead.".format(
+                                "INFO: No disturbance variant given default variant '"
+                                + "{}' used instead.".format(
                                     self._disturber_cfg[disturbance_type][
                                         "default_variant"
                                     ]
@@ -621,7 +644,8 @@ class Disturber:
                         "argument: 'disturbance_variant'. This argument is required "
                         f"for disturbance type {disturbance_type}. Please specify a "
                         f"valid disturbance variant "
-                        f"{list(self._disturber_cfg[disturbance_type].keys())}."
+                        f"{list(self._disturber_cfg[disturbance_type].keys())}.",
+                        "disturbance_variant",
                     )
             else:
                 disturbance_variant = disturbance_variant.lower()
