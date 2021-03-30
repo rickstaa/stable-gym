@@ -385,9 +385,7 @@ if __name__ == "__main__":
     print(f"Taking {T} steps in the Cartpole environment.")
     for i in range(int(T / env.dt)):
         action = (
-            env.np_random.uniform(
-                env.action_space.low, env.action_space.high, env.action_space.shape
-            )
+            env.action_space.sample()
             if RANDOM_STEP
             else np.zeros(env.action_space.shape)
         )
