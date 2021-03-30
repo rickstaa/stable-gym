@@ -21,7 +21,6 @@ Estimator design:
     \\hat(x)(k+1)=A\\hat(x)(k)+u
     where u=[u1,u2,u3]', u=l(\\hat(x)(k),y(k)) come from the policy network l(.,.)
 """
-__VERSION__ = "0.6.3"  # Ex3EKF version
 
 import importlib
 import sys
@@ -80,7 +79,7 @@ class Ex3EKF(gym.Env, Disturber):
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
         `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.
-    """
+    """  # noqa: E501
 
     def __init__(self, seed=400):
         """Constructs all the necessary attributes for the oscillator object.

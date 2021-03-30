@@ -3,7 +3,6 @@ called a repressilator. A repressilator is a three-gene regulatory network where
 dynamics of mRNA and proteins follow an oscillatory behavior
 (see https://www-nature-com.tudelft.idm.oclc.org/articles/35002125).
 """
-__VERSION__ = "1.4.3"  # Oscillator version
 
 import importlib
 import sys
