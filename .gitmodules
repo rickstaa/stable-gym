@@ -1,6 +1,3 @@
-[submodule "simzoo/envs/oscillator"]
-	path = simzoo/envs/oscillator
-	url = ../oscillator.git
 [submodule "simzoo/envs/ex3_ekf"]
 	path = simzoo/envs/ex3_ekf
 	url = ../ex3_ekf.git
