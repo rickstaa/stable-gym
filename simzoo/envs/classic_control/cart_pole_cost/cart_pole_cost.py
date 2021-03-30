@@ -53,7 +53,7 @@ RANDOM_STEP = False  # Use random steps in __main__
 # }
 
 
-class CartPoleCustom(gym.Env, Disturber):
+class CartPoleCost(gym.Env, Disturber):
     """
     Description:
         A pole is attached by an un-actuated joint to a cart, which moves along a
@@ -387,7 +387,7 @@ def COST_V2(r1, r2, e1, e2, x, x_dot, theta, theta_dot):
 if __name__ == "__main__":
 
     print("Settting up Cartpole environment.")
-    env = CartPoleCustom()
+    env = CartPoleCost()
 
     # Take T steps in the environment
     T = 60000

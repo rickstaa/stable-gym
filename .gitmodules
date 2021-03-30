@@ -1,3 +1,0 @@
-[submodule "simzoo/envs/ex3_ekf"]
-	path = simzoo/envs/ex3_ekf
-	url = ../ex3_ekf.git

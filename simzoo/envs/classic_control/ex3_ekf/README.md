@@ -1,4 +1,4 @@
-# Ex3_EKF gym environment
+# Ex3EKF gym environment
 
 A gym environment for a noisy master-slave system. This environment can be used to train a
 RL based stationary Kalman filter.
@@ -17,7 +17,7 @@ RL based stationary Kalman filter.
 
 ## Environment goal
 
-The goal of the agent in the Ex3_EKF environment is to act in such a way that
+The goal of the agent in the Ex3EKF environment is to act in such a way that
 estimator perfectly estimated the original noisy system. By doing this, it serves
 as an RL based stationary Kalman filter.
 

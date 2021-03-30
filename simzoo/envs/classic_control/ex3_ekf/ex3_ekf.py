@@ -1,4 +1,4 @@
-"""Noisy master slave system (Ex3_EKF) gym environment.
+"""Noisy master slave system (Ex3EKF) gym environment.
 
 The dynamic system whose state is to be estimated:
 
@@ -21,7 +21,7 @@ Estimator design:
     \\hat(x)(k+1)=A\\hat(x)(k)+u
     where u=[u1,u2,u3]', u=l(\\hat(x)(k),y(k)) come from the policy network l(.,.)
 """
-__VERSION__ = "0.6.3"  # Ex3_EKF version
+__VERSION__ = "0.6.3"  # Ex3EKF version
 
 import importlib
 import sys
@@ -68,9 +68,9 @@ DISTURBER_CFG = {
 }
 
 
-class Ex3_EKF(gym.Env, Disturber):
+class Ex3EKF(gym.Env, Disturber):
     """Noisy master slave system
-    The goal of the agent in the Ex3_EKF environment is to act in such a way that
+    The goal of the agent in the Ex3EKF environment is to act in such a way that
     estimator perfectly estimated the original noisy system. By doing this it serves
     as a RL based stationary Kalman filter.
 
@@ -94,7 +94,7 @@ class Ex3_EKF(gym.Env, Disturber):
         self.t = 0
         self.dt = 0.1
 
-        # Setup Ex3_EKF parameters
+        # Setup Ex3EKF parameters
         self.q1 = 0.01
         self.g = 9.81
         self.l_net = 1.0
@@ -248,21 +248,21 @@ class Ex3_EKF(gym.Env, Disturber):
             This currently is not yet implemented.
         """
         raise NotImplementedError(
-            "No render method was implemented yet for the Ex3_EKF environment."
+            "No render method was implemented yet for the Ex3EKF environment."
         )
 
 
 if __name__ == "__main__":
 
-    print("Settting up Ex3_EKF environment.")
-    env = Ex3_EKF()
+    print("Settting up Ex3EKF environment.")
+    env = Ex3EKF()
 
     # Take T steps in the environment
     T = 10
     path = []
     t1 = []
     s = env.reset()
-    print(f"Taking {T} steps in the Ex3_EKF environment.")
+    print(f"Taking {T} steps in the Ex3EKF environment.")
     for i in range(int(T / env.dt)):
         action = (
             env.np_random.uniform(
