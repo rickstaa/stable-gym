@@ -15,9 +15,9 @@ else:
 ENVS = {
     "name": ["Oscillator-v1", "Ex3EKF-v1", "CartPoleCost-v0"],
     "module": [
-        "simzoo.envs.biological.oscillator:Oscillator",
-        "simzoo.envs.classic_control.ex3_ekf:Ex3EKF",
-        "simzoo.envs.classic_control.cart_pole_cost:CartPoleCost",
+        "simzoo.envs.biological.oscillator.oscillator:Oscillator",
+        "simzoo.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
+        "simzoo.envs.classic_control.cart_pole_cost.cart_pole_cost:CartPoleCost",
     ],
     "max_step": [800, 800, 800],
 }
