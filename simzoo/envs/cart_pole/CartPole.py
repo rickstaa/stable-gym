@@ -127,6 +127,7 @@ class CartPoleCustom(gym.Env, Disturber):
         self.polemass_length = (self.masspole * self.length)
         self.force_mag = 20
         self.tau = 0.02  # seconds between state updates
+        self.dt = self.tau
         self.kinematics_integrator = 'euler'
         self.cons_pos = 4
         self.target_pos = 0
@@ -366,21 +367,8 @@ class CartPoleCustom(gym.Env, Disturber):
             self.viewer.close()
             self.viewer = None
 
-def COST_1000(r1, r2, e1, e2, x, x_dot, theta, theta_dot):
-    cost = np.sign(r2) * ((10 * r2) ** 2) - 4 * abs(x) ** 2
-    return cost
-
-def COST_V3(r1, r2, e1, e2, x, x_dot, theta, theta_dot):
-    cost = np.sign(r2) * ((10 * r2) ** 2) - abs(x) ** 4
-    return cost
-
 def COST_V1(r1, r2, e1, e2, x, x_dot, theta, theta_dot):
     cost = 20*np.sign(r2) * ((r2) ** 2)+ 1* np.sign(r1) * (( r1) ** 2)
-    return cost
-
-
-def COST_V2(r1, r2, e1, e2, x, x_dot, theta, theta_dot):
-    cost = 5 * max(r2, 0) + 1* max(r1,0) + 1
     return cost
 
 
@@ -395,7 +383,7 @@ if __name__ == "__main__":
     t1 = []
     s = env.reset()
     print(f"Taking {T} steps in the Cartpole environment.")
-    for i in range(T):
+    for i in range(int(T / env.dt)):
         action = (
             env.np_random.uniform(
                 env.action_space.low, env.action_space.high, env.action_space.shape
@@ -406,7 +394,7 @@ if __name__ == "__main__":
         s, r, done, info = env.step(action)
         env.render()
         path.append(s)
-        t1.append(i)
+        t1.append(i * env.dt)
     print("Finished Cartpole environment simulation.")
 
     # Plot results
