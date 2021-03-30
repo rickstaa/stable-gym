@@ -548,9 +548,9 @@ class Disturber:
                 self._disturbance_iter_idx
             ]
 
-    def init_disturber(
+    def init_disturber(  # noqa E901
         self, disturbance_type, disturbance_variant=None, disturber_cfg=None
-    ):  # noqa E901
+    ):
         """Initializes the environment/step disturber.
 
         Args:

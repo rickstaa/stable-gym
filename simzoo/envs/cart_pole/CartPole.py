@@ -56,12 +56,12 @@ RANDOM_STEP = False  # Use random steps in __main__
 class CartPole(gym.Env, Disturber):
     """
     Description:
-        A pole is attached by an un-actuated joint to a cart, which moves along a 
+        A pole is attached by an un-actuated joint to a cart, which moves along a
         frictionless track. The pendulun starts upright, and the goal is to prevent it
         from failing over by increasing and reducing the cart's velocity.
 
     Source:
-        This environment corresponds to the version of cart-pole problem described 
+        This environment corresponds to the version of cart-pole problem described
         by Barto, Sutton, and Anderson.
 
     Observations:
@@ -78,9 +78,9 @@ class CartPole(gym.Env, Disturber):
         0	         Push cart to the left
         1	         Push cart to the right
 
-    Note: The amount the velocity is reduced or increased 
-        is not fixed as it depends on the angle the pole is pointing. 
-        This is because the center of gravity of the pole increases 
+    Note: The amount the velocity is reduced or increased
+        is not fixed as it depends on the angle the pole is pointing.
+        This is because the center of gravity of the pole increases
         the amount of energy needed to move the cart underneath it
 
  Reward:
@@ -119,7 +119,7 @@ class CartPole(gym.Env, Disturber):
 
         super().__init__()
 
-        
+
         # 1 0.1 0.5 original
         self.masscart = 1
         self.masspole = 0.1
