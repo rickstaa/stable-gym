@@ -127,6 +127,7 @@ class CartPoleCost(gym.Env, Disturber):
         self.polemass_length = (self.masspole * self.length)
         self.force_mag = 20
         self.tau = 0.02  # seconds between state updates
+        self.dt = self.tau
         self.kinematics_integrator = 'euler'
         self.cons_pos = 4
         self.target_pos = 0
@@ -366,21 +367,8 @@ class CartPoleCost(gym.Env, Disturber):
             self.viewer.close()
             self.viewer = None
 
-def COST_1000(r1, r2, e1, e2, x, x_dot, theta, theta_dot):
-    cost = np.sign(r2) * ((10 * r2) ** 2) - 4 * abs(x) ** 2
-    return cost
-
-def COST_V3(r1, r2, e1, e2, x, x_dot, theta, theta_dot):
-    cost = np.sign(r2) * ((10 * r2) ** 2) - abs(x) ** 4
-    return cost
-
 def COST_V1(r1, r2, e1, e2, x, x_dot, theta, theta_dot):
     cost = 20*np.sign(r2) * ((r2) ** 2)+ 1* np.sign(r1) * (( r1) ** 2)
-    return cost
-
-
-def COST_V2(r1, r2, e1, e2, x, x_dot, theta, theta_dot):
-    cost = 5 * max(r2, 0) + 1* max(r1,0) + 1
     return cost
 
 
@@ -390,7 +378,7 @@ if __name__ == "__main__":
     env = CartPoleCost()
 
     # Take T steps in the environment
-    T = 60000
+    T = 1000
     path = []
     t1 = []
     s = env.reset()
@@ -404,6 +392,7 @@ if __name__ == "__main__":
             else np.zeros(env.action_space.shape)
         )
         s, r, done, info = env.step(action)
+        env.render()
         path.append(s)
         t1.append(i * env.dt)
     print("Finished Cartpole environment simulation.")
@@ -412,16 +401,11 @@ if __name__ == "__main__":
     print("Plot results.")
     fig = plt.figure(figsize=(9, 6))
     ax = fig.add_subplot(111)
-    # ax.plot(t1, np.array(path)[:, 0], color="orange", label="mRNA1")
-    # ax.plot(t1, np.array(path)[:, 1], color="magenta", label="mRNA2")
-    # ax.plot(t1, np.array(path)[:, 2], color="sienna", label="mRNA3")
-    ax.plot(t1, np.array(path)[:, 3], color="blue", label="protein1")
-    # ax.plot(t1, np.array(path)[:, 4], color="cyan", label="protein2")
-    # ax.plot(t1, np.array(path)[:, 5], color="green", label="protein3")
-    # ax.plot(t1, np.array(path)[:, 0:3], color="blue", label="mRNA")
-    # ax.plot(t1, np.array(path)[:, 3:6], color="blue", label="protein")
-    ax.plot(t1, np.array(path)[:, 6], color="yellow", label="reference")
-    ax.plot(t1, np.array(path)[:, 7], color="red", label="error")
+    ax.plot(t1, np.array(path)[:, 0], color="orange", label="x")
+    ax.plot(t1, np.array(path)[:, 1], color="magenta", label="x_dot")
+    ax.plot(t1, np.array(path)[:, 2], color="sienna", label="theta")
+    ax.plot(t1, np.array(path)[:, 3], color="blue", label=" theat_dot1")
+
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, labels, loc=2, fancybox=False, shadow=False)
     plt.show()
