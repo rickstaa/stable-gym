@@ -69,9 +69,6 @@ DISTURBER_CFG = {
 
 class Ex3EKF(gym.Env, Disturber):
     """Noisy master slave system
-    The goal of the agent in the Ex3EKF environment is to act in such a way that
-    estimator perfectly estimated the original noisy system. By doing this it serves
-    as a RL based stationary Kalman filter.
 
     .. note::
         This gym environment inherits from the
@@ -79,6 +76,58 @@ class Ex3EKF(gym.Env, Disturber):
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
         `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.
+
+    Description:
+        The goal of the agent in the Ex3EKF environment is to act in such a way that
+        estimator perfectly estimated the original noisy system. By doing this it serves
+        as a RL based stationary Kalman filter.
+
+    Observation:
+        **Type**: Box(4)
+
+        +-----+------------------------+----------------------+--------------------+
+        | Num | Observation            | Min                  | Max                |
+        +=====+========================+======================+====================+
+        | 0   | The estimated angle    | -10000 rad           | 10000 rad          |
+        +-----+------------------------+----------------------+--------------------+
+        | 1   | The estimated frequency| -10000 hz            | 10000 hz           |
+        +-----+------------------------+----------------------+--------------------+
+        | 2   | Actual angle           | -10000 rad           | 10000 rad          |
+        +-----+------------------------+----------------------+--------------------+
+        | 3   | Actual frequency       | -10000 rad           | 10000 rad          |
+        +-----+------------------------+----------------------+--------------------+
+
+    Actions:
+        **Type**: Box(2)
+
+        +-----+-----------------------------------------------+
+        | Num | Action                                        |
+        +=====+===============================================+
+        | 0   | First action coming from the RL Kalman filter |
+        +-----+-----------------------------------------------+
+        | 1   | Second action coming from the RL Kalman filter|
+        +-----+-----------------------------------------------+
+
+    Cost:
+        A cost, computed as the sum of the squared differences between the estimated and the actual states:
+
+        .. math::
+            C = {(\hat{x}_1 - x_1)}^2 + {(\hat{x}_2 - x_2)}^2
+
+    Starting State:
+        All observations are assigned a uniform random value in ``[-0.05..0.05]``
+
+    Episode Termination:
+        -   When the step cost is higher than 100.
+
+    Solved Requirements:
+        Considered solved when the average cost is lower than 300.
+
+    Attributes:
+        state (numpy.ndarray): The current system state.
+        t (float): The current time step.
+        dt (float): The environment step size.
+        sigma (float): The variance of the system noise.
     """  # noqa: E501
 
     def __init__(self, seed=400):

@@ -1,4 +1,4 @@
-"""Import biological environments onto namespace
+"""Gym environments that are based on Biological systems.
 """
 
 import sys

@@ -53,33 +53,6 @@ DISTURBER_CFG = {
 
 class Oscillator(gym.Env, Disturber):
     """Synthetic oscillatory network
-    The goal of the agent in the oscillator environment is to act in such a way that
-    one of the proteins of the synthetic oscillatory network follows a supplied
-    reference signal.
-
-    Observations:
-        - m1: Lacl mRNA concentration.
-        - m2: tetR mRNA concentration.
-        - m3: CI mRNA concentration.
-        - p1: lacI (repressor) protein concentration (Inhibits transcription tetR gene).
-        - p2: tetR (repressor) protein concentration (Inhibits transcription CI).
-        - p3: CI (repressor) protein concentration (Inhibits transcription of lacI).
-        - r: The value of the reference for protein 1.
-        - e: The error between the current value of protean 1 and the reference.
-
-    Action space:
-        - u1: Number of Lacl proteins produced during continuous growth under repressor
-          saturation (Leakiness).
-        - u1: Number of tetR proteins produced during continuous growth under repressor
-          saturation (Leakiness).
-        - u1: Number of CI proteins produced during continuous growth under repressor
-          saturation (Leakiness).
-
-    Attributes:
-        state (numpy.ndarray): The current system state.
-        t (float): The current time step.
-        dt (float): The environment step size.
-        sigma (float): The variance of the system noise.
 
     .. note::
         This gym environment inherits from the
@@ -87,6 +60,71 @@ class Oscillator(gym.Env, Disturber):
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
         `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.
+
+    Description:
+        The goal of the agent in the oscillator environment is to act in such a way that
+        one of the proteins of the synthetic oscillatory network follows a supplied
+        reference signal.
+
+    Observation:
+        **Type**: Box(4)
+
+        +-----+-----------------------------------------------+----------------------+--------------------+
+        | Num | Observation                                   | Min                  | Max                |
+        +=====+===============================================+======================+====================+
+        | 0   | Lacl mRNA concentration                       | -100                 | 100                |
+        +-----+-----------------------------------------------+----------------------+--------------------+
+        | 1   | tetR mRNA concentration                       | -100                 | 100                |
+        +-----+-----------------------------------------------+----------------------+--------------------+
+        | 2   || lacI (repressor) protein concentration       | -100                 | 100                |
+        |     || (Inhibits transcription tetR gene)           |                      |                    |
+        +-----+-----------------------------------------------+----------------------+--------------------+
+        | 3   || tetR (repressor) protein concentration       | -100                 | 100                |
+        |     || (Inhibits transcription CI)                  |                      |                    |
+        +-----+-----------------------------------------------+----------------------+--------------------+
+        | 2   | The value of the reference for protein 1      | -100                 | 100                |
+        +-----+-----------------------------------------------+----------------------+--------------------+
+        | 3   || The error between the current value of       | -100                 | 100                |
+        |     || protein 1 and the reference                  |                      |                    |
+        +-----+-----------------------------------------------+----------------------+--------------------+
+
+    Actions:
+        **Type**: Box(3)
+
+        +-----+---------------------------------------------------------------------------+
+        | Num | Action                                                                    |
+        +=====+===========================================================================+
+        | 0   || Number of Lacl proteins produced during continuous growth under repressor|
+        |     || saturation (Leakiness).                                                  |
+        +-----+---------------------------------------------------------------------------+
+        | 1   || Number of tetR proteins produced during continuous growth under repressor|
+        |     || saturation (Leakiness).                                                  |
+        +-----+---------------------------------------------------------------------------+
+        | 2   || Number of CI proteins produced during continuous growth under repressor  |
+        |     || saturation (Leakiness).                                                  |
+        +-----+---------------------------------------------------------------------------+
+
+    Cost:
+        A cost, computed as the sum of the squared differences between the estimated and the actual states:
+
+        .. math::
+
+            C = \\abs{p_1 - r_1}
+
+    Starting State:
+        All observations are assigned a uniform random value in ``[-0.05..0.05]``
+
+    Episode Termination:
+        -   When the step cost is higher than 100.
+
+    Solved Requirements:
+        Considered solved when the average cost is lower than 300.
+
+    Attributes:
+        state (numpy.ndarray): The current system state.
+        t (float): The current time step.
+        dt (float): The environment step size.
+        sigma (float): The variance of the system noise.
     """  # noqa: E501
 
     def __init__(self, reference_type="periodic", seed=None):

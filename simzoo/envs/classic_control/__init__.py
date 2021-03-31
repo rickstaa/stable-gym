@@ -1,4 +1,4 @@
-"""Import classical_control environments onto namespace
+"""Environments for classical control theory problems.
 """
 
 import sys

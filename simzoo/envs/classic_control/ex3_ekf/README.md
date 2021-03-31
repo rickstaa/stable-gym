@@ -30,6 +30,14 @@ the error when a step is taken. This results in returning the following array:
 [hat_x_1, hat_x_2, x_1, x_2, info_dict]
 ```
 
+## Cost function
+
+The Ex3EKF environment uses the following cost function:
+
+```python
+cost = np.square(hat_x_1 - x_1) + np.square(hat_x_2 - x_2)
+```
+
 ## How to use
 
 This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gym environment when you import the Simzoo package. If you want to use the environment in stand-alone mode, you can register it yourself.

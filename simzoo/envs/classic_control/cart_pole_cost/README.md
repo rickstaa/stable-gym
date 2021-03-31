@@ -1,4 +1,4 @@
-# Continuous action space CartPole gym environment
+# CartPoleCost gym environment
 
 An un-actuated joint attaches a pole to a cart, which moves along a frictionless track. This environment
 corresponds to the [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/) environment that is included in the

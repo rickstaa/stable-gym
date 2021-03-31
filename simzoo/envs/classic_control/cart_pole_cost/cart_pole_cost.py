@@ -1,6 +1,7 @@
 """Modified version of the classic
 `CartPole-v1 <https://gym.openai.com/envs/CartPole-v1/>`_ Openai Gym environment. In
 this version two things are different compared to the original:
+
 -   In this version, the action space is continuous, wherein the OpenAi version
     it is discrete.
 -   The reward is replaced with a cost. This cost is defined as the difference between a
@@ -33,44 +34,57 @@ class CartPoleCost(gym.Env):
     Source:
         This environment corresponds to the version that is included in the openAi gym
         package. It is different in the fact that:
+
         -   In this version, the action space is continuous, wherein the OpenAi version
             it is discrete.
         -   The reward is replaced with a cost. This cost is defined as the difference
             between a state variable and a reference value (error).
 
     Observation:
-        Type: Box(4)
-        Num     Observation               Min                     Max
-        0       Cart Position             -4.8                    4.8
-        1       Cart Velocity             -Inf                    Inf
-        2       Pole Angle                -0.418 rad (-24 deg)    0.418 rad (24 deg)
-        3       Pole Angular Velocity     -20rad                  20rad
+        **Type**: Box(4)
+
+        +-----+-----------------------+----------------------+--------------------+
+        | Num | Observation           | Min                  | Max                |
+        +=====+=======================+======================+====================+
+        | 0   | Cart Position         | -4.8                 | 4.8                |
+        +-----+-----------------------+----------------------+--------------------+
+        | 1   | Cart Velocity         | -Inf                 | Inf                |
+        +-----+-----------------------+----------------------+--------------------+
+        | 2   | Pole Angle            | -0.418 rad (-24 deg) | 0.418 rad (24 deg) |
+        +-----+-----------------------+----------------------+--------------------+
+        | 3   | Pole Angular Velocity | -20rad               | 20rad              |
+        +-----+-----------------------+----------------------+--------------------+
 
     Actions:
-        Type: Box(1)
-        Num   Action
-        0     The card x velocity.
+        **Type**: Box(1)
 
-        Note: The amount the velocity that is reduced or increased is not
-        fixed; it depends on the angle the pole is pointing. This is because
-        the center of gravity of the pole increases the amount of energy needed
-        to move the cart underneath it
+        +-----+----------------------+
+        | Num | Action               |
+        +=====+======================+
+        | 0   | The card x velocity. |
+        +-----+----------------------+
 
-    Reward:
+        .. Note::
+            The amount the velocity that is reduced or increased is not
+            fixed; it depends on the angle the pole is pointing. This is because
+            the center of gravity of the pole increases the amount of energy needed
+            to move the cart underneath it
+    Cost:
         A cost, computed using the :meth:`CartPoleCost.cost` method, is given for each
         simulation step including the terminal step.
 
     Starting State:
-        All observations are assigned a uniform random value in [-0.05..0.05]
+        All observations are assigned a uniform random value in ``[-0.2..0.2]``
 
     Episode Termination:
-        Pole Angle is more than 12 degrees.
-        Cart Position is more than 2.4 (center of the cart reaches the edge of
-        the display).
-        Episode length is greater than 200.
-        Solved Requirements:
-        Considered solved when the average return is greater than or equal to
-        195.0 over 100 consecutive trials.
+        -   Pole Angle is more than 12 degrees.
+        -   Cart Position is more than 2.4 (center of the cart reaches the edge of the
+            display).
+        -   Episode length is greater than 200.
+
+    Solved Requirements:
+        Considered solved when the average return is greater than or equal to 195.0 over
+        100 consecutive trials.
     """
 
     metadata = {
