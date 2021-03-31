@@ -1,7 +1,7 @@
 # Continuous action space CartPole gym environment
 
 An un-actuated joint attaches a pole to a cart, which moves along a frictionless track. This environment
-corresponds to the [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/>) environment that is included in the
+corresponds to the [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/) environment that is included in the
 openAi gym package. It is different in the fact that:
 
 -   In this version, the action space is continuous, wherein the OpenAi version
