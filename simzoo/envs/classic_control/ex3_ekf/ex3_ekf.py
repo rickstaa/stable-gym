@@ -88,7 +88,7 @@ class Ex3EKF(gym.Env, Disturber):
             seed (int, optional): A random seed for the environment. By default
                 `None``.
         """
-        super().__init__()
+        super().__init__()  # Setup disturber
 
         self.t = 0
         self.dt = 0.1
@@ -149,7 +149,6 @@ class Ex3EKF(gym.Env, Disturber):
                 - done (:obj:`bool`): Whether the episode was done.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
-
         # Perform action in the environment and return the new state
         u1, u2 = action
         t = self.t

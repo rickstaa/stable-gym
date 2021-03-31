@@ -98,7 +98,7 @@ class Oscillator(gym.Env, Disturber):
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
         """
-        super().__init__()
+        super().__init__()  # Setup disturber
 
         self.reference_type = reference_type
         self.t = 0
@@ -159,7 +159,6 @@ class Oscillator(gym.Env, Disturber):
                 - done (:obj:`bool`): Whether the episode was done.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
-
         # Perform action in the environment and return the new state
         # NOTE: The new state is found by solving 3 first-order differential equations.
         u1, u2, u3 = action
@@ -258,7 +257,6 @@ class Oscillator(gym.Env, Disturber):
         Returns:
             numpy.ndarray: Array containing the current observations.
         """
-
         # Return random initial state
         self.state = (
             self.np_random.uniform(low=0, high=1, size=(6,))

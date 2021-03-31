@@ -23,13 +23,13 @@ as an RL based stationary Kalman filter.
 
 ## Environment step return
 
-In addition to the observations, the environment also returns the current reference and
+In addition to the observations, the environment also returns an info dictionary that contains the current reference and
 the error when a step is taken. This results in returning the following array:
 
 ```python
-[hat_x_1, hat_x_2, x_1, x_2, reference, error]
+[hat_x_1, hat_x_2, x_1, x_2, info_dict]
 ```
 
 ## How to use
 
-This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gym environment when you import the simzoo package. If you want to use the environment in stand-alone mode, you can register it yourself.
+This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gym environment when you import the Simzoo package. If you want to use the environment in stand-alone mode, you can register it yourself.

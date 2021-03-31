@@ -1,41 +1,57 @@
-# Oscillator gym environment
+# Continuous action space CartPole gym environment
 
-A gym environment for a synthetic oscillatory network of transcriptional regulators
-called a repressilator. A repressilator is a three-gene regulatory network where the
-dynamics of mRNA and proteins follow an oscillatory behaviour
-([see Elowitch et al. 2000](https://www-nature-com.tudelft.idm.oclc.org/articles/35002125)
-).
+An un-actuated joint attaches a pole to a cart, which moves along a frictionless track. This environment
+corresponds to the [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/>) environment that is included in the
+openAi gym package. It is different in the fact that:
+
+-   In this version, the action space is continuous, wherein the OpenAi version
+    it is discrete.
+-   The reward is replaced with a cost. This cost is defined as the difference between a state variable and a reference value (error).
 
 ## Observation space
 
--   **m1:** Lacl mRNA concentration.
--   **m2:** tetR mRNA concentration.
--   **m3:** CI mRNA concentration.
--   **p1:** lacI (repressor) protein concentration (Inhibits transcription tetR gene).
--   **p2:** tetR (repressor) protein concentration (Inhibits transcription CI).
--   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI).
+-   **x**: Cart Position.
+-   **x_dot**: Cart Velocity.
+-   **w**: Pole angle.
+-   **w_dot**: Pole angle velocity.
 
 ## Action space
 
--   **u1:** Number of Lacl proteins produced during continuous growth under repressor saturation (Leakiness).
--   **u2:** Number of tetR proteins produced during continuous growth under repressor saturation (Leakiness).
--   **u3:** Number of CI proteins produced during continuous growth under repressor saturation (Leakiness).
+-   **u1:** The x-force applied on the cart.
 
 ## Environment goal
 
-The goal of the agent in the oscillator environment is to act in such a way that one
-of the proteins of the synthetic oscillatory network follows a supplied reference
-signal.
+The pendulum starts upright, and the goal is to prevent it from falling over by increasing and reducing the cart's
+velocity. This needs to be done while the cart does not violate set position constraints. These constraints are defined
+in the cost function.
+
+## Cost function
+
+The cost function of this environment is designed in such a way that it tries to minimize the error of a set of states and a set of reference
+states. It contains two types of tasks:
+
+-   A reference tracking task. In this task, the agent tries to make a state track a given reference.
+-   A stabilization task. In this task, the agent attempts to stabilize a given state (e.g. keep the pole angle and or cart position zero)
+
+The exact definition of these tasks can be found in the environment `cost()` method.
 
 ## Environment step return
 
-In addition to the observations, the environment also returns the current reference and
-the error when a step is taken. This results in returning the following array:
+In addition to the observations, the environment also returns a info dictionary:
 
 ```python
-[m1, m2, m3, p1, p2, p3, reference, error]
+[hat_x_1, hat_x_2, x_1, x_2, info_dict]
 ```
+
+This info dictionary contains the following keys:
+
+-   **cons_pos**: The current x-position constraint.
+-   **cons_theta**: The current pole angle constraint.
+-   **target**: The target position. Only present when performing a reference tracking task.
+-   **violation_of_x_threshold**: Whether the environment x-threshold was violated.
+-   **reference**: The current reference (position and angles). Only present when performing a reference tracking task.
+-   **state_of_interest**: The current state_of_interest which we try to minimize.
 
 ## How to use
 
-This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gym environment when you import the simzoo package. If you want to use the environment in the stand-alone mode, you can register it yourself.
+This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gym environment when you import the Simzoo package. If you want to use the environment in stand-alone mode, you can register it yourself.
