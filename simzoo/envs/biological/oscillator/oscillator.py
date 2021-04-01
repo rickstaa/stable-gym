@@ -128,7 +128,7 @@ class Oscillator(gym.Env, Disturber):
     """  # noqa: E501
 
     def __init__(self, reference_type="periodic", seed=None):
-        """Constructs all the necessary attributes for the oscillator object.
+        """Constructs all the necessary attributes for the oscillator instance.
 
         Args:
             reference_type (str, optional): The type of reference you want to use
@@ -142,7 +142,7 @@ class Oscillator(gym.Env, Disturber):
         self.t = 0
         self.dt = 1.0
         self.sigma = 0.0
-        self.__init_state = np.array(
+        self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1, 0.2, 0.3]
         )  # Initial state when random is disabled
 
@@ -299,7 +299,7 @@ class Oscillator(gym.Env, Disturber):
         self.state = (
             self.np_random.uniform(low=0, high=1, size=(6,))
             if random
-            else self.__init_state
+            else self._init_state
         )
         self.t = 0
         m1, m2, m3, p1, p2, p3 = self.state

@@ -130,8 +130,8 @@ class Ex3EKF(gym.Env, Disturber):
         sigma (float): The variance of the system noise.
     """  # noqa: E501
 
-    def __init__(self, seed=400):
-        """Constructs all the necessary attributes for the oscillator object.
+    def __init__(self, seed=None):
+        """Constructs all the necessary attributes for the Ex3EKF instance.
 
         Args:
             seed (int, optional): A random seed for the environment. By default
