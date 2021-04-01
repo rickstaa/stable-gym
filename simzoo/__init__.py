@@ -19,7 +19,8 @@ ENVS = {
         "simzoo.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
         "simzoo.envs.classic_control.cart_pole_cost.cart_pole_cost:CartPoleCost",
     ],
-    "max_step": [800, 800, 800],
+    "max_step": [800, 800, 200],
+    "reward_threshold": [300, 300, 100],
 }
 
 for idx, env in enumerate(ENVS["name"]):
@@ -30,4 +31,5 @@ for idx, env in enumerate(ENVS["name"]):
             id=env,
             entry_point=namespace_prefix + ENVS["module"][idx],
             max_episode_steps=ENVS["max_step"][idx],
+            reward_threshold=ENVS["reward_threshold"][idx],
         )

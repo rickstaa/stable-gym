@@ -17,10 +17,18 @@ from gym.utils import seeding
 # NOTE: Only works if the simzoo or bayesian learning control package is installed.
 # fallback to object if not successfull.
 if "simzoo" in sys.modules:
+    from simzoo.common.helpers import colorize
     from simzoo.common.disturber import Disturber
 elif importlib.util.find_spec("simzoo") is not None:
+    colorize = getattr(importlib.import_module("simzoo.common.helpers"), "colorize")
     Disturber = getattr(importlib.import_module("simzoo.common.disturber"), "Disturber")
 else:
+    colorize = getattr(
+        importlib.import_module(
+            "bayesian_learning_control.simzoo.simzoo.common.helpers"
+        ),
+        "colorize",
+    )
     try:
         Disturber = getattr(
             importlib.import_module(
@@ -145,6 +153,15 @@ class Oscillator(gym.Env, Disturber):
         self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1, 0.2, 0.3]
         )  # Initial state when random is disabled
+
+        # Print environment information
+        print(
+            colorize(
+                f"INFO: Oscillator environment is using a {reference_type} reference",
+                "green",
+                bold=True,
+            )
+        )
 
         # Set oscillator network parameters
         self._K = 1.0

@@ -11,13 +11,30 @@ this version two things are different compared to the original:
     See the :meth:`CartPoleCost.cost` method for the exact implementation of the cost.
 """
 
+import importlib
 import math
+import sys
 
 import gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gym import spaces
+from gym import spaces, logger
 from gym.utils import seeding
+
+# Try to import the disturber class
+# NOTE: Only works if the simzoo or bayesian learning control package is installed.
+# fallback to object if not successfull.
+if "simzoo" in sys.modules:
+    from simzoo.common.helpers import colorize
+elif importlib.util.find_spec("simzoo") is not None:
+    colorize = getattr(importlib.import_module("simzoo.common.helpers"), "colorize")
+else:
+    colorize = getattr(
+        importlib.import_module(
+            "bayesian_learning_control.simzoo.simzoo.common.helpers"
+        ),
+        "colorize",
+    )
 
 RANDOM_STEP = False  # Use random steps in __main__
 
@@ -116,34 +133,58 @@ class CartPoleCost(gym.Env):
         super().__init__()  # Setup disturber
 
         self.t = 0
+        self.cost_type = cost_type
         self.reference_type = reference_type
         self.length = self._length_init = 0.5  # actually half the pole's length
         self.mass_cart = self._mass_cart_init = 1.0
         self.mass_pole = self._mass_pole_init = 0.1
-        self.gravity = self._gravity_init = 9.8
+        self.gravity = self._gravity_init = 10.0  # DEBUG: OpenAi uses 9.8
         self.total_mass = self.mass_pole + self.mass_cart
         self.pole_mass_length = self.mass_pole * self.length
         self.tau = self.dt = 0.02  # seconds between state updates
         self.kinematics_integrator = kinematics_integrator
-        self.force_mag = 20
+        self.force_mag = 20  # NOTE: OpenAi uses 10.0
         self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1]
         )  # Initial state when random is disabled
+        # self._init_state_range = {
+        #     "low": [-0.2, -0.05, -0.05, -0.05],  # NOTE: OpenAi uses -0.05
+        #     "high": [0.2, 0.05, 0.05, 0.05],  # NOTE: OpenAi uses 0.05
+        # }  # Initial state range when random is enabled
         self._init_state_range = {
-            "low": [-0.2, -0.05, -0.05, -0.05],  # NOTE: OpenAi uses -0.05
-            "high": [0.2, 0.05, 0.05, 0.05],  # NOTE: OpenAi uses 0.05
-        }  # Initial state range when random is enabled
+            "low": [-5, -0.2, -0.2, -0.2],  # NOTE: OpenAi uses -0.05
+            "high": [5, 0.2, 0.2, 0.2],  # NOTE: OpenAi uses 0.05
+        }  # DEBUG:
+
+        # Print environment information
+        print(
+            colorize(
+                f"INFO: CartPoleCost environment is cost type '{cost_type}' reference",
+                "green",
+                bold=True,
+            )
+        )
+        print(
+            colorize(
+                (
+                    f"INFO: CartPoleCost environment is using a '{reference_type}' "
+                    "reference."
+                ),
+                "green",
+                bold=True,
+            )
+        )
 
         # Set the lyapunov constraint and target positions
-        self.cost_type = cost_type
-        self.const_pos = 4
-        self.target_pos = 0
+        self.const_pos = 4.0
+        self.target_pos = 0.0
 
         # Thresholds
-        self.theta_threshold_radians = (
-            12 * 2 * math.pi / 360
-        )  # Angle at which to fail the episode
-        self.x_threshold = 5  # NOTE: OpenAi Uses 2.4
+        # self.theta_threshold_radians = (
+        #     12 * 2 * math.pi / 360
+        # )  # Angle at which to fail the episode
+        self.theta_threshold_radians = 20 * 2 * math.pi / 360  # DEBUG: Openai uses 12
+        self.x_threshold = 10  # NOTE: OpenAi Uses 2.4
         self.y_threshold = (
             5  # NOTE: Defines real world window height (not used as threshold)
         )
@@ -168,7 +209,7 @@ class CartPoleCost(gym.Env):
             np.array([0.0], dtype=np.float32),
             np.array([np.finfo(np.float32).max], dtype=np.float32),
             dtype=np.float32,
-        )  # NOTE: Added!
+        )
 
         # Create random seed and set gym environment parameters
         self.seed(seed)
@@ -242,17 +283,18 @@ class CartPoleCost(gym.Env):
         if self.cost_type.lower() == "reference":
             # Calculate cost (reference tracking)
             stab_cost = x ** 2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
-            r1 = self.reference(self.t)
-            ref_cost = abs(x - r1)
-            # ref_cost = np.square(x - r1)
+            ref = [self.reference(self.t), 0.0]
+            ref_cost = abs(x - ref[0])
+            # ref_cost = np.square(x - ref[0])
             cost = stab_cost + ref_cost
         else:
             # Calculate cost (stabilization task)
             cost = (
                 x ** 2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
             )  # Stabilization task
+            ref = np.array([0.0, 0.0])
 
-        return cost
+        return cost, ref
 
     def step(self, action):
         """Take step into the environment.
@@ -284,6 +326,7 @@ class CartPoleCost(gym.Env):
             * (4.0 / 3.0 - self.mass_pole * cos_theta * cos_theta / self.total_mass)
         )
         x_acc = temp - self.pole_mass_length * theta_acc * cos_theta / self.total_mass
+
         if self.kinematics_integrator == "euler":
             x = x + self.tau * x_dot
             x_dot = x_dot + self.tau * x_acc
@@ -297,8 +340,8 @@ class CartPoleCost(gym.Env):
             )
             x = x + self.tau * x_dot
             x_dot = x_dot + self.tau * x_acc
-            theta_dot = theta_dot + self.tau * theta_acc
             theta = theta + self.tau * theta_dot
+            theta_dot = theta_dot + self.tau * theta_acc
         else:  # Semi-implicit euler
             x_dot = x_dot + self.tau * x_acc
             x = x + self.tau * x_dot
@@ -307,14 +350,8 @@ class CartPoleCost(gym.Env):
         self.state = np.array([x, x_dot[0], theta, theta_dot[0]])
         self.t = self.t + self.dt  # Increment time step
 
-        # Define stopping criteria
-        done = bool(
-            abs(x) > self.x_threshold or abs(theta) > self.theta_threshold_radians
-        )
-
         # Calculate cost
-        # cost, r_1, r_2 = self.cost(x, theta)
-        cost = self.cost(x, theta)
+        cost, ref = self.cost(x, theta)
 
         # Define stopping criteria
         if (
@@ -325,6 +362,19 @@ class CartPoleCost(gym.Env):
         ):
             done = True
             cost = 100.0
+
+            # Throw warning if already done
+            if self.steps_beyond_done is None:
+                self.steps_beyond_done = 0
+            else:
+                if self.steps_beyond_done == 0:
+                    logger.warn(
+                        "You are calling 'step()' even though this "
+                        "environment has already returned done = True. You "
+                        "should always call 'reset()' once you receive 'done = "
+                        "True' -- any further steps are undefined behavior."
+                    )
+                self.steps_beyond_done += 1
         else:
             done = False
 
@@ -341,7 +391,7 @@ class CartPoleCost(gym.Env):
                 target=self.target_pos,
                 violation_of_x_threshold=violation_of_x_threshold,
                 violation_of_constraint=violation_of_constraint,
-                # reference=np.array([r_1, r_2]),
+                reference=ref,
                 state_of_interest=theta,
             ),
         )
@@ -453,7 +503,7 @@ class CartPoleCost(gym.Env):
         if self.state is None:
             return None
 
-        # Edit the pole polygon vertex
+        # Edit the pole polygon vertex (needed if pole length changes)
         pole = self._pole_geom
         l, r, t, b = (
             -pole_width / 2,
@@ -463,7 +513,7 @@ class CartPoleCost(gym.Env):
         )
         pole.v = [(l, b), (l, t), (r, t), (r, b)]
 
-        # Apply card movement
+        # Apply card and pole movement
         x = self.state
         cart_x = x[0] * x_scale + screen_width / 2.0  # Middle of cart
         self.carttrans.set_translation(cart_x, cart_y)
