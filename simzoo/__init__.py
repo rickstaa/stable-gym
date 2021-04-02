@@ -13,7 +13,7 @@ else:
     namespace_prefix = "bayesian_learning_control.simzoo."
 
 ENVS = {
-    "name": ["Oscillator-v1", "Ex3EKF-v1", "CartPoleCost-v0", "CartPoleCost2-v0"],
+    "name": ["Oscillator-v1", "Ex3EKF-v1", "CartPoleCost-v0"],
     "module": [
         "simzoo.envs.biological.oscillator.oscillator:Oscillator",
         "simzoo.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
