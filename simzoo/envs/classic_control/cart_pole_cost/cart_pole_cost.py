@@ -156,25 +156,6 @@ class CartPoleCost(gym.Env):
             "high": [5, 0.2, 0.2, 0.2],  # NOTE: OpenAi uses 0.05
         }  # DEBUG:
 
-        # Print environment information
-        print(
-            colorize(
-                f"INFO: CartPoleCost environment is cost type '{cost_type}' reference",
-                "green",
-                bold=True,
-            )
-        )
-        print(
-            colorize(
-                (
-                    f"INFO: CartPoleCost environment is using a '{reference_type}' "
-                    "reference."
-                ),
-                "green",
-                bold=True,
-            )
-        )
-
         # Set the lyapunov constraint and target positions
         self.const_pos = 4.0
         self.target_pos = 0.0

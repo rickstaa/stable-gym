@@ -154,15 +154,6 @@ class Oscillator(gym.Env, Disturber):
             [0.1, 0.2, 0.3, 0.1, 0.2, 0.3]
         )  # Initial state when random is disabled
 
-        # Print environment information
-        print(
-            colorize(
-                f"INFO: Oscillator environment is using a {reference_type} reference",
-                "green",
-                bold=True,
-            )
-        )
-
         # Set oscillator network parameters
         self._K = 1.0
         self._c1 = 1.6
