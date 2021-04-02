@@ -157,7 +157,7 @@ class CartPoleCost(gym.Env):
         self._init_state_range = {
             "low": [-5, -0.2, -0.2, -0.2],  # NOTE: OpenAi uses -0.05
             "high": [5, 0.2, 0.2, 0.2],  # NOTE: OpenAi uses 0.05
-        }  # DEBUG:
+        }  # DEBUG: Openai uses above
 
         # Print environment information
         print(
