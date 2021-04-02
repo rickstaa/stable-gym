@@ -108,11 +108,12 @@ class CartPoleCost(gym.Env):
         "render.modes": ["human", "rgb_array"],
         "video.frames_per_second": 50,
     }  # Not used during training but in other gym utilities
+    instances = []
 
     def __init__(
         self,
         seed=None,
-        cost_type="stabilize",
+        task_type="stabilization",
         reference_type="constant",
         kinematics_integrator="euler",
     ):
@@ -121,9 +122,9 @@ class CartPoleCost(gym.Env):
         Args:
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
-            cost_type (str, optional): The cost type you want to use (options are
-                "reference" and "stabilization"). When stabilization is used the cart is
-                not kept at a given reference. Defaults to "reference".
+            task_type (str, optional): The task you want the agent to perform (options
+                are "reference_tracking" and "stabilization"). Defaults to
+                "stabilization".
             reference_type (str, optional): The type of reference you want to use
                 (``constant`` or ``periodic``), by default ``periodic``.
             kinematics_integrator (str, optional): Solver used for the kinematics
@@ -131,9 +132,11 @@ class CartPoleCost(gym.Env):
                 Defaults to "euler".
         """
         super().__init__()  # Setup disturber
+        self.__class__.instances.append(self)
+        self._instance_nr = len(self.__class__.instances)
 
         self.t = 0
-        self.cost_type = cost_type
+        self.task_type = task_type
         self.reference_type = reference_type
         self.length = self._length_init = 0.5  # actually half the pole's length
         self.mass_cart = self._mass_cart_init = 1.0
@@ -155,6 +158,26 @@ class CartPoleCost(gym.Env):
             "low": [-5, -0.2, -0.2, -0.2],  # NOTE: OpenAi uses -0.05
             "high": [5, 0.2, 0.2, 0.2],  # NOTE: OpenAi uses 0.05
         }  # DEBUG:
+
+        # Print environment information
+        print(
+            colorize(
+                f"INFO: CartPoleCost environment {self._instance_nr} is initiated for "
+                f"a '{task_type}' task.",
+                "green",
+                bold=True,
+            )
+        )
+        print(
+            colorize(
+                (
+                    f"INFO: CartPoleCost environment {self._instance_nr} is using a "
+                    f"'{reference_type}' reference."
+                ),
+                "green",
+                bold=True,
+            )
+        )
 
         # Set the lyapunov constraint and target positions
         self.const_pos = 4.0
@@ -261,7 +284,7 @@ class CartPoleCost(gym.Env):
                 - r_1 (float): The current position reference.
                 - r_2 (float): The cart_pole angle reference.
         """
-        if self.cost_type.lower() == "reference":
+        if self.task_type.lower() == "reference_tracking":
             # Calculate cost (reference tracking)
             stab_cost = x ** 2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
             ref = [self.reference(self.t), 0.0]

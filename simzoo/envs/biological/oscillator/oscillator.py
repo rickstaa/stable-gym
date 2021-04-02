@@ -135,6 +135,8 @@ class Oscillator(gym.Env, Disturber):
         sigma (float): The variance of the system noise.
     """  # noqa: E501
 
+    instances = []
+
     def __init__(self, reference_type="periodic", seed=None):
         """Constructs all the necessary attributes for the oscillator instance.
 
@@ -145,6 +147,8 @@ class Oscillator(gym.Env, Disturber):
                 ``None``.
         """
         super().__init__()  # Setup disturber
+        self.__class__.instances.append(self)
+        self._instance_nr = len(self.__class__.instances)
 
         self.reference_type = reference_type
         self.t = 0
@@ -153,6 +157,18 @@ class Oscillator(gym.Env, Disturber):
         self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1, 0.2, 0.3]
         )  # Initial state when random is disabled
+
+        # Print environment information
+        print(
+            colorize(
+                (
+                    f"INFO: Oscillator environment {self._instance_nr} is using a "
+                    f"'{reference_type}' reference."
+                ),
+                "green",
+                bold=True,
+            )
+        )
 
         # Set oscillator network parameters
         self._K = 1.0
