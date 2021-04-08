@@ -11,24 +11,16 @@ import gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gym import spaces
-from gym.utils import seeding
+from gym.utils import seeding, colorize
 
 # Try to import the disturber class
 # NOTE: Only works if the simzoo or bayesian learning control package is installed.
 # fallback to object if not successfull.
 if "simzoo" in sys.modules:
-    from simzoo.common.helpers import colorize
     from simzoo.common.disturber import Disturber
 elif importlib.util.find_spec("simzoo") is not None:
-    colorize = getattr(importlib.import_module("simzoo.common.helpers"), "colorize")
     Disturber = getattr(importlib.import_module("simzoo.common.disturber"), "Disturber")
 else:
-    colorize = getattr(
-        importlib.import_module(
-            "bayesian_learning_control.simzoo.simzoo.common.helpers"
-        ),
-        "colorize",
-    )
     try:
         Disturber = getattr(
             importlib.import_module(
@@ -50,7 +42,7 @@ DISTURBER_CFG = {
     "env_disturbance": {
         "description": "Lacl mRNA decay rate disturbance",
         # The env variable which you want to disturb
-        "variable": "_c1",
+        "variable": "c1",
         # The range of values you want to use for each disturbance iteration
         "variable_range": np.linspace(1.0, 3.0, num=5, dtype=np.float32),
         # Label used in robustness plots.
@@ -146,12 +138,13 @@ class Oscillator(gym.Env, Disturber):
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
         """
-        super().__init__()  # Setup disturber
+        super().__init__(disturber_cfg=DISTURBER_CFG)  # Setup disturber
         self.__class__.instances.append(self)
         self._instance_nr = len(self.__class__.instances)
+        self._action_clip_warning = False
 
         self.reference_type = reference_type
-        self.t = 0
+        self.t = 0.0
         self.dt = 1.0
         self.sigma = 0.0
         self._init_state = np.array(
@@ -171,14 +164,14 @@ class Oscillator(gym.Env, Disturber):
         )
 
         # Set oscillator network parameters
-        self._K = 1.0
-        self._c1 = 1.6
-        self._c2 = 0.16
-        self._c3 = 0.16
-        self._c4 = 0.06
-        self._b1 = 1.0
-        self._b2 = 1.0
-        self._b3 = 1.0
+        self.K = 1.0
+        self.c1 = 1.6
+        self.c2 = 0.16
+        self.c3 = 0.16
+        self.c4 = 0.06
+        self.b1 = 1.0
+        self.b2 = 1.0
+        self.b3 = 1.0
 
         # Set angle limit set to 2 * theta_threshold_radians so failing observation
         # is still within bounds
@@ -221,16 +214,35 @@ class Oscillator(gym.Env, Disturber):
                 - done (:obj:`bool`): Whether the episode was done.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
+        # Clip action if needed
+        if (
+            (action < self.action_space.low).any()
+            or (action > self.action_space.high).any()
+            and not self._action_clip_warning
+        ):
+            print(
+                colorize(
+                    (
+                        f"WARNING: Action '{action}' was clipped as it is not in the "
+                        "action_space 'high: "
+                        f"{self.action_space.high}, low: {self.action_space.low}'."
+                    ),
+                    "yellow",
+                    bold=True,
+                )
+            )
+            self._action_clip_warning = True
+        u1, u2, u3 = np.clip(action, self.action_space.low, self.action_space.high)
+
         # Perform action in the environment and return the new state
         # NOTE: The new state is found by solving 3 first-order differential equations.
-        u1, u2, u3 = action
         m1, m2, m3, p1, p2, p3 = self.state
-        m1_dot = self._c1 / (self._K + np.square(p3)) - self._c2 * m1 + self._b1 * u1
-        p1_dot = self._c3 * m1 - self._c4 * p1
-        m2_dot = self._c1 / (self._K + np.square(p1)) - self._c2 * m2 + self._b2 * u2
-        p2_dot = self._c3 * m2 - self._c4 * p2
-        m3_dot = self._c1 / (self._K + np.square(p2)) - self._c2 * m3 + self._b3 * u3
-        p3_dot = self._c3 * m3 - self._c4 * p3
+        m1_dot = self.c1 / (self.K + np.square(p3)) - self.c2 * m1 + self.b1 * u1
+        p1_dot = self.c3 * m1 - self.c4 * p1
+        m2_dot = self.c1 / (self.K + np.square(p1)) - self.c2 * m2 + self.b2 * u2
+        p2_dot = self.c3 * m2 - self.c4 * p2
+        m3_dot = self.c1 / (self.K + np.square(p2)) - self.c2 * m3 + self.b3 * u3
+        p3_dot = self.c3 * m3 - self.c4 * p3
 
         # Calculate mRNA concentrations
         # Note: Use max to make sure concentrations can not be negative.
@@ -325,7 +337,7 @@ class Oscillator(gym.Env, Disturber):
             if random
             else self._init_state
         )
-        self.t = 0
+        self.t = 0.0
         m1, m2, m3, p1, p2, p3 = self.state
         r1 = self.reference(self.t)
         return np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1])

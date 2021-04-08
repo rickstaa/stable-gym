@@ -29,7 +29,7 @@ import gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gym import spaces
-from gym.utils import seeding
+from gym.utils import colorize, seeding
 
 # Try to import the disturber class
 # NOTE: Only works if the simzoo or bayesian learning control package is installed.
@@ -56,11 +56,11 @@ RANDOM_STEP = False  # Use random steps in __main__
 DISTURBER_CFG = {
     # Disturbance applied to environment variables
     "env_disturbance": {
-        "description": "Lacl mRNA decay rate disturbance",
+        "description": "Gravity value",
         # The env variable which you want to disturb
-        "variable": "_c1",
+        "variable": "g",
         # The range of values you want to use for each disturbance iteration
-        "variable_range": np.linspace(1.0, 3.0, num=5, dtype=np.float32),
+        "variable_range": np.linspace(9.5, 10.5, num=5, dtype=np.float32),
         # Label used in robustness plots.
         "label": "r: %s",
     },
@@ -137,9 +137,10 @@ class Ex3EKF(gym.Env, Disturber):
             seed (int, optional): A random seed for the environment. By default
                 `None``.
         """
-        super().__init__()  # Setup disturber
+        super().__init__(disturber_cfg=DISTURBER_CFG)  # Setup disturber
+        self._action_clip_warning = False
 
-        self.t = 0
+        self.t = 0.0
         self.dt = 0.1
 
         # Setup Ex3EKF parameters
@@ -198,8 +199,27 @@ class Ex3EKF(gym.Env, Disturber):
                 - done (:obj:`bool`): Whether the episode was done.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
+        # Clip action if needed
+        if (
+            (action < self.action_space.low).any()
+            or (action > self.action_space.high).any()
+            and not self._action_clip_warning
+        ):
+            print(
+                colorize(
+                    (
+                        f"WARNING: Action '{action}' was clipped as it is not in the "
+                        "action_space 'high: "
+                        f"{self.action_space.high}, low: {self.action_space.low}'."
+                    ),
+                    "yellow",
+                    bold=True,
+                )
+            )
+            self._action_clip_warning = True
+        u1, u2 = np.clip(action, self.action_space.low, self.action_space.high)
+
         # Perform action in the environment and return the new state
-        u1, u2 = action
         t = self.t
         input = 0 * np.cos(t) * self.dt
 
@@ -279,6 +299,7 @@ class Ex3EKF(gym.Env, Disturber):
         )
         # y_1 = self.output
         # y_2 = np.sin(x_2) + self.np_random.normal(self.mean2, np.sqrt(self.cov2))
+        self.t = 0.0
         return np.array([hat_x_1, hat_x_2, x_1, x_2])
 
     def render(self, mode="human"):

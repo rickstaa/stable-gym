@@ -18,28 +18,46 @@ import sys
 import gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gym import spaces, logger
-from gym.utils import seeding
+from gym import logger, spaces
+from gym.utils import colorize, seeding
 
 # Try to import the disturber class
 # NOTE: Only works if the simzoo or bayesian learning control package is installed.
 # fallback to object if not successfull.
 if "simzoo" in sys.modules:
-    from simzoo.common.helpers import colorize
+    from simzoo.common.disturber import Disturber
 elif importlib.util.find_spec("simzoo") is not None:
-    colorize = getattr(importlib.import_module("simzoo.common.helpers"), "colorize")
+    Disturber = getattr(importlib.import_module("simzoo.common.disturber"), "Disturber")
 else:
-    colorize = getattr(
-        importlib.import_module(
-            "bayesian_learning_control.simzoo.simzoo.common.helpers"
-        ),
-        "colorize",
-    )
+    try:
+        Disturber = getattr(
+            importlib.import_module(
+                "bayesian_learning_control.simzoo.simzoo.common.disturber"
+            ),
+            "Disturber",
+        )
+    except AttributeError:
+        Disturber = object
 
 RANDOM_STEP = False  # Use random steps in __main__
 
+# Disturber config used to overwrite the default config
+# NOTE: Merged with the default config
+DISTURBER_CFG = {
+    # Disturbance applied to environment variables
+    "env_disturbance": {
+        "description": "Pole length disturbance",
+        # The env variable which you want to disturb
+        "variable": "length",
+        # The range of values you want to use for each disturbance iteration
+        "variable_range": np.linspace(0.5, 2.0, num=5, dtype=np.float32),
+        # Label used in robustness plots.
+        "label": "r: %s",
+    },
+}
 
-class CartPoleCost(gym.Env):
+
+class CartPoleCost(gym.Env, Disturber):
     """Continuous action space CartPole gym environment
 
     Description:
@@ -131,22 +149,24 @@ class CartPoleCost(gym.Env):
                 intergration (options are "euler", "friction", "semi-implicit euler").
                 Defaults to "euler".
         """
-        super().__init__()  # Setup disturber
+        super().__init__(disturber_cfg=DISTURBER_CFG)  # Setup disturber
         self.__class__.instances.append(self)
         self._instance_nr = len(self.__class__.instances)
+        self._action_clip_warning = False
 
         self.t = 0
+        self.dt = 0.02  # seconds between state updates
         self.task_type = task_type
         self.reference_type = reference_type
-        self.length = self._length_init = 0.5  # actually half the pole's length
+        self.length = self._length_init = 1.0
         self.mass_cart = self._mass_cart_init = 1.0
         self.mass_pole = self._mass_pole_init = 0.1
         self.gravity = self._gravity_init = 10.0  # DEBUG: OpenAi uses 9.8
-        self.total_mass = self.mass_pole + self.mass_cart
-        self.pole_mass_length = self.mass_pole * self.length
-        self.tau = self.dt = 0.02  # seconds between state updates
-        self.kinematics_integrator = kinematics_integrator
         self.force_mag = 20  # NOTE: OpenAi uses 10.0
+        self._total_mass = self.mass_pole + self.mass_cart
+        self._com_length = self.length * 0.5  # half the pole's length
+        self._pole_mass_length = self.mass_pole * self._com_length
+        self._kinematics_integrator = kinematics_integrator
         self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1]
         )  # Initial state when random is disabled
@@ -239,11 +259,21 @@ class CartPoleCost(gym.Env):
         self.mass_pole = mass_of_pole
         self.mass_cart = mass_of_cart
         self.gravity = gravity
-        self.total_mass = self.mass_pole + self.mass_cart
-        self.pole_mass_length = self.mass_pole * self.length
+        self._total_mass = self.mass_pole + self.mass_cart
+        self._com_length = self.length  # Half of the pole length
+        self._pole_mass_length = self.mass_pole * self._com_length
 
     def get_params(self):
-        """Retrieves the most important system parameters."""
+        """Retrieves the most important system parameters.
+
+        Returns:
+            (tuple): tuple containing:
+
+                - length(:obj:`float`): The pole length.
+                - pole_mass (:obj:`float`): The pole mass.
+                - pole_mass (:obj:`float`): The cart mass.
+                - gravity (:obj:`float`): The gravity constant.
+        """
         return self.length, self.mass_pole, self.mass_cart, self.gravity
 
     def reset_params(self):
@@ -252,8 +282,9 @@ class CartPoleCost(gym.Env):
         self.mass_pole = self._mass_pole_init
         self.mass_cart = self._mass_cart_init
         self.gravity = self._gravity_init
-        self.total_mass = self.mass_pole + self.mass_cart
-        self.pole_mass_length = self.mass_pole * self.length
+        self._total_mass = self.mass_pole + self.mass_cart
+        self._com_length = self.length * 0.5  # Half of the pole length
+        self._pole_mass_length = self.mass_pole * self._com_length
 
     def reference(self, t):
         """Returns the current value of the periodic reference signal that is tracked by
@@ -314,6 +345,24 @@ class CartPoleCost(gym.Env):
                 - done (:obj:`bool`): Whether the episode was done.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
+        # Clip action if needed
+        if (
+            (action < self.action_space.low).any()
+            or (action > self.action_space.high).any()
+            and not self._action_clip_warning
+        ):
+            print(
+                colorize(
+                    (
+                        f"WARNING: Action '{action}' was clipped as it is not in the "
+                        "action_space 'high: "
+                        f"{self.action_space.high}, low: {self.action_space.low}'."
+                    ),
+                    "yellow",
+                    bold=True,
+                )
+            )
+            self._action_clip_warning = True
         force = np.clip(action, self.action_space.low, self.action_space.high)
 
         # For the interested reader:
@@ -323,34 +372,34 @@ class CartPoleCost(gym.Env):
         cos_theta = math.cos(theta)
         sin_theta = math.sin(theta)
         temp = (
-            force + self.pole_mass_length * theta_dot ** 2 * sin_theta
-        ) / self.total_mass
+            force + self._pole_mass_length * theta_dot ** 2 * sin_theta
+        ) / self._total_mass
         theta_acc = (self.gravity * sin_theta - cos_theta * temp) / (
-            self.length
-            * (4.0 / 3.0 - self.mass_pole * cos_theta * cos_theta / self.total_mass)
+            self._com_length
+            * (4.0 / 3.0 - self.mass_pole * cos_theta * cos_theta / self._total_mass)
         )
-        x_acc = temp - self.pole_mass_length * theta_acc * cos_theta / self.total_mass
+        x_acc = temp - self._pole_mass_length * theta_acc * cos_theta / self._total_mass
 
-        if self.kinematics_integrator == "euler":
-            x = x + self.tau * x_dot
-            x_dot = x_dot + self.tau * x_acc
-            theta = theta + self.tau * theta_dot
-            theta_dot = theta_dot + self.tau * theta_acc
-        elif self.kinematics_integrator == "friction":
+        if self._kinematics_integrator == "euler":
+            x = x + self.dt * x_dot
+            x_dot = x_dot + self.dt * x_acc
+            theta = theta + self.dt * theta_dot
+            theta_dot = theta_dot + self.dt * theta_acc
+        elif self._kinematics_integrator == "friction":
             x_acc = (
-                -0.1 * x_dot / self.total_mass
+                -0.1 * x_dot / self._total_mass
                 + temp
-                - self.pole_mass_length * theta_acc * cos_theta / self.total_mass
+                - self._pole_mass_length * theta_acc * cos_theta / self._total_mass
             )
-            x = x + self.tau * x_dot
-            x_dot = x_dot + self.tau * x_acc
-            theta = theta + self.tau * theta_dot
-            theta_dot = theta_dot + self.tau * theta_acc
+            x = x + self.dt * x_dot
+            x_dot = x_dot + self.dt * x_acc
+            theta = theta + self.dt * theta_dot
+            theta_dot = theta_dot + self.dt * theta_acc
         else:  # Semi-implicit euler
-            x_dot = x_dot + self.tau * x_acc
-            x = x + self.tau * x_dot
-            theta_dot = theta_dot + self.tau * theta_acc
-            theta = theta + self.tau * theta_dot
+            x_dot = x_dot + self.dt * x_acc
+            x = x + self.dt * x_dot
+            theta_dot = theta_dot + self.dt * theta_acc
+            theta = theta + self.dt * theta_dot
         self.state = np.array([x, x_dot[0], theta, theta_dot[0]])
         self.t = self.t + self.dt  # Increment time step
 
@@ -419,6 +468,7 @@ class CartPoleCost(gym.Env):
             else self._init_state
         )
         self.steps_beyond_done = None
+        self.t = 0.0
         return np.array(self.state)
 
     def render(self, mode="human"):
@@ -438,7 +488,7 @@ class CartPoleCost(gym.Env):
         y_scale = screen_height / world_y_width
         cart_y = y_scale * 1.0  # Top of cart
         pole_width = x_scale * 0.1
-        pole_len = x_scale * (2.0 * self.length)
+        pole_len = x_scale * (2.0 * self._com_length)
         cart_width = x_scale * 0.5
         cart_height = y_scale * 0.3
 
@@ -529,6 +579,14 @@ class CartPoleCost(gym.Env):
         if self.viewer:
             self.viewer.close()
             self.viewer = None
+
+    @property
+    def tau(self):
+        """Property that also makes the timestep available under the :attr:`tau`
+        attribute. This was done to keep this environment consistent with the
+        original gym environment.
+        """
+        return self.dt
 
 
 if __name__ == "__main__":

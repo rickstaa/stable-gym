@@ -37,19 +37,21 @@ def periodic_disturbance(time):
 # for more information.
 DISTURBER_CFG = {
     # Disturbance type when no type has been given
-    "default_type": "step_disturbance",
+    "default_type": "input_disturbance",
     # Disturbance applied to environment variables
+    # NOTE: The values below are meant as an example the environment disturbance config
+    # needs to be implemented inside the environment.
     "env_disturbance": {
         "description": "Lacl mRNA decay rate disturbance",
         # The env variable which you want to disturb
-        "variable": "_c1",
+        "variable": "c1",
         # The range of values you want to use for each disturbance iteration
         "variable_range": np.linspace(1.6, 3.0, num=5, dtype=np.float32),
         # Label used in robustness plots.
         "label": "r: %s",
     },
-    # Disturbance applied to the environment step function
-    "step_disturbance": {
+    # Disturbance applied to the *INPUT* of the environment step function
+    "input_disturbance": {
         # The variant used when no variant is given by the user.
         "default_variant": "impulse",
         # Impulse disturbance applied in the opposite direction of the action at a given
@@ -74,6 +76,33 @@ DISTURBER_CFG = {
             # Label that can be used in plots.
             "label": "M: %s",
         },
+        # A periodic signal noise that is applied to the action at every time step.
+        "periodic": {
+            "description": "Periodic noise disturbance",
+            # The magnitudes of the periodic signal.
+            "amplitude_range": np.linspace(10, 80, num=3, dtype=np.int),
+            # The function that describes the signal
+            # NOTE: A amplitude between 0-1 is recommended.
+            "periodic_function": periodic_disturbance,
+            # Label used in robustness plots.
+            "label": "A: %s",
+        },
+        # A random noise that is applied to the action at every timestep.
+        "noise": {
+            "description": "Random noise disturbance",
+            # The means and standards deviations of the random noise disturbances.
+            "noise_range": {
+                "mean": np.linspace(80, 155, num=3, dtype=np.int),
+                "std": np.linspace(1.0, 5.0, num=3, dtype=np.int),
+            },
+            # Label used in robustness plots.
+            "label": "x̅:%s, σ:%s",
+        },
+    },
+    # Disturbance applied to the *OUTPUT* of the environment step function
+    "output_disturbance": {
+        # The variant used when no variant is given by the user.
+        "default_variant": "noise",
         # A periodic signal noise that is applied to the action at every time step.
         "periodic": {
             "description": "Periodic noise disturbance",
@@ -160,7 +189,7 @@ class Disturber:
                 **disturber_cfg,
             }
             if disturber_cfg is not None
-            else None
+            else DISTURBER_CFG
         )  # Allow users to overwrite the default config
         self._disturbance_cfg = None
         self._disturbance_type = None
@@ -168,6 +197,23 @@ class Disturber:
         self._disturbance_range = None
         self._disturbance_iter_idx = 0
         self._disturbance_iter_length = None
+        self._has_time_vars = None
+
+    def _initate_time_vars(self):
+        """Initiates a time ``t`` and timestep ``dt`` variable if they are not present
+        on theenvironment.
+        """
+        if not hasattr(self, "t"):
+            self.t = 0.0
+            self.dt = 1.0
+            self._has_time_vars = False
+        else:
+            self._has_time_vars = True
+        if not hasattr(self, "dt"):
+            if hasattr(self, "tau"):
+                self.dt = self.tau
+            else:
+                self.dt = 1.0
 
     def _get_disturbance(self, action):
         """Retrieves the right disturbance using the disturbance type and variant that
@@ -214,11 +260,11 @@ class Disturber:
                 "implemented."
             )
 
-    def _get_impulse_disturbance(self, action):
-        """Retrieves a impulse disturbance that can be applied to the action.
+    def _get_impulse_disturbance(self, input):
+        """Retrieves a impulse disturbance that can be applied to the input signal.
 
         Args:
-            action (numpy.ndarray): The current action.
+            input (numpy.ndarray): The input signal.
 
         Returns:
             numpy.ndarray: The disturbance array.
@@ -227,27 +273,28 @@ class Disturber:
             The disturber currently implements two types of impulses: A regular
             (instant) impulse (applied at a single time step) and a constant impulse
             (applied at all steps following the set time instant). In both versions the
-            direction of the impulse is opposite to the action that was applied at a
-            given time instant.
+            direction of the impulse is opposite to the input signal at a given time
+            instant.
         """
         cur_magnitude = self._disturbance_range[self._disturbance_iter_idx]
         if self._disturbance_variant == "constant_impulse":
             if (self.t / self.dt) == self._disturbance_cfg["impulse_instant"]:
-                dist_val = cur_magnitude * (-np.sign(action))
+                dist_val = cur_magnitude * (-np.sign(input))
             else:
-                dist_val = np.zeros_like(action)
+                dist_val = np.zeros_like(input)
         else:
             if (self.t / self.dt) >= self._disturbance_cfg["impulse_instant"]:
-                dist_val = cur_magnitude * (-np.sign(action))
+                dist_val = cur_magnitude * (-np.sign(input))
             else:
-                dist_val = np.zeros_like(action)
+                dist_val = np.zeros_like(input)
         return dist_val
 
-    def _get_periodic_disturbance(self, action):
-        """Returns a periodic disturbance signal that can be applied to the action.
+    def _get_periodic_disturbance(self, input):
+        """Returns a periodic disturbance signal that can be applied to the input
+        signal.
 
         Args:
-            action (numpy.ndarray): The current action.
+            input (numpy.ndarray): The input signal.
 
         Returns:
             numpy.ndarray: The disturbance array.
@@ -256,15 +303,15 @@ class Disturber:
         return (
             cur_magnitude
             * self._disturbance_cfg["periodic_function"](self.t)
-            * np.ones_like(action)
+            * np.ones_like(input)
         )
 
-    def _get_noise_disturbance(self, action):
+    def _get_noise_disturbance(self, input):
         """Returns a random noise, with the a in the ``disturber_cfg`` specified mean
-        and a standard deviation, which can be applied to the action.
+        and a standard deviation, which can be applied to the input signal.
 
         Args:
-            action (numpy.ndarray): The current action.
+            input (numpy.ndarray): The current input signal.
 
         Returns:
             numpy.ndarray: The disturbance array.
@@ -278,7 +325,7 @@ class Disturber:
         return np.random.normal(
             mean_range[self._disturbance_iter_idx],
             std_range[self._disturbance_iter_idx],
-            len(action),
+            len(input),
         )
 
     def _validate_disturbance_variant_cfg(self):
@@ -350,7 +397,7 @@ class Disturber:
         """Validates the disturbance configuration dictionary to see if it contains the
         right information to apply the requested disturbance *type* and *variant*.
         """
-        if self._disturbance_type == "step_disturbance":
+        if self._disturbance_type != "env_disturbance":
             self._validate_disturbance_variant_cfg()
         else:
             assert all(
@@ -378,7 +425,7 @@ class Disturber:
         self.disturbance_info["type"] = self._disturbance_type.replace(
             "_disturbance", ""
         )
-        if disturbance_type == "step_disturbance":
+        if disturbance_type != "env_disturbance":
             self._disturbance_variant = disturbance_variant
             self.disturbance_info["variant"] = self._disturbance_variant
             self._disturbance_cfg = self._disturber_cfg[disturbance_type][
@@ -429,8 +476,8 @@ class Disturber:
                     colorize(
                         (
                             f"WARNING: Disturbance variant '{disturbance_variant}' "
-                            "ignored as it  does not apply when using disturbance type "
-                            "'step_disturbance'."
+                            "ignored as it does not apply when using disturbance type "
+                            "'env_disturbance'."
                         ),
                         "yellow",
                         bold=True,
@@ -485,7 +532,7 @@ class Disturber:
         if "description" in self._disturbance_cfg.keys():
             self.disturbance_info["description"] = self._disturbance_cfg["description"]
         else:
-            if self._disturbance_type == "step_disturbance":
+            if self._disturbance_type != "env_disturbance":
                 self.disturbance_info["description"] = (
                     self._disturbance_variant.capitalize() + " disturbance"
                 )
@@ -493,7 +540,7 @@ class Disturber:
                 self.disturbance_info["description"] = "Environment disturbance"
 
         # Retrieve plot labels
-        if self._disturbance_type == "step_disturbance":
+        if self._disturbance_type != "env_disturbance":
             if "label" in self._disturbance_cfg.keys():
                 if isinstance(self._disturbance_range, dict):
                     self.disturbance_info["labels"] = [
@@ -555,9 +602,9 @@ class Disturber:
 
         Args:
             disturbance_type (string): The disturbance type you want to use. Options are
-                ``env_disturbance`` and ``step_disturbance``.
+                ``env_disturbance``, ``input_disturbance`` and ``output_disturbance``.
             disturbance_variant (string, optional): The disturbance variant you want to
-                use. Only required when you use a ``step_disturbance``.
+                use. Not required when you use a ``env_disturbance``.
             disturber_cfg (dict, optional): A dictionary that describes the disturbances
                 the :class:`Disturber` supports. This dictionary can be used to update
                 values of the ``DISTURBANCE_CFG`` configuration which is present in the
@@ -599,10 +646,13 @@ class Disturber:
                 disturbance_type = self._disturber_cfg["default_type"]
             else:
                 raise TypeError(
-                    "init_disturber(): is missing one required positional "
-                    "argument: 'disturbance_type'.",
+                    (
+                        "init_disturber(): is missing one required positional "
+                        "argument: 'disturbance_type'."
+                    ),
                     "disturbance_type",
                 )
+        disturbance_type_input = disturbance_type
         disturbance_type = (
             disturbance_type.lower() + "_disturbance"
             if "_disturbance" not in disturbance_type.lower()
@@ -613,11 +663,14 @@ class Disturber:
                 environment_name = self.unwrapped.spec.id
             except AttributeError:
                 environment_name = self.__class__.__name__.__str__()
-                raise ValueError(
-                    f"Disturbance type '{disturbance_type}' is not implemented for the "
-                    f"'{environment_name}' environment. Please specify a valid "
-                    f"disturbance type {self._disturber_cfg.keys()}."
-                )
+            raise ValueError(
+                (
+                    f"Disturbance type '{disturbance_type_input}' is not implemented "
+                    f"for the  '{environment_name}' environment. Please specify a "
+                    f"valid disturbance type {self._disturber_cfg.keys()}."
+                ),
+                "disturbance_Type",
+            )
         if disturbance_type != "env_disturbance":
             if disturbance_variant is None:
                 if "default_variant" in self._disturber_cfg[disturbance_type].keys():
@@ -640,27 +693,32 @@ class Disturber:
                     ]
                 else:
                     raise TypeError(
-                        "init_disturber(): is missing one required positional "
-                        "argument: 'disturbance_variant'. This argument is required "
-                        f"for disturbance type {disturbance_type}. Please specify a "
-                        f"valid disturbance variant "
-                        f"{list(self._disturber_cfg[disturbance_type].keys())}.",
+                        (
+                            "init_disturber(): is missing one required positional "
+                            "argument: 'disturbance_variant'. This argument is "
+                            f"required for disturbance type {disturbance_type}. Please "
+                            f"specify a valid disturbance variant "
+                            f"{list(self._disturber_cfg[disturbance_type].keys())}."
+                        ),
                         "disturbance_variant",
                     )
             else:
+                if (
+                    disturbance_variant
+                    not in self._disturber_cfg[disturbance_type].keys()
+                ):
+                    raise ValueError(
+                        (
+                            f"Disturber variant '{disturbance_variant}' is not "
+                            "implemented for disturbance type "
+                            f"'{self._disturbance_type}'. Please "
+                            "specify a valid disturbance variant {}.".format(
+                                self._disturber_cfg[disturbance_type].keys()
+                            )
+                        ),
+                        "disturbance_variant",
+                    )
                 disturbance_variant = disturbance_variant.lower()
-        if (
-            disturbance_type == "step_disturbance"
-            and disturbance_variant is not None
-            and disturbance_variant not in self._disturber_cfg[disturbance_type].keys()
-        ):
-            raise ValueError(
-                f"Disturber variant '{disturbance_variant}' is not implemented for "
-                f"disturbance type '{self._disturbance_type}'. Please specify a valid "
-                "disturbance variant {}.".format(
-                    self._disturber_cfg[disturbance_type].keys()
-                )
-            )
 
         # Set the disturber parameters
         if self._disturbance_type is not None:
@@ -684,6 +742,9 @@ class Disturber:
         # Retrieve and store extra information about the disturbance
         # NOTE: Usefull for robustness evaluation plots
         self._set_disturbance_info()
+
+        # Make sure the environment has a time variable
+        self._initate_time_vars()
 
         # Print information about the initial disturbance
         print(
@@ -737,14 +798,21 @@ class Disturber:
             )
 
         # Retrieve the disturbed step
-        if self._disturbance_type != "step_disturbance":
+        if self._disturbance_type not in ["input_disturbance", "output_disturbance"]:
             raise RuntimeError(
                 "You are trying to retrieve a disturbed step while the disturbance "
                 f"type is set to be '{self._disturbance_type}'. Please initialize the "
-                "disturber with the 'step_disturbance' type if you want to use this "
-                "feature."
+                "disturber with the 'input_disturbance' or 'output_disturbance' type "
+                "if you want to use this feature."
             )
-        return self.step(action + self._get_disturbance(action), *args, **kwargs)
+        if not self._has_time_vars:
+            self.t += self.dt  # Create time axis if not given by the environment
+        if self._disturbance_type.split("_")[0] == "output":
+            s, r, done, info = self.step(action, *args, **kwargs)
+            s_dist = s + self._get_disturbance(s)
+            return s_dist, r, done, info
+        else:
+            return self.step(action + self._get_disturbance(action), *args, **kwargs)
 
     def _apply_env_disturbance(self):
         """Function used to apply the next environment disturbance that is specified in
@@ -825,9 +893,7 @@ class Disturber:
             ]
 
         # Apply environment disturbance
-        if self._disturbance_type == "env_disturbance":
-            self._apply_env_disturbance()
-        else:
+        if self._disturbance_type != "env_disturbance":
             time_instant = [
                 key for key in self._disturbance_cfg.keys() if "_instant" in key
             ]
@@ -846,6 +912,8 @@ class Disturber:
                     bold=True,
                 )
             )
+        else:
+            self._apply_env_disturbance()
 
         # Return disturber not finished boolean
         return False
