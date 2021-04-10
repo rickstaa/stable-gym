@@ -11,9 +11,7 @@ this version two things are different compared to the original:
     See the :meth:`CartPoleCost.cost` method for the exact implementation of the cost.
 """
 
-import importlib
 import math
-import sys
 
 import gym
 import matplotlib.pyplot as plt
@@ -21,43 +19,12 @@ import numpy as np
 from gym import logger, spaces
 from gym.utils import colorize, seeding
 
-# Try to import the disturber class
-# NOTE: Only works if the simzoo or bayesian learning control package is installed.
-# fallback to object if not successfull.
-if "simzoo" in sys.modules:
-    from simzoo.common.disturber import Disturber
-elif importlib.util.find_spec("simzoo") is not None:
-    Disturber = getattr(importlib.import_module("simzoo.common.disturber"), "Disturber")
-else:
-    try:
-        Disturber = getattr(
-            importlib.import_module(
-                "bayesian_learning_control.simzoo.simzoo.common.disturber"
-            ),
-            "Disturber",
-        )
-    except AttributeError:
-        Disturber = object
+from .cart_pole_disturber import CartPoleDisturber
 
 RANDOM_STEP = False  # Use random steps in __main__
 
-# Disturber config used to overwrite the default config
-# NOTE: Merged with the default config
-DISTURBER_CFG = {
-    # Disturbance applied to environment variables
-    "env_disturbance": {
-        "description": "Pole length disturbance",
-        # The env variable which you want to disturb
-        "variable": "length",
-        # The range of values you want to use for each disturbance iteration
-        "variable_range": np.linspace(0.5, 2.0, num=5, dtype=np.float32),
-        # Label used in robustness plots.
-        "label": "r: %s",
-    },
-}
 
-
-class CartPoleCost(gym.Env, Disturber):
+class CartPoleCost(gym.Env, CartPoleDisturber):
     """Continuous action space CartPole gym environment
 
     Description:
@@ -149,7 +116,7 @@ class CartPoleCost(gym.Env, Disturber):
                 intergration (options are "euler", "friction", "semi-implicit euler").
                 Defaults to "euler".
         """
-        super().__init__(disturber_cfg=DISTURBER_CFG)  # Setup disturber
+        super().__init__()  # Setup disturber
         self.__class__.instances.append(self)
         self._instance_nr = len(self.__class__.instances)
         self._action_clip_warning = False

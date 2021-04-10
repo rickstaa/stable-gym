@@ -126,6 +126,8 @@ DISTURBER_CFG = {
             "label": "x̅:%s, σ:%s",
         },
     },
+    # Combined disturbances
+    "combined": {},
 }
 
 
@@ -623,10 +625,8 @@ class Disturber:
                 **disturber_cfg,
             }  # Allow users to update the disturber_cfg
         else:
-            # Set default disturber if no disturber was given with the environment
-            # initiation.
-            if self._disturber_cfg is None:
-                self._disturber_cfg = DISTURBER_CFG
+            # Update disturber config to the most recent default disturber config
+            self._disturber_cfg = DISTURBER_CFG
 
         # Validate disturbance type and/or variant input arguments
         if disturbance_type is None:
@@ -663,11 +663,14 @@ class Disturber:
                 environment_name = self.unwrapped.spec.id
             except AttributeError:
                 environment_name = self.__class__.__name__.__str__()
+            valid_keys = {
+                k for k in self._disturber_cfg.keys() if k not in ["default_type"]
+            }
             raise ValueError(
                 (
                     f"Disturbance type '{disturbance_type_input}' is not implemented "
                     f"for the  '{environment_name}' environment. Please specify a "
-                    f"valid disturbance type {self._disturber_cfg.keys()}."
+                    f"valid disturbance type {valid_keys}."
                 ),
                 "disturbance_Type",
             )
@@ -930,7 +933,6 @@ class Disturber:
                 "using the 'init_disturber' method and try again."
             )
             raise AttributeError(error_msg)
-
         return self._disturber_cfg
 
     @disturber_cfg.setter
@@ -957,10 +959,10 @@ class Disturber:
             )
             raise AttributeError(error_msg)
 
-        return self._disturber_cfg
+        return self._disturbance_cfg
 
     @disturbance_cfg.setter
-    def disturber_cfg(self, set_val):
+    def disturbance_cfg(self, set_val):
         error_msg = (
             "Changing the 'disturbance_cfg' value during runtime is not allowed. "
         )

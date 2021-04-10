@@ -13,45 +13,13 @@ import numpy as np
 from gym import spaces
 from gym.utils import seeding, colorize
 
-# Try to import the disturber class
-# NOTE: Only works if the simzoo or bayesian learning control package is installed.
-# fallback to object if not successfull.
-if "simzoo" in sys.modules:
-    from simzoo.common.disturber import Disturber
-elif importlib.util.find_spec("simzoo") is not None:
-    Disturber = getattr(importlib.import_module("simzoo.common.disturber"), "Disturber")
-else:
-    try:
-        Disturber = getattr(
-            importlib.import_module(
-                "bayesian_learning_control.simzoo.simzoo.common.disturber"
-            ),
-            "Disturber",
-        )
-    except AttributeError:
-        Disturber = object
+from .oscillator_disturber import OscillatorDisturber
 
 
 RANDOM_STEP = False  # Use random steps in __main__
 
 
-# Disturber config used to overwrite the default config
-# NOTE: Merged with the default config
-DISTURBER_CFG = {
-    # Disturbance applied to environment variables
-    "env_disturbance": {
-        "description": "Lacl mRNA decay rate disturbance",
-        # The env variable which you want to disturb
-        "variable": "c1",
-        # The range of values you want to use for each disturbance iteration
-        "variable_range": np.linspace(1.0, 3.0, num=5, dtype=np.float32),
-        # Label used in robustness plots.
-        "label": "r: %s",
-    },
-}
-
-
-class Oscillator(gym.Env, Disturber):
+class Oscillator(gym.Env, OscillatorDisturber):
     """Synthetic oscillatory network
 
     .. note::
@@ -138,7 +106,7 @@ class Oscillator(gym.Env, Disturber):
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
         """
-        super().__init__(disturber_cfg=DISTURBER_CFG)  # Setup disturber
+        super().__init__()  # Setup disturber
         self.__class__.instances.append(self)
         self._instance_nr = len(self.__class__.instances)
         self._action_clip_warning = False

@@ -31,43 +31,12 @@ import numpy as np
 from gym import spaces
 from gym.utils import colorize, seeding
 
-# Try to import the disturber class
-# NOTE: Only works if the simzoo or bayesian learning control package is installed.
-# fallback to object if not successfull.
-if "simzoo" in sys.modules:
-    from simzoo.common.disturber import Disturber
-elif importlib.util.find_spec("simzoo") is not None:
-    Disturber = getattr(importlib.import_module("simzoo.common.disturber"), "Disturber")
-else:
-    try:
-        Disturber = getattr(
-            importlib.import_module(
-                "bayesian_learning_control.simzoo.simzoo.common.disturber"
-            ),
-            "Disturber",
-        )
-    except AttributeError:
-        Disturber = object
+from .ex3_ekf_disturber import Ex3EKFDisturber
 
 RANDOM_STEP = False  # Use random steps in __main__
 
-# Disturber config used to overwrite the default config
-# NOTE: Merged with the default config
-DISTURBER_CFG = {
-    # Disturbance applied to environment variables
-    "env_disturbance": {
-        "description": "Gravity value",
-        # The env variable which you want to disturb
-        "variable": "g",
-        # The range of values you want to use for each disturbance iteration
-        "variable_range": np.linspace(9.5, 10.5, num=5, dtype=np.float32),
-        # Label used in robustness plots.
-        "label": "r: %s",
-    },
-}
 
-
-class Ex3EKF(gym.Env, Disturber):
+class Ex3EKF(gym.Env, Ex3EKFDisturber):
     """Noisy master slave system
 
     .. note::
@@ -137,7 +106,7 @@ class Ex3EKF(gym.Env, Disturber):
             seed (int, optional): A random seed for the environment. By default
                 `None``.
         """
-        super().__init__(disturber_cfg=DISTURBER_CFG)  # Setup disturber
+        super().__init__()  # Setup disturber
         self._action_clip_warning = False
 
         self.t = 0.0
