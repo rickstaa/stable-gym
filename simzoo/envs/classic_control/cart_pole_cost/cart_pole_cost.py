@@ -198,7 +198,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.observation_space = spaces.Box(-obs_high, obs_high, dtype=np.float32)
         self.reward_range = spaces.Box(
             np.array([0.0], dtype=np.float32),
-            np.array([np.finfo(np.float32).max], dtype=np.float32),
+            np.array([100], dtype=np.float32),
             dtype=np.float32,
         )
 
