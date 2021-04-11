@@ -424,13 +424,11 @@ class Disturber:
                 wrong type.
         """
         self._disturbance_type = disturbance_type
-        self.disturbance_info["type"] = self._disturbance_type.replace(
-            "_disturbance", ""
-        )
-        if disturbance_type != "env_disturbance":
+        self.disturbance_info["type"] = self._disturbance_type
+        if self._disturbance_type != "env_disturbance":
             self._disturbance_variant = disturbance_variant
             self.disturbance_info["variant"] = self._disturbance_variant
-            self._disturbance_cfg = self._disturber_cfg[disturbance_type][
+            self._disturbance_cfg = self._disturber_cfg[self._disturbance_type][
                 disturbance_variant
             ]
 
@@ -487,7 +485,7 @@ class Disturber:
                 )
             self._disturbance_variant = "environment"
             self.disturbance_info["variant"] = self._disturbance_variant
-            self._disturbance_cfg = self._disturber_cfg[disturbance_type]
+            self._disturbance_cfg = self._disturber_cfg[self._disturbance_type]
 
             # Retrieve disturbance range and range length
             range_keys = [
@@ -511,8 +509,10 @@ class Disturber:
 
         # Store disturbance information
         self.disturbance_info["cfg"] = self._disturbance_cfg
-        self.disturbance_info["variable"] = self._disturbance_range_key.replace(
-            "_range", ""
+        self.disturbance_info["variable"] = (
+            self._disturbance_cfg["variable"]
+            if "variable" in self._disturbance_cfg.keys()
+            else self._disturbance_range_key.replace("_range", "")
         )
         if isinstance(self._disturbance_range, dict):
             self.disturbance_info["value"] = {
@@ -629,29 +629,6 @@ class Disturber:
             self._disturber_cfg = DISTURBER_CFG
 
         # Validate disturbance type and/or variant input arguments
-        if disturbance_type is None:
-            if "default_type" in self._disturber_cfg.keys():
-                print(
-                    colorize(
-                        (
-                            "INFO: No disturbance type given default type '{}' ".format(
-                                self._disturber_cfg["default_type"]
-                            )
-                            + "used instead."
-                        ),
-                        "green",
-                        bold=True,
-                    )
-                )
-                disturbance_type = self._disturber_cfg["default_type"]
-            else:
-                raise TypeError(
-                    (
-                        "init_disturber(): is missing one required positional "
-                        "argument: 'disturbance_type'."
-                    ),
-                    "disturbance_type",
-                )
         disturbance_type_input = disturbance_type
         disturbance_type = (
             disturbance_type.lower() + "_disturbance"

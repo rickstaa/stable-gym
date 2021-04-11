@@ -33,6 +33,8 @@ else:
 # Disturber config used to overwrite the default config
 # NOTE: Merged with the default config
 DISTURBER_CFG = {
+    # Disturbance type when no type has been given
+    "default_type": "env_disturbance",
     # Disturbance applied to environment variables
     "env_disturbance": {
         "description": "Pole length disturbance",
