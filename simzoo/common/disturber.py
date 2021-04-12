@@ -48,7 +48,7 @@ DISTURBER_CFG = {
         # The range of values you want to use for each disturbance iteration
         "variable_range": np.linspace(1.6, 3.0, num=5, dtype=np.float32),
         # Label used in robustness plots
-        "label": "r: %s",
+        "label": "r: %s.3f",
     },
     # Disturbance applied to the *INPUT* of the environment step function
     "input_disturbance": {
@@ -63,7 +63,7 @@ DISTURBER_CFG = {
             # The magnitudes you want to apply
             "magnitude_range": np.linspace(0.0, 3.0, num=5, dtype=np.float),
             # Label used in robustness plots
-            "label": "M: %s",
+            "label": "M: %s.3f",
         },
         # Similar to the impulse above but now the impulse force is continuously applied
         # against the action after the impulse instant has been reached.
@@ -74,7 +74,7 @@ DISTURBER_CFG = {
             # The magnitudes you want to apply
             "magnitude_range": np.linspace(80, 155, num=3, dtype=np.int),
             # Label that can be used in plots
-            "label": "M: %s",
+            "label": "M: %s.3f",
         },
         # A periodic signal noise that is applied to the action at every time step
         "periodic": {
@@ -85,7 +85,7 @@ DISTURBER_CFG = {
             # NOTE: A amplitude between 0-1 is recommended.
             "periodic_function": periodic_disturbance,
             # Label used in robustness plots
-            "label": "A: %s",
+            "label": "A: %s.3f",
         },
         # A random noise that is applied to the action at every timestep.
         "noise": {
@@ -96,7 +96,7 @@ DISTURBER_CFG = {
                 "std": np.linspace(1.0, 5.0, num=3, dtype=np.int),
             },
             # Label used in robustness plots.
-            "label": "x̅:%s, σ:%s",
+            "label": "x̅:%s.3f, σ:%s.3f",
         },
     },
     # Disturbance applied to the *OUTPUT* of the environment step function
@@ -112,7 +112,7 @@ DISTURBER_CFG = {
             # NOTE: A amplitude between 0-1 is recommended.
             "periodic_function": periodic_disturbance,
             # Label used in robustness plots
-            "label": "A: %s",
+            "label": "A: %s.3f",
         },
         # A random noise that is applied to the action at every timestep
         "noise": {
@@ -123,7 +123,7 @@ DISTURBER_CFG = {
                 "std": np.linspace(1.0, 5.0, num=3, dtype=np.int),
             },
             # Label used in robustness plots
-            "label": "x̅:%s, σ:%s",
+            "label": "x̅:%s.3f, σ:%s.3f",
         },
     },
     # Disturbance applied to both the *INPUT* and *OUTPUT* of the environment step
@@ -149,7 +149,7 @@ DISTURBER_CFG = {
                 },
             },
             # Label used in robustness plots.
-            "label": "x̅:(%s, %s), σ:(%s, %s)",
+            "label": "x̅:(%s.3f, %s.3f), σ:(%s.3f, %s.3f)",
         },
     },
 }
@@ -893,7 +893,7 @@ class Disturber:
                     (
                         "INFO: Environment disturbance applied. "
                         + f"Variable '{var_name}' ({var_description}) has been "
-                        f"set to '{var_value}'."
+                        f"set to '{var_value:.3}'."
                     ),
                     "green",
                     bold=True,
