@@ -196,6 +196,11 @@ class Disturber:
             "Only classes that also inherit from the 'gym.Env' class can inherit from "
             "the 'Disturber' class."
         )
+
+        # NOTE: Rounding value used for checking if zero disturbance or initial env
+        # disturbance is present in the disturbance configuration.
+        self._disturbance_significance = 2
+
         self.disturber_done = False
         self.disturbance_info = {
             "type": None,
@@ -495,7 +500,12 @@ class Disturber:
             self._disturbance_range_key = range_keys[0]
             if isinstance(self._disturbance_cfg[self._disturbance_range_key], dict):
                 self._disturbance_range = {
-                    k: np.insert(v, 0, 0.0, axis=0) if v[0] != 0.0 else v
+                    k: [0.0]
+                    + [
+                        item
+                        for item in v
+                        if round(item, self._disturbance_significance) != 0.0
+                    ]
                     for k, v in self._disturbance_cfg[
                         self._disturbance_range_key
                     ].items()
@@ -506,16 +516,11 @@ class Disturber:
             elif isinstance(
                 self._disturbance_cfg[self._disturbance_range_key], (list, np.ndarray)
             ):
-                self._disturbance_range = (
-                    np.insert(
-                        self._disturbance_cfg[self._disturbance_range_key],
-                        0,
-                        0.0,
-                        axis=0,
-                    )
-                    if self._disturbance_cfg[self._disturbance_range_key][0] != 0.0
-                    else self._disturbance_cfg[self._disturbance_range_key]
-                )  # Add undisturbed state if not yet present
+                self._disturbance_range = [0.0] + [
+                    item
+                    for item in self._disturbance_cfg[self._disturbance_range_key]
+                    if item != 0.0
+                ]  # Add undisturbed state if not yet present
                 self._disturbance_iter_length = len(self._disturbance_range)
             else:
                 raise TypeError(
@@ -545,13 +550,13 @@ class Disturber:
                 key for key in self._disturbance_cfg.keys() if "_range" in key
             ]
             self._disturbance_range_key = range_keys[0]
-            significance = 2
             disturbance_range_rounded = [
-                round(item, significance)
+                round(item, self._disturbance_significance)
                 for item in list(self._disturbance_cfg[self._disturbance_range_key])
             ]
             env_var_rounded = round(
-                getattr(self, self._disturbance_cfg["variable"]), significance
+                getattr(self, self._disturbance_cfg["variable"]),
+                self._disturbance_significance,
             )
             self._disturbance_range = [env_var_rounded] + [
                 item for item in disturbance_range_rounded if item != env_var_rounded

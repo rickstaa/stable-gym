@@ -552,7 +552,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
     @property
     def _pole_mass_length(self):
-        """Property that returns the pole mass times the COM lenght."""
+        """Property that returns the pole mass times the COM length."""
         return self.mass_pole * self._com_length
 
     @property
