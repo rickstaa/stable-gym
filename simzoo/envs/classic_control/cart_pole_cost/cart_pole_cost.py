@@ -130,9 +130,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.mass_pole = self._mass_pole_init = 0.1
         self.gravity = self._gravity_init = 10.0  # DEBUG: OpenAi uses 9.8
         self.force_mag = 20  # NOTE: OpenAi uses 10.0
-        self._total_mass = self.mass_pole + self.mass_cart
-        self._com_length = self.length * 0.5  # half the pole's length
-        self._pole_mass_length = self.mass_pole * self._com_length
         self._kinematics_integrator = kinematics_integrator
         self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1]
@@ -226,9 +223,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.mass_pole = mass_of_pole
         self.mass_cart = mass_of_cart
         self.gravity = gravity
-        self._total_mass = self.mass_pole + self.mass_cart
-        self._com_length = self.length  # Half of the pole length
-        self._pole_mass_length = self.mass_pole * self._com_length
+        self.total_mass = self.mass_pole + self.mass_cart
 
     def get_params(self):
         """Retrieves the most important system parameters.
@@ -249,9 +244,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.mass_pole = self._mass_pole_init
         self.mass_cart = self._mass_cart_init
         self.gravity = self._gravity_init
-        self._total_mass = self.mass_pole + self.mass_cart
-        self._com_length = self.length * 0.5  # Half of the pole length
-        self._pole_mass_length = self.mass_pole * self._com_length
+        self.total_mass = self.mass_pole + self.mass_cart
 
     def reference(self, t):
         """Returns the current value of the periodic reference signal that is tracked by
@@ -340,12 +333,12 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         sin_theta = math.sin(theta)
         temp = (
             force + self._pole_mass_length * theta_dot ** 2 * sin_theta
-        ) / self._total_mass
+        ) / self.total_mass
         theta_acc = (self.gravity * sin_theta - cos_theta * temp) / (
             self._com_length
-            * (4.0 / 3.0 - self.mass_pole * cos_theta * cos_theta / self._total_mass)
+            * (4.0 / 3.0 - self.mass_pole * cos_theta * cos_theta / self.total_mass)
         )
-        x_acc = temp - self._pole_mass_length * theta_acc * cos_theta / self._total_mass
+        x_acc = temp - self._pole_mass_length * theta_acc * cos_theta / self.total_mass
 
         if self._kinematics_integrator == "euler":
             x = x + self.dt * x_dot
@@ -354,9 +347,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             theta_dot = theta_dot + self.dt * theta_acc
         elif self._kinematics_integrator == "friction":
             x_acc = (
-                -0.1 * x_dot / self._total_mass
+                -0.1 * x_dot / self.total_mass
                 + temp
-                - self._pole_mass_length * theta_acc * cos_theta / self._total_mass
+                - self._pole_mass_length * theta_acc * cos_theta / self.total_mass
             )
             x = x + self.dt * x_dot
             x_dot = x_dot + self.dt * x_acc
@@ -546,6 +539,21 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         if self.viewer:
             self.viewer.close()
             self.viewer = None
+
+    @property
+    def total_mass(self):
+        """Property that returns the full mass of the system."""
+        return self.mass_pole + self.mass_cart
+
+    @property
+    def _com_length(self):
+        """Property that returns the position of the center of mass."""
+        return self.length * 0.5  # half the pole's length
+
+    @property
+    def _pole_mass_length(self):
+        """Property that returns the pole mass times the COM lenght."""
+        return self.mass_pole * self._com_length
 
     @property
     def tau(self):
