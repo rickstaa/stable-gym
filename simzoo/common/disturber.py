@@ -545,19 +545,17 @@ class Disturber:
                 key for key in self._disturbance_cfg.keys() if "_range" in key
             ]
             self._disturbance_range_key = range_keys[0]
-            self._disturbance_range = (
-                np.insert(
-                    self._disturbance_cfg[self._disturbance_range_key],
-                    0,
-                    getattr(self, self._disturbance_cfg["variable"]),
-                    axis=0,
-                )
-                if round(
-                    float(self._disturbance_cfg[self._disturbance_range_key][0]), 3
-                )
-                != round(float(getattr(self, self._disturbance_cfg["variable"])), 3)
-                else self._disturbance_cfg[self._disturbance_range_key]
-            )  # Add undisturbed state if not yet present
+            significance = 2
+            disturbance_range_rounded = [
+                round(item, significance)
+                for item in list(self._disturbance_cfg[self._disturbance_range_key])
+            ]
+            env_var_rounded = round(
+                getattr(self, self._disturbance_cfg["variable"]), significance
+            )
+            self._disturbance_range = [env_var_rounded] + [
+                item for item in disturbance_range_rounded if item != env_var_rounded
+            ]  # Add undisturbed state if not yet present
             self._disturbance_iter_length = len(self._disturbance_range)
 
         # Store disturbance information
