@@ -19,7 +19,7 @@ import numpy as np
 from gym import logger, spaces
 from gym.utils import colorize, seeding
 
-from .cart_pole_disturber import CartPoleDisturber
+from .cart_pole_cost_disturber import CartPoleDisturber
 
 RANDOM_STEP = False  # Use random steps in __main__
 
