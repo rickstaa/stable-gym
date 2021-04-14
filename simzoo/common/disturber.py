@@ -37,11 +37,11 @@ def periodic_disturbance(time):
 # for more information.
 DISTURBER_CFG = {
     # Disturbance type when no type has been given
-    "default_type": "input_disturbance",
+    "default_type": "input",
     # Disturbance applied to *ENVIRONMENT* variables
     # NOTE: The values below are meant as an example the environment disturbance config
     # needs to be implemented inside the environment.
-    "env_disturbance": {
+    "env": {
         "description": "Lacl mRNA decay rate disturbance",
         # The env variable which you want to disturb
         "variable": "c1",
@@ -51,7 +51,7 @@ DISTURBER_CFG = {
         "label": "r: %s.3f",
     },
     # Disturbance applied to the *INPUT* of the environment step function
-    "input_disturbance": {
+    "input": {
         # The variant used when no variant is given by the user
         "default_variant": "impulse",
         # Impulse disturbance applied in the opposite direction of the action at a given
@@ -100,7 +100,7 @@ DISTURBER_CFG = {
         },
     },
     # Disturbance applied to the *OUTPUT* of the environment step function
-    "output_disturbance": {
+    "input": {
         # The variant used when no variant is given by the user
         "default_variant": "noise",
         # A periodic signal noise that is applied to the action at every time step
@@ -459,14 +459,14 @@ class Disturber:
         """Validates the disturbance configuration dictionary to see if it contains the
         right information to apply the requested disturbance *type* and *variant*.
         """
-        if self._disturbance_type != "env_disturbance":
+        if self._disturbance_type not in ["env", "env_disturbance"]:
             self._validate_disturbance_variant_cfg()
         else:
             req_keys = ["variable", "variable_range"]
             assert all(
                 [req_key in self._disturbance_cfg.keys() for req_key in req_keys]
             ), (
-                "The 'env_disturbance' config is invalid. Please make sure it contains "
+                "The 'env' disturbance config is invalid. Please make sure it contains "
                 "a 'variable' and 'variable_range' key."
             )
 
@@ -483,7 +483,7 @@ class Disturber:
         """
         self._disturbance_type = disturbance_type
         self.disturbance_info["type"] = self._disturbance_type
-        if self._disturbance_type != "env_disturbance":
+        if self._disturbance_type not in ["env", "env_disturbance"]:
             self._disturbance_variant = disturbance_variant
             self.disturbance_info["variant"] = self._disturbance_variant
             self._disturbance_cfg = self._disturber_cfg[self._disturbance_type][
@@ -535,7 +535,7 @@ class Disturber:
                         (
                             f"WARNING: Disturbance variant '{disturbance_variant}' "
                             "ignored as it does not apply when using disturbance type "
-                            "'env_disturbance'."
+                            "'env'."
                         ),
                         "yellow",
                         bold=True,
@@ -590,7 +590,7 @@ class Disturber:
         if "description" in self._disturbance_cfg.keys():
             self.disturbance_info["description"] = self._disturbance_cfg["description"]
         else:
-            if self._disturbance_type != "env_disturbance":
+            if self._disturbance_type not in ["env", "env_disturbance"]:
                 self.disturbance_info["description"] = (
                     self._disturbance_variant.capitalize() + " disturbance"
                 )
@@ -598,7 +598,7 @@ class Disturber:
                 self.disturbance_info["description"] = "Environment disturbance"
 
         # Retrieve plot labels
-        if self._disturbance_type != "env_disturbance":
+        if self._disturbance_type not in ["env", "env_disturbance"]:
             if "label" in self._disturbance_cfg.keys():
                 if isinstance(self._disturbance_range, dict):
                     self.disturbance_info["labels"] = [
@@ -660,9 +660,9 @@ class Disturber:
 
         Args:
             disturbance_type (string): The disturbance type you want to use. Options are
-                ``env_disturbance``, ``input_disturbance`` and ``output_disturbance``.
+                ``env``, ``input``, ``output`` or ``combined``.
             disturbance_variant (string, optional): The disturbance variant you want to
-                use. Not required when you use a ``env_disturbance``.
+                use. Not required when you use a ``env``.
             disturber_cfg (dict, optional): A dictionary that describes the disturbances
                 the :class:`Disturber` supports. This dictionary can be used to update
                 values of the ``DISTURBANCE_CFG`` configuration which is present in the
@@ -714,7 +714,7 @@ class Disturber:
             )
 
         # Validate disturbance variant input argument
-        if disturbance_type != "env_disturbance":
+        if disturbance_type not in ["env", "env_disturbance"]:
             if disturbance_variant is None:
                 if "default_variant" in self._disturber_cfg[disturbance_type].keys():
                     print(
@@ -811,7 +811,7 @@ class Disturber:
                 (
                     "INFO: Starting with the un-disturbed {} ".format(
                         "Environment"
-                        if disturbance_type == "env_disturbance"
+                        if disturbance_type in ["env", "env_disturbance"]
                         else "Step"
                     )
                     + "({}).".format(
@@ -832,7 +832,8 @@ class Disturber:
 
         Raises:
             RuntimeError: Thrown when this method is called before the
-                :meth:`Disturber.init_disturber` method.
+            :meth:`Disturber.init_disturber` method or when it is caleld when the
+            disturbance type is ``env``.
 
         Returns:
             numpy.ndarray: The disturbed step.
@@ -844,14 +845,17 @@ class Disturber:
                 "initialize the disturber and try again."
             )
         if self._disturbance_type not in [
+            "input",
             "input_disturbance",
+            "output",
             "output_disturbance",
             "combined",
+            "combined_disturbance",
         ]:
             raise RuntimeError(
                 "You are trying to retrieve a disturbed step while the disturbance "
                 f"type is set to be '{self._disturbance_type}'. Please initialize the "
-                "disturber with the 'input_disturbance' or 'output_disturbance' type "
+                "disturber with the 'input', 'output' or 'combine' type "
                 "if you want to use this feature."
             )
 
@@ -952,7 +956,7 @@ class Disturber:
             ]
 
         # Apply environment disturbance
-        if self._disturbance_type != "env_disturbance":
+        if self._disturbance_type not in ["env", "env_disturbance"]:
             time_instant = [
                 key for key in self._disturbance_cfg.keys() if "_instant" in key
             ]
