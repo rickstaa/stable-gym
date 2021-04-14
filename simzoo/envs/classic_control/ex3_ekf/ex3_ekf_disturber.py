@@ -34,7 +34,7 @@ else:
 # NOTE: Merged with the default config
 DISTURBER_CFG = {
     # Disturbance applied to environment variables
-    "env_disturbance": {
+    "env": {
         "description": "Gravity value",
         # The env variable which you want to disturb
         "variable": "g",

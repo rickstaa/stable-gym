@@ -34,9 +34,9 @@ else:
 # NOTE: Merged with the default config
 DISTURBER_CFG = {
     # Disturbance type when no type has been given
-    "default_type": "env_disturbance",
+    "default_type": "env",
     # Disturbance applied to environment variables
-    "env_disturbance": {
+    "env": {
         "description": "Pole length disturbance",
         # The env variable which you want to disturb
         "variable": "length",
