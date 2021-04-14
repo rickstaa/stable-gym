@@ -41,7 +41,7 @@ DISTURBER_CFG = {
         # The env variable which you want to disturb
         "variable": "length",
         # The range of values you want to use for each disturbance iteration
-        "variable_range": np.linspace(0.5, 2.0, num=5, dtype=np.float32),
+        "variable_range": np.linspace(0.1, 4.0, num=6, dtype=np.float32),
         # Label used in robustness plots.
         "label": "l: %s.3f",
     },
