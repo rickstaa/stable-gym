@@ -688,14 +688,21 @@ class Disturber:
         disturbance_type_input = disturbance_type
         disturbance_type = [
             item
-            for item in [
-                disturbance_type,
-                disturbance_type.lower(),
-                disturbance_type + "_disturbance",
-                disturbance_type.lower() + "_disturbance",
-            ]
+            for item in list(
+                set(
+                    [
+                        "env_disturbance",
+                        "env_disturbance",
+                        "env_disturbance_disturbance",
+                        "env_disturbance_disturbance",
+                        "env",
+                        "env",
+                    ]
+                )
+            )
             if item in self._disturber_cfg.keys()
-        ][0]
+        ]  # Catch some common human writing errors
+        disturbance_type = disturbance_type[0] if disturbance_type else None
         if not disturbance_type:
             try:
                 environment_name = self.unwrapped.spec.id
@@ -796,11 +803,11 @@ class Disturber:
         # Print information about the initial disturbance
         print(
             colorize(
-                "INFO: Disturber with disturbance type '{}' {} initialized.".format(
+                "INFO: Disturber with disturbance type '{}'{}initialized.".format(
                     disturbance_type,
-                    f"and variant '{disturbance_variant}'"
+                    f" and variant '{disturbance_variant}' "
                     if disturbance_variant is not None
-                    else "",
+                    else " ",
                 ),
                 "green",
                 bold=True,
@@ -844,14 +851,7 @@ class Disturber:
                 "not yet been initialized using the 'init_disturber' method. Please "
                 "initialize the disturber and try again."
             )
-        if self._disturbance_type not in [
-            "input",
-            "input_disturbance",
-            "output",
-            "output_disturbance",
-            "combined",
-            "combined_disturbance",
-        ]:
+        if self._disturbance_type in ["env", "env_disturbance"]:
             raise RuntimeError(
                 "You are trying to retrieve a disturbed step while the disturbance "
                 f"type is set to be '{self._disturbance_type}'. Please initialize the "
