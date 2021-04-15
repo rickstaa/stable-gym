@@ -1,7 +1,7 @@
 """A simple disturber class from which the Oscillator environment can inherit in order
 to be able to use it with the Robustness Evaluation tool of the Bayesian Learning
 Control package. For more information see the
-`Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_
+`Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/eval_robustness.html>`_
 documentation.
 """  # noqa: E501
 
@@ -41,7 +41,7 @@ DISTURBER_CFG = {
         # The range of values you want to use for each disturbance iteration
         "variable_range": np.linspace(1.0, 3.0, num=5, dtype=np.float32),
         # Label used in robustness plots.
-        "label": "r: %s.3f",
+        "label": "r: %s",
     },
 }
 

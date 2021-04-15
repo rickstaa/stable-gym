@@ -44,7 +44,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         :class:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
-        `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.
+        `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/eval_robustness.html>`_.
 
     Description:
         The goal of the agent in the Ex3EKF environment is to act in such a way that
