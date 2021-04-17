@@ -1,6 +1,7 @@
 """Functions that are used in multiple simzoo environments.
 """
 
+import itertools
 import re
 
 from gym.utils import colorize as gym_colorize
@@ -27,6 +28,18 @@ def colorize(string, color, bold=False, highlight=False):
         return gym_colorize(string, color, bold, highlight)
     else:
         return string
+
+
+def flatten_list(input_list):
+    """Flatten a list.
+
+    Args:
+        input_list (list): The list you want to flatten.
+
+    Returns:
+        list: The flattened list.
+    """
+    return list(itertools.chain.from_iterable(input_list))
 
 
 def get_flattened_values(input_obj):
@@ -164,3 +177,20 @@ def get_lowest_next_int(input_item):
         ]
     input_ints = input_ints if input_ints else [0]
     return list(set(input_ints) ^ set(range(min(input_ints), max(input_ints) + 2)))[0]
+
+
+def friendly_list(input_list, apostrophes=False):
+    """Transforms a list to a human friendly format (seperated by commas and ampersand).
+
+    Args:
+        input_list (list): The input list.
+        apostrophes(bool, optional): Whether the list items should be encapsuled with
+            apostrophes. Defaults to ``False``.
+
+    Returns:
+        str: Human friendly list string.
+    """
+    input_list = (
+        ["'" + item + "'" for item in input_list] if apostrophes else input_list
+    )
+    return " & ".join(", ".join(input_list).rsplit(", ", 1))
