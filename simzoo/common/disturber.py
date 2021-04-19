@@ -1181,7 +1181,7 @@ class Disturber:
                     (
                         "INFO: Environment disturbance applied. "
                         + f"Variable '{var_name}' ({var_description}) has been "
-                        f"set to '{var_value:.3}'."
+                        f"set to '{float(var_value):.3}'."
                     ),
                     "green",
                     bold=True,

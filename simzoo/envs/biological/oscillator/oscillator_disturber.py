@@ -37,9 +37,11 @@ DISTURBER_CFG = {
     "env": {
         "description": "Lacl mRNA decay rate disturbance",
         # The env variable which you want to disturb
-        "variable": "c1",
+        "variable": "K",  # Dissociation rate
+        # "variable": "c1",  # Promotor strength
         # The range of values you want to use for each disturbance iteration
-        "variable_range": np.linspace(1.0, 3.0, num=5, dtype=np.float32),
+        "variable_range": [5, 10],  # Dissociation rate
+        # "variable_range": [3.2, 4.8],  # Promotor strength
         # Label used in robustness plots.
         "label": "r: %s",
     },
