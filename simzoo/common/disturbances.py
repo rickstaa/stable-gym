@@ -5,11 +5,7 @@ import numpy as np
 
 
 def impulse_disturbance(
-    input_signal,
-    impulse_magnitude,
-    impulse_instant,
-    impulse_type,
-    current_timestep,
+    input_signal, impulse_magnitude, impulse_instant, impulse_type, current_timestep,
 ):
     """Retrieves a impulse disturbance that acts in the opposite direction of the input
     signal.
@@ -43,7 +39,7 @@ def impulse_disturbance(
 
 
 def periodic_disturbance(
-    input_signal, current_timestep, amplitude, frequency=10, phase_shift=0
+    input_signal, current_timestep, amplitude=1, frequency=10, phase_shift=0
 ):
     """Returns a periodic disturbance signal that has the same shape as the input signal.
 
@@ -51,9 +47,10 @@ def periodic_disturbance(
         input_signal (numpy.ndarray): The signal to which the disturbance should be
             applied. Used for determining the direction of the disturbance.
         current_timestep(int): The current time step.
-        amplitude (float): The periodic signal amplitude.
-        frequency (float): The periodic signal frequency.
-        phase_shift (float): The periodic signal phase shift.
+        amplitude (float, optional): The periodic signal amplitude. Defaults to ``1``.
+        frequency (float, optional): The periodic signal frequency. Defaults to ``10``.
+        phase_shift (float, optional): The periodic signal phase shift. Defaults to
+            ``0``.
 
     Returns:
         numpy.ndarray: The disturbance array.
@@ -76,8 +73,4 @@ def noise_disturbance(input_signal, mean, std):
     Returns:
         numpy.ndarray: The disturbance array.
     """
-    return np.random.normal(
-        mean,
-        std,
-        len(input_signal),
-    )
+    return np.random.normal(mean, std, len(input_signal),)

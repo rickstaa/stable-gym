@@ -222,3 +222,33 @@ def strip_underscores(text, position="all"):
     else:
         text = text.strip("_")
     return text
+
+
+def inject_value(input_item, value, round_accuracy=2, order=False):
+    """Injects a value into a list or dictionary if it is not yet present.
+
+    Args:
+        input_item (union[list,dict]): The input list or dictionary.
+        value (float): The value you want to inject.
+        round_accuracy (int, optional): The accuracy used for checking whether a value
+            is present. Defaults to 2.
+        order (bool, optional): Whether the list should be ordered when returned.
+            Defaults to ``false``.
+
+    Returns:
+        union[list,dict]: The list or dictionary that contains the value.
+    """
+    order_op = (
+        lambda *args, **kwargs: sorted(*args, **kwargs)
+        if order
+        else list(*args, **kwargs)
+    )
+    if isinstance(input_item, dict):
+        return {
+            k: order_op(
+                [value] + [item for item in v if round(item, round_accuracy) != value]
+            )
+            for k, v in input_item.items()
+        }
+    else:
+        return order_op([value] + [item for item in input_item if item != value])
