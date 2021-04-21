@@ -43,7 +43,7 @@ DISTURBER_CFG = {
         "variable_range": [5, 10],  # Dissociation rate
         # "variable_range": [3.2, 4.8],  # Promotor strength
         # Label used in robustness plots.
-        "label": "r: %s",
+        "label": "r: %s.3f",
     },
 }
 
