@@ -1,7 +1,7 @@
 """Functions that are used in multiple simzoo environments.
 """
 
-import itertools
+import collections
 import re
 
 from gym.utils import colorize as gym_colorize
@@ -31,15 +31,19 @@ def colorize(string, color, bold=False, highlight=False):
 
 
 def flatten_list(input_list):
-    """Flatten a list.
+    """Generator for flatting a nested list of lists or tuples.
 
     Args:
         input_list (list): The list you want to flatten.
 
-    Returns:
-        list: The flattened list.
+    Yields:
+        list: A flattened list
     """
-    return list(itertools.chain.from_iterable(input_list))
+    for el in input_list:
+        if isinstance(el, collections.Iterable) and not isinstance(el, (str, bytes)):
+            yield from flatten_list(el)
+        else:
+            yield el
 
 
 def get_flattened_values(input_obj):
@@ -95,18 +99,20 @@ def get_flattened_keys(input_obj, include_root=False):
     return flat_keys
 
 
-def abbreviate(input_item, length=1, capitalize=True):
+def abbreviate(input_item, length=1, max_length=4, capitalize=True):
     """Creates unique abbreviations for a string or list of strings.
 
     Args:
         input_item (union[str, list]): The string of list of strings which you want to
             abbreviate.
-        length (int, optional): The length of the abbreviations. Defaults to 1.
+        length (int, optional): The desired length of the abbreviation. Defaults to 1.
+        max_length (int, optional): The maximum length of the abbreviation. Defaults to
+            4.
         capitalize (bool, optional): Whether the abbrevaitions should be capitalized.
             Defaults to True.
 
     Returns:
-        [type]: [description]
+        list: List with abbreviations.
     """
     if isinstance(input_item, list):
         items = []
@@ -132,7 +138,7 @@ def abbreviate(input_item, length=1, capitalize=True):
                         items.append(it)
                         unique = True
                     else:  # Use longer abbreviation otherwise
-                        if len(it) < length_tmp:
+                        if length_tmp < max_length:
                             length_tmp += 1
                         else:
                             suffix = get_lowest_next_int(abbreviations)
@@ -194,3 +200,25 @@ def friendly_list(input_list, apostrophes=False):
         ["'" + item + "'" for item in input_list] if apostrophes else input_list
     )
     return " & ".join(", ".join(input_list).rsplit(", ", 1))
+
+
+def strip_underscores(text, position="all"):
+    """Strips leading and/or trailing underscores from a string.
+
+    Args:
+        text (str): The input string.
+        position (str, optional): From which position underscores should be removed.
+            Options are 'leading', 'trailing' & 'both'. Defaults to "both".
+
+    Returns:
+        str: String without the underscores.
+    """
+    if position.lower() == "leading":
+        while text.startswith("_"):
+            text = text[1:]
+    elif position.lower() == "trailing":
+        while text.endswith("_"):
+            text = text[:-1]
+    else:
+        text = text.strip("_")
+    return text

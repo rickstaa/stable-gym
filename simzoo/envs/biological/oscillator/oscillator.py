@@ -27,7 +27,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         :class:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
-        `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/eval_robustness.html>`_.
+        `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.
 
     Description:
         The goal of the agent in the oscillator environment is to act in such a way that
