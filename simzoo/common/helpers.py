@@ -1,9 +1,9 @@
 """Functions that are used in multiple simzoo environments.
 """
 
-import collections
 import re
 
+import numpy as np
 from gym.utils import colorize as gym_colorize
 
 
@@ -28,22 +28,6 @@ def colorize(string, color, bold=False, highlight=False):
         return gym_colorize(string, color, bold, highlight)
     else:
         return string
-
-
-def flatten_list(input_list):
-    """Generator for flatting a nested list of lists or tuples.
-
-    Args:
-        input_list (list): The list you want to flatten.
-
-    Yields:
-        list: A flattened list
-    """
-    for el in input_list:
-        if isinstance(el, collections.Iterable) and not isinstance(el, (str, bytes)):
-            yield from flatten_list(el)
-        else:
-            yield el
 
 
 def get_flattened_values(input_obj):
@@ -224,7 +208,7 @@ def strip_underscores(text, position="all"):
     return text
 
 
-def inject_value(input_item, value, round_accuracy=2, order=False):
+def inject_value(input_item, value, round_accuracy=2, order=False, axis=0):
     """Injects a value into a list or dictionary if it is not yet present.
 
     Args:
@@ -234,6 +218,8 @@ def inject_value(input_item, value, round_accuracy=2, order=False):
             is present. Defaults to 2.
         order (bool, optional): Whether the list should be ordered when returned.
             Defaults to ``false``.
+        axis (int, optional): The axis along which you want to inject the value. Only
+            used when the input is a numpy array. Defaults to ``0``.
 
     Returns:
         union[list,dict]: The list or dictionary that contains the value.
@@ -245,10 +231,21 @@ def inject_value(input_item, value, round_accuracy=2, order=False):
     )
     if isinstance(input_item, dict):
         return {
-            k: order_op(
-                [value] + [item for item in v if round(item, round_accuracy) != value]
+            k: inject_value(
+                v, value=value, round_accuracy=round_accuracy, order=order, axis=axis
             )
             for k, v in input_item.items()
         }
+    elif isinstance(input_item, np.ndarray) and input_item.ndim > 1:
+        transpose_matrix = np.eye(input_item.ndim, dtype=np.int16)
+        return np.transpose(
+            np.array(
+                [
+                    order_op([value] + [it for it in item if it != value])
+                    for item in np.transpose(input_item, transpose_matrix[axis])
+                ]
+            ),
+            transpose_matrix[axis],
+        )
     else:
         return order_op([value] + [item for item in input_item if item != value])

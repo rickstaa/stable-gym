@@ -9,8 +9,6 @@ documentation.
 import importlib
 import sys
 
-import numpy as np
-
 # Try to import the disturber class
 # NOTE: Only works if the simzoo or bayesian learning control package is installed.
 # fallback to object if not successfull.
@@ -33,7 +31,14 @@ else:
 # Disturber config used to overwrite the default config
 # NOTE: Merged with the default config
 DISTURBER_CFG = {
-    # Disturbance applied to environment variables
+    # Disturbance type when no type has been given
+    "default_type": "env",
+    ##################################################
+    # Environment disturbances #######################
+    ##################################################
+    # Disturbances applied to the *ENVIRONMENT* variables.
+    # NOTE: The values below are meant as an example the environment disturbance config
+    # needs to be implemented inside the environment.
     "env": {
         "description": "Lacl mRNA decay rate disturbance",
         # The env variable which you want to disturb

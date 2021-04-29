@@ -22,9 +22,6 @@ Estimator design:
     where u=[u1,u2,u3]', u=l(\\hat(x)(k),y(k)) come from the policy network l(.,.)
 """
 
-import importlib
-import sys
-
 import gym
 import matplotlib.pyplot as plt
 import numpy as np
@@ -97,7 +94,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         t (float): The current time step.
         dt (float): The environment step size.
         sigma (float): The variance of the system noise.
-    """  # noqa: E501
+    """  # noqa: E501, W605
 
     def __init__(self, seed=None):
         """Constructs all the necessary attributes for the Ex3EKF instance.

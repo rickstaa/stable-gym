@@ -9,17 +9,17 @@ import re
 
 import gym
 import numpy as np
+from iteration_utilities import deepflatten
 
 from .disturbances import impulse_disturbance, noise_disturbance, periodic_disturbance
 from .helpers import (
     abbreviate,
     colorize,
-    flatten_list,
     friendly_list,
     get_flattened_keys,
     get_flattened_values,
-    strip_underscores,
     inject_value,
+    strip_underscores,
 )
 
 # Default Disturber configuration variable
@@ -269,7 +269,7 @@ class Disturber:
         self.disturbance_info = {}
         self._disturbance_done_warned = False
         self._disturber_cfg = (
-            {**DISTURBER_CFG, **disturber_cfg,}
+            {**DISTURBER_CFG, **disturber_cfg}
             if disturber_cfg is not None
             else DISTURBER_CFG
         )  # Allow users to overwrite the default config
@@ -299,7 +299,9 @@ class Disturber:
             else:
                 self.dt = 1.0
 
-    def _get_disturbance(self, input_signal, disturbance_variant, disturbance_cfg):
+    def _get_disturbance(  # noqa: C901
+        self, input_signal, disturbance_variant, disturbance_cfg
+    ):
         """Retrieves the right disturbance using the disturbance type and variant that
         were set using the :meth:`Disturber.init_disturber` method.
 
@@ -373,11 +375,20 @@ class Disturber:
                 signal_kwargs["phase"] = disturbance_cfg["phase_range"][
                     self._disturbance_range_idx
                 ]
-            return periodic_disturbance(input_signal, current_timestep, **signal_kwargs)
+            if not isinstance(signal_kwargs.values(), np.ndarray):
+                signal_kwargs = {
+                    k: np.repeat(v, input_signal.shape)
+                    for k, v in signal_kwargs.items()
+                }
+            return periodic_disturbance(current_timestep, **signal_kwargs)
         elif disturbance_variant == "noise":
             mean = disturbance_cfg["noise_range"]["mean"][self._disturbance_range_idx]
             std = disturbance_cfg["noise_range"]["std"][self._disturbance_range_idx]
-            return noise_disturbance(input_signal, mean, std)
+            if not isinstance(mean, np.ndarray):
+                mean = np.repeat(mean, input_signal.shape)
+            if not isinstance(std, np.ndarray):
+                std = np.repeat(std, input_signal.shape)
+            return noise_disturbance(mean, std)
         else:
             raise NotImplementedError(
                 f"Disturbance variant '{self._disturbance_variant}' not yet "
@@ -400,7 +411,7 @@ class Disturber:
             disturbance_type_input = disturbance_type
             disturbance_type = [
                 item
-                for item in list(set([disturbance_type, disturbance_type.lower(),]))
+                for item in list(set([disturbance_type, disturbance_type.lower()]))
                 if item in self._disturber_cfg.keys()
             ]  # Catch some common human writing errors
             disturbance_type = disturbance_type[0] if disturbance_type else None
@@ -489,7 +500,7 @@ class Disturber:
                 disturbance_variant = [
                     item
                     for item in list(
-                        set([disturbance_variant, disturbance_variant.lower(),])
+                        set([disturbance_variant, disturbance_variant.lower()])
                     )
                     if item in self._disturber_cfg[self._disturbance_type].keys()
                 ]  # Catch some common human writing errors
@@ -620,9 +631,10 @@ class Disturber:
                     disturbance_range_keys = [
                         key for key in self._disturbance_cfg[req_key] if "_range" in key
                     ]
+                    disturbance_type = re.search("(input(?=_)|output(?=_))", req_key)[0]
                     try:
                         self._validate_disturbance_variant_cfg(
-                            self._disturbance_cfg[req_key]
+                            self._disturbance_cfg[req_key], disturbance_type
                         )
                         vals_key_lengths.extend(
                             [
@@ -645,7 +657,11 @@ class Disturber:
                     len(
                         set(
                             [
-                                (len(item) if isinstance(item, list) else 1)
+                                (
+                                    len(item)
+                                    if isinstance(item, (list, np.ndarray))
+                                    else 1
+                                )
                                 for item in vals_key_lengths
                             ]
                         )
@@ -661,14 +677,18 @@ class Disturber:
                     )
             else:
                 try:
-                    self._validate_disturbance_variant_cfg(self._disturbance_cfg)
+                    self._validate_disturbance_variant_cfg(
+                        self._disturbance_cfg, self._disturbance_type
+                    )
                 except (AssertionError, ValueError) as e:
                     raise Exception(
                         f"The '{self._disturbance_variant}' disturbance config is "
                         "invalid. Please check the configuration and try again."
                     ) from e
 
-    def _validate_disturbance_variant_cfg(self, disturbance_cfg):
+    def _validate_disturbance_variant_cfg(  # noqa: C901
+        self, disturbance_cfg, disturbance_type
+    ):
         """Validates the disturbance variant configuration object to see if it is valid
         for the disturbances that are currently implemented.
 
@@ -706,8 +726,7 @@ class Disturber:
                 "'disturber_cfg'."
             )
 
-        # Check if the required keys are present for the requested disturbance
-        # variant
+        # Check if required keys are found and the range key has the right length
         invalid_keys_string = (
             f"The '{self._disturbance_variant}' disturbance config is invalid. "
             "Please make sure it contains the "
@@ -759,6 +778,38 @@ class Disturber:
                     "length of the 'mean' and 'std' keys are equal (note that the zero "
                     "disturbance is added automatically)."
                 )
+
+        # Check if the range keys have the right shape given the disturbance_type
+        disturbance_range = disturbance_cfg[disturbance_range_keys[0]]
+        disturbance_range_dict = (
+            {"var_key": disturbance_range}
+            if not isinstance(disturbance_range, dict)
+            else disturbance_range
+        )
+        for key, val in disturbance_range_dict.items():
+            if isinstance(val, np.ndarray) and val.ndim > 1:
+                req_length = (
+                    self.action_space.shape[0]
+                    if disturbance_type.lower() == "input"
+                    else self.observation_space.shape[0]
+                )
+                if val.shape[1] != req_length:
+                    space_name = (
+                        "action space"
+                        if disturbance_type.lower() == "input"
+                        else "observation space"
+                    )
+                    key_and_range_string = (
+                        f"'{key}' key in the '{disturbance_range_keys[0]}'"
+                        if isinstance(disturbance_range, dict)
+                        else f"'{disturbance_range_keys[0]}'"
+                    )
+                    raise ValueError(
+                        f"The '{self._disturbance_variant}' disturbance config is "
+                        "invalid. Please make sure that the length of the "
+                        f"{key_and_range_string} (i.e. {val.shape[0]}) is equal to "
+                        f"the {space_name} size (i.e. {req_length})."
+                    )
 
     def _parse_disturbance_cfg(self):
         """Parse the disturbance config to add determine the disturbance range and add
@@ -908,21 +959,9 @@ class Disturber:
                     "label" in self._disturbance_cfg.keys()
                     and len(set(self._disturbance_range_keys)) == 1
                 ):
-                    label_values = [
-                        tuple(item) for item in list(np.hstack(np.dstack(label_values)))
-                    ]
+                    label_values = zip(*deepflatten(zip(*label_values), depth=1))
                 else:
-                    label_values = [
-                        tuple(flatten_list(item))
-                        for item in zip(
-                            *[
-                                zip(*item)
-                                if len(item) > 1
-                                else tuple(flatten_list(item))
-                                for item in label_values
-                            ]
-                        )
-                    ]
+                    label_values = zip(*deepflatten(label_values, depth=1))
 
                     # Generate label literal if not supplied
                     if "label" not in self._disturbance_cfg.keys():
@@ -934,12 +973,12 @@ class Disturber:
                             )
                         ):
                             disturbance_range = self.disturbance_cfg[sub_var][range_key]
-                            label_keys.append(
+                            label_keys.extend(
                                 get_flattened_keys(disturbance_range)
                                 if isinstance(disturbance_range, dict)
-                                else self._disturbance_range_keys[idx]
+                                else [self._disturbance_range_keys[idx]]
                             )
-                        label_abbreviations = abbreviate(list(flatten_list(label_keys)))
+                        label_abbreviations = abbreviate(label_keys)
                         self._disturbance_cfg["label"] = (
                             ":%s, ".join(label_abbreviations) + ":%s"
                         )
@@ -977,9 +1016,9 @@ class Disturber:
                 raise Exception(
                     "Something went wrong while creating the 'plot_labels'. It "
                     "looks like the plot label that is specified in the disturber "
-                    f"config requires {req_vars} values while only "
-                    f"{available_vars} values could be from the disturbance "
-                    "config. Please check your disturbance label and try again."
+                    f"config requires {req_vars} values while {available_vars} values "
+                    "could be retrieved from the disturbance config. Please check your "
+                    "disturbance label and try again."
                 )
         else:
             disturbance_range = self.disturbance_cfg[self._disturbance_range_keys[0]]
@@ -1138,7 +1177,7 @@ class Disturber:
             )
         )
 
-    def disturbed_step(self, action, *args, **kwargs):
+    def disturbed_step(self, action, *args, **kwargs):  # noqa: C901
         """Takes a action inside the gym environment while applying the requested
         disturbance.
 

@@ -4,9 +4,6 @@ dynamics of mRNA and proteins follow an oscillatory behavior
 (see https://www-nature-com.tudelft.idm.oclc.org/articles/35002125).
 """
 
-import importlib
-import sys
-
 import gym
 import matplotlib.pyplot as plt
 import numpy as np

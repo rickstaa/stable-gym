@@ -33,7 +33,14 @@ else:
 # Disturber config used to overwrite the default config
 # NOTE: Merged with the default config
 DISTURBER_CFG = {
-    # Disturbance applied to environment variables
+    # Disturbance type when no type has been given
+    "default_type": "env",
+    ##################################################
+    # Environment disturbances #######################
+    ##################################################
+    # Disturbances applied to the *ENVIRONMENT* variables.
+    # NOTE: The values below are meant as an example the environment disturbance config
+    # needs to be implemented inside the environment.
     "env": {
         "description": "Gravity value",
         # The env variable which you want to disturb

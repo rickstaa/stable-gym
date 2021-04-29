@@ -35,7 +35,12 @@ else:
 DISTURBER_CFG = {
     # Disturbance type when no type has been given
     "default_type": "env",
-    # Disturbance applied to environment variables
+    ##################################################
+    # Environment disturbances #######################
+    ##################################################
+    # Disturbances applied to the *ENVIRONMENT* variables.
+    # NOTE: The values below are meant as an example the environment disturbance config
+    # needs to be implemented inside the environment.
     "env": {
         "description": "Pole length disturbance",
         # The env variable which you want to disturb
@@ -44,6 +49,41 @@ DISTURBER_CFG = {
         "variable_range": np.linspace(0.1, 4.0, num=6, dtype=np.float32),
         # Label used in robustness plots.
         "label": "l: %s",
+    },
+    ##################################################
+    # Output disturbances ############################
+    ##################################################
+    # Disturbance applied to the *OUTPUT* of the environment step function
+    "output": {
+        # The disturbance variant used when no variant is given
+        "default_variant": "impulse",
+        # A random noise that is applied at every timestep
+        "noise": {
+            "description": "Random noise disturbance",
+            # The means and standards deviations of the random noise disturbance
+            "noise_range": {
+                # "mean": np.linspace(80, 155, num=3, dtype=np.int16),  # All obs
+                "mean": np.vstack(
+                    (
+                        np.linspace(80, 155, num=3, dtype=np.int16),  # Obs 1
+                        np.linspace(80, 155, num=3, dtype=np.int16),  # Obs 2
+                        np.linspace(80, 155, num=3, dtype=np.int16),  # Obs 3
+                        np.linspace(80, 155, num=3, dtype=np.int16),  # Obs 4
+                    )
+                ).T,
+                # "std": np.linspace(1.0, 5.0, num=3, dtype=np.int16),  # All Obs
+                "std": np.vstack(
+                    (
+                        np.linspace(1.0, 5.0, num=3, dtype=np.int16),  # Obs 1
+                        np.linspace(1.0, 5.0, num=3, dtype=np.int16),  # Obs 2
+                        np.linspace(1.0, 5.0, num=3, dtype=np.int16),  # Obs 3
+                        np.linspace(1.0, 5.0, num=3, dtype=np.int16),  # Obs 4
+                    )
+                ).T,
+            },
+            # Label used in robustness plots.
+            "label": "x̅: %s, σ: %s",
+        },
     },
 }
 
