@@ -295,7 +295,7 @@ class Disturber:
             self._has_time_vars = True
         if not hasattr(self, "dt"):
             if hasattr(self, "tau"):
-                self.dt = self.tau
+                self.dt = self.tau  # Some environments use tau instead of dt
             else:
                 self.dt = 1.0
 
@@ -337,6 +337,7 @@ class Disturber:
             return np.zeros_like(input_signal)
 
         # Retrieve the requested disturbance
+        # NOTE: New disturbances should be aded here.
         current_timestep = self.t / self.dt
         if "impulse" in disturbance_variant:
             impulse_magnitude = disturbance_cfg["magnitude_range"][
@@ -375,19 +376,25 @@ class Disturber:
                 signal_kwargs["phase"] = disturbance_cfg["phase_range"][
                     self._disturbance_range_idx
                 ]
+
+            # Make sure the signal kwarg has the right shape
             if not isinstance(signal_kwargs.values(), np.ndarray):
                 signal_kwargs = {
                     k: np.repeat(v, input_signal.shape)
                     for k, v in signal_kwargs.items()
                 }
+
             return periodic_disturbance(current_timestep, **signal_kwargs)
         elif disturbance_variant == "noise":
             mean = disturbance_cfg["noise_range"]["mean"][self._disturbance_range_idx]
             std = disturbance_cfg["noise_range"]["std"][self._disturbance_range_idx]
+
+            # Make sure that the mean and std have the right shape
             if not isinstance(mean, np.ndarray):
                 mean = np.repeat(mean, input_signal.shape)
             if not isinstance(std, np.ndarray):
                 std = np.repeat(std, input_signal.shape)
+
             return noise_disturbance(mean, std)
         else:
             raise NotImplementedError(
@@ -407,7 +414,7 @@ class Disturber:
             ValueError: Thrown when the disturbance type does not exist on the
                 disturber.
         """
-        if disturbance_type is not None:  # If None
+        if disturbance_type is not None:
             disturbance_type_input = disturbance_type
             disturbance_type = [
                 item
@@ -451,7 +458,7 @@ class Disturber:
                     )
                 )
                 disturbance_type = self._disturber_cfg["default_type"]
-            else:
+            else:  # Thrown warning if type could not be retrieved
                 valid_type_keys = {
                     k for k in self._disturber_cfg.keys() if k not in ["default_type"]
                 }
@@ -465,7 +472,6 @@ class Disturber:
                 raise ValueError(
                     d_type_info_msg, "disturbance_type",
                 )
-
         self._disturbance_type = disturbance_type
 
     def _set_disturber_variant(self, disturbance_variant):
@@ -550,6 +556,7 @@ class Disturber:
                         "default_variant"
                     ]
                 else:
+                    # Thrown warning if disturbance variant could not be retrieved
                     valid_variant_keys = {
                         k
                         for k in self._disturber_cfg[self._disturbance_type].keys()
@@ -779,7 +786,7 @@ class Disturber:
                     "disturbance is added automatically)."
                 )
 
-        # Check if the range keys have the right shape given the disturbance_type
+        # Check if each observation/action has a disturbance range if it is a 2D array
         disturbance_range = disturbance_cfg[disturbance_range_keys[0]]
         disturbance_range_dict = (
             {"var_key": disturbance_range}
@@ -828,46 +835,48 @@ class Disturber:
                         if "_range" in key
                     ][0]
                 )
+
+                # Thrown warning if the disturbance variant is invalid
+                if not isinstance(
+                    self._disturbance_cfg[sub_variant_key][
+                        self._disturbance_range_keys[-1]
+                    ],
+                    (dict, list, np.ndarray),
+                ):
+                    raise TypeError(
+                        f"The '{sub_variant_key}' variable found in the "
+                        "'disturber_cfg' has the wrong type. Please make sure it "
+                        "contains a 'list' or a 'dictionary'."
+                    )
+
+                # Add zero disturbance and retrieve disturbance range length
+                disturbance_sub_variant_cfg = inject_value(
+                    self._disturbance_cfg[sub_variant_key][
+                        self._disturbance_range_keys[-1]
+                    ],
+                    value=0.0,
+                )  # Add undisturbed state if not yet present
                 if isinstance(
                     self._disturbance_cfg[sub_variant_key][
                         self._disturbance_range_keys[-1]
                     ],
                     dict,
                 ):
-                    disturbance_sub_variant_cfg = inject_value(
-                        self._disturbance_cfg[sub_variant_key][
-                            self._disturbance_range_keys[-1]
-                        ],
-                        value=0.0,
-                    )  # Add undisturbed state if not yet present
                     self._disturbance_range_length = len(
                         list(disturbance_sub_variant_cfg.values())[0]
                     )
-                    self.disturbance_cfg[sub_variant_key][
-                        self._disturbance_range_keys[-1]
-                    ] = disturbance_sub_variant_cfg
                 elif isinstance(
                     self._disturbance_cfg[sub_variant_key][
                         self._disturbance_range_keys[-1]
                     ],
                     (list, np.ndarray),
                 ):
-                    disturbance_sub_variant_cfg = inject_value(
-                        self._disturbance_cfg[sub_variant_key][
-                            self._disturbance_range_keys[-1]
-                        ],
-                        value=0.0,
-                    )  # Add undisturbed state if not yet present
                     self._disturbance_range_length = len(disturbance_sub_variant_cfg)
-                    self.disturbance_cfg[sub_variant_key][
-                        self._disturbance_range_keys[-1]
-                    ] = disturbance_sub_variant_cfg
-                else:
-                    raise TypeError(
-                        f"The '{sub_variant_key}' variable found in the "
-                        "'disturber_cfg' has the wrong type. Please make sure it "
-                        "contains a 'list' or a 'dictionary'."
-                    )
+
+                # Store disturbance subvariant config
+                self.disturbance_cfg[sub_variant_key][
+                    self._disturbance_range_keys[-1]
+                ] = disturbance_sub_variant_cfg
         elif self._disturbance_type == "env":
             variable = self._disturbance_cfg["variable"]
             self._disturbance_range_keys.append(
@@ -883,29 +892,34 @@ class Disturber:
             self._disturbance_range_keys.append(
                 [key for key in self._disturbance_cfg.keys() if "_range" in key][0]
             )
-            if isinstance(
-                self._disturbance_cfg[self._disturbance_range_keys[-1]], dict
-            ):
-                disturbance_cfg = inject_value(
-                    self._disturbance_cfg[self._disturbance_range_keys[-1]], value=0.0
-                )  # Add undisturbed state if not yet present
-                self._disturbance_range_length = len(list(disturbance_cfg.values())[0])
-                self.disturbance_cfg[self._disturbance_range_keys[-1]] = disturbance_cfg
-            elif isinstance(
+
+            # Thrown warning if the disturbance variant is invalid
+            if not isinstance(
                 self._disturbance_cfg[self._disturbance_range_keys[-1]],
-                (list, np.ndarray),
+                (dict, list, np.ndarray),
             ):
-                disturbance_cfg = inject_value(
-                    self._disturbance_cfg[self._disturbance_range_keys[-1]], value=0.0
-                )  # Add undisturbed state if not yet present
-                self._disturbance_range_length = len(disturbance_cfg)
-                self.disturbance_cfg[self._disturbance_range_keys[-1]] = disturbance_cfg
-            else:
                 raise TypeError(
                     f"The '{self._disturbance_range_keys[-1]}' variable found in "
                     "the 'disturber_cfg' has the wrong type. Please make sure it "
                     "contains a 'list' or a 'dictionary'."
                 )
+
+            # Add zero disturbance and retrieve disturbance range length
+            disturbance_cfg = inject_value(
+                self._disturbance_cfg[self._disturbance_range_keys[-1]], value=0.0
+            )  # Add undisturbed state if not yet present
+            if isinstance(
+                self._disturbance_cfg[self._disturbance_range_keys[-1]], dict
+            ):
+                self._disturbance_range_length = len(list(disturbance_cfg.values())[0])
+            elif isinstance(
+                self._disturbance_cfg[self._disturbance_range_keys[-1]],
+                (list, np.ndarray),
+            ):
+                self._disturbance_range_length = len(disturbance_cfg)
+
+            # Store disturbance config
+            self.disturbance_cfg[self._disturbance_range_keys[-1]] = disturbance_cfg
 
     def _set_disturbance_cfg(self):
         """Sets the disturbance configuration based on the set 'disturbance_type` and/or
@@ -923,9 +937,9 @@ class Disturber:
                 self._disturbance_variant
             ]
 
+        # Validate disturbance config, add initial (zero) disturbance and retrieve
+        # disturbance range length
         self._validate_disturbance_cfg()
-
-        # Adds initial disturbance to the configuration and get disturbance range length
         self._parse_disturbance_cfg()
 
     def _get_plot_labels(self):  # noqa: C901
@@ -1038,6 +1052,8 @@ class Disturber:
         self.disturbance_info["type"] = self._disturbance_type
         self.disturbance_info["variant"] = self._disturbance_variant
         self.disturbance_info["variables"] = {}
+
+        # Store disturbance range values and current value
         if self._disturbance_type == "combined":
             sub_vars = [
                 re.search("(input(?=_)|output(?=_))", key)[0]
@@ -1056,7 +1072,7 @@ class Disturber:
             ):
                 disturbance_range = self.disturbance_cfg[sub_variant][range_key]
                 self.disturbance_info["variables"][var]["values"] = disturbance_range
-                if isinstance(self._disturbance_cfg[sub_variant][range_key], dict,):
+                if isinstance(self._disturbance_cfg[sub_variant][range_key], dict):
                     self.disturbance_info["variables"][var]["value"] = {
                         k: v[self._disturbance_range_idx]
                         for k, v in disturbance_range.items()

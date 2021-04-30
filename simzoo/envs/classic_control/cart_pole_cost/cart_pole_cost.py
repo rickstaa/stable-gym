@@ -128,20 +128,21 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.length = self._length_init = 1.0
         self.mass_cart = self._mass_cart_init = 1.0
         self.mass_pole = self._mass_pole_init = 0.1
-        self.gravity = self._gravity_init = 10.0  # DEBUG: OpenAi uses 9.8
-        self.force_mag = 20  # NOTE: OpenAi uses 10.0
+        self.gravity = self._gravity_init = 9.8
+        # self.force_mag = 10  # NOTE: OpenAI values
+        self.force_mag = 20
         self._kinematics_integrator = kinematics_integrator
         self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1]
         )  # Initial state when random is disabled
         # self._init_state_range = {
-        #     "low": [-0.2, -0.05, -0.05, -0.05],  # NOTE: OpenAi uses -0.05
-        #     "high": [0.2, 0.05, 0.05, 0.05],  # NOTE: OpenAi uses 0.05
-        # }  # Initial state range when random is enabled
+        #     "low": [-0.2, -0.05, -0.05, -0.05],
+        #     "high": [0.2, 0.05, 0.05, 0.05],
+        # }  # NOTE: OpenAI values
         self._init_state_range = {
-            "low": [-5, -0.2, -0.2, -0.2],  # NOTE: OpenAi uses -0.05
-            "high": [5, 0.2, 0.2, 0.2],  # NOTE: OpenAi uses 0.05
-        }  # DEBUG: Openai uses above
+            "low": [-5, -0.2, -0.2, -0.2],
+            "high": [5, 0.2, 0.2, 0.2],
+        }  # Initial state range when random is enabled
 
         # Print environment information
         print(
@@ -170,14 +171,19 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # Thresholds
         # self.theta_threshold_radians = (
         #     12 * 2 * math.pi / 360
-        # )  # Angle at which to fail the episode
-        self.theta_threshold_radians = 20 * 2 * math.pi / 360  # DEBUG: Openai uses 12
-        self.x_threshold = 10  # NOTE: OpenAi Uses 2.4
+        # ) # NOTE: OpenAi value
+        self.theta_threshold_radians = (
+            20 * 2 * math.pi / 360
+        )  # Angle at which to fail the episode
+        # self.x_threshold = 2.4  # NOTE: OpenAi value
+        self.x_threshold = 10
         self.y_threshold = (
             5  # NOTE: Defines real world window height (not used as threshold)
         )
-        self.max_v = 50  # NOTE: OpenAi uses np.finfo(np.float32).max
-        self.max_w = 50  # NOTE: OpenAi uses np.finfo(np.float32).max
+        # self.max_v = np.finfo(np.float32).max  # NOTE: OpenAi value
+        # self.max_w = np.finfo(np.float32).max  # NOTE: OpenAi value
+        self.max_v = 50
+        self.max_w = 50
 
         # Set angle limit set to 2 * theta_threshold_radians so failing observation
         # is still within bounds

@@ -202,11 +202,11 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         x_1, x_2 = state
         y_1 = np.sin(x_1) + self.np_random.normal(self.mean2, np.sqrt(self.cov2))
         hat_y_1 = np.sin(hat_x_1 + self.dt * hat_x_2)
+
+        # Mimic the signal drop rate
         # flag=1: received
         # flag=0: dropout
-        (flag,) = self.np_random.binomial(1, 1 - self.missing_rate, 1)
-        # drop_rate = 1
-        # to construct cost
+        (flag) = self.np_random.binomial(1, 1 - self.missing_rate, 1)
         if flag == 1:
             hat_x_1 = hat_x_1 + self.dt * hat_x_2 + self.dt * u1 * (y_1 - hat_y_1)
             hat_x_2 = (
