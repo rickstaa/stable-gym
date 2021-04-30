@@ -50,7 +50,7 @@ jobs:
           level: warning
   flake8: # Lints python code
     name: runner / flake8
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout mlc repository
         uses: actions/checkout@v2
