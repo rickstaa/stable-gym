@@ -94,7 +94,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
     instances = []
 
-    def __init__(self, reference_type="periodic", seed=None):
+    def __init__(self, reference_type="periodic", seed=None, clipped_action=True):
         """Constructs all the necessary attributes for the oscillator instance.
 
         Args:
@@ -102,11 +102,14 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 (``constant`` or ``periodic``), by default ``periodic``.
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
+            clipped_action (str, optional): Whether the actions should be clipped if
+                they are greater than the set action limit. Defaults to ``True``.
         """
         super().__init__()  # Setup disturber
         self.__class__.instances.append(self)
         self._instance_nr = len(self.__class__.instances)
         self._action_clip_warning = False
+        self._clipped_action = clipped_action
 
         self.reference_type = reference_type
         self.t = 0.0
@@ -180,24 +183,27 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
         # Clip action if needed
-        if (
-            (action < self.action_space.low).any()
-            or (action > self.action_space.high).any()
-            and not self._action_clip_warning
-        ):
-            print(
-                colorize(
-                    (
-                        f"WARNING: Action '{action}' was clipped as it is not in the "
-                        "action_space 'high: "
-                        f"{self.action_space.high}, low: {self.action_space.low}'."
-                    ),
-                    "yellow",
-                    bold=True,
+        if self._clipped_action:
+            if (
+                (action < self.action_space.low).any()
+                or (action > self.action_space.high).any()
+                and not self._action_clip_warning
+            ):
+                print(
+                    colorize(
+                        (
+                            f"WARNING: Action '{action}' was clipped as it is not in the "
+                            "action_space 'high: "
+                            f"{self.action_space.high}, low: {self.action_space.low}'."
+                        ),
+                        "yellow",
+                        bold=True,
+                    )
                 )
-            )
-            self._action_clip_warning = True
-        u1, u2, u3 = np.clip(action, self.action_space.low, self.action_space.high)
+                self._action_clip_warning = True
+            u1, u2, u3 = np.clip(action, self.action_space.low, self.action_space.high)
+        else:
+            u1, u2, u3 = action
 
         # Perform action in the environment and return the new state
         # NOTE: The new state is found by solving 3 first-order differential equations.

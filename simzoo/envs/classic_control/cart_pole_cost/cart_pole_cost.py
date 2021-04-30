@@ -101,6 +101,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         task_type="stabilization",
         reference_type="constant",
         kinematics_integrator="euler",
+        clipped_action=True,
     ):
         """Constructs all the necessary attributes for the CartPoleCost instance.
 
@@ -115,6 +116,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             kinematics_integrator (str, optional): Solver used for the kinematics
                 intergration (options are "euler", "friction", "semi-implicit euler").
                 Defaults to "euler".
+            clipped_action (str, optional): Whether the actions should be clipped if
+                they are greater than the set action limit. Defaults to ``True``.
         """
         super().__init__()  # Setup disturber
         self.__class__.instances.append(self)
@@ -132,6 +135,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # self.force_mag = 10  # NOTE: OpenAI values
         self.force_mag = 20
         self._kinematics_integrator = kinematics_integrator
+        self._clipped_action = clipped_action
         self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1]
         )  # Initial state when random is disabled
@@ -312,24 +316,27 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
         # Clip action if needed
-        if (
-            (action < self.action_space.low).any()
-            or (action > self.action_space.high).any()
-            and not self._action_clip_warning
-        ):
-            print(
-                colorize(
-                    (
-                        f"WARNING: Action '{action}' was clipped as it is not in the "
-                        "action_space 'high: "
-                        f"{self.action_space.high}, low: {self.action_space.low}'."
-                    ),
-                    "yellow",
-                    bold=True,
+        if self._clipped_action:
+            if (
+                (action < self.action_space.low).any()
+                or (action > self.action_space.high).any()
+                and not self._action_clip_warning
+            ):
+                print(
+                    colorize(
+                        (
+                            f"WARNING: Action '{action}' was clipped as it is not in "
+                            f"the action_space 'high: {self.action_space.high}, "
+                            f"low: {self.action_space.low}'."
+                        ),
+                        "yellow",
+                        bold=True,
+                    )
                 )
-            )
-            self._action_clip_warning = True
-        force = np.clip(action, self.action_space.low, self.action_space.high)
+                self._action_clip_warning = True
+            force = np.clip(action, self.action_space.low, self.action_space.high)
+        else:
+            force = action
 
         # For the interested reader:
         # https://coneural.org/florian/papers/05_cart_pole.pdf

@@ -91,8 +91,8 @@ DISTURBER_CFG = {
             "description": "Random noise disturbance",
             # The means and standards deviations of the random noise disturbance
             "noise_range": {
-                "mean": np.linspace(80, 155, num=3, dtype=np.int16),
-                "std": np.linspace(1.0, 5.0, num=3, dtype=np.int16),
+                "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
+                "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
             },
             # Label used in robustness plots.
             "label": "x̅: %s, σ: %s",
@@ -144,8 +144,8 @@ DISTURBER_CFG = {
             "description": "Random noise disturbance",
             # The means and standards deviations of the random noise disturbance
             "noise_range": {
-                "mean": np.linspace(80, 155, num=3, dtype=np.int16),
-                "std": np.linspace(1.0, 5.0, num=3, dtype=np.int16),
+                "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
+                "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
             },
             # Label used in robustness plots.
             "label": "x̅: %s, σ: %s",
@@ -184,16 +184,16 @@ DISTURBER_CFG = {
                 # The means and standards deviations of the random input noise
                 # disturbance
                 "noise_range": {
-                    "mean": np.linspace(80, 155, num=3, dtype=np.int16),
-                    "std": np.linspace(1.0, 5.0, num=3, dtype=np.int16),
+                    "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
+                    "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
                 },
             },
             "output_noise": {
                 # The means and standards deviations of the random output noise
                 # disturbance
                 "noise_range": {
-                    "mean": np.linspace(80, 155, num=3, dtype=np.int16),
-                    "std": np.linspace(1.0, 5.0, num=3, dtype=np.int16),
+                    "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
+                    "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
                 },
             },
             # Label used in robustness plots.
@@ -212,8 +212,8 @@ DISTURBER_CFG = {
                 # The means and standards deviations of the random output noise
                 # disturbance
                 "noise_range": {
-                    "mean": np.linspace(80, 155, num=4, dtype=np.int16),
-                    "std": np.linspace(1.0, 5.0, num=4, dtype=np.int16),
+                    "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
+                    "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
                 },
             },
             # Label used in robustness plots.

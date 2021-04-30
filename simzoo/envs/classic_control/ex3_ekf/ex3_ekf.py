@@ -96,12 +96,16 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         sigma (float): The variance of the system noise.
     """  # noqa: E501, W605
 
-    def __init__(self, seed=None):
+    def __init__(
+        self, seed=None, clipped_action=True,
+    ):
         """Constructs all the necessary attributes for the Ex3EKF instance.
 
         Args:
             seed (int, optional): A random seed for the environment. By default
                 `None``.
+            clipped_action (str, optional): Whether the actions should be clipped if
+                they are greater than the set action limit. Defaults to ``True``.
         """
         super().__init__()  # Setup disturber
         self._action_clip_warning = False
@@ -141,6 +145,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         )
 
         self.seed(seed)
+        self._clipped_action = clipped_action
         self.viewer = None
         self.state = None
         self.output = None
@@ -166,24 +171,27 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
         # Clip action if needed
-        if (
-            (action < self.action_space.low).any()
-            or (action > self.action_space.high).any()
-            and not self._action_clip_warning
-        ):
-            print(
-                colorize(
-                    (
-                        f"WARNING: Action '{action}' was clipped as it is not in the "
-                        "action_space 'high: "
-                        f"{self.action_space.high}, low: {self.action_space.low}'."
-                    ),
-                    "yellow",
-                    bold=True,
+        if self._clipped_action:
+            if (
+                (action < self.action_space.low).any()
+                or (action > self.action_space.high).any()
+                and not self._action_clip_warning
+            ):
+                print(
+                    colorize(
+                        (
+                            f"WARNING: Action '{action}' was clipped as it is not in the "
+                            "action_space 'high: "
+                            f"{self.action_space.high}, low: {self.action_space.low}'."
+                        ),
+                        "yellow",
+                        bold=True,
+                    )
                 )
-            )
-            self._action_clip_warning = True
-        u1, u2 = np.clip(action, self.action_space.low, self.action_space.high)
+                self._action_clip_warning = True
+            u1, u2 = np.clip(action, self.action_space.low, self.action_space.high)
+        else:
+            u1, u2 = action
 
         # Perform action in the environment and return the new state
         t = self.t
