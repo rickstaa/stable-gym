@@ -12,24 +12,32 @@ if importlib.util.find_spec("simzoo") is not None:
 else:
     namespace_prefix = "bayesian_learning_control.simzoo."
 
+# Available environments
 ENVS = {
-    "name": ["Oscillator-v1", "Ex3EKF-v1", "CartPoleCost-v0"],
-    "module": [
-        "simzoo.envs.biological.oscillator.oscillator:Oscillator",
-        "simzoo.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
-        "simzoo.envs.classic_control.cart_pole_cost.cart_pole_cost:CartPoleCost",
-    ],
-    "max_step": [400, 400, 250],
-    "reward_threshold": [300, 300, 30],
+    "Oscillator-v1": {
+        "module": "simzoo.envs.biological.oscillator.oscillator:Oscillator",
+        "max_step": 400,
+        "reward_threshold": 300,
+    },
+    "Ex3EKF-v1": {
+        "module": "simzoo.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
+        "max_step": 400,
+        "reward_threshold": 300,
+    },
+    "CartPoleCost-v0": {
+        "module": "simzoo.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
+        "max_step": 400,
+        "reward_threshold": 300,
+    },
 }
 
-for idx, env in enumerate(ENVS["name"]):
+for env, val in ENVS.items():
     if (
         env not in gym.envs.registry.env_specs
     ):  # NOTE: Required because we use namespace packages
         register(
             id=env,
-            entry_point=namespace_prefix + ENVS["module"][idx],
-            max_episode_steps=ENVS["max_step"][idx],
-            reward_threshold=ENVS["reward_threshold"][idx],
+            entry_point=namespace_prefix + val["module"],
+            max_episode_steps=val["max_step"],
+            reward_threshold=val["reward_threshold"],
         )
