@@ -19,7 +19,7 @@ else:
     from bayesian_learning_control.simzoo.simzoo import ENVS
 
 
-@pytest.mark.parametrize("env_name", ENVS["name"])
+@pytest.mark.parametrize("env_name", ENVS.keys())
 def test_env_reg(env_name):
     env = envs.make(env_name)
     assert env.spec.id == env_name
