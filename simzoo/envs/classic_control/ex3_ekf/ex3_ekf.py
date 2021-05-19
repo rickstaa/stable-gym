@@ -180,9 +180,9 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
                 print(
                     colorize(
                         (
-                            f"WARNING: Action '{action}' was clipped as it is not in the "
-                            "action_space 'high: "
-                            f"{self.action_space.high}, low: {self.action_space.low}'."
+                            f"WARNING: Action '{action}' was clipped as it is not in "
+                            f"the action_space 'high: {self.action_space.high}, "
+                            f"low: {self.action_space.low}'."
                         ),
                         "yellow",
                         bold=True,

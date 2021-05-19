@@ -1202,7 +1202,7 @@ class Disturber:
 
         Raises:
             RuntimeError: Thrown when this method is called before the
-            :meth:`Disturber.init_disturber` method or when it is caleld when the
+            :meth:`Disturber.init_disturber` method or when it is called when the
             disturbance type is ``env``.
 
         Returns:
