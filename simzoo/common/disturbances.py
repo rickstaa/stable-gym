@@ -13,7 +13,7 @@ def impulse_disturbance(
     Args:
         input_signal (numpy.ndarray): The signal to which the disturbance should be
             applied. Used for determining the direction of the disturbance.
-        impulse_magnitude (union[float, :obj:`np.ndarray`]): The magnitude of the
+        impulse_magnitude (union[float, :obj:`numpy.ndarray`]): The magnitude of the
             impulse disturbance.
         impulse_instant (float): The time step at which you want to apply the impulse
             disturbance.
@@ -44,11 +44,11 @@ def periodic_disturbance(current_timestep, amplitude=1, frequency=10, phase_shif
 
     Args:
         current_timestep(int): The current time step.
-        amplitude (union[float, np.ndarray), optional): The periodic signal amplitude.
+        amplitude (union[float, numpy.ndarray), optional): The periodic signal amplitude.
             Defaults to ``1``.
-        frequency (union[float, np.ndarray), optional): The periodic signal frequency.
+        frequency (union[float, numpy.ndarray), optional): The periodic signal frequency.
             Defaults to ``10``.
-        phase_shift (union[float, np.ndarray), optional): The periodic signal phase
+        phase_shift (union[float, numpy.ndarray), optional): The periodic signal phase
             shift. Defaults to ``0``.
 
     Returns:
@@ -61,8 +61,8 @@ def noise_disturbance(mean, std):
     """Returns a random noise specified mean and a standard deviation.
 
     Args:
-        mean (union[float, :obj:`np.ndarray`]): The mean value of the noise.
-        std (union[float, :obj:`np.ndarray`]): The standard deviation of the noise.
+        mean (union[float, :obj:`numpy.ndarray`]): The mean value of the noise.
+        std (union[float, :obj:`numpy.ndarray`]): The standard deviation of the noise.
 
     Returns:
         numpy.ndarray: The disturbance array.

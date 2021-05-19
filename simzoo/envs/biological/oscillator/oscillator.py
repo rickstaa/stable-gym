@@ -8,10 +8,9 @@ import gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gym import spaces
-from gym.utils import seeding, colorize
+from gym.utils import colorize, seeding
 
 from .oscillator_disturber import OscillatorDisturber
-
 
 RANDOM_STEP = False  # Use random steps in __main__
 
@@ -192,9 +191,9 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 print(
                     colorize(
                         (
-                            f"WARNING: Action '{action}' was clipped as it is not in the "
-                            "action_space 'high: "
-                            f"{self.action_space.high}, low: {self.action_space.low}'."
+                            f"WARNING: Action '{action}' was clipped as it is not in "
+                            f"the action_space 'high: {self.action_space.high}, "
+                            f"low: {self.action_space.low}'."
                         ),
                         "yellow",
                         bold=True,
