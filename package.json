@@ -7,7 +7,7 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "auto-changelog": "2.2.1"
+    "auto-changelog": "2.3.0"
   },
   "scripts": {
     "auto-changelog": "auto-changelog -p && git add CHANGELOG.md"
