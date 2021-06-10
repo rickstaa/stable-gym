@@ -32,7 +32,9 @@ def impulse_disturbance(
         else:
             dist_val = np.zeros_like(input_signal)
     else:
-        if current_timestep == impulse_instant:
+        if (
+            round(current_timestep) == impulse_instant
+        ):  # FIXME: round is Quickfix make more clear fix!
             dist_val = impulse_magnitude * (-np.sign(input_signal))
         else:
             dist_val = np.zeros_like(input_signal)
