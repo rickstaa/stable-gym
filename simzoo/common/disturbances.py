@@ -44,10 +44,10 @@ def periodic_disturbance(current_timestep, amplitude=1, frequency=10, phase_shif
 
     Args:
         current_timestep(int): The current time step.
-        amplitude (union[float, numpy.ndarray), optional): The periodic signal amplitude.
-            Defaults to ``1``.
-        frequency (union[float, numpy.ndarray), optional): The periodic signal frequency.
-            Defaults to ``10``.
+        amplitude (union[float, numpy.ndarray], optional): The periodic signal
+            amplitude. Defaults to ``1``.
+        frequency (union[float, numpy.ndarray], optional): The periodic signal
+            frequency. Defaults to ``10``.
         phase_shift (union[float, numpy.ndarray), optional): The periodic signal phase
             shift. Defaults to ``0``.
 
