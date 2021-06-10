@@ -58,7 +58,7 @@ DISTURBER_CFG = {
             # The step at which you want to apply the impulse
             "impulse_instant": 100,
             # The magnitudes you want to apply
-            "magnitude_range": np.linspace(0.0, 100, num=5, dtype=np.float32),
+            "magnitude_range": np.linspace(80, 80, num=1, dtype=np.float32),
             # Label used in robustness plots
             "label": "M: %s",
         },
