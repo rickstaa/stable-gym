@@ -1,11 +1,18 @@
 """Common disturbances used in the disturber.
 """
 
+import math
+
 import numpy as np
 
 
 def impulse_disturbance(
-    input_signal, impulse_magnitude, impulse_instant, impulse_type, current_timestep,
+    input_signal,
+    impulse_magnitude,
+    impulse_instant,
+    current_timestep,
+    impulse_length=1.0,
+    impulse_frequency=0.0,
 ):
     """Retrieves a impulse disturbance that acts in the opposite direction of the input
     signal.
@@ -17,35 +24,38 @@ def impulse_disturbance(
             impulse disturbance.
         impulse_instant (float): The time step at which you want to apply the impulse
             disturbance.
-        impulse_type (str): The type of impulse disturbance you want to use. Options
-            are: 'regular' and 'constant'. A regular (instant) impulse (applied at a
-            single time step) and a constant impulse (applied at all steps following the
-            set time instant)
         current_timestep (int): The current time step.
+        impulse_length (float): The length of the supplied impulse disturbance. Defaults
+            to `1.0` s.
+        impulse_frequency (float): The frequency that is used for supplying the impulse.
+            Defaults to `0.0` meaning only one impulse is supplied.
+        impulse_type (str): The type of impulse disturbance you want to use. Options
+            are: 'instant' and 'constant'. A instant impulse (applied at a
+            single time step) and a constant impulse (applied at all steps following the
+            set time instant). Defaults to 'instant`.
 
     Returns:
         numpy.ndarray: The disturbance array.
     """
-    if impulse_type.lower() == "constant":
-        if current_timestep >= impulse_instant:
-            dist_val = impulse_magnitude * (-np.sign(input_signal))
+    impulse_length = impulse_length if impulse_length is not None else 1.0
+    if current_timestep >= impulse_instant:
+        if impulse_frequency == 0.0 or impulse_frequency is None:
+            if current_timestep <= impulse_instant + impulse_length:
+                return impulse_magnitude * (-np.sign(input_signal))
         else:
-            dist_val = np.zeros_like(input_signal)
-    else:
-        # FIXME: Quick experiment
-        # if (
-        #     round(current_timestep) == impulse_instant
-        # ):  # FIXME: round is Quickfix make more clear fix!
-        #     dist_val = impulse_magnitude * (-np.sign(input_signal))
-        # else:
-        #     dist_val = np.zeros_like(input_signal)
-        if (
-            round(current_timestep) % 20 == 0 and round(current_timestep) != 0
-        ):  # FIXME: round is Quickfix make more clear fix!
-            dist_val = impulse_magnitude * (-np.sign(input_signal))
-        else:
-            dist_val = np.zeros_like(input_signal)
-    return dist_val
+            if math.modf(
+                (current_timestep - impulse_instant) / (1 / impulse_frequency)
+            )[0] >= 0.0 and math.modf(
+                (current_timestep - impulse_instant) / (1 / impulse_frequency)
+            )[
+                0
+            ] <= impulse_length / (
+                1 / impulse_frequency
+            ):
+                return impulse_magnitude * (-np.sign(input_signal))
+
+    # # Return undisturbed state
+    return np.zeros_like(input_signal)
 
 
 def periodic_disturbance(current_timestep, amplitude=1, frequency=10, phase_shift=0):

@@ -6,7 +6,6 @@ documentation.
 """  # noqa: E501
 
 import re
-from xml.etree.ElementInclude import include
 
 import gym
 import numpy as np
@@ -56,22 +55,16 @@ DISTURBER_CFG = {
         # Impulse disturbance applied opposite to the action at a given timestep
         "impulse": {
             "description": "Impulse disturbance",
-            # The step at which you want to apply the impulse
+            # The step at which you want to first apply the impulse
             "impulse_instant": 100,
+            # The length of the impulse in seconds
+            "impulse_length": 1.0,
+            # The frequency of the impulse. If you  specify 0.0 only one impulse is
+            # given at the impulse instant).
+            "impulse_frequency": 0.0,
             # The magnitudes you want to apply
             "magnitude_range": np.linspace(80, 155, num=5, dtype=np.float32),
             # Label used in robustness plots
-            "label": "M: %s",
-        },
-        # Similar above but now the impulse force is continuously applied after the
-        # impulse instant has been reached.
-        "constant_impulse": {
-            "description": "Constant impulse disturbance",
-            # The step at which you want to apply the impulse
-            "impulse_instant": 100,
-            # The magnitudes you want to apply
-            "magnitude_range": np.linspace(80, 155, num=3, dtype=np.int16),
-            # Label that can be used in plots
             "label": "M: %s",
         },
         # A periodic signal noise that is applied at every time step
@@ -109,8 +102,13 @@ DISTURBER_CFG = {
         # Impulse disturbance applied opposite to the action at a given timestep
         "impulse": {
             "description": "Impulse disturbance",
-            # The step at which you want to apply the impulse
+            # The step at which you want to first apply the impulse
             "impulse_instant": 100,
+            # The length of the impulse in seconds
+            "impulse_length": 1.0,
+            # The frequency of the impulse. If you  specify 0.0 only one impulse is
+            # given at the impulse instant).
+            "impulse_frequency": 0.0,
             # The magnitudes you want to apply
             "magnitude_range": np.linspace(0.0, 3.0, num=5, dtype=np.float32),
             # Label used in robustness plots
@@ -345,17 +343,23 @@ class Disturber:
                 self._disturbance_range_idx
             ]
             impulse_instant = disturbance_cfg["impulse_instant"]
-            impulse_type = (
-                "constant"
-                if ("constant" in disturbance_variant)
-                else disturbance_variant
+            impulse_length = (
+                disturbance_cfg["impulse_length"]
+                if "impulse_length" in disturbance_cfg.keys()
+                else None
+            )
+            impulse_frequency = (
+                disturbance_cfg["impulse_frequency"]
+                if "impulse_frequency" in disturbance_cfg.keys()
+                else None
             )
             return impulse_disturbance(
-                input_signal,
-                impulse_magnitude,
-                impulse_instant,
-                impulse_type,
-                current_timestep,
+                input_signal=input_signal,
+                impulse_magnitude=impulse_magnitude,
+                impulse_instant=impulse_instant,
+                current_timestep=current_timestep,
+                impulse_length=impulse_length,
+                impulse_frequency=impulse_frequency,
             )
         elif disturbance_variant == "periodic":
             signal_kwargs = {}

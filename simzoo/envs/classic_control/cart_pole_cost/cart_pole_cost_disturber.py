@@ -56,10 +56,15 @@ DISTURBER_CFG = {
         # Impulse disturbance applied opposite to the action at a given timestep
         "impulse": {
             "description": "Impulse disturbance",
-            # The step at which you want to apply the impulse
+            # The step at which you want to first apply the impulse
             "impulse_instant": 100,
+            # The length of the impulse in seconds
+            "impulse_length": 1.0,
+            # The frequency of the impulse in Hz. If you  specify 0.0 only one impulse
+            # is given at the impulse instant).
+            "impulse_frequency": 0.05,
             # The magnitudes you want to apply
-            "magnitude_range": np.linspace(80, 155, num=6, dtype=np.float32),
+            "magnitude_range": np.linspace(80, 155, num=5, dtype=np.float32),
             # Label used in robustness plots
             "label": "M: %s",
         },
