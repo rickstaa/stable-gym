@@ -50,6 +50,55 @@ DISTURBER_CFG = {
         # Label used in robustness plots.
         "label": "l: %s",
     },
+    "input": {
+        # The disturbance variant used when no variant is given
+        "default_variant": "impulse",
+        # Impulse disturbance applied opposite to the action at a given timestep
+        "impulse": {
+            "description": "Impulse disturbance",
+            # The step at which you want to apply the impulse
+            "impulse_instant": 100,
+            # The magnitudes you want to apply
+            "magnitude_range": np.linspace(80, 155, num=6, dtype=np.float32),
+            # Label used in robustness plots
+            "label": "M: %s",
+        },
+        # Similar above but now the impulse force is continuously applied after the
+        # impulse instant has been reached.
+        "constant_impulse": {
+            "description": "Constant impulse disturbance",
+            # The step at which you want to apply the impulse
+            "impulse_instant": 100,
+            # The magnitudes you want to apply
+            "magnitude_range": np.linspace(80, 155, num=3, dtype=np.int16),
+            # Label that can be used in plots
+            "label": "M: %s",
+        },
+        # A periodic signal noise that is applied at every time step
+        # NOTE: Currently you can only uncomment one of the ranges.
+        "periodic": {
+            "description": "Periodic noise disturbance",
+            # The magnitudes of the periodic signal
+            "amplitude_range": np.linspace(10, 80, num=3, dtype=np.int16),
+            # The frequency of the periodic signal
+            # "frequency_range": np.linspace(0, 10, num=3, dtype=np.int16),
+            # The phase of the periodic signal
+            # "phase_range": np.linspace(0.0, 90, num=3, dtype=np.int16),
+            # Label used in robustness plots
+            "label": "A: %s",
+        },
+        # A random noise that is applied at every timestep
+        "noise": {
+            "description": "Random noise disturbance",
+            # The means and standards deviations of the random noise disturbance
+            "noise_range": {
+                "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
+                "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
+            },
+            # Label used in robustness plots.
+            "label": "x̅: %s, σ: %s",
+        },
+    },
     ##################################################
     # Output disturbances ############################
     ##################################################

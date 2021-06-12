@@ -6,6 +6,7 @@ documentation.
 """  # noqa: E501
 
 import re
+from xml.etree.ElementInclude import include
 
 import gym
 import numpy as np
@@ -58,7 +59,7 @@ DISTURBER_CFG = {
             # The step at which you want to apply the impulse
             "impulse_instant": 100,
             # The magnitudes you want to apply
-            "magnitude_range": np.linspace(80, 80, num=1, dtype=np.float32),
+            "magnitude_range": np.linspace(80, 155, num=5, dtype=np.float32),
             # Label used in robustness plots
             "label": "M: %s",
         },
@@ -283,7 +284,7 @@ class Disturber:
         self._has_time_vars = None
         self._disturbance_significance = 2  # Disturbance range rounding significance
 
-    def _initate_time_vars(self):
+    def _initiate_time_vars(self):
         """Initiates a time ``t`` and timestep ``dt`` variable if they are not present
         on the environment.
         """
@@ -818,7 +819,7 @@ class Disturber:
                         f"the {space_name} size (i.e. {req_length})."
                     )
 
-    def _parse_disturbance_cfg(self):
+    def _parse_disturbance_cfg(self):  # noqa: C901
         """Parse the disturbance config to add determine the disturbance range and add
         the initial disturbance (0.0) if it is not yet present.
 
@@ -850,12 +851,13 @@ class Disturber:
                     )
 
                 # Add zero disturbance and retrieve disturbance range length
-                disturbance_sub_variant_cfg = inject_value(
-                    self._disturbance_cfg[sub_variant_key][
-                        self._disturbance_range_keys[-1]
-                    ],
-                    value=0.0,
-                )  # Add undisturbed state if not yet present
+                disturbance_sub_variant_cfg = self._disturbance_cfg[sub_variant_key][
+                    self._disturbance_range_keys[-1]
+                ]
+                if self._include_baseline:
+                    disturbance_sub_variant_cfg = inject_value(
+                        disturbance_sub_variant_cfg, value=0.0,
+                    )  # Add undisturbed state if not yet present
                 if isinstance(
                     self._disturbance_cfg[sub_variant_key][
                         self._disturbance_range_keys[-1]
@@ -882,10 +884,11 @@ class Disturber:
             self._disturbance_range_keys.append(
                 [key for key in self._disturbance_cfg.keys() if "_range" in key][0]
             )
-            disturbance_cfg = inject_value(
-                self._disturbance_cfg[self._disturbance_range_keys[-1]],
-                value=getattr(self, variable),
-            )  # Add undisturbed env if not yet present
+            disturbance_cfg = self._disturbance_cfg[self._disturbance_range_keys[-1]]
+            if self._include_baseline:
+                disturbance_cfg = inject_value(
+                    disturbance_cfg, value=getattr(self, variable),
+                )  # Add undisturbed env if not yet present
             self._disturbance_range_length = len(disturbance_cfg)
             self.disturbance_cfg[self._disturbance_range_keys[-1]] = disturbance_cfg
         else:
@@ -905,9 +908,11 @@ class Disturber:
                 )
 
             # Add zero disturbance and retrieve disturbance range length
-            disturbance_cfg = inject_value(
-                self._disturbance_cfg[self._disturbance_range_keys[-1]], value=0.0
-            )  # Add undisturbed state if not yet present
+            disturbance_cfg = self._disturbance_cfg[self._disturbance_range_keys[-1]]
+            if self._include_baseline:
+                disturbance_cfg = inject_value(
+                    disturbance_cfg, value=0.0
+                )  # Add undisturbed state if not yet present
             if isinstance(
                 self._disturbance_cfg[self._disturbance_range_keys[-1]], dict
             ):
@@ -1114,7 +1119,11 @@ class Disturber:
         ) = self._get_plot_labels()
 
     def init_disturber(  # noqa E901
-        self, disturbance_type, disturbance_variant=None, disturber_cfg=None
+        self,
+        disturbance_type,
+        disturbance_variant=None,
+        disturber_cfg=None,
+        include_baseline=True,
     ):
         """Initializes the environment/step disturber.
 
@@ -1127,10 +1136,14 @@ class Disturber:
                 the :class:`Disturber` supports. This dictionary can be used to update
                 values of the ``DISTURBANCE_CFG`` configuration which is present in the
                 :class:`Disturber` class file.
+            include_baseline (bool): Whether you want to automatically add the baseline
+                (i.e. zero disturbance) when it not present.
 
         Raises:
             ValueError: Thrown when the disturbance type or variant is not invalid.
         """
+        self._include_baseline = include_baseline
+
         # Overwrite disturbance config if passed as a argument
         if disturber_cfg is not None:
             self._disturber_cfg = {
@@ -1157,7 +1170,7 @@ class Disturber:
         self._set_disturber_type(disturbance_type)
         self._set_disturber_variant(disturbance_variant)
         self._set_disturbance_cfg()
-        self._initate_time_vars()  # Make sure the env has a t variable
+        self._initiate_time_vars()  # Make sure the env has a t variable
 
         # Retrieve and store extra information about the disturbance
         # NOTE: Usefull for robustness evaluation plots
