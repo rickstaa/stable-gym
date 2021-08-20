@@ -29,6 +29,16 @@ ENVS = {
         "max_step": 400,
         "reward_threshold": 300,
     },
+    "Relative_Localization-v0": {
+        "module": "simzoo.envs.classic_control.relative_localization.Relative_Localization:Relative_Localization",
+        "max_step": 1000,
+        "reward_threshold": 300,
+    },
+    "Relative_Localization_withEKF-v0": {
+        "module": "simzoo.envs.classic_control.relative_localization.Relative_Localization_withEKF:Relative_Localization_withEKF",
+        "max_step": 1000,
+        "reward_threshold": 300,
+    },
 }
 
 for env, val in ENVS.items():
