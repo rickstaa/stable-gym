@@ -33,7 +33,7 @@ jobs:
       - name: Checkout mlc repository
         uses: actions/checkout@v2
       - name: Check markdown code quality using remark-lint
-        uses: reviewdog/action-remark-lint@v2
+        uses: reviewdog/action-remark-lint@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-check
