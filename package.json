@@ -7,15 +7,37 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "auto-changelog": "2.3.0"
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
+    "commitizen": "4.2.4",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "7.0.2",
+    "lint-staged": "11.1.2",
+    "remark-cli": "10.0.0",
+    "remark-lint": "9.0.1",
+    "remark-preset-lint-recommended": "6.0.1",
+    "standard-version": "9.3.1"
   },
   "scripts": {
-    "auto-changelog": "auto-changelog -p && git add CHANGELOG.md"
+    "prepare": "husky install",
+    "changelog": "HUSKY=0 standard-version --skip.bump --skip.commit --skip.tag",
+    "release": "HUSKY=0 standard-version"
   },
-  "auto-changelog": {
-    "output": "CHANGELOG.md",
-    "template": "keepachangelog",
-    "unreleased": false,
-    "commitLimit": false
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.md": "./node_modules/.bin/remark -o .",
+    "*.py": [
+      "black .",
+      "flake8 ."
+    ]
   }
 }

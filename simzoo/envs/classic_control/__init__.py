@@ -4,7 +4,8 @@
 import sys
 import importlib
 
-# NOTE: Makes sure that it works both in the Simzoo stand-alone package and the name_space package (blc)
+# NOTE: Makes sure that it works both in the Simzoo stand-alone package and the
+# name_space package (blc)
 if "simzoo" in sys.modules:
     from simzoo.envs.classic_control.ex3_ekf.ex3_ekf import Ex3EKF
     from simzoo.envs.classic_control.cart_pole_cost.cart_pole_cost import CartPoleCost
@@ -22,13 +23,13 @@ elif importlib.util.find_spec("simzoo") is not None:
 else:
     Ex3EKF = getattr(
         importlib.import_module(
-            "bayesian_learning_control.simzoo.simzoo.envs.classic_control.ex3_ekf.ex3_ekf"
+            "bayesian_learning_control.simzoo.simzoo.envs.classic_control.ex3_ekf.ex3_ekf"  # noqa: E501
         ),
         "Ex3EKF",
     )
     CartPoleCost = getattr(
         importlib.import_module(
-            "bayesian_learning_control.simzoo.simzoo.envs.classic_control.cart_pole_cost.cart_pole_cost"
+            "bayesian_learning_control.simzoo.simzoo.envs.classic_control.cart_pole_cost.cart_pole_cost"  # noqa: E501
         ),
         "CartPoleCost",
     )

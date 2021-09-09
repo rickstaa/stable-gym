@@ -8,18 +8,18 @@ dynamics of mRNA and proteins follow an oscillatory behaviour
 
 ## Observation space
 
--   **m1:** Lacl mRNA concentration.
--   **m2:** tetR mRNA concentration.
--   **m3:** CI mRNA concentration.
--   **p1:** lacI (repressor) protein concentration (Inhibits transcription tetR gene).
--   **p2:** tetR (repressor) protein concentration (Inhibits transcription CI).
--   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI).
+*   **m1:** Lacl mRNA concentration.
+*   **m2:** tetR mRNA concentration.
+*   **m3:** CI mRNA concentration.
+*   **p1:** lacI (repressor) protein concentration (Inhibits transcription tetR gene).
+*   **p2:** tetR (repressor) protein concentration (Inhibits transcription CI).
+*   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI).
 
 ## Action space
 
--   **u1:** Number of Lacl proteins produced during continuous growth under repressor saturation (Leakiness).
--   **u2:** Number of tetR proteins produced during continuous growth under repressor saturation (Leakiness).
--   **u3:** Number of CI proteins produced during continuous growth under repressor saturation (Leakiness).
+*   **u1:** Number of Lacl proteins produced during continuous growth under repressor saturation (Leakiness).
+*   **u2:** Number of tetR proteins produced during continuous growth under repressor saturation (Leakiness).
+*   **u3:** Number of CI proteins produced during continuous growth under repressor saturation (Leakiness).
 
 ## Environment goal
 

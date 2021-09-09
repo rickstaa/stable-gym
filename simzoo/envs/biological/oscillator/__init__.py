@@ -13,7 +13,7 @@ elif importlib.util.find_spec("simzoo") is not None:
 else:
     Oscillator = getattr(
         importlib.import_module(
-            "bayesian_learning_control.simzoo.simzoo.envs.biological.oscillator.oscillator"
+            "bayesian_learning_control.simzoo.simzoo.envs.biological.oscillator.oscillator"  # noqa: E501
         ),
         "Oscillator",
     )

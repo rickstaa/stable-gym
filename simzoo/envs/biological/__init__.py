@@ -4,7 +4,8 @@
 import sys
 import importlib
 
-# NOTE: Makes sure that it works both in the Simzoo stand-alone package and the name_space package (blc)
+# NOTE: Makes sure that it works both in the Simzoo stand-alone package and the
+# name_space package (blc)
 if "simzoo" in sys.modules:
     from simzoo.envs.biological.oscillator.oscillator import Oscillator
 elif importlib.util.find_spec("simzoo") is not None:
@@ -15,7 +16,7 @@ elif importlib.util.find_spec("simzoo") is not None:
 else:
     Oscillator = getattr(
         importlib.import_module(
-            "bayesian_learning_control.simzoo.simzoo.envs.biological.oscillator.oscillator"
+            "bayesian_learning_control.simzoo.simzoo.envs.biological.oscillator.oscillator"  # noqa: E501
         ),
         "Oscillator",
     )

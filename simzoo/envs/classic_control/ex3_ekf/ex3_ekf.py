@@ -97,7 +97,9 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
     """  # noqa: E501, W605
 
     def __init__(
-        self, seed=None, clipped_action=True,
+        self,
+        seed=None,
+        clipped_action=True,
     ):
         """Constructs all the necessary attributes for the Ex3EKF instance.
 

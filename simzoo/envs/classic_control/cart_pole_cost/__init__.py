@@ -15,7 +15,7 @@ elif importlib.util.find_spec("simzoo") is not None:
 else:
     CartPoleCost = getattr(
         importlib.import_module(
-            "bayesian_learning_control.simzoo.simzoo.envs.classic_control.cart_pole_cost.cart_pole_cost"
+            "bayesian_learning_control.simzoo.simzoo.envs.classic_control.cart_pole_cost.cart_pole_cost"  # noqa: E501
         ),
         "CartPoleCost",
     )

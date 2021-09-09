@@ -445,7 +445,8 @@ class Disturber:
                 for item in valid_type_keys:
                     d_type_info_msg += f"\t\n - {item}"
                 raise ValueError(
-                    d_type_info_msg, "disturbance_type",
+                    d_type_info_msg,
+                    "disturbance_type",
                 )
         else:
             # Try to retrieve default disturbance type if type was not found
@@ -475,7 +476,8 @@ class Disturber:
                 for item in valid_type_keys:
                     d_type_info_msg += f"\t\n - {item}"
                 raise ValueError(
-                    d_type_info_msg, "disturbance_type",
+                    d_type_info_msg,
+                    "disturbance_type",
                 )
         self._disturbance_type = disturbance_type
 
@@ -535,7 +537,8 @@ class Disturber:
                     for item in valid_variant_keys:
                         d_variant_info_msg += f"\t\n - {item}"
                     raise ValueError(
-                        d_variant_info_msg, "disturbance_variant",
+                        d_variant_info_msg,
+                        "disturbance_variant",
                     )
             else:
                 # Try to retrieve default disturbance variant if variant was not found
@@ -576,7 +579,8 @@ class Disturber:
                     for item in valid_variant_keys:
                         d_variant_info_msg += f"\t\n - {item}"
                     raise ValueError(
-                        d_variant_info_msg, "disturbance_variant",
+                        d_variant_info_msg,
+                        "disturbance_variant",
                     )
 
             # Set disturbance variant
@@ -860,7 +864,8 @@ class Disturber:
                 ]
                 if self._include_baseline:
                     disturbance_sub_variant_cfg = inject_value(
-                        disturbance_sub_variant_cfg, value=0.0,
+                        disturbance_sub_variant_cfg,
+                        value=0.0,
                     )  # Add undisturbed state if not yet present
                 if isinstance(
                     self._disturbance_cfg[sub_variant_key][
@@ -891,7 +896,8 @@ class Disturber:
             disturbance_cfg = self._disturbance_cfg[self._disturbance_range_keys[-1]]
             if self._include_baseline:
                 disturbance_cfg = inject_value(
-                    disturbance_cfg, value=getattr(self, variable),
+                    disturbance_cfg,
+                    value=getattr(self, variable),
                 )  # Add undisturbed env if not yet present
             self._disturbance_range_length = len(disturbance_cfg)
             self.disturbance_cfg[self._disturbance_range_keys[-1]] = disturbance_cfg
@@ -1317,7 +1323,9 @@ class Disturber:
         ]
         try:
             setattr(
-                self, self._disturbance_cfg["variable"], var_value,
+                self,
+                self._disturbance_cfg["variable"],
+                var_value,
             )
             print(
                 colorize(

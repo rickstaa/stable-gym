@@ -4,20 +4,20 @@ An un-actuated joint attaches a pole to a cart, which moves along a frictionless
 corresponds to the [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/) environment that is included in the
 openAi gym package. It is different in the fact that:
 
--   In this version, the action space is continuous, wherein the OpenAi version
+*   In this version, the action space is continuous, wherein the OpenAi version
     it is discrete.
--   The reward is replaced with a cost. This cost is defined as the difference between a state variable and a reference value (error).
+*   The reward is replaced with a cost. This cost is defined as the difference between a state variable and a reference value (error).
 
 ## Observation space
 
--   **x**: Cart Position.
--   **x_dot**: Cart Velocity.
--   **w**: Pole angle.
--   **w_dot**: Pole angle velocity.
+*   **x**: Cart Position.
+*   **x_dot**: Cart Velocity.
+*   **w**: Pole angle.
+*   **w_dot**: Pole angle velocity.
 
 ## Action space
 
--   **u1:** The x-force applied on the cart.
+*   **u1:** The x-force applied on the cart.
 
 ## Environment goal
 
@@ -30,8 +30,8 @@ in the cost function.
 The cost function of this environment is designed in such a way that it tries to minimize the error of a set of states and a set of reference
 states. It contains two types of tasks:
 
--   A reference tracking task. In this task, the agent tries to make a state track a given reference.
--   A stabilization task. In this task, the agent attempts to stabilize a given state (e.g. keep the pole angle and or cart position zero)
+*   A reference tracking task. In this task, the agent tries to make a state track a given reference.
+*   A stabilization task. In this task, the agent attempts to stabilize a given state (e.g. keep the pole angle and or cart position zero)
 
 The exact definition of these tasks can be found in the environment `cost()` method.
 
@@ -45,12 +45,12 @@ In addition to the observations, the environment also returns a info dictionary:
 
 This info dictionary contains the following keys:
 
--   **cons_pos**: The current x-position constraint.
--   **cons_theta**: The current pole angle constraint.
--   **target**: The target position. Only present when performing a reference tracking task.
--   **violation_of_x_threshold**: Whether the environment x-threshold was violated.
--   **reference**: The current reference (position and angles). Only present when performing a reference tracking task.
--   **state_of_interest**: The current state_of_interest which we try to minimize.
+*   **cons_pos**: The current x-position constraint.
+*   **cons_theta**: The current pole angle constraint.
+*   **target**: The target position. Only present when performing a reference tracking task.
+*   **violation_of_x_threshold**: Whether the environment x-threshold was violated.
+*   **reference**: The current reference (position and angles). Only present when performing a reference tracking task.
+*   **state_of_interest**: The current state_of_interest which we try to minimize.
 
 ## How to use
 

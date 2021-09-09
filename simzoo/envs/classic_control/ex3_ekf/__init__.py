@@ -12,7 +12,7 @@ elif importlib.util.find_spec("simzoo") is not None:
 else:
     Ex3EKF = getattr(
         importlib.import_module(
-            "bayesian_learning_control.simzoo.simzoo.envs.classic_control.ex3_ekf.ex3_ekf"
+            "bayesian_learning_control.simzoo.simzoo.envs.classic_control.ex3_ekf.ex3_ekf"  # noqa: E501
         ),
         "Ex3EKF",
     )
