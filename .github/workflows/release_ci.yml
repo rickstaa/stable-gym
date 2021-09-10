@@ -122,6 +122,6 @@ jobs:
           tag_name: ${{ steps.get_semver.outputs.current_version }}
           release_name: ${{ steps.get_semver.outputs.current_version }}
           body: ${{ steps.build_changelog.outputs.changelog }}
-          draft: true
+          draft: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
