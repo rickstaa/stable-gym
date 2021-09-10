@@ -52,7 +52,7 @@ jobs:
           branch: main
           file_pattern: simzoo/version.py setup.cfg package.json
           commit_message: "chore(release): updates code version to ${{ steps.get_semver.outputs.current_version }}"
-  create-release-draft:
+  create-release:
     # NOTE: Drafts a release for the new tag
     runs-on: ubuntu-latest
     needs: update-code-version
