@@ -7,7 +7,7 @@
  */
 module.exports.readVersion = function (contents) {
   // console.debug(`file contents:\n\n${contents}`);
-  const version = contents.match(/(?<=version = ")\d.\d.\d(?=")/g)[0];
+  const version = contents.match(/(?<=version = ")\d+\.\d+\.\d+(?=")/g)[0];
   // console.debug("found version:", version);
   return version;
 };
@@ -17,7 +17,7 @@ module.exports.readVersion = function (contents) {
  */
 module.exports.writeVersion = function (contents, version) {
   // console.debug(`file contents:\n\n${contents}`);
-  return contents.replace(/(?<=version = ")\d.\d.\d(?=")/g, () => {
+  return contents.replace(/(?<=version = ")\d+\.\d+\.\d+(?=")/g, () => {
     // console.debug("replace version with", version);
     return version;
   });

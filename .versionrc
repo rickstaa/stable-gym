@@ -1,7 +1,7 @@
 {
   "bumpFiles": [
     {
-      "filename": "bayesian_learning_control/version.py",
+      "filename": "simzoo/version.py",
       "updater": ".standard-version/version.py.updater.js"
     },
     {

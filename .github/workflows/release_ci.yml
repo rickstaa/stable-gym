@@ -24,7 +24,7 @@ jobs:
     needs: on-main-branch-check
     if: ${{ needs.on-main-branch-check.outputs.on_main == 'true' }}
     steps:
-      # NOTE: Updates the version that is specified in the code files.
+      # NOTE: Makes sure that the version in the code files are up to date.
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -50,54 +50,12 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: main
-          file_pattern: simzoo/version.py setup.cfg package.json package-lock.json
+          file_pattern: simzoo/version.py setup.cfg package.json
           commit_message: "chore(release): updates code version to ${{ steps.get_semver.outputs.current_version }}"
-  release-changelog:
-    runs-on: ubuntu-latest
-    needs: update-code-version
-    steps:
-      # NOTE: Makes sure the changelog is up to date.
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.ref }}
-          fetch-depth: 0
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "12"
-      - name: Install standard-version
-        run: npm install standard-version
-      - name: Create CHANGELOG.md file using standard-version
-        run: npm run changelog
-      - name: Commit changelog changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: main
-          file_pattern: CHANGELOG.md
-          commit_message: "chore(changelog): updates CHANGELOG.md"
-  move-semver-tags:
-    runs-on: ubuntu-latest
-    needs: release-changelog
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          ref: main
-          fetch-depth: 0
-      - name: Get latest semver tag
-        id: get_semver
-        uses: rickstaa/action-get-semver@v1
-        with:
-          verbose: "true"
-      - name: Updates major and minor version tags
-        uses: rickstaa/action-update-semver@v1
-        with:
-          tag: "${{ steps.get_semver.outputs.current_version }}"
-          move_patch_tag: "true"
   create-release-draft:
     # NOTE: Drafts a release for the new tag
     runs-on: ubuntu-latest
-    needs: move-semver-tags
+    needs: update-code-version
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
