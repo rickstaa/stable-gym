@@ -1,11 +1,46 @@
 {
-  "name": "Simzoo",
+  "name": "simzoo",
   "version": "0.4.14",
+  "description": "Package that contains the gym environments of the bayesian-learning-control package.",
+  "keywords": [
+    "reinforcement-learning",
+    "simulation",
+    "openai-gym",
+    "gym-environments"
+  ],
+  "homepage": "https://github.com/rickstaa/simzoo#readme",
+  "bugs": {
+    "url": "https://github.com/rickstaa/simzoo/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:rickstaa/simzoo.git"
   },
   "license": "UNLICENSED",
+  "author": "Rick Staa",
+  "scripts": {
+    "prepare": "husky install",
+    "changelog": "HUSKY=0 standard-version --skip.bump --skip.commit --skip.tag",
+    "release": "HUSKY=0 standard-version",
+    "sort": "sort-package-json"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.md": "./node_modules/.bin/remark -o .",
+    "*.py": [
+      "black .",
+      "flake8 ."
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
@@ -16,28 +51,7 @@
     "remark-cli": "10.0.0",
     "remark-lint": "9.0.1",
     "remark-preset-lint-recommended": "6.0.1",
-    "standard-version": "^9.3.1"
-  },
-  "scripts": {
-    "prepare": "husky install",
-    "changelog": "HUSKY=0 standard-version --skip.bump --skip.commit --skip.tag",
-    "release": "HUSKY=0 standard-version"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "lint-staged": {
-    "*.md": "./node_modules/.bin/remark -o .",
-    "*.py": [
-      "black .",
-      "flake8 ."
-    ]
+    "sort-package-json": "^1.51.0",
+    "standard-version": "9.3.1"
   }
 }
