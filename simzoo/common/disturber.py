@@ -4,6 +4,7 @@ For more information see the
 `Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_
 documentation.
 """  # noqa: E501
+# IMPROVE: Replace with gym wrappers https://alexandervandekleut.github.io/gym-wrappers/
 
 import re
 
@@ -1134,7 +1135,7 @@ class Disturber:
         disturbance_variant=None,
         disturber_cfg=None,
         include_baseline=True,
-    ):
+    ):  # IMPROVE: Can be removed when using gym wrapper
         """Initializes the environment/step disturber.
 
         Args:
@@ -1230,7 +1231,7 @@ class Disturber:
 
         Returns:
             numpy.ndarray: The disturbed step.
-        """
+        """  # IMPROVE: Change to action when using gym wrapper
         if self._disturbance_type is None:
             raise RuntimeError(
                 "You are trying to retrieve a disturbed step while the disturber has "
