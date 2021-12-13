@@ -11,9 +11,9 @@ openAi gym package. It is different in the fact that:
 ## Observation space
 
 *   **x**: Cart Position.
-*   **x_dot**: Cart Velocity.
+*   **x\_dot**: Cart Velocity.
 *   **w**: Pole angle.
-*   **w_dot**: Pole angle velocity.
+*   **w\_dot**: Pole angle velocity.
 
 ## Action space
 
@@ -45,12 +45,12 @@ In addition to the observations, the environment also returns a info dictionary:
 
 This info dictionary contains the following keys:
 
-*   **cons_pos**: The current x-position constraint.
-*   **cons_theta**: The current pole angle constraint.
+*   **cons\_pos**: The current x-position constraint.
+*   **cons\_theta**: The current pole angle constraint.
 *   **target**: The target position. Only present when performing a reference tracking task.
-*   **violation_of_x_threshold**: Whether the environment x-threshold was violated.
+*   **violation\_of\_x\_threshold**: Whether the environment x-threshold was violated.
 *   **reference**: The current reference (position and angles). Only present when performing a reference tracking task.
-*   **state_of_interest**: The current state_of_interest which we try to minimize.
+*   **state\_of\_interest**: The current state\_of\_interest which we try to minimize.
 
 ## How to use
 

@@ -1,6 +1,6 @@
 # Simzoo
 
-A python package containing the [bayesian_learning_control](https://github.com/rickstaa/bayesian-learning-control) Openai gym environments.
+A python package containing the [bayesian\_learning\_control](https://github.com/rickstaa/bayesian-learning-control) Openai gym environments.
 
 ## Clone the repository
 
