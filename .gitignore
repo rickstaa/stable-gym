@@ -15,9 +15,12 @@ __pycache__/
 # node
 node_modules/
 
+# mics
+*.pnpm-error.log
+*.pnpm-debug.log
+*.log
+MUJOCO_LOG.TXT
+
 # IDE
 .vscode/
 *.code-workspace
-
-# Other
-MUJOCO_LOG.TXT
