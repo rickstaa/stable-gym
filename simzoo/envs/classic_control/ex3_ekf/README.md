@@ -5,8 +5,8 @@ RL based stationary Kalman filter.
 
 ## Observation space
 
-*   **hat_x\_1:** The estimated angle.
-*   **hat_x\_2:** The estimated frequency.
+*   **hat\_x\_1:** The estimated angle.
+*   **hat\_x\_2:** The estimated frequency.
 *   **x\_1:** Actual angle.
 *   **x\_2:** Actual frequency.
 
