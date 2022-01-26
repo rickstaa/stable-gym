@@ -1,6 +1,6 @@
 {
   "name": "simzoo",
-  "version": "0.4.46",
+  "version": "0.4.48",
   "description": "Package that contains the gym environments of the bayesian-learning-control package.",
   "keywords": [
     "reinforcement-learning",
@@ -43,12 +43,12 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "15.0.0",
-    "@commitlint/config-conventional": "15.0.0",
+    "@commitlint/cli": "16.1.0",
+    "@commitlint/config-conventional": "16.0.0",
     "commitizen": "4.2.4",
     "cz-conventional-changelog": "3.3.0",
     "husky": "7.0.4",
-    "lint-staged": "12.1.2",
+    "lint-staged": "12.3.1",
     "remark": "14.0.2",
     "remark-cli": "10.0.0",
     "remark-lint": "9.1.0",
