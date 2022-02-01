@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.50](https://github.com/rickstaa/simzoo/compare/v0.4.49...v0.4.50) (2022-02-01)
+
 ### [0.4.49](https://github.com/rickstaa/simzoo/compare/v0.4.48...v0.4.49) (2022-01-26)
 
 ### [0.4.46](https://github.com/rickstaa/simzoo/compare/v0.4.45...v0.4.46) (2022-01-26)

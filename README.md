@@ -1,5 +1,8 @@
 # Simzoo
 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/rickstaa/simzoo)](https://github.com/rickstaa/simzoo/releases)
+[![Python 3](https://img.shields.io/badge/Python-3.8%20%7C%203.7%20%7C%203.6-green)](https://www.python.org/)
+
 A python package containing the [bayesian\_learning\_control](https://github.com/rickstaa/bayesian-learning-control) Openai gym environments.
 
 ## Clone the repository
