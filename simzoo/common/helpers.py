@@ -89,7 +89,8 @@ def abbreviate(input_item, length=1, max_length=4, capitalize=True):
     Args:
         input_item (union[str, list]): The string of list of strings which you want to
             abbreviate.
-        length (int, optional): The desired length of the abbreviation. Defaults to 1.
+        length (int, optional): The desired length of the abbreviation. Defaults to
+            ``1``.
         max_length (int, optional): The maximum length of the abbreviation. Defaults to
             4.
         capitalize (bool, optional): Whether the abbrevaitions should be capitalized.
