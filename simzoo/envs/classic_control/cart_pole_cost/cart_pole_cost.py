@@ -285,7 +285,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         """
         if self.task_type.lower() == "reference_tracking":
             # Calculate cost (reference tracking)
-            stab_cost = x ** 2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
+            stab_cost = x**2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
             ref = [self.reference(self.t), 0.0]
             ref_cost = abs(x - ref[0])
             # ref_cost = np.square(x - ref[0])
@@ -293,7 +293,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         else:
             # Calculate cost (stabilization task)
             cost = (
-                x ** 2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
+                x**2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
             )  # Stabilization task
             ref = np.array([0.0, 0.0])
 
@@ -343,7 +343,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         cos_theta = math.cos(theta)
         sin_theta = math.sin(theta)
         temp = (
-            force + self._pole_mass_length * theta_dot ** 2 * sin_theta
+            force + self._pole_mass_length * theta_dot**2 * sin_theta
         ) / self.total_mass
         theta_acc = (self.gravity * sin_theta - cos_theta * temp) / (
             self._com_length
