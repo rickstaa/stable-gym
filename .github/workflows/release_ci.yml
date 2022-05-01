@@ -30,6 +30,10 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
+      - name: Setup github action bot user
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
       - name: Get current semver tag
         id: get_semver
         uses: rickstaa/action-get-semver@v1
