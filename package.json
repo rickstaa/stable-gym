@@ -19,7 +19,6 @@
   "license": "UNLICENSED",
   "author": "Rick Staa",
   "scripts": {
-    "cm": "cz",
     "changelog": "HUSKY=0 standard-version --skip.bump --skip.commit --skip.tag",
     "prepare": "husky install",
     "release": "HUSKY=0 standard-version",
