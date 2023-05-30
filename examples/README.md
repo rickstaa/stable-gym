@@ -1,6 +1,6 @@
 # Examples
 
-Contains simple examples of how to use the [Simzoo](https://github.com/rickstaa/simzoo) package. Alternatively, you can directly run the environment Python files to see how the environment behaves (e.g. `python simzoo/envs/biological/oscillator/oscillator.py`).
+Contains examples of how to use the [Simzoo](https://github.com/rickstaa/simzoo) package. Alternatively, you can directly run the environment Python files to see how the environment behaves (e.g. `python simzoo/envs/biological/oscillator/oscillator.py`).
 
 ## Dependencies
 
