@@ -1,6 +1,6 @@
 {
   "name": "simzoo",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Package that contains the gym environments of the bayesian-learning-control package.",
   "keywords": [
     "reinforcement-learning",
