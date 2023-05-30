@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.93](https://github.com/rickstaa/simzoo/compare/v0.4.92...v0.4.93) (2023-05-30)
+
+
+### Bug Fixes
+
+* **envs:** fix 'render_mode' error ([78c8dfa](https://github.com/rickstaa/simzoo/commit/78c8dfa93525ddc9daed0c8ac634f156bb3a3277))
+
 ### [0.4.92](https://github.com/rickstaa/simzoo/compare/v0.4.91...v0.4.92) (2023-05-30)
 
 ### [0.4.91](https://github.com/rickstaa/simzoo/compare/v0.4.90...v0.4.91) (2023-05-30)
