@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/rickstaa/simzoo/compare/v0.5.0...v0.5.1) (2023-05-30)
+
+
+### Bug Fixes
+
+* **envs:** fix some upstream deprication issues ([d2b2be5](https://github.com/rickstaa/simzoo/commit/d2b2be5b7084ba346dd0ea7f6d512df8b2316418))
+
 ## [0.5.0](https://github.com/rickstaa/simzoo/compare/v0.4.93...v0.5.0) (2023-05-30)
 
 
