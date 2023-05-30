@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.91](https://github.com/rickstaa/simzoo/compare/v0.4.90...v0.4.91) (2023-05-30)
+
+
+### Bug Fixes
+
+* fix 'env_spec' not found bug ([#97](https://github.com/rickstaa/simzoo/issues/97)) ([d5df636](https://github.com/rickstaa/simzoo/commit/d5df636732c8004e7c9f25c159b9c0d9b9bf61d2))
+
 ### [0.4.90](https://github.com/rickstaa/simzoo/compare/v0.4.89...v0.4.90) (2023-05-30)
 
 ### [0.4.89](https://github.com/rickstaa/simzoo/compare/v0.4.88...v0.4.89) (2023-05-30)
