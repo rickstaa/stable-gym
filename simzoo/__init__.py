@@ -32,9 +32,7 @@ ENVS = {
 }
 
 for env, val in ENVS.items():
-    if (
-        env not in gym.envs.registry.env_specs
-    ):  # NOTE: Required because we use namespace packages
+    if env not in gym.envs.registry:  # NOTE: Required because we use namespace packages
         register(
             id=env,
             entry_point=namespace_prefix + val["module"],

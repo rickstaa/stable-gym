@@ -93,7 +93,13 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
     instances = []
 
-    def __init__(self, reference_type="periodic", seed=None, clipped_action=True):
+    def __init__(
+        self,
+        reference_type="periodic",
+        seed=None,
+        clipped_action=True,
+        render_mode=None,
+    ):
         """Constructs all the necessary attributes for the oscillator instance.
 
         Args:
@@ -103,6 +109,8 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 ``None``.
             clipped_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
+            render_mode (str, optional): The render mode you want to use. Defaults to
+                ``None`` as it is not used in this environment.
         """
         super().__init__()  # Setup disturber
         self.__class__.instances.append(self)
@@ -117,6 +125,19 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1, 0.2, 0.3]
         )  # Initial state when random is disabled
+
+        # Display warning if render_mode is not None.
+        if render_mode is not None:
+            print(
+                colorize(
+                    (
+                        "WARNING: The `render_mode` argument is not used in the "
+                        "Oscillator environment."
+                    ),
+                    "yellow",
+                    bold=True,
+                )
+            )
 
         # Print environment information
         print(
@@ -291,16 +312,21 @@ class Oscillator(gym.Env, OscillatorDisturber):
             dict(reference=r1, state_of_interest=p1 - r1),
         )
 
-    def reset(self, random=True):
+    def reset(self, random=True, seed=None):
         """Reset gym environment.
 
         Args:
             random (bool, optional): Whether we want to randomly initialise the
                 environment. By default True.
+            seed (int, optional): A random seed for the environment. By default
+                ``None``.
 
         Returns:
             numpy.ndarray: Array containing the current observations.
         """
+        if seed is not None:
+            self.seed(seed)
+
         # Return random initial state
         self.state = (
             self.np_random.uniform(low=0, high=1, size=(6,))
@@ -346,7 +372,6 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
 
 if __name__ == "__main__":
-
     print("Settting up oscillator environment.")
     env = Oscillator()
 
