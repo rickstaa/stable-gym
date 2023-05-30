@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.3](https://github.com/rickstaa/simzoo/compare/v0.5.2...v0.5.3) (2023-05-30)
+
+
+### Bug Fixes
+
+* **envs:** fix envs main functions ([32491d5](https://github.com/rickstaa/simzoo/commit/32491d5e2f265bd80905010c23a7b009d0b1be2a))
+* fix cartpole-cost-v0 render mode bug ([fdf04cd](https://github.com/rickstaa/simzoo/commit/fdf04cd53669a095200d29cae27b8e725e04990f))
+
 ### [0.5.2](https://github.com/rickstaa/simzoo/compare/v0.5.1...v0.5.2) (2023-05-30)
 
 
