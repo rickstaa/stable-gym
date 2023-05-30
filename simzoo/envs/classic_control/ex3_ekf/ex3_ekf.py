@@ -231,7 +231,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         x_1, x_2 = state
 
         # Retrieve reference
-        y_1 = self.reference(x_1, x_2)
+        y_1 = self.reference(x_1)
         hat_y_1 = np.sin(hat_x_1 + self.dt * hat_x_2)
 
         # Mimic the signal drop rate
