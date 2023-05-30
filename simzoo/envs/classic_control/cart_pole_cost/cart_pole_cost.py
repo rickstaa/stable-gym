@@ -420,16 +420,21 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             ),
         )
 
-    def reset(self, random=True):
+    def reset(self, random=True, seed=None):
         """Reset gym environment.
 
         Args:
             random (bool, optional): Whether we want to randomly initialise the
                 environment. By default True.
+            seed (int, optional): A random seed for the environment. By default
+                ``None``.
 
         Returns:
             numpy.ndarray: Array containing the current observations.
         """
+        if seed is not None:
+            self.seed(seed)
+
         # Return random initial state
         self.state = (
             self.np_random.uniform(
@@ -576,7 +581,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
 
 if __name__ == "__main__":
-
     print("Settting up CartpoleCost environment.")
     env = CartPoleCost()
 
