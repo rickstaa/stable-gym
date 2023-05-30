@@ -98,17 +98,33 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
 
     def __init__(
         self,
+        render_mode=None,
         seed=None,
         clipped_action=True,
     ):
         """Constructs all the necessary attributes for the Ex3EKF instance.
 
         Args:
+            render_mode (str, optional): The render mode you want to use. Defaults to
+                ``None`` as it is not used in this environment.
             seed (int, optional): A random seed for the environment. By default
                 `None``.
             clipped_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
+        # Display warning if render_mode is not None.
+        if render_mode is not None:
+            print(
+                colorize(
+                    (
+                        "WARNING: The `render_mode` argument is not used in the "
+                        "Oscillator environment."
+                    ),
+                    "yellow",
+                    bold=True,
+                )
+            )
+
         super().__init__()  # Setup disturber
         self._action_clip_warning = False
 
@@ -297,7 +313,6 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
 
 
 if __name__ == "__main__":
-
     print("Settting up Ex3EKF environment.")
     env = Ex3EKF()
 

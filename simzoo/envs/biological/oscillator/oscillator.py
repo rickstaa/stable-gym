@@ -95,23 +95,36 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
     def __init__(
         self,
+        render_mode=None,
         reference_type="periodic",
         seed=None,
         clipped_action=True,
-        render_mode=None,
     ):
         """Constructs all the necessary attributes for the oscillator instance.
 
         Args:
+            render_mode (str, optional): The render mode you want to use. Defaults to
+                ``None`` as it is not used in this environment.
             reference_type (str, optional): The type of reference you want to use
                 (``constant`` or ``periodic``), by default ``periodic``.
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
             clipped_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
-            render_mode (str, optional): The render mode you want to use. Defaults to
-                ``None`` as it is not used in this environment.
         """
+        # Display warning if render_mode is not None.
+        if render_mode is not None:
+            print(
+                colorize(
+                    (
+                        "WARNING: The `render_mode` argument is not used in the "
+                        "Oscillator environment."
+                    ),
+                    "yellow",
+                    bold=True,
+                )
+            )
+
         super().__init__()  # Setup disturber
         self.__class__.instances.append(self)
         self._instance_nr = len(self.__class__.instances)
@@ -125,19 +138,6 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self._init_state = np.array(
             [0.1, 0.2, 0.3, 0.1, 0.2, 0.3]
         )  # Initial state when random is disabled
-
-        # Display warning if render_mode is not None.
-        if render_mode is not None:
-            print(
-                colorize(
-                    (
-                        "WARNING: The `render_mode` argument is not used in the "
-                        "Oscillator environment."
-                    ),
-                    "yellow",
-                    bold=True,
-                )
-            )
 
         # Print environment information
         print(
@@ -322,7 +322,9 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 ``None``.
 
         Returns:
-            numpy.ndarray: Array containing the current observations.
+            Tuple[numpy.ndarray, dict]: Tuple containing:
+                numpy.ndarray: Array containing the current observations.
+                dict: Dictionary containing additional information.
         """
         if seed is not None:
             self.seed(seed)
@@ -336,7 +338,9 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.t = 0.0
         m1, m2, m3, p1, p2, p3 = self.state
         r1 = self.reference(self.t)
-        return np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1])
+        return np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1]), dict(
+            reference=r1, state_of_interest=p1 - r1
+        )
 
     def reference(self, t):
         """Returns the current value of the periodic reference signal that is tracked by

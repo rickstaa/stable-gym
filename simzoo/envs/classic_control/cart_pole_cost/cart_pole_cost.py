@@ -447,12 +447,12 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.t = 0.0
         return np.array(self.state)
 
-    def render(self, mode="human"):
+    def render(self, render_mode="human"):
         """Render one frame of the environment.
 
         Args:
-            mode (str, optional): Gym rendering mode. The default mode will do something
-                human friendly, such as pop up a window.
+            render_mode (str, optional): Gym rendering mode. The default mode will do
+                something human friendly, such as pop up a window.
         """
         screen_width = 600
         screen_height = 400
@@ -548,7 +548,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         cart_x = x[0] * x_scale + screen_width / 2.0  # Middle of cart
         self.carttrans.set_translation(cart_x, cart_y)
         self.poletrans.set_rotation(-x[2])
-        return self.viewer.render(return_rgb_array=mode == "rgb_array")
+        return self.viewer.render(return_rgb_array=render_mode == "rgb_array")
 
     def close(self):
         """Close down the viewer"""

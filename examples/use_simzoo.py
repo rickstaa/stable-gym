@@ -5,7 +5,12 @@ import gym
 
 import simzoo  # noqa: F401
 
-ENV_NAME = "Oscillator-v1"
+# TODO: [ ] Check oscillator.
+# TODO: [ ] Check ex3_ekf.
+# TODO: [ ] Check cartpole.
+
+# ENV_NAME = "Oscillator-v1"
+ENV_NAME = "Ex3EKF-v1"
 
 if __name__ == "__main__":
     env = gym.make(ENV_NAME, render_mode="human")
@@ -14,7 +19,7 @@ if __name__ == "__main__":
     # NOTE: Can be any function that takes an observation and returns an action.
     def policy(*args, **kwargs):
         """A simple policy that samples random actions."""
-        env.action_space.sample()
+        return env.action_space.sample()
 
     # Run training loop.
     observation, info = env.reset(seed=42)
