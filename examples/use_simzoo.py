@@ -9,8 +9,8 @@ import simzoo  # noqa: F401
 # TODO: [ ] Check ex3_ekf.
 # TODO: [ ] Check cartpole.
 
-# ENV_NAME = "Oscillator-v1"
-ENV_NAME = "Ex3EKF-v1"
+ENV_NAME = "Oscillator-v1"
+# ENV_NAME = "Ex3EKF-v1"
 
 if __name__ == "__main__":
     env = gym.make(ENV_NAME, render_mode="human")

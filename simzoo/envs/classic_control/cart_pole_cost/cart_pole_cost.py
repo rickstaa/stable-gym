@@ -310,7 +310,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
                 - obs (:obj:`numpy.ndarray`): The current state
                 - cost (:obj:`numpy.float64`): The current cost.
-                - done (:obj:`bool`): Whether the episode was done.
+                - terminated (:obj:`bool`): Whether the episode was done.
+                - truncated (:obj:`bool`): Whether the episode was truncated. This value
+                    is set by wrappers when for example a time limit is reached or the
+                    agent goes out of bounds.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
         # Clip action if needed
@@ -378,13 +381,15 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         cost, ref = self.cost(x, theta)
 
         # Define stopping criteria
-        if (
+        terminated = bool(
             abs(x) > self.x_threshold
             or abs(theta) > self.theta_threshold_radians
             or cost > self.reward_range.high
             or cost < self.reward_range.low
-        ):
-            done = True
+        )
+
+        # Calculate stopping cost
+        if terminated:
             cost = 100.0
 
             # Throw warning if already done
@@ -399,16 +404,15 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                         "True' -- any further steps are undefined behavior."
                     )
                 self.steps_beyond_done += 1
-        else:
-            done = False
 
-        # Return state, cost, done and info_dict
+        # Return state, cost, terminated and info_dict
         violation_of_constraint = bool(abs(x) > self.const_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         return (
             self.state,
             cost,
-            done,
+            terminated,
+            False,
             dict(
                 cons_pos=self.const_pos,
                 cons_theta=self.theta_threshold_radians,

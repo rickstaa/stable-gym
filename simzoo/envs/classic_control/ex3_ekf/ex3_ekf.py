@@ -185,7 +185,10 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
 
                 - obs (:obj:`numpy.ndarray`): The current state
                 - cost (:obj:`numpy.float64`): The current cost.
-                - done (:obj:`bool`): Whether the episode was done.
+                - terminated (:obj:`bool`): Whether the episode was done.
+                - truncated (:obj:`bool`): Whether the episode was truncated. This value
+                    is set by wrappers when for example a time limit is reached or the
+                    agent goes out of bounds.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
         # Clip action if needed
@@ -250,10 +253,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         # cost = np.abs(hat_x_1 - x_1)**1 + np.abs(hat_x_2 - x_2)**1
 
         # Define stopping criteria
-        if cost > self.reward_range.high or cost < self.reward_range.low:
-            done = True
-        else:
-            done = False
+        terminated = bool(cost > self.reward_range.high or cost < self.reward_range.low)
 
         # Update state
         self.state = np.array([hat_x_1, hat_x_2, x_1, x_2])
@@ -264,7 +264,8 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         return (
             np.array([hat_x_1, hat_x_2, x_1, x_2]),
             cost,
-            done,
+            terminated,
+            False,
             dict(
                 reference=y_1,
                 state_of_interest=np.array([hat_x_1 - x_1, hat_x_2 - x_2]),

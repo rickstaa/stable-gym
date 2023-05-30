@@ -199,7 +199,10 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
                 - obs (:obj:`numpy.ndarray`): The current state
                 - cost (:obj:`numpy.float64`): The current cost.
-                - done (:obj:`bool`): Whether the episode was done.
+                - terminated (:obj:`bool`): Whether the episode was done.
+                - truncated (:obj:`bool`): Whether the episode was truncated. This value
+                    is set by wrappers when for example a time limit is reached or the
+                    agent goes out of bounds.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
         # Clip action if needed
@@ -299,16 +302,14 @@ class Oscillator(gym.Env, OscillatorDisturber):
         # cost = (abs(p1 - r1)) ** 0.2
 
         # Define stopping criteria
-        if cost > self.reward_range.high or cost < self.reward_range.low:
-            done = True
-        else:
-            done = False
+        terminated = bool(cost > self.reward_range.high or cost < self.reward_range.low)
 
         # Return state, cost, done and reference
         return (
             np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1]),
             cost,
-            done,
+            terminated,
+            False,
             dict(reference=r1, state_of_interest=p1 - r1),
         )
 
