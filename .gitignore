@@ -12,6 +12,9 @@ __pycache__/
 *.pyc
 *.egg-info
 
+# build
+build/
+
 # node
 node_modules/
 
