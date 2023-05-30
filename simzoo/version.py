@@ -1,6 +1,6 @@
 # coding: utf-8
 """The simzoo version."""
-version = "0.4.62"
+version = "0.4.89"
 __version__ = version
 # format:
 # ('mlc_major', 'mlc_minor', 'mlc_patch')
