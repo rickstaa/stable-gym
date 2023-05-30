@@ -1,6 +1,6 @@
 {
   "name": "simzoo",
-  "version": "0.4.61",
+  "version": "0.4.90",
   "description": "Package that contains the gym environments of the bayesian-learning-control package.",
   "keywords": [
     "reinforcement-learning",
@@ -19,7 +19,6 @@
   "license": "UNLICENSED",
   "author": "Rick Staa",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "changelog": "HUSKY=0 standard-version --skip.bump --skip.commit --skip.tag",
     "prepare": "husky install",
     "release": "HUSKY=0 standard-version",
@@ -45,7 +44,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.6.1",
     "@commitlint/config-conventional": "17.6.1",
-    "commitizen": "4.3.0",
+    "comminpx cztizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
     "husky": "8.0.1",
     "lint-staged": "13.2.0",
