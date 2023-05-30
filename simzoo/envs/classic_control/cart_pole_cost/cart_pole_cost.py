@@ -19,7 +19,10 @@ import numpy as np
 from gym import logger, spaces
 from gym.utils import colorize, seeding
 
-from .cart_pole_cost_disturber import CartPoleDisturber
+if __name__ == "__main__":
+    from cart_pole_cost_disturber import CartPoleDisturber
+else:
+    from .cart_pole_cost_disturber import CartPoleDisturber
 
 RANDOM_STEP = False  # Use random steps in __main__
 
@@ -617,7 +620,7 @@ if __name__ == "__main__":
             if RANDOM_STEP
             else np.zeros(env.action_space.shape)
         )
-        s, r, done, info = env.step(action)
+        s, r, terminated, truncated, info = env.step(action)
         env.render()
         path.append(s)
         t1.append(i * env.dt)

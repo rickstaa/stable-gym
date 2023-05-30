@@ -28,7 +28,10 @@ import numpy as np
 from gym import spaces
 from gym.utils import colorize, seeding
 
-from .ex3_ekf_disturber import Ex3EKFDisturber
+if __name__ == "__main__":
+    from ex3_ekf_disturber import Ex3EKFDisturber
+else:
+    from .ex3_ekf_disturber import Ex3EKFDisturber
 
 RANDOM_STEP = False  # Use random steps in __main__
 
@@ -350,7 +353,7 @@ if __name__ == "__main__":
             if RANDOM_STEP
             else np.zeros(env.action_space.shape)
         )
-        s, r, info, done = env.step(action)
+        s, r, terminated, truncated, info = env.step(action)
         path.append(s)
         t1.append(i * env.dt)
 

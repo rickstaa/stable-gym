@@ -10,7 +10,10 @@ import numpy as np
 from gym import spaces
 from gym.utils import colorize, seeding
 
-from .oscillator_disturber import OscillatorDisturber
+if __name__ == "__main__":
+    from oscillator_disturber import OscillatorDisturber
+else:
+    from .oscillator_disturber import OscillatorDisturber
 
 RANDOM_STEP = False  # Use random steps in __main__
 
@@ -377,7 +380,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
 
 if __name__ == "__main__":
-    print("Settting up oscillator environment.")
+    print("Setting up oscillator environment.")
     env = Oscillator()
 
     # Take T steps in the environment
@@ -392,7 +395,7 @@ if __name__ == "__main__":
             if RANDOM_STEP
             else np.zeros(env.action_space.shape)
         )
-        s, r, done, info = env.step(action)
+        s, r, terminated, truncated, info = env.step(action)
         path.append(s)
         t1.append(i * env.dt)
     print("Finished oscillator environment simulation.")
