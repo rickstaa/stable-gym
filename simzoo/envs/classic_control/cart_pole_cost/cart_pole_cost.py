@@ -415,7 +415,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         if self.render_mode == "human":
             self.render()
 
-        # Return state, cost, done and info_dict
+        # Return state, cost, terminated, truncated and info_dict
         violation_of_constraint = bool(abs(x) > self.const_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         return (

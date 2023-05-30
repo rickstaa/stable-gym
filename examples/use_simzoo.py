@@ -5,10 +5,6 @@ import gym
 
 import simzoo  # noqa: F401
 
-# TODO: [ ] Check oscillator.
-# TODO: [ ] Check ex3_ekf.
-# TODO: [ ] Check cartpole.
-
 ENV_NAME = "Oscillator-v1"
 # ENV_NAME = "Ex3EKF-v1"
 # ENV_NAME = "CartPoleCost-v0"

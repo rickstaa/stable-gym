@@ -307,7 +307,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         # Define stopping criteria
         terminated = bool(cost > self.reward_range.high or cost < self.reward_range.low)
 
-        # Return state, cost, done and reference
+        # Return state, cost, terminated, truncated and info_dict
         return (
             np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1]),
             cost,

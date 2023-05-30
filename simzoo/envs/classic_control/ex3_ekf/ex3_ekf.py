@@ -265,7 +265,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         self.output = y_1
         self.t = self.t + self.dt
 
-        # Return state, cost, done and reference
+        # Return state, cost, terminated, truncated and info_dict
         return (
             np.array([hat_x_1, hat_x_2, x_1, x_2]),
             cost,
