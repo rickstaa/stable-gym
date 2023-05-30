@@ -97,6 +97,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
     def __init__(
         self,
+        render_mode=None,
         seed=None,
         task_type="stabilization",
         reference_type="constant",
@@ -106,6 +107,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         """Constructs all the necessary attributes for the CartPoleCost instance.
 
         Args:
+            render_mode (str, optional): Gym rendering mode. By default ``None``.
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
             task_type (str, optional): The task you want the agent to perform (options
@@ -123,6 +125,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.__class__.instances.append(self)
         self._instance_nr = len(self.__class__.instances)
         self._action_clip_warning = False
+        self.render_mode = render_mode
 
         self.t = 0
         self.dt = 0.02  # seconds between state updates
@@ -405,6 +408,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                     )
                 self.steps_beyond_done += 1
 
+        # Render environment if requested
+        if self.render_mode == "human":
+            self.render()
+
         # Return state, cost, done and info_dict
         violation_of_constraint = bool(abs(x) > self.const_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
@@ -466,13 +473,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             state_of_interest=theta,
         )
 
-    def render(self, render_mode="human"):
-        """Render one frame of the environment.
-
-        Args:
-            render_mode (str, optional): Gym rendering mode. The default mode will do
-                something human friendly, such as pop up a window.
-        """
+    def render(self):
+        """Render one frame of the environment."""
         screen_width = 600
         screen_height = 400
 
@@ -567,7 +569,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         cart_x = x[0] * x_scale + screen_width / 2.0  # Middle of cart
         self.carttrans.set_translation(cart_x, cart_y)
         self.poletrans.set_rotation(-x[2])
-        return self.viewer.render(return_rgb_array=render_mode == "rgb_array")
+        return self.viewer.render(return_rgb_array=self.render_mode == "rgb_array")
 
     def close(self):
         """Close down the viewer"""
