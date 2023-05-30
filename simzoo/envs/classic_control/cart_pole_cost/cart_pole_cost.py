@@ -388,7 +388,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             or cost < self.reward_range.low
         )
 
-        # Calculate stopping cost
+        # Define stopping criteria
         if terminated:
             cost = 100.0
 
@@ -405,7 +405,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                     )
                 self.steps_beyond_done += 1
 
-        # Return state, cost, terminated and info_dict
+        # Return state, cost, done and info_dict
         violation_of_constraint = bool(abs(x) > self.const_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         return (
@@ -435,6 +435,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         Returns:
             numpy.ndarray: Array containing the current observations.
+            info_dict (:obj:`dict`): Dictionary with additional information.
         """
         if seed is not None:
             self.seed(seed)
@@ -449,7 +450,21 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         )
         self.steps_beyond_done = None
         self.t = 0.0
-        return np.array(self.state)
+
+        # Return state and info_dict
+        x, _, theta, _ = self.state
+        cost, ref = self.cost(x, theta)
+        violation_of_constraint = bool(abs(x) > self.const_pos)
+        violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
+        return np.array(self.state), dict(
+            cons_pos=self.const_pos,
+            cons_theta=self.theta_threshold_radians,
+            target=self.target_pos,
+            violation_of_x_threshold=violation_of_x_threshold,
+            violation_of_constraint=violation_of_constraint,
+            reference=ref,
+            state_of_interest=theta,
+        )
 
     def render(self, render_mode="human"):
         """Render one frame of the environment.

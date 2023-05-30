@@ -229,7 +229,9 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
             state + self.np_random.multivariate_normal(self.mean1, self.cov1).flatten()
         )  # Add process noise
         x_1, x_2 = state
-        y_1 = np.sin(x_1) + self.np_random.normal(self.mean2, np.sqrt(self.cov2))
+
+        # Retrieve reference
+        y_1 = self.reference(x_1, x_2)
         hat_y_1 = np.sin(hat_x_1 + self.dt * hat_x_2)
 
         # Mimic the signal drop rate
@@ -272,28 +274,47 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
             ),
         )
 
-    def reset(self):
+    def reset(self, seed=None):
         """Reset gym environment.
 
         Args:
-            action (bool, optional): Whether we want to randomly initialize the
-            environment. By default True.
+            seed (int, optional): A random seed for the environment. By default
+                `None``.
 
         Returns:
             numpy.ndarray: Array containing the current observations.
+            info_dict (:obj:`dict`): Dictionary with additional information.
         """
+        if seed is not None:
+            self.seed(seed)
+
         x_1 = self.np_random.uniform(-np.pi / 2, np.pi / 2)
         x_2 = self.np_random.uniform(-np.pi / 2, np.pi / 2)
         hat_x_1 = x_1 + self.np_random.uniform(-np.pi / 4, np.pi / 4)
         hat_x_2 = x_2 + self.np_random.uniform(-np.pi / 4, np.pi / 4)
         self.state = np.array([hat_x_1, hat_x_2, x_1, x_2])
-        self.output = np.sin(x_1) + self.np_random.normal(
-            self.mean2, np.sqrt(self.cov2)
-        )
-        # y_1 = self.output
-        # y_2 = np.sin(x_2) + self.np_random.normal(self.mean2, np.sqrt(self.cov2))
+
+        # Retrieve reference
+        y_1 = self.reference(x_1)
+
+        self.output = y_1
         self.t = 0.0
-        return np.array([hat_x_1, hat_x_2, x_1, x_2])
+        return np.array([hat_x_1, hat_x_2, x_1, x_2]), dict(
+            reference=y_1,
+            state_of_interest=np.array([hat_x_1 - x_1, hat_x_2 - x_2]),
+        )
+
+    def reference(self, x):
+        """Returns the current value of the periodic reference signal that is tracked by
+        the Synthetic oscillatory network.
+
+        Args:
+            x (float): The reference value.
+
+        Returns:
+            float: The current reference value.
+        """
+        return np.sin(x) + self.np_random.normal(self.mean2, np.sqrt(self.cov2))
 
     def render(self, mode="human"):
         """Render one frame of the environment.
