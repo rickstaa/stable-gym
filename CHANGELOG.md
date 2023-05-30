@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/rickstaa/simzoo/compare/v0.4.93...v0.5.0) (2023-05-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* step now returns 5 values instead of 4.
+
+### Features
+
+* depricate step done return value ([#98](https://github.com/rickstaa/simzoo/issues/98)) ([4f435d6](https://github.com/rickstaa/simzoo/commit/4f435d6f9c7aaa12fc91a1722cc5ac4cc22d44a3))
+
 ### [0.4.93](https://github.com/rickstaa/simzoo/compare/v0.4.92...v0.4.93) (2023-05-30)
 
 
