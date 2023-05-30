@@ -90,6 +90,11 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     Solved Requirements:
         Considered solved when the average return is greater than or equal to 195.0 over
         100 consecutive trials.
+
+    Attributes:
+        state (numpy.ndarray): Array containing the current state.
+        t (float): Current time step.
+        dt (float): Seconds between state updates.
     """
 
     metadata = {

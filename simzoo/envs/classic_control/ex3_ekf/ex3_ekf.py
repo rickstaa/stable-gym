@@ -173,7 +173,12 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         self.steps_beyond_done = None
 
     def seed(self, seed=None):
-        """Return random seed."""
+        """Return random seed.
+
+        Args:
+            seed (int, optional): A random seed for the environment. By default
+                `None``.
+        """
         self.np_random, seed = seeding.np_random(seed)
         return [seed]
 
