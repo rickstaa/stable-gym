@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/rickstaa/simzoo/compare/v0.5.1...v0.5.2) (2023-05-30)
+
+
+### Features
+
+* **ex3_ekf:** fix function argument bug ([59d4de5](https://github.com/rickstaa/simzoo/commit/59d4de5afedb434b225dea2220acd8dc365b16d2))
+
 ### [0.5.1](https://github.com/rickstaa/simzoo/compare/v0.5.0...v0.5.1) (2023-05-30)
 
 
