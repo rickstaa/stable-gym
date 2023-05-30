@@ -99,8 +99,8 @@ class Oscillator(gym.Env, OscillatorDisturber):
     def __init__(
         self,
         render_mode=None,
-        reference_type="periodic",
         seed=None,
+        reference_type="periodic",
         clipped_action=True,
     ):
         """Constructs all the necessary attributes for the oscillator instance.
@@ -108,10 +108,10 @@ class Oscillator(gym.Env, OscillatorDisturber):
         Args:
             render_mode (str, optional): The render mode you want to use. Defaults to
                 ``None`` as it is not used in this environment.
-            reference_type (str, optional): The type of reference you want to use
-                (``constant`` or ``periodic``), by default ``periodic``.
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
+            reference_type (str, optional): The type of reference you want to use
+                (``constant`` or ``periodic``), by default ``periodic``.
             clipped_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
@@ -316,14 +316,18 @@ class Oscillator(gym.Env, OscillatorDisturber):
             dict(reference=r1, state_of_interest=p1 - r1),
         )
 
-    def reset(self, random=True, seed=None):
+    def reset(
+        self,
+        seed=None,
+        random=True,
+    ):
         """Reset gym environment.
 
         Args:
-            random (bool, optional): Whether we want to randomly initialise the
-                environment. By default True.
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
+            random (bool, optional): Whether we want to randomly initialise the
+                environment. By default True.
 
         Returns:
             Tuple[numpy.ndarray, dict]: Tuple containing:
