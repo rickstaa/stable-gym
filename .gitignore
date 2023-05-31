@@ -21,6 +21,7 @@ node_modules/
 # mics
 *.log
 MUJOCO_LOG.TXT
+TODOS.md
 
 # IDE
 .vscode/
