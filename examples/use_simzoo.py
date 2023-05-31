@@ -6,11 +6,11 @@ import simzoo  # noqa: F401
 
 # ENV_NAME = "Oscillator-v1"
 # ENV_NAME = "Ex3EKF-v1"
-# ENV_NAME = "CartPoleCost-v0"
-ENV_NAME = "CartPole-v1"
+ENV_NAME = "CartPoleCost-v0"
+# ENV_NAME = "CartPole-v1"
 
 if __name__ == "__main__":
-    env = gym.make(ENV_NAME)
+    env = gym.make(ENV_NAME, render_mode="human")
 
     # Define a policy function.
     # NOTE: Can be any function that takes an observation and returns an action.
