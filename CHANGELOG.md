@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.7](https://github.com/rickstaa/simzoo/compare/v0.5.6...v0.5.7) (2023-05-31)
+
+
+### Features
+
+* replace gym with gymnasium ([98cdf0d](https://github.com/rickstaa/simzoo/commit/98cdf0d7426ed931496e9084787be995d0266f76))
+* replace gym with gymnasium ([#100](https://github.com/rickstaa/simzoo/issues/100)) ([e4f19f3](https://github.com/rickstaa/simzoo/commit/e4f19f3a426b03a2a36f2c4ed1a069f6fc3a0083))
+
+
+### Bug Fixes
+
+* fix cartpole rendering ([#99](https://github.com/rickstaa/simzoo/issues/99)) ([4a97126](https://github.com/rickstaa/simzoo/commit/4a9712638a0c88be970f6d2f26fa78cd08478dd4))
+
 ### [0.5.6](https://github.com/rickstaa/simzoo/compare/v0.5.5...v0.5.6) (2023-05-30)
 
 ### [0.5.5](https://github.com/rickstaa/simzoo/compare/v0.5.4...v0.5.5) (2023-05-30)
