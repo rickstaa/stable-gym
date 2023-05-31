@@ -4,11 +4,11 @@ For more information see the
 `Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_
 documentation.
 """  # noqa: E501
-# IMPROVE: Replace with gym wrappers https://alexandervandekleut.github.io/gym-wrappers/
+# IMPROVE: Replace with gymnasium wrappers https://alexandervandekleut.github.io/gym-wrappers/ # noqa: E501
 
 import re
 
-import gym
+import gymnasium as gym
 import numpy as np
 from iteration_utilities import deepflatten
 
@@ -261,8 +261,8 @@ class Disturber:
                 present in the :class:`Disturber` class file.
         """  # noqa: E501
         assert any([issubclass(item, gym.Env) for item in self.__class__.__bases__]), (
-            "Only classes that also inherit from the 'gym.Env' class can inherit from "
-            "the 'Disturber' class."
+            "Only classes that also inherit from the 'gymnasium.Env' class can inherit "
+            "from the 'Disturber' class."
         )
 
         self.disturber_done = False
@@ -1135,7 +1135,7 @@ class Disturber:
         disturbance_variant=None,
         disturber_cfg=None,
         include_baseline=True,
-    ):  # IMPROVE: Can be removed when using gym wrapper
+    ):  # IMPROVE: Can be removed when using gymnasium wrapper
         """Initializes the environment/step disturber.
 
         Args:
@@ -1218,7 +1218,7 @@ class Disturber:
         )
 
     def disturbed_step(self, action, *args, **kwargs):  # noqa: C901
-        """Takes a action inside the gym environment while applying the requested
+        """Takes a action inside the gymnasium environment while applying the requested
         disturbance.
 
         Args:
@@ -1231,7 +1231,7 @@ class Disturber:
 
         Returns:
             numpy.ndarray: The disturbed step.
-        """  # IMPROVE: Change to action when using gym wrapper
+        """  # IMPROVE: Change to action when using gymnasium wrapper
         if self._disturbance_type is None:
             raise RuntimeError(
                 "You are trying to retrieve a disturbed step while the disturber has "

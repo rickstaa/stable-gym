@@ -1,4 +1,5 @@
-"""A synthetic oscillatory network of transcriptional regulators gym environment."""
+"""A synthetic oscillatory network of transcriptional regulators gymnasium environment.
+"""
 import importlib
 import sys
 

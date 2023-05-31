@@ -1,14 +1,14 @@
-"""A gym environment for a synthetic oscillatory network of transcriptional regulators
-called a repressilator. A repressilator is a three-gene regulatory network where the
-dynamics of mRNA and proteins follow an oscillatory behavior
+"""A gymnasium environment for a synthetic oscillatory network of transcriptional
+regulators called a repressilator. A repressilator is a three-gene regulatory network
+where the dynamics of mRNA and proteins follow an oscillatory behavior
 (see https://www-nature-com.tudelft.idm.oclc.org/articles/35002125).
 """
 
-import gym
+import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gym import spaces
-from gym.utils import colorize, seeding
+from gymnasium import spaces
+from gymnasium.utils import colorize, seeding
 
 if __name__ == "__main__":
     from oscillator_disturber import OscillatorDisturber
@@ -22,7 +22,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
     """Synthetic oscillatory network
 
     .. note::
-        This gym environment inherits from the
+        This gymnasium environment inherits from the
         :class:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
@@ -180,7 +180,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             dtype=np.float32,
         )
 
-        # Create random seed and set gym environment parameters
+        # Create random seed and set gymnasium environment parameters
         self.seed(seed)
         self.viewer = None
         self.state = None
@@ -326,7 +326,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         seed=None,
         random=True,
     ):
-        """Reset gym environment.
+        """Reset gymnasium environment.
 
         Args:
             seed (int, optional): A random seed for the environment. By default

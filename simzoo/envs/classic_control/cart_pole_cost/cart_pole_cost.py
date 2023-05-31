@@ -15,12 +15,12 @@ this version two things are different compared to the original:
 
 import math
 
-import gym
+import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gym import logger, spaces
-from gym.error import DependencyNotInstalled
-from gym.utils import colorize, seeding
+from gymnasium import logger, spaces
+from gymnasium.error import DependencyNotInstalled
+from gymnasium.utils import colorize, seeding
 
 if __name__ == "__main__":
     from cart_pole_cost_disturber import CartPoleDisturber
@@ -31,7 +31,7 @@ RANDOM_STEP = False  # Use random steps in __main__
 
 
 class CartPoleCost(gym.Env, CartPoleDisturber):
-    """Continuous action space CartPole gym environment
+    """Continuous action space CartPole gymnasium environment
 
     Description:
         A pole is attached by an un-actuated joint to a cart, which moves along
@@ -40,8 +40,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         velocity.
 
     Source:
-        This environment corresponds to the version that is included in the OpenAi gym
-        package. It is different in the fact that:
+        This environment corresponds to the version that is included in the Farama
+        Foundation gymnasium package. It is different in the fact that:
 
         -   In this version, the action space is continuous, wherein the OpenAi version
             it is discrete.
@@ -103,7 +103,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     metadata = {
         "render.modes": ["human", "rgb_array"],
         "render_fps": 50,
-    }  # Not used during training but in other gym utilities
+    }  # Not used during training but in other gymnasium utilities
     instances = []
 
     def __init__(
@@ -221,7 +221,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             dtype=np.float32,
         )
 
-        # Create random seed and set gym environment parameters
+        # Create random seed and set gymnasium environment parameters
         self.seed(seed)  # TODO: remove
 
         self.screen_width = 600
@@ -447,7 +447,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         )
 
     def reset(self, seed=None, random=True):
-        """Reset gym environment.
+        """Reset gymnasium environment.
 
         Args:
             seed (int, optional): A random seed for the environment. By default
@@ -492,7 +492,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         """Render one frame of the environment."""
         if self.render_mode is None:
             env_command = (
-                f"gym.make('{self.spec.id}', render_mode='rgb_array')"
+                f"gymnasium.make('{self.spec.id}', render_mode='rgb_array')"
                 if self.spec
                 else f'{self.__class__.__name__}(render_mode="rgb_array")'
             )
@@ -508,7 +508,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             from pygame import gfxdraw
         except ImportError:
             raise DependencyNotInstalled(
-                "pygame is not installed, run `pip install gym[classic_control]`"
+                "pygame is not installed, run `pip install gymnasium[classic_control]`"
             )
 
         if self.screen is None:
@@ -619,14 +619,14 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     def tau(self):
         """Property that also makes the timestep available under the :attr:`tau`
         attribute. This was done to keep this environment consistent with the
-        original gym environment.
+        original gymnasium environment.
         """
         return self.dt
 
 
 if __name__ == "__main__":
     print("Settting up CartpoleCost environment.")
-    env = gym.make("CartPoleCost", render_mode="human")
+    env = gym.make("CartPoleCost")
 
     # Take T steps in the environment
     T = 1000

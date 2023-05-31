@@ -1,10 +1,10 @@
-"""Module that register the Simzoo gym environments.
+"""Module that register the Simzoo gymnasium environments.
 """
 
 import importlib
 
-import gym
-from gym.envs.registration import register
+import gymnasium as gym
+from gymnasium.envs.registration import register
 
 # Create import prefix as stand-alone package or name_space package (mlc)
 if importlib.util.find_spec("simzoo") is not None:

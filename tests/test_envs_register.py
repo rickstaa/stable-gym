@@ -1,4 +1,4 @@
-"""This script is used to test whether the gym environments were successfully
+"""This script is used to test whether the gymnasium environments were successfully
 registered.
 """
 
@@ -6,7 +6,7 @@ import importlib
 import sys
 
 import pytest
-from gym import envs
+from gymnasium import envs
 
 # Import simzoo stand-alone package or name_space package (mlc)
 if "simzoo" in sys.modules:

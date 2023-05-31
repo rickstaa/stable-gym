@@ -1,8 +1,8 @@
-# CartPoleCost gym environment
+# CartPoleCost gymnasium environment
 
 An un-actuated joint attaches a pole to a cart, which moves along a frictionless track. This environment
 corresponds to the [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/) environment that is included in the
-openAi gym package. It is different in the fact that:
+openAi gymnasium package. It is different in the fact that:
 
 *   In this version, the action space is continuous, wherein the OpenAi version
     it is discrete.
@@ -54,4 +54,4 @@ This info dictionary contains the following keys:
 
 ## How to use
 
-This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gym environment when you import the Simzoo package. If you want to use the environment in stand-alone mode, you can register it yourself.
+This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gymnasium environment when you import the Simzoo package. If you want to use the environment in stand-alone mode, you can register it yourself.

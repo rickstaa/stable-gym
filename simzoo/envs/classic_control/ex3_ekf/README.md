@@ -1,6 +1,6 @@
-# Ex3EKF gym environment
+# Ex3EKF gymnasium environment
 
-A gym environment for a noisy master-slave system. This environment can be used to train a
+A gymnasium environment for a noisy master-slave system. This environment can be used to train a
 RL based stationary Kalman filter.
 
 ## Observation space
@@ -40,4 +40,4 @@ cost = np.square(hat_x_1 - x_1) + np.square(hat_x_2 - x_2)
 
 ## How to use
 
-This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gym environment when you import the Simzoo package. If you want to use the environment in stand-alone mode, you can register it yourself.
+This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gymnasium environment when you import the Simzoo package. If you want to use the environment in stand-alone mode, you can register it yourself.

@@ -1,4 +1,4 @@
-"""Noisy master slave system (Ex3EKF) gym environment.
+"""Noisy master slave system (Ex3EKF) gymnasium environment.
 
 The dynamic system whose state is to be estimated:
 
@@ -22,11 +22,11 @@ Estimator design:
     where u=[u1,u2,u3]', u=l(\\hat(x)(k),y(k)) come from the policy network l(.,.)
 """
 
-import gym
+import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gym import spaces
-from gym.utils import colorize, seeding
+from gymnasium import spaces
+from gymnasium.utils import colorize, seeding
 
 if __name__ == "__main__":
     from ex3_ekf_disturber import Ex3EKFDisturber
@@ -40,7 +40,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
     """Noisy master slave system
 
     .. note::
-        This gym environment inherits from the
+        This gymnasium environment inherits from the
         :class:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
@@ -283,7 +283,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         )
 
     def reset(self, seed=None):
-        """Reset gym environment.
+        """Reset gymnasium environment.
 
         Args:
             seed (int, optional): A random seed for the environment. By default
