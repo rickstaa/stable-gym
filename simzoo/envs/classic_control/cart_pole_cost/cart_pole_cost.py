@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import logger, spaces
 from gymnasium.error import DependencyNotInstalled
-from gymnasium.utils import colorize, seeding
+from gymnasium.utils import colorize
 
 if __name__ == "__main__":
     from cart_pole_cost_disturber import CartPoleDisturber
@@ -108,7 +108,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     def __init__(
         self,
         render_mode=None,
-        seed=None,
         task_type="stabilization",
         reference_type="constant",
         kinematics_integrator="euler",
@@ -118,8 +117,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         Args:
             render_mode (str, optional): Gym rendering mode. By default ``None``.
-            seed (int, optional): A random seed for the environment. By default
-                ``None``.
             task_type (str, optional): The task you want the agent to perform (options
                 are "reference_tracking" and "stabilization"). Defaults to
                 "stabilization".
@@ -220,9 +217,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             dtype=np.float32,
         )
 
-        # Create random seed and set gymnasium environment parameters
-        self.seed(seed)  # TODO: remove
-
         self.screen_width = 600
         self.screen_height = 400
         self.screen = None
@@ -231,11 +225,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.state = None
 
         self.steps_beyond_terminated = None
-
-    def seed(self, seed=None):
-        """Return random seed."""
-        self.np_random, seed = seeding.np_random(seed)
-        return [seed]
 
     def set_params(self, length, mass_of_cart, mass_of_pole, gravity):
         """Sets the most important system parameters.
@@ -458,8 +447,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             numpy.ndarray: Array containing the current observations.
             info_dict (:obj:`dict`): Dictionary with additional information.
         """
-        if seed is not None:
-            self.seed(seed)
+        super().reset(seed=seed)
 
         # Return random initial state
         self.state = (

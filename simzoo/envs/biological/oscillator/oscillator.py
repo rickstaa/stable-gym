@@ -7,7 +7,7 @@ import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import spaces
-from gymnasium.utils import colorize, seeding
+from gymnasium.utils import colorize
 
 if __name__ == "__main__":
     from oscillator_disturber import OscillatorDisturber
@@ -98,7 +98,6 @@ class Oscillator(gym.Env, OscillatorDisturber):
     def __init__(
         self,
         render_mode=None,
-        seed=None,
         reference_type="periodic",
         clipped_action=True,
     ):
@@ -107,8 +106,6 @@ class Oscillator(gym.Env, OscillatorDisturber):
         Args:
             render_mode (str, optional): The render mode you want to use. Defaults to
                 ``None`` as it is not used in this environment.
-            seed (int, optional): A random seed for the environment. By default
-                ``None``.
             reference_type (str, optional): The type of reference you want to use
                 (``constant`` or ``periodic``), by default ``periodic``.
             clipped_action (str, optional): Whether the actions should be clipped if
@@ -179,21 +176,9 @@ class Oscillator(gym.Env, OscillatorDisturber):
             dtype=np.float32,
         )
 
-        # Create random seed and set gymnasium environment parameters
-        self.seed(seed)
         self.viewer = None
         self.state = None
         self.steps_beyond_done = None
-
-    def seed(self, seed=None):
-        """Return random seed.
-
-        Args:
-            seed (int, optional): A random seed for the environment. By default
-                ``None``.
-        """
-        self.np_random, seed = seeding.np_random(seed)
-        return [seed]
 
     def step(self, action):
         """Take step into the environment.
@@ -338,8 +323,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 numpy.ndarray: Array containing the current observations.
                 dict: Dictionary containing additional information.
         """
-        if seed is not None:
-            self.seed(seed)
+        super().reset(seed=seed)
 
         # Return random initial state
         self.state = (
