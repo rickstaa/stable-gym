@@ -25,3 +25,7 @@ git submodule update --init --recursive
 ## Installation and Usage
 
 Please see the [bayesian-learning-control docs](https://rickstaa.github.io/bayesian-learning-control/simzoo/simzoo.html) for installation and usage instructions.
+
+## Contributing
+
+We use husky pre-commit hooks and github actions to enforce high code quality. Please check the [Contribution guidelines](CONTRIBUTING.md) before contributing to this repository.
