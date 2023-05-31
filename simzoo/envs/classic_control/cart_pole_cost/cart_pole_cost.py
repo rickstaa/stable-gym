@@ -111,7 +111,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         ```python
         import simzoo
-        env = simzoo.make("CartPoleCost-v0")
+        env = simzoo.make("CartPoleCost-v1")
         ```
 
         On reset, the `options` parameter allows the user to change the bounds used to
