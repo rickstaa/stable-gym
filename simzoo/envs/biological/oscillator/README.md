@@ -1,6 +1,6 @@
-# Oscillator gym environment
+# Oscillator gymnasium environment
 
-A gym environment for a synthetic oscillatory network of transcriptional regulators
+A gymnasium environment for a synthetic oscillatory network of transcriptional regulators
 called a repressilator. A repressilator is a three-gene regulatory network where the
 dynamics of mRNA and proteins follow an oscillatory behaviour
 ([see Elowitch et al. 2000](https://www-nature-com.tudelft.idm.oclc.org/articles/35002125)
@@ -46,4 +46,4 @@ the error when a step is taken. This results in returning the following array:
 
 ## How to use
 
-This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gym environment when you import the Simzoo package. If you want to use the environment in the stand-alone mode, you can register it yourself.
+This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gymnasium environment when you import the Simzoo package. If you want to use the environment in the stand-alone mode, you can register it yourself.

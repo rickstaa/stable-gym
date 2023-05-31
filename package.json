@@ -1,12 +1,14 @@
 {
   "name": "simzoo",
   "version": "0.5.6",
-  "description": "Package that contains the gym environments of the bayesian-learning-control package.",
+  "description": "Package that contains the gymnasium environments of the bayesian-learning-control package.",
   "keywords": [
     "reinforcement-learning",
     "simulation",
     "openai-gym",
-    "gym-environments"
+    "gym-environments",
+    "gymnasium",
+    "gymnasium-environments"
   ],
   "homepage": "https://github.com/rickstaa/simzoo#readme",
   "bugs": {

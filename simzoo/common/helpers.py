@@ -4,15 +4,15 @@
 import re
 
 import numpy as np
-from gym.utils import colorize as gym_colorize
+from gymnasium.utils import colorize as gym_colorize
 
 
 def colorize(string, color, bold=False, highlight=False):
     """Colorize a string.
 
     .. seealso::
-        This function wraps the :meth:`gym.utils.colorize` function to make sure that it
-        also works with empty empty color strings.
+        This function wraps the :meth:`gymnasium.utils.colorize` function to make sure
+        that it also works with empty empty color strings.
 
     Args:
         string (str): The string you want to colorize.
