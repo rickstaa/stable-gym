@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.8](https://github.com/rickstaa/simzoo/compare/v0.5.7...v0.5.8) (2023-05-31)
+
+
+### Features
+
+* add reset options argument ([#103](https://github.com/rickstaa/simzoo/issues/103)) ([a48a873](https://github.com/rickstaa/simzoo/commit/a48a873902297844515641e97c73c0e3630a27d6))
+
 ### [0.5.7](https://github.com/rickstaa/simzoo/compare/v0.5.6...v0.5.7) (2023-05-31)
 
 
