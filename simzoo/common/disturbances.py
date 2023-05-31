@@ -1,6 +1,5 @@
 """Common disturbances used in the disturber.
 """
-
 import math
 
 import numpy as np
@@ -59,7 +58,8 @@ def impulse_disturbance(
 
 
 def periodic_disturbance(current_timestep, amplitude=1, frequency=10, phase_shift=0):
-    """Returns a periodic disturbance signal that has the same shape as the input signal.
+    """Returns a periodic disturbance signal that has the same shape as the input
+    signal.
 
     Args:
         current_timestep(int): The current time step.

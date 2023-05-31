@@ -1,8 +1,7 @@
 """Gym environments that are based on Biological systems.
 """
-
-import sys
 import importlib
+import sys
 
 # NOTE: Makes sure that it works both in the Simzoo stand-alone package and the
 # name_space package (blc)

@@ -4,8 +4,6 @@ Control package. For more information see the
 `Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_
 documentation.
 """  # noqa: E501
-
-
 import importlib
 import sys
 

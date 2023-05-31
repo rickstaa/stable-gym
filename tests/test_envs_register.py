@@ -1,7 +1,6 @@
 """This script is used to test whether the gymnasium environments were successfully
 registered.
 """
-
 import importlib
 import sys
 

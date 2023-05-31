@@ -12,7 +12,6 @@ this version two things are different compared to the original:
 .. note::
     See the :meth:`CartPoleCost.cost` method for the exact implementation of the cost.
 """
-
 import math
 
 import gymnasium as gym
