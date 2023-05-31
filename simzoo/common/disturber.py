@@ -12,7 +12,7 @@ import numpy as np
 from iteration_utilities import deepflatten
 
 from .disturbances import impulse_disturbance, noise_disturbance, periodic_disturbance
-from .helpers import (
+from .utils import (
     abbreviate,
     colorize,
     friendly_list,

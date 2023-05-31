@@ -6,15 +6,14 @@ where the dynamics of mRNA and proteins follow an oscillatory behavior
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gymnasium import spaces
-from gymnasium.utils import colorize
+from gymnasium import logger, spaces
 
 if __name__ == "__main__":
     from oscillator_disturber import OscillatorDisturber
 else:
     from .oscillator_disturber import OscillatorDisturber
 
-RANDOM_STEP = False  # Use random steps in __main__
+RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 class Oscillator(gym.Env, OscillatorDisturber):
@@ -112,15 +111,10 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 they are greater than the set action limit. Defaults to ``True``.
         """
         if render_mode is not None:
-            print(
-                colorize(
-                    (
-                        "WARNING: The `render_mode` argument is not used in the "
-                        "Oscillator environment."
-                    ),
-                    "yellow",
-                    bold=True,
-                )
+            logger.warn(
+                "You are passing the `render_mode` argument to the `__init__` method "
+                "of the Ex3EKF environment. This argument is not used in this "
+                "environment."
             )
 
         super().__init__()  # Setup disturber
@@ -138,16 +132,10 @@ class Oscillator(gym.Env, OscillatorDisturber):
         )  # Initial state when random is disabled
 
         # Print environment information
-        print(
-            colorize(
-                (
-                    f"INFO: Oscillator environment {self._instance_nr} is using a "
-                    f"'{reference_type}' reference."
-                ),
-                "green",
-                bold=True,
-            )
-        )
+        logger.info(
+            f"Oscillator environment {self._instance_nr} is using a '{reference_type}' "
+            "reference."
+        ),
 
         # Set oscillator network parameters
         self.K = 1.0
@@ -203,16 +191,9 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 or (action > self.action_space.high).any()
                 and not self._action_clip_warning
             ):
-                print(
-                    colorize(
-                        (
-                            f"WARNING: Action '{action}' was clipped as it is not in "
-                            f"the action_space 'high: {self.action_space.high}, "
-                            f"low: {self.action_space.low}'."
-                        ),
-                        "yellow",
-                        bold=True,
-                    )
+                logger.warn(
+                    f"Action '{action}' was clipped as it is not in the action_space "
+                    f"'high: {self.action_space.high}, low: {self.action_space.low}'."
                 )
                 self._action_clip_warning = True
             u1, u2, u3 = np.clip(action, self.action_space.low, self.action_space.high)
@@ -327,15 +308,10 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 - dict: Dictionary containing additional information.
         """
         if options is not None:
-            print(
-                colorize(
-                    (
-                        "WARNING: The `options` argument is not used in the "
-                        "Oscillator environment."
-                    ),
-                    "yellow",
-                    bold=True,
-                )
+            logger.warn(
+                "You are passing the `options` argument to the `reset` method of the "
+                "Oscillator environment. This argument is not used in this "
+                "environment."
             )
 
         super().reset(seed=seed)
@@ -403,6 +379,8 @@ if __name__ == "__main__":
             else np.zeros(env.action_space.shape)
         )
         s, r, terminated, truncated, info = env.step(action)
+        if terminated:
+            env.reset()
         path.append(s)
         t1.append(i * env.dt)
     print("Finished oscillator environment simulation.")

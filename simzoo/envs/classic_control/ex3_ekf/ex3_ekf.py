@@ -24,15 +24,14 @@ Estimator design:
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gymnasium import spaces
-from gymnasium.utils import colorize
+from gymnasium import logger, spaces
 
 if __name__ == "__main__":
     from ex3_ekf_disturber import Ex3EKFDisturber
 else:
     from .ex3_ekf_disturber import Ex3EKFDisturber
 
-RANDOM_STEP = False  # Use random steps in __main__
+RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 class Ex3EKF(gym.Env, Ex3EKFDisturber):
@@ -112,15 +111,10 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
                 they are greater than the set action limit. Defaults to ``True``.
         """
         if render_mode is not None:
-            print(
-                colorize(
-                    (
-                        "WARNING: The `render_mode` argument is not used in the "
-                        "Oscillator environment."
-                    ),
-                    "yellow",
-                    bold=True,
-                )
+            logger.warn(
+                "You are passing the `render_mode` argument to the `__init__` method "
+                "of the Ex3EKF environment. This argument is not used in this "
+                "environment."
             )
 
         super().__init__()  # Setup disturber
@@ -190,16 +184,9 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
                 or (action > self.action_space.high).any()
                 and not self._action_clip_warning
             ):
-                print(
-                    colorize(
-                        (
-                            f"WARNING: Action '{action}' was clipped as it is not in "
-                            f"the action_space 'high: {self.action_space.high}, "
-                            f"low: {self.action_space.low}'."
-                        ),
-                        "yellow",
-                        bold=True,
-                    )
+                logger.warn(
+                    f"Action '{action}' was clipped as it is not in the action_space "
+                    f"'high: {self.action_space.high}, low: {self.action_space.low}'."
                 )
                 self._action_clip_warning = True
             u1, u2 = np.clip(action, self.action_space.low, self.action_space.high)
@@ -282,15 +269,10 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
                 - dict: Dictionary containing additional information.
         """
         if options is not None:
-            print(
-                colorize(
-                    (
-                        "WARNING: The `options` argument is not used in the "
-                        "Ex3EKF environment."
-                    ),
-                    "yellow",
-                    bold=True,
-                )
+            logger.warn(
+                "You are passing the `options` argument to the `reset` method of the "
+                "Ex3-EKF environment. This argument is not used in this "
+                "environment."
             )
 
         super().reset(seed=seed)
@@ -342,7 +324,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
 
 
 if __name__ == "__main__":
-    print("Settting up Ex3EKF environment.")
+    print("Setting up Ex3EKF environment.")
     env = gym.make("Ex3EKF")
 
     # Take T steps in the environment
@@ -358,6 +340,8 @@ if __name__ == "__main__":
             else np.zeros(env.action_space.shape)
         )
         s, r, terminated, truncated, info = env.step(action)
+        if terminated:
+            env.reset()
         path.append(s)
         t1.append(i * env.dt)
 

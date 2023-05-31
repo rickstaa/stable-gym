@@ -1,4 +1,4 @@
-"""Functions that are used in multiple simzoo environments.
+"""Utility functions that are used in multiple simzoo environments.
 """
 import re
 
@@ -249,3 +249,41 @@ def inject_value(input_item, value, round_accuracy=2, order=False, axis=0):
         )
     else:
         return order_op([value] + [item for item in input_item if item != value])
+
+
+def verify_number_and_cast(x):
+    """Verify parameter is a single number and cast to a float."""
+    try:
+        x = float(x)
+    except (ValueError, TypeError) as e:
+        raise ValueError(f"An option ({x}) could not be converted to a float.") from e
+    return x
+
+
+def maybe_parse_reset_bounds(options, default_low, default_high):
+    """sThis function can be called during a reset() to customize the sampling
+    ranges for setting the initial state distributions.
+
+    Args:
+      options: Options passed in to reset().
+      default_low: Default lower limit to use, if none specified in options.
+      default_high: Default upper limit to use, if none specified in options.
+
+    Returns:
+      Tuple of the lower and upper limits.
+    """
+    if options is None:
+        return default_low, default_high
+
+    low = options.get("low") if "low" in options else default_low
+    high = options.get("high") if "high" in options else default_high
+
+    # We expect only numerical inputs.
+    low = verify_number_and_cast(low)
+    high = verify_number_and_cast(high)
+    if low > high:
+        raise ValueError(
+            f"Lower bound ({low}) must be lower than higher bound ({high})."
+        )
+
+    return low, high

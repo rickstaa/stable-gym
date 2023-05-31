@@ -1,17 +1,15 @@
-"""Modified version of the classic
-`CartPole-v1 <https://gym.OpenAi.com/envs/CartPole-v1/>`_ OpenAi Gym environment. In
-this version two things are different compared to the original:
+"""Modified version of the cart-pole environment in v0.28.1 of the `gymnasium library`_.
+In this modified version:
 
--   In this version, the action space is continuous, wherein the OpenAi version
-    it is discrete.
+-   The action space is continuous, wherein the original version it is discrete.
 -   The reward is replaced with a cost. This cost is defined as the difference between a
     state variable and a reference value (error).
--   Some pendulum parameters are changed to make the environment more realistic. See the
-    notes next to the parameters for more information.
+-   Some of the environment parameters were changed slightly.
 
-.. note::
-    See the :meth:`CartPoleCost.cost` method for the exact implementation of the cost.
-"""
+You can find the changes by searching for the ``NOTE:`` keyword.
+
+.. _`gymnasium library`: https://gymnasium.farama.org/environments/classic_control/cart_pole/>
+"""  # noqa: E501
 import math
 
 import gymnasium as gym
@@ -19,48 +17,63 @@ import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import logger, spaces
 from gymnasium.error import DependencyNotInstalled
-from gymnasium.utils import colorize
 
 if __name__ == "__main__":
     from cart_pole_cost_disturber import CartPoleDisturber
 else:
     from .cart_pole_cost_disturber import CartPoleDisturber
 
-RANDOM_STEP = False  # Use random steps in __main__
+RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
+# TODO: Add solving criteria after training.
 class CartPoleCost(gym.Env, CartPoleDisturber):
-    """Continuous action space CartPole gymnasium environment
+    """Custom cartPole gymnasium environment.
 
     Description:
-        A pole is attached by an un-actuated joint to a cart, which moves along
-        a frictionless track. The pendulum starts upright, and the goal is to
-        prevent it from falling over by increasing and reducing the cart's
-        velocity.
+        This environment was based on the cart-pole environment described by Barto,
+        Sutton, and Anderson in
+        `Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problem`_.
+        A pole is attached by an un-actuated joint to a cart, which moves along a
+        frictionless track. The pendulum is placed upright on the cart and the goal
+        is to balance the pole by applying forces in the left and right direction
+        on the cart.
 
     Source:
         This environment corresponds to the version that is included in the Farama
-        Foundation gymnasium package. It is different in the fact that:
+        Foundation gymnasium package. It is different from this version in the fact
+        that:
 
-        -   In this version, the action space is continuous, wherein the OpenAi version
-            it is discrete.
+        -   The action space is continuous, wherein the original version it is discrete.
         -   The reward is replaced with a cost. This cost is defined as the difference
             between a state variable and a reference value (error).
+        -   Some of the environment parameters were changed slightly.
 
     Observation:
         **Type**: Box(4)
 
-        +-----+-----------------------+----------------------+--------------------+
-        | Num | Observation           | Min                  | Max                |
-        +=====+=======================+======================+====================+
-        | 0   | Cart Position         | -4.8                 | 4.8                |
-        +-----+-----------------------+----------------------+--------------------+
-        | 1   | Cart Velocity         | -Inf                 | Inf                |
-        +-----+-----------------------+----------------------+--------------------+
-        | 2   | Pole Angle            | -0.418 rad (-24 deg) | 0.418 rad (24 deg) |
-        +-----+-----------------------+----------------------+--------------------+
-        | 3   | Pole Angular Velocity | -20rad               | 20rad              |
-        +-----+-----------------------+----------------------+--------------------+
+        +-----+-----------------------+-----------------------+---------------------+
+        | Num | Observation           | Min                   | Max                 |
+        +=====+=======================+=======================+=====================+
+        | 0   | Cart Position         | -20                   | 20                  |
+        +-----+-----------------------+-----------------------+---------------------+
+        | 1   | Cart Velocity         | -50                   | 50                  |
+        +-----+-----------------------+-----------------------+---------------------+
+        | 2   | Pole Angle            | ~ -.698 rad (-40 deg) | ~ .698 rad (40 deg) |
+        +-----+-----------------------+-----------------------+---------------------+
+        | 3   | Pole Angular Velocity | -50rad                | 50rad               |
+        +-----+-----------------------+-----------------------+--------------------+
+
+        .. Note::
+            While the ranges above denote the possible values for observation space of
+            each element, it is not reflective of the allowed values of the state space
+            in an un-terminated episode. Particularly:
+                -   The cart x-position (index 0) can be take values between
+                    ``(-20, 20)``, but the episode terminates if the cart leaves the
+                    ``(-10, 10)`` range.
+                -   The pole angle can be observed between  ``(-0.698, .698)`` radians
+                    (or **±40°**), but the episode terminates if the pole angle is
+                    not in the range `(-.349, .349)` (or **±20°**)
 
     Actions:
         **Type**: Box(1)
@@ -68,50 +81,74 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         +-----+----------------------+
         | Num | Action               |
         +=====+======================+
-        | 0   | The card x velocity. |
+        | 0   | The controller Force |
         +-----+----------------------+
 
         .. Note::
-            The amount the velocity that is reduced or increased is not
-            fixed; it depends on the angle the pole is pointing. This is because
-            the center of gravity of the pole increases the amount of energy needed
-            to move the cart underneath it
+            The velocity that is reduced or increased by the applied force is not fixed
+            and it depends on the angle the pole is pointing. The center of gravity of
+            the pole varies the amount of energy needed to move the cart underneath it.
+
     Cost:
         A cost, computed using the :meth:`CartPoleCost.cost` method, is given for each
-        simulation step including the terminal step.
+        simulation step including the terminal step. This cost is defined as a error
+        between a state variable and a reference value.
 
     Starting State:
         All observations are assigned a uniform random value in ``[-0.2..0.2]``
 
     Episode Termination:
-        -   Pole Angle is more than 12 degrees.
+        -   Pole Angle is more than 20 degrees.
         -   Cart Position is more than 5 m (center of the cart reaches the edge of the
             display).
         -   Episode length is greater than 200.
 
     Solved Requirements:
-        Considered solved when the average return is greater than or equal to 195.0 over
+        Considered solved when the average cost is less than or equal to 50 over
         100 consecutive trials.
+
+    Arguments:
+
+        ```python
+        import simzoo
+        env = simzoo.make("CartPoleCost-v1")
+        ```
+
+        On reset, the `options` parameter allows the user to change the bounds used to
+        determine the new random state when ``random=True``.
 
     Attributes:
         state (numpy.ndarray): Array containing the current state.
         t (float): Current time step.
         dt (float): Seconds between state updates.
-    """
+        target_pos (float): The target position.
+        const_pos (float): The constraint position.
+        kinematics_integrator (str): The kinematics integrator used to update the state.
+            Options are ``euler`` and ``semi-implicit euler``.
+        theta_threshold_radians (float): The angle at which the pole is considered to be
+            at a terminal state.
+        x_threshold (float): The position at which the cart is considered to be at a
+            terminal state.
+        max_v (float): The maximum velocity of the cart.
+        max_w (float): The maximum angular velocity of the pole.
+        cost_range (gym.spaces.Box): The range of the cost.
+
+    .. _`Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problem`: https://ieeexplore.ieee.org/document/6313077
+    """  # noqa: E501
 
     metadata = {
-        "render.modes": ["human", "rgb_array"],
+        "render_modes": ["human", "rgb_array"],
         "render_fps": 50,
-    }  # Not used during training but in other gymnasium utilities
-    instances = []
+    }  # Not used during training but in other gymnasium utilities.
+    instances = []  # TODO: Replace by extra class.
 
     def __init__(
         self,
         render_mode=None,
+        # NOTE: Custom environment arguments.
         task_type="stabilization",
         reference_type="constant",
-        kinematics_integrator="euler",
-        clipped_action=True,
+        clip_action=True,
     ):
         """Constructs all the necessary attributes for the CartPoleCost instance.
 
@@ -122,100 +159,59 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 "stabilization".
             reference_type (str, optional): The type of reference you want to use
                 (``constant`` or ``periodic``), by default ``periodic``.
-            kinematics_integrator (str, optional): Solver used for the kinematics
-                intergration (options are "euler", "friction", "semi-implicit euler").
-                Defaults to "euler".
-            clipped_action (str, optional): Whether the actions should be clipped if
+            clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
-        super().__init__()  # Setup disturber
-        self.__class__.instances.append(self)
-        self._instance_nr = len(self.__class__.instances)
-        self._action_clip_warning = False
-        self.render_mode = render_mode
+        super().__init__()  # NOTE: Initialize disturber superclass.
 
-        self.t = 0
-        self.dt = 0.02  # seconds between state updates
-        self.task_type = task_type
-        self.reference_type = reference_type
-        self.length = self._length_init = 1.0
+        # NOTE: Compared to the original I store the initial values for the reset
+        # function and replace the `self.total_mass` and `self.polemass_length` with
+        # properties.
+        self.gravity = self._gravity_init = 9.8
         self.mass_cart = self._mass_cart_init = 1.0
         self.mass_pole = self._mass_pole_init = 0.1
-        self.gravity = self._gravity_init = 9.8
-        # self.force_mag = 10  # NOTE: OpenAI values
-        self.force_mag = 20  # Maximum force magnitude
-        self._kinematics_integrator = kinematics_integrator
-        self._clipped_action = clipped_action
-        self._init_state = np.array(
-            [0.1, 0.2, 0.3, 0.1]
-        )  # Initial state when random is disabled
-        # self._init_state_range = {
-        #     "low": [-0.2, -0.05, -0.05, -0.05],
-        #     "high": [0.2, 0.05, 0.05, 0.05],
-        # }  # NOTE: OpenAI values
-        self._init_state_range = {
-            "low": [-5, -0.2, -0.2, -0.2],
-            "high": [5, 0.2, 0.2, 0.2],
-        }  # Initial state range when random is enabled
+        self.length = (
+            self._length_init
+        ) = 1.0  # NOTE: The 0.5 of the original is moved to the `com_length` property.
+        self.force_mag = 20  # NOTE: Original uses 10.
+        self.dt = 0.02  # NOTE: Original uses tau which is property here.
+        self.kinematics_integrator = "euler"
 
-        # Print environment information
-        print(
-            colorize(
-                f"INFO: CartPoleCost environment {self._instance_nr} is initiated for "
-                f"a '{task_type}' task.",
-                "green",
-                bold=True,
-            )
-        )
-        print(
-            colorize(
-                (
-                    f"INFO: CartPoleCost environment {self._instance_nr} is using a "
-                    f"'{reference_type}' reference."
-                ),
-                "green",
-                bold=True,
-            )
-        )
-
-        # Set the lyapunov constraint and target positions
-        self.const_pos = 4.0
-        self.target_pos = 0.0
-
-        # Thresholds
-        # self.theta_threshold_radians = 12 * 2 * math.pi / 360  # NOTE: OpenAi value
+        # Position and angle at which to fail the episode.
         self.theta_threshold_radians = (
             20 * 2 * math.pi / 360
-        )  # Angle at which to fail the episode
-        # self.x_threshold = 2.4  # NOTE: OpenAi value
-        self.x_threshold = 10
-        self.y_threshold = (
-            5  # NOTE: Defines real world window height (not used as threshold)
-        )
-        # self.max_v = np.finfo(np.float32).max  # NOTE: OpenAi value
-        # self.max_w = np.finfo(np.float32).max  # NOTE: OpenAi value
-        self.max_v = 50
-        self.max_w = 50
+        )  # NOTE: original uses 12 degrees.
+        self.x_threshold = 10  # NOTE: original uses 2.4.
+        self.max_v = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
+        self.max_w = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
 
-        # Set angle limit set to 2 * theta_threshold_radians so failing observation
-        # is still within bounds
+        # Angle limit set to 2 * theta_threshold_radians so failing observation
+        # is still within bounds.
         obs_high = np.array(
             [
                 self.x_threshold * 2,
                 self.max_v,
                 self.theta_threshold_radians * 2,
                 self.max_w,
-            ]
+            ],
+            dtype=np.float32,
         )
+
         self.action_space = spaces.Box(
             low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float32
-        )  # NOTE: Discrete in OpenAI version.
+        )  # NOTE: Original uses discrete version.
         self.observation_space = spaces.Box(-obs_high, obs_high, dtype=np.float32)
-        self.reward_range = spaces.Box(
+
+        # Clip the reward.
+        # NOTE: Original does not do this. Here this is done because we want to decrease
+        # the cost.
+        self.cost_range = spaces.Box(
             np.array([0.0], dtype=np.float32),
             np.array([100], dtype=np.float32),
             dtype=np.float32,
         )
+
+        self.render_mode = render_mode
 
         self.screen_width = 600
         self.screen_height = 400
@@ -225,6 +221,35 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.state = None
 
         self.steps_beyond_terminated = None
+
+        # NOTE: custom parameters that are not found in the original environment.
+        self.t = 0
+        self.task_type = task_type
+        self.reference_type = reference_type
+        self._action_clip_warning = False
+        self._clip_action = clip_action
+        self._init_state = np.array(
+            [0.1, 0.2, 0.3, 0.1]
+        )  # Used when random is disabled in reset.
+        self._init_state_range = {
+            "low": [-2, -0.2, -0.2, -0.2],
+            "high": [2, 0.2, 0.2, 0.2],
+        }  # Used when random is enabled in reset.
+        # NOTE: Original uses the following values in the reset function.
+        # self._init_state_range = {
+        #     "low": [-0.2, -0.05, -0.05, -0.05],
+        #     "high": [0.2, 0.05, 0.05, 0.05],
+        # }
+        self.const_pos = 4.0  # Reference constraint.
+        self.target_pos = 0.0  # Reference target.
+
+        # Add ability to use multiple instances of the environment.
+        self.__class__.instances.append(self)
+        self._instance_nr = len(self.__class__.instances)
+        logger.info(
+            f"CartPoleCost environment {self._instance_nr} is initiated for a "
+            f"{task_type}' task and '{reference_type}' reference."
+        )
 
     def set_params(self, length, mass_of_cart, mass_of_pole, gravity):
         """Sets the most important system parameters.
@@ -262,7 +287,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
     def reference(self, t):
         """Returns the current value of the periodic reference signal that is tracked by
-        the Synthetic oscillatory network.
+        the cart-pole system.
 
         Args:
             t (float): The current time step.
@@ -290,7 +315,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 - r_2 (float): The cart_pole angle reference.
         """
         if self.task_type.lower() == "reference_tracking":
-            # Calculate cost (reference tracking)
+            # Calculate cost (reference tracking task)
             stab_cost = x**2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
             ref = [self.reference(self.t), 0.0]
             ref_cost = abs(x - ref[0])
@@ -323,31 +348,27 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
         # Clip action if needed
-        if self._clipped_action:
-            if (
-                (action < self.action_space.low).any()
-                or (action > self.action_space.high).any()
-                and not self._action_clip_warning
-            ):
-                print(
-                    colorize(
-                        (
-                            f"WARNING: Action '{action}' was clipped as it is not in "
-                            f"the action_space 'high: {self.action_space.high}, "
-                            f"low: {self.action_space.low}'."
-                        ),
-                        "yellow",
-                        bold=True,
-                    )
+        if self._clip_action:
+            # Throw warning if clipped and not already thrown.
+            if not self.action_space.contains(action) and not self._action_clip_warning:
+                logger.warn(
+                    f"Action '{action}' was clipped as it is not in the action_space "
+                    f"'high: {self.action_space.high}, low: {self.action_space.low}'."
                 )
                 self._action_clip_warning = True
-            force = np.clip(action, self.action_space.low, self.action_space.high)
-        else:
-            force = action
 
+            force = np.clip(
+                action, self.action_space.low, self.action_space.high
+            ).item()
+        else:
+            assert self.action_space.contains(
+                action
+            ), f"{action!r} ({type(action)}) invalid"
+        assert self.state is not None, "Call reset before using step method."
+
+        # Get the new state by solving 3 first-order differential equations.
         # For the interested reader:
         # https://coneural.org/florian/papers/05_cart_pole.pdf
-        # NOTE: The new state is found by solving 3 first-order differential equations.
         x, x_dot, theta, theta_dot = self.state
         cos_theta = math.cos(theta)
         sin_theta = math.sin(theta)
@@ -356,33 +377,26 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         ) / self.total_mass
         theta_acc = (self.gravity * sin_theta - cos_theta * temp) / (
             self._com_length
-            * (4.0 / 3.0 - self.mass_pole * cos_theta * cos_theta / self.total_mass)
-        )  # TODO: Looks wrong
+            * (4.0 / 3.0 - self.mass_pole * cos_theta**2 / self.total_mass)
+        )
         x_acc = temp - self._pole_mass_length * theta_acc * cos_theta / self.total_mass
 
-        # TODO: looks incorrect.
-        if self._kinematics_integrator == "euler":
-            x = x + self.dt * x_dot
-            x_dot = x_dot + self.dt * x_acc
-            theta = theta + self.dt * theta_dot
-            theta_dot = theta_dot + self.dt * theta_acc
-        elif self._kinematics_integrator == "friction":
-            x_acc = (
-                -0.1 * x_dot / self.total_mass
-                + temp
-                - self._pole_mass_length * theta_acc * cos_theta / self.total_mass
-            )
-            x = x + self.dt * x_dot
-            x_dot = x_dot + self.dt * x_acc
-            theta = theta + self.dt * theta_dot
-            theta_dot = theta_dot + self.dt * theta_acc
-        else:  # Semi-implicit euler
-            x_dot = x_dot + self.dt * x_acc
-            x = x + self.dt * x_dot
-            theta_dot = theta_dot + self.dt * theta_acc
-            theta = theta + self.dt * theta_dot
-        self.state = np.array([x, x_dot[0], theta, theta_dot[0]])
-        self.t = self.t + self.dt  # Increment time step
+        if self.kinematics_integrator == "euler":
+            x = x + self.tau * x_dot
+            x_dot = x_dot + self.tau * x_acc
+            theta = theta + self.tau * theta_dot
+            theta_dot = theta_dot + self.tau * theta_acc
+        else:  # semi-implicit euler
+            x_dot = x_dot + self.tau * x_acc
+            x = x + self.tau * x_dot
+            theta_dot = theta_dot + self.tau * theta_acc
+            theta = theta + self.tau * theta_dot
+
+        self.state = (x, x_dot, theta, theta_dot)
+
+        # Increment time step
+        # NOTE: This is not done in the original environment.
+        self.t = self.t + self.dt
 
         # Calculate cost
         cost, ref = self.cost(x, theta)
@@ -391,9 +405,11 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         terminated = bool(
             abs(x) > self.x_threshold
             or abs(theta) > self.theta_threshold_radians
-            or cost > self.reward_range.high
-            or cost < self.reward_range.low
+            or cost > self.cost_range.high  # NOTE: Added compared to original.
+            or cost < self.cost_range.low  # NOTE: Added compared to original.
         )
+
+        # Handle termination.
         if terminated:
             cost = 100.0
 
@@ -405,8 +421,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 if self.steps_beyond_terminated == 0:
                     logger.warn(
                         "You are calling 'step()' even though this "
-                        "environment has already returned done = True. You "
-                        "should always call 'reset()' once you receive 'done = "
+                        "environment has already returned terminated = True. You "
+                        "should always call 'reset()' once you receive 'terminated = "
                         "True' -- any further steps are undefined behavior."
                     )
                 self.steps_beyond_terminated += 1
@@ -419,7 +435,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         violation_of_constraint = bool(abs(x) > self.const_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         return (
-            self.state,
+            np.array(self.state, dtype=np.float32),
             cost,
             terminated,
             False,
@@ -451,37 +467,43 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 - numpy.ndarray: Array containing the current observations.
                 - dict: Dictionary containing additional information.
         """
-        if options is not None:
-            print(
-                colorize(
-                    (
-                        "WARNING: The `options` argument is not used in the "
-                        "CarPoleCost environment."
-                    ),
-                    "yellow",
-                    bold=True,
-                )
-            )
-
         super().reset(seed=seed)
 
-        # Return random initial state
+        # Initialize custom bounds while ensuring that the bounds are valid.
+        # NOTE: If you use custom reset bounds, it may lead to out-of-bound
+        # state/observations.
+        low = np.array(
+            options["low"]
+            if options is not None and "low" in options
+            else self._init_state_range["low"],
+            dtype=np.float32,
+        )
+        high = np.array(
+            options["high"]
+            if options is not None and "high" in options
+            else self._init_state_range["high"],
+            dtype=np.float32,
+        )
+        assert (self.observation_space.contains(low)) and (
+            self.observation_space.contains(high)
+        ), (
+            "Reset bounds must be within the observation space bounds "
+            f"({self.observation_space})."
+        )
+
+        # Set random initial state and reset several env variables.
         self.state = (
-            self.np_random.uniform(
-                low=self._init_state_range["low"], high=self._init_state_range["high"]
-            )
-            if random
-            else self._init_state
+            self.np_random.uniform(low=low, high=high) if random else self._init_state
         )
         self.steps_beyond_terminated = None
         self.t = 0.0
 
-        # Return state and info_dict
+        # Create info dict.
         x, _, theta, _ = self.state
         _, ref = self.cost(x, theta)
         violation_of_constraint = bool(abs(x) > self.const_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
-        return np.array(self.state), dict(
+        info_dict = dict(
             cons_pos=self.const_pos,
             cons_theta=self.theta_threshold_radians,
             target=self.target_pos,
@@ -491,28 +513,29 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             state_of_interest=theta,
         )
 
+        # Render environment reset if requested.
+        if self.render_mode == "human":
+            self.render()
+        return np.array(self.state, dtype=np.float32), info_dict
+
     def render(self):
         """Render one frame of the environment."""
         if self.render_mode is None:
-            env_command = (
-                f"gymnasium.make('{self.spec.id}', render_mode='rgb_array')"
-                if self.spec
-                else f'{self.__class__.__name__}(render_mode="rgb_array")'
-            )
-            logger.warn(
+            assert self.spec is not None
+            gym.logger.warn(
                 "You are calling render method without specifying any render mode. "
                 "You can specify the render_mode at initialization, "
-                f"e.g. {env_command}"
+                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
             )
-            return  # TODO: Check render mode.
+            return
 
         try:
             import pygame
             from pygame import gfxdraw
-        except ImportError:
+        except ImportError as e:
             raise DependencyNotInstalled(
-                "pygame is not installed, run `pip install gymnasium[classic_control]`"
-            )
+                "pygame is not installed, run `pip install gymnasium[classic-control]`"
+            ) from e
 
         if self.screen is None:
             pygame.init()
@@ -528,10 +551,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         world_width = self.x_threshold * 2
         scale = self.screen_width / world_width
-        polewidth = 10.0
-        polelen = scale * (2 * self.length)
-        cartwidth = 50.0
-        cartheight = 30.0
+        polewidth = scale * 0.1  # NOTE: Original uses 10.0.
+        polelen = scale * self.length  # NOTE: Original uses scale * (2 * self.length)
+        cartwidth = scale * 0.5  # NOTE: Original uses 50.0
+        cartheight = scale * 0.3  # NOTE: Original uses 30.0
 
         if self.state is None:
             return None
@@ -601,7 +624,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
             pygame.display.quit()
             pygame.quit()
-            self.is_open = False
+            self.isopen = False
 
     @property
     def total_mass(self):
@@ -628,15 +651,20 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
 
 if __name__ == "__main__":
-    print("Settting up CartpoleCost environment.")
-    env = gym.make("CartPoleCost")
+    print("Setting up CartPoleCost environment.")
+    env = gym.make("CartPoleCost", render_mode="human")
 
     # Take T steps in the environment
     T = 1000
     path = []
     t1 = []
-    s = env.reset()
-    print(f"Taking {T} steps in the Cartpole environment.")
+    s = env.reset(
+        options={
+            "low": [-2, -0.2, -0.2, -0.2],
+            "high": [2, 0.2, 0.2, 0.2],
+        }
+    )
+    print(f"Taking {T} steps in the CartPoleCost environment.")
     for i in range(int(T / env.dt)):
         action = (
             env.action_space.sample()
@@ -644,10 +672,11 @@ if __name__ == "__main__":
             else np.zeros(env.action_space.shape)
         )
         s, r, terminated, truncated, info = env.step(action)
-        env.render()
+        if terminated:
+            env.reset()
         path.append(s)
         t1.append(i * env.dt)
-    print("Finished CartpoleCost environment simulation.")
+    print("Finished CartPoleCost environment simulation.")
 
     # Plot results
     print("Plot results.")
