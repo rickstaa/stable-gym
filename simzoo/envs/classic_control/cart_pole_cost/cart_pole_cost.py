@@ -434,19 +434,35 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             ),
         )
 
-    def reset(self, seed=None, random=True):
+    def reset(self, seed=None, options=None, random=True):
         """Reset gymnasium environment.
 
         Args:
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
+            options (dict, optional): A dictionary containing additional options for
+                resetting the environment. By default ``None``. Not used in this
+                environment.
             random (bool, optional): Whether we want to randomly initialise the
                 environment. By default True.
 
         Returns:
-            numpy.ndarray: Array containing the current observations.
-            info_dict (:obj:`dict`): Dictionary with additional information.
+            Tuple[numpy.ndarray, dict]: Tuple containing:
+                - numpy.ndarray: Array containing the current observations.
+                - dict: Dictionary containing additional information.
         """
+        if options is not None:
+            print(
+                colorize(
+                    (
+                        "WARNING: The `options` argument is not used in the "
+                        "CarPoleCost environment."
+                    ),
+                    "yellow",
+                    bold=True,
+                )
+            )
+
         super().reset(seed=seed)
 
         # Return random initial state

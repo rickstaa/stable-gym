@@ -105,13 +105,12 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
         Args:
             render_mode (str, optional): The render mode you want to use. Defaults to
-                ``None`` as it is not used in this environment.
+                ``None``. Not used in this environment.
             reference_type (str, optional): The type of reference you want to use
                 (``constant`` or ``periodic``), by default ``periodic``.
             clipped_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
-        # Display warning if render_mode is not None.
         if render_mode is not None:
             print(
                 colorize(
@@ -308,6 +307,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
     def reset(
         self,
         seed=None,
+        options=None,
         random=True,
     ):
         """Reset gymnasium environment.
@@ -315,14 +315,29 @@ class Oscillator(gym.Env, OscillatorDisturber):
         Args:
             seed (int, optional): A random seed for the environment. By default
                 ``None``.
+            options (dict, optional): A dictionary containing additional options for
+                resetting the environment. By default ``None``. Not used in this
+                environment.
             random (bool, optional): Whether we want to randomly initialise the
                 environment. By default True.
 
         Returns:
             Tuple[numpy.ndarray, dict]: Tuple containing:
-                numpy.ndarray: Array containing the current observations.
-                dict: Dictionary containing additional information.
+                - numpy.ndarray: Array containing the current observations.
+                - dict: Dictionary containing additional information.
         """
+        if options is not None:
+            print(
+                colorize(
+                    (
+                        "WARNING: The `options` argument is not used in the "
+                        "Oscillator environment."
+                    ),
+                    "yellow",
+                    bold=True,
+                )
+            )
+
         super().reset(seed=seed)
 
         # Return random initial state

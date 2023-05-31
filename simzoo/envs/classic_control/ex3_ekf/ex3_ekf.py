@@ -107,11 +107,10 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
 
         Args:
             render_mode (str, optional): The render mode you want to use. Defaults to
-                ``None`` as it is not used in this environment.
+                ``None``. Not used in this environment.
             clipped_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
-        # Display warning if render_mode is not None.
         if render_mode is not None:
             print(
                 colorize(
@@ -267,17 +266,33 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
             ),
         )
 
-    def reset(self, seed=None):
+    def reset(self, seed=None, options=None):
         """Reset gymnasium environment.
 
         Args:
             seed (int, optional): A random seed for the environment. By default
                 `None``.
+            options (dict, optional): A dictionary containing additional options for
+                resetting the environment. By default ``None``. Not used in this
+                environment.
 
         Returns:
-            numpy.ndarray: Array containing the current observations.
-            info_dict (:obj:`dict`): Dictionary with additional information.
+            Tuple[numpy.ndarray, dict]: Tuple containing:
+                - numpy.ndarray: Array containing the current observations.
+                - dict: Dictionary containing additional information.
         """
+        if options is not None:
+            print(
+                colorize(
+                    (
+                        "WARNING: The `options` argument is not used in the "
+                        "Ex3EKF environment."
+                    ),
+                    "yellow",
+                    bold=True,
+                )
+            )
+
         super().reset(seed=seed)
 
         x_1 = self.np_random.uniform(-np.pi / 2, np.pi / 2)
