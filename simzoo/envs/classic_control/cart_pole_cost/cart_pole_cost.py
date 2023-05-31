@@ -6,6 +6,8 @@ this version two things are different compared to the original:
     it is discrete.
 -   The reward is replaced with a cost. This cost is defined as the difference between a
     state variable and a reference value (error).
+-   Some pendulum parameters are changed to make the environment more realistic. See the
+    notes next to the parameters for more information.
 
 .. note::
     See the :meth:`CartPoleCost.cost` method for the exact implementation of the cost.
@@ -17,6 +19,7 @@ import gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gym import logger, spaces
+from gym.error import DependencyNotInstalled
 from gym.utils import colorize, seeding
 
 if __name__ == "__main__":
@@ -99,7 +102,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
     metadata = {
         "render.modes": ["human", "rgb_array"],
-        "video.frames_per_second": 50,
+        "render_fps": 50,
     }  # Not used during training but in other gym utilities
     instances = []
 
@@ -144,7 +147,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.mass_pole = self._mass_pole_init = 0.1
         self.gravity = self._gravity_init = 9.8
         # self.force_mag = 10  # NOTE: OpenAI values
-        self.force_mag = 20
+        self.force_mag = 20  # Maximum force magnitude
         self._kinematics_integrator = kinematics_integrator
         self._clipped_action = clipped_action
         self._init_state = np.array(
@@ -210,7 +213,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         )
         self.action_space = spaces.Box(
             low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float32
-        )
+        )  # NOTE: Discrete in OpenAI version.
         self.observation_space = spaces.Box(-obs_high, obs_high, dtype=np.float32)
         self.reward_range = spaces.Box(
             np.array([0.0], dtype=np.float32),
@@ -219,10 +222,16 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         )
 
         # Create random seed and set gym environment parameters
-        self.seed(seed)
-        self.viewer = None
+        self.seed(seed)  # TODO: remove
+
+        self.screen_width = 600
+        self.screen_height = 400
+        self.screen = None
+        self.clock = None
+        self.is_open = True
         self.state = None
-        self.steps_beyond_done = None
+
+        self.steps_beyond_terminated = None
 
     def seed(self, seed=None):
         """Return random seed."""
@@ -242,7 +251,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.mass_pole = mass_of_pole
         self.mass_cart = mass_of_cart
         self.gravity = gravity
-        self.total_mass = self.mass_pole + self.mass_cart
 
     def get_params(self):
         """Retrieves the most important system parameters.
@@ -263,7 +271,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.mass_pole = self._mass_pole_init
         self.mass_cart = self._mass_cart_init
         self.gravity = self._gravity_init
-        self.total_mass = self.mass_pole + self.mass_cart
 
     def reference(self, t):
         """Returns the current value of the periodic reference signal that is tracked by
@@ -362,9 +369,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         theta_acc = (self.gravity * sin_theta - cos_theta * temp) / (
             self._com_length
             * (4.0 / 3.0 - self.mass_pole * cos_theta * cos_theta / self.total_mass)
-        )
+        )  # TODO: Looks wrong
         x_acc = temp - self._pole_mass_length * theta_acc * cos_theta / self.total_mass
 
+        # TODO: looks incorrect.
         if self._kinematics_integrator == "euler":
             x = x + self.dt * x_dot
             x_dot = x_dot + self.dt * x_acc
@@ -398,23 +406,22 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             or cost > self.reward_range.high
             or cost < self.reward_range.low
         )
-
-        # Define stopping criteria
         if terminated:
             cost = 100.0
 
             # Throw warning if already done
-            if self.steps_beyond_done is None:
-                self.steps_beyond_done = 0
+            if self.steps_beyond_terminated is None:
+                # Pole just fell!
+                self.steps_beyond_terminated = 0
             else:
-                if self.steps_beyond_done == 0:
+                if self.steps_beyond_terminated == 0:
                     logger.warn(
                         "You are calling 'step()' even though this "
                         "environment has already returned done = True. You "
                         "should always call 'reset()' once you receive 'done = "
                         "True' -- any further steps are undefined behavior."
                     )
-                self.steps_beyond_done += 1
+                self.steps_beyond_terminated += 1
 
         # Render environment if requested
         if self.render_mode == "human":
@@ -463,12 +470,12 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             if random
             else self._init_state
         )
-        self.steps_beyond_done = None
+        self.steps_beyond_terminated = None
         self.t = 0.0
 
         # Return state and info_dict
         x, _, theta, _ = self.state
-        cost, ref = self.cost(x, theta)
+        _, ref = self.cost(x, theta)
         violation_of_constraint = bool(abs(x) > self.const_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         return np.array(self.state), dict(
@@ -483,107 +490,115 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
     def render(self):
         """Render one frame of the environment."""
-        screen_width = 600
-        screen_height = 400
-
-        # Make sure scaling is correct
-        world_x_width = self.x_threshold * 2
-        world_y_width = self.y_threshold * 2
-        x_scale = screen_width / world_x_width
-        y_scale = screen_height / world_y_width
-        cart_y = y_scale * 1.0  # Top of cart
-        pole_width = x_scale * 0.1
-        pole_len = x_scale * (2.0 * self._com_length)
-        cart_width = x_scale * 0.5
-        cart_height = y_scale * 0.3
-
-        if self.viewer is None:
-            from gym.envs.classic_control import rendering
-
-            self.viewer = rendering.Viewer(screen_width, screen_height)
-
-            # Render CartPole
-            l, r, t, b = (
-                -cart_width / 2,
-                cart_width / 2,
-                cart_height / 2,
-                -cart_height / 2,
+        if self.render_mode is None:
+            env_command = (
+                f"gym.make('{self.spec.id}', render_mode='rgb_array')"
+                if self.spec
+                else f'{self.__class__.__name__}(render_mode="rgb_array")'
             )
-            axleoffset = cart_height / 4.0
-            cart = rendering.FilledPolygon([(l, b), (l, t), (r, t), (r, b)])
-            self.carttrans = rendering.Transform()
-            cart.add_attr(self.carttrans)
-            self.viewer.add_geom(cart)
-            l, r, t, b = (
-                -pole_width / 2,
-                pole_width / 2,
-                pole_len - pole_width / 2,
-                -pole_width / 2,
+            logger.warn(
+                "You are calling render method without specifying any render mode. "
+                "You can specify the render_mode at initialization, "
+                f"e.g. {env_command}"
             )
-            pole = rendering.FilledPolygon([(l, b), (l, t), (r, t), (r, b)])
-            pole.set_color(0.8, 0.6, 0.4)
-            self.poletrans = rendering.Transform(translation=(0, axleoffset))
-            pole.add_attr(self.poletrans)
-            pole.add_attr(self.carttrans)
-            self.viewer.add_geom(pole)
-            self.axle = rendering.make_circle(pole_width / 2)
-            self.axle.add_attr(self.poletrans)
-            self.axle.add_attr(self.carttrans)
-            self.axle.set_color(0.5, 0.5, 0.8)
-            self.viewer.add_geom(self.axle)
-            self.track = rendering.Line((0, cart_y), (screen_width, cart_y))
-            self.track.set_color(0, 0, 0)
-            self.viewer.add_geom(self.track)
+            return  # TODO: Check render mode.
 
-            # Render the target position
-            self.target = rendering.Line(
-                (self.target_pos * x_scale + screen_width / 2.0, 0),
-                (self.target_pos * x_scale + screen_width / 2.0, screen_height),
+        try:
+            import pygame
+            from pygame import gfxdraw
+        except ImportError:
+            raise DependencyNotInstalled(
+                "pygame is not installed, run `pip install gym[classic_control]`"
             )
-            self.target.set_color(1, 0, 0)
-            self.viewer.add_geom(self.target)
 
-            # Render the constrain position
-            self.neg_cons = rendering.Line(
-                (-self.const_pos * x_scale + screen_width / 2.0, 0),
-                (-self.const_pos * x_scale + screen_width / 2.0, screen_height),
-            )
-            self.cons = rendering.Line(
-                (self.const_pos * x_scale + screen_width / 2.0, 0),
-                (self.const_pos * x_scale + screen_width / 2.0, screen_height),
-            )
-            self.neg_cons.set_color(0, 0, 1)
-            self.cons.set_color(0, 0, 1)
-            self.viewer.add_geom(self.cons)
-            self.viewer.add_geom(self.neg_cons)
-            self._pole_geom = pole
+        if self.screen is None:
+            pygame.init()
+            if self.render_mode == "human":
+                pygame.display.init()
+                self.screen = pygame.display.set_mode(
+                    (self.screen_width, self.screen_height)
+                )
+            else:  # mode == "rgb_array"
+                self.screen = pygame.Surface((self.screen_width, self.screen_height))
+        if self.clock is None:
+            self.clock = pygame.time.Clock()
 
-        # Return if no state is found
+        world_width = self.x_threshold * 2
+        scale = self.screen_width / world_width
+        polewidth = 10.0
+        polelen = scale * (2 * self.length)
+        cartwidth = 50.0
+        cartheight = 30.0
+
         if self.state is None:
             return None
 
-        # Edit the pole polygon vertex (needed if pole length changes)
-        pole = self._pole_geom
-        l, r, t, b = (
-            -pole_width / 2,
-            pole_width / 2,
-            pole_len - pole_width / 2,
-            -pole_width / 2,
-        )
-        pole.v = [(l, b), (l, t), (r, t), (r, b)]
-
-        # Apply card and pole movement
         x = self.state
-        cart_x = x[0] * x_scale + screen_width / 2.0  # Middle of cart
-        self.carttrans.set_translation(cart_x, cart_y)
-        self.poletrans.set_rotation(-x[2])
-        return self.viewer.render(return_rgb_array=self.render_mode == "rgb_array")
+
+        self.surf = pygame.Surface((self.screen_width, self.screen_height))
+        self.surf.fill((255, 255, 255))
+
+        l, r, t, b = -cartwidth / 2, cartwidth / 2, cartheight / 2, -cartheight / 2
+        axleoffset = cartheight / 4.0
+        cartx = x[0] * scale + self.screen_width / 2.0  # MIDDLE OF CART
+        carty = 100  # TOP OF CART
+        cart_coords = [(l, b), (l, t), (r, t), (r, b)]
+        cart_coords = [(c[0] + cartx, c[1] + carty) for c in cart_coords]
+        gfxdraw.aapolygon(self.surf, cart_coords, (0, 0, 0))
+        gfxdraw.filled_polygon(self.surf, cart_coords, (0, 0, 0))
+
+        l, r, t, b = (
+            -polewidth / 2,
+            polewidth / 2,
+            polelen - polewidth / 2,
+            -polewidth / 2,
+        )
+
+        pole_coords = []
+        for coord in [(l, b), (l, t), (r, t), (r, b)]:
+            coord = pygame.math.Vector2(coord).rotate_rad(-x[2])
+            coord = (coord[0] + cartx, coord[1] + carty + axleoffset)
+            pole_coords.append(coord)
+        gfxdraw.aapolygon(self.surf, pole_coords, (202, 152, 101))
+        gfxdraw.filled_polygon(self.surf, pole_coords, (202, 152, 101))
+
+        gfxdraw.aacircle(
+            self.surf,
+            int(cartx),
+            int(carty + axleoffset),
+            int(polewidth / 2),
+            (129, 132, 203),
+        )
+        gfxdraw.filled_circle(
+            self.surf,
+            int(cartx),
+            int(carty + axleoffset),
+            int(polewidth / 2),
+            (129, 132, 203),
+        )
+
+        gfxdraw.hline(self.surf, 0, self.screen_width, carty, (0, 0, 0))
+
+        self.surf = pygame.transform.flip(self.surf, False, True)
+        self.screen.blit(self.surf, (0, 0))
+        if self.render_mode == "human":
+            pygame.event.pump()
+            self.clock.tick(self.metadata["render_fps"])
+            pygame.display.flip()
+
+        elif self.render_mode == "rgb_array":
+            return np.transpose(
+                np.array(pygame.surfarray.pixels3d(self.screen)), axes=(1, 0, 2)
+            )
 
     def close(self):
         """Close down the viewer"""
-        if self.viewer:
-            self.viewer.close()
-            self.viewer = None
+        if self.screen is not None:
+            import pygame
+
+            pygame.display.quit()
+            pygame.quit()
+            self.is_open = False
 
     @property
     def total_mass(self):
@@ -611,7 +626,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
 if __name__ == "__main__":
     print("Settting up CartpoleCost environment.")
-    env = CartPoleCost()
+    env = gym.make("CartPoleCost", render_mode="human")
 
     # Take T steps in the environment
     T = 1000
@@ -642,5 +657,7 @@ if __name__ == "__main__":
 
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, labels, loc=2, fancybox=False, shadow=False)
+    plt.ioff()
     plt.show()
-    print("Done")
+
+    print("done")

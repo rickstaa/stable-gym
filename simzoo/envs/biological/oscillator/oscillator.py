@@ -390,7 +390,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
 if __name__ == "__main__":
     print("Setting up oscillator environment.")
-    env = Oscillator()
+    env = gym.make("Oscillator")
 
     # Take T steps in the environment
     T = 60000
@@ -425,5 +425,7 @@ if __name__ == "__main__":
     ax.plot(t1, np.array(path)[:, 7], color="red", label="error")
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, labels, loc=2, fancybox=False, shadow=False)
+    plt.ioff()
     plt.show()
-    print("Done")
+
+    print("done")

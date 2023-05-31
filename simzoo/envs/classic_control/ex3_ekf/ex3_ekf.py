@@ -344,7 +344,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
 
 if __name__ == "__main__":
     print("Settting up Ex3EKF environment.")
-    env = Ex3EKF()
+    env = gym.make("Ex3EKF")
 
     # Take T steps in the environment
     T = 10
@@ -371,5 +371,7 @@ if __name__ == "__main__":
     # ax.plot(t1, np.array(path)[:, 2], color='black', label='measurement')
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, labels, loc=2, fancybox=False, shadow=False)
+    plt.ioff()
     plt.show()
+
     print("done")
