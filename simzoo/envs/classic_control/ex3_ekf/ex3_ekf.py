@@ -25,7 +25,7 @@ import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import spaces
-from gymnasium.utils import colorize, seeding
+from gymnasium.utils import colorize
 
 if __name__ == "__main__":
     from ex3_ekf_disturber import Ex3EKFDisturber
@@ -101,7 +101,6 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
     def __init__(
         self,
         render_mode=None,
-        seed=None,
         clipped_action=True,
     ):
         """Constructs all the necessary attributes for the Ex3EKF instance.
@@ -109,8 +108,6 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         Args:
             render_mode (str, optional): The render mode you want to use. Defaults to
                 ``None`` as it is not used in this environment.
-            seed (int, optional): A random seed for the environment. By default
-                `None``.
             clipped_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
@@ -164,22 +161,11 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
             dtype=np.float32,
         )
 
-        self.seed(seed)
         self._clipped_action = clipped_action
         self.viewer = None
         self.state = None
         self.output = None
         self.steps_beyond_done = None
-
-    def seed(self, seed=None):
-        """Return random seed.
-
-        Args:
-            seed (int, optional): A random seed for the environment. By default
-                `None``.
-        """
-        self.np_random, seed = seeding.np_random(seed)
-        return [seed]
 
     def step(self, action):
         """Take step into the environment.
@@ -292,8 +278,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
             numpy.ndarray: Array containing the current observations.
             info_dict (:obj:`dict`): Dictionary with additional information.
         """
-        if seed is not None:
-            self.seed(seed)
+        super().reset(seed=seed)
 
         x_1 = self.np_random.uniform(-np.pi / 2, np.pi / 2)
         x_2 = self.np_random.uniform(-np.pi / 2, np.pi / 2)
