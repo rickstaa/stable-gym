@@ -3,7 +3,6 @@ regulators called a repressilator. A repressilator is a three-gene regulatory ne
 where the dynamics of mRNA and proteins follow an oscillatory behavior
 (see https://www-nature-com.tudelft.idm.oclc.org/articles/35002125).
 """
-
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np

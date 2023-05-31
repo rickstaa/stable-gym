@@ -1,6 +1,5 @@
 """Common disturbances used in the disturber.
 """
-
 import math
 
 import numpy as np

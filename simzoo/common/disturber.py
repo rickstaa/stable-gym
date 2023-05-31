@@ -5,7 +5,6 @@ For more information see the
 documentation.
 """  # noqa: E501
 # IMPROVE: Replace with gymnasium wrappers https://alexandervandekleut.github.io/gym-wrappers/ # noqa: E501
-
 import re
 
 import gymnasium as gym

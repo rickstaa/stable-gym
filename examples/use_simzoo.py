@@ -1,6 +1,5 @@
 """A simple example on how to use the Simzoo environments.
 """
-
 import gymnasium as gym
 
 import simzoo  # noqa: F401

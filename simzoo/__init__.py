@@ -1,6 +1,5 @@
 """Module that register the Simzoo gymnasium environments.
 """
-
 import importlib
 
 import gymnasium as gym

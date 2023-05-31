@@ -1,6 +1,5 @@
 """Functions that are used in multiple simzoo environments.
 """
-
 import re
 
 import numpy as np

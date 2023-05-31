@@ -5,7 +5,6 @@ Control package. For more information see the
 documentation.
 """  # noqa: E501
 # IMPROVE: File can be removed when a gymnasium wrapper is used.
-
 import importlib
 import sys
 
