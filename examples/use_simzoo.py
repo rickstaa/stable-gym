@@ -25,5 +25,6 @@ if __name__ == "__main__":
         observation, reward, terminated, truncated, info = env.step(action)
 
         if terminated or truncated:
+            print("Environment terminated or truncated. Resetting.")
             observation, info = env.reset()
     env.close()
