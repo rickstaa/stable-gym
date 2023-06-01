@@ -39,6 +39,13 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
     .. _gym.vector: https://gymnasium.farama.org/api/vector/
 
+     .. note::
+        This gymnasium environment inherits from the
+        :class:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber`
+        in order to be able to use it with the Robustness Evaluation tool of the
+        Bayesian Learning Control package (BLC). For more information see
+        `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.
+
     Description:
         This environment was based on the cart-pole environment described by Barto,
         Sutton, and Anderson in
@@ -131,7 +138,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         t (float): Current time step.
         dt (float): Seconds between state updates.
         target_pos (float): The target position.
-        const_pos (float): The constraint position.
+        constraint_pos (float): The constraint position.
         kinematics_integrator (str): The kinematics integrator used to update the state.
             Options are ``euler`` and ``semi-implicit euler``.
         theta_threshold_radians (float): The angle at which the pole is considered to be
@@ -149,6 +156,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         "render_modes": ["human", "rgb_array"],
         "render_fps": 50,
     }  # Not used during training but in other gymnasium utilities.
+    instances = 0  # Number of instances created.
 
     def __init__(
         self,
@@ -171,6 +179,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 they are greater than the set action limit. Defaults to ``True``.
         """
         super().__init__()  # NOTE: Initialize disturber superclass.
+
+        # Print environment info.
+        # logger.info()
 
         # NOTE: Compared to the original I store the initial values for the reset
         # function and replace the `self.total_mass` and `self.polemass_length` with
@@ -248,8 +259,19 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         #     "low": [-0.2, -0.05, -0.05, -0.05],
         #     "high": [0.2, 0.05, 0.05, 0.05],
         # }
-        self.const_pos = 4.0  # Reference constraint.
+
+        # Reference target and constraint positions.
         self.target_pos = 0.0  # Reference target.
+        self.constraint_pos = 4.0  # Reference constraint.
+
+        # Print vectorization debug info.
+        self.__class__.instances += 1
+        self.instance_id = self.__class__.instances
+        logger.debug(f"CartPoleCost instance '{self.instance_id}' created.")
+        logger.debug(
+            f"CartPoleCost instance '{self.instance_id}' performs a '{self.task_type}' "
+            f"task on a '{self.reference_type}' signal."
+        )
 
     def set_params(self, length, mass_of_cart, mass_of_pole, gravity):
         """Sets the most important system parameters.
@@ -365,6 +387,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             assert self.action_space.contains(
                 action
             ), f"{action!r} ({type(action)}) invalid"
+            force = action.item()
         assert self.state is not None, "Call reset before using step method."
 
         # Get the new state by solving 3 first-order differential equations.
@@ -435,7 +458,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # Return state, cost, terminated, truncated and info_dict
         # NOTE: The original returns an empty info dict.
-        violation_of_constraint = bool(abs(x) > self.const_pos)
+        violation_of_constraint = bool(abs(x) > self.constraint_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         return (
             np.array(self.state, dtype=np.float32),
@@ -443,7 +466,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             terminated,
             False,
             dict(
-                cons_pos=self.const_pos,
+                cons_pos=self.constraint_pos,
                 cons_theta=self.theta_threshold_radians,
                 target=self.target_pos,
                 violation_of_x_threshold=violation_of_x_threshold,
@@ -507,10 +530,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # NOTE: The original returns an empty info dict.
         x, _, theta, _ = self.state
         _, ref = self.cost(x, theta)
-        violation_of_constraint = bool(abs(x) > self.const_pos)
+        violation_of_constraint = bool(abs(x) > self.constraint_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         info_dict = dict(
-            cons_pos=self.const_pos,
+            cons_pos=self.constraint_pos,
             cons_theta=self.theta_threshold_radians,
             target=self.target_pos,
             violation_of_x_threshold=violation_of_x_threshold,

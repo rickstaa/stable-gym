@@ -19,6 +19,10 @@ openAi gymnasium package. It is different in the fact that:
 
 *   **u1:** The x-force applied on the cart.
 
+## Environment episode stop criteria
+
+An episode is terminated based on set cart position, pole angle and cost thresholds.
+
 ## Environment goal
 
 The pendulum starts upright, and the goal is to prevent it from falling over by increasing and reducing the cart's
@@ -37,18 +41,19 @@ The exact definition of these tasks can be found in the environment `cost()` met
 
 ## Environment step return
 
-In addition to the observations, the environment also returns a info dictionary:
+In addition to the observations, the cost and a termination and truncation boolean the environment also returns a info dictionary:
 
 ```python
-[hat_x_1, hat_x_2, x_1, x_2, info_dict]
+[(hat_x_1, hat_x_2, x_1, x_2), cost, termination, truncation, info_dict]
 ```
 
-This info dictionary contains the following keys:
+The info dictionary contains the following keys:
 
 *   **cons\_pos**: The current x-position constraint.
 *   **cons\_theta**: The current pole angle constraint.
 *   **target**: The target position. Only present when performing a reference tracking task.
 *   **violation\_of\_x\_threshold**: Whether the environment x-threshold was violated.
+*   **violation\_of\_constraint**: Whether a certain x-constraint was voilated.
 *   **reference**: The current reference (position and angles). Only present when performing a reference tracking task.
 *   **state\_of\_interest**: The current state\_of\_interest which we try to minimize.
 
