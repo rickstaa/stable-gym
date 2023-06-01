@@ -172,13 +172,13 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # function and replace the `self.total_mass` and `self.polemass_length` with
         # properties.
         self.gravity = self._gravity_init = 9.8
-        self.mass_cart = self._mass_cart_init = 1.0
-        self.mass_pole = self._mass_pole_init = 0.1
+        self.masscart = self._mass_cart_init = 1.0
+        self.masspole = self._mass_pole_init = 0.1
         self.length = (
             self._length_init
         ) = 1.0  # NOTE: The 0.5 of the original is moved to the `com_length` property.
         self.force_mag = 20  # NOTE: Original uses 10.
-        self.dt = 0.02  # NOTE: Original uses tau which is property here.
+        self.tau = 0.02
         self.kinematics_integrator = "euler"
 
         # Position and angle at which to fail the episode.
@@ -191,7 +191,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # Angle limit set to 2 * theta_threshold_radians so failing observation
         # is still within bounds.
-        obs_high = np.array(
+        high = np.array(
             [
                 self.x_threshold * 2,
                 self.max_v,
@@ -204,7 +204,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.action_space = spaces.Box(
             low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float32
         )  # NOTE: Original uses discrete version.
-        self.observation_space = spaces.Box(-obs_high, obs_high, dtype=np.float32)
+        self.observation_space = spaces.Box(-high, high, dtype=np.float32)
 
         # Clip the reward.
         # NOTE: Original does not do this. Here this is done because we want to decrease
@@ -221,7 +221,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.screen_height = 400
         self.screen = None
         self.clock = None
-        self.is_open = True
+        self.isopen = True
         self.state = None
 
         self.steps_beyond_terminated = None
@@ -265,8 +265,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             gravity (float): The gravity constant.
         """
         self.length = length
-        self.mass_pole = mass_of_pole
-        self.mass_cart = mass_of_cart
+        self.masspole = mass_of_pole
+        self.masscart = mass_of_cart
         self.gravity = gravity
 
     def get_params(self):
@@ -280,13 +280,13 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 - pole_mass (:obj:`float`): The cart mass.
                 - gravity (:obj:`float`): The gravity constant.
         """
-        return self.length, self.mass_pole, self.mass_cart, self.gravity
+        return self.length, self.masspole, self.masscart, self.gravity
 
     def reset_params(self):
         """Resets the most important system parameters."""
         self.length = self._length_init
-        self.mass_pole = self._mass_pole_init
-        self.mass_cart = self._mass_cart_init
+        self.masspole = self._mass_pole_init
+        self.masscart = self._mass_cart_init
         self.gravity = self._gravity_init
 
     def reference(self, t):
@@ -374,33 +374,33 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # For the interested reader:
         # https://coneural.org/florian/papers/05_cart_pole.pdf
         x, x_dot, theta, theta_dot = self.state
-        cos_theta = math.cos(theta)
-        sin_theta = math.sin(theta)
+        costheta = math.cos(theta)
+        sintheta = math.sin(theta)
         temp = (
-            force + self._pole_mass_length * theta_dot**2 * sin_theta
+            force + self.polemass_length * theta_dot**2 * sintheta
         ) / self.total_mass
-        theta_acc = (self.gravity * sin_theta - cos_theta * temp) / (
+        thetaacc = (self.gravity * sintheta - costheta * temp) / (
             self._com_length
-            * (4.0 / 3.0 - self.mass_pole * cos_theta**2 / self.total_mass)
+            * (4.0 / 3.0 - self.masspole * costheta**2 / self.total_mass)
         )
-        x_acc = temp - self._pole_mass_length * theta_acc * cos_theta / self.total_mass
+        xacc = temp - self.polemass_length * thetaacc * costheta / self.total_mass
 
         if self.kinematics_integrator == "euler":
             x = x + self.tau * x_dot
-            x_dot = x_dot + self.tau * x_acc
+            x_dot = x_dot + self.tau * xacc
             theta = theta + self.tau * theta_dot
-            theta_dot = theta_dot + self.tau * theta_acc
+            theta_dot = theta_dot + self.tau * thetaacc
         else:  # semi-implicit euler
-            x_dot = x_dot + self.tau * x_acc
+            x_dot = x_dot + self.tau * xacc
             x = x + self.tau * x_dot
-            theta_dot = theta_dot + self.tau * theta_acc
+            theta_dot = theta_dot + self.tau * thetaacc
             theta = theta + self.tau * theta_dot
 
         self.state = (x, x_dot, theta, theta_dot)
 
         # Increment time step
         # NOTE: This is not done in the original environment.
-        self.t = self.t + self.dt
+        self.t = self.t + self.tau
 
         # Calculate cost
         cost, ref = self.cost(x, theta)
@@ -633,7 +633,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     @property
     def total_mass(self):
         """Property that returns the full mass of the system."""
-        return self.mass_pole + self.mass_cart
+        return self.masspole + self.masscart
 
     @property
     def _com_length(self):
@@ -641,17 +641,33 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         return self.length * 0.5  # half the pole's length
 
     @property
-    def _pole_mass_length(self):
+    def polemass_length(self):
         """Property that returns the pole mass times the COM length."""
-        return self.mass_pole * self._com_length
+        return self.masspole * self._com_length
+
+    # Aliases
+    # NOTE: Added because the original environment doesn't use the pythonic naming.
+    @property
+    def pole_mass_length(self):
+        """Alias for :attr:`polemass_length`."""
+        return self.polemass_length
 
     @property
-    def tau(self):
-        """Property that also makes the timestep available under the :attr:`tau`
-        attribute. This was done to keep this environment consistent with the
-        original gymnasium environment.
+    def mass_pole(self):
+        """Alias for :attr:`masspole`."""
+        return self.masspole
+
+    @property
+    def mass_cart(self):
+        """Alias for :attr:`masscart`."""
+        return self.masscart
+
+    @property
+    def dt(self):
+        """Property that also makes the timestep available under the :attr:`dt`
+        attribute.
         """
-        return self.dt
+        return self.tau
 
 
 if __name__ == "__main__":
