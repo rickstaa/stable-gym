@@ -1,5 +1,5 @@
 """Modified version of the cart-pole environment in v0.28.1 of the `gymnasium library`_.
-In this modified version:
+This modification was first described by `Han et al. (2019)`_. In this modified version:
 
 -   The action space is continuous, wherein the original version it is discrete.
 -   The reward is replaced with a cost. This cost is defined as the difference between a
@@ -9,9 +9,8 @@ In this modified version:
 You can find the changes by searching for the ``NOTE:`` keyword.
 
 .. _`gymnasium library`: https://gymnasium.farama.org/environments/classic_control/cart_pole/>
+.. _`Han et al. (2020)`: https://arxiv.org/abs/2004.14288
 """  # noqa: E501
-# IMPROVEMENT: The multi-instance logic can be replaced with the new vectorized envs see
-# https://gymnasium.farama.org/api/vector.
 import math
 
 import gymnasium as gym
@@ -115,9 +114,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
     Episode Termination:
         -   Pole Angle is more than 20 degrees.
-        -   Cart Position is more than 5 m (center of the cart reaches the edge of the
+        -   Cart Position is more than 10 m (center of the cart reaches the edge of the
             display).
         -   Episode length is greater than 200.
+        -   The cost is greater than 100.
 
     Solved Requirements:
         Considered solved when the average cost is less than or equal to 50 over
@@ -150,6 +150,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         cost_range (gym.spaces.Box): The range of the cost.
 
     .. _`Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problem`: https://ieeexplore.ieee.org/document/6313077
+    .. _`Han et al. (2019)`: https://arxiv.org/abs/2004.14288
     """  # noqa: E501
 
     metadata = {
@@ -338,16 +339,22 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         """
         if self.task_type.lower() == "reference_tracking":
             # Calculate cost (reference tracking task)
-            stab_cost = x**2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
+            stab_cost = (x / self.x_threshold) ** 2 + 20 * (
+                theta / self.theta_threshold_radians
+            ) ** 2
+            # stab_cost = x**2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
             ref = [self.reference(self.t), 0.0]
             ref_cost = abs(x - ref[0])
             # ref_cost = np.square(x - ref[0])
             cost = stab_cost + ref_cost
         else:
             # Calculate cost (stabilization task)
-            cost = (
-                x**2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
-            )  # Stabilization task
+            cost = (x / self.x_threshold) ** 2 + 20 * (
+                theta / self.theta_threshold_radians
+            ) ** 2  # Stabilization task
+            # cost = (
+            #     x**2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
+            # )  # Stabilization task
             ref = np.array([0.0, 0.0])
 
         return cost, ref

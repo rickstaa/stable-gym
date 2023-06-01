@@ -4,9 +4,12 @@ An un-actuated joint attaches a pole to a cart, which moves along a frictionless
 corresponds to the [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/) environment that is included in the
 openAi gymnasium package. It is different in the fact that:
 
-*   In this version, the action space is continuous, wherein the OpenAi version
-    it is discrete.
-*   The reward is replaced with a cost. This cost is defined as the difference between a state variable and a reference value (error).
+*   The action space is continuous, wherein the original version it is discrete.
+*   The reward is replaced with a cost. This cost is defined as the difference between a
+    state variable and a reference value (error).
+*   Some of the environment parameters were changed slightly.
+
+This modification was first described in [Han et al. 2019](https://arxiv.org/abs/2004.14288).
 
 ## Observation space
 
@@ -19,9 +22,15 @@ openAi gymnasium package. It is different in the fact that:
 
 *   **u1:** The x-force applied on the cart.
 
-## Environment episode stop criteria
+## Episode Termination:
 
-An episode is terminated based on set cart position, pole angle and cost thresholds.
+An episode is terminated when:
+
+*   Pole Angle is more than 20 degrees.
+*   Cart Position is more than 10 m (center of the cart reaches the edge of the
+    display).
+*   Episode length is greater than 200.
+*   The cost is greater than 100.
 
 ## Environment goal
 
