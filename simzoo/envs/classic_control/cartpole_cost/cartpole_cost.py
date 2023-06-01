@@ -10,6 +10,8 @@ You can find the changes by searching for the ``NOTE:`` keyword.
 
 .. _`gymnasium library`: https://gymnasium.farama.org/environments/classic_control/cart_pole/>
 """  # noqa: E501
+# IMPROVEMENT: The multi-instance logic can be replaced with the new vectorized envs see
+# https://gymnasium.farama.org/api/vector.
 import math
 
 import gymnasium as gym
@@ -19,9 +21,11 @@ from gymnasium import logger, spaces
 from gymnasium.error import DependencyNotInstalled
 
 if __name__ == "__main__":
-    from cart_pole_cost_disturber import CartPoleDisturber
+    from simzoo.envs.classic_control.cartpole_cost.cartpole_cost_disturber import (
+        CartPoleDisturber,
+    )
 else:
-    from .cart_pole_cost_disturber import CartPoleDisturber
+    from .cartpole_cost_disturber import CartPoleDisturber
 
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
@@ -140,7 +144,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         "render_modes": ["human", "rgb_array"],
         "render_fps": 50,
     }  # Not used during training but in other gymnasium utilities.
-    instances = []  # TODO: Replace by extra class.
+    instances = []
 
     def __init__(
         self,
