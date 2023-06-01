@@ -348,6 +348,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
         # Clip action if needed
+        # NOTE: This is not done in the original environment.
         if self._clip_action:
             # Throw warning if clipped and not already thrown.
             if not self.action_space.contains(action) and not self._action_clip_warning:
@@ -399,6 +400,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.t = self.t + self.tau
 
         # Calculate cost
+        # NOTE: Different cost function compared to the original.
         cost, ref = self.cost(x, theta)
 
         # Define stopping criteria
@@ -411,7 +413,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # Handle termination.
         if terminated:
-            cost = 100.0
+            cost = 100.0  # NOTE: Different cost compared to the original.
 
             # Throw warning if already done
             if self.steps_beyond_terminated is None:
@@ -432,6 +434,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             self.render()
 
         # Return state, cost, terminated, truncated and info_dict
+        # NOTE: The original returns an empty info dict.
         violation_of_constraint = bool(abs(x) > self.const_pos)
         violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         return (
@@ -501,6 +504,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.t = 0.0
 
         # Create info dict.
+        # NOTE: The original returns an empty info dict.
         x, _, theta, _ = self.state
         _, ref = self.cost(x, theta)
         violation_of_constraint = bool(abs(x) > self.const_pos)
