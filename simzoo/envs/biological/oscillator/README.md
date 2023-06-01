@@ -4,22 +4,27 @@ A gymnasium environment for a synthetic oscillatory network of transcriptional r
 called a repressilator. A repressilator is a three-gene regulatory network where the
 dynamics of mRNA and proteins follow an oscillatory behaviour
 ([see Elowitch et al. 2000](https://www-nature-com.tudelft.idm.oclc.org/articles/35002125)
-).
+and [Han et al. 2020](https://arxiv.org/abs/2004.14288)).
 
 ## Observation space
 
-*   **m1:** Lacl mRNA concentration.
-*   **m2:** tetR mRNA concentration.
-*   **m3:** CI mRNA concentration.
-*   **p1:** lacI (repressor) protein concentration (Inhibits transcription tetR gene).
-*   **p2:** tetR (repressor) protein concentration (Inhibits transcription CI).
-*   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI).
+*   **m1:** Lacl mRNA transcripts concentration.
+*   **m2:** tetR mRNA transcripts concentration.
+*   **m3:** CI mRNA transcripts concentration.
+*   **p1:** lacI (repressor) protein concentration (Inhibits transcription of tetR gene).
+*   **p2:** tetR (repressor) protein concentration (Inhibits transcription of CI gene).
+*   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI gene).
+*   **error:** The error between the reference and the state of interest (i.e. p1).
 
 ## Action space
 
-*   **u1:** Number of Lacl proteins produced during continuous growth under repressor saturation (Leakiness).
-*   **u2:** Number of tetR proteins produced during continuous growth under repressor saturation (Leakiness).
-*   **u3:** Number of CI proteins produced during continuous growth under repressor saturation (Leakiness).
+*   **u1:** Relative intensity of light signal that induce the expression of the Lacl mRNA gene.
+*   **u2:** Relative intensity of light signal that induce the expression of the tetR mRNA gene.
+*   **u3:** Relative intensity of light signal that induce the expression of the CI mRNA gene.
+
+## Environment episode stop criteria
+
+An episode is terminated when the maximum step limit is reached, or the cost is greater than 100.
 
 ## Environment goal
 
@@ -37,12 +42,17 @@ cost = np.square(p1 - r1)
 
 ## Environment step return
 
-In addition to the observations, the environment also returns an info dictionary that contains the current reference and
-the error when a step is taken. This results in returning the following array:
+In addition to the observations, the cost and a termination and truncation boolean the environment also returns a info dictionary:
 
 ```python
-[hat_x_1, hat_x_2, x_1, x_2, info_dict]
+[(hat_x_1, hat_x_2, x_1, x_2), cost, termination, truncation, info_dict]
 ```
+
+The info dictionary contains the following keys:
+
+*   **reference**: The current reference (position and angles). Only present when performing a reference tracking task.
+*   **state\_of\_interest**: The state of the variable that is meant to track the reference (i.e. p1).
+*   **violation\_of\_constraint**: Whether the protein concentration of the state of interest (i.e. p1) is higher than a certain constraint level (i.e 20).
 
 ## How to use
 

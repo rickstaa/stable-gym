@@ -10,7 +10,7 @@ ENV_NAME = "CartPoleCost-v1"
 # ENV_NAME = "CartPole-v1"
 
 if __name__ == "__main__":
-    env = gym.make(ENV_NAME, render_mode="human")
+    env = gym.make(ENV_NAME, render_mode="human", task_type="reference_tracking")
 
     # Define a policy function.
     # NOTE: Can be any function that takes an observation and returns an action.
