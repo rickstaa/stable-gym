@@ -34,6 +34,11 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 class CartPoleCost(gym.Env, CartPoleDisturber):
     """Custom cartPole gymnasium environment.
 
+    .. Note::
+        Can also be used in a vectorized manner. See the `gym.vector`_ documentation.
+
+    .. _gym.vector: https://gymnasium.farama.org/api/vector/
+
     Description:
         This environment was based on the cart-pole environment described by Barto,
         Sutton, and Anderson in
@@ -144,7 +149,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         "render_modes": ["human", "rgb_array"],
         "render_fps": 50,
     }  # Not used during training but in other gymnasium utilities.
-    instances = []
 
     def __init__(
         self,
@@ -246,14 +250,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # }
         self.const_pos = 4.0  # Reference constraint.
         self.target_pos = 0.0  # Reference target.
-
-        # Add ability to use multiple instances of the environment.
-        self.__class__.instances.append(self)
-        self._instance_nr = len(self.__class__.instances)
-        logger.info(
-            f"CartPoleCost environment {self._instance_nr} is initiated for a "
-            f"{task_type}' task and '{reference_type}' reference."
-        )
 
     def set_params(self, length, mass_of_cart, mass_of_pole, gravity):
         """Sets the most important system parameters.
@@ -497,7 +493,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # Set random initial state and reset several env variables.
         self.state = (
-            self.np_random.uniform(low=low, high=high) if random else self._init_state
+            self.np_random.uniform(low=low, high=high, size=(4,))
+            if random
+            else self._init_state
         )
         self.steps_beyond_terminated = None
         self.t = 0.0
