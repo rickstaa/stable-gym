@@ -71,7 +71,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         | 2   | Pole Angle            | ~ -.698 rad (-40 deg) | ~ .698 rad (40 deg) |
         +-----+-----------------------+-----------------------+---------------------+
         | 3   | Pole Angular Velocity | -50rad                | 50rad               |
-        +-----+-----------------------+-----------------------+--------------------+
+        +-----+-----------------------+-----------------------+---------------------+
 
         .. Note::
             While the ranges above denote the possible values for observation space of
