@@ -24,7 +24,7 @@ ENVS = {
         "reward_threshold": 300,
     },
     "CartPoleCost-v1": {
-        "module": "simzoo.envs.classic_control.cart_pole_cost.cart_pole_cost:CartPoleCost",  # noqa: E501
+        "module": "simzoo.envs.classic_control.cartpole_cost.cartpole_cost:CartPoleCost",  # noqa: E501
         "max_step": 400,
         "reward_threshold": 300,
     },
