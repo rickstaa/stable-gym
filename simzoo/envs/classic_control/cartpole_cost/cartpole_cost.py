@@ -4,6 +4,8 @@ This modification was first described by `Han et al. (2019)`_. In this modified 
 -   The action space is continuous, wherein the original version it is discrete.
 -   The reward is replaced with a cost. This cost is defined as the difference between a
     state variable and a reference value (error).
+-   A extra reference state variable is added to the observation space (index 4). Needed
+    for reference tracking tasks.
 -   Some of the environment parameters were changed slightly.
 
 You can find the changes by searching for the ``NOTE:`` keyword.
@@ -62,22 +64,26 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         -   The action space is continuous, wherein the original version it is discrete.
         -   The reward is replaced with a cost. This cost is defined as the difference
             between a state variable and a reference value (error).
+        -   A extra reference state variable is added to the observation space (index 4).
+            Needed for reference tracking tasks.
         -   Some of the environment parameters were changed slightly.
 
     Observation:
-        **Type**: Box(4)
+        **Type**: Box(5)
 
-        +-----+-----------------------+-----------------------+---------------------+
-        | Num | Observation           | Min                   | Max                 |
-        +=====+=======================+=======================+=====================+
-        | 0   | Cart Position         | -20                   | 20                  |
-        +-----+-----------------------+-----------------------+---------------------+
-        | 1   | Cart Velocity         | -50                   | 50                  |
-        +-----+-----------------------+-----------------------+---------------------+
-        | 2   | Pole Angle            | ~ -.698 rad (-40 deg) | ~ .698 rad (40 deg) |
-        +-----+-----------------------+-----------------------+---------------------+
-        | 3   | Pole Angular Velocity | -50rad                | 50rad               |
-        +-----+-----------------------+-----------------------+---------------------+
+        +-----+-------------------------+-----------------------+---------------------+
+        | Num | Observation             | Min                   | Max                 |
+        +=====+=========================+=======================+=====================+
+        | 0   | Cart Position           | -20                   | 20                  |
+        +-----+-------------------------+-----------------------+---------------------+
+        | 1   | Cart Velocity           | -50                   | 50                  |
+        +-----+-------------------------+-----------------------+---------------------+
+        | 2   | Pole Angle              | ~ -.698 rad (-40 deg) | ~ .698 rad (40 deg) |
+        +-----+-------------------------+-----------------------+---------------------+
+        | 3   | Pole Angular Velocity   | -50rad                | 50rad               |
+        +-----+-------------------------+-----------------------+---------------------+
+        | 4   | Cart reference position | -20                   | 20                  |
+        +-----+-------------------------+-----------------------+---------------------+
 
         .. Note::
             While the ranges above denote the possible values for observation space of
@@ -93,11 +99,11 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     Actions:
         **Type**: Box(1)
 
-        +-----+----------------------+
-        | Num | Action               |
-        +=====+======================+
-        | 0   | The controller Force |
-        +-----+----------------------+
+        +-----+----------------------+-----------------------+---------------------+
+        | Num | Action               | Min                   | Max                 |
+        +=====+======================+=======================+=====================+
+        | 0   | The controller Force | -20                   | 20                  |
+        +-----+----------------------+-----------------------+---------------------+
 
         .. Note::
             The velocity that is reduced or increased by the applied force is not fixed
@@ -213,6 +219,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 self.max_v,
                 self.theta_threshold_radians * 2,
                 self.max_w,
+                self.x_threshold * 2,  # NOTE: Needed for reference tracking tasks.
             ],
             dtype=np.float32,
         )
@@ -252,8 +259,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             [0.1, 0.2, 0.3, 0.1]
         )  # Used when random is disabled in reset.
         self._init_state_range = {
-            "low": [-2, -0.2, -0.2, -0.2],
-            "high": [2, 0.2, 0.2, 0.2],
+            "low": [-0.2, -0.2, -0.2, -0.2],
+            "high": [0.2, 0.2, 0.2, 0.2],
         }  # Used when random is enabled in reset.
         # NOTE: Original uses the following values in the reset function.
         # self._init_state_range = {
@@ -309,8 +316,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.gravity = self._gravity_init
 
     def reference(self, t):
-        """Returns the current value of the periodic reference signal that is tracked by
-        the cart-pole system.
+        """Returns the current value of the periodic cart reference signal that is
+        tracked by the cart-pole system.
 
         Args:
             t (float): The current time step.
@@ -342,19 +349,15 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             stab_cost = (x / self.x_threshold) ** 2 + 20 * (
                 theta / self.theta_threshold_radians
             ) ** 2
-            # stab_cost = x**2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
             ref = [self.reference(self.t), 0.0]
             ref_cost = abs(x - ref[0])
-            # ref_cost = np.square(x - ref[0])
+            # ref_cost = np.square(x - ref[0]) # Other option.
             cost = stab_cost + ref_cost
         else:
             # Calculate cost (stabilization task)
             cost = (x / self.x_threshold) ** 2 + 20 * (
                 theta / self.theta_threshold_radians
             ) ** 2  # Stabilization task
-            # cost = (
-            #     x**2 / 100 + 20 * (theta / self.theta_threshold_radians) ** 2
-            # )  # Stabilization task
             ref = np.array([0.0, 0.0])
 
         return cost, ref
@@ -552,6 +555,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # Render environment reset if requested.
         if self.render_mode == "human":
             self.render()
+
         return np.array(self.state, dtype=np.float32), info_dict
 
     def render(self):
