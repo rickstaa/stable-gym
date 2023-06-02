@@ -37,7 +37,7 @@ This modification was first described in [Han et al. 2019](https://arxiv.org/abs
 
 *   **u1:** The x-force applied on the cart.
 
-## Episode Termination:
+## Episode Termination
 
 An episode is terminated when:
 

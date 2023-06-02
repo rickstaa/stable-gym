@@ -23,7 +23,7 @@ and [Han et al. 2020](https://arxiv.org/abs/2004.14288)).
 *   **u2:** Relative intensity of light signal that induce the expression of the tetR mRNA gene.
 *   **u3:** Relative intensity of light signal that induce the expression of the CI mRNA gene.
 
-## Environment episode stop criteria
+## Episode Termination
 
 An episode is terminated when the maximum step limit is reached, or the cost is greater than 100.
 
