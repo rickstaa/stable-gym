@@ -4,9 +4,11 @@ This modification was first described by `Han et al. (2019)`_. In this modified 
 -   The action space is continuous, wherein the original version it is discrete.
 -   The reward is replaced with a cost. This cost is defined as the difference between a
     state variable and a reference value (error).
--   A extra reference state variable is added to the observation space (index 4). Needed
-    for reference tracking tasks.
+-   A new ``reference_tracking`` task was added. This task can be enabled using the
+    ``task_type`` environment argument. When this type is chosen, two extra observations
+    are returned.
 -   Some of the environment parameters were changed slightly.
+-   The info dictionary returns extra information about the reference tracking task.
 
 You can find the changes by searching for the ``NOTE:`` keyword.
 
@@ -53,37 +55,41 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         `Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problem`_.
         A pole is attached by an un-actuated joint to a cart, which moves along a
         frictionless track. The pendulum is placed upright on the cart and the goal
-        is to balance the pole by applying forces in the left and right direction
-        on the cart.
+        is to balance the pole while optionally tracking a certain reference signal by
+        applying forces in the left and right direction on the cart.
 
     Source:
         This environment corresponds to the version that is included in the Farama
         Foundation gymnasium package. It is different from this version in the fact
         that:
 
-        -   The action space is continuous, wherein the original version it is discrete.
-        -   The reward is replaced with a cost. This cost is defined as the difference
-            between a state variable and a reference value (error).
-        -   A extra reference state variable is added to the observation space (index 4).
-            Needed for reference tracking tasks.
-        -   Some of the environment parameters were changed slightly.
+            -   The action space is continuous, wherein the original version it is discrete.
+            -   The reward is replaced with a cost. This cost is defined as the difference between a
+                state variable and a reference value (error).
+            -   A new ``reference_tracking`` task was added. This task can be enabled using the
+                ``task_type`` environment argument. When this type is chosen, two extra observations
+                are returned.
+            -   Some of the environment parameters were changed slightly.
+            -   The info dictionary returns extra information about the reference tracking task.
 
     Observation:
-        **Type**: Box(5)
+        **Type**: Box(4) or Box(6)
 
-        +-----+-------------------------+-----------------------+---------------------+
-        | Num | Observation             | Min                   | Max                 |
-        +=====+=========================+=======================+=====================+
-        | 0   | Cart Position           | -20                   | 20                  |
-        +-----+-------------------------+-----------------------+---------------------+
-        | 1   | Cart Velocity           | -50                   | 50                  |
-        +-----+-------------------------+-----------------------+---------------------+
-        | 2   | Pole Angle              | ~ -.698 rad (-40 deg) | ~ .698 rad (40 deg) |
-        +-----+-------------------------+-----------------------+---------------------+
-        | 3   | Pole Angular Velocity   | -50rad                | 50rad               |
-        +-----+-------------------------+-----------------------+---------------------+
-        | 4   | Cart reference position | -20                   | 20                  |
-        +-----+-------------------------+-----------------------+---------------------+
+        +-----+------------------------------+-----------------------+---------------------+
+        | Num | Observation                  | Min                   | Max                 |
+        +=====+==============================+=======================+=====================+
+        | 0   | Cart Position                | -20                   | 20                  |
+        +-----+------------------------------+-----------------------+---------------------+
+        | 1   | Cart Velocity                | -50                   | 50                  |
+        +-----+------------------------------+-----------------------+---------------------+
+        | 2   | Pole Angle                   | ~ -.698 rad (-40 deg) | ~ .698 rad (40 deg) |
+        +-----+------------------------------+-----------------------+---------------------+
+        | 3   | Pole Angular Velocity        | -50rad                | 50rad               |
+        +-----+------------------------------+-----------------------+---------------------+
+        | (4) | The cart position reference  | -20                   | 20                  |
+        +-----+------------------------------+-----------------------+---------------------+
+        | (5) | The reference tracking error | -20                   | 20                  |
+        +-----+------------------------------+-----------------------+---------------------+
 
         .. Note::
             While the ranges above denote the possible values for observation space of
@@ -171,6 +177,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # NOTE: Custom environment arguments.
         task_type="stabilization",
         reference_type="constant",
+        reference_target_position=0.0,
+        reference_constraint_position=4.0,
         clip_action=True,
     ):
         """Constructs all the necessary attributes for the CartPoleCost instance.
@@ -181,7 +189,12 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 are "reference_tracking" and "stabilization"). Defaults to
                 "stabilization".
             reference_type (str, optional): The type of reference you want to use
-                (``constant`` or ``periodic``), by default ``periodic``.
+                (``constant`` or ``periodic``), by default ``periodic``. Only used
+                when ``task_type`` is ``reference_tracking``.
+            reference_target_position: The reference target position, by default
+                ``0.0`` (i.e. the mean of the reference signal).
+            reference_constraint_position: The reference constraint position, by
+                default ``4.0``. Not used in the environment but used for the info dict.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
@@ -211,6 +224,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.max_v = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
         self.max_w = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
 
+        # Create observation space bounds.
         # Angle limit set to 2 * theta_threshold_radians so failing observation
         # is still within bounds.
         high = np.array(
@@ -223,6 +237,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             ],
             dtype=np.float32,
         )
+        # NOTE: When reference tracking add two extra observation states.
+        if task_type.lower() == "reference_tracking":
+            high = np.append(high, np.repeat(self.x_threshold * 2, 2))
 
         self.action_space = spaces.Box(
             low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float32
@@ -269,8 +286,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # }
 
         # Reference target and constraint positions.
-        self.target_pos = 0.0  # Reference target.
-        self.constraint_pos = 4.0  # Reference constraint.
+        self.reference_target_pos = reference_target_position
+        self.reference_constraint_pos = reference_constraint_position
 
         # Print vectorization debug info.
         self.__class__.instances += 1
@@ -326,9 +343,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             float: The current reference value.
         """
         if self.reference_type == "periodic":
-            return self.target_pos + 7 * np.sin((2 * np.pi) * t / 200)
+            return self.reference_target_pos + 7 * np.sin((2 * np.pi) * t / 200)
         else:
-            return self.target_pos
+            return self.reference_target_pos
 
     def cost(self, x, theta):
         """Returns the cost for a given cart position (x) and a pole angle (theta).
@@ -345,16 +362,17 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 - r_2 (float): The cart_pole angle reference.
         """
         if self.task_type.lower() == "reference_tracking":
-            # Calculate cost (reference tracking task)
-            stab_cost = (x / self.x_threshold) ** 2 + 20 * (
-                theta / self.theta_threshold_radians
-            ) ** 2
+            # Calculate cost (reference tracking task).
             ref = [self.reference(self.t), 0.0]
-            ref_cost = abs(x - ref[0])
-            # ref_cost = np.square(x - ref[0]) # Other option.
+            ref_cost = ((x - ref[0]) / self.x_threshold) ** 2
+            # ref_cost = (x - ref[0]) ** 2  # Other option.
+            # ref_cost = abs(x - ref[0])  # Other option.
+
+            stab_cost = 20 * (theta / self.theta_threshold_radians) ** 2
+
             cost = stab_cost + ref_cost
         else:
-            # Calculate cost (stabilization task)
+            # Calculate cost (stabilization task).
             cost = (x / self.x_threshold) ** 2 + 20 * (
                 theta / self.theta_threshold_radians
             ) ** 2  # Stabilization task
@@ -379,7 +397,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                     agent goes out of bounds.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
-        # Clip action if needed
+        # Clip action if needed.
         # NOTE: This is not done in the original environment.
         if self._clip_action:
             # Throw warning if clipped and not already thrown.
@@ -428,15 +446,15 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         self.state = (x, x_dot, theta, theta_dot)
 
-        # Increment time step
+        # Increment time step.
         # NOTE: This is not done in the original environment.
         self.t = self.t + self.tau
 
-        # Calculate cost
+        # Calculate cost.
         # NOTE: Different cost function compared to the original.
         cost, ref = self.cost(x, theta)
 
-        # Define stopping criteria
+        # Define stopping criteria.
         terminated = bool(
             abs(x) > self.x_threshold
             or abs(theta) > self.theta_threshold_radians
@@ -448,7 +466,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         if terminated:
             cost = 100.0  # NOTE: Different cost compared to the original.
 
-            # Throw warning if already done
+            # Throw warning if already done.
             if self.steps_beyond_terminated is None:
                 # Pole just fell!
                 self.steps_beyond_terminated = 0
@@ -462,28 +480,36 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                     )
                 self.steps_beyond_terminated += 1
 
-        # Render environment if requested
+        # Render environment if requested.
         if self.render_mode == "human":
             self.render()
 
-        # Return state, cost, terminated, truncated and info_dict
+        # Create observation and info dict.
+        # NOTE: When reference tracking add two extra observation states.
+        observation = (
+            np.append(
+                np.array(self.state, dtype=np.float32),
+                np.array([ref[0], x - ref[0]], dtype=np.float32),
+            )
+            if self.task_type.lower() == "reference_tracking"
+            else np.array(self.state, dtype=np.float32)
+        )
+        info_dict = dict(
+            reference=ref[0],
+            state_of_interest=x,
+            reference_error=x - ref[0],
+            reference_constraint_position=self.reference_constraint_pos,
+            reference_constraint_error=x - self.reference_constraint_pos,
+            reference_constraint_violated=bool(abs(x) > self.reference_constraint_pos),
+        )
+
         # NOTE: The original returns an empty info dict.
-        violation_of_constraint = bool(abs(x) > self.constraint_pos)
-        violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         return (
-            np.array(self.state, dtype=np.float32),
+            observation,
             cost,
             terminated,
             False,
-            dict(
-                cons_pos=self.constraint_pos,
-                cons_theta=self.theta_threshold_radians,
-                target=self.target_pos,
-                violation_of_x_threshold=violation_of_x_threshold,
-                violation_of_constraint=violation_of_constraint,
-                reference=ref,
-                state_of_interest=theta,
-            ),
+            info_dict,
         )
 
     def reset(self, seed=None, options=None, random=True):
@@ -520,8 +546,18 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             else self._init_state_range["high"],
             dtype=np.float32,
         )
-        assert (self.observation_space.contains(low)) and (
-            self.observation_space.contains(high)
+        assert (
+            self.observation_space.contains(
+                np.append(low, np.zeros(2, dtype=np.float32))
+                if self.task_type.lower() == "reference_tracking"
+                else low
+            )
+        ) and (
+            self.observation_space.contains(
+                np.append(high, np.zeros(2, dtype=np.float32))
+                if self.task_type.lower() == "reference_tracking"
+                else high
+            )
         ), (
             "Reset bounds must be within the observation space bounds "
             f"({self.observation_space})."
@@ -536,27 +572,33 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.steps_beyond_terminated = None
         self.t = 0.0
 
-        # Create info dict.
-        # NOTE: The original returns an empty info dict.
+        # Create info dict and observation.
+        # NOTE: When reference tracking add two extra observation states.
         x, _, theta, _ = self.state
         _, ref = self.cost(x, theta)
-        violation_of_constraint = bool(abs(x) > self.constraint_pos)
-        violation_of_x_threshold = bool(x < -self.x_threshold or x > self.x_threshold)
         info_dict = dict(
-            cons_pos=self.constraint_pos,
-            cons_theta=self.theta_threshold_radians,
-            target=self.target_pos,
-            violation_of_x_threshold=violation_of_x_threshold,
-            violation_of_constraint=violation_of_constraint,
-            reference=ref,
-            state_of_interest=theta,
+            reference=ref[0],
+            state_of_interest=x,
+            reference_error=x - ref[0],
+            reference_constraint_position=self.reference_constraint_pos,
+            reference_constraint_error=x - self.reference_constraint_pos,
+            reference_constraint_violated=bool(abs(x) > self.reference_constraint_pos),
+        )
+        observation = (
+            np.append(
+                np.array(self.state, dtype=np.float32),
+                np.array([ref[0], x - ref[0]], dtype=np.float32),
+            )
+            if self.task_type.lower() == "reference_tracking"
+            else np.array(self.state, dtype=np.float32)
         )
 
         # Render environment reset if requested.
         if self.render_mode == "human":
             self.render()
 
-        return np.array(self.state, dtype=np.float32), info_dict
+        # NOTE: The original returns an empty info dict.
+        return observation, info_dict
 
     def render(self):
         """Render one frame of the environment."""
@@ -710,7 +752,7 @@ if __name__ == "__main__":
     print("Setting up CartPoleCost environment.")
     env = gym.make("CartPoleCost", render_mode="human")
 
-    # Take T steps in the environment
+    # Take T steps in the environment.
     T = 1000
     path = []
     t1 = []
@@ -734,7 +776,7 @@ if __name__ == "__main__":
         t1.append(i * env.dt)
     print("Finished CartPoleCost environment simulation.")
 
-    # Plot results
+    # Plot results.
     print("Plot results.")
     fig = plt.figure(figsize=(9, 6))
     ax = fig.add_subplot(111)

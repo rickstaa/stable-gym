@@ -16,9 +16,7 @@ ENV_NAME = "CartPoleCost-v1"
 # ENV_NAME = "CartPole-v1"
 
 if __name__ == "__main__":
-    envs = gym.vector.make(
-        ENV_NAME, render_mode="human", num_envs=3, asynchronous=False
-    )
+    envs = gym.vector.make(ENV_NAME, render_mode="human", num_envs=3)
 
     # Define a policy function.
     # NOTE: Can be any function that takes an observation and returns an action.
