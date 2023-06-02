@@ -63,7 +63,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         +-----+-----------------------------------------------+-------------------+-------------------+
         | 6   | The reference we want to follow               | 0                 | 100               |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 7   || The error between the current value of       | 0                 | 100               |
+        | 7   || The error between the current value of       | -100              | 100               |
         |     || protein 1 and the reference                  |                   |                   |
         +-----+-----------------------------------------------+-------------------+-------------------+
 
@@ -184,7 +184,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.delta5 = 0.0  # p2 noise.
         self.delta6 = 0.0  # p3 noise.
 
-        obs_low = np.array([0, 0, 0, 0, 0, 0, 0, 0], dtype=np.float32)  # NOTE:
+        obs_low = np.array([0, 0, 0, 0, 0, 0, 0, -100], dtype=np.float32)  # NOTE:
         obs_high = np.array([100, 100, 100, 100, 100, 100, 100, 100], dtype=np.float32)
         self.action_space = spaces.Box(
             low=np.array([-5.0, -5.0, -5.0], dtype=np.float32),
@@ -329,7 +329,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
         # Return state, cost, terminated, truncated and info_dict
         return (
-            np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1]),
+            np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1], dtype=np.float32),
             cost,
             terminated,
             False,
@@ -406,7 +406,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.t = 0.0
         m1, m2, m3, p1, p2, p3 = self.state
         r1 = self.reference(self.t)
-        return np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1]), dict(
+        return np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1], dtype=np.float32), dict(
             reference=r1,
             state_of_interest=p1,
             reference_error=p1 - r1,
