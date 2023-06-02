@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.11](https://github.com/rickstaa/simzoo/compare/v0.5.10...v0.5.11) (2023-06-02)
+
+
+### Features
+
+* add reference to CartPoleCost observation ([#108](https://github.com/rickstaa/simzoo/issues/108)) ([b1f9ea8](https://github.com/rickstaa/simzoo/commit/b1f9ea8fd69586b57b51e0e7bfaf957af9301cb1))
+
+
+### Bug Fixes
+
+* change cost function to Han et al. 2020 ([e44293d](https://github.com/rickstaa/simzoo/commit/e44293d4076a1de180ba268e01e04837092ae006))
+* fix 'clip_action' disabled bug and improve docs ([e95cc27](https://github.com/rickstaa/simzoo/commit/e95cc278cecf98e767e3e74ba12444340a821eff))
+* fix a runtime error in the CartPole env ([#110](https://github.com/rickstaa/simzoo/issues/110)) ([3d9c208](https://github.com/rickstaa/simzoo/commit/3d9c208330118dabbaf970abb0a4632b2d16d343))
+* fix CartPoleCost observation bug ([47699c2](https://github.com/rickstaa/simzoo/commit/47699c2099f84310513021f3d41eb055cf47a38b))
+* fix CartPoleCost observation bug ([37ca1a2](https://github.com/rickstaa/simzoo/commit/37ca1a20c8c7c68f138992bb7853b9af1f3f42cf))
+* fix Oscillator env observation bug ([0634367](https://github.com/rickstaa/simzoo/commit/06343672980a4f834beb01842f7cf33119f7068c))
+
 ### [0.5.10](https://github.com/rickstaa/simzoo/compare/v0.5.9...v0.5.10) (2023-06-01)
 
 ### [0.5.9](https://github.com/rickstaa/simzoo/compare/v0.5.8...v0.5.9) (2023-06-01)
