@@ -125,7 +125,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         All observations are assigned a uniform random value in ``[-0.2..0.2]``
 
     Episode Termination:
-        -   Pole Angle is more than 20 degrees.
+        -   Pole Angle is more than 20 degrees in ``stabilization`` task and 60 in
+            ``reference_tracking`` task.
         -   Cart Position is more than 10 m (center of the cart reaches the edge of the
             display).
         -   Episode length is greater than 200.
@@ -217,9 +218,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.kinematics_integrator = "euler"
 
         # Position and angle at which to fail the episode.
-        self.theta_threshold_radians = (
-            20 * 2 * math.pi / 360
-        )  # NOTE: original uses 12 degrees.
+        theta_threshold_degrees = (
+            task_type.lower() == "reference_tracking" and 60 or 20
+        )  # NOTE: Original uses 12 degrees.
+        self.theta_threshold_radians = theta_threshold_degrees * 2 * math.pi / 360
         self.x_threshold = 10  # NOTE: original uses 2.4.
         self.max_v = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
         self.max_w = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).

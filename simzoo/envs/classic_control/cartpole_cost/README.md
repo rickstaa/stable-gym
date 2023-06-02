@@ -41,7 +41,7 @@ This modification was first described in [Han et al. 2019](https://arxiv.org/abs
 
 An episode is terminated when:
 
-*   Pole Angle is more than 20 degrees.
+*   Pole Angle is more than 20 degrees in `stabilization` task and 60 in `reference_tracking` task.
 *   Cart Position is more than 10 m (center of the cart reaches the edge of the
     display).
 *   Episode length is greater than 200.
