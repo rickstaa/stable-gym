@@ -8,6 +8,8 @@ and [Han et al. 2020](https://arxiv.org/abs/2004.14288)).
 
 ## Observation space
 
+<<<<<<< Updated upstream
+
 *   **m1:** Lacl mRNA transcripts concentration.
 *   **m2:** tetR mRNA transcripts concentration.
 *   **m3:** CI mRNA transcripts concentration.
@@ -15,6 +17,17 @@ and [Han et al. 2020](https://arxiv.org/abs/2004.14288)).
 *   **p2:** tetR (repressor) protein concentration (Inhibits transcription of CI gene).
 *   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI gene).
 *   **error:** The error between the reference and the state of interest (i.e. p1).
+    \=======
+*   **m1:** Lacl mRNA concentration.
+*   **m2:** tetR mRNA concentration.
+*   **m3:** CI mRNA concentration.
+*   **p1:** lacI (repressor) protein concentration (Inhibits transcription tetR gene).
+*   **p2:** tetR (repressor) protein concentration (Inhibits transcription CI).
+*   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI).
+*   **ref:** The reference we want to follow.
+*   **ref\_error:** The error between the state of interest (i.e. p1) and the reference.
+
+> > > > > > > Stashed changes
 
 ## Action space
 
@@ -45,14 +58,17 @@ cost = np.square(p1 - r1)
 In addition to the observations, the cost and a termination and truncation boolean the environment also returns a info dictionary:
 
 ```python
-[(hat_x_1, hat_x_2, x_1, x_2), cost, termination, truncation, info_dict]
+[observation, info_dict]
 ```
 
 The info dictionary contains the following keys:
 
-*   **reference**: The current reference (position and angles). Only present when performing a reference tracking task.
-*   **state\_of\_interest**: The state of the variable that is meant to track the reference (i.e. p1).
-*   **violation\_of\_constraint**: Whether the protein concentration of the state of interest (i.e. p1) is higher than a certain constraint level (i.e 20).
+*   **reference**: The set cart position reference.
+*   **state\_of\_interest**: The state that should track the reference (SOI).
+*   **reference\_error**: The error between SOI and the reference.
+*   **reference\_constraint\_position**: A user specified constraint they want to watch.
+*   **reference\_constraint\_error**: The error between the SOI and the set reference constraint.
+*   **reference\_constraint\_violated**: Whether the reference constraint was violated.
 
 ## How to use
 

@@ -61,8 +61,10 @@ class Oscillator(gym.Env, OscillatorDisturber):
         | 5   || CI (repressor) protein concentration         | 0                 | 100               |
         |     || (Inhibits transcription of lacI gene)        |                   |                   |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 6   || The error between the reference and p1       | 0                 | 100               |
-        |     || (state of interest).                         |                   |                   |
+        | 6   | The reference we want to follow               | 0                 | 100               |
+        +-----+-----------------------------------------------+-------------------+-------------------+
+        | 7   || The error between the current value of       | 0                 | 100               |
+        |     || protein 1 and the reference                  |                   |                   |
         +-----+-----------------------------------------------+-------------------+-------------------+
 
     Actions:
@@ -195,7 +197,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
         # Reference target and constraint positions.
         self.target_pos = 8.0  # Reference target.
-        self.constraint_pos = 20  # Reference constraint.
+        self.reference_constraint_pos = 20  # Reference constraint.
 
         # Print vectorization debug info.
         self.__class__.instances += 1
@@ -322,7 +324,16 @@ class Oscillator(gym.Env, OscillatorDisturber):
             cost,
             terminated,
             False,
-            dict(reference=r1, state_of_interest=p1),
+            dict(
+                reference=r1,
+                state_of_interest=p1,
+                reference_error=p1 - r1,
+                reference_constraint_position=self.reference_constraint_pos,
+                reference_constraint_error=p1 - self.reference_constraint_pos,
+                reference_constraint_violated=bool(
+                    abs(p1) > self.reference_constraint_pos
+                ),
+            ),
         )
 
     def reset(
@@ -386,11 +397,13 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.t = 0.0
         m1, m2, m3, p1, p2, p3 = self.state
         r1 = self.reference(self.t)
-        violation_of_constraint = bool(p1 > self.constraint_pos)
         return np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1]), dict(
             reference=r1,
-            state_of_interest=p1 - r1,
-            violation_of_constraint=violation_of_constraint,
+            state_of_interest=p1,
+            reference_error=p1 - r1,
+            reference_constraint_position=self.reference_constraint_pos,
+            reference_constraint_error=p1 - self.reference_constraint_pos,
+            reference_constraint_violated=bool(abs(p1) > self.reference_constraint_pos),
         )
 
     def reference(self, t):
