@@ -21,7 +21,7 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 # TODO: Add solving criteria after training.
 class Oscillator(gym.Env, OscillatorDisturber):
-    """Synthetic oscillatory network
+    """Synthetic oscillatory network.
 
     .. Note::
         Can also be used in a vectorized manner. See the `gym.vector`_ documentation.
@@ -39,6 +39,12 @@ class Oscillator(gym.Env, OscillatorDisturber):
         The goal of the agent in the oscillator environment is to act in such a way that
         one of the proteins of the synthetic oscillatory network follows a supplied
         reference signal.
+
+    Source:
+        This environment corresponds to the Oscillator environment used in the paper
+        `Han et al. 2020`_.
+
+    .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 
     Observation:
         **Type**: Box(7)
@@ -88,14 +94,14 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
         .. math::
 
-            C = \\abs{p_1 - r_1}
+            C = {p_1 - r_1}^2
 
     Starting State:
         All observations are assigned a uniform random value in ``[0..5]``
 
     Episode Termination:
         -   An episode is terminated when the maximum step limit is reached.
-        -   The cost is greater than 100.
+        -   The step cost is greater than 100.
 
     Solved Requirements:
         Considered solved when the average cost is lower than 300.
@@ -177,6 +183,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.b3 = 1.0  # Control input gain u3.
 
         # Set noise parameters
+        # NOTE: Zero during training.
         self.delta1 = 0.0  # m1 noise.
         self.delta2 = 0.0  # m2 noise.
         self.delta3 = 0.0  # m3 noise.

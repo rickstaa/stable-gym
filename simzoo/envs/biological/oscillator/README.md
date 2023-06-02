@@ -25,7 +25,7 @@ and [Han et al. 2020](https://arxiv.org/abs/2004.14288)).
 
 ## Episode Termination
 
-An episode is terminated when the maximum step limit is reached, or the cost is greater than 100.
+An episode is terminated when the maximum step limit is reached, or the step cost is greater than 100.
 
 ## Environment goal
 
