@@ -7,16 +7,31 @@ openAi gymnasium package. It is different in the fact that:
 *   The action space is continuous, wherein the original version it is discrete.
 *   The reward is replaced with a cost. This cost is defined as the difference between a
     state variable and a reference value (error).
+*   A new `reference_tracking` task was added. This task can be enabled using the
+    `task_type` environment argument. When this type is chosen, two extra observations
+    are returned.
 *   Some of the environment parameters were changed slightly.
+*   The info dictionary returns extra information about the reference tracking task.
 
 This modification was first described in [Han et al. 2019](https://arxiv.org/abs/2004.14288).
 
 ## Observation space
 
+## Stabilization task (original)
+
 *   **x**: Cart Position.
 *   **x\_dot**: Cart Velocity.
 *   **w**: Pole angle.
 *   **w\_dot**: Pole angle velocity.
+
+## Reference tracking task
+
+*   **x**: Cart Position.
+*   **x\_dot**: Cart Velocity.
+*   **w**: Pole angle.
+*   **w\_dot**: Pole angle velocity.
+*   **x\_ref**: The cart position reference.
+*   **x\_ref\_error**: The reference tracking error.
 
 ## Action space
 
@@ -32,19 +47,23 @@ An episode is terminated when:
 *   Episode length is greater than 200.
 *   The cost is greater than 100.
 
-## Environment goal
+## Environment goals
 
-The pendulum starts upright, and the goal is to prevent it from falling over by increasing and reducing the cart's
-velocity. This needs to be done while the cart does not violate set position constraints. These constraints are defined
-in the cost function.
+### Stabilization task
+
+The stabilization task is similar to the one of the original `CartPole-v1` environment. The pendulum starts upright, and the goal is to prevent it from falling over by increasing and reducing the cart's control force. This must be done while the cart does not violate set position constraints. These constraints are defined in the cost function.
+
+### Reference tracking task
+
+Similar to the stabilization task but now the card also has to track a cart position reference signal.
 
 ## Cost function
 
 The cost function of this environment is designed in such a way that it tries to minimize the error of a set of states and a set of reference
 states. It contains two types of tasks:
 
-*   A reference tracking task. In this task, the agent tries to make a state track a given reference.
 *   A stabilization task. In this task, the agent attempts to stabilize a given state (e.g. keep the pole angle and or cart position zero)
+*   A reference tracking task. In this task, the agent tries to make a state track a given reference.
 
 The exact definition of these tasks can be found in the environment `cost()` method.
 
@@ -53,18 +72,17 @@ The exact definition of these tasks can be found in the environment `cost()` met
 In addition to the observations, the cost and a termination and truncation boolean the environment also returns a info dictionary:
 
 ```python
-[(hat_x_1, hat_x_2, x_1, x_2), cost, termination, truncation, info_dict]
+[observation, cost, termination, truncation, info_dict]
 ```
 
 The info dictionary contains the following keys:
 
-*   **cons\_pos**: The current x-position constraint.
-*   **cons\_theta**: The current pole angle constraint.
-*   **target**: The target position. Only present when performing a reference tracking task.
-*   **violation\_of\_x\_threshold**: Whether the environment x-threshold was violated.
-*   **violation\_of\_constraint**: Whether a certain x-constraint was voilated.
-*   **reference**: The current reference (position and angles). Only present when performing a reference tracking task.
-*   **state\_of\_interest**: The current state\_of\_interest which we try to minimize.
+*   **reference**: The set cart position reference.
+*   **state\_of\_interest**: The state that should track the reference (SOI).
+*   **reference\_error**: The error between SOI and the reference.
+*   **reference\_constraint\_position**: A user specified constraint they want to watch.
+*   **reference\_constraint\_error**: The error between the SOI and the set reference constraint.
+*   **reference\_constraint\_violated**: Whether the reference constraint was violated.
 
 ## How to use
 
