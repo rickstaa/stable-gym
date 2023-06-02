@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.12](https://github.com/rickstaa/simzoo/compare/v0.5.11...v0.5.12) (2023-06-02)
+
+
+### Features
+
+* increase reference tracking angle threshold ([5f5ca82](https://github.com/rickstaa/simzoo/commit/5f5ca820f7879f70800343892baa8229ecf702b4))
+
 ### [0.5.11](https://github.com/rickstaa/simzoo/compare/v0.5.10...v0.5.11) (2023-06-02)
 
 
