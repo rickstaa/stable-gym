@@ -233,13 +233,14 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 self.max_v,
                 self.theta_threshold_radians * 2,
                 self.max_w,
-                self.x_threshold * 2,  # NOTE: Needed for reference tracking tasks.
             ],
             dtype=np.float32,
         )
         # NOTE: When reference tracking add two extra observation states.
         if task_type.lower() == "reference_tracking":
-            high = np.append(high, np.repeat(self.x_threshold * 2, 2))
+            high = np.append(high, np.repeat(self.x_threshold * 2, 2)).astype(
+                np.float32
+            )
 
         self.action_space = spaces.Box(
             low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float32
@@ -281,8 +282,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         }  # Used when random is enabled in reset.
         # NOTE: Original uses the following values in the reset function.
         # self._init_state_range = {
-        #     "low": [-0.2, -0.05, -0.05, -0.05],
-        #     "high": [0.2, 0.05, 0.05, 0.05],
+        #     "low": np.repeat(-0.05, 4),
+        #     "high": np.repeat(0.05, 4),
         # }
 
         # Reference target and constraint positions.
