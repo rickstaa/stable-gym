@@ -1,8 +1,11 @@
 """A gymnasium environment for a synthetic oscillatory network of transcriptional
 regulators called a repressilator. A repressilator is a three-gene regulatory network
 where the dynamics of mRNA and proteins follow an oscillatory behavior
-(see https://www-nature-com.tudelft.idm.oclc.org/articles/35002125).
-"""
+(see `Elowitch et al. 2000`_ and `Han et al. 2020 `_).
+
+.. _`Elowitch et al. 2000`: https://www-nature-com.tudelft.idm.oclc.org/articles/35002125
+.. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
+"""  # noqa: E501
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
@@ -16,8 +19,14 @@ else:
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
+# TODO: Add solving criteria after training.
 class Oscillator(gym.Env, OscillatorDisturber):
     """Synthetic oscillatory network
+
+    .. Note::
+        Can also be used in a vectorized manner. See the `gym.vector`_ documentation.
+
+    .. _gym.vector: https://gymnasium.farama.org/api/vector/
 
     .. note::
         This gymnasium environment inherits from the
@@ -32,42 +41,47 @@ class Oscillator(gym.Env, OscillatorDisturber):
         reference signal.
 
     Observation:
-        **Type**: Box(4)
+        **Type**: Box(7)
 
-        +-----+-----------------------------------------------+----------------------+--------------------+
-        | Num | Observation                                   | Min                  | Max                |
-        +=====+===============================================+======================+====================+
-        | 0   | Lacl mRNA concentration                       | -100                 | 100                |
-        +-----+-----------------------------------------------+----------------------+--------------------+
-        | 1   | tetR mRNA concentration                       | -100                 | 100                |
-        +-----+-----------------------------------------------+----------------------+--------------------+
-        | 2   || lacI (repressor) protein concentration       | -100                 | 100                |
-        |     || (Inhibits transcription tetR gene)           |                      |                    |
-        +-----+-----------------------------------------------+----------------------+--------------------+
-        | 3   || tetR (repressor) protein concentration       | -100                 | 100                |
-        |     || (Inhibits transcription CI)                  |                      |                    |
-        +-----+-----------------------------------------------+----------------------+--------------------+
-        | 2   | The value of the reference for protein 1      | -100                 | 100                |
-        +-----+-----------------------------------------------+----------------------+--------------------+
-        | 3   || The error between the current value of       | -100                 | 100                |
-        |     || protein 1 and the reference                  |                      |                    |
-        +-----+-----------------------------------------------+----------------------+--------------------+
+        +-----+-----------------------------------------------+-------------------+-------------------+
+        | Num | Observation                                   | Min               | Max               |
+        +=====+===============================================+===================+===================+
+        | 0   | Lacl mRNA transcripts concentration           | 0                 | 100               |
+        +-----+-----------------------------------------------+-------------------+-------------------+
+        | 1   | tetR mRNA transcripts concentration           | 0                 | 100               |
+        +-----+-----------------------------------------------+-------------------+-------------------+
+        | 2   | CI mRNA transcripts concentration             | 0                 | 100               |
+        +-----+-----------------------------------------------+-------------------+-------------------+
+        | 3   || lacI (repressor) protein concentration       | 0                 | 100               |
+        |     || (Inhibits transcription of the tetR gene)    |                   |                   |
+        +-----+-----------------------------------------------+-------------------+-------------------+
+        | 4   || tetR (repressor) protein concentration       | 0                 | 100               |
+        |     || (Inhibits transcription of CI gene)          |                   |                   |
+        +-----+-----------------------------------------------+-------------------+-------------------+
+        | 5   || CI (repressor) protein concentration         | 0                 | 100               |
+        |     || (Inhibits transcription of lacI gene)        |                   |                   |
+        +-----+-----------------------------------------------+-------------------+-------------------+
+        | 6   | The reference we want to follow               | 0                 | 100               |
+        +-----+-----------------------------------------------+-------------------+-------------------+
+        | 7   || The error between the current value of       | 0                 | 100               |
+        |     || protein 1 and the reference                  |                   |                   |
+        +-----+-----------------------------------------------+-------------------+-------------------+
 
     Actions:
         **Type**: Box(3)
 
-        +-----+---------------------------------------------------------------------------+
-        | Num | Action                                                                    |
-        +=====+===========================================================================+
-        | 0   || Number of Lacl proteins produced during continuous growth under repressor|
-        |     || saturation (Leakiness).                                                  |
-        +-----+---------------------------------------------------------------------------+
-        | 1   || Number of tetR proteins produced during continuous growth under repressor|
-        |     || saturation (Leakiness).                                                  |
-        +-----+---------------------------------------------------------------------------+
-        | 2   || Number of CI proteins produced during continuous growth under repressor  |
-        |     || saturation (Leakiness).                                                  |
-        +-----+---------------------------------------------------------------------------+
+        +-----+------------------------------------------------------------+---------+---------+
+        | Num | Action                                                     | Min     |   Max   |
+        +=====+============================================================+=========+=========+
+        | 0   || Relative intensity of light signal that induce the        | -5      | 5       |
+        |     || expression of the Lacl mRNA gene.                         |         |         |
+        +-----+------------------------------------------------------------+---------+---------+
+        | 1   || Relative intensity of light signal that induce the        | -5      | 5       |
+        |     || expression of the tetR mRNA gene.                         |         |         |
+        +-----+------------------------------------------------------------+---------+---------+
+        | 2   || Relative intensity of light signal that induce the        | -5      | 5       |
+        |     || expression of the CI mRNA gene.                           |         |         |
+        +-----+------------------------------------------------------------+---------+---------+
 
     Cost:
         A cost, computed as the sum of the squared differences between the estimated and the actual states:
@@ -77,14 +91,24 @@ class Oscillator(gym.Env, OscillatorDisturber):
             C = \\abs{p_1 - r_1}
 
     Starting State:
-        All observations are assigned a uniform random value in ``[-0.05..0.05]``
+        All observations are assigned a uniform random value in ``[0..5]``
 
     Episode Termination:
-        -   When the step cost is higher than 100.
+        -   An episode is terminated when the maximum step limit is reached.
+        -   The cost is greater than 100.
 
     Solved Requirements:
         Considered solved when the average cost is lower than 300.
 
+    Arguments:
+
+        ```python
+        import simzoo
+        env = simzoo.make("Oscillator-v1")
+        ```
+
+        On reset, the `options` parameter allows the user to change the bounds used to
+        determine the new random state when ``random=True``.
     Attributes:
         state (numpy.ndarray): The current system state.
         t (float): The current time step.
@@ -92,13 +116,15 @@ class Oscillator(gym.Env, OscillatorDisturber):
         sigma (float): The variance of the system noise.
     """  # noqa: E501
 
-    instances = []
+    instances = 0  # Number of instances created.
 
     def __init__(
         self,
         render_mode=None,
         reference_type="periodic",
-        clipped_action=True,
+        reference_target_position=8.0,
+        reference_constraint_position=20.0,
+        clip_action=True,
     ):
         """Constructs all the necessary attributes for the oscillator instance.
 
@@ -107,56 +133,65 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 ``None``. Not used in this environment.
             reference_type (str, optional): The type of reference you want to use
                 (``constant`` or ``periodic``), by default ``periodic``.
-            clipped_action (str, optional): Whether the actions should be clipped if
+            reference_target_position: The reference target position, by default
+                ``8.0`` (i.e. the mean of the reference signal).
+            reference_constraint_position: The reference constraint position, by
+                default ``20.0``. Not used in the environment but used for the info
+                dict.
+            clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
-        if render_mode is not None:
-            logger.warn(
-                "You are passing the `render_mode` argument to the `__init__` method "
-                "of the Ex3EKF environment. This argument is not used in this "
-                "environment."
-            )
-
         super().__init__()  # Setup disturber
-        self.__class__.instances.append(self)
-        self._instance_nr = len(self.__class__.instances)
         self._action_clip_warning = False
-        self._clipped_action = clipped_action
+        self._clip_action = clip_action
 
         self.reference_type = reference_type
         self.t = 0.0
         self.dt = 1.0
-        self.sigma = 0.0
         self._init_state = np.array(
-            [0.1, 0.2, 0.3, 0.1, 0.2, 0.3]
-        )  # Initial state when random is disabled
-
-        # Print environment information
-        logger.info(
-            f"Oscillator environment {self._instance_nr} is using a '{reference_type}' "
-            "reference."
-        ),
+            [0.8, 1.5, 0.5, 3.3, 3, 3]
+        )  # Used when random is disabled in reset.
+        self._init_state_range = {
+            "low": [0, 0, 0, 0, 0, 0],
+            "high": [5, 5, 5, 5, 5, 5],
+        }  # Used when random is enabled in reset.
 
         # Set oscillator network parameters
-        self.K = 1.0
-        self.c1 = 1.6
-        self.c2 = 0.16
-        self.c3 = 0.16
-        self.c4 = 0.06
-        self.b1 = 1.0
-        self.b2 = 1.0
-        self.b3 = 1.0
+        self.K1 = 1.0  # RNA dissociation constants m1.
+        self.K2 = 1.0  # RNA dissociation constant m2.
+        self.K3 = 1.0  # RNA dissociation constant m3.
+        self.a1 = 1.6  # Maximum promoter strength m1.
+        self.a2 = 1.6  # Maximum promoter strength m2.
+        self.a3 = 1.6  # Maximum promoter strength m3.
+        self.gamma1 = 0.16  # mRNA degradation rate m1.
+        self.gamma2 = 0.16  # mRNA degradation rate m2.
+        self.gamma3 = 0.16  # mRNA degradation rate m3.
+        self.beta1 = 0.16  # Protein production rate p1.
+        self.beta2 = 0.16  # Protein production rate p2.
+        self.beta3 = 0.16  # Protein production rate p3.
+        self.c1 = 0.06  # Protein degradation rate p1.
+        self.c2 = 0.06  # Protein degradation rate p2.
+        self.c3 = 0.06  # Protein degradation rate p3.
+        self.b1 = 1.0  # Control input gain u1.
+        self.b2 = 1.0  # Control input gain u2.
+        self.b3 = 1.0  # Control input gain u3.
 
-        # Set angle limit set to 2 * theta_threshold_radians so failing observation
-        # is still within bounds
-        high = np.array([100, 100, 100, 100, 100, 100, 100, 100], dtype=np.float32)
+        # Set noise parameters
+        self.delta1 = 0.0  # m1 noise.
+        self.delta2 = 0.0  # m2 noise.
+        self.delta3 = 0.0  # m3 noise.
+        self.delta4 = 0.0  # p1 noise.
+        self.delta5 = 0.0  # p2 noise.
+        self.delta6 = 0.0  # p3 noise.
 
+        obs_low = np.array([0, 0, 0, 0, 0, 0, 0, 0], dtype=np.float32)  # NOTE:
+        obs_high = np.array([100, 100, 100, 100, 100, 100, 100, 100], dtype=np.float32)
         self.action_space = spaces.Box(
             low=np.array([-5.0, -5.0, -5.0], dtype=np.float32),
             high=np.array([5.0, 5.0, 5.0], dtype=np.float32),
             dtype=np.float32,
-        )
-        self.observation_space = spaces.Box(-high, high, dtype=np.float32)
+        )  # QUESTION: Should we use a absolute action space (i.e. 0-10)?
+        self.observation_space = spaces.Box(obs_low, obs_high, dtype=np.float32)
         self.reward_range = spaces.Box(
             np.array([0.0], dtype=np.float32),
             np.array([100], dtype=np.float32),
@@ -166,6 +201,21 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.viewer = None
         self.state = None
         self.steps_beyond_done = None
+
+        # Reference target and constraint positions.
+        self.reference_target_pos = reference_target_position  # Reference target.
+        self.reference_constraint_pos = (
+            reference_constraint_position  # Reference constraint.
+        )
+
+        # Print vectorization debug info.
+        self.__class__.instances += 1
+        self.instance_id = self.__class__.instances
+        logger.debug(f"Oscillator instance '{self.instance_id}' created.")
+        logger.debug(
+            f"Oscillator instance '{self.instance_id}' uses a '{reference_type}' "
+            "reference."
+        )
 
     def step(self, action):
         """Take step into the environment.
@@ -185,30 +235,32 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
         # Clip action if needed
-        if self._clipped_action:
-            if (
-                (action < self.action_space.low).any()
-                or (action > self.action_space.high).any()
-                and not self._action_clip_warning
-            ):
+        if self._clip_action:
+            # Throw warning if clipped and not already thrown.
+            if not self.action_space.contains(action) and not self._action_clip_warning:
                 logger.warn(
                     f"Action '{action}' was clipped as it is not in the action_space "
                     f"'high: {self.action_space.high}, low: {self.action_space.low}'."
                 )
                 self._action_clip_warning = True
+
             u1, u2, u3 = np.clip(action, self.action_space.low, self.action_space.high)
         else:
+            assert self.action_space.contains(
+                action
+            ), f"{action!r} ({type(action)}) invalid"
             u1, u2, u3 = action
+        assert self.state is not None, "Call reset before using step method."
 
         # Perform action in the environment and return the new state
         # NOTE: The new state is found by solving 3 first-order differential equations.
-        m1, m2, m3, p1, p2, p3 = self.state
-        m1_dot = self.c1 / (self.K + np.square(p3)) - self.c2 * m1 + self.b1 * u1
-        p1_dot = self.c3 * m1 - self.c4 * p1
-        m2_dot = self.c1 / (self.K + np.square(p1)) - self.c2 * m2 + self.b2 * u2
-        p2_dot = self.c3 * m2 - self.c4 * p2
-        m3_dot = self.c1 / (self.K + np.square(p2)) - self.c2 * m3 + self.b3 * u3
-        p3_dot = self.c3 * m3 - self.c4 * p3
+        m1, m2, m3, p1, p2, p3 = self.state  # NOTE: [x1, x2, x3, x4, x5, x6] in paper.
+        m1_dot = -self.gamma1 * m1 + self.a1 / (self.K1 + np.square(p3)) + self.b1 * u1
+        m2_dot = -self.gamma2 * m2 + self.a2 / (self.K2 + np.square(p1)) + self.b2 * u2
+        m3_dot = -self.gamma3 * m3 + self.a3 / (self.K3 + np.square(p2)) + self.b3 * u3
+        p1_dot = -self.c1 * p1 + self.beta1 * m1
+        p2_dot = -self.c2 * p2 + self.beta2 * m2
+        p3_dot = -self.c3 * p3 + self.beta3 * m3
 
         # Calculate mRNA concentrations
         # Note: Use max to make sure concentrations can not be negative.
@@ -216,7 +268,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             [
                 m1
                 + m1_dot * self.dt
-                + self.np_random.uniform(-self.sigma, self.sigma, 1),
+                + self.np_random.uniform(-self.delta1, self.delta1, 1),
                 np.zeros([1]),
             ]
         )
@@ -224,7 +276,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             [
                 m2
                 + m2_dot * self.dt
-                + self.np_random.uniform(-self.sigma, self.sigma, 1),
+                + self.np_random.uniform(-self.delta2, self.delta2, 1),
                 np.zeros([1]),
             ]
         )
@@ -232,7 +284,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             [
                 m3
                 + m3_dot * self.dt
-                + self.np_random.uniform(-self.sigma, self.sigma, 1),
+                + self.np_random.uniform(-self.delta3, self.delta3, 1),
                 np.zeros([1]),
             ]
         )
@@ -243,7 +295,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             [
                 p1
                 + p1_dot * self.dt
-                + self.np_random.uniform(-self.sigma, self.sigma, 1),
+                + self.np_random.uniform(-self.delta4, self.delta4, 1),
                 np.zeros([1]),
             ]
         )
@@ -251,7 +303,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             [
                 p2
                 + p2_dot * self.dt
-                + self.np_random.uniform(-self.sigma, self.sigma, 1),
+                + self.np_random.uniform(-self.delta5, self.delta5, 1),
                 np.zeros([1]),
             ]
         )
@@ -259,7 +311,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             [
                 p3
                 + p3_dot * self.dt
-                + self.np_random.uniform(-self.sigma, self.sigma, 1),
+                + self.np_random.uniform(-self.delta6, self.delta6, 1),
                 np.zeros([1]),
             ]
         )
@@ -271,7 +323,6 @@ class Oscillator(gym.Env, OscillatorDisturber):
         # Calculate cost
         r1 = self.reference(self.t)
         cost = np.square(p1 - r1)
-        # cost = (abs(p1 - r1)) ** 0.2
 
         # Define stopping criteria
         terminated = bool(cost > self.reward_range.high or cost < self.reward_range.low)
@@ -282,7 +333,16 @@ class Oscillator(gym.Env, OscillatorDisturber):
             cost,
             terminated,
             False,
-            dict(reference=r1, state_of_interest=p1 - r1),
+            dict(
+                reference=r1,
+                state_of_interest=p1,
+                reference_error=p1 - r1,
+                reference_constraint_position=self.reference_constraint_pos,
+                reference_constraint_error=p1 - self.reference_constraint_pos,
+                reference_constraint_violated=bool(
+                    abs(p1) > self.reference_constraint_pos
+                ),
+            ),
         )
 
     def reset(
@@ -307,18 +367,39 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 - numpy.ndarray: Array containing the current observations.
                 - dict: Dictionary containing additional information.
         """
-        if options is not None:
-            logger.warn(
-                "You are passing the `options` argument to the `reset` method of the "
-                "Oscillator environment. This argument is not used in this "
-                "environment."
-            )
-
         super().reset(seed=seed)
 
-        # Return random initial state
+        # Initialize custom bounds while ensuring that the bounds are valid.
+        # NOTE: If you use custom reset bounds, it may lead to out-of-bound
+        # state/observations.
+        low = np.array(
+            options["low"]
+            if options is not None and "low" in options
+            else self._init_state_range["low"],
+            dtype=np.float32,
+        )
+        high = np.array(
+            options["high"]
+            if options is not None and "high" in options
+            else self._init_state_range["high"],
+            dtype=np.float32,
+        )
+        assert (
+            self.observation_space.contains(
+                np.append(low, np.zeros(2, dtype=np.float32))
+            )
+        ) and (
+            self.observation_space.contains(
+                np.append(high, np.zeros(2, dtype=np.float32))
+            )
+        ), (
+            "Reset bounds must be within the observation space bounds "
+            f"({self.observation_space})."
+        )
+
+        # Set initial state, reset time and return initial observation.
         self.state = (
-            self.np_random.uniform(low=0, high=1, size=(6,))
+            self.np_random.uniform(low=low, high=high, size=(6,))
             if random
             else self._init_state
         )
@@ -326,7 +407,12 @@ class Oscillator(gym.Env, OscillatorDisturber):
         m1, m2, m3, p1, p2, p3 = self.state
         r1 = self.reference(self.t)
         return np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1]), dict(
-            reference=r1, state_of_interest=p1 - r1
+            reference=r1,
+            state_of_interest=p1,
+            reference_error=p1 - r1,
+            reference_constraint_position=self.reference_constraint_pos,
+            reference_constraint_error=p1 - self.reference_constraint_pos,
+            reference_constraint_violated=bool(abs(p1) > self.reference_constraint_pos),
         )
 
     def reference(self, t):
@@ -340,9 +426,9 @@ class Oscillator(gym.Env, OscillatorDisturber):
             float: The current reference value.
         """
         if self.reference_type == "periodic":
-            return 8 + 7 * np.sin((2 * np.pi) * t / 200)
+            return self.reference_target_pos + 7 * np.sin((2 * np.pi) * t / 200)
         else:
-            return 8
+            return self.reference_target_pos
 
     def render(self, mode="human"):
         """Render one frame of the environment.
@@ -360,6 +446,13 @@ class Oscillator(gym.Env, OscillatorDisturber):
         raise NotImplementedError(
             "No render method was implemented yet for the Oscillator environment."
         )
+
+    @property
+    def tau(self):
+        """Alias for the environment step size. Done for compatibility with the
+        other gymnasium environments.
+        """
+        return self.dt
 
 
 if __name__ == "__main__":

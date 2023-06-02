@@ -233,6 +233,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 self.max_v,
                 self.theta_threshold_radians * 2,
                 self.max_w,
+                self.x_threshold * 2,  # NOTE: Needed for reference tracking tasks.
             ],
             dtype=np.float32,
         )
