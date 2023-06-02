@@ -8,26 +8,14 @@ and [Han et al. 2020](https://arxiv.org/abs/2004.14288)).
 
 ## Observation space
 
-<<<<<<< Updated upstream
-
 *   **m1:** Lacl mRNA transcripts concentration.
 *   **m2:** tetR mRNA transcripts concentration.
 *   **m3:** CI mRNA transcripts concentration.
 *   **p1:** lacI (repressor) protein concentration (Inhibits transcription of tetR gene).
 *   **p2:** tetR (repressor) protein concentration (Inhibits transcription of CI gene).
 *   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI gene).
-*   **error:** The error between the reference and the state of interest (i.e. p1).
-    \=======
-*   **m1:** Lacl mRNA concentration.
-*   **m2:** tetR mRNA concentration.
-*   **m3:** CI mRNA concentration.
-*   **p1:** lacI (repressor) protein concentration (Inhibits transcription tetR gene).
-*   **p2:** tetR (repressor) protein concentration (Inhibits transcription CI).
-*   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI).
 *   **ref:** The reference we want to follow.
 *   **ref\_error:** The error between the state of interest (i.e. p1) and the reference.
-
-> > > > > > > Stashed changes
 
 ## Action space
 

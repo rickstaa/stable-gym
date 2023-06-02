@@ -122,6 +122,8 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self,
         render_mode=None,
         reference_type="periodic",
+        reference_target_position=8.0,
+        reference_constraint_position=20.0,
         clip_action=True,
     ):
         """Constructs all the necessary attributes for the oscillator instance.
@@ -131,6 +133,11 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 ``None``. Not used in this environment.
             reference_type (str, optional): The type of reference you want to use
                 (``constant`` or ``periodic``), by default ``periodic``.
+            reference_target_position: The reference target position, by default
+                ``8.0`` (i.e. the mean of the reference signal).
+            reference_constraint_position: The reference constraint position, by
+                default ``20.0``. Not used in the environment but used for the info
+                dict.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
@@ -196,8 +203,10 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.steps_beyond_done = None
 
         # Reference target and constraint positions.
-        self.target_pos = 8.0  # Reference target.
-        self.reference_constraint_pos = 20  # Reference constraint.
+        self.reference_target_pos = reference_target_position  # Reference target.
+        self.reference_constraint_pos = (
+            reference_constraint_position  # Reference constraint.
+        )
 
         # Print vectorization debug info.
         self.__class__.instances += 1
@@ -417,9 +426,9 @@ class Oscillator(gym.Env, OscillatorDisturber):
             float: The current reference value.
         """
         if self.reference_type == "periodic":
-            return self.target_pos + 7 * np.sin((2 * np.pi) * t / 200)
+            return self.reference_target_pos + 7 * np.sin((2 * np.pi) * t / 200)
         else:
-            return self.target_pos
+            return self.reference_target_pos
 
     def render(self, mode="human"):
         """Render one frame of the environment.
