@@ -4,7 +4,7 @@
 [![Python 3](https://img.shields.io/badge/Python->=3.7-brightgreen)](https://www.python.org/)
 [![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](contributing.md)
 
-A python package containing the non ROS-based [bayesian\_learning\_control](https://github.com/rickstaa/bayesian-learning-control) [Farama Foundation](https://farama.org/) gymnasium environments.
+A python package containing the non ROS-based [gymnasium environments](https://gymnasium.farama.org/) used to train the (stable) RL agents in the [bayesian\_learning\_control](https://github.com/rickstaa/bayesian-learning-control) package.
 
 ## Installation and Usage
 
