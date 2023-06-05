@@ -5,8 +5,8 @@
       "type": "json"
     },
     {
-      "filename": "simzoo/version.py",
-      "updater": ".standard-version/version.py.updater.js"
+      "filename": "stable_gym/_version.py",
+      "updater": ".standard-version/_version.py.updater.js"
     }
   ]
 }
