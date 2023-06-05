@@ -54,7 +54,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: main
-          file_pattern: package.json
+          file_pattern: package.json stable_gym/_version.py
           commit_message: "chore(release): updates code version to ${{ steps.get_semver.outputs.current_version }}"
   create-release:
     # NOTE: Drafts a release for the new tag
