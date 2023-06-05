@@ -3,6 +3,10 @@
     {
       "filename": "package.json",
       "type": "json"
+    },
+    {
+      "filename": "simzoo/version.py",
+      "updater": ".standard-version/version.py.updater.js"
     }
   ]
 }
