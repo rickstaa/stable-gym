@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/rickstaa/stable-gym/compare/v0.5.18...v0.6.0) (2023-06-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* The package name is changed so the package should be imported as `stable_gym` in
+the future.
+* **simzoo:** The package name is changed so the package should be imported as `stable_gym` in
+the future.
+
+### build
+
+* **simzoo:** rename `simzoo` package to `stable_gym` ([9db303e](https://github.com/rickstaa/stable-gym/commit/9db303efd2b2256a35d3af48f50ee1a1e1c8ee62))
+
+
+* Rename simzoo package to stable gym (#117) ([ca28218](https://github.com/rickstaa/stable-gym/commit/ca2821815b1d82abc67f248f0ffdda8bca1634e4)), closes [#117](https://github.com/rickstaa/stable-gym/issues/117)
+
 ### [0.5.18](https://github.com/rickstaa/stable-gym/compare/v0.5.16...v0.5.18) (2023-06-05)
 
 
