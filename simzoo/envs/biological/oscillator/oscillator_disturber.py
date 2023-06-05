@@ -5,27 +5,7 @@ Control package. For more information see the
 documentation.
 """  # noqa: E501
 # IMPROVE: File can be removed when a gymnasium wrapper is used.
-import importlib
-import sys
-
-# Try to import the disturber class
-# NOTE: Only works if the simzoo or bayesian learning control package is installed.
-# fallback to object if not successfull.
-if "simzoo" in sys.modules:
-    from simzoo.common.disturber import Disturber
-elif importlib.util.find_spec("simzoo") is not None:
-    Disturber = getattr(importlib.import_module("simzoo.common.disturber"), "Disturber")
-else:
-    try:
-        Disturber = getattr(
-            importlib.import_module(
-                "bayesian_learning_control.simzoo.simzoo.common.disturber"
-            ),
-            "Disturber",
-        )
-    except AttributeError:
-        Disturber = object
-
+from simzoo.common.disturber import Disturber
 
 # Disturber config used to overwrite the default config
 # NOTE: Merged with the default config

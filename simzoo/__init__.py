@@ -1,15 +1,15 @@
 """Module that register the Simzoo gymnasium environments.
 """
-import importlib
-
 import gymnasium as gym
 from gymnasium.envs.registration import register
 
-# Create import prefix as stand-alone package or name_space package (mlc)
-if importlib.util.find_spec("simzoo") is not None:
-    namespace_prefix = ""
-else:
-    namespace_prefix = "bayesian_learning_control.simzoo."
+# Make module version available.
+try:
+    from ._version import version as __version__
+    from ._version import version_tuple
+except ImportError:
+    __version__ = "unknown version"
+    version_tuple = (0, 0, "unknown version")
 
 # Available environments
 ENVS = {
@@ -34,7 +34,7 @@ for env, val in ENVS.items():
     if env not in gym.envs.registry:  # NOTE: Required because we use namespace packages
         register(
             id=env,
-            entry_point=namespace_prefix + val["module"],
+            entry_point=val["module"],
             max_episode_steps=val["max_step"],
             reward_threshold=val["reward_threshold"],
         )
