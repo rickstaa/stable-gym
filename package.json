@@ -1,22 +1,23 @@
 {
-  "name": "simzoo",
-  "version": "0.5.17",
+  "name": "stable-gym",
+  "version": "0.5.18",
   "description": "Package that contains the gymnasium environments of the bayesian-learning-control package.",
   "keywords": [
     "reinforcement-learning",
     "simulation",
+    "stability",
     "openai-gym",
     "gym-environments",
     "gymnasium",
     "gymnasium-environments"
   ],
-  "homepage": "https://github.com/rickstaa/simzoo#simzoo",
+  "homepage": "https://github.com/rickstaa/stable-gym#stable-gym",
   "bugs": {
-    "url": "https://github.com/rickstaa/simzoo/issues"
+    "url": "https://github.com/rickstaa/stable-gym/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:rickstaa/simzoo.git"
+    "url": "git@github.com:rickstaa/stable-gym.git"
   },
   "license": "MIT",
   "author": "Rick Staa",

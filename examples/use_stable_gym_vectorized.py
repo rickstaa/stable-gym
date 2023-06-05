@@ -1,14 +1,15 @@
-"""A simple example on how to use the Simzoo environments in a vectorized manner.
+"""A simple example on how to use the Stable Gym `gymnasium`_ environments in a
+vectorized manner.
 
 .. note::
     For more information on vectorized environments, see the `gym.vector`_
     documentation.
 
+.. _gymnasium: https://gymnasium.farama.org/
 .. _gym.vector: https://gymnasium.farama.org/api/vector/
 """
 import gymnasium as gym
-
-import simzoo  # noqa: F401
+import stable_gym  # noqa: F401
 
 ENV_NAME = "Oscillator-v1"
 # ENV_NAME = "Ex3EKF-v1"

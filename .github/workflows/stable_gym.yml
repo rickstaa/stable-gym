@@ -1,5 +1,5 @@
-# Main Simzoo github action. Performs linting and formatting checks. It also runs tests.
-name: Simzoo CI
+# Main Stable Gym github action. Performs linting and formatting checks. It also runs tests.
+name: Stable Gym CI
 on:
   push:
     branches:

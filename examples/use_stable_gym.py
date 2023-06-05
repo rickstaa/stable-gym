@@ -1,8 +1,9 @@
-"""A simple example on how to use the Simzoo environments.
+"""A simple example on how to use the Stable Gym `gymnasium`_ environments.
+
+.. _gymnasium: https://gymnasium.farama.org/
 """
 import gymnasium as gym
-
-import simzoo  # noqa: F401
+import stable_gym  # noqa: F401
 
 # ENV_NAME = "Oscillator-v1"
 # ENV_NAME = "Ex3EKF-v1"

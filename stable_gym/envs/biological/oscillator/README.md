@@ -60,4 +60,4 @@ The info dictionary contains the following keys:
 
 ## How to use
 
-This environment is part of the [simzoo package](https://github.com/rickstaa/simzoo). It is therefore registered as a gymnasium environment when you import the Simzoo package. If you want to use the environment in the stand-alone mode, you can register it yourself.
+This environment is part of the [Stable Gym package](https://github.com/rickstaa/stable-gym). It is therefore registered as a gymnasium environment when you import the Stable Gym package. If you want to use the environment in the stand-alone mode, you can register it yourself.

@@ -1,6 +1,6 @@
-# Simzoo
+# Stable Gym
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/rickstaa/simzoo)](https://github.com/rickstaa/simzoo/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/rickstaa/stable-gym)](https://github.com/rickstaa/stable-gym/releases)
 [![Python 3](https://img.shields.io/badge/Python->=3.7-brightgreen)](https://www.python.org/)
 [![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
@@ -8,7 +8,7 @@ A python package containing the non ROS-based [gymnasium environments](https://g
 
 ## Installation and Usage
 
-Please see the [bayesian-learning-control docs](https://rickstaa.github.io/bayesian-learning-control/simzoo/simzoo.html) for installation and usage instructions.
+Please see the [bayesian-learning-control docs](https://rickstaa.github.io/bayesian-learning-control/stable-gym/stable-gym.html) for installation and usage instructions.
 
 ## Contributing
 
