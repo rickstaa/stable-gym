@@ -3,6 +3,10 @@
     {
       "filename": "package.json",
       "type": "json"
+    },
+    {
+      "filename": "stable_gym/_version.py",
+      "updater": ".standard-version/_version.py.updater.js"
     }
   ]
 }
