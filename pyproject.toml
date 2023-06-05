@@ -56,9 +56,6 @@ packages = ["stable_gym"]
 [tool.setuptools.dynamic]
 readme = {file = "README.md", content_type = "text/markdown"}
 
-[tool.setuptools_scm]
-write_to = "stable_gym/_version.py"
-
 [tool.pytest.ini_options]
 minversion = "6.0"
 testpaths = ["tests"]
