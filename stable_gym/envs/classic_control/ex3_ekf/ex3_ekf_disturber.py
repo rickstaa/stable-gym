@@ -5,8 +5,7 @@ Control package. For more information see the
 documentation.
 """  # noqa: E501
 import numpy as np
-
-from simzoo.common.disturber import Disturber
+from stable_gym.common.disturber import Disturber
 
 # Disturber config used to overwrite the default config
 # NOTE: Merged with the default config
@@ -33,7 +32,7 @@ DISTURBER_CFG = {
 
 class Ex3EKFDisturber(Disturber):
     """Wrapper around the
-    :meth:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber` that
+    :meth:`~stable_gym.common.disturber.Disturber` that
     makes the disturber is compatible with the `Ex3EKF` environment.
     """
 
@@ -52,7 +51,7 @@ class Ex3EKFDisturber(Disturber):
         super().__init__(*args, **kwargs)
 
     def init_disturber(self, *args, **kwargs):
-        """Wrapper around the :meth:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber.init_disturber`
+        """Wrapper around the :meth:`~stable_gym.common.disturber.Disturber.init_disturber`
         method that makes sure an up to date version of the environment
         :obj:`DISTURBER_CFG` is used.
 

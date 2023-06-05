@@ -39,7 +39,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
 
     .. note::
         This gymnasium environment inherits from the
-        :class:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber`
+        :class:`~stable_gym.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
         `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.

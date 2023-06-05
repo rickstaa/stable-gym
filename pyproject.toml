@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 # Project configuration.
 
 [project]
-name = "simzoo"
+name = "stable_gym"
 dynamic = ["version", "readme"]
 authors = [
     {name = "Rick Staa", email = "rick.staa@outlook.com"}
@@ -15,6 +15,7 @@ description = "A zoo full of gymnasium environments that can be used with the ba
 keywords = [
     "reinforcement-learning",
     "simulation",
+    "stability",
     "openai-gym",
     "gym-environments",
     "gymnasium",
@@ -43,20 +44,20 @@ dev = [
 ]
 
 [project.urls]
-repository = "https://github.com/rickstaa/simzoo"
-source = "https://github.com/rickstaa/simzoo"
-documentation = "https://rickstaa.dev/simzoo"
+repository = "https://github.com/rickstaa/stable-gym"
+source = "https://github.com/rickstaa/stable-gym"
+documentation = "https://rickstaa.dev/stable-gym"
 
 # Python tools configuration.
 
 [tool.setuptools]
-packages = ["simzoo"]
+packages = ["stable_gym"]
 
 [tool.setuptools.dynamic]
 readme = {file = "README.md", content_type = "text/markdown"}
 
 [tool.setuptools_scm]
-write_to = "simzoo/_version.py"
+write_to = "stable_gym/_version.py"
 
 [tool.pytest.ini_options]
 minversion = "6.0"

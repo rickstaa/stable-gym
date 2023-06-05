@@ -3,9 +3,7 @@ registered.
 """
 import pytest
 from gymnasium import envs
-
-# Import simzoo stand-alone package or name_space package (mlc)
-from simzoo import ENVS
+from stable_gym import ENVS
 
 
 @pytest.mark.parametrize("env_name", ENVS.keys())

@@ -24,7 +24,7 @@ from gymnasium import logger, spaces
 from gymnasium.error import DependencyNotInstalled
 
 if __name__ == "__main__":
-    from simzoo.envs.classic_control.cartpole_cost.cartpole_cost_disturber import (
+    from stable_gym.envs.classic_control.cartpole_cost.cartpole_cost_disturber import (
         CartPoleDisturber,
     )
 else:
@@ -44,7 +44,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
      .. note::
         This gymnasium environment inherits from the
-        :class:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber`
+        :class:`~stable_gym.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
         `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.
@@ -139,8 +139,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     Arguments:
 
         ```python
-        import simzoo
-        env = simzoo.make("CartPoleCost-v1")
+        import stable_gym
+        import gymnasium as gym
+        env = gym.make("CartPoleCost-v1")
         ```
 
         On reset, the `options` parameter allows the user to change the bounds used to

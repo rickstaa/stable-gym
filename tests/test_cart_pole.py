@@ -5,10 +5,8 @@ import math
 
 import gymnasium as gym
 import numpy as np
+import stable_gym  # noqa: F401
 from gymnasium.logger import ERROR
-
-# Import simzoo stand-alone package or name_space package (mlc)
-import simzoo  # noqa: F401
 
 gym.logger.set_level(ERROR)
 

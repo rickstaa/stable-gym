@@ -1,4 +1,6 @@
-"""Module that register the Simzoo gymnasium environments.
+"""Module that register the Stable Gym `gymnasium`_ environments.
+
+.. _gymnasium: https://gymnasium.farama.org/
 """
 import gymnasium as gym
 from gymnasium.envs.registration import register
@@ -14,17 +16,17 @@ except ImportError:
 # Available environments
 ENVS = {
     "Oscillator-v1": {
-        "module": "simzoo.envs.biological.oscillator.oscillator:Oscillator",
+        "module": "stable_gym.envs.biological.oscillator.oscillator:Oscillator",
         "max_step": 400,
         "reward_threshold": 300,
     },
     "Ex3EKF-v1": {
-        "module": "simzoo.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
+        "module": "stable_gym.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
         "max_step": 400,
         "reward_threshold": 300,
     },
     "CartPoleCost-v1": {
-        "module": "simzoo.envs.classic_control.cartpole_cost.cartpole_cost:CartPoleCost",  # noqa: E501
+        "module": "stable_gym.envs.classic_control.cartpole_cost.cartpole_cost:CartPoleCost",  # noqa: E501
         "max_step": 250,
         "reward_threshold": 300,
     },

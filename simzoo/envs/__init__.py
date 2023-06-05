@@ -1,1 +1,0 @@
-"""The Simzoo Gym environments."""

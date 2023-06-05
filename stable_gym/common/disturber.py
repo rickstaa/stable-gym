@@ -240,7 +240,7 @@ class Disturber:
             of the :class:`Disturber` class.
         disturbance_cfg (dict): The disturbance config used to generate the currently
             selected disturber. This variable is retrieved from the
-            :obj:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber.disturber_cfg`
+            :obj:`~stable_gym.common.disturber.Disturber.disturber_cfg`
             using the currently set ``disturbance_type`` and/or ``disturbance_variant``.
 
     .. seealso::
@@ -1347,7 +1347,7 @@ class Disturber:
 
     def next_disturbance(self):
         """Function used to request the next disturbance that is specified in the
-        :obj:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber.disturbance_cfg`.
+        :obj:`~stable_gym.common.disturber.Disturber.disturbance_cfg`.
 
         Raises:
             RuntimeError: Thrown when this method is called before the
@@ -1440,7 +1440,7 @@ class Disturber:
     def disturbance_cfg(self):
         """The disturbance config used to generate the currently selected disturber.
         This variable is retrieved from the
-        :obj:`~bayesian_learning_control.simzoo.simzoo.common.disturber.Disturber.disturber_cfg`
+        :obj:`~stable_gym.common.disturber.Disturber.disturber_cfg`
         using the currently set ``disturbance_type`` and/or ``disturbance_variant``.
         """  # noqa: E501
         if self._disturbance_cfg is None:

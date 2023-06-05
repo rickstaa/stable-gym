@@ -1,4 +1,6 @@
-"""Utility functions that are used in multiple simzoo environments.
+"""Utility functions that are used in multiple Stable Gym `gymnasium`_ environments.
+
+.. _gymnasium: https://gymnasium.farama.org/
 """
 import re
 

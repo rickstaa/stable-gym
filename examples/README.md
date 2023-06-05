@@ -1,6 +1,6 @@
 # Examples
 
-Contains examples of how to use the [Simzoo](https://github.com/rickstaa/simzoo) package. Alternatively, you can directly run the environment Python files to see how the environment behaves (e.g. `python simzoo/envs/biological/oscillator/oscillator.py`).
+Contains examples of how to use the [Stable Gym](https://github.com/rickstaa/stable-gym) package. Alternatively, you can directly run the environment Python files to see how the environment behaves (e.g. `python stable_gym/envs/biological/oscillator/oscillator.py`).
 
 ## Dependencies
 
@@ -9,4 +9,4 @@ Contains examples of how to use the [Simzoo](https://github.com/rickstaa/simzoo)
 ## How to use
 
 1.  Install the Python dependencies using `pip install -r requirements.txt`.
-2.  Run the example using `python use_simzoo.py`.
+2.  Run the example using `python use_stable_gym.py`.
