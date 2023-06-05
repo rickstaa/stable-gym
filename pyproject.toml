@@ -11,7 +11,7 @@ authors = [
     {name = "Rick Staa", email = "rick.staa@outlook.com"}
 ]
 license = {file = "LICENSE"}
-description = "A zoo of gymnasium envrionments for reinforcement learning."
+description = "A zoo full of gymnasium environments that can be used with the bayesian learning control framework."
 keywords = [
     "reinforcement-learning",
     "simulation",
@@ -27,6 +27,7 @@ classifiers = [
 ]
 dependencies = [
     "gymnasium",
+    "gymnasium[classic_control]",
     "matplotlib",
     "iteration_utilities"
 ]
@@ -47,6 +48,9 @@ source = "https://github.com/rickstaa/simzoo"
 documentation = "https://rickstaa.dev/simzoo"
 
 # Python tools configuration.
+
+[tool.setuptools]
+packages = ["simzoo"]
 
 [tool.setuptools.dynamic]
 readme = {file = "README.md", content_type = "text/markdown"}
