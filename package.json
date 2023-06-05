@@ -10,7 +10,7 @@
     "gymnasium",
     "gymnasium-environments"
   ],
-  "homepage": "https://github.com/rickstaa/simzoo#readme",
+  "homepage": "https://github.com/rickstaa/simzoo#simzoo",
   "bugs": {
     "url": "https://github.com/rickstaa/simzoo/issues"
   },
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git@github.com:rickstaa/simzoo.git"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Rick Staa",
   "scripts": {
     "changelog": "HUSKY=0 standard-version --skip.bump --skip.commit --skip.tag",
