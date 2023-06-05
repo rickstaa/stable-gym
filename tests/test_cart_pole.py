@@ -1,24 +1,14 @@
-"""This test checks if the CartPoleCost environment still behaves like the original
-CartPole environment when the same environment parameters are used.
+"""Test if the CartPoleCost environment still behaves like the original CartPole
+environment when the same environment parameters are used.
 """
-
-import importlib
 import math
-import sys
 
 import gymnasium as gym
 import numpy as np
 from gymnasium.logger import ERROR
 
 # Import simzoo stand-alone package or name_space package (mlc)
-if "simzoo" in sys.modules:
-    import simzoo  # noqa: F401
-elif importlib.util.find_spec("simzoo") is not None:
-    importlib.import_module("simzoo")
-    import simzoo  # noqa: F401
-else:
-    importlib.import_module("bayesian_learning_control.simzoo")
-    import bayesian_learning_control.simzoo.simzoo  # noqa: F401
+import simzoo  # noqa: F401
 
 gym.logger.set_level(ERROR)
 

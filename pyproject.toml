@@ -1,8 +1,58 @@
 [build-system]
-# These are the assumed default build requirements from pip:
-# https://pip.pypa.io/en/stable/reference/pip/#pep-517-and-518-support
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
+
+# Project configuration.
+
+[project]
+name = "simzoo"
+dynamic = ["version", "readme"]
+authors = [
+    {name = "Rick Staa", email = "rick.staa@outlook.com"}
+]
+license = {file = "LICENSE"}
+description = "A zoo of gymnasium envrionments for reinforcement learning."
+keywords = [
+    "reinforcement-learning",
+    "simulation",
+    "openai-gym",
+    "gym-environments",
+    "gymnasium",
+    "gymnasium-environments"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Natural Language :: English",
+    "Topic :: Scientific/Engineering"
+]
+dependencies = [
+    "gymnasium",
+    "matplotlib",
+    "iteration_utilities"
+]
+requires-python = ">=3.7"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-html",
+    "flake8",
+    "black",
+]
+
+[project.urls]
+repository = "https://github.com/rickstaa/simzoo"
+source = "https://github.com/rickstaa/simzoo"
+documentation = "https://rickstaa.dev/simzoo"
+
+# Python tools configuration.
+
+[tool.setuptools.dynamic]
+readme = {file = "README.md", content_type = "text/markdown"}
+
+[tool.setuptools_scm]
+write_to = "simzoo/_version.py"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
