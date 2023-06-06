@@ -59,7 +59,7 @@ jobs:
       - name: Set up Python environment
         uses: actions/setup-python@v2
         with:
-          python-version: 3.7
+          python-version: 3.8
       - name: Cache python environment
         uses: actions/cache@v2
         id: cache-python-env
@@ -85,7 +85,7 @@ jobs:
     strategy:
       fail-fast: false # Run all matrix jobs
       matrix:
-        python-version: [3.6, 3.7, 3.8] # Supported python versions
+        python-version: [3.7, 3.8, 3.9, 3.10] # Supported python versions
     steps:
       - name: Checkout mlc repository
         uses: actions/checkout@v2
