@@ -1,6 +1,6 @@
 {
   "name": "stable-gym",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "description": "Package that contains the gymnasium environments of the bayesian-learning-control package.",
   "keywords": [
     "reinforcement-learning",
