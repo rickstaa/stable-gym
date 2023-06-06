@@ -39,6 +39,7 @@ dev = [
     "pytest",
     "pytest-cov",
     "pytest-html",
+    "syrupy",
     "flake8",
     "black",
 ]
