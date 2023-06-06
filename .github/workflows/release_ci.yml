@@ -80,10 +80,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Draft release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.get_semver.outputs.current_version }}
-          release_name: ${{ steps.get_semver.outputs.current_version }}
+          name: ${{ steps.get_semver.outputs.current_version }}
           body: ${{ steps.build_changelog.outputs.changelog }}
           draft: false
         env:
