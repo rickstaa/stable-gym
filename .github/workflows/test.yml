@@ -1,11 +1,30 @@
-# Runs tests after a pull request is merged.
-name: Stable Gym CI
+# Runs several tests when a pull request is created.
+name: Test CI
 on:
-  push:
-    branches:
-      - main
   pull_request:
 jobs:
+  spell-check:
+    name: runner / misspell
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-check
+          level: warning
+          exclude: 
+            CHANGELOG.md
+  alex: # Checks docs for inconsiderate writing
+    name: runner / alex
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: reviewdog/action-alex@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-check
+          level: warning
   markdown-lint: # Lints the markdown code
     name: runner / remark-lint
     runs-on: ubuntu-latest
@@ -68,7 +87,7 @@ jobs:
       matrix:
         python-version: [3.6, 3.7, 3.8] # Supported python versions
     steps:
-      - name: Checkout repository
+      - name: Checkout mlc repository
         uses: actions/checkout@v2
         with:
           submodules: recursive
@@ -87,7 +106,7 @@ jobs:
         if: steps.cache-python-env.outputs.cache-hit != 'true'
         run: |
           python -m pip install --upgrade pip
-      - name: Install the python package with its dependencies
+      - name: Install the mlc package with its dependencies
         if: steps.cache-python-env.outputs.cache-hit != 'true'
         run: |
           pip install -e .[dev]
@@ -96,3 +115,14 @@ jobs:
           set -o pipefail
           pytest --cache-clear --html=pytest/${{ matrix.python-version }}/html/results.html --junitxml=pytest/${{ matrix.python-version }}/xml/results.xml --cov --cov-report=html:pytest/${{ matrix.python-version }}/cov/pytest-coverage.txt --cov-report=term-missing | tee pytest-coverage.txt
           set +o pipefail
+      - name: Upload Pytest test results to artifacts
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: pytest-results-${{ matrix.python-version }}
+          path: pytest/
+      - name: Comment coverage
+        uses: coroo/pytest-coverage-commentator@v1.0.2
+        if: always() && github.event_name == 'pull_request'
+        with:
+          pytest-coverage: pytest-coverage.txt
