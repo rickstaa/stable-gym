@@ -1,0 +1,250 @@
+# serializer version: 1
+# name: TestOscillator.test_reset
+  3.8697803020477295
+# ---
+# name: TestOscillator.test_reset.1
+  2.194392204284668
+# ---
+# name: TestOscillator.test_reset.2
+  4.292989730834961
+# ---
+# name: TestOscillator.test_reset.3
+  3.48684024810791
+# ---
+# name: TestOscillator.test_reset.4
+  0.4708867371082306
+# ---
+# name: TestOscillator.test_reset.5
+  4.878111839294434
+# ---
+# name: TestOscillator.test_reset.6
+  8.0
+# ---
+# name: TestOscillator.test_reset.7
+  -4.51315975189209
+# ---
+# name: TestOscillator.test_reset.8
+  dict({
+    'reference': 8.0,
+    'reference_constraint_error': -16.51315985470318,
+    'reference_constraint_position': 20.0,
+    'reference_constraint_violated': False,
+    'reference_error': -4.513159854703181,
+    'state_of_interest': 3.4868401452968194,
+  })
+# ---
+# name: TestOscillator.test_step
+  6.0547027587890625
+# ---
+# name: TestOscillator.test_step.1
+  1.3536723852157593
+# ---
+# name: TestOscillator.test_step.10
+  False
+# ---
+# name: TestOscillator.test_step.11
+  dict({
+    'reference': 8.219875313546899,
+    'reference_constraint_error': -16.10320542457622,
+    'reference_constraint_position': 20.0,
+    'reference_constraint_violated': False,
+    'reference_error': -4.323080738123117,
+    'state_of_interest': 3.896794575423781,
+  })
+# ---
+# name: TestOscillator.test_step.12
+  7.115191459655762
+# ---
+# name: TestOscillator.test_step.13
+  0.0
+# ---
+# name: TestOscillator.test_step.14
+  12.879240036010742
+# ---
+# name: TestOscillator.test_step.15
+  4.631739139556885
+# ---
+# name: TestOscillator.test_step.16
+  0.9626997113227844
+# ---
+# name: TestOscillator.test_step.17
+  6.316237926483154
+# ---
+# name: TestOscillator.test_step.18
+  8.439533233642578
+# ---
+# name: TestOscillator.test_step.19
+  -3.8077943325042725
+# ---
+# name: TestOscillator.test_step.2
+  8.501704216003418
+# ---
+# name: TestOscillator.test_step.20
+  14.499297568084557
+# ---
+# name: TestOscillator.test_step.21
+  False
+# ---
+# name: TestOscillator.test_step.22
+  False
+# ---
+# name: TestOscillator.test_step.23
+  dict({
+    'reference': 8.439533636705194,
+    'reference_constraint_error': -15.368260681280555,
+    'reference_constraint_position': 20.0,
+    'reference_constraint_violated': False,
+    'reference_error': -3.807794317985749,
+    'state_of_interest': 4.631739318719445,
+  })
+# ---
+# name: TestOscillator.test_step.24
+  8.62728214263916
+# ---
+# name: TestOscillator.test_step.25
+  2.931903123855591
+# ---
+# name: TestOscillator.test_step.26
+  7.930094242095947
+# ---
+# name: TestOscillator.test_step.27
+  5.492265701293945
+# ---
+# name: TestOscillator.test_step.28
+  0.9049376845359802
+# ---
+# name: TestOscillator.test_step.29
+  7.997941970825195
+# ---
+# name: TestOscillator.test_step.3
+  3.896794557571411
+# ---
+# name: TestOscillator.test_step.30
+  8.658758163452148
+# ---
+# name: TestOscillator.test_step.31
+  -3.1664927005767822
+# ---
+# name: TestOscillator.test_step.32
+  10.026675404881283
+# ---
+# name: TestOscillator.test_step.33
+  False
+# ---
+# name: TestOscillator.test_step.34
+  False
+# ---
+# name: TestOscillator.test_step.35
+  dict({
+    'reference': 8.6587581932296,
+    'reference_constraint_error': -14.507734409774752,
+    'reference_constraint_position': 20.0,
+    'reference_constraint_violated': False,
+    'reference_error': -3.166492603004353,
+    'state_of_interest': 5.492265590225247,
+  })
+# ---
+# name: TestOscillator.test_step.36
+  6.775404453277588
+# ---
+# name: TestOscillator.test_step.37
+  1.2221184968948364
+# ---
+# name: TestOscillator.test_step.38
+  11.808575630187988
+# ---
+# name: TestOscillator.test_step.39
+  6.543094635009766
+# ---
+# name: TestOscillator.test_step.4
+  0.7937362790107727
+# ---
+# name: TestOscillator.test_step.40
+  1.3197458982467651
+# ---
+# name: TestOscillator.test_step.41
+  8.786880493164062
+# ---
+# name: TestOscillator.test_step.42
+  8.87733268737793
+# ---
+# name: TestOscillator.test_step.43
+  -2.334237813949585
+# ---
+# name: TestOscillator.test_step.44
+  5.448665969810497
+# ---
+# name: TestOscillator.test_step.45
+  False
+# ---
+# name: TestOscillator.test_step.46
+  False
+# ---
+# name: TestOscillator.test_step.47
+  dict({
+    'reference': 8.877332634950129,
+    'reference_constraint_error': -13.45690513567447,
+    'reference_constraint_position': 20.0,
+    'reference_constraint_violated': False,
+    'reference_error': -2.3342377706245987,
+    'state_of_interest': 6.54309486432553,
+  })
+# ---
+# name: TestOscillator.test_step.48
+  7.150448799133301
+# ---
+# name: TestOscillator.test_step.49
+  4.290715217590332
+# ---
+# name: TestOscillator.test_step.5
+  5.272303581237793
+# ---
+# name: TestOscillator.test_step.50
+  9.936918258666992
+# ---
+# name: TestOscillator.test_step.51
+  7.234573841094971
+# ---
+# name: TestOscillator.test_step.52
+  1.4361001253128052
+# ---
+# name: TestOscillator.test_step.53
+  10.149039268493652
+# ---
+# name: TestOscillator.test_step.54
+  9.095041275024414
+# ---
+# name: TestOscillator.test_step.55
+  -1.8604673147201538
+# ---
+# name: TestOscillator.test_step.56
+  3.4613387603390935
+# ---
+# name: TestOscillator.test_step.57
+  False
+# ---
+# name: TestOscillator.test_step.58
+  False
+# ---
+# name: TestOscillator.test_step.59
+  dict({
+    'reference': 9.095041255281616,
+    'reference_constraint_error': -12.765426094697709,
+    'reference_constraint_position': 20.0,
+    'reference_constraint_violated': False,
+    'reference_error': -1.8604673499793254,
+    'state_of_interest': 7.234573905302291,
+  })
+# ---
+# name: TestOscillator.test_step.6
+  8.21987533569336
+# ---
+# name: TestOscillator.test_step.7
+  -4.323080539703369
+# ---
+# name: TestOscillator.test_step.8
+  18.689027068331118
+# ---
+# name: TestOscillator.test_step.9
+  False
+# ---

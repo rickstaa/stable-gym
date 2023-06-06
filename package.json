@@ -26,7 +26,8 @@
     "prepare": "husky install",
     "release": "HUSKY=0 standard-version",
     "sort": "sort-package-json",
-    "test": "pytest --cov=stable_gym --cov-report=term-missing"
+    "test": "pytest --cov=stable_gym --cov-report=term-missing",
+    "test:update:snapshot": "pytest --snapshot-update"
   },
   "commitlint": {
     "extends": [
