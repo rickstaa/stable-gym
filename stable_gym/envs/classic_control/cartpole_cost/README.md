@@ -1,5 +1,7 @@
 # CartPoleCost gymnasium environment
 
+<!--alex ignore joint-->
+
 An un-actuated joint attaches a pole to a cart, which moves along a frictionless track. This environment
 corresponds to the [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/) environment that is included in the
 openAi gymnasium package. It is different in the fact that:

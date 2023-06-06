@@ -43,7 +43,7 @@ jobs:
       # See. https://github.com/conventional-changelog/standard-version
       - uses: actions/setup-node@v3
         with:
-          node-version: "14"
+          node-version: "16"
       - name: Install standard-version
         run: |
           npm install standard-version

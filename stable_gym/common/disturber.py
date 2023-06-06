@@ -231,7 +231,7 @@ class Disturber:
         disturber_done (bool): Whether the disturber has looped through all the
             available disturbances.
         disturbance_info (dict): Some additional information about the disturbances the
-            Disturber applied. Usefull for plotting.
+            Disturber applied. Useful for plotting.
         disturber_cfg (dict): The disturber configuration used by the disturber to
             generate the disturbances. This configuration can be supplied as a argument
             to the :meth:`Disturber.init_disturber` method during the disturber
@@ -307,7 +307,7 @@ class Disturber:
         Args:
             input_signal (numpy.ndarray): The signal to which the disturbance should be
                 applied.
-            disturbance_variant (str): Which disturbance variant you want to retreive.
+            disturbance_variant (str): Which disturbance variant you want to retrieve.
                 Options are: 'impulse', 'constant_impulse', 'periodic' and 'noise'.
             disturbance_cfg (dict): The disturbance config used for createing the
                 disturbance.
@@ -1168,7 +1168,7 @@ class Disturber:
         if self._disturbance_type is not None:
             print(
                 colorize(
-                    "INFO: Disturber re-initalized. All disturber variables have been "
+                    "INFO: Disturber re-initialized. All disturber variables have been "
                     "reset.",
                     "green",
                     bold=True,
@@ -1183,7 +1183,7 @@ class Disturber:
         self._initiate_time_vars()  # Make sure the env has a t variable
 
         # Retrieve and store extra information about the disturbance
-        # NOTE: Usefull for robustness evaluation plots
+        # NOTE: Useful for robustness evaluation plots
         self._set_disturbance_info()
 
         # Print information about the initial disturbance

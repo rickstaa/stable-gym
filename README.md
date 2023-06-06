@@ -12,4 +12,6 @@ Please see the [bayesian-learning-control docs](https://rickstaa.github.io/bayes
 
 ## Contributing
 
+<!--alex ignore husky-hooks-->
+
 We use husky pre-commit hooks and github actions to enforce high code quality. Please check the [contribution guidelines](CONTRIBUTING.md) before contributing to this repository.

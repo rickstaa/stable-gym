@@ -172,7 +172,7 @@ def get_lowest_next_int(input_item):
 
 
 def friendly_list(input_list, apostrophes=False):
-    """Transforms a list to a human friendly format (seperated by commas and ampersand).
+    """Transforms a list to a human friendly format (separated by commas and ampersand).
 
     Args:
         input_list (list): The input list.
