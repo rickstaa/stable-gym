@@ -1,3 +1,3 @@
 # Stores the package version number so that it can be accessed from other modules.
-version = "0.6.11"
+version = "0.6.12"
 version_tuple = version.split(".")
