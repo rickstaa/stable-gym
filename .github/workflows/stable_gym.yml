@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
 jobs:
   markdown-lint: # Lints the markdown code
     name: runner / remark-lint
