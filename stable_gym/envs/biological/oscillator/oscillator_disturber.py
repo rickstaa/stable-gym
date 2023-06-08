@@ -1,7 +1,7 @@
 """A simple disturber class from which the Oscillator environment can inherit in order
 to be able to use it with the Robustness Evaluation tool of the Bayesian Learning
 Control package. For more information see the
-`Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_
+`Robustness Evaluation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_
 documentation.
 """  # noqa: E501
 # IMPROVE: File can be removed when a gymnasium wrapper is used.

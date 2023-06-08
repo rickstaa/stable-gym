@@ -1,7 +1,7 @@
 {
   "name": "stable-gym",
   "version": "0.6.14",
-  "description": "Package that contains the gymnasium environments of the bayesian-learning-control package.",
+  "description": "Contains several gymnasium environments with cost functions compatible with (stable) RL agents (i.e. positive definite).",
   "keywords": [
     "reinforcement-learning",
     "simulation",

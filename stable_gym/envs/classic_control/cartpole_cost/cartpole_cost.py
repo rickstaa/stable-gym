@@ -1,20 +1,6 @@
-"""Modified version of the cart-pole environment in v0.28.1 of the `gymnasium library`_.
-This modification was first described by `Han et al. (2019)`_. In this modified version:
-
--   The action space is continuous, wherein the original version it is discrete.
--   The reward is replaced with a cost. This cost is defined as the difference between a
-    state variable and a reference value (error).
--   A new ``reference_tracking`` task was added. This task can be enabled using the
-    ``task_type`` environment argument. When this type is chosen, two extra observations
-    are returned.
--   Some of the environment parameters were changed slightly.
--   The info dictionary returns extra information about the reference tracking task.
-
-You can find the changes by searching for the ``NOTE:`` keyword.
-
-.. _`gymnasium library`: https://gymnasium.farama.org/environments/classic_control/cart_pole/>
-.. _`Han et al. (2020)`: https://arxiv.org/abs/2004.14288
+"""The CartPoleCost gymnasium environment.
 """  # noqa: E501
+# NOTE: You can find the changes by searching for the ``NOTE:`` keyword.
 import math
 
 import gymnasium as gym
@@ -37,17 +23,16 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 class CartPoleCost(gym.Env, CartPoleDisturber):
     """Custom cartPole gymnasium environment.
 
-    .. Note::
-        Can also be used in a vectorized manner. See the `gym.vector`_ documentation.
+    .. note::
+        Can also be used in a vectorized manner. See the
+        :gymnasium:`gym.vector <api/vector>` documentation.
 
-    .. _gym.vector: https://gymnasium.farama.org/api/vector/
-
-     .. note::
+    .. note::
         This gymnasium environment inherits from the
         :class:`~stable_gym.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
-        `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.
+        `the BLC documentation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_.
 
     Description:
         This environment was based on the cart-pole environment described by Barto,
@@ -91,16 +76,17 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         | (5) | The reference tracking error | -20                   | 20                  |
         +-----+------------------------------+-----------------------+---------------------+
 
-        .. Note::
+        .. note::
             While the ranges above denote the possible values for observation space of
             each element, it is not reflective of the allowed values of the state space
             in an un-terminated episode. Particularly:
+
                 -   The cart x-position (index 0) can be take values between
                     ``(-20, 20)``, but the episode terminates if the cart leaves the
                     ``(-10, 10)`` range.
                 -   The pole angle can be observed between  ``(-0.698, .698)`` radians
-                    (or **±40°**), but the episode terminates if the pole angle is
-                    not in the range `(-.349, .349)` (or **±20°**)
+                    (or **±40°**), but the episode terminates if the pole angle is not
+                    in  the range ``(-.349, .349)`` (or **±20°**)
 
     Actions:
         **Type**: Box(1)
@@ -111,7 +97,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         | 0   | The controller Force | -20                   | 20                  |
         +-----+----------------------+-----------------------+---------------------+
 
-        .. Note::
+        .. note::
             The velocity that is reduced or increased by the applied force is not fixed
             and it depends on the angle the pole is pointing. The center of gravity of
             the pole varies the amount of energy needed to move the cart underneath it.
@@ -122,7 +108,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         between a state variable and a reference value.
 
     Starting State:
-        All observations are assigned a uniform random value in ``[-0.2..0.2]``
+        All observations are assigned a uniform random value in ``[-0.2..0.2]``.
 
     Episode Termination:
         -   Pole Angle is more than 20 degrees in ``stabilization`` task and 60 in
@@ -136,15 +122,14 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         Considered solved when the average cost is less than or equal to 50 over
         100 consecutive trials.
 
-    Arguments:
+    How to use:
+        .. code-block:: python
 
-        ```python
-        import stable_gym
-        import gymnasium as gym
-        env = gym.make("CartPoleCost-v1")
-        ```
+            import stable_gym
+            import gymnasium as gym
+            env = gym.make("CartPoleCost-v1")
 
-        On reset, the `options` parameter allows the user to change the bounds used to
+        On reset, the ``options`` parameter allows the user to change the bounds used to
         determine the new random state when ``random=True``.
 
     Attributes:
@@ -164,7 +149,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         cost_range (gym.spaces.Box): The range of the cost.
 
     .. _`Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problem`: https://ieeexplore.ieee.org/document/6313077
-    .. _`Han et al. (2019)`: https://arxiv.org/abs/2004.14288
+    .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
     """  # noqa: E501
 
     metadata = {

@@ -11,7 +11,7 @@ authors = [
     {name = "Rick Staa", email = "rick.staa@outlook.com"}
 ]
 license = {file = "LICENSE"}
-description = "A zoo full of gymnasium environments that can be used with the bayesian learning control framework."
+description = "A package that contains several gymnasium environments with cost functions compatible with (stable) RL agents (i.e. positive definite)."
 keywords = [
     "reinforcement-learning",
     "simulation",
@@ -42,6 +42,10 @@ dev = [
     "syrupy",
     "flake8",
     "black",
+]
+docs = [
+    "sphinx",
+    "sphinx_rtd_theme",
 ]
 
 [project.urls]

@@ -15,11 +15,23 @@ RL based stationary Kalman filter.
 *   **u1:** First action coming from the RL Kalman filter.
 *   **u2:** Second action coming from the RL Kalman filter.
 
+## Episode termination
+
+An episode is terminated when the maximum step limit is reached, or the step cost is greater than 100.
+
 ## Environment goal
 
 The goal of the agent in the Ex3EKF environment is to act in such a way that
 estimator perfectly estimated the original noisy system. By doing this, it serves
 as an RL based stationary Kalman filter.
+
+## Cost function
+
+The Ex3EKF environment uses the following cost function:
+
+```python
+cost = np.square(hat_x_1 - x_1) + np.square(hat_x_2 - x_2)
+```
 
 ## Environment step return
 
@@ -28,14 +40,6 @@ the error when a step is taken. This results in returning the following array:
 
 ```python
 [hat_x_1, hat_x_2, x_1, x_2, info_dict]
-```
-
-## Cost function
-
-The Ex3EKF environment uses the following cost function:
-
-```python
-cost = np.square(hat_x_1 - x_1) + np.square(hat_x_2 - x_2)
 ```
 
 ## How to use
