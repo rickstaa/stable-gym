@@ -13,13 +13,6 @@ GH_PAGES_SOURCES = stable_gym
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-# Also remove the _autosummary folder on clean.
-.PHONY: clean
-clean:
-	@rm -rf $(BUILDDIR)/*
-	@rm -rf $(SOURCEDIR)/dev/api/_autosummary
-	@echo "Build folder cleaned"
-
 # Publish gh-pages command
 .PHONY: gh-pages
 gh-pages:

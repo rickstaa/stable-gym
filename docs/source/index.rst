@@ -41,7 +41,7 @@ Contents
    :maxdepth: 2
    :caption: API Documentation
 
-   api/api.rst
+   autoapi/index.rst
 
 Indices and tables
 ==================

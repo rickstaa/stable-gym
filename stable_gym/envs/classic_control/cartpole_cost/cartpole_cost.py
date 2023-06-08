@@ -135,7 +135,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     Attributes:
         state (numpy.ndarray): Array containing the current state.
         t (float): Current time step.
-        dt (float): Seconds between state updates.
         target_pos (float): The target position.
         constraint_pos (float): The constraint position.
         kinematics_integrator (str): The kinematics integrator used to update the state.

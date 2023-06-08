@@ -29,15 +29,15 @@ needs_sphinx = "3.0"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx.ext.autodoc",  # Core library for html generation from docstrings.
-    "sphinx.ext.autosummary",  # Create summary tables.
     "sphinx.ext.napoleon",  # Add google docstring support.
     "sphinx.ext.extlinks",  # Simplify linking to external documentation.
     "sphinx.ext.githubpages",  # Allow GitHub Pages rendering.
     "sphinx.ext.intersphinx",  # Link to other Sphinx documentation.
     "sphinx.ext.viewcode",  # Add a link to the Python source code for python objects.
     "myst_parser",  # Support for MyST Markdown syntax.
+    "autoapi.extension",  # Generate API documentation from code.
 ]
+autoapi_dirs = ["../../stable_gym"]
 
 # Extensions settings
 autodoc_member_order = "bysource"

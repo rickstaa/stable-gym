@@ -232,16 +232,6 @@ class Disturber:
             available disturbances.
         disturbance_info (dict): Some additional information about the disturbances the
             Disturber applied. Useful for plotting.
-        disturber_cfg (dict): The disturber configuration used by the disturber to
-            generate the disturbances. This configuration can be supplied as a argument
-            to the :meth:`Disturber.init_disturber` method during the disturber
-            initiation. It can not be changed during runtime. By default it uses the
-            ``DISTURBANCE_CFG`` disturbance configuration that is present in the file
-            of the :class:`Disturber` class.
-        disturbance_cfg (dict): The disturbance config used to generate the currently
-            selected disturber. This variable is retrieved from the
-            :obj:`~stable_gym.common.disturber.Disturber.disturber_cfg`
-            using the currently set ``disturbance_type`` and/or ``disturbance_variant``.
 
     .. seealso::
 
