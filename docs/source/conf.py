@@ -8,7 +8,9 @@ import sys
 from importlib.metadata import version
 
 # Make the stable gym package available to sphinx.
-sys.path.insert(0, os.path.abspath("../.."))  # Source code dir relative to this file
+sys.path.insert(
+    0, os.path.abspath("../../stable_gym")
+)  # Source code dir relative to this file
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -80,7 +82,7 @@ html_context = {
     "display_github": True,  # Add 'Edit on Github' link instead of 'View page source'
     "github_user": "rickstaa",
     "github_repo": project,
-    "github_version": "noetic",
+    "github_version": "main",
     "conf_py_path": "/stable_gym/docs/source/",  # needs leading and trailing slashes!
 }
 

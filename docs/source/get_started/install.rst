@@ -10,10 +10,10 @@ Pre-requisites
 * `conda <https://docs.conda.io/en/latest/>`_ (optional but recommended).
 
 
-Installing python
+Installing Python
 -----------------
 
-You are recommended to install Python through Anaconda. Anaconda is a library that includes Python and many useful packages for
+You are recommended to install Python through Anaconda. Anaconda is a library that includes Python and many valuable packages for
 Python, as well as an environment manager called Conda, makes package management simple. To install Anaconda, please follow the 
 installation instructions on the `official website <https://docs.continuum.io/anaconda/install/>`_. After downloading and 
 installing Anaconda3 (at the time of writing, `Anaconda3-2023.3.1`_), create a Conda Python env for organizing packages used 
@@ -24,22 +24,21 @@ in the ``stable_gym`` package:
 
     conda create -n stable_gym python=3.7
 
-To use Python from the environment, you just created, activate the environment with:
+To use Python from the environment you just created, activate the environment with:
 
 .. code-block:: bash
 
     conda activate stable_gym
 
 .. note::
-    Alternatively, you can also use Python its `venv <https://docs.python.org/3/library/venv.html>`_ package to create a virtual environment. 
+    Alternatively, you can use Python's `venv <https://docs.python.org/3/library/venv.html>`_ package to create a virtual environment. 
 
-.. _`the installation instructions`: https://docs.continuum.io/anaconda/install/
 .. _`Anaconda3-2023.3.1`: https://repo.anaconda.com/archive/
 
 Installing stable_gym
 ---------------------
 
-After you successfully setup your python environment, you can use pip to install the ``stable_gym`` package and its dependencies in
+After you successfully setup your Python environment, you can use pip to install the ``stable_gym`` package and its dependencies in
 this environment:
 
 .. code-block:: bash

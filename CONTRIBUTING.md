@@ -12,24 +12,25 @@ We love your input! 🚀 We want to make contributing to this project as easy an
 
 We use Github to host code, track issues and feature requests, and accept pull requests.
 
-## We Use [Github Flow](https://guides.github.com/introduction/flow/index.html), So All Code Changes Happen Through Pull Requests
+### We Use [Github Flow](https://guides.github.com/introduction/flow/index.html), So All Code Changes Happen Through Pull Requests
 
 Pull requests are the best way to propose changes to the codebase (we use [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow)). We actively welcome your pull requests:
 
 1.  Fork the repo and create your branch from `main`.
 2.  Add tests if you've added code that should be tested.
 3.  If you've changed APIs, update the documentation.
-4.  Ensure the test suite passes (i.e. `npm run test`). If snapshots fail, please check if this is intended and update the snapshots if necessary using the `npm run test:update:snapshot` command.
-5.  Make sure your code lints.
-6.  Commit your changes.
-7.  Create a pull request to pull the changes of your development branch onto the `main` branch.
-8.  Ensure that all the [pull request checks](https://github.com/rickstaa/stable-gym/actions) were successful.
+4.  If you changed the documentation, please ensure it builds (see [Documentation guidelines](#documentation-guidelines)).
+5.  Ensure the test suite passes (i.e. `npm run test`). If snapshots fail, please check if this is intended and update the snapshots if necessary using the `npm run test:update:snapshot` command.
+6.  Make sure your code lints.
+7.  Commit your changes.
+8.  Create a pull request to pull the changes of your development branch onto the `main` branch.
+9.  Ensure that all the [pull request checks](https://github.com/rickstaa/stable-gym/actions) were successful.
 
-## Report bugs using Github's [issues](https://github.com/rickstaa/stable-gym/issues)
+### Report bugs using Github's [issues](https://github.com/rickstaa/stable-gym/issues)
 
 We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/rickstaa/stable-gym/issues/new/choose); it's that easy!
 
-## Write bug reports with detail, background, and sample code
+#### Write bug reports with detail, background, and sample code
 
 [This is an example](http://stackoverflow.com/q/12488905/180626) of a bug report, and I think it's a good model. Here's [another example from Craig Hockenberry](http://www.openradar.me/11905408), an app developer greatly respected in the community.
 
@@ -64,11 +65,11 @@ We use several language guidelines to increase code quality, readability, and us
 
 ## GitHub actions
 
-The [Stable Gym](https://github.com/rickstaa/stable-gym) package contains several [GitHub actions](https://github.com/rickstaa/actions), which check code changes against the language guidelines above. As a result, when the above guidelines are not met, you will receive an **error/warning** when you create a pull request. Some of these actions will make pull requests which you can use to fix some of these violations. For other **errors/warnings**, you are expected to handle them yourself before merging them into the main branch. If you think a coding guideline needs to be corrected or your code structure doesn't allow you to respect the guideline, please state so in the pull request.
+The [Stable Gym](https://github.com/rickstaa/stable-gym) package contains several [GitHub actions](https://github.com/rickstaa/stable-gym/actions), which check code changes against the language guidelines above. As a result, when the above guidelines are not met, you will receive an **error/warning** when you create a pull request. Some of these actions will make pull requests which you can use to fix some of these violations. For other **errors/warnings**, you are expected to handle them yourself before merging them into the main branch. If you think a coding guideline needs to be corrected or your code structure doesn't allow you to respect the guideline, please state so in the pull request.
 
 ## Pre-commit hooks
 
-The [Stable Gym](https://github.com/rickstaa/stable-gym) package also contains several pre-commit hooks that can enforce the guidelines above before a commit is made. To enable these hooks, please:
+The [Stable Gym](https://github.com/rickstaa/stable-gym) package also contains several pre-commit hooks that enforce the guidelines above before committing. To enable these hooks, please:
 
 1.  Install [node](https://nodejs.org/en/download/package-manager).
 2.  Install [python](https://www.python.org/downloads).
@@ -84,10 +85,10 @@ There are three ways to ensure a new release is created:
 
 Additionally, please use the [versioning guidelines specified at semver.org](https://semver.org/).
 
+## Documentation guidelines
+
+See the [documentation guidelines](https://rickstaa.dev/stable-gym/dev/doc_dev.html) for more information on how to contribute to the documentation.
+
 ## Any contributions you make will be under the MIT Software License
 
 In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
-
-## References
-
-This document was adapted from the open-source contribution guidelines for [Facebook's Draft](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md).

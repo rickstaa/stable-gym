@@ -1,7 +1,6 @@
 # Ex3EKF gymnasium environment
 
-A gymnasium environment for a noisy master-slave system. This environment can be used to train a
-RL based stationary Kalman filter.
+A gymnasium environment for a noisy master-slave system. This environment can be used to train an RL-based stationary Kalman filter.
 
 ## Observation space
 
@@ -17,13 +16,11 @@ RL based stationary Kalman filter.
 
 ## Episode termination
 
-An episode is terminated when the maximum step limit is reached, or the step cost is greater than 100.
+An episode is terminated when the maximum step limit is reached, or the step cost exceeds 100.
 
 ## Environment goal
 
-The goal of the agent in the Ex3EKF environment is to act in such a way that
-estimator perfectly estimated the original noisy system. By doing this, it serves
-as an RL based stationary Kalman filter.
+The agent's goal in the Ex3EKF environment is to act so that the estimator estimates the original noisy system perfectly. By doing this, it serves as an RL-based stationary Kalman filter.
 
 ## Cost function
 
@@ -35,8 +32,7 @@ cost = np.square(hat_x_1 - x_1) + np.square(hat_x_2 - x_2)
 
 ## Environment step return
 
-In addition to the observations, the environment also returns an info dictionary that contains the current reference and
-the error when a step is taken. This results in returning the following array:
+In addition to the observations, the environment returns an info dictionary containing the current reference and the error when a step is taken. This results in returning the following array:
 
 ```python
 [hat_x_1, hat_x_2, x_1, x_2, info_dict]

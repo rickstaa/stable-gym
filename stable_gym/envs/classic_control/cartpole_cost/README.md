@@ -1,10 +1,10 @@
 # CartPoleCost gymnasium environment
 
+![cart\_pole](https://github.com/rickstaa/stable-gym/assets/17570430/eb3d4f34-1429-4597-a51f-16aea0e7def2)
+
 <!--alex ignore joint-->
 
-An un-actuated joint attaches a pole to a cart, which moves along a frictionless track. This environment
-corresponds to the [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/) environment that is included in the
-openAi gymnasium package. It is different in the fact that:
+An unactuated joint attaches a pole to a cart, which moves along a frictionless track. This environment corresponds to the [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/) environment included in the gymnasium package. It is different in the fact that:
 
 *   The action space is continuous, wherein the original version it is discrete.
 *   The reward is replaced with a cost. This cost is defined as the difference between a
@@ -53,25 +53,24 @@ An episode is terminated when:
 
 ### Stabilization task
 
-The stabilization task is similar to the one of the original `CartPole-v1` environment. The pendulum starts upright, and the goal is to prevent it from falling over by increasing and reducing the cart's control force. This must be done while the cart does not violate set position constraints. These constraints are defined in the cost function.
+The stabilization task is similar to the original `CartPole-v1` environment. The pendulum starts upright, and the goal is to prevent it from falling over by increasing and reducing the cart's control force. This must be done while the cart does not violate set position constraints. These constraints are defined in the cost function.
 
 ### Reference tracking task
 
-Similar to the stabilization task but now the card also has to track a cart position reference signal.
+Similar to the stabilization task, now the card must also track a cart position reference signal.
 
 ## Cost function
 
-The cost function of this environment is designed in such a way that it tries to minimize the error of a set of states and a set of reference
-states. It contains two types of tasks:
+The cost function of this environment is designed in such a way that it tries to minimize the error of a set of states and a set of reference states. It contains two types of tasks:
 
 *   A stabilization task. In this task, the agent attempts to stabilize a given state (e.g. keep the pole angle and or cart position zero)
-*   A reference tracking task. In this task, the agent tries to make a state track a given reference.
+*   A reference tracking task. The agent tries to make a state track a given reference in this task.
 
 The exact definition of these tasks can be found in the environment `cost()` method.
 
 ## Environment step return
 
-In addition to the observations, the cost and a termination and truncation boolean the environment also returns a info dictionary:
+In addition to the observations, the cost and a termination and truncation boolean, the environment also returns an info dictionary:
 
 ```python
 [observation, cost, termination, truncation, info_dict]
@@ -82,7 +81,7 @@ The info dictionary contains the following keys:
 *   **reference**: The set cart position reference.
 *   **state\_of\_interest**: The state that should track the reference (SOI).
 *   **reference\_error**: The error between SOI and the reference.
-*   **reference\_constraint\_position**: A user specified constraint they want to watch.
+*   **reference\_constraint\_position**: A user-specified constraint they want to watch.
 *   **reference\_constraint\_error**: The error between the SOI and the set reference constraint.
 *   **reference\_constraint\_violated**: Whether the reference constraint was violated.
 
