@@ -20,6 +20,8 @@ copyright = "2023, Rick Staa"
 author = "Rick Staa"
 release = version("stable_gym")
 version = ".".join(release.split(".")[:3])
+print("Doc release: ", release)
+print("Doc version: ", version)
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
