@@ -13,7 +13,7 @@ installed using the following `pip`_ command inside the ``./stable_gym`` folder:
 
 .. code-block:: bash
 
-    pip install -e .[docs]
+    pip install .[docs]
 
 .. _sphinx: http://www.sphinx-doc.org/en/master
 .. _pip: https://pypi.org/project/pip/
@@ -22,7 +22,8 @@ Build the documentation
 -----------------------
 
 To build the `HTML`_ documentation, go into the :stable_gym:`docs/ <tree/main/stable_gym/docs>` directory and run the
-``make html`` command. This command will generate the html documentation inside the ``docs/build/html`` directory. If the documentation is successfully built, you can also use the ``make linkcheck`` command to check for broken links.
+``make html`` command. This command will generate the html documentation inside the ``docs/build/html`` directory. If the
+documentation is successfully built, you can also use the ``make linkcheck`` command to check for broken links.
 
 .. note::
     Make sure you are in the Conda environment in which you installed the stable_gym package
@@ -33,6 +34,10 @@ To build the `HTML`_ documentation, go into the :stable_gym:`docs/ <tree/main/st
 Deploying
 ---------
 
-To deploy documentation to the Github Pages site for the repository, push the
-documentation to the :stable_gym:`main <tree/main>` branch and run the ``make gh-pages`` command
-inside the :stable_gym:`docs/ <tree/main/stable_gym/docs>` directory.
+The documentation is automatically built and deployed to the Github Pages site by the `Docs workflow`_when a new version
+is released. You must `create a new release`_ to deploy documentation to the Github Pages. Additionally, you can manually
+deploy the documentation through the `GitHub action interface`_ by running the Docs workflow.
+
+.. _`Create a new release`: https://rickstaa.dev/stable-gym/dev/contributing.html#release-guidelines
+.. _`Docs workflow`: https://github.com/rickstaa/stable-gym/actions/workflows/documentation.yml
+.. _`GitHub action interface`: https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
