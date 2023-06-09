@@ -1,6 +1,2 @@
-"""Stable Gym `gymnasium`_ environments that are based on Biological systems.
-
-.. _Gymnasium: https://gymnasium.farama.org/
-"""
-
+"""Stable Gym gymnasium environments that are based on Biological systems."""
 from stable_gym.envs.biological.oscillator.oscillator import Oscillator  # noqa: F401

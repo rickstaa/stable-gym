@@ -1,6 +1,4 @@
-"""Module that register the Stable Gym `gymnasium`_ environments.
-
-.. _gymnasium: https://gymnasium.farama.org/
+"""Module that register the Stable Gym gymnasium environments.
 """
 import gymnasium as gym
 from gymnasium.envs.registration import register

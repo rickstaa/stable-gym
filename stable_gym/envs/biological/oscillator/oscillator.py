@@ -1,10 +1,4 @@
-"""A gymnasium environment for a synthetic oscillatory network of transcriptional
-regulators called a repressilator. A repressilator is a three-gene regulatory network
-where the dynamics of mRNA and proteins follow an oscillatory behavior
-(see `Elowitch et al. 2000`_ and `Han et al. 2020 `_).
-
-.. _`Elowitch et al. 2000`: https://www-nature-com.tudelft.idm.oclc.org/articles/35002125
-.. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
+"""The oscillator gymnasium environment.
 """  # noqa: E501
 import gymnasium as gym
 import matplotlib.pyplot as plt
@@ -24,16 +18,15 @@ class Oscillator(gym.Env, OscillatorDisturber):
     """Synthetic oscillatory network.
 
     .. Note::
-        Can also be used in a vectorized manner. See the `gym.vector`_ documentation.
-
-    .. _gym.vector: https://gymnasium.farama.org/api/vector/
+        Can also be used in a vectorized manner. See the
+        :gymnasium:`gym.vector <api/vector>` documentation.
 
     .. note::
         This gymnasium environment inherits from the
         :class:`~stable_gym.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Bayesian Learning Control package (BLC). For more information see
-        `the BLC documentation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_.
+        `the BLC documentation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_.
 
     Description:
         The goal of the agent in the oscillator environment is to act in such a way that
@@ -106,16 +99,16 @@ class Oscillator(gym.Env, OscillatorDisturber):
     Solved Requirements:
         Considered solved when the average cost is lower than 300.
 
-    Arguments:
+    How to use:
+        .. code-block:: python
 
-        ```python
-        import stable_gym
-        import gymnasium as gym
-        env = gym.make("Oscillator-v1")
-        ```
+            import stable_gym
+            import gymnasium as gym
+            env = gym.make("CartPoleCost-v1")
 
-        On reset, the `options` parameter allows the user to change the bounds used to
+        On reset, the ``options`` parameter allows the user to change the bounds used to
         determine the new random state when ``random=True``.
+
     Attributes:
         state (numpy.ndarray): The current system state.
         t (float): The current time step.

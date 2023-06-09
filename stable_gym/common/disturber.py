@@ -1,7 +1,7 @@
 """A disturber class from which a OpenAi Gym Environment can inherit in order to be able
 to use it with the Robustness Evaluation tool of the Bayesian Learning Control package.
 For more information see the
-`Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_
+`Robustness Evaluation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_
 documentation.
 """  # noqa: E501
 # IMPROVE: Replace with gymnasium wrappers https://alexandervandekleut.github.io/gym-wrappers/ # noqa: E501
@@ -25,7 +25,7 @@ from .utils import (
 # Default Disturber configuration variable
 # NOTE: You can also supply the disturber with your own disturbance configuration
 # dictionary. When doing this you have to make sure it contains all the required keys.
-# See https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html
+# See https://rickstaa.dev/stable-learning-control/control/robustness_eval.html
 # for more information.
 DISTURBER_CFG = {
     # Disturbance type when no type has been given
@@ -232,21 +232,11 @@ class Disturber:
             available disturbances.
         disturbance_info (dict): Some additional information about the disturbances the
             Disturber applied. Useful for plotting.
-        disturber_cfg (dict): The disturber configuration used by the disturber to
-            generate the disturbances. This configuration can be supplied as a argument
-            to the :meth:`Disturber.init_disturber` method during the disturber
-            initiation. It can not be changed during runtime. By default it uses the
-            ``DISTURBANCE_CFG`` disturbance configuration that is present in the file
-            of the :class:`Disturber` class.
-        disturbance_cfg (dict): The disturbance config used to generate the currently
-            selected disturber. This variable is retrieved from the
-            :obj:`~stable_gym.common.disturber.Disturber.disturber_cfg`
-            using the currently set ``disturbance_type`` and/or ``disturbance_variant``.
 
     .. seealso::
 
         For more information see the
-        `Robustness Evaluation <https://rickstaa.github.io/bayesian-learning-control/control/robustness_eval.html>`_
+        `Robustness Evaluation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_
         documentation.
     """  # noqa: E501
 

@@ -1,14 +1,11 @@
-"""A simple example on how to use the Stable Gym `gymnasium`_ environments.
-
-.. _gymnasium: https://gymnasium.farama.org/
-"""
+"""A simple example on how to use the Stable Gym gymnasium environments."""
 import gymnasium as gym
+
 import stable_gym  # noqa: F401
 
-# ENV_NAME = "Oscillator-v1"
+ENV_NAME = "Oscillator-v1"
 # ENV_NAME = "Ex3EKF-v1"
-ENV_NAME = "CartPoleCost-v1"
-# ENV_NAME = "CartPole-v1"
+# ENV_NAME = "CartPoleCost-v1"
 
 if __name__ == "__main__":
     env = gym.make(ENV_NAME, render_mode="human")

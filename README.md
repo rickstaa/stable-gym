@@ -5,11 +5,15 @@
 [![Python 3](https://img.shields.io/badge/Python->=3.7-brightgreen)](https://www.python.org/)
 [![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-A python package containing the non ROS-based [gymnasium environments](https://gymnasium.farama.org/) used to train the (stable) RL agents in the [bayesian\_learning\_control](https://github.com/rickstaa/bayesian-learning-control) package.
+A python package that contains several [gymnasium environments](https://gymnasium.farama.org/)
+with cost functions compatible with (stable) RL agents. It was initially created for the stable RL
+algorithms in the [Stable Learning Control](https://github.com/rickstaa/stable-learning-control) package but can be
+used with any RL agent requiring a **positive definite cost function**. For more information about stable
+RL agents see the [Stable Learning Control documentation](https://rickstaa.dev/stable-learning-control).
 
 ## Installation and Usage
 
-Please see the [bayesian-learning-control docs](https://rickstaa.github.io/bayesian-learning-control/stable-gym/stable-gym.html) for installation and usage instructions.
+Please see the accompanying [documentation](https://rickstaa.dev/stable-gym) for information on how to install and use this package.
 
 ## Contributing
 

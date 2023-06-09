@@ -1,12 +1,9 @@
-"""A simple example on how to use the Stable Gym `gymnasium`_ environments in a
-vectorized manner.
+"""A simple example on how to use the Stable Gym gymnasium environments in a vectorized
+manner.
 
 .. note::
-    For more information on vectorized environments, see the `gym.vector`_
-    documentation.
-
-.. _gymnasium: https://gymnasium.farama.org/
-.. _gym.vector: https://gymnasium.farama.org/api/vector/
+    For more information on vectorized environments, see the
+    :gymnasium:`gym.vector <api/vector>` documentation.
 """
 import gymnasium as gym
 import stable_gym  # noqa: F401

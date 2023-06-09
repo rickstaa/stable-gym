@@ -1,7 +1,4 @@
-"""Utility functions that are used in multiple Stable Gym `gymnasium`_ environments.
-
-.. _gymnasium: https://gymnasium.farama.org/
-"""
+"""Utility functions that are used in multiple Stable Gym gymnasium environments."""
 import re
 
 import numpy as np

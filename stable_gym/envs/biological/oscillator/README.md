@@ -1,10 +1,6 @@
 # Oscillator gymnasium environment
 
-A gymnasium environment for a synthetic oscillatory network of transcriptional regulators
-called a repressilator. A repressilator is a three-gene regulatory network where the
-dynamics of mRNA and proteins follow an oscillatory behaviour
-([see Elowitch et al. 2000](https://www-nature-com.tudelft.idm.oclc.org/articles/35002125)
-and [Han et al. 2020](https://arxiv.org/abs/2004.14288)).
+A gymnasium environment for a synthetic oscillatory network of transcriptional regulators called a repressilator. A repressilator is a three-gene regulatory network where the dynamics of mRNA and proteins follow an oscillatory behaviour. First presented by [Han et al. 2020](https://arxiv.org/abs/2004.14288).
 
 ## Observation space
 
@@ -19,19 +15,17 @@ and [Han et al. 2020](https://arxiv.org/abs/2004.14288)).
 
 ## Action space
 
-*   **u1:** Relative intensity of light signal that induce the expression of the Lacl mRNA gene.
-*   **u2:** Relative intensity of light signal that induce the expression of the tetR mRNA gene.
-*   **u3:** Relative intensity of light signal that induce the expression of the CI mRNA gene.
+*   **u1:** Relative intensity of the light signal that induces the Lacl mRNA gene expression.
+*   **u2:** Relative intensity of the light signal that induces the tetR mRNA gene expression.
+*   **u3:** Relative intensity of the light signal that induces the expression of the CI mRNA gene.
 
 ## Episode Termination
 
-An episode is terminated when the maximum step limit is reached, or the step cost is greater than 100.
+An episode is terminated when the maximum step limit is reached or the step cost is greater than 100.
 
 ## Environment goal
 
-The goal of the agent in the oscillator environment is to act in such a way that one
-of the proteins of the synthetic oscillatory network follows a supplied reference
-signal.
+The agent's goal in the oscillator environment is to act in such a way that one of the proteins of the synthetic oscillatory network follows a supplied reference signal.
 
 ## Cost function
 
@@ -43,7 +37,7 @@ cost = np.square(p1 - r1)
 
 ## Environment step return
 
-In addition to the observations, the cost and a termination and truncation boolean the environment also returns a info dictionary:
+In addition to the observations, the cost and a termination and truncation boolean, the environment also returns an info dictionary:
 
 ```python
 [observation, info_dict]
@@ -54,7 +48,7 @@ The info dictionary contains the following keys:
 *   **reference**: The set cart position reference.
 *   **state\_of\_interest**: The state that should track the reference (SOI).
 *   **reference\_error**: The error between SOI and the reference.
-*   **reference\_constraint\_position**: A user specified constraint they want to watch.
+*   **reference\_constraint\_position**: A user-specified constraint they want to watch.
 *   **reference\_constraint\_error**: The error between the SOI and the set reference constraint.
 *   **reference\_constraint\_violated**: Whether the reference constraint was violated.
 

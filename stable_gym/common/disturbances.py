@@ -18,7 +18,7 @@ def impulse_disturbance(
 
     Args:
         input_signal (numpy.ndarray): The signal to which the disturbance should be
-            applied. Used for determining the direction of the disturbance.
+        applied. Used for determining the direction of the disturbance.
         impulse_magnitude (union[float, :obj:`numpy.ndarray`]): The magnitude of the
             impulse disturbance.
         impulse_instant (float): The time step at which you want to apply the impulse
@@ -28,10 +28,6 @@ def impulse_disturbance(
             to `1.0` s.
         impulse_frequency (float): The frequency that is used for supplying the impulse.
             Defaults to `0.0` meaning only one impulse is supplied.
-        impulse_type (str): The type of impulse disturbance you want to use. Options
-            are: 'instant' and 'constant'. A instant impulse (applied at a
-            single time step) and a constant impulse (applied at all steps following the
-            set time instant). Defaults to 'instant`.
 
     Returns:
         numpy.ndarray: The disturbance array.
