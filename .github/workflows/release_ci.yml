@@ -1,6 +1,6 @@
 # Github action that updates the code version tags, adds a changelog and drafts a release when
 # a new version tag is added.
-name: Stable Gym release CI
+name: Stable Gym release
 on:
   push:
     tags:

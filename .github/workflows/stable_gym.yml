@@ -1,5 +1,5 @@
 # Runs tests after a pull request is merged.
-name: Stable Gym CI
+name: Stable Gym
 on:
   push:
     branches:

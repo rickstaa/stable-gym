@@ -1,6 +1,6 @@
 # This github action creates a new semver tag if a pull request is merged with specific
 # labels.
-name: Auto semver CI
+name: Auto semver
 on:
   push:
     branches:

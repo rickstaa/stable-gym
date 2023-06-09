@@ -1,5 +1,5 @@
 # Runs several tests when a pull request is created.
-name: Test CI
+name: Test
 on:
   pull_request:
 jobs:
