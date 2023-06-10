@@ -3,20 +3,14 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import os
-import sys
+from datetime import datetime
 from importlib.metadata import version
-
-# Make the stable gym package available to sphinx.
-sys.path.insert(
-    0, os.path.abspath("../../stable_gym")
-)  # Source code dir relative to this file
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "Stable Gym"
-copyright = "2023, Rick Staa"
+copyright = f"{datetime.now().year}, Rick Staa"
 author = "Rick Staa"
 release = version("stable_gym")
 version = ".".join(release.split(".")[:3])
@@ -60,7 +54,6 @@ templates_path = ["_templates"]
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
 exclude_patterns = []
-
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

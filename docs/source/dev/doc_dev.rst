@@ -34,10 +34,10 @@ documentation is successfully built, you can also use the ``make linkcheck`` com
 Deploying
 ---------
 
-The documentation is automatically built and deployed to the Github Pages site by the `Docs workflow`_when a new version
+The documentation is automatically built and deployed to the Github Pages site by the `Docs workflow`_ when a new version
 is released. You must `create a new release`_ to deploy documentation to the Github Pages. Additionally, you can manually
-deploy the documentation through the `GitHub action interface`_ by running the Docs workflow.
+deploy the documentation through the `GitHub action interface`_ by running the `Docs workflow`_.
 
-.. _`Create a new release`: https://rickstaa.dev/stable-gym/dev/contributing.html#release-guidelines
+.. _`create a new release`: https://rickstaa.dev/stable-gym/dev/contributing.html#release-guidelines
 .. _`Docs workflow`: https://github.com/rickstaa/stable-gym/actions/workflows/documentation.yml
 .. _`GitHub action interface`: https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
