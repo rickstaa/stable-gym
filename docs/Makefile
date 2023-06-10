@@ -9,7 +9,6 @@ BUILDDIR      = build
 GH_PAGES_SOURCES = stable_gym
 
 # Put it first so that "make" without argument is like "make help".
-.PHONY: help Makefile
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
