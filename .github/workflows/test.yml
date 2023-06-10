@@ -29,8 +29,7 @@ jobs:
     name: runner / remark-lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout mlc repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Check markdown code quality using remark-lint
         uses: reviewdog/action-remark-lint@v2
         with:
@@ -41,7 +40,7 @@ jobs:
     name: runner / black
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: reviewdog/action-black@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -51,8 +50,7 @@ jobs:
     name: runner / flake8
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout mlc repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: recursive
           token: ${{ secrets.GA_SUB }}
@@ -69,7 +67,7 @@ jobs:
       - name: Update pip
         run: |
           python -m pip install --upgrade pip
-      - name: Install the mlc package with its dependencies
+      - name: Install the stable_gym package with its dependencies
         if: steps.cache-python-env.outputs.cache-hit != 'true'
         run: |
           pip install -e .[dev]
@@ -87,8 +85,8 @@ jobs:
       matrix:
         python-version: [3.7, 3.8, 3.9, '3.10'] # Supported python versions
     steps:
-      - name: Checkout mlc repository
-        uses: actions/checkout@v2
+      - name: Checkout stable-gym repository
+        uses: actions/checkout@v3
         with:
           submodules: recursive
           token: ${{ secrets.GA_SUB }}
@@ -106,7 +104,7 @@ jobs:
         if: steps.cache-python-env.outputs.cache-hit != 'true'
         run: |
           python -m pip install --upgrade pip
-      - name: Install the mlc package with its dependencies
+      - name: Install the stable_gym package with its dependencies
         if: steps.cache-python-env.outputs.cache-hit != 'true'
         run: |
           pip install -e .[dev]
