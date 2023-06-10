@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.27](https://github.com/rickstaa/stable-gym/compare/v0.6.26...v0.6.27) (2023-06-10)
+
 ### [0.6.25](https://github.com/rickstaa/stable-gym/compare/v0.6.24...v0.6.25) (2023-06-09)
 
 ### [0.6.24](https://github.com/rickstaa/stable-gym/compare/v0.6.23...v0.6.24) (2023-06-09)
