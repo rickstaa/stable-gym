@@ -3,7 +3,6 @@ requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 # Project configuration.
-
 [project]
 name = "stable_gym"
 dynamic = ["version", "readme"]
@@ -56,7 +55,6 @@ source = "https://github.com/rickstaa/stable-gym"
 documentation = "https://rickstaa.dev/stable-gym"
 
 # Python tools configuration.
-
 [tool.setuptools]
 packages = ["stable_gym"]
 
