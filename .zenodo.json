@@ -1,0 +1,30 @@
+{
+    "description": "Several gymnasium environments with cost functions compatible with (stable) RL agents (i.e. positive definite).",
+    "license": "MIT",
+    "title": "rickstaa/stable-gym",
+    "upload_type": "software",
+    "keywords": [
+        "reinforcement-learning",
+        "simulation",
+        "stability",
+        "openai-gym",
+        "gym-environments",
+        "gymnasium",
+        "gymnasium-environments"
+    ],
+    "creators": [
+        {
+            "orcid": "0000-0003-4835-2040",
+            "affiliation": "TU Delft",
+            "name": "Rick Staa"
+        },
+        {
+            "name": "dds0117"
+        },
+        {
+            "affiliation": "@mend",
+            "name": "Mend Renovate"
+        }
+    ],
+    "access_right": "open"
+}
