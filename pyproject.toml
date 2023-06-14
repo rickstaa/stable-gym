@@ -28,7 +28,7 @@ classifiers = [
 dependencies = [
     "gymnasium>=0.28.1",
     "gymnasium[classic_control]>=0.28.1",
-    "matplotlib>=3.7.1",
+    "matplotlib>=3.5.3",
     "iteration_utilities>=0.11.0"
 ]
 requires-python = ">=3.7"
