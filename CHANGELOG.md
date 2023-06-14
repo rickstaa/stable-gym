@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.38](https://github.com/rickstaa/stable-gym/compare/v0.6.37...v0.6.38) (2023-06-14)
+
+
+### Bug Fixes
+
+* fix release action naming ([3448955](https://github.com/rickstaa/stable-gym/commit/3448955dfc6f54363dec60707d6223e9a89fa2e1))
+
 ## [0.6.37](https://github.com/rickstaa/stable-gym/compare/v0.6.36...v0.6.37) (2023-06-14)
 
 
