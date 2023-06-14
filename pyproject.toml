@@ -28,17 +28,17 @@ classifiers = [
 dependencies = [
     "gymnasium>=0.28.1",
     "gymnasium[classic_control]>=0.28.1",
-    "matplotlib>=3.5.3",
+    "matplotlib>=3.7.1",
     "iteration_utilities>=0.11.0"
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 
 [project.optional-dependencies]
 dev = [
     "pytest>=7.3.2",
     "pytest-cov>=4.1.0",
     "pytest-html>=3.2.0",
-    "syrupy>=3.0.6",
+    "syrupy>=4.0.2",
     "flake8>=6.0.0",
     "black>=23.3.0",
 ]

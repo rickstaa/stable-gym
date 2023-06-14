@@ -2,7 +2,7 @@
 
 [![Stable Gym CI](https://github.com/rickstaa/stable-gym/actions/workflows/stable_gym.yml/badge.svg)](https://github.com/rickstaa/stable-gym/actions/workflows/stable_gym.yml)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/rickstaa/stable-gym)](https://github.com/rickstaa/stable-gym/releases)
-[![Python 3](https://img.shields.io/badge/Python->=3.7-brightgreen)](https://www.python.org/)
+[![Python 3](https://img.shields.io/badge/Python->=3.8-brightgreen)](https://www.python.org/)
 [![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![DOI](https://zenodo.org/badge/287501190.svg)](https://zenodo.org/badge/latestdoi/287501190)
 
