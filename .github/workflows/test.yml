@@ -80,6 +80,8 @@ jobs:
   python-tests:
     name: python-tests (Testing)
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     strategy:
       fail-fast: false # Run all matrix jobs
       matrix:
