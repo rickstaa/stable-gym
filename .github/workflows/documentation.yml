@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - v*.*.*
+    paths:
+      - 'docs/**'
   workflow_dispatch:
 permissions:
     contents: write

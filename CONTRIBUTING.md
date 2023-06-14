@@ -77,7 +77,7 @@ The [Stable Gym](https://github.com/rickstaa/stable-gym) package also contains s
 
 ## Release guidelines
 
-Releases are handled automatically by the [release-please-action](https://github.com/google-github-actions/release-please-action). This action will automatically create release pull requests based on the content of commit messages on the main branch. For this action to work, you must use the [conventional commits specifications](https://www.conventionalcommits.org/en/v1.0.0/) when writing commit messages.
+Releases are handled automatically by the [release-please-action](https://github.com/google-github-actions/release-please-action). This action uses the [release-please](https://github.com/googleapis/release-please) tool to create release pull requests based on the commits automatically. When writing commit messages, you must follow the [Commit guidelines](#Write-descriptive-commit-messages) since this expects you to adhere to the [conventional commits specifications](https://www.conventionalcommits.org/en/v1.0.0/). For more information on how this tool works, see [the release-please documentation](https://github.com/googleapis/release-please).
 
 ## Documentation guidelines
 

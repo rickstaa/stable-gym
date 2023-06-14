@@ -1,6 +1,6 @@
 # Github action that uses the 'release-please' tool to update the version, changelog 
 # and create new releases.
-name: Stable Gym release-please
+name: Stable Gym release
 on:
   push:
     branches:
