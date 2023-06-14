@@ -3,5 +3,8 @@
   "labels": ["bump:patch", "dependencies"],
   "patch": {
     "enabled": false
-  }
+  },
+  "fileMatch": [
+    "(^|/)pyproject\\.toml$"
+  ]
 }
