@@ -4,8 +4,8 @@ import gymnasium as gym
 from gymnasium.envs.registration import register
 
 # Make module version available.
-from ._version import version as __version__  # noqa: F401
-from ._version import version_tuple as __version_tuple__  # noqa: F401
+from stable_gym.version import version as __version__  # noqa: F401
+from stable_gym.version import version_tuple as __version_tuple__  # noqa: F401
 
 # Available environments
 ENVS = {
