@@ -11,6 +11,10 @@ authors:
     family-names: Staa
     affiliation: TU Delft
     orcid: 'https://orcid.org/0000-0003-4835-2040'
+  - given-names: Wei
+    family-names: Pan
+    affiliation: The University of Manchester
+    orcid: 'https://orcid.org/0000-0003-1121-9879'
 identifiers:
   - type: url
     value: 'https://zenodo.org/badge/latestdoi/353980386'
