@@ -35,8 +35,8 @@ Deploying
 ---------
 
 The documentation is automatically built and deployed to the Github Pages site by the `Docs workflow`_ when a new version
-is released, or the documentation source code is changed. You must `create a new release`_ to deploy documentation to the Github Pages. 
-Additionally, you can manually deploy the documentation through the `GitHub action interface`_ by running the `Docs workflow`_.
+is released. You must `create a new release`_ to deploy documentation to the Github Pages. Additionally, you can manually 
+deploy the documentation through the `GitHub action interface`_ by running the `Docs workflow`_.
 
 .. _`create a new release`: https://rickstaa.dev/stable-gym/dev/contributing.html#release-guidelines
 .. _`Docs workflow`: https://github.com/rickstaa/stable-gym/actions/workflows/documentation.yml
