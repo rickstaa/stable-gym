@@ -1,6 +1,6 @@
-# Github action that updates the code version tags, adds a changelog and drafts a release when
-# a new version tag is added.
-name: Stable Gym release
+# Github action that uses the 'release-please' tool to update the version, changelog 
+# and create new releases.
+name: Stable Gym release-please
 on:
   push:
     branches:
