@@ -16,5 +16,4 @@ jobs:
     steps:
       - uses: rickstaa/release-please-action@optional_pyproject_toml
         with:
-          release-type: python
-          package-name: stable-gym
+          command: manifest
