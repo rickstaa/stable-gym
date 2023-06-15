@@ -81,7 +81,7 @@ Releases are handled automatically by the [release-please-action](https://github
 
 ## Documentation guidelines
 
-See the [documentation guidelines](https://rickstaa.dev/stable-gym/dev/doc_dev.html) for more information on how to contribute to the documentation.
+See the [documentation guidelines](https://rickstaa.dev/stable-gym/dev/doc_dev.html) for more information on contributing to the documentation.
 
 ## Any contributions you make will be under the MIT Software License
 
