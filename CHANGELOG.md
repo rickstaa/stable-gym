@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.40](https://github.com/rickstaa/stable-gym/compare/v0.6.39...v0.6.40) (2023-06-15)
+
+
+### Documentation
+
+* add codeconv badge ([#148](https://github.com/rickstaa/stable-gym/issues/148)) ([3dd995e](https://github.com/rickstaa/stable-gym/commit/3dd995e7ab439efaf27cbd7f70716f6ba2fdc470))
+
 ## [0.6.39](https://github.com/rickstaa/stable-gym/compare/v0.6.38...v0.6.39) (2023-06-14)
 
 
