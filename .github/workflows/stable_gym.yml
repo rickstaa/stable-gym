@@ -89,3 +89,5 @@ jobs:
           set -o pipefail
           pytest --cache-clear --html=pytest/${{ matrix.python-version }}/html/results.html --junitxml=pytest/${{ matrix.python-version }}/xml/results.xml --cov --cov-report=html:pytest/${{ matrix.python-version }}/cov/pytest-coverage.txt --cov-report=term-missing | tee pytest-coverage.txt
           set +o pipefail
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
