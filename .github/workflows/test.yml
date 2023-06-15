@@ -115,8 +115,5 @@ jobs:
         with:
           name: pytest-results-${{ matrix.python-version }}
           path: pytest/
-      - name: Comment coverage
-        uses: coroo/pytest-coverage-commentator@v1.0.2
-        if: always() && github.event_name == 'pull_request'
-        with:
-          pytest-coverage: pytest-coverage.txt
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
