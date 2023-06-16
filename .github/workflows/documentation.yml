@@ -14,20 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
-      - name: LS
-        run: |
-          ls
-          cat pyproject.toml
-      - name: Check pip
-        run: |
-          which python
-          which python3
-          which pip
-          which pip3
-          pip --version
-          pip3 --version
-          pip list --format=columns
-          pip3 list --format=columns
+        with: 
+          python-version: "3.10"
+          cache: pip
       - name: Install dependencies
         run: |
           pip install .[docs]
