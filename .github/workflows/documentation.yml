@@ -16,11 +16,7 @@ jobs:
       - uses: actions/setup-python@v4
         with: 
           python-version: 3.8
-<<<<<<< HEAD
           cache: 'pip'
-=======
-          cache: pip
->>>>>>> 6e4d024b40e02943935445c8cda56f2adbde5872
       - name: Install dependencies
         run: |
           pip install .[docs]
