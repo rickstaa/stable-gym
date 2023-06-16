@@ -56,17 +56,10 @@ jobs:
         with:
           python-version: 3.8
           cache: 'pip'
-      - name: Cache python environment
-        uses: actions/cache@v3
-        id: cache-python-env
-        with:
-          path: ${{ env.pythonLocation }}
-          key: ${{ runner.os }}-${{ env.pythonLocation }}-${{ hashFiles('setup.cfg') }}-${{ hashFiles('pyproject.toml') }}
       - name: Update pip
         run: |
           python -m pip install --upgrade pip
       - name: Install the stable_gym package with its dependencies
-        if: steps.cache-python-env.outputs.cache-hit != 'true'
         run: |
           pip install -e .[dev]
       - name: flake8 Lint
