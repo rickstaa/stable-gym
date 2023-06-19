@@ -10,15 +10,23 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
       
   # Maintain dependencies for npm
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
-
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
   # Maintain dependencies for npm
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
