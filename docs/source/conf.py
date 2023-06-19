@@ -76,9 +76,9 @@ html_theme_options = {"logo_only": True}
 html_context = {
     "display_github": True,  # Add 'Edit on Github' link instead of 'View page source'
     "github_user": "rickstaa",
-    "github_repo": project,
+    "github_repo": "stable-gym",
     "github_version": "main",
-    "conf_py_path": "/stable_gym/docs/source/",  # needs leading and trailing slashes!
+    "conf_py_path": "docs/source/",  # needs leading and trailing slashes!
 }
 
 # -- External links dictionary -----------------------------------------------
