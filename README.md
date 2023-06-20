@@ -19,6 +19,4 @@ Please see the accompanying [documentation](https://rickstaa.dev/stable-gym) for
 
 ## Contributing
 
-<!--alex ignore husky-hooks-->
-
 We use Husky pre-commit hooks and github actions to enforce high code quality. Before contributing to this repository, please check the [contribution guidelines](CONTRIBUTING.md).
