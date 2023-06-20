@@ -1,24 +1,22 @@
-# Tests
+# tests
 pytest/
 *.pytest_cache/
 .coverage
 pytest-coverage.txt
 
-# Cache
+# cache
 __pycache__/
 *.pytest_cache/
 *.egg-info/
 .eggs/
 *.pyc
 *.egg-info
-
-# build
 build/
 
 # node
 node_modules/
 
-# mics
+# misc
 *.log
 MUJOCO_LOG.TXT
 TODOS.md
