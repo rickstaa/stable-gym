@@ -62,7 +62,7 @@ We use several language guidelines to increase code quality, readability, and us
 
 ### Python guidelines
 
-<!-- alex ignore black -->
+<!--alex ignore black-->
 
 *   **Linting:** Please ensure your Python code doesn't contain any errors by checking it with the [flake8 python linter](https://flake8.pycqa.org/en/latest/).
 *   **Formatting:** Please format all your scripts using the [black python formatter](https://github.com/psf/black).
