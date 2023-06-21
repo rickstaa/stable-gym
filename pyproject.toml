@@ -1,3 +1,4 @@
+# NOTE: Ensure you have pip>=21.3.1 when you want to install this package in editable mode.
 [build-system]
 requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
