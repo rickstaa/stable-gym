@@ -59,7 +59,7 @@ jobs:
           cache-dependency-path: pyproject.toml
       - name: Install the stable_gym package with its dependencies
         run: |
-          pip install -e .[dev]
+          pip install .[dev]
       - name: flake8 Lint
         uses: reviewdog/action-flake8@v3
         with:
@@ -84,7 +84,7 @@ jobs:
           cache-dependency-path: pyproject.toml
       - name: Install the stable_gym package with its dependencies
         run: |
-          pip install -e .[dev]
+          pip install .[dev]
       - name: Test with Pytest
         run: |
           set -o pipefail
