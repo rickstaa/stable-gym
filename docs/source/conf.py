@@ -36,6 +36,7 @@ extensions = [
     "autoapi.extension",  # Generate API documentation from code.
 ]
 autoapi_dirs = ["../../stable_gym"]
+myst_heading_anchors = 2  # Add anchors to headings.
 
 # Extensions settings.
 autodoc_member_order = "bysource"
