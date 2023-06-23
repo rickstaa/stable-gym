@@ -25,9 +25,9 @@ def impulse_disturbance(
             disturbance.
         current_timestep (int): The current time step.
         impulse_length (float): The length of the supplied impulse disturbance. Defaults
-            to `1.0` s.
+            to ``1.0`` s.
         impulse_frequency (float): The frequency that is used for supplying the impulse.
-            Defaults to `0.0` meaning only one impulse is supplied.
+            Defaults to ``0.0`` meaning only one impulse is supplied.
 
     Returns:
         numpy.ndarray: The disturbance array.

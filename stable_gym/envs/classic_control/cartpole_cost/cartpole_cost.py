@@ -513,9 +513,11 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 environment. By default True.
 
         Returns:
-            Tuple[numpy.ndarray, dict]: Tuple containing:
-                - numpy.ndarray: Array containing the current observations.
-                - dict: Dictionary containing additional information.
+            (tuple): tuple containing:
+
+                - observations (:obj:`numpy.ndarray`): Array containing the current
+                  observations.
+                - info (:obj:`dict`): Dictionary containing additional information.
         """
         super().reset(seed=seed)
 
