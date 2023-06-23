@@ -244,9 +244,11 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
                 environment.
 
         Returns:
-            Tuple[numpy.ndarray, dict]: Tuple containing:
-                - numpy.ndarray: Array containing the current observations.
-                - dict: Dictionary containing additional information.
+            (tuple): tuple containing:
+
+                - observations (:obj:`numpy.ndarray`): Array containing the current
+                  observations.
+                - info (:obj:`dict`): Dictionary containing additional information.
         """
         if options is not None:
             logger.warn(

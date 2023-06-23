@@ -402,7 +402,7 @@ class Disturber:
 
         Args:
             disturbance_type (str, optional): The disturbance type you want to use. By
-                default the disturbance type set under the `default_type` key will be
+                default the disturbance type set under the ``default_type`` key will be
                 used.
 
         Raises:

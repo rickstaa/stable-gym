@@ -269,7 +269,10 @@ def maybe_parse_reset_bounds(options, default_low, default_high):
       default_high: Default upper limit to use, if none specified in options.
 
     Returns:
-      Tuple of the lower and upper limits.
+        (tuple): a tuple containing:
+
+            - low (:obj:`np.ndarray`): Lower limit for each dimension.
+            - high ():obj:`np.ndarray`): Upper limit for each dimension.
     """
     if options is None:
         return default_low, default_high
