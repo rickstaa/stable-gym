@@ -3,6 +3,7 @@
 The dynamic system whose state is to be estimated:
 
 .. math::
+
     x(k+1)=Ax(k)+w(k)
     x_1: angle
     x_2: frequency

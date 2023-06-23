@@ -58,7 +58,8 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         A cost, computed as the sum of the squared differences between the estimated and the actual states:
 
         .. math::
-            C = {(\hat{x}_1 - x_1)}^2 + {(\hat{x}_2 - x_2)}^2
+
+            C = {(\\hat{x}_1 - x_1)}^2 + {(\\hat{x}_2 - x_2)}^2
 
     Starting State:
         All observations are assigned a uniform random value in ``[-0.05..0.05]``
