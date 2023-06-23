@@ -49,7 +49,7 @@ def impulse_disturbance(
             ):
                 return impulse_magnitude * (-np.sign(input_signal))
 
-    # Return undisturbed state
+    # Return undisturbed state.
     return np.zeros_like(input_signal)
 
 

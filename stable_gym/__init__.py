@@ -7,7 +7,7 @@ from gymnasium.envs.registration import register
 from .version import __version__  # noqa: F401
 from .version import __version_tuple__  # noqa: F401
 
-# Available environments
+# Available environments.
 ENVS = {
     "Oscillator-v1": {
         "module": "stable_gym.envs.biological.oscillator.oscillator:Oscillator",

@@ -37,10 +37,10 @@ extensions = [
 ]
 autoapi_dirs = ["../../stable_gym"]
 
-# Extensions settings
+# Extensions settings.
 autodoc_member_order = "bysource"
 
-# Add mappings
+# Add mappings.
 intersphinx_mapping = {
     "gymnasium": ("https://www.gymlibrary.dev/", None),
     "python3": ("https://docs.python.org/3", None),
@@ -52,7 +52,7 @@ templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-# This patterns also effect to html_static_path and html_extra_path
+# This patterns also effect to html_static_path and html_extra_path.
 exclude_patterns = []
 
 # -- Options for HTML output -------------------------------------------------

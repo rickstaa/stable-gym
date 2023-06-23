@@ -363,7 +363,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             # Calculate cost (stabilization task).
             cost = (x / self.x_threshold) ** 2 + 20 * (
                 theta / self.theta_threshold_radians
-            ) ** 2  # Stabilization task
+            ) ** 2  # Stabilization task.
             ref = np.array([0.0, 0.0])
 
         return cost, ref
@@ -636,8 +636,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         l, r, t, b = -cartwidth / 2, cartwidth / 2, cartheight / 2, -cartheight / 2
         axleoffset = cartheight / 4.0
-        cartx = x[0] * scale + self.screen_width / 2.0  # MIDDLE OF CART
-        carty = 100  # TOP OF CART
+        cartx = x[0] * scale + self.screen_width / 2.0  # MIDDLE OF CART.
+        carty = 100  # TOP OF CART.
         cart_coords = [(l, b), (l, t), (r, t), (r, b)]
         cart_coords = [(c[0] + cartx, c[1] + carty) for c in cart_coords]
         gfxdraw.aapolygon(self.surf, cart_coords, (0, 0, 0))
@@ -711,7 +711,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         """Property that returns the pole mass times the COM length."""
         return self.masspole * self._com_length
 
-    # Aliases
+    # Aliases.
     # NOTE: Added because the original environment doesn't use the pythonic naming.
     @property
     def pole_mass_length(self):

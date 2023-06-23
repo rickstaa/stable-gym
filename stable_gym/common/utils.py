@@ -22,7 +22,7 @@ def colorize(string, color, bold=False, highlight=False):
     Returns:
         str: Colorized string.
     """
-    if color:  # If not empty
+    if color:  # If not empty.
         return gym_colorize(string, color, bold, highlight)
     else:
         return string
@@ -110,17 +110,17 @@ def abbreviate(input_item, length=1, max_length=4, capitalize=True):
                     if capitalize
                     else it[:length_tmp] + suffix
                 )
-                if abbreviation not in abbreviations:  # Check if unique
+                if abbreviation not in abbreviations:  # Check if unique.
                     abbreviations.append(abbreviation)
                     items.append(it)
                     unique = True
                 else:
                     prev_item = items[abbreviations.index(abbreviation)]
-                    if it == prev_item:  # Allow if item was equal
+                    if it == prev_item:  # Allow if item was equal.
                         abbreviations.append(abbreviation)
                         items.append(it)
                         unique = True
-                    else:  # Use longer abbreviation otherwise
+                    else:  # Use longer abbreviation otherwise.
                         if length_tmp < max_length:
                             length_tmp += 1
                         else:
