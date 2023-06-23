@@ -141,7 +141,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
-        super().__init__()  # Setup disturber
+        super().__init__()  # Setup disturber.
         self._action_clip_warning = False
         self._clip_action = clip_action
 
@@ -156,7 +156,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             "high": [5, 5, 5, 5, 5, 5],
         }  # Used when random is enabled in reset.
 
-        # Set oscillator network parameters
+        # Set oscillator network parameters.
         self.K1 = 1.0  # RNA dissociation constants m1.
         self.K2 = 1.0  # RNA dissociation constant m2.
         self.K3 = 1.0  # RNA dissociation constant m3.
@@ -176,7 +176,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.b2 = 1.0  # Control input gain u2.
         self.b3 = 1.0  # Control input gain u3.
 
-        # Set noise parameters
+        # Set noise parameters.
         # NOTE: Zero during training.
         self.delta1 = 0.0  # m1 noise.
         self.delta2 = 0.0  # m2 noise.
@@ -235,7 +235,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
                     agent goes out of bounds.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
-        # Clip action if needed
+        # Clip action if needed.
         if self._clip_action:
             # Throw warning if clipped and not already thrown.
             if not self.action_space.contains(action) and not self._action_clip_warning:
@@ -253,7 +253,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             u1, u2, u3 = action
         assert self.state is not None, "Call reset before using step method."
 
-        # Perform action in the environment and return the new state
+        # Perform action in the environment and return the new state.
         # NOTE: The new state is found by solving 3 first-order differential equations.
         m1, m2, m3, p1, p2, p3 = self.state  # NOTE: [x1, x2, x3, x4, x5, x6] in paper.
         m1_dot = -self.gamma1 * m1 + self.a1 / (self.K1 + np.square(p3)) + self.b1 * u1
@@ -263,7 +263,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         p2_dot = -self.c2 * p2 + self.beta2 * m2
         p3_dot = -self.c3 * p3 + self.beta3 * m3
 
-        # Calculate mRNA concentrations
+        # Calculate mRNA concentrations.
         # Note: Use max to make sure concentrations can not be negative.
         m1 = np.max(
             [
@@ -290,7 +290,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             ]
         )
 
-        # Calculate protein concentrations
+        # Calculate protein concentrations.
         # Note: Use max to make sure concentrations can not be negative.
         p1 = np.max(
             [
@@ -317,15 +317,15 @@ class Oscillator(gym.Env, OscillatorDisturber):
             ]
         )
 
-        # Retrieve state
+        # Retrieve state.
         self.state = np.array([m1, m2, m3, p1, p2, p3])
-        self.t = self.t + self.dt  # Increment time step
+        self.t = self.t + self.dt  # Increment time step.
 
-        # Calculate cost
+        # Calculate cost.
         r1 = self.reference(self.t)
         cost = np.square(p1 - r1)
 
-        # Define stopping criteria
+        # Define stopping criteria.
         terminated = bool(cost > self.reward_range.high or cost < self.reward_range.low)
 
         # Return state, cost, terminated, truncated and info_dict
@@ -460,7 +460,7 @@ if __name__ == "__main__":
     print("Setting up oscillator environment.")
     env = gym.make("Oscillator")
 
-    # Take T steps in the environment
+    # Take T steps in the environment.
     T = 60000
     path = []
     t1 = []
@@ -479,7 +479,7 @@ if __name__ == "__main__":
         t1.append(i * env.dt)
     print("Finished oscillator environment simulation.")
 
-    # Plot results
+    # Plot results.
     print("Plot results.")
     fig = plt.figure(figsize=(9, 6))
     ax = fig.add_subplot(111)

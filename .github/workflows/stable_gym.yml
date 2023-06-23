@@ -7,7 +7,7 @@ on:
     tags-ignore:
       - v*.*.*
 jobs:
-  markdown-lint: # Lints the markdown code
+  markdown-lint: # Lints the markdown code.
     name: runner / remark-lint
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +18,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-check
           level: warning
-  black: # Check python code format
+  black: # Check python code format.
     name: runner / black
     runs-on: ubuntu-latest
     steps:
@@ -28,7 +28,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-check
           level: warning
-  flake8: # Lints python code
+  flake8: # Lints python code.
     name: runner / flake8
     runs-on: ubuntu-latest
     steps:
@@ -52,9 +52,9 @@ jobs:
     name: python-tests (Testing)
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false # Run all matrix jobs
+      fail-fast: false # Run all matrix jobs.
       matrix:
-        python-version: [3.8, 3.9, '3.10'] # Supported python versions
+        python-version: [3.8, 3.9, '3.10'] # Supported python versions.
     steps:
       - name: Checkout stable-gym repository
         uses: actions/checkout@v3

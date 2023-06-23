@@ -7,10 +7,10 @@ documentation.
 import numpy as np
 from stable_gym.common.disturber import Disturber
 
-# Disturber config used to overwrite the default config
+# Disturber config used to overwrite the default config.
 # NOTE: Merged with the default config
 DISTURBER_CFG = {
-    # Disturbance type when no type has been given
+    # Disturbance type when no type has been given.
     "default_type": "env",
     ##################################################
     # Environment disturbances #######################
@@ -20,9 +20,9 @@ DISTURBER_CFG = {
     # needs to be implemented inside the environment.
     "env": {
         "description": "Gravity value",
-        # The env variable which you want to disturb
+        # The env variable which you want to disturb.
         "variable": "g",
-        # The range of values you want to use for each disturbance iteration
+        # The range of values you want to use for each disturbance iteration.
         "variable_range": np.linspace(9.5, 10.5, num=5, dtype=np.float32),
         # Label used in robustness plots.
         "label": "r: %s",

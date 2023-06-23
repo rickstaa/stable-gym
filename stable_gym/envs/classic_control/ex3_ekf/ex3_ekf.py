@@ -96,7 +96,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
                 "environment."
             )
 
-        super().__init__()  # Setup disturber
+        super().__init__()  # Setup disturber.
         self._action_clip_warning = False
 
         self.t = 0.0
@@ -156,7 +156,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
                     agent goes out of bounds.
                 - info_dict (:obj:`dict`): Dictionary with additional information.
         """
-        # Clip action if needed
+        # Clip action if needed.
         if self._clipped_action:
             if (
                 (action < self.action_space.low).any()
@@ -172,27 +172,27 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         else:
             u1, u2 = action
 
-        # Perform action in the environment and return the new state
+        # Perform action in the environment and return the new state.
         t = self.t
         input = 0 * np.cos(t) * self.dt
 
-        # Retrieve slave state
+        # Retrieve slave state.
         hat_x_1, hat_x_2, x_1, x_2 = self.state
 
-        # Retrieve master state
+        # Retrieve master state.
         x_1 = x_1 + self.dt * x_2
         x_2 = x_2 - self.g * self.l_net * np.sin(x_1) * self.dt + input
         state = np.array([x_1, x_2])
         state = (
             state + self.np_random.multivariate_normal(self.mean1, self.cov1).flatten()
-        )  # Add process noise
+        )  # Add process noise.
         x_1, x_2 = state
 
-        # Retrieve reference
+        # Retrieve reference.
         y_1 = self.reference(x_1)
         hat_y_1 = np.sin(hat_x_1 + self.dt * hat_x_2)
 
-        # Mimic the signal drop rate
+        # Mimic the signal drop rate.
         # flag=1: received
         # flag=0: dropout
         (flag) = self.np_random.binomial(1, 1 - self.missing_rate, 1)
@@ -208,14 +208,14 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
             hat_x_1 = hat_x_1 + self.dt * hat_x_2
             hat_x_2 = hat_x_2 - self.g * np.sin(hat_x_1) * self.dt + input
 
-        # Calculate cost
+        # Calculate cost.
         cost = np.square(hat_x_1 - x_1) + np.square(hat_x_2 - x_2)
         # cost = np.abs(hat_x_1 - x_1)**1 + np.abs(hat_x_2 - x_2)**1
 
-        # Define stopping criteria
+        # Define stopping criteria.
         terminated = bool(cost > self.reward_range.high or cost < self.reward_range.low)
 
-        # Update state
+        # Update state.
         self.state = np.array([hat_x_1, hat_x_2, x_1, x_2])
         self.output = y_1
         self.t = self.t + self.dt
@@ -262,7 +262,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         hat_x_2 = x_2 + self.np_random.uniform(-np.pi / 4, np.pi / 4)
         self.state = np.array([hat_x_1, hat_x_2, x_1, x_2])
 
-        # Retrieve reference
+        # Retrieve reference.
         y_1 = self.reference(x_1)
 
         self.output = y_1
@@ -306,7 +306,7 @@ if __name__ == "__main__":
     print("Setting up Ex3EKF environment.")
     env = gym.make("Ex3EKF")
 
-    # Take T steps in the environment
+    # Take T steps in the environment.
     T = 10
     path = []
     t1 = []
@@ -324,7 +324,7 @@ if __name__ == "__main__":
         path.append(s)
         t1.append(i * env.dt)
 
-    # Plot results
+    # Plot results.
     print("Plot results.")
     fig = plt.figure(figsize=(9, 6))
     ax = fig.add_subplot(111)

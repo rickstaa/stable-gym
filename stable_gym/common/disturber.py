@@ -22,13 +22,13 @@ from .utils import (
     strip_underscores,
 )
 
-# Default Disturber configuration variable
+# Default Disturber configuration variable.
 # NOTE: You can also supply the disturber with your own disturbance configuration
 # dictionary. When doing this you have to make sure it contains all the required keys.
 # See https://rickstaa.dev/stable-learning-control/control/robustness_eval.html
 # for more information.
 DISTURBER_CFG = {
-    # Disturbance type when no type has been given
+    # Disturbance type when no type has been given.
     "default_type": "input",
     ##################################################
     # Environment disturbances #######################
@@ -38,11 +38,11 @@ DISTURBER_CFG = {
     # needs to be implemented inside the environment.
     "env": {
         "description": "Lacl mRNA decay rate disturbance",
-        # The env variable which you want to disturb
+        # The env variable which you want to disturb.
         "variable": "c1",
-        # The range of values you want to use for each disturbance iteration
+        # The range of values you want to use for each disturbance iteration.
         "variable_range": np.linspace(1.6, 3.0, num=5, dtype=np.float32),
-        # Label used in robustness plots
+        # Label used in robustness plots.
         "label": "r: %s",
     },
     ##################################################
@@ -50,40 +50,40 @@ DISTURBER_CFG = {
     ##################################################
     # Disturbance applied to the *INPUT* of the environment step function
     "input": {
-        # The disturbance variant used when no variant is given
+        # The disturbance variant used when no variant is given.
         "default_variant": "impulse",
-        # Impulse disturbance applied opposite to the action at a given timestep
+        # Impulse disturbance applied opposite to the action at a given timestep.
         "impulse": {
             "description": "Impulse disturbance",
-            # The step at which you want to first apply the impulse
+            # The step at which you want to first apply the impulse.
             "impulse_instant": 100,
-            # The length of the impulse in seconds
+            # The length of the impulse in seconds.
             "impulse_length": 1.0,
             # The frequency of the impulse. If you  specify 0.0 only one impulse is
             # given at the impulse instant).
             "impulse_frequency": 0.0,
-            # The magnitudes you want to apply
+            # The magnitudes you want to apply.
             "magnitude_range": np.linspace(80, 155, num=5, dtype=np.float32),
-            # Label used in robustness plots
+            # Label used in robustness plots.
             "label": "M: %s",
         },
-        # A periodic signal noise that is applied at every time step
+        # A periodic signal noise that is applied at every time step.
         # NOTE: Currently you can only uncomment one of the ranges.
         "periodic": {
             "description": "Periodic noise disturbance",
-            # The magnitudes of the periodic signal
+            # The magnitudes of the periodic signal.
             "amplitude_range": np.linspace(10, 80, num=3, dtype=np.int16),
-            # The frequency of the periodic signal
+            # The frequency of the periodic signal.
             # "frequency_range": np.linspace(0, 10, num=3, dtype=np.int16),
-            # The phase of the periodic signal
+            # The phase of the periodic signal.
             # "phase_range": np.linspace(0.0, 90, num=3, dtype=np.int16),
-            # Label used in robustness plots
+            # Label used in robustness plots.
             "label": "A: %s",
         },
-        # A random noise that is applied at every timestep
+        # A random noise that is applied at every timestep.
         "noise": {
             "description": "Random noise disturbance",
-            # The means and standards deviations of the random noise disturbance
+            # The means and standards deviations of the random noise disturbance.
             "noise_range": {
                 "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
                 "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
@@ -97,51 +97,51 @@ DISTURBER_CFG = {
     ##################################################
     # Disturbance applied to the *OUTPUT* of the environment step function
     "output": {
-        # The disturbance variant used when no variant is given
+        # The disturbance variant used when no variant is given.
         "default_variant": "noise",
-        # Impulse disturbance applied opposite to the action at a given timestep
+        # Impulse disturbance applied opposite to the action at a given timestep.
         "impulse": {
             "description": "Impulse disturbance",
-            # The step at which you want to first apply the impulse
+            # The step at which you want to first apply the impulse.
             "impulse_instant": 100,
-            # The length of the impulse in seconds
+            # The length of the impulse in seconds.
             "impulse_length": 1.0,
             # The frequency of the impulse. If you  specify 0.0 only one impulse is
             # given at the impulse instant).
             "impulse_frequency": 0.0,
-            # The magnitudes you want to apply
+            # The magnitudes you want to apply.
             "magnitude_range": np.linspace(0.0, 3.0, num=5, dtype=np.float32),
-            # Label used in robustness plots
+            # Label used in robustness plots.
             "label": "M: %s",
         },
         # Similar above but now the impulse force is continuously applied after the
         # impulse instant has been reached.
         "constant_impulse": {
             "description": "Constant impulse disturbance",
-            # The step at which you want to apply the impulse
+            # The step at which you want to apply the impulse.
             "impulse_instant": 100,
-            # The magnitudes you want to apply
+            # The magnitudes you want to apply.
             "magnitude_range": np.linspace(80, 155, num=3, dtype=np.int16),
-            # Label that can be used in plots
+            # Label that can be used in plots.
             "label": "M: %s",
         },
-        # A periodic signal noise that is applied at every time step
+        # A periodic signal noise that is applied at every time step.
         # NOTE: Currently you can only uncomment one of the ranges.
         "periodic": {
             "description": "Periodic noise disturbance",
-            # The magnitudes of the periodic signal
+            # The magnitudes of the periodic signal.
             "amplitude_range": np.linspace(10, 80, num=3, dtype=np.int16),
-            # The frequency of the periodic signal
+            # The frequency of the periodic signal.
             # "frequency_range": np.linspace(0, 10, num=3, dtype=np.int16),
-            # The phase of the periodic signal
+            # The phase of the periodic signal.
             # "phase_range": np.linspace(0.0, 90, num=3, dtype=np.int16),
-            # Label used in robustness plots
+            # Label used in robustness plots.
             "label": "A: %s",
         },
-        # A random noise that is applied at every timestep
+        # A random noise that is applied at every timestep.
         "noise": {
             "description": "Random noise disturbance",
-            # The means and standards deviations of the random noise disturbance
+            # The means and standards deviations of the random noise disturbance.
             "noise_range": {
                 "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
                 "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
@@ -154,34 +154,34 @@ DISTURBER_CFG = {
     # Input/Output disturbances ######################
     ##################################################
     # Disturbance applied to both the *INPUT* and *OUTPUT* of the environment step
-    # function
+    # function.
     "combined": {
-        # The disturbance variant used when no variant is given
+        # The disturbance variant used when no variant is given.
         "default_variant": "noise",
-        # Input and output impulse disturbance
+        # Input and output impulse disturbance.
         "impulse": {
             "description": "Impulse disturbance",
             "input_impulse": {
-                # The step at which you want to apply the impulse
+                # The step at which you want to apply the impulse.
                 "impulse_instant": 100,
-                # The magnitudes you want to apply
+                # The magnitudes you want to apply.
                 "magnitude_range": np.linspace(0.0, 3.0, num=5, dtype=np.float32),
             },
             "output_impulse": {
-                # The step at which you want to apply the impulse
+                # The step at which you want to apply the impulse.
                 "impulse_instant": 100,
-                # The magnitudes you want to apply
+                # The magnitudes you want to apply.
                 "magnitude_range": np.linspace(0.0, 3.0, num=5, dtype=np.float32),
             },
-            # Label used in robustness plots
+            # Label used in robustness plots.
             "label": "M: (%s, %s)",
         },
-        # Input and output noise disturbance
+        # Input and output noise disturbance.
         "noise": {
             "description": "Random input and output noise disturbance",
             "input_noise": {
                 # The means and standards deviations of the random input noise
-                # disturbance
+                # disturbance.
                 "noise_range": {
                     "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
                     "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
@@ -189,7 +189,7 @@ DISTURBER_CFG = {
             },
             "output_noise": {
                 # The means and standards deviations of the random output noise
-                # disturbance
+                # disturbance.
                 "noise_range": {
                     "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
                     "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
@@ -198,18 +198,18 @@ DISTURBER_CFG = {
             # Label used in robustness plots.
             "label": "x̅: (%s, %s), σ: (%s, %s)",
         },
-        # Input impulse disturbance and a output noise disturbance
+        # Input impulse disturbance and a output noise disturbance.
         "impulse_noise": {
             "description": "Input impulse disturbance and output noise disturbance",
             "input_impulse": {
-                # The step at which you want to apply the impulse
+                # The step at which you want to apply the impulse.
                 "impulse_instant": 100,
-                # The magnitudes you want to apply
+                # The magnitudes you want to apply.
                 "magnitude_range": np.linspace(0.0, 3.0, num=5, dtype=np.float32),
             },
             "output_noise": {
                 # The means and standards deviations of the random output noise
-                # disturbance
+                # disturbance.
                 "noise_range": {
                     "mean": np.linspace(0.0, 0.0, num=3, dtype=np.float32),
                     "std": np.linspace(1.0, 5.0, num=3, dtype=np.float32),
@@ -261,7 +261,7 @@ class Disturber:
             {**DISTURBER_CFG, **disturber_cfg}
             if disturber_cfg is not None
             else DISTURBER_CFG
-        )  # Allow users to overwrite the default config
+        )  # Allow users to overwrite the default config.
         self._disturbance_cfg = None
         self._disturbance_type = None
         self._disturbance_variant = None
@@ -270,7 +270,7 @@ class Disturber:
         self._disturbance_range_keys = None
         self._disturbance_range_length = None
         self._has_time_vars = None
-        self._disturbance_significance = 2  # Disturbance range rounding significance
+        self._disturbance_significance = 2  # Disturbance range rounding significance.
 
     def _initiate_time_vars(self):
         """Initiates a time ``t`` and timestep ``dt`` variable if they are not present
@@ -284,7 +284,7 @@ class Disturber:
             self._has_time_vars = True
         if not hasattr(self, "dt"):
             if hasattr(self, "tau"):
-                self.dt = self.tau  # Some environments use tau instead of dt
+                self.dt = self.tau  # Some environments use tau instead of dt.
             else:
                 self.dt = 1.0
 
@@ -306,7 +306,7 @@ class Disturber:
             numpy.ndarray: The disturbance array.
         """
         # Set the disturber state to done and return a zero disturbance if the user has
-        # used all the specified disturbances
+        # used all the specified disturbances.
         if (
             self._disturbance_range_length is not None
             and self._disturbance_range_idx > (self._disturbance_range_length - 1)
@@ -325,7 +325,7 @@ class Disturber:
                 )
             return np.zeros_like(input_signal)
 
-        # Retrieve the requested disturbance
+        # Retrieve the requested disturbance.
         # NOTE: New disturbances should be aded here.
         current_timestep = self.t / self.dt
         if "impulse" in disturbance_variant:
@@ -372,7 +372,7 @@ class Disturber:
                     self._disturbance_range_idx
                 ]
 
-            # Make sure the signal kwarg has the right shape
+            # Make sure the signal kwarg has the right shape.
             if not isinstance(signal_kwargs.values(), np.ndarray):
                 signal_kwargs = {
                     k: np.repeat(v, input_signal.shape)
@@ -384,7 +384,7 @@ class Disturber:
             mean = disturbance_cfg["noise_range"]["mean"][self._disturbance_range_idx]
             std = disturbance_cfg["noise_range"]["std"][self._disturbance_range_idx]
 
-            # Make sure that the mean and std have the right shape
+            # Make sure that the mean and std have the right shape.
             if not isinstance(mean, np.ndarray):
                 mean = np.repeat(mean, input_signal.shape)
             if not isinstance(std, np.ndarray):
@@ -415,10 +415,10 @@ class Disturber:
                 item
                 for item in list(set([disturbance_type, disturbance_type.lower()]))
                 if item in self._disturber_cfg.keys()
-            ]  # Catch some common human writing errors
+            ]  # Catch some common human writing errors.
             disturbance_type = disturbance_type[0] if disturbance_type else None
 
-            # Throw warning if disturbance type was invalid
+            # Throw warning if disturbance type was invalid.
             if not disturbance_type:
                 try:
                     environment_name = self.unwrapped.spec.id
@@ -439,7 +439,7 @@ class Disturber:
                     "disturbance_type",
                 )
         else:
-            # Try to retrieve default disturbance type if type was not found
+            # Try to retrieve default disturbance type if type was not found.
             if "default_type" in self._disturber_cfg.keys():
                 print(
                     colorize(
@@ -454,7 +454,7 @@ class Disturber:
                     )
                 )
                 disturbance_type = self._disturber_cfg["default_type"]
-            else:  # Thrown warning if type could not be retrieved
+            else:  # Thrown warning if type could not be retrieved.
                 valid_type_keys = {
                     k for k in self._disturber_cfg.keys() if k not in ["default_type"]
                 }
@@ -506,12 +506,12 @@ class Disturber:
                         set([disturbance_variant, disturbance_variant.lower()])
                     )
                     if item in self._disturber_cfg[self._disturbance_type].keys()
-                ]  # Catch some common human writing errors
+                ]  # Catch some common human writing errors.
                 disturbance_variant = (
                     disturbance_variant[0] if disturbance_variant else None
                 )
 
-                # Throw warning if disturbance variant was invalid
+                # Throw warning if disturbance variant was invalid.
                 if not disturbance_variant:
                     valid_variant_keys = {
                         k
@@ -531,7 +531,7 @@ class Disturber:
                         "disturbance_variant",
                     )
             else:
-                # Try to retrieve default disturbance variant if variant was not found
+                # Try to retrieve default disturbance variant if variant was not found.
                 if (
                     "default_variant"
                     in self._disturber_cfg[self._disturbance_type].keys()
@@ -554,7 +554,7 @@ class Disturber:
                         "default_variant"
                     ]
                 else:
-                    # Thrown warning if disturbance variant could not be retrieved
+                    # Thrown warning if disturbance variant could not be retrieved.
                     valid_variant_keys = {
                         k
                         for k in self._disturber_cfg[self._disturbance_type].keys()
@@ -573,10 +573,10 @@ class Disturber:
                         "disturbance_variant",
                     )
 
-            # Set disturbance variant
+            # Set disturbance variant.
             self._disturbance_variant = disturbance_variant
 
-            # Set subvariants if type is combined
+            # Set subvariants if type is combined.
             if self._disturbance_type in "combined":
                 disturbance_variant_keys = self.disturber_cfg[self._disturbance_type][
                     self._disturbance_variant
@@ -658,7 +658,7 @@ class Disturber:
                             "Please check the configuration and try again."
                         ) from e
 
-                # Validate if all the disturbances have equal range lengths
+                # Validate if all the disturbances have equal range lengths.
                 if (
                     len(
                         set(
@@ -709,7 +709,7 @@ class Disturber:
             ValueError: Thrown when the disturbance variant config is invalid for the
                 currently implemented disturbances.
         """
-        # Check if range key is present
+        # Check if range key is present.
         # NOTE: All disturbance configuration objects should have at least one key with
         # the _range suffix.
         disturbance_range_keys = [
@@ -732,7 +732,7 @@ class Disturber:
                 "'disturber_cfg'."
             )
 
-        # Check if required keys are found and the range key has the right length
+        # Check if required keys are found and the range key has the right length.
         invalid_keys_string = (
             f"The '{self._disturbance_variant}' disturbance config is invalid. "
             "Please make sure it contains the "
@@ -835,7 +835,7 @@ class Disturber:
                     ][0]
                 )
 
-                # Thrown warning if the disturbance variant is invalid
+                # Thrown warning if the disturbance variant is invalid.
                 if not isinstance(
                     self._disturbance_cfg[sub_variant_key][
                         self._disturbance_range_keys[-1]
@@ -848,7 +848,7 @@ class Disturber:
                         "contains a 'list' or a 'dictionary'."
                     )
 
-                # Add zero disturbance and retrieve disturbance range length
+                # Add zero disturbance and retrieve disturbance range length.
                 disturbance_sub_variant_cfg = self._disturbance_cfg[sub_variant_key][
                     self._disturbance_range_keys[-1]
                 ]
@@ -856,7 +856,7 @@ class Disturber:
                     disturbance_sub_variant_cfg = inject_value(
                         disturbance_sub_variant_cfg,
                         value=0.0,
-                    )  # Add undisturbed state if not yet present
+                    )  # Add undisturbed state if not yet present.
                 if isinstance(
                     self._disturbance_cfg[sub_variant_key][
                         self._disturbance_range_keys[-1]
@@ -874,7 +874,7 @@ class Disturber:
                 ):
                     self._disturbance_range_length = len(disturbance_sub_variant_cfg)
 
-                # Store disturbance subvariant config
+                # Store disturbance subvariant config.
                 self.disturbance_cfg[sub_variant_key][
                     self._disturbance_range_keys[-1]
                 ] = disturbance_sub_variant_cfg
@@ -888,7 +888,7 @@ class Disturber:
                 disturbance_cfg = inject_value(
                     disturbance_cfg,
                     value=getattr(self, variable),
-                )  # Add undisturbed env if not yet present
+                )  # Add undisturbed env if not yet present.
             self._disturbance_range_length = len(disturbance_cfg)
             self.disturbance_cfg[self._disturbance_range_keys[-1]] = disturbance_cfg
         else:
@@ -896,7 +896,7 @@ class Disturber:
                 [key for key in self._disturbance_cfg.keys() if "_range" in key][0]
             )
 
-            # Thrown warning if the disturbance variant is invalid
+            # Thrown warning if the disturbance variant is invalid.
             if not isinstance(
                 self._disturbance_cfg[self._disturbance_range_keys[-1]],
                 (dict, list, np.ndarray),
@@ -907,12 +907,12 @@ class Disturber:
                     "contains a 'list' or a 'dictionary'."
                 )
 
-            # Add zero disturbance and retrieve disturbance range length
+            # Add zero disturbance and retrieve disturbance range length.
             disturbance_cfg = self._disturbance_cfg[self._disturbance_range_keys[-1]]
             if self._include_baseline:
                 disturbance_cfg = inject_value(
                     disturbance_cfg, value=0.0
-                )  # Add undisturbed state if not yet present
+                )  # Add undisturbed state if not yet present.
             if isinstance(
                 self._disturbance_cfg[self._disturbance_range_keys[-1]], dict
             ):
@@ -923,7 +923,7 @@ class Disturber:
             ):
                 self._disturbance_range_length = len(disturbance_cfg)
 
-            # Store disturbance config
+            # Store disturbance config.
             self.disturbance_cfg[self._disturbance_range_keys[-1]] = disturbance_cfg
 
     def _set_disturbance_cfg(self):
@@ -943,7 +943,7 @@ class Disturber:
             ]
 
         # Validate disturbance config, add initial (zero) disturbance and retrieve
-        # disturbance range length
+        # disturbance range length.
         self._validate_disturbance_cfg()
         self._parse_disturbance_cfg()
 
@@ -964,7 +964,7 @@ class Disturber:
         """
         if self._disturbance_type != "env":
             if self._disturbance_type == "combined":
-                # Retrieve disturbance values
+                # Retrieve disturbance values.
                 label_values = [
                     get_flattened_values(self.disturbance_cfg[sub_var][range_key])
                     for sub_var, range_key in zip(
@@ -973,7 +973,7 @@ class Disturber:
                     )
                 ]
 
-                # Make label_values compatible with the specified label
+                # Make label_values compatible with the specified label.
                 if (
                     "label" in self._disturbance_cfg.keys()
                     and len(set(self._disturbance_range_keys)) == 1
@@ -982,7 +982,7 @@ class Disturber:
                 else:
                     label_values = zip(*deepflatten(label_values, depth=1))
 
-                    # Generate label literal if not supplied
+                    # Generate label literal if not supplied.
                     if "label" not in self._disturbance_cfg.keys():
                         label_keys = []
                         for idx, (sub_var, range_key) in enumerate(
@@ -1006,13 +1006,13 @@ class Disturber:
                     self._disturbance_range_keys[0]
                 ]
 
-                # Retrieve values that should be used for the labels
+                # Retrieve values that should be used for the labels.
                 if isinstance(disturbance_range, dict):
                     label_values = zip(*get_flattened_values(disturbance_range))
                 else:
                     label_values = disturbance_range
 
-                # Generate label literal if not supplied
+                # Generate label literal if not supplied.
                 if "label" not in self._disturbance_cfg.keys():
                     if isinstance(disturbance_range, dict):
                         label_keys = get_flattened_keys(disturbance_range)
@@ -1023,7 +1023,7 @@ class Disturber:
                         ": %s, ".join(label_abbreviations) + ": %s"
                     )
 
-            # Create labels
+            # Create labels.
             try:
                 labels = [
                     self._disturbance_cfg["label"] % item for item in label_values
@@ -1052,13 +1052,13 @@ class Disturber:
         :attr:`Disturber.disturbance_info` attribute. This info can for example be used
         to create a legend for a robustness evaluation plot.
         """
-        # Store general disturbance info
+        # Store general disturbance info.
         self.disturbance_info["cfg"] = self._disturbance_cfg
         self.disturbance_info["type"] = self._disturbance_type
         self.disturbance_info["variant"] = self._disturbance_variant
         self.disturbance_info["variables"] = {}
 
-        # Store disturbance range values and current value
+        # Store disturbance range values and current value.
         if self._disturbance_type == "combined":
             sub_vars = [
                 re.search("(input(?=_)|output(?=_))", key)[0]
@@ -1101,7 +1101,7 @@ class Disturber:
                     "value"
                 ] = disturbance_range[self._disturbance_range_idx]
 
-        # Retrieve disturbance description
+        # Retrieve disturbance description.
         if "description" in self._disturbance_cfg.keys():
             self.disturbance_info["description"] = self._disturbance_cfg["description"]
         else:
@@ -1112,7 +1112,7 @@ class Disturber:
             else:
                 self.disturbance_info["description"] = "Environment disturbance"
 
-        # Retrieve plot labels
+        # Retrieve plot labels.
         (
             self.disturbance_info["labels"],
             self.disturbance_info["label"],
@@ -1144,17 +1144,17 @@ class Disturber:
         """
         self._include_baseline = include_baseline
 
-        # Overwrite disturbance config if passed as a argument
+        # Overwrite disturbance config if passed as a argument.
         if disturber_cfg is not None:
             self._disturber_cfg = {
                 **DISTURBER_CFG,
                 **disturber_cfg,
-            }  # Allow users to update the disturber_cfg
+            }  # Allow users to update the disturber_cfg.
         else:
-            # Update disturber config to the most recent default disturber config
+            # Update disturber config to the most recent default disturber config.
             self._disturber_cfg = DISTURBER_CFG
 
-        # Reset disturber it was already initialized
+        # Reset disturber it was already initialized.
         if self._disturbance_type is not None:
             print(
                 colorize(
@@ -1166,17 +1166,17 @@ class Disturber:
             )
             self.reset_disturber()
 
-        # Setup all required disturbance attributes
+        # Setup all required disturbance attributes.
         self._set_disturber_type(disturbance_type)
         self._set_disturber_variant(disturbance_variant)
         self._set_disturbance_cfg()
-        self._initiate_time_vars()  # Make sure the env has a t variable
+        self._initiate_time_vars()  # Make sure the env has a t variable.
 
-        # Retrieve and store extra information about the disturbance
+        # Retrieve and store extra information about the disturbance.
         # NOTE: Useful for robustness evaluation plots
         self._set_disturbance_info()
 
-        # Print information about the initial disturbance
+        # Print information about the initial disturbance.
         print(
             colorize(
                 "INFO: Disturber with disturbance type '{}'{}initialized.".format(
@@ -1235,11 +1235,11 @@ class Disturber:
                 "if you want to use this feature."
             )
 
-        # Create time axis if not available
+        # Create time axis if not available.
         if not self._has_time_vars:
-            self.t += self.dt  # Create time axis if not given by the environment
+            self.t += self.dt  # Create time axis if not given by the environment.
 
-        # Retrieve the disturbed step
+        # Retrieve the disturbed step.
         if self._disturbance_type.split("_")[0] == "output":
             s, r, done, info = self.step(action, *args, **kwargs)
             try:
@@ -1353,15 +1353,15 @@ class Disturber:
                 "calling the 'next_disturbance' method."
             )
 
-        # Increment disturbance index and check if disturber is finished
+        # Increment disturbance index and check if disturber is finished.
         self._disturbance_range_idx += 1
 
-        # Check if disturber is finished
+        # Check if disturber is finished.
         if self._disturbance_range_idx > (self._disturbance_range_length - 1):
             self.disturber_done = True
             return self.disturber_done
 
-        # Add info about the current disturbance
+        # Add info about the current disturbance.
         self.disturbance_info["label"] = self.disturbance_info["labels"][
             self._disturbance_range_idx
         ]
@@ -1375,7 +1375,7 @@ class Disturber:
                     self._disturbance_range_idx
                 ]
 
-        # Apply environment disturbance
+        # Apply environment disturbance.
         if self._disturbance_type != "env":
             time_instant = [
                 key for key in self._disturbance_cfg.keys() if "_instant" in key
@@ -1400,7 +1400,7 @@ class Disturber:
         else:
             self._apply_env_disturbance()
 
-        # Return disturber not finished boolean
+        # Return disturber not finished boolean.
         return False
 
     @property
