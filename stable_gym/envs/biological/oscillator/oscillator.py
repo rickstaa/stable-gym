@@ -193,7 +193,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             dtype=np.float32,
         )  # QUESTION: Should we use a absolute action space (i.e. 0-10)?
         self.observation_space = spaces.Box(obs_low, obs_high, dtype=np.float32)
-        self.reward_range = spaces.Box(
+        self.cost_range = spaces.Box(
             np.array([0.0], dtype=np.float32),
             np.array([100], dtype=np.float32),
             dtype=np.float32,
@@ -326,7 +326,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         cost = np.square(p1 - r1)
 
         # Define stopping criteria.
-        terminated = bool(cost > self.reward_range.high or cost < self.reward_range.low)
+        terminated = bool(cost > self.cost_range.high or cost < self.cost_range.low)
 
         # Return state, cost, terminated, truncated and info_dict
         return (

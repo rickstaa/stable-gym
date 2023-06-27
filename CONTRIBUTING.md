@@ -24,7 +24,7 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 2.  Add tests if you've added code that should be tested.
 3.  If you've changed APIs, update the documentation.
 4.  If you changed the documentation, please ensure it builds (see [Documentation guidelines](#documentation-guidelines)).
-5.  Ensure the test suite passes (i.e. `npm run test`). If snapshots fail, please check if this is intended and update the snapshots if necessary using the `npm run test:update:snapshot` command.
+5.  Ensure the test suite passes (i.e. `npm run test`). If snapshots fail, please check if this is intended and update the snapshots if necessary using the `npm run test:update:snapshots` command.
 6.  Make sure your code lints.
 7.  Commit your changes.
 8.  Create a pull request to pull the changes of your development branch onto the `main` branch.
