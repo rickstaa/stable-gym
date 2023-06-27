@@ -35,6 +35,7 @@ dependencies = [
 requires-python = ">=3.8"
 
 [project.optional-dependencies]
+# NOTE: Ensure you have pip>=21.2 for the recursive dependencies to work.
 dev = [
     "pytest>=7.3.2",
     "pytest-cov>=4.1.0",
@@ -46,7 +47,7 @@ dev = [
 docs = [
     "sphinx>=6.2.1",
     "sphinx_rtd_theme>=1.2.2",
-    "myst_parser>=1.0.0",
+    "myst-parser>=1.0.0",
     "sphinx-autoapi>=2.1.1"
 ]
 

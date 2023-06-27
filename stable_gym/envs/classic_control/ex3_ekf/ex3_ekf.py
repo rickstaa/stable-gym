@@ -128,7 +128,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
             dtype=np.float32,
         )
         self.observation_space = spaces.Box(-high, high, dtype=np.float32)
-        self.reward_range = spaces.Box(
+        self.cost_range = spaces.Box(
             np.array([0.0], dtype=np.float32),
             np.array([100], dtype=np.float32),
             dtype=np.float32,
@@ -214,7 +214,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         # cost = np.abs(hat_x_1 - x_1)**1 + np.abs(hat_x_2 - x_2)**1
 
         # Define stopping criteria.
-        terminated = bool(cost > self.reward_range.high or cost < self.reward_range.low)
+        terminated = bool(cost > self.cost_range.high or cost < self.cost_range.low)
 
         # Update state.
         self.state = np.array([hat_x_1, hat_x_2, x_1, x_2])
