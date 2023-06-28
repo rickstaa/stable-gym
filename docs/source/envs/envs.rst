@@ -5,7 +5,7 @@ Environments
 ============
 
 The :stable_gym:`Stable Gym package <>` provides a variety of environments for training and testing 
-:stable_learning_control:`(stable) reinforcement learning  algorithms <>`.
+:stable_learning_control:`(stable) reinforcement learning (RL) algorithms <>`.
 
 Biological environments
 -----------------------
