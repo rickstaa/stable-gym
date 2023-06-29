@@ -9,7 +9,6 @@ Pre-requisites
 * `pip >= 19.0.3 <https://pypi.org/project/pip/>`_.
 * `conda <https://docs.conda.io/en/latest/>`_ (optional but recommended).
 
-
 Installing Python
 -----------------
 
@@ -18,7 +17,6 @@ Python, as well as an environment manager called Conda, makes package management
 installation instructions on the `official website <https://docs.continuum.io/anaconda/install/>`_. After downloading and 
 installing Anaconda3 (at the time of writing, `Anaconda3-2023.3.1`_), create a Conda Python env for organizing packages used 
 in the ``stable_gym`` package:
-
 
 .. code-block:: bash
 
@@ -31,6 +29,7 @@ To use Python from the environment you just created, activate the environment wi
     conda activate stable_gym
 
 .. note::
+
     Alternatively, you can use Python's `venv <https://docs.python.org/3/library/venv.html>`_ package to create a virtual environment. 
 
 .. _`Anaconda3-2023.3.1`: https://repo.anaconda.com/archive/
