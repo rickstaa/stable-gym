@@ -15,7 +15,7 @@ installed using the following `pip`_ command inside the ``./stable_gym`` folder:
 
     pip install .[docs]
 
-.. _sphinx: http://www.sphinx-doc.org/en/master
+.. _sphinx: https://www.sphinx-doc.org/en/master
 .. _pip: https://pypi.org/project/pip/
 
 Build the documentation
