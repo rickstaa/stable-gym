@@ -64,7 +64,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
           cache-dependency-path: pyproject.toml
-      - name: Install the python package with its dependencies
+      - name: Install the stable_gym package with its dependencies
         run: |
           pip install .[dev]
       - name: Test with Pytest
@@ -72,6 +72,7 @@ jobs:
           set -o pipefail
           pytest --cache-clear --html=pytest/${{ matrix.python-version }}/html/results.html --junitxml=pytest/${{ matrix.python-version }}/xml/results.xml --cov --cov-report=html:pytest/${{ matrix.python-version }}/cov/pytest-coverage.txt --cov-report=term-missing | tee pytest-coverage.txt
           set +o pipefail
-      - name: Upload coverage to Codecov
+      - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
-        
+        env: 
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
