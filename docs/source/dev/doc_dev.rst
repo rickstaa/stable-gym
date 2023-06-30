@@ -27,7 +27,7 @@ documentation is successfully built, you can also use the ``make linkcheck`` com
 
 .. note::
 
-    Make sure you are in the Conda environment in which you installed the stable_gym package
+    Make sure you are in the Conda environment in which you installed the :stable_gym:`stable_gym <>` package
     with it's dependencies.
 
 .. _HTML: https://www.w3schools.com/html/
