@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.47](https://github.com/rickstaa/stable-gym/compare/v0.6.46...v0.6.47) (2023-06-30)
+
+
+### Documentation
+
+* improve docs ([#172](https://github.com/rickstaa/stable-gym/issues/172)) ([9819d85](https://github.com/rickstaa/stable-gym/commit/9819d851ed66ac08fa15ff7cfc5df71abd79e224))
+* set pygment style ([40efaee](https://github.com/rickstaa/stable-gym/commit/40efaee434d6e6c1cd6e2496d6480e100a2d9838))
+
 ## [0.6.46](https://github.com/rickstaa/stable-gym/compare/v0.6.45...v0.6.46) (2023-06-29)
 
 
