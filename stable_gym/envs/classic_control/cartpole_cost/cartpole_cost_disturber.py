@@ -5,6 +5,7 @@ Control package. For more information see the
 documentation.
 """  # noqa: E501
 import numpy as np
+
 from stable_gym.common.disturber import Disturber
 
 # Disturber config used to overwrite the default config.

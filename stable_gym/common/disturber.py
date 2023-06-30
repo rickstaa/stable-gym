@@ -288,9 +288,7 @@ class Disturber:
             else:
                 self.dt = 1.0
 
-    def _get_disturbance(  # noqa: C901
-        self, input_signal, disturbance_variant, disturbance_cfg
-    ):
+    def _get_disturbance(self, input_signal, disturbance_variant, disturbance_cfg):
         """Retrieves the right disturbance using the disturbance type and variant that
         were set using the :meth:`Disturber.init_disturber` method.
 
@@ -692,9 +690,7 @@ class Disturber:
                         "invalid. Please check the configuration and try again."
                     ) from e
 
-    def _validate_disturbance_variant_cfg(  # noqa: C901
-        self, disturbance_cfg, disturbance_type
-    ):
+    def _validate_disturbance_variant_cfg(self, disturbance_cfg, disturbance_type):
         """Validates the disturbance variant configuration object to see if it is valid
         for the disturbances that are currently implemented.
 
@@ -817,7 +813,7 @@ class Disturber:
                         f"the {space_name} size (i.e. {req_length})."
                     )
 
-    def _parse_disturbance_cfg(self):  # noqa: C901
+    def _parse_disturbance_cfg(self):
         """Parse the disturbance config to add determine the disturbance range and add
         the initial disturbance (0.0) if it is not yet present.
 
@@ -947,7 +943,7 @@ class Disturber:
         self._validate_disturbance_cfg()
         self._parse_disturbance_cfg()
 
-    def _get_plot_labels(self):  # noqa: C901
+    def _get_plot_labels(self):
         """Retrieves or generated plot labels which can be added to the
         :attr:`Disturber.disturbance_info` attribute. These labels can be used for
         plotting.
@@ -1206,7 +1202,7 @@ class Disturber:
             )
         )
 
-    def disturbed_step(self, action, *args, **kwargs):  # noqa: C901
+    def disturbed_step(self, action, *args, **kwargs):
         """Takes a action inside the gymnasium environment while applying the requested
         disturbance.
 
