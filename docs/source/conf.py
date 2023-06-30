@@ -34,6 +34,7 @@ extensions = [
     "sphinx.ext.viewcode",  # Add a link to the Python source code for python objects.
     "myst_parser",  # Support for MyST Markdown syntax.
     "autoapi.extension",  # Generate API documentation from code.
+    "sphinx.ext.autodoc",  # Include documentation from docstrings.
 ]
 autoapi_dirs = ["../../stable_gym"]
 myst_heading_anchors = 2  # Add anchors to headings.
@@ -55,6 +56,9 @@ templates_path = ["_templates"]
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path.
 exclude_patterns = []
+
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = "sphinx"
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
