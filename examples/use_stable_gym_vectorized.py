@@ -6,6 +6,7 @@ manner.
     :gymnasium:`gym.vector <api/vector>` documentation.
 """
 import gymnasium as gym
+
 import stable_gym  # noqa: F401
 
 ENV_NAME = "Oscillator-v1"

@@ -3,6 +3,7 @@ registered.
 """
 import pytest
 from gymnasium import envs
+
 from stable_gym import ENVS
 
 
