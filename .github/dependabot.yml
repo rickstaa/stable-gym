@@ -22,7 +22,8 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
-  # Maintain dependencies for npm.
+
+  # Maintain dependencies for pip.
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
