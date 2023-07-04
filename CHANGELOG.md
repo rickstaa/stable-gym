@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.48](https://github.com/rickstaa/stable-gym/compare/v0.6.47...v0.6.48) (2023-07-04)
+
+
+### Documentation
+
+* update BLC to SLC ([#176](https://github.com/rickstaa/stable-gym/issues/176)) ([327b475](https://github.com/rickstaa/stable-gym/commit/327b475d63f65fe9f696c8a04080b5619c3a51a1))
+
 ## [0.6.47](https://github.com/rickstaa/stable-gym/compare/v0.6.46...v0.6.47) (2023-06-30)
 
 
