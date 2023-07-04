@@ -1,5 +1,5 @@
 """A disturber class from which a OpenAi Gym Environment can inherit in order to be able
-to use it with the Robustness Evaluation tool of the Bayesian Learning Control package.
+to use it with the Robustness Evaluation tool of the Stable Learning Control package.
 For more information see the
 `Robustness Evaluation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_
 documentation.
@@ -225,7 +225,7 @@ DISTURBER_CFG = {
 class Disturber:
     """Environment disturbance class. This class adds additional methods to a OpenAi Gym
     Environemt in order to make it compatible with the Robustness Eval tool of the
-    Bayesian Learning Control package.
+    Stable Learning Control package.
 
     Attributes:
         disturber_done (bool): Whether the disturber has looped through all the

@@ -25,8 +25,8 @@ class Oscillator(gym.Env, OscillatorDisturber):
         This gymnasium environment inherits from the
         :class:`~stable_gym.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
-        Bayesian Learning Control package (BLC). For more information see
-        `the BLC documentation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_.
+        Stable Learning Control package (SLC). For more information see
+        `the SLC documentation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_.
 
     Description:
         The goal of the agent in the oscillator environment is to act in such a way that
