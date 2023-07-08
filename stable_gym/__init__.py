@@ -13,8 +13,8 @@ ENVS = {
         "max_step": 400,
         "reward_threshold": 300,
     },
-    "OscillatorComp-v1": {
-        "module": "stable_gym.envs.biological.oscillator_complicated.oscillator_complicated:OscillatorComp",
+    "OscillatorComplicated-v1": {
+        "module": "stable_gym.envs.biological.oscillator_complicated.oscillator_complicated:OscillatorComplicated",
         "max_step": 400,
         "reward_threshold": 300,
     },

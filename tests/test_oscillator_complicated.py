@@ -10,7 +10,7 @@ gym.logger.set_level(ERROR)
 
 
 class TestOscillatorComplicated:
-    env = gym.make("OscillatorComp")
+    env = gym.make("OscillatorComplicated")
 
     def test_reset(self, snapshot):
         """Test if reset is still equal to the last snapshot."""

@@ -32,10 +32,11 @@ DISTURBER_CFG = {
 }
 
 
-class OscillatorCompDisturber(Disturber):
+class OscillatorComplicatedDisturber(Disturber):
     """Wrapper around the
     :meth:`~stable_gym.common.disturber.Disturber` that
-    makes the disturber is compatible with the :class:`OscillatorComp` environment.
+    makes the disturber is compatible with the :class:`OscillatorComplicated`
+    environment.
     """
 
     def __init__(self, *args, **kwargs):

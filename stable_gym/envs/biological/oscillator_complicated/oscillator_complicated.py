@@ -10,16 +10,16 @@ from gymnasium import logger, spaces
 
 if __name__ == "__main__":
     from stable_gym.envs.biological.oscillator_complicated.oscillator_complicated_disturber import (  # noqa: E501, F401
-        OscillatorCompDisturber,
+        OscillatorComplicatedDisturber,
     )
 else:
-    from .oscillator_complicated_disturber import OscillatorCompDisturber
+    from .oscillator_complicated_disturber import OscillatorComplicatedDisturber
 
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 # TODO: Add solving criteria after training.
-class OscillatorComp(gym.Env, OscillatorCompDisturber):
+class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
     """Challenging (i.e. complicated) oscillatory network environment. This environment
     class is based on the :class:`~stable_gym.envs.biological.oscillator.oscillator.Oscillator`
     environment class but has an additional protein, mRNA transcription and light input.
