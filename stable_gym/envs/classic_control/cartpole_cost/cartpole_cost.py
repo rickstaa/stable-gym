@@ -1,5 +1,4 @@
-"""The CartPoleCost gymnasium environment.
-"""  # noqa: E501
+"""The CartPoleCost gymnasium environment."""
 # NOTE: You can find the changes by searching for the ``NOTE:`` keyword.
 import math
 
@@ -32,7 +31,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         :class:`~stable_gym.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Stable Learning Control package (SLC). For more information see
-        `the SLC documentation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_.
+        `the SLC documentation <https://rickstaa.dev/stable-learning-control/utils/tester.html#robustness-eval-utility>`_.
 
     Description:
         This environment was based on the cart-pole environment described by Barto,
@@ -178,7 +177,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 (``constant`` or ``periodic``), by default ``periodic``. Only used
                 when ``task_type`` is ``reference_tracking``.
             reference_target_position: The reference target position, by default
-                ``0.0`` (i.e. the mean of the reference signal).
+                ``0.0`` (i.e. the mean of the reference signal). Only used
+                when ``task_type`` is ``reference_tracking``.
             reference_constraint_position: The reference constraint position, by
                 default ``4.0``. Not used in the environment but used for the info dict.
             clip_action (str, optional): Whether the actions should be clipped if
@@ -186,8 +186,16 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         """
         super().__init__()  # NOTE: Initialize disturber superclass.
 
-        # Print environment info.
-        # logger.info()
+        # Validate input arguments.
+        if task_type.lower() not in ["stabilization", "reference_tracking"]:
+            raise ValueError(
+                "Invalid task type. Options are 'stabilization' and "
+                "'reference_tracking'."
+            )
+        if reference_type.lower() not in ["constant", "periodic"]:
+            raise ValueError(
+                "Invalid reference type. Options are 'constant' and 'periodic'."
+            )
 
         # NOTE: Compared to the original I store the initial values for the reset
         # function and replace the `self.total_mass` and `self.polemass_length` with
@@ -283,7 +291,11 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         logger.debug(f"CartPoleCost instance '{self.instance_id}' created.")
         logger.debug(
             f"CartPoleCost instance '{self.instance_id}' performs a '{self.task_type}' "
-            f"task on a '{self.reference_type}' signal."
+            "task{}.".format(
+                f"on a '{self.reference_type}' signal"
+                if self.task_type.lower() == "reference_tracking"
+                else ""
+            )
         )
 
     def set_params(self, length, mass_of_cart, mass_of_pole, gravity):

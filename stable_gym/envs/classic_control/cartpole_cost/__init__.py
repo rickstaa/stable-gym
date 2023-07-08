@@ -9,9 +9,5 @@ was first described by `Han et al. 2020 <https://arxiv.org/abs/2004.14288>`_. In
     are returned.
 -   Some of the environment parameters were changed slightly.
 -   The info dictionary returns extra information about the reference tracking task.
-"""  # noqa: E501
-# fmt: off
-from stable_gym.envs.classic_control.cartpole_cost.cartpole_cost import \
-    CartPoleCost  # noqa: F401
-
-# fmt: off
+"""
+from stable_gym.envs.classic_control.cartpole_cost.cartpole_cost import CartPoleCost

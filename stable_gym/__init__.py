@@ -1,16 +1,20 @@
-"""Module that register the Stable Gym gymnasium environments.
-"""
+"""Module that register the Stable Gym gymnasium environments."""
 import gymnasium as gym
 from gymnasium.envs.registration import register
 
 # Make module version available.
-from .version import __version__  # noqa: F401
-from .version import __version_tuple__  # noqa: F401
+from .version import __version__
+from .version import __version_tuple__
 
 # Available environments.
 ENVS = {
     "Oscillator-v1": {
         "module": "stable_gym.envs.biological.oscillator.oscillator:Oscillator",
+        "max_step": 400,
+        "reward_threshold": 300,
+    },
+    "OscillatorComp-v1": {
+        "module": "stable_gym.envs.biological.oscillator_complicated.oscillator_complicated:OscillatorComp",
         "max_step": 400,
         "reward_threshold": 300,
     },
@@ -20,7 +24,7 @@ ENVS = {
         "reward_threshold": 300,
     },
     "CartPoleCost-v1": {
-        "module": "stable_gym.envs.classic_control.cartpole_cost.cartpole_cost:CartPoleCost",  # noqa: E501
+        "module": "stable_gym.envs.classic_control.cartpole_cost.cartpole_cost:CartPoleCost",
         "max_step": 250,
         "reward_threshold": 300,
     },

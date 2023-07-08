@@ -22,4 +22,4 @@ Estimator design:
     \\hat(x)(k+1)=A\\hat(x)(k)+u
     where u=[u1,u2,u3]', u=l(\\hat(x)(k),y(k)) come from the policy network l(.,.)
 """
-from stable_gym.envs.classic_control.ex3_ekf.ex3_ekf import Ex3EKF  # noqa: F401
+from stable_gym.envs.classic_control.ex3_ekf.ex3_ekf import Ex3EKF

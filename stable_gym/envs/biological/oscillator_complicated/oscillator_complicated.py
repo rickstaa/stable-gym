@@ -1,20 +1,28 @@
-"""The oscillator gymnasium environment."""
+"""A more challenging (i.e. complicated) version of the `Oscillator gymnasium environment`_
+with an additional protein, mRNA transcription concentration variable and light input.
+
+.. _`Oscillator gymnasium environment`: https://rickstaa.dev/stable-gym/envs/biological/oscillator.html
+"""  # noqa: E501
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import logger, spaces
 
 if __name__ == "__main__":
-    from oscillator_disturber import OscillatorDisturber
+    from stable_gym.envs.biological.oscillator_complicated.oscillator_complicated_disturber import (  # noqa: E501, F401
+        OscillatorCompDisturber,
+    )
 else:
-    from .oscillator_disturber import OscillatorDisturber
+    from .oscillator_complicated_disturber import OscillatorCompDisturber
 
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 # TODO: Add solving criteria after training.
-class Oscillator(gym.Env, OscillatorDisturber):
-    """Synthetic oscillatory network environment.
+class OscillatorComp(gym.Env, OscillatorCompDisturber):
+    """Challenging (i.e. complicated) oscillatory network environment. This environment
+    class is based on the :class:`~stable_gym.envs.biological.oscillator.oscillator.Oscillator`
+    environment class but has an additional protein, mRNA transcription and light input.
 
     .. Note::
         Can also be used in a vectorized manner. See the
@@ -41,29 +49,34 @@ class Oscillator(gym.Env, OscillatorDisturber):
     Observation:
         **Type**: Box(7)
 
-        +-----+-----------------------------------------------+-------------------+-------------------+
-        | Num | Observation                                   | Min               | Max               |
-        +=====+===============================================+===================+===================+
-        | 0   | Lacl mRNA transcripts concentration           | 0                 | 100               |
-        +-----+-----------------------------------------------+-------------------+-------------------+
-        | 1   | tetR mRNA transcripts concentration           | 0                 | 100               |
-        +-----+-----------------------------------------------+-------------------+-------------------+
-        | 2   | CI mRNA transcripts concentration             | 0                 | 100               |
-        +-----+-----------------------------------------------+-------------------+-------------------+
-        | 3   || lacI (repressor) protein concentration       | 0                 | 100               |
-        |     || (Inhibits transcription of the tetR gene)    |                   |                   |
-        +-----+-----------------------------------------------+-------------------+-------------------+
-        | 4   || tetR (repressor) protein concentration       | 0                 | 100               |
-        |     || (Inhibits transcription of CI gene)          |                   |                   |
-        +-----+-----------------------------------------------+-------------------+-------------------+
-        | 5   || CI (repressor) protein concentration         | 0                 | 100               |
-        |     || (Inhibits transcription of lacI gene)        |                   |                   |
-        +-----+-----------------------------------------------+-------------------+-------------------+
-        | 6   | The reference we want to follow               | 0                 | 100               |
-        +-----+-----------------------------------------------+-------------------+-------------------+
-        | 7   || The error between the current value of       | -100              | 100               |
-        |     || protein 1 and the reference                  |                   |                   |
-        +-----+-----------------------------------------------+-------------------+-------------------+
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | Num | Observation                                     | Min               | Max               |
+        +=====+=================================================+===================+===================+
+        | 0   | Lacl mRNA transcripts concentration             | 0                 | 100               |
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | 1   | tetR mRNA transcripts concentration             | 0                 | 100               |
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | 2   | CI mRNA transcripts concentration               | 0                 | 100               |
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | 3   | Extra protein mRNA transcripts concentration    | 0                 | 100               |
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | 4   || lacI (repressor) protein concentration         | 0                 | 100               |
+        |     || (Inhibits transcription of the tetR gene)      |                   |                   |
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | 6   || tetR (repressor) protein concentration         | 0                 | 100               |
+        |     || (Inhibits transcription of CI gene)            |                   |                   |
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | 7   || CI (repressor) protein concentration           | 0                 | 100               |
+        |     || (Inhibits transcription of extra protein gene) |                   |                   |
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | 8   || Extra (repressor) protein concentration        | 0                 | 100               |
+        |     || (Inhibits transcription of lacI gene)          |                   |                   |
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | 9   | The reference we want to follow                 | 0                 | 100               |
+        +-----+-------------------------------------------------+-------------------+-------------------+
+        | 10  || The error between the current value of         | -100              | 100               |
+        |     || protein 1 and the reference                    |                   |                   |
+        +-----+-------------------------------------------------+-------------------+-------------------+
 
     Actions:
         **Type**: Box(3)
@@ -79,6 +92,9 @@ class Oscillator(gym.Env, OscillatorDisturber):
         +-----+------------------------------------------------------------+---------+---------+
         | 2   || Relative intensity of light signal that induce the        | -5      | 5       |
         |     || expression of the CI mRNA gene.                           |         |         |
+        +-----+------------------------------------------------------------+---------+---------+
+        | 3   || Relative intensity of light signal that induce the        | -5      | 5       |
+        |     || expression of the extra protein mRNA gene.                |         |         |
         +-----+------------------------------------------------------------+---------+---------+
 
     Cost:
@@ -154,47 +170,57 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.t = 0.0
         self.dt = 1.0
         self._init_state = np.array(
-            [0.8, 1.5, 0.5, 3.3, 3, 3]
+            [0.8, 1.5, 0.5, 0.3, 3.3, 3, 3, 2.8]
         )  # Used when random is disabled in reset.
         self._init_state_range = {
-            "low": [0, 0, 0, 0, 0, 0],
-            "high": [5, 5, 5, 5, 5, 5],
+            "low": [0, 0, 0, 0, 0, 0, 0, 0],
+            "high": [5, 5, 5, 5, 5, 5, 5, 5],
         }  # Used when random is enabled in reset.
 
         # Set oscillator network parameters.
         self.K1 = 1.0  # mRNA dissociation constants m1.
         self.K2 = 1.0  # mRNA dissociation constant m2.
         self.K3 = 1.0  # mRNA dissociation constant m3.
+        self.K4 = 1.0  # mRNA dissociation constant m4.
         self.a1 = 1.6  # Maximum promoter strength m1.
         self.a2 = 1.6  # Maximum promoter strength m2.
         self.a3 = 1.6  # Maximum promoter strength m3.
+        self.a4 = 1.6  # Maximum promoter strength m4.
         self.gamma1 = 0.16  # mRNA degradation rate m1.
         self.gamma2 = 0.16  # mRNA degradation rate m2.
         self.gamma3 = 0.16  # mRNA degradation rate m3.
+        self.gamma4 = 0.16  # mRNA degradation rate m4.
         self.beta1 = 0.16  # Protein production rate p1.
         self.beta2 = 0.16  # Protein production rate p2.
         self.beta3 = 0.16  # Protein production rate p3.
+        self.beta4 = 0.16  # Protein production rate p4.
         self.c1 = 0.06  # Protein degradation rate p1.
         self.c2 = 0.06  # Protein degradation rate p2.
         self.c3 = 0.06  # Protein degradation rate p3.
+        self.c4 = 0.06  # Protein degradation rate p4.
         self.b1 = 1.0  # Control input gain u1.
         self.b2 = 1.0  # Control input gain u2.
         self.b3 = 1.0  # Control input gain u3.
+        self.b4 = 1.0  # Control input gain u4.
 
         # Set noise parameters.
         # NOTE: Zero during training.
         self.delta1 = 0.0  # m1 noise.
         self.delta2 = 0.0  # m2 noise.
         self.delta3 = 0.0  # m3 noise.
-        self.delta4 = 0.0  # p1 noise.
-        self.delta5 = 0.0  # p2 noise.
-        self.delta6 = 0.0  # p3 noise.
+        self.delta4 = 0.0  # m4 noise.
+        self.delta5 = 0.0  # p1 noise.
+        self.delta6 = 0.0  # p2 noise.
+        self.delta7 = 0.0  # p3 noise.
+        self.delta8 = 0.0  # p4 noise.
 
-        obs_low = np.array([0, 0, 0, 0, 0, 0, 0, -100], dtype=np.float32)
-        obs_high = np.array([100, 100, 100, 100, 100, 100, 100, 100], dtype=np.float32)
+        obs_low = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, -100], dtype=np.float32)  # NOTE:
+        obs_high = np.array(
+            [100, 100, 100, 100, 100, 100, 100, 100, 100, 100], dtype=np.float32
+        )
         self.action_space = spaces.Box(
-            low=np.array([-5.0, -5.0, -5.0], dtype=np.float32),
-            high=np.array([5.0, 5.0, 5.0], dtype=np.float32),
+            low=np.array([-5.0, -5.0, -5.0, -5.0], dtype=np.float32),
+            high=np.array([5.0, 5.0, 5.0, 5.0], dtype=np.float32),
             dtype=np.float32,
         )  # QUESTION: Should we use a absolute action space (i.e. 0-10)?
         self.observation_space = spaces.Box(obs_low, obs_high, dtype=np.float32)
@@ -250,23 +276,36 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 )
                 self._action_clip_warning = True
 
-            u1, u2, u3 = np.clip(action, self.action_space.low, self.action_space.high)
+            u1, u2, u3, u4 = np.clip(
+                action, self.action_space.low, self.action_space.high
+            )
         else:
             assert self.action_space.contains(
                 action
             ), f"{action!r} ({type(action)}) invalid"
-            u1, u2, u3 = action
+            u1, u2, u3, u4 = action
         assert self.state is not None, "Call reset before using step method."
 
         # Perform action in the environment and return the new state.
         # NOTE: The new state is found by solving 3 first-order differential equations.
-        m1, m2, m3, p1, p2, p3 = self.state  # NOTE: [x1, x2, x3, x4, x5, x6] in paper.
-        m1_dot = -self.gamma1 * m1 + self.a1 / (self.K1 + np.square(p3)) + self.b1 * u1
+        (
+            m1,
+            m2,
+            m3,
+            m4,
+            p1,
+            p2,
+            p3,
+            p4,
+        ) = self.state  # NOTE: [x1, x2, x3, x4, x5, x6] in paper.
+        m1_dot = -self.gamma1 * m1 + self.a1 / (self.K1 + np.square(p4)) + self.b1 * u1
         m2_dot = -self.gamma2 * m2 + self.a2 / (self.K2 + np.square(p1)) + self.b2 * u2
         m3_dot = -self.gamma3 * m3 + self.a3 / (self.K3 + np.square(p2)) + self.b3 * u3
+        m4_dot = -self.gamma4 * m4 + self.a4 / (self.K4 + np.square(p3)) + self.b4 * u4
         p1_dot = -self.c1 * p1 + self.beta1 * m1
         p2_dot = -self.c2 * p2 + self.beta2 * m2
         p3_dot = -self.c3 * p3 + self.beta3 * m3
+        p4_dot = -self.c4 * p4 + self.beta4 * m4
 
         # Calculate mRNA concentrations.
         # Note: Use max to make sure concentrations can not be negative.
@@ -294,6 +333,14 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 np.zeros([1]),
             ]
         )
+        m4 = np.max(
+            [
+                m4
+                + m4_dot * self.dt
+                + self.np_random.uniform(-self.delta4, self.delta4, 1),
+                np.zeros([1]),
+            ]
+        )
 
         # Calculate protein concentrations.
         # Note: Use max to make sure concentrations can not be negative.
@@ -301,7 +348,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             [
                 p1
                 + p1_dot * self.dt
-                + self.np_random.uniform(-self.delta4, self.delta4, 1),
+                + self.np_random.uniform(-self.delta5, self.delta5, 1),
                 np.zeros([1]),
             ]
         )
@@ -309,7 +356,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             [
                 p2
                 + p2_dot * self.dt
-                + self.np_random.uniform(-self.delta5, self.delta5, 1),
+                + self.np_random.uniform(-self.delta6, self.delta6, 1),
                 np.zeros([1]),
             ]
         )
@@ -317,13 +364,21 @@ class Oscillator(gym.Env, OscillatorDisturber):
             [
                 p3
                 + p3_dot * self.dt
-                + self.np_random.uniform(-self.delta6, self.delta6, 1),
+                + self.np_random.uniform(-self.delta7, self.delta7, 1),
+                np.zeros([1]),
+            ]
+        )
+        p4 = np.max(
+            [
+                p4
+                + p4_dot * self.dt
+                + self.np_random.uniform(-self.delta8, self.delta8, 1),
                 np.zeros([1]),
             ]
         )
 
         # Retrieve state.
-        self.state = np.array([m1, m2, m3, p1, p2, p3])
+        self.state = np.array([m1, m2, m3, m4, p1, p2, p3, p4])
         self.t = self.t + self.dt  # Increment time step.
 
         # Calculate cost.
@@ -335,7 +390,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
         # Return state, cost, terminated, truncated and info_dict
         return (
-            np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1], dtype=np.float32),
+            np.array([m1, m2, m3, m4, p1, p2, p3, p4, r1, p1 - r1], dtype=np.float32),
             cost,
             terminated,
             False,
@@ -407,14 +462,16 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
         # Set initial state, reset time and return initial observation.
         self.state = (
-            self.np_random.uniform(low=low, high=high, size=(6,))
+            self.np_random.uniform(low=low, high=high, size=(8,))
             if random
             else self._init_state
         )
         self.t = 0.0
-        m1, m2, m3, p1, p2, p3 = self.state
+        m1, m2, m3, m4, p1, p2, p3, p4 = self.state
         r1 = self.reference(self.t)
-        return np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1], dtype=np.float32), dict(
+        return np.array(
+            [m1, m2, m3, m4, p1, p2, p3, p4, r1, p1 - r1], dtype=np.float32
+        ), dict(
             reference=r1,
             state_of_interest=p1,
             reference_error=p1 - r1,
