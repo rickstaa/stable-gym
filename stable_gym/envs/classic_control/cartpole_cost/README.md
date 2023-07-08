@@ -19,7 +19,7 @@ This modification was first described in [Han et al. 2019](https://arxiv.org/abs
 
 ## Observation space
 
-## Stabilization task (original)
+## stabilisation task (original)
 
 *   **x**: Cart Position.
 *   **x\_dot**: Cart Velocity.
@@ -43,7 +43,7 @@ This modification was first described in [Han et al. 2019](https://arxiv.org/abs
 
 An episode is terminated when:
 
-*   Pole Angle is more than 20 degrees in `stabilization` task and 60 in `reference_tracking` task.
+*   Pole Angle is more than 20 degrees in `stabilisation` task and 60 in `reference_tracking` task.
 *   Cart Position is more than 10 m (center of the cart reaches the edge of the
     display).
 *   Episode length is greater than 200.
@@ -51,19 +51,19 @@ An episode is terminated when:
 
 ## Environment goals
 
-### Stabilization task
+### stabilisation task
 
-The stabilization task is similar to the original `CartPole-v1` environment. The pendulum starts upright, and the goal is to prevent it from falling over by increasing and reducing the cart's control force. This must be done while the cart does not violate set position constraints. These constraints are defined in the cost function.
+The stabilisation task is similar to the original `CartPole-v1` environment. The pendulum starts upright, and the goal is to prevent it from falling over by increasing and reducing the cart's control force. This must be done while the cart does not violate set position constraints. These constraints are defined in the cost function.
 
 ### Reference tracking task
 
-Similar to the stabilization task, now the card must also track a cart position reference signal.
+Similar to the stabilisation task, now the card must also track a cart position reference signal.
 
 ## Cost function
 
 The cost function of this environment is designed in such a way that it tries to minimize the error of a set of states and a set of reference states. It contains two types of tasks:
 
-*   A stabilization task. In this task, the agent attempts to stabilize a given state (e.g. keep the pole angle and or cart position zero)
+*   A stabilisation task. In this task, the agent attempts to stabilize a given state (e.g. keep the pole angle and or cart position zero)
 *   A reference tracking task. The agent tries to make a state track a given reference in this task.
 
 The exact definition of these tasks can be found in the environment `cost()` method.

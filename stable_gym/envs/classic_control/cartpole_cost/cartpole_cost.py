@@ -110,7 +110,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         All observations are assigned a uniform random value in ``[-0.2..0.2]``.
 
     Episode Termination:
-        -   Pole Angle is more than 20 degrees in ``stabilization`` task and 60 in
+        -   Pole Angle is more than 20 degrees in ``stabilisation`` task and 60 in
             ``reference_tracking`` task.
         -   Cart Position is more than 10 m (center of the cart reaches the edge of the
             display).
@@ -160,7 +160,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self,
         render_mode=None,
         # NOTE: Custom environment arguments.
-        task_type="stabilization",
+        task_type="stabilisation",
         reference_type="constant",
         reference_target_position=0.0,
         reference_constraint_position=4.0,
@@ -171,8 +171,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         Args:
             render_mode (str, optional): Gym rendering mode. By default ``None``.
             task_type (str, optional): The task you want the agent to perform (options
-                are "reference_tracking" and "stabilization"). Defaults to
-                "stabilization".
+                are "reference_tracking" and "stabilisation"). Defaults to
+                "stabilisation".
             reference_type (str, optional): The type of reference you want to use
                 (``constant`` or ``periodic``), by default ``periodic``. Only used
                 when ``task_type`` is ``reference_tracking``.
@@ -187,9 +187,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         super().__init__()  # NOTE: Initialize disturber superclass.
 
         # Validate input arguments.
-        if task_type.lower() not in ["stabilization", "reference_tracking"]:
+        if task_type.lower() not in ["stabilisation", "reference_tracking"]:
             raise ValueError(
-                "Invalid task type. Options are 'stabilization' and "
+                "Invalid task type. Options are 'stabilisation' and "
                 "'reference_tracking'."
             )
         if reference_type.lower() not in ["constant", "periodic"]:
@@ -372,10 +372,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
             cost = stab_cost + ref_cost
         else:
-            # Calculate cost (stabilization task).
+            # Calculate cost (stabilisation task).
             cost = (x / self.x_threshold) ** 2 + 20 * (
                 theta / self.theta_threshold_radians
-            ) ** 2  # Stabilization task.
+            ) ** 2  # stabilisation task.
             ref = np.array([0.0, 0.0])
 
         return cost, ref
