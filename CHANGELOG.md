@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/rickstaa/stable-gym/compare/v0.6.48...v0.7.0) (2023-07-08)
+
+
+### Features
+
+* add complicated oscillator environment ([#178](https://github.com/rickstaa/stable-gym/issues/178)) ([7f1a0d1](https://github.com/rickstaa/stable-gym/commit/7f1a0d1436dd7357e529272a987d1928807337b4))
+
 ## [0.6.48](https://github.com/rickstaa/stable-gym/compare/v0.6.47...v0.6.48) (2023-07-04)
 
 
