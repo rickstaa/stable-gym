@@ -21,7 +21,7 @@ installed using the following `pip`_ command inside the ``./stable_gym`` folder:
 Build the documentation
 -----------------------
 
-To build the `HTML`_ documentation, go into the :stable_gym:`docs/ <tree/main/stable_gym/docs>` directory and run the
+To build the `HTML`_ documentation, go into the :stable_gym:`docs/ <tree/main/docs>` directory and run the
 ``make html`` command. This command will generate the html documentation inside the ``docs/build/html`` directory. If the
 documentation is successfully built, you can also use the ``make linkcheck`` command to check for broken links.
 

@@ -16,6 +16,7 @@ Gym environments that are based on Biological systems.
     :maxdepth: 1
 
     ./biological/oscillator.rst
+    ./biological/oscillator_complicated.rst
 
 Classic control environments
 ----------------------------

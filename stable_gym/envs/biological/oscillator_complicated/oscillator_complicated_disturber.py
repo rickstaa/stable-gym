@@ -1,6 +1,6 @@
-"""A simple disturber class from which the Oscillator environment can inherit to use it
-with the Robustness Evaluation tool of the Stable Learning Control package. For more
-information see the
+"""A simple disturber class from which the complicated Oscillator environment can inherit
+to use it with the Robustness Evaluation tool of the Stable Learning Control package.
+For more information see the
 `Robustness Evaluation <https://rickstaa.dev/stable-learning-control/utils/tester.html#robustness-eval-utility>`_
 documentation.
 """  # noqa: E501
@@ -32,10 +32,10 @@ DISTURBER_CFG = {
 }
 
 
-class OscillatorDisturber(Disturber):
+class OscillatorCompDisturber(Disturber):
     """Wrapper around the
     :meth:`~stable_gym.common.disturber.Disturber` that
-    makes the disturber is compatible with the :class:`Oscillator` environment.
+    makes the disturber is compatible with the :class:`OscillatorComp` environment.
     """
 
     def __init__(self, *args, **kwargs):

@@ -1,5 +1,4 @@
-"""The noisy master slave system (Ex3EKF) gymnasium environment.
-"""
+"""The noisy master slave system (Ex3EKF) gymnasium environment."""
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
@@ -21,7 +20,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         :class:`~stable_gym.common.disturber.Disturber`
         in order to be able to use it with the Robustness Evaluation tool of the
         Stable Learning Control package (SLC). For more information see
-        `the SLC documentation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_.
+        `the SLC documentation <https://rickstaa.dev/stable-learning-control/utils/tester.html#robustness-eval-utility>`_.
 
     Description:
         The goal of the agent in the Ex3EKF environment is to act in such a way that

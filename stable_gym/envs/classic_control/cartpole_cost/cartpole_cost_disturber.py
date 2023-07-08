@@ -1,7 +1,7 @@
-"""A simple disturber class from which the CartPoleCost environment can inherit in order
-to be able to use it with the Robustness Evaluation tool of the Stable Learning
-Control package. For more information see the
-`Robustness Evaluation <https://rickstaa.dev/stable-learning-control/control/robustness_eval.html>`_
+"""A simple disturber class from which the CartPoleCost environment can inherit to use
+it with the Robustness Evaluation tool of the Stable Learning Control package. For more
+information see the
+`Robustness Evaluation <https://rickstaa.dev/stable-learning-control/utils/tester.html#robustness-eval-utility>`_
 documentation.
 """  # noqa: E501
 import numpy as np

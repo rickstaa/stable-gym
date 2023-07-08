@@ -1,15 +1,17 @@
-# Oscillator gymnasium environment
+# Oscillator Complicated gymnasium environment
 
-A gymnasium environment for a synthetic oscillatory network of transcriptional regulators called a repressilator. A repressilator is a three-gene regulatory network where the dynamics of mRNA and proteins follow an oscillatory behaviour. First presented by [Han et al. 2020](https://arxiv.org/abs/2004.14288).
+A more challenging (i.e. complicated) version of the [Oscillator environment](https://rickstaa.dev/stable-gym/envs/biological/oscillator.html). This version adds an extra 4th protein and its accompanying mRNA transcription concentration to the environment. The light signal of an additional action input induces the mRNA transcription of this extra protein.
 
 ## Observation space
 
 *   **m1:** Lacl mRNA transcripts concentration.
 *   **m2:** tetR mRNA transcripts concentration.
 *   **m3:** CI mRNA transcripts concentration.
+*   **m4:** Extra protein mRNA transcripts concentration.
 *   **p1:** lacI (repressor) protein concentration (Inhibits transcription of tetR gene).
 *   **p2:** tetR (repressor) protein concentration (Inhibits transcription of CI gene).
-*   **p3:** CI (repressor) protein concentration (Inhibits transcription of lacI gene).
+*   **p3:** CI (repressor) protein concentration (Inhibits transcription of extra protein gene).
+*   **p4:** Extra protein concentration (Inhibits transcription of lacI gene).
 *   **ref:** The reference we want to follow.
 *   **ref\_error:** The error between the state of interest (i.e. p1) and the reference.
 
@@ -18,6 +20,7 @@ A gymnasium environment for a synthetic oscillatory network of transcriptional r
 *   **u1:** Relative intensity of the light signal that induces the Lacl mRNA gene expression.
 *   **u2:** Relative intensity of the light signal that induces the tetR mRNA gene expression.
 *   **u3:** Relative intensity of the light signal that induces the expression of the CI mRNA gene.
+*   **u4:** Relative intensity of the light signal that induces the expression of the extra protein mRNA gene.
 
 ## Episode Termination
 
@@ -54,4 +57,4 @@ The info dictionary contains the following keys:
 
 ## How to use
 
-This environment is part of the [Stable Gym package](https://github.com/rickstaa/stable-gym). It is therefore registered as the `stable_gym:Oscillator-v1` gymnasium environment when you import the Stable Gym package. If you want to use the environment in stand-alone mode, you can register it yourself.
+This environment is part of the [Stable Gym package](https://github.com/rickstaa/stable-gym). It is therefore registered as the `stable_gym:OscillatorComp-v1` gymnasium environment when you import the Stable Gym package. If you want to use the environment in stand-alone mode, you can register it yourself.
