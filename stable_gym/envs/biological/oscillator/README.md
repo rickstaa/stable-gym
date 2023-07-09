@@ -31,9 +31,9 @@ The agent's goal in the oscillator environment is to act in such a way that one 
 
 The Oscillator environment uses the absolute difference between the reference and the state of interest as the cost function:
 
-```python
-cost = np.square(p1 - r1)
-```
+$$
+cost = (p\_1 - r\_1)^2
+$$
 
 ## Environment step return
 

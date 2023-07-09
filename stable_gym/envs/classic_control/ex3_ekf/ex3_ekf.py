@@ -148,13 +148,13 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - obs (:obj:`numpy.ndarray`): The current state
-                - cost (:obj:`numpy.float64`): The current cost.
-                - terminated (:obj:`bool`): Whether the episode was done.
+                - obs (:obj:`np.ndarray`): Environment observation.
+                - cost (:obj:`float`): Cost of the action.
+                - terminated (:obj`bool`): Whether the episode is terminated.
                 - truncated (:obj:`bool`): Whether the episode was truncated. This value
                     is set by wrappers when for example a time limit is reached or the
                     agent goes out of bounds.
-                - info_dict (:obj:`dict`): Dictionary with additional information.
+                - info (:obj`dict`): Additional information about the environment.
         """
         # Clip action if needed.
         if self._clipped_action:

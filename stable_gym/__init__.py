@@ -3,10 +3,10 @@ import gymnasium as gym
 from gymnasium.envs.registration import register
 
 # Make module version available.
-from .version import __version__
-from .version import __version_tuple__
+from .version import __version__, __version_tuple__
 
 # Available environments.
+# TODO: Update reward thresholds.
 ENVS = {
     "Oscillator-v1": {
         "module": "stable_gym.envs.biological.oscillator.oscillator:Oscillator",
@@ -25,6 +25,11 @@ ENVS = {
     },
     "CartPoleCost-v1": {
         "module": "stable_gym.envs.classic_control.cartpole_cost.cartpole_cost:CartPoleCost",
+        "max_step": 250,
+        "reward_threshold": 300,
+    },
+    "SwimmerCost-v1": {
+        "module": "stable_gym.envs.mujoco.swimmer_cost.swimmer_cost:SwimmerCost",
         "max_step": 250,
         "reward_threshold": 300,
     },

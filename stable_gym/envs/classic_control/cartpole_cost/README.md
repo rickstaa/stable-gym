@@ -1,6 +1,8 @@
 # CartPoleCost gymnasium environment
 
-![cart\_pole](https://github.com/rickstaa/stable-gym/assets/17570430/eb3d4f34-1429-4597-a51f-16aea0e7def2)
+<div align="center">
+    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/eb3d4f34-1429-4597-a51f-16aea0e7def2" alt="cartpole" width="400px">
+</div>
 
 <!--alex ignore joint-->
 
@@ -66,7 +68,7 @@ The cost function of this environment is designed in such a way that it tries to
 *   A stabilisation task. In this task, the agent attempts to stabilize a given state (e.g. keep the pole angle and or cart position zero)
 *   A reference tracking task. The agent tries to make a state track a given reference in this task.
 
-The exact definition of these tasks can be found in the environment `cost()` method.
+The exact definition of these tasks can be found in the environment's `stable_gym.envs.classical_control.cartpole_cost.cartpole_cost.CartPoleCost.cost` method.
 
 ## Environment step return
 

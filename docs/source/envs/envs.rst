@@ -29,6 +29,16 @@ Environments for classical control theory problems.
     ./classic_control/ex3_ekf.rst
     ./classic_control/cartpole_cost.rst
 
+Mujoco environments
+-------------------
+
+Environments that are based on the MuJoCo physics engine.
+
+.. toctree::
+    :maxdepth: 1
+
+    ./mujoco/swimmer_cost.rst
+
 Robotics environment
 --------------------
 
