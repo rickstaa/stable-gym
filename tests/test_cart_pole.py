@@ -2,6 +2,7 @@
 environment when the same environment parameters are used.
 """
 import math
+import random
 
 import gymnasium as gym
 import numpy as np
@@ -40,18 +41,17 @@ class TestCartPoleCostEqual:
 
     def test_equal_steps(self):
         """Test if steps behave the same."""
-        # Perform steps and check if observations are equal.
-        observation, _, _, _, _ = self.env.step(0)
-        observation_cost, _, _, _, _ = self.env_cost.step(
-            np.array([-10], dtype=np.float32)
-        )
-        assert np.allclose(
-            observation, observation_cost
-        ), f"{observation} != {observation_cost}"
-        observation, _, _, _, _ = self.env.step(1)
-        observation_cost, _, _, _, _ = self.env_cost.step(
-            np.array([10], dtype=np.float32)
-        )
-        assert np.allclose(
-            observation, observation_cost
-        ), f"{observation} != {observation_cost}"
+        # Perform several steps and check if observations are equal.
+        self.env.reset(seed=42), self.env_cost.reset(seed=42)
+        for _ in range(10):
+            discrete_action = random.randint(0, 1)
+            continuous_action = (
+                np.array([-10], dtype=np.float32)
+                if discrete_action == 0
+                else np.array([10], dtype=np.float32)
+            )
+            observation, _, _, _, _ = self.env.step(discrete_action)
+            observation_cost, _, _, _, _ = self.env_cost.step(continuous_action)
+            assert np.allclose(
+                observation, observation_cost
+            ), f"{observation} != {observation_cost}"

@@ -33,15 +33,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         Stable Learning Control package (SLC). For more information see
         `the SLC documentation <https://rickstaa.dev/stable-learning-control/utils/tester.html#robustness-eval-utility>`_.
 
-    Description:
-        This environment was based on the cart-pole environment described by Barto,
-        Sutton, and Anderson in
-        `Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problem`_.
-        A pole is attached by an un-actuated joint to a cart, which moves along a
-        frictionless track. The pendulum is placed upright on the cart and the goal
-        is to balance the pole while optionally tracking a certain reference signal by
-        applying forces in the left and right direction on the cart.
-
     Source:
         This environment corresponds to the version that is included in the Farama
         Foundation gymnasium package. It is different from this version in the fact
@@ -389,13 +380,13 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - obs (:obj:`numpy.ndarray`): The current state
-                - cost (:obj:`numpy.float64`): The current cost.
-                - terminated (:obj:`bool`): Whether the episode was done.
+                - obs (:obj:`np.ndarray`): Environment observation.
+                - cost (:obj:`float`): Cost of the action.
+                - terminated (:obj`bool`): Whether the episode is terminated.
                 - truncated (:obj:`bool`): Whether the episode was truncated. This value
                     is set by wrappers when for example a time limit is reached or the
                     agent goes out of bounds.
-                - info_dict (:obj:`dict`): Dictionary with additional information.
+                - info (:obj`dict`): Additional information about the environment.
         """
         # Clip action if needed.
         # NOTE: This is not done in the original environment.

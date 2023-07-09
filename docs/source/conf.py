@@ -38,6 +38,7 @@ extensions = [
 ]
 autoapi_dirs = ["../../stable_gym"]
 myst_heading_anchors = 2  # Add anchors to headings.
+myst_enable_extensions = ["dollarmath", "html_image"]
 
 # Extensions settings.
 autodoc_member_order = "bysource"
