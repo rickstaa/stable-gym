@@ -21,7 +21,7 @@ Gym environments that are based on Biological systems.
 Classic control environments
 ----------------------------
 
-Environments for classical control theory problems.
+Environments that are based on the `classical control gymnasium environments`_.
 
 .. toctree::
     :maxdepth: 1
@@ -29,15 +29,19 @@ Environments for classical control theory problems.
     ./classic_control/ex3_ekf.rst
     ./classic_control/cartpole_cost.rst
 
+.. _`classical control gymnasium environments`: https://gymnasium.farama.org/environments/classic_control
+
 Mujoco environments
 -------------------
 
-Environments that are based on the MuJoCo physics engine.
+Environments that are based on the `mujoco gymnasium environments`_.
 
 .. toctree::
     :maxdepth: 1
 
     ./mujoco/swimmer_cost.rst
+
+.. _`mujoco gymnasium environments`: https://gymnasium.farama.org/environments/mujoco
 
 Robotics environment
 --------------------

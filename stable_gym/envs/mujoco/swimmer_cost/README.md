@@ -5,7 +5,7 @@
 </div>
 </br>
 
-An actuated two-jointed swimmer. This environment corresponds to the [Swimmer-v2](https://gym.openai.com/envs/Swimmer-v2/) environment included in the OpenAI gym package. It is different in the fact that:
+An actuated two-jointed swimmer. This environment corresponds to the [Swimmer-v4](https://gymnasium.farama.org/environments/mujoco/swimmer) environment included in the [gymnasium package](https://gymnasium.farama.org/). It is different in the fact that:
 
 *   The objective was changed to a speed-tracking task. To do this, the reward is replaced with a cost. This cost is the squared difference between the swimmer's forward speed and a reference value (error).
 

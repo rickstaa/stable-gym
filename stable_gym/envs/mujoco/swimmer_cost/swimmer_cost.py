@@ -20,7 +20,7 @@ class SwimmerCost(SwimmerEnv):
 
     Source:
         This is a modified version of the swimmer Mujoco environment in v0.28.1 of the
-        :gymnasium:`gymnasium library <envs/mujoco/swimmer>`. This modification was first
+        :gymnasium:`gymnasium library <environments/mujoco/swimmer>`. This modification was first
         described by `Han et al. 2020 <https://arxiv.org/abs/2004.14288>`_. Compared to the
         original Swimmer environment in this modified version:
 
@@ -31,7 +31,7 @@ class SwimmerCost(SwimmerEnv):
         The rest of the environment is the same as the original Swimmer environment. Below,
         the modified cost is described. For more information about the environment
         (e.g. observation space, action space, episode termination, etc.), please refer
-        to the :gymnasium:`gymnasium library <envs/mujoco/swimmer>`.
+        to the :gymnasium:`gymnasium library <environments/mujoco/swimmer>`.
 
     Modified cost:
         .. math::
