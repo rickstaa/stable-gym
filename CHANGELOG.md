@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/rickstaa/stable-gym/compare/v0.7.0...v0.8.0) (2023-07-09)
+
+
+### Features
+
+* add SwimmerCost environment ([#180](https://github.com/rickstaa/stable-gym/issues/180)) ([f9eb341](https://github.com/rickstaa/stable-gym/commit/f9eb34101fb1cbba2e1080f6a19a1866afcca739))
+
 ## [0.7.0](https://github.com/rickstaa/stable-gym/compare/v0.6.48...v0.7.0) (2023-07-08)
 
 
