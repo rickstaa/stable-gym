@@ -1,4 +1,5 @@
-"""Stable Gym gymnasium environments that are based on `Mujoco gymnasium environments`_.
+"""Stable Gym gymnasium environments that are based on `Mujoco`_ or `Mujoco gymnasium`_ environments.
 
-.. _`Mujoco gymnasium environments`: https://gymnasium.farama.org/environments/mujoco
+.. _`Mujoco`: https://mujoco.org
+.. _`Mujoco gymnasium`: https://gymnasium.farama.org/environments/mujoco
 """
