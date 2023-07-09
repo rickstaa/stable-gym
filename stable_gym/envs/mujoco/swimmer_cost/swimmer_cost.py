@@ -36,7 +36,7 @@ class SwimmerCost(SwimmerEnv):
     Modified cost:
         .. math::
 
-            cost = w_{forward} \times (x_{speed} - x_{reference\_speed})^2 + w_{ctrl} \times c_{ctrl}
+            cost = w_{forward} \\times (x_{speed} - x_{reference\_speed})^2 + w_{ctrl} \\times c_{ctrl}
 
     Solved Requirements:
         Considered solved when the average cost is less than or equal to 50 over
