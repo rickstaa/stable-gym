@@ -10,7 +10,7 @@ import stable_gym  # noqa: F401
 gym.logger.set_level(ERROR)
 
 
-class TestCartPoleCostEqual:
+class TestSwimmerCostEqual:
     # Make original Swimmer environment.
     env = gym.make("Swimmer")
     # Make SwimmerCost environment.
