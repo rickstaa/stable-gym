@@ -76,7 +76,7 @@ class AntCost(AntEnv):
                 forward velocity error. Defaults to ``1.0``.
             ctrl_cost_weight (_type_, optional): The weight used to scale the control
                 cost. Defaults to ``None`` meaning that the default value of the
-                :attr:`~gymnasium.envs.mujoco.half_cheetah_v4.AntEnv.ctrl_cost_weight`
+                :attr:`~gymnasium.envs.mujoco.ant_v4.AntEnv.ctrl_cost_weight`
                 attribute is used.
         """  # noqa: E501
         super().__init__(**kwargs)
@@ -93,7 +93,7 @@ class AntCost(AntEnv):
 
         .. note::
             This method overrides the
-            :meth:`~gymnasium.envs.mujoco.half_cheetah_v4.AntEnv.step` method
+            :meth:`~gymnasium.envs.mujoco.ant_v4.AntEnv.step` method
             such that the new cost function is used.
 
         Args:
