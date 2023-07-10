@@ -47,6 +47,7 @@ Environments that are based on the on `Mujoco`_ or `Mujoco gymnasium`_ environme
     ./mujoco/half_cheetah_cost.rst
     ./mujoco/hopper_cost.rst
     ./mujoco/swimmer_cost.rst
+    ./mujoco/walker2d_cost.rst
 
 .. _`Mujoco`: https://mujoco.org/
 .. _`mujoco gymnasium`: https://gymnasium.farama.org/environments/mujoco

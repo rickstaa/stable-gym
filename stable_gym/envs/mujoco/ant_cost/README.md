@@ -1,7 +1,7 @@
 # AntCost gymnasium environment
 
 <div align="center">
-    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/c9f6d7f9-586e-4236-91d3-fa2d0ce4aadc" alt="Ant Cost" width="200px">
+    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/c9f6d7f9-586e-4236-91d3-fa2d0ce4aadc" alt="Ant Cost environment" width="200px">
 </div>
 </br>
 

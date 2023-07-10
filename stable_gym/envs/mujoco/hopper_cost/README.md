@@ -1,7 +1,7 @@
 # HopperCost gymnasium environment
 
 <div align="center">
-    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/e7d31373-3cf9-426d-b4bb-8f745f00971b" alt="Hopper Cost" width="200px">
+    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/e7d31373-3cf9-426d-b4bb-8f745f00971b" alt="Hopper Cost environment" width="200px">
 </div>
 </br>
 
