@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.1](https://github.com/rickstaa/stable-gym/compare/v0.9.0...v0.9.1) (2023-07-10)
+
+
+### Bug Fixes
+
+* fix unresolved merge conflicts ([#185](https://github.com/rickstaa/stable-gym/issues/185)) ([b52bd75](https://github.com/rickstaa/stable-gym/commit/b52bd751f83ed79ab742bfc29e40da46f87d916f))
+
 ## [0.9.0](https://github.com/rickstaa/stable-gym/compare/v0.8.0...v0.9.0) (2023-07-10)
 
 
