@@ -26,13 +26,9 @@ The agent's goal in the Ex3EKF environment is to act so that the estimator estim
 
 The Ex3EKF environment uses the following cost function:
 
-<!--lint disable-->
-
 $$
-cost = (hat\_x\_1 - x\_1)^2 + (hat\_x\_2 - x\_2)^2
+cost = (hat_x_1 - x_1)^2 + (hat_x_2 - x_2)^2
 $$
-
-<!--lint enable-->
 
 ## Environment step return
 
