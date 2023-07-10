@@ -1,9 +1,9 @@
-"""The SwimmerCost gymnasium environment."""
+"""The HalfCheetahCost gymnasium environment."""
 
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gymnasium.envs.mujoco.swimmer_v4 import SwimmerEnv
+from gymnasium.envs.mujoco.half_cheetah_v4 import HalfCheetahEnv
 
 import stable_gym  # NOTE: Required to register environments. # noqa: F401
 
@@ -11,27 +11,27 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 # TODO: Add solving criteria after training.
-class SwimmerCost(SwimmerEnv):
-    """Custom Swimmer gymnasium environment.
+class HalfCheetahCost(HalfCheetahEnv):
+    """Custom HalfCheetah gymnasium environment.
 
     .. note::
         Can also be used in a vectorized manner. See the
         :gymnasium:`gym.vector <api/vector>` documentation.
 
     Source:
-        This is a modified version of the swimmer Mujoco environment in v0.28.1 of the
-        :gymnasium:`gymnasium library <environments/mujoco/swimmer>`. This modification was
-        first described by `Han et al. 2020 <https://arxiv.org/abs/2004.14288>`_. Compared
-        to the original Swimmer environment in this modified version:
+        This is a modified version of the HalfCheetah Mujoco environment in v0.28.1 of the
+        :gymnasium:`gymnasium library <environments/mujoco/half_cheetah>`. This modification
+        was first described by `Han et al. 2020 <https://arxiv.org/abs/2004.14288>`_.
+        Compared to the original HalfCheetah environment in this modified version:
 
         -   The objective was changed to a velocity-tracking task. To do this, the reward
             is replaced with a cost. This cost is the squared difference between the
-            swimmer's forward velocity and a reference value (error).
+            HalfCheetah's forward velocity and a reference value (error).
 
-        The rest of the environment is the same as the original Swimmer environment.
+        The rest of the environment is the same as the original HalfCheetah environment.
         Below, the modified cost is described. For more information about the environment
         (e.g. observation space, action space, episode termination, etc.), please refer
-        to the :gymnasium:`gymnasium library <environments/mujoco/swimmer>`.
+        to the :gymnasium:`gymnasium library <environments/mujoco/half_cheetah>`.
 
     Modified cost:
         .. math::
@@ -47,12 +47,12 @@ class SwimmerCost(SwimmerEnv):
 
             import stable_gym
             import gymnasium as gym
-            env = gym.make("SwimmerCost-v1")
+            env = gym.make("HalfCheetahCost-v1")
 
     Attributes:
         reference_forward_velocity (float): The forward velocity that the agent should try
             to track.
-        include_ctrl_cost (bool): Whether you also want to penalize the swimmer if it
+        include_ctrl_cost (bool): Whether you also want to penalize the HalfCheetah if it
             takes actions that are too large.
         forward_velocity_weight (float): The weight used to scale the forward velocity error.
     """  # noqa: E501, W605
@@ -65,20 +65,20 @@ class SwimmerCost(SwimmerEnv):
         ctrl_cost_weight=None,
         **kwargs,
     ):
-        """Constructs all the necessary attributes for the SwimmerCost instance.
+        """Constructs all the necessary attributes for the HalfCheetahCost instance.
 
         Args:
             reference_forward_velocity (float, optional): The forward velocity that the
                 agent should try to track. Defaults to ``1.0``.
             include_ctrl_cost (bool, optional): Whether you also want to penalize the
-                swimmer if it takes actions that are too large. Defaults to ``True``.
+                HalfCheetah if it takes actions that are too large. Defaults to ``True``.
             forward_velocity_weight (float, optional): The weight used to scale the
                 forward velocity error. Defaults to ``1.0``.
             ctrl_cost_weight (_type_, optional): The weight used to scale the control
                 cost. Defaults to ``None`` meaning that the default value of the
-                :attr:`~gymnasium.envs.mujoco.swimmer_v4.SwimmerEnv.ctrl_cost_weight`
+                :attr:`~gymnasium.envs.mujoco.half_cheetah_v4.HalfCheetahEnv.ctrl_cost_weight`
                 attribute is used.
-        """
+        """  # noqa: E501
         super().__init__(**kwargs)
         self.reference_forward_velocity = reference_forward_velocity
         self.include_ctrl_cost = include_ctrl_cost
@@ -93,8 +93,8 @@ class SwimmerCost(SwimmerEnv):
 
         .. note::
             This method overrides the
-            :meth:`~gymnasium.envs.mujoco.swimmer_v4.SwimmerEnv.step` method such that
-            the new cost function is used.
+            :meth:`~gymnasium.envs.mujoco.half_cheetah_v4.HalfCheetahEnv.step` method
+            such that the new cost function is used.
 
         Args:
             action (np.ndarray): Action to take in the environment.
@@ -124,7 +124,7 @@ class SwimmerCost(SwimmerEnv):
         """Compute the cost of the action.
 
         Args:
-            x_velocity (float): The swimmer's x velocity.
+            x_velocity (float): The HalfCheetah's x velocity.
             ctrl_cost (float): The control cost.
 
         Returns:
@@ -153,8 +153,8 @@ class SwimmerCost(SwimmerEnv):
 
 
 if __name__ == "__main__":
-    print("Setting up SwimmerCost environment.")
-    env = gym.make("SwimmerCost", render_mode="human")
+    print("Setting up HalfCheetahCost environment.")
+    env = gym.make("HalfCheetahCost", render_mode="human")
 
     # Take T steps in the environment.
     T = 1000
@@ -166,7 +166,7 @@ if __name__ == "__main__":
             "high": [2, 0.2, 0.2, 0.2],
         }
     )
-    print(f"Taking {T} steps in the SwimmerCost environment.")
+    print(f"Taking {T} steps in the HalfCheetahCost environment.")
     for i in range(int(T / env.dt)):
         action = (
             env.action_space.sample()
@@ -178,7 +178,7 @@ if __name__ == "__main__":
             env.reset()
         path.append(s)
         t1.append(i * env.dt)
-    print("Finished SwimmerCost environment simulation.")
+    print("Finished HalfCheetahCost environment simulation.")
 
     # Plot results.
     print("Plot results.")

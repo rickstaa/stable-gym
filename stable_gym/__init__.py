@@ -33,6 +33,11 @@ ENVS = {
         "max_step": 250,
         "reward_threshold": 300,
     },
+    "HalfCheetahCost-v1": {
+        "module": "stable_gym.envs.mujoco.half_cheetah_cost.half_cheetah_cost:HalfCheetahCost",
+        "max_step": 200,
+        "reward_threshold": 300,
+    },
 }
 
 for env, val in ENVS.items():
