@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](https://github.com/rickstaa/stable-gym/compare/v0.9.1...v0.10.0) (2023-07-10)
+
+
+### Features
+
+* add 'HopperCost' environment ([#187](https://github.com/rickstaa/stable-gym/issues/187)) ([eb3c363](https://github.com/rickstaa/stable-gym/commit/eb3c363848faee26da8116d4500d817c9d4db113))
+* add 'Walker2dCost' environment ([#190](https://github.com/rickstaa/stable-gym/issues/190)) ([e856d47](https://github.com/rickstaa/stable-gym/commit/e856d472c7614f44e16a829a2538a1060f06fd15))
+
 ## [0.9.1](https://github.com/rickstaa/stable-gym/compare/v0.9.0...v0.9.1) (2023-07-10)
 
 

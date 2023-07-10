@@ -48,6 +48,11 @@ ENVS = {
         "max_step": 250,
         "reward_threshold": 300,
     },
+    "Walker2dCost-v1": {
+        "module": "stable_gym.envs.mujoco.walker2d_cost.walker2d_cost:Walker2dCost",
+        "max_step": 250,
+        "reward_threshold": 300,
+    },
 }
 
 for env, val in ENVS.items():

@@ -1,7 +1,7 @@
 # CartPoleCost gymnasium environment
 
 <div align="center">
-    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/eb3d4f34-1429-4597-a51f-16aea0e7def2" alt="cartpole" width="400px">
+    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/eb3d4f34-1429-4597-a51f-16aea0e7def2" alt="CartPole Cost environment" width="400px">
 </div>
 
 <!--alex ignore joint-->
