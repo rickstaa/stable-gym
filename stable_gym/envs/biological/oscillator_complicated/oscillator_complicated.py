@@ -18,7 +18,7 @@ else:
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
-# TODO: Add solving criteria after training.
+# TODO: Update solving criteria after training.
 class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
     """Challenging (i.e. complicated) oscillatory network environment. This environment
     class is based on the :class:`~stable_gym.envs.biological.oscillator.oscillator.Oscillator`

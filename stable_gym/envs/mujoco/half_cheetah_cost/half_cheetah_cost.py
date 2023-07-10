@@ -10,7 +10,7 @@ import stable_gym  # NOTE: Required to register environments. # noqa: F401
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
-# TODO: Add solving criteria after training.
+# TODO: Update solving criteria after training.
 class HalfCheetahCost(HalfCheetahEnv):
     """Custom HalfCheetah gymnasium environment.
 
@@ -117,6 +117,7 @@ class HalfCheetahCost(HalfCheetahEnv):
         # Update info.
         info["reward_fwd"] = cost_info["reward_fwd"]
         info["forward_reward"] = cost_info["reward_fwd"]
+        info["cost_ctrl"] = cost_info["cost_ctrl"]
 
         return obs, cost, terminated, truncated, info
 
@@ -139,7 +140,7 @@ class HalfCheetahCost(HalfCheetahEnv):
         cost = reward_fwd
         if self.include_ctrl_cost:
             cost += ctrl_cost
-        return cost, {"reward_fwd": reward_fwd, "reward_ctrl": ctrl_cost}
+        return cost, {"reward_fwd": reward_fwd, "cost_ctrl": ctrl_cost}
 
     @property
     def ctrl_cost_weight(self):

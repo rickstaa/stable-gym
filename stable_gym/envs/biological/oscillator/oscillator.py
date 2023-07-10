@@ -12,7 +12,7 @@ else:
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
-# TODO: Add solving criteria after training.
+# TODO: Update solving criteria after training.
 class Oscillator(gym.Env, OscillatorDisturber):
     """Synthetic oscillatory network environment.
 

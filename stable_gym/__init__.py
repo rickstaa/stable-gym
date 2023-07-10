@@ -18,18 +18,18 @@ ENVS = {
         "max_step": 400,
         "reward_threshold": 300,
     },
-    "Ex3EKF-v1": {
-        "module": "stable_gym.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
-        "max_step": 400,
-        "reward_threshold": 300,
-    },
     "CartPoleCost-v1": {
         "module": "stable_gym.envs.classic_control.cartpole_cost.cartpole_cost:CartPoleCost",
         "max_step": 250,
         "reward_threshold": 300,
     },
-    "SwimmerCost-v1": {
-        "module": "stable_gym.envs.mujoco.swimmer_cost.swimmer_cost:SwimmerCost",
+    "Ex3EKF-v1": {
+        "module": "stable_gym.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
+        "max_step": 400,
+        "reward_threshold": 300,
+    },
+    "AntCost-v1": {
+        "module": "stable_gym.envs.mujoco.ant_cost.ant_cost:AntCost",
         "max_step": 250,
         "reward_threshold": 300,
     },
@@ -38,9 +38,14 @@ ENVS = {
         "max_step": 200,
         "reward_threshold": 300,
     },
-    "AntCost-v1": {
-        "module": "stable_gym.envs.mujoco.ant_cost.ant_cost:AntCost",
-        "max_step": 1000,
+    "HopperCost-v1": {
+        "module": "stable_gym.envs.mujoco.hopper_cost.hopper_cost:HopperCost",
+        "max_step": 250,
+        "reward_threshold": 300,
+    },
+    "SwimmerCost-v1": {
+        "module": "stable_gym.envs.mujoco.swimmer_cost.swimmer_cost:SwimmerCost",
+        "max_step": 250,
         "reward_threshold": 300,
     },
 }
