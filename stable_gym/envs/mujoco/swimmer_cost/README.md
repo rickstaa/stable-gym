@@ -1,7 +1,7 @@
 # SwimmerCost gymnasium environment
 
 <div align="center">
-    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/dccd73b4-c97e-46ce-ba0d-4a1328c0aefe" alt="swimmer" width="200px">
+    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/dccd73b4-c97e-46ce-ba0d-4a1328c0aefe" alt="Swimmer" width="200px">
 </div>
 </br>
 
