@@ -7,16 +7,16 @@
 
 An actuated two-jointed swimmer. This environment corresponds to the [Swimmer-v4](https://gymnasium.farama.org/environments/mujoco/swimmer) environment included in the [gymnasium package](https://gymnasium.farama.org/). It is different in the fact that:
 
-*   The objective was changed to a speed-tracking task. To do this, the reward is replaced with a cost. This cost is the squared difference between the swimmer's forward speed and a reference value (error).
+*   The objective was changed to a velocity-tracking task. To do this, the reward is replaced with a cost. This cost is the squared difference between the Swimmer's forward velocity and a reference value (error).
 
 The rest of the environment is the same as the original Swimmer environment. Below, the modified cost is described. For more information about the environment (e.g. observation space, action space, episode termination, etc.), please refer to the [gymnasium library](https://gymnasium.farama.org/environments/mujoco/swimmer/).
 
 ## Cost function
 
-The cost function of this environment is designed in such a way that it tries to minimize the error between the swimmer's forward speed and a reference value. The cost function is defined as:
+The cost function of this environment is designed in such a way that it tries to minimize the error between the Swimmer's forward velocity and a reference value. The cost function is defined as:
 
 $$
-cost = w\_{forward} \times (x\_{speed} - x\_{reference\_speed})^2 + w\_{ctrl} \times c\_{ctrl}
+cost = w\_{forward} \times (x\_{velocity} - x\_{reference\_x\_velocity})^2 + w\_{ctrl} \times c\_{ctrl}
 $$
 
 ## How to use
