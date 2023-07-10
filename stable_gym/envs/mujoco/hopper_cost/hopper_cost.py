@@ -112,11 +112,15 @@ class HopperCost(HopperEnv):
         """
         obs, _, terminated, truncated, info = super().step(action)
         self.state = obs
-        cost, cost_info = self.cost(info["x_velocity"], -info["reward_ctrl"])
 
-        # Update info.
+        ctrl_cost = super().control_cost(action)
+        cost, cost_info = self.cost(info["x_velocity"], ctrl_cost)
+
+        # Update info
         info["reward_fwd"] = cost_info["reward_fwd"]
         info["forward_reward"] = cost_info["reward_fwd"]
+        info["reward_ctrl"] = -ctrl_cost
+        info["cost_ctrl"] = cost_info["cost_ctrl"]
 
         return obs, cost, terminated, truncated, info
 
@@ -139,7 +143,7 @@ class HopperCost(HopperEnv):
         cost = reward_fwd
         if self.include_ctrl_cost:
             cost += ctrl_cost
-        return cost, {"reward_fwd": reward_fwd, "reward_ctrl": ctrl_cost}
+        return cost, {"reward_fwd": reward_fwd, "cost_ctrl": ctrl_cost}
 
     @property
     def ctrl_cost_weight(self):
@@ -154,7 +158,7 @@ class HopperCost(HopperEnv):
 
 if __name__ == "__main__":
     print("Setting up HopperCost environment.")
-    env = gym.make("Hopper-v4", render_mode="human")
+    env = gym.make("HopperCost", render_mode="human")
 
     # Take T steps in the environment.
     T = 1000
