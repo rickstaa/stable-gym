@@ -17,7 +17,7 @@ The rest of the environment is the same as the original Ant environment. Below, 
 The cost function of this environment is designed in such a way that it tries to minimize the error between the Ant's forward velocity and a reference value. The cost function is defined as:
 
 $$
-cost = w\_{forward} \times (x\_{velocity} - x\_{reference\_x\_velocity})^2 + w\_{ctrl} \times c\_{ctrl}
+cost = w_{forward} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl}
 $$
 
 ## How to use
