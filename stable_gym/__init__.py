@@ -38,6 +38,11 @@ ENVS = {
         "max_step": 200,
         "reward_threshold": 300,
     },
+    "AntCost-v1": {
+        "module": "stable_gym.envs.mujoco.ant_cost.ant_cost:AntCost",
+        "max_step": 1000,
+        "reward_threshold": 300,
+    },
 }
 
 for env, val in ENVS.items():

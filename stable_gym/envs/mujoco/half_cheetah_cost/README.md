@@ -1,7 +1,11 @@
 # HalfCheetahCost gymnasium environment
 
 <div align="center">
+<<<<<<< HEAD
+    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/44360980-3ad1-40e9-863e-3417ed3aa4c8" alt="Half Cheetah Cost" width="200px">
+=======
     <img src="https://github.com/rickstaa/stable-gym/assets/17570430/44360980-3ad1-40e9-863e-3417ed3aa4c8" alt="Half Cheetah" width="200px">
+>>>>>>> main
 </div>
 </br>
 
