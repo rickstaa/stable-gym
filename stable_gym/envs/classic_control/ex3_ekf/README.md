@@ -26,9 +26,13 @@ The agent's goal in the Ex3EKF environment is to act so that the estimator estim
 
 The Ex3EKF environment uses the following cost function:
 
-```python
-cost = np.square(hat_x_1 - x_1) + np.square(hat_x_2 - x_2)
-```
+<!--lint disable-->
+
+$$
+cost = (hat\_x\_1 - x\_1)^2 + (hat\_x\_2 - x\_2)^2
+$$
+
+<!--lint enable-->
 
 ## Environment step return
 

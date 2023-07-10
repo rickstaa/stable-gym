@@ -31,9 +31,13 @@ The agent's goal in the oscillator environment is to act in such a way that one 
 
 The Oscillator environment uses the absolute difference between the reference and the state of interest as the cost function:
 
+<!--lint disable-->
+
 $$
 cost = (p\_1 - r\_1)^2
 $$
+
+<!--lint enable-->
 
 ## Environment step return
 

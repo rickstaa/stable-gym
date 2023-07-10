@@ -1,11 +1,7 @@
 # HalfCheetahCost gymnasium environment
 
 <div align="center">
-<<<<<<< HEAD
     <img src="https://github.com/rickstaa/stable-gym/assets/17570430/44360980-3ad1-40e9-863e-3417ed3aa4c8" alt="Half Cheetah Cost" width="200px">
-=======
-    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/44360980-3ad1-40e9-863e-3417ed3aa4c8" alt="Half Cheetah" width="200px">
->>>>>>> main
 </div>
 </br>
 
@@ -20,9 +16,13 @@ The rest of the environment is the same as the original HalfCheetah environment.
 
 The cost function of this environment is designed in such a way that it tries to minimize the error between the HalfCheetah's forward velocity and a reference value. The cost function is defined as:
 
+<!--lint disable-->
+
 $$
 cost = w\_{forward} \times (x\_{velocity} - x\_{reference\_x\_velocity})^2 + w\_{ctrl} \times c\_{ctrl}
 $$
+
+<!--lint enable-->
 
 ## How to use
 
