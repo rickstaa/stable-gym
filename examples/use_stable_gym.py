@@ -4,7 +4,6 @@ import gymnasium as gym
 import stable_gym  # noqa: F401
 
 ENV_NAME = "Oscillator-v1"
-# ENV_NAME = "Ex3EKF-v1"
 # ENV_NAME = "CartPoleCost-v1"
 # ENV_NAME = "SwimmerCost-v1"
 

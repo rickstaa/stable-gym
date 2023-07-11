@@ -49,9 +49,11 @@ An episode is terminated when:
 *   Cart Position is more than 10 m (center of the cart reaches the edge of the
     display).
 *   Episode length is greater than 200.
-*   The cost is greater than 100.
+*   The cost is greater than a set threshold (100 by default). This threshold can be changed using the `max_cost` environment argument.
 
 ## Environment goals
+
+This environment has two task types (goals), which can be set using the `task_type` environment argument.
 
 ### stabilisation task
 
@@ -63,12 +65,21 @@ Similar to the stabilisation task, now the card must also track a cart position 
 
 ## Cost function
 
-The cost function of this environment is designed in such a way that it tries to minimize the error of a set of states and a set of reference states. It contains two types of tasks:
+The cost function of this environment is designed in such a way that it tries to minimize the error of a set of states and reference states. As stated above, this environment contains two types of tasks. Each task type has a different cost function:
 
-*   A stabilisation task. In this task, the agent attempts to stabilize a given state (e.g. keep the pole angle and or cart position zero)
-*   A reference tracking task. The agent tries to make a state track a given reference in this task.
+**Stabilisation task**
 
-The exact definition of these tasks can be found in the environment's `stable_gym.envs.classical_control.cartpole_cost.cartpole_cost.CartPoleCost.cost` method.
+$$
+cost = (x / x_{threshold})^2 + 20 * (theta / theta_{threshold})^2
+$$
+
+**Reference tracking task**
+
+$$
+cost = ((x - x_{ref})/ x_{threshold})^2 + 20 * (theta / theta_{threshold})^2
+$$
+
+The exact definition of these tasks can be found in the environment's `stable_gym.envs.classical_control.cartpole_cost.cartpole_cost.CartPoleCost.cost` method. The cost is between `0` and a set threshold value in both tasks, and the maximum cost is used when the episode is terminated.
 
 ## Environment step return
 

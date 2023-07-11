@@ -426,8 +426,8 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - observations (:obj:`numpy.ndarray`): Array containing the current
-                  observations.
+                - observation (:obj:`numpy.ndarray`): Array containing the current
+                  observation.
                 - info (:obj:`dict`): Dictionary containing additional information.
         """
         super().reset(seed=seed)

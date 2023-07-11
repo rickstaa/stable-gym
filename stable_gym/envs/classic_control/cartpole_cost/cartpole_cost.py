@@ -95,7 +95,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     Cost:
         A cost, computed using the :meth:`CartPoleCost.cost` method, is given for each
         simulation step including the terminal step. This cost is defined as a error
-        between a state variable and a reference value.
+        between a state variable and a reference value. The exact cost depends on the
+        task type. The cost is set to the maximum cost when the episode is terminated.
 
     Starting State:
         All observations are assigned a uniform random value in ``[-0.2..0.2]``.
@@ -106,7 +107,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         -   Cart Position is more than 10 m (center of the cart reaches the edge of the
             display).
         -   Episode length is greater than 200.
-        -   The cost is greater than 100.
+        -   The cost is greater than a threshold (100 by default). This threshold can
+            be changed using the ``max_cost`` environment argument.
 
     Solved Requirements:
         Considered solved when the average cost is less than or equal to 50 over
@@ -125,6 +127,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     Attributes:
         state (numpy.ndarray): Array containing the current state.
         t (float): Current time step.
+        tau (float): The time step size. Also available as ``self.dt``.
         target_pos (float): The target position.
         constraint_pos (float): The constraint position.
         kinematics_integrator (str): The kinematics integrator used to update the state.
@@ -135,7 +138,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             terminal state.
         max_v (float): The maximum velocity of the cart.
         max_w (float): The maximum angular velocity of the pole.
-        cost_range (gym.spaces.Box): The range of the cost.
+        max_cost (float): The maximum cost.
 
     .. _`Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problem`: https://ieeexplore.ieee.org/document/6313077
     .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
@@ -155,6 +158,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         reference_type="constant",
         reference_target_position=0.0,
         reference_constraint_position=4.0,
+        max_cost=100.0,
         clip_action=True,
     ):
         """Constructs all the necessary attributes for the CartPoleCost instance.
@@ -172,6 +176,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 when ``task_type`` is ``reference_tracking``.
             reference_constraint_position: The reference constraint position, by
                 default ``4.0``. Not used in the environment but used for the info dict.
+            max_cost (float, optional): The maximum cost allowed before the episode is
+                terminated. Defaults to ``100.0``.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
@@ -209,6 +215,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.x_threshold = 10  # NOTE: original uses 2.4.
         self.max_v = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
         self.max_w = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
+        assert max_cost > 0, "The maximum cost must be greater than 0."
+        self.max_cost = max_cost
 
         # Create observation space bounds.
         # Angle limit set to 2 * theta_threshold_radians so failing observation
@@ -236,9 +244,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # Clip the reward.
         # NOTE: Original does not do this. Here this is done because we want to decrease
         # the cost.
-        self.cost_range = spaces.Box(
+        self._cost_range = spaces.Box(
             np.array([0.0], dtype=np.float32),
-            np.array([100], dtype=np.float32),
+            np.array([self.max_cost], dtype=np.float32),
             dtype=np.float32,
         )
 
@@ -449,13 +457,14 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         terminated = bool(
             abs(x) > self.x_threshold
             or abs(theta) > self.theta_threshold_radians
-            or cost > self.cost_range.high  # NOTE: Added compared to original.
-            or cost < self.cost_range.low  # NOTE: Added compared to original.
+            or cost > self._cost_range.high  # NOTE: Added compared to original.
+            or cost < self._cost_range.low  # NOTE: Added compared to original.
         )
 
         # Handle termination.
         if terminated:
-            cost = 100.0  # NOTE: Different cost compared to the original.
+            # Ensure cost is at max cost.
+            cost = self.max_cost  # NOTE: Different cost compared to the original.
 
             # Throw warning if already done.
             if self.steps_beyond_terminated is None:
@@ -518,8 +527,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - observations (:obj:`numpy.ndarray`): Array containing the current
-                  observations.
+                - observation (:obj:`numpy.ndarray`): Array containing the current
+                  observation.
                 - info (:obj:`dict`): Dictionary containing additional information.
         """
         super().reset(seed=seed)
@@ -743,7 +752,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
 if __name__ == "__main__":
     print("Setting up CartPoleCost environment.")
-    env = gym.make("CartPoleCost", render_mode="human")
+    env = gym.make("CartPoleCost", render_mode="human", max_cost=-1)
 
     # Take T steps in the environment.
     T = 1000
