@@ -1,10 +1,10 @@
-"""The HalfCheetahCost gymnasium environment."""
+"""The HumanoidCost gymnasium environment."""
 
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import utils
-from gymnasium.envs.mujoco.half_cheetah_v4 import HalfCheetahEnv
+from gymnasium.envs.mujoco.humanoid_v4 import HumanoidEnv
 
 import stable_gym  # NOTE: Required to register environments. # noqa: F401
 
@@ -13,33 +13,33 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 # TODO: Find correct control cost weight.
 # TODO: Update solving criteria after training.
-class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
-    """Custom HalfCheetah gymnasium environment.
+class HumanoidCost(HumanoidEnv, utils.EzPickle):
+    """Custom Humanoid gymnasium environment.
 
     .. note::
         Can also be used in a vectorized manner. See the
         :gymnasium:`gym.vector <api/vector>` documentation.
 
     Source:
-        This is a modified version of the HalfCheetah Mujoco environment in v0.28.1 of the
-        :gymnasium:`gymnasium library <environments/mujoco/half_cheetah>`. This modification
+        This is a modified version of the Humanoid Mujoco environment in v0.28.1 of the
+        :gymnasium:`gymnasium library <environments/mujoco/humanoid>`. This modification
         was first described by `Han et al. 2020 <https://arxiv.org/abs/2004.14288>`_.
-        Compared to the original HalfCheetah environment in this modified version:
+        Compared to the original Humanoid environment in this modified version:
 
         -   The objective was changed to a velocity-tracking task. To do this, the reward
             is replaced with a cost. This cost is the squared difference between the
-            HalfCheetah's forward velocity and a reference value (error). Additionally,
-            also a control cost can be included in the cost.
+            Humanoid's forward velocity and a reference value (error). Additionally, also
+            a control cost and health penalty can be included in the cost.
 
-        The rest of the environment is the same as the original HalfCheetah environment.
+        The rest of the environment is the same as the original Humanoid environment.
         Below, the modified cost is described. For more information about the environment
         (e.g. observation space, action space, episode termination, etc.), please refer
-        to the :gymnasium:`gymnasium library <environments/mujoco/half_cheetah>`.
+        to the :gymnasium:`gymnasium library <environments/mujoco/humanoid>`.
 
     Modified cost:
         .. math::
 
-            cost = w_{forward} \\times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \\times c_{ctrl}
+            cost = w_{forward} \\times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \\times c_{ctrl} + p_{health}
 
     Solved Requirements:
         Considered solved when the average cost is less than or equal to 50 over
@@ -48,9 +48,9 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
     How to use:
         .. code-block:: python
 
-            import stable_gym
+            import stable_gyms
             import gymnasium as gym
-            env = gym.make("HalfCheetahCost-v1")
+            env = gym.make("HumanoidCost-v1")
 
     Attributes:
         state (numpy.ndarray): The current system state.
@@ -65,12 +65,16 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         reference_forward_velocity=1.0,
         forward_velocity_weight=1.0,
         include_ctrl_cost=False,
+        include_health_penalty=True,
+        health_penalty_size=10,
         ctrl_cost_weight=1e-4,  # NOTE: Lower than original because we use different cost. # noqa: E501
-        reset_noise_scale=0.1,
+        terminate_when_unhealthy=True,
+        healthy_z_range=(1.0, 2.0),
+        reset_noise_scale=1e-2,
         exclude_current_positions_from_observation=True,
         **kwargs,
     ):
-        """Constructs all the necessary attributes for the HalfCheetahCost instance.
+        """Constructs all the necessary attributes for the HumanoidCost instance.
 
         Args:
             reference_forward_velocity (float, optional): The forward velocity that the
@@ -78,12 +82,19 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
             forward_velocity_weight (float, optional): The weight used to scale the
                 forward velocity error. Defaults to ``1.0``.
             include_ctrl_cost (bool, optional): Whether you also want to penalize the
-                half cheetah if it takes actions that are too large. Defaults to
-                ``False``.
+                humanoid if it takes actions that are too large. Defaults to ``False``.
+            include_health_penalty (bool, optional): Whether to penalize the humanoid
+                if it becomes unhealthy (i.e. if it falls over). Defaults to ``True``.
+            health_penalty_size (int, optional): The size of the unhealthy penalty.
+                Defaults to ``10``.
             ctrl_cost_weight (float, optional): The weight used to scale the control
                 cost. Defaults to ``1e-4``.
+            terminate_when_unhealthy (bool, optional): Whether to terminate the episode
+                when the humanoid becomes unhealthy. Defaults to ``True``.
+            healthy_z_range (tuple, optional): The range of healthy z values. Defaults
+                to ``(1.0, 2.0)``.
             reset_noise_scale (float, optional): Scale of random perturbations of the
-                initial position and velocity. Defaults to ``0.1``.
+                initial position and velocity. Defaults to ``1e-2``.
             exclude_current_positions_from_observation (bool, optional): Whether to omit
                 the x- and y-coordinates of the front tip from observations. Excluding
                 the position can serve as an inductive bias to induce position-agnostic
@@ -92,27 +103,35 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         self.reference_forward_velocity = reference_forward_velocity
         self._forward_velocity_weight = forward_velocity_weight
         self._include_ctrl_cost = include_ctrl_cost
+        self._include_health_penalty = include_health_penalty
+        self._health_penalty_size = health_penalty_size
 
         self.state = None
         self.t = 0.0
 
-        # Initialize the HalfCheetahEnv class.
+        # Initialize the HumanoidEnv class.
         super().__init__(
             ctrl_cost_weight=ctrl_cost_weight,
+            terminate_when_unhealthy=terminate_when_unhealthy,
+            healthy_z_range=healthy_z_range,
             reset_noise_scale=reset_noise_scale,
             exclude_current_positions_from_observation=exclude_current_positions_from_observation,  # noqa: E501
             **kwargs,
         )
 
         # Reinitialize the EzPickle class.
-        # NOTE: Done to ensure the args of the HalfCheetahCost class are also pickled.
+        # NOTE: Done to ensure the args of the HumanoidCost class are also pickled.
         # NOTE: Ensure that all args are passed to the EzPickle class!
         utils.EzPickle.__init__(
             self,
             reference_forward_velocity,
             forward_velocity_weight,
             include_ctrl_cost,
+            include_health_penalty,
+            health_penalty_size,
             ctrl_cost_weight,
+            terminate_when_unhealthy,
+            healthy_z_range,
             reset_noise_scale,
             exclude_current_positions_from_observation,
             **kwargs,
@@ -122,7 +141,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         """Compute the cost of a given x velocity and control cost.
 
         Args:
-            x_velocity (float): The HalfCheetah's x velocity.
+            x_velocity (float): The Humanoid's x velocity.
             ctrl_cost (float): The control cost.
 
         Returns:
@@ -137,14 +156,26 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         cost = velocity_cost
         if self._include_ctrl_cost:
             cost += ctrl_cost
-        return cost, {"cost_velocity": velocity_cost, "cost_ctrl": ctrl_cost}
+
+        # Add extra penalty if the humanoid becomes unhealthy.
+        health_penalty = 0.0
+        if self._include_health_penalty:
+            if not self.is_healthy:
+                health_penalty = self._health_penalty_size
+                cost += health_penalty
+
+        return cost, {
+            "cost_velocity": velocity_cost,
+            "cost_ctrl": ctrl_cost,
+            "penalty_health": health_penalty,
+        }
 
     def step(self, action):
         """Take step into the environment.
 
         .. note::
             This method overrides the
-            :meth:`~gymnasium.envs.mujoco.half_cheetah_v4.HalfCheetahEnv.step` method
+            :meth:`~gymnasium.envs.mujoco.humanoid_v4.HumanoidEnv.step` method
             such that the new cost function is used.
 
         Args:
@@ -166,12 +197,18 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         self.state = obs
         self.t = self.t + self.dt
 
-        cost, cost_info = self.cost(info["x_velocity"], -info["reward_ctrl"])
+        cost, cost_info = self.cost(info["x_velocity"], -info["reward_quadctrl"])
 
         # Update info.
-        del info["reward_run"], info["reward_ctrl"]
+        del (
+            info["reward_linvel"],
+            info["reward_quadctrl"],
+            info["reward_alive"],
+            info["forward_reward"],
+        )
         info["cost_velocity"] = cost_info["cost_velocity"]
         info["cost_ctrl"] = cost_info["cost_ctrl"]
+        info["penalty_health"] = cost_info["penalty_health"]
 
         return obs, cost, terminated, truncated, info
 
@@ -208,8 +245,8 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
 
 
 if __name__ == "__main__":
-    print("Setting up HalfCheetahCost environment.")
-    env = gym.make("HalfCheetahCost", render_mode="human")
+    print("Setting up HumanoidCost environment.")
+    env = gym.make("HumanoidCost", render_mode="human")
 
     # Take T steps in the environment.
     T = 1000
@@ -221,7 +258,7 @@ if __name__ == "__main__":
             "high": [2, 0.2, 0.2, 0.2],
         }
     )
-    print(f"Taking {T} steps in the HalfCheetahCost environment.")
+    print(f"Taking {T} steps in the HumanoidCost environment.")
     for i in range(int(T / env.dt)):
         action = (
             env.action_space.sample()
@@ -233,7 +270,7 @@ if __name__ == "__main__":
             env.reset()
         path.append(s)
         t1.append(i * env.dt)
-    print("Finished HalfCheetahCost environment simulation.")
+    print("Finished HumanoidCost environment simulation.")
 
     # Plot results.
     print("Plot results.")

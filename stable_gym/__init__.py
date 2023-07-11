@@ -43,6 +43,11 @@ ENVS = {
         "max_step": 250,
         "reward_threshold": 300,
     },
+    "HumanoidCost-v1": {
+        "module": "stable_gym.envs.mujoco.humanoid_cost.humanoid_cost:HumanoidCost",
+        "max_step": 250,
+        "reward_threshold": 300,
+    },
     "SwimmerCost-v1": {
         "module": "stable_gym.envs.mujoco.swimmer_cost.swimmer_cost:SwimmerCost",
         "max_step": 250,

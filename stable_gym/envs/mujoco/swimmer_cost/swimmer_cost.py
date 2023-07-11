@@ -167,7 +167,7 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
         cost, cost_info = self.cost(info["x_velocity"], -info["reward_ctrl"])
 
         # Update info.
-        del info["reward_fwd"], info["forward_reward"], info["reward_ctrl"]
+        del info["reward_fwd"], info["reward_ctrl"], info["forward_reward"]
         info["cost_velocity"] = cost_info["cost_velocity"]
         info["cost_ctrl"] = cost_info["cost_ctrl"]
 
