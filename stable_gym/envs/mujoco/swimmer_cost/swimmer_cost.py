@@ -3,6 +3,7 @@
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
+from gymnasium import utils
 from gymnasium.envs.mujoco.swimmer_v4 import SwimmerEnv
 
 import stable_gym  # NOTE: Required to register environments. # noqa: F401
@@ -11,7 +12,7 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 # TODO: Update solving criteria after training.
-class SwimmerCost(SwimmerEnv):
+class SwimmerCost(SwimmerEnv, utils.EzPickle):
     """Custom Swimmer gymnasium environment.
 
     .. note::
@@ -50,19 +51,21 @@ class SwimmerCost(SwimmerEnv):
             env = gym.make("SwimmerCost-v1")
 
     Attributes:
-        reference_forward_velocity (float): The forward velocity that the agent should try
-            to track.
-        include_ctrl_cost (bool): Whether you also want to penalize the swimmer if it
-            takes actions that are too large.
-        forward_velocity_weight (float): The weight used to scale the forward velocity error.
+        state (numpy.ndarray): The current system state.
+        t (float): The current time step.
+        dt (float): The environment step size.
+        reference_forward_velocity (float): The forward velocity that the agent should
+            try to track.
     """  # noqa: E501, W605
 
     def __init__(
         self,
         reference_forward_velocity=1.0,
-        include_ctrl_cost=True,
         forward_velocity_weight=1.0,
-        ctrl_cost_weight=None,
+        include_ctrl_cost=False,
+        ctrl_cost_weight=1e-4,
+        reset_noise_scale=0.1,
+        exclude_current_positions_from_observation=True,
         **kwargs,
     ):
         """Constructs all the necessary attributes for the SwimmerCost instance.
@@ -70,23 +73,68 @@ class SwimmerCost(SwimmerEnv):
         Args:
             reference_forward_velocity (float, optional): The forward velocity that the
                 agent should try to track. Defaults to ``1.0``.
-            include_ctrl_cost (bool, optional): Whether you also want to penalize the
-                swimmer if it takes actions that are too large. Defaults to ``True``.
             forward_velocity_weight (float, optional): The weight used to scale the
                 forward velocity error. Defaults to ``1.0``.
-            ctrl_cost_weight (_type_, optional): The weight used to scale the control
-                cost. Defaults to ``None`` meaning that the default value of the
-                :attr:`~gymnasium.envs.mujoco.swimmer_v4.SwimmerEnv.ctrl_cost_weight`
-                attribute is used.
+            include_ctrl_cost (bool, optional): Whether you also want to penalize the
+                swimmer if it takes actions that are too large. Defaults to ``False``.
+            ctrl_cost_weight (float, optional): The weight used to scale the control
+                cost. Defaults to ``1e-4``.
+            reset_noise_scale (float, optional): Scale of random perturbations of the
+                initial position and velocity. Defaults to ``0.1``.
+            exclude_current_positions_from_observation (bool, optional): Whether to omit
+                the x- and y-coordinates of the front tip from observations. Excluding
+                the position can serve as an inductive bias to induce position-agnostic
+                behaviour in policies. Defaults to ``True``.
         """
-        super().__init__(**kwargs)
         self.reference_forward_velocity = reference_forward_velocity
-        self.include_ctrl_cost = include_ctrl_cost
-        self._ctrl_cost_weight = (
-            ctrl_cost_weight if ctrl_cost_weight else self._ctrl_cost_weight
-        )
-        self.forward_velocity_weight = forward_velocity_weight
+        self._forward_velocity_weight = forward_velocity_weight
+        self._include_ctrl_cost = include_ctrl_cost
+
         self.state = None
+        self.t = 0.0
+
+        # Initialize the SwimmerEnv class.
+        super().__init__(
+            ctrl_cost_weight=ctrl_cost_weight,
+            reset_noise_scale=reset_noise_scale,
+            exclude_current_positions_from_observation=exclude_current_positions_from_observation,  # noqa: E501
+            **kwargs,
+        )
+
+        # Reinitialize the EzPickle class.
+        # NOTE: Done to ensure the args of the SwimmerCost class are also pickled.
+        # NOTE: Ensure that all args are passed to the EzPickle class!
+        utils.EzPickle.__init__(
+            self,
+            reference_forward_velocity,
+            forward_velocity_weight,
+            include_ctrl_cost,
+            ctrl_cost_weight,
+            reset_noise_scale,
+            exclude_current_positions_from_observation,
+            **kwargs,
+        )
+
+    def cost(self, x_velocity, ctrl_cost):
+        """Compute the cost of a given x velocity and control cost.
+
+        Args:
+            x_velocity (float): The swimmer's x velocity.
+            ctrl_cost (float): The control cost.
+
+        Returns:
+            (tuple): tuple containing:
+
+                - cost (float): The cost of the action.
+                - info (:obj:`dict`): Additional information about the cost.
+        """
+        velocity_cost = self._forward_velocity_weight * np.square(
+            x_velocity - self.reference_forward_velocity
+        )
+        cost = velocity_cost
+        if self._include_ctrl_cost:
+            cost += ctrl_cost
+        return cost, {"cost_velocity": velocity_cost, "cost_ctrl": ctrl_cost}
 
     def step(self, action):
         """Take step into the environment.
@@ -111,46 +159,49 @@ class SwimmerCost(SwimmerEnv):
                 - info (:obj`dict`): Additional information about the environment.
         """
         obs, _, terminated, truncated, info = super().step(action)
+
         self.state = obs
+        self.t = self.t + self.dt
+
         cost, cost_info = self.cost(info["x_velocity"], -info["reward_ctrl"])
 
         # Update info.
-        info["reward_fwd"] = cost_info["reward_fwd"]
-        info["forward_reward"] = cost_info["reward_fwd"]
+        del info["reward_fwd"], info["forward_reward"], info["reward_ctrl"]
+        info["cost_velocity"] = cost_info["cost_velocity"]
         info["cost_ctrl"] = cost_info["cost_ctrl"]
 
         return obs, cost, terminated, truncated, info
 
-    def cost(self, x_velocity, ctrl_cost):
-        """Compute the cost of the action.
+    def reset(self, seed=None, options=None):
+        """Reset gymnasium environment.
 
         Args:
-            x_velocity (float): The swimmer's x velocity.
-            ctrl_cost (float): The control cost.
+            seed (int, optional): A random seed for the environment. By default
+                ``None``.
+            options (dict, optional): A dictionary containing additional options for
+                resetting the environment. By default ``None``. Not used in this
+                environment.
 
         Returns:
             (tuple): tuple containing:
 
-                - cost (float): The cost of the action.
-                - info (:obj:`dict`): Additional information about the cost.
+                - observation (:obj:`numpy.ndarray`): Array containing the current
+                  observation.
+                - info (:obj:`dict`): Dictionary containing additional information.
         """
-        reward_fwd = self.forward_velocity_weight * np.square(
-            x_velocity - self.reference_forward_velocity
-        )
-        cost = reward_fwd
-        if self.include_ctrl_cost:
-            cost += ctrl_cost
-        return cost, {"reward_fwd": reward_fwd, "cost_ctrl": ctrl_cost}
+        observation, info = super().reset(seed=seed, options=options)
+
+        self.state = observation
+        self.t = 0.0
+
+        return observation, info
 
     @property
-    def ctrl_cost_weight(self):
-        """Property that returns the control cost weight."""
-        return self._ctrl_cost_weight
-
-    @ctrl_cost_weight.setter
-    def ctrl_cost_weight(self, value):
-        """Setter for the control cost weight."""
-        self._ctrl_cost_weight = value
+    def tau(self):
+        """Alias for the environment step size. Done for compatibility with the
+        other gymnasium environments.
+        """
+        return self.dt
 
 
 if __name__ == "__main__":
