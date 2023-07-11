@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.2](https://github.com/rickstaa/stable-gym/compare/v0.10.1...v0.10.2) (2023-07-11)
+
+
+### Bug Fixes
+
+* **swimmercost:** fix 'SwimmerCost' unpickle bug ([#195](https://github.com/rickstaa/stable-gym/issues/195)) ([47d2d48](https://github.com/rickstaa/stable-gym/commit/47d2d48b3bc07fa5331573273c350cd745a503dd))
+
+
+### Documentation
+
+* improve 'CartPoleCost' documentation. ([#193](https://github.com/rickstaa/stable-gym/issues/193)) ([16e3236](https://github.com/rickstaa/stable-gym/commit/16e323679cd0c5c62a5a892ffd98ff1171dcce05))
+
 ## [0.10.1](https://github.com/rickstaa/stable-gym/compare/v0.10.0...v0.10.1) (2023-07-10)
 
 
