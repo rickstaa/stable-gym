@@ -17,7 +17,7 @@ authors:
     orcid: 'https://orcid.org/0000-0003-1121-9879'
 identifiers:
   - type: url
-    value: 'https://zenodo.org/badge/latestdoi/353980386'
+    value: 'https://zenodo.org/badge/latestdoi/287501190'
 repository-code: 'https://github.com/rickstaa/stable-gym'
 abstract: >-
   Several gymnasium environments with cost functions
