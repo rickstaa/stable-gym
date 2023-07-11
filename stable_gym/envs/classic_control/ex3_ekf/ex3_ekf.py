@@ -245,8 +245,8 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - observations (:obj:`numpy.ndarray`): Array containing the current
-                  observations.
+                - observation (:obj:`numpy.ndarray`): Array containing the current
+                  observation.
                 - info (:obj:`dict`): Dictionary containing additional information.
         """
         if options is not None:
@@ -302,6 +302,13 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         raise NotImplementedError(
             "No render method was implemented yet for the Ex3EKF environment."
         )
+
+    @property
+    def tau(self):
+        """Alias for the environment step size. Done for compatibility with the
+        other gymnasium environments.
+        """
+        return self.dt
 
 
 if __name__ == "__main__":
