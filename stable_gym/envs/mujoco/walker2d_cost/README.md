@@ -17,8 +17,19 @@ The rest of the environment is the same as the original Walker2d environment. Be
 The cost function of this environment is designed in such a way that it tries to minimize the error between the Walker2d's forward velocity and a reference value. The cost function is defined as:
 
 $$
-cost = w_{forward} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl}
+cost = w_{forward} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl} + p_{health}
 $$
+
+Where:
+
+*   $w_{forward}$ - is the weight of the forward velocity error.
+*   $x_{velocity}$ - is the 2D walkers's forward velocity.
+*   $x_{reference\_x\_velocity}$ is the reference forward velocity.
+*   $w_{ctrl}$ is the weight of the control cost (**optional**).
+*   $c_{ctrl}$ is the control cost (**optional**).
+*   $p_{health}$ is a penalty for being unhealthy (i.e. if the 2D walker falls over).
+
+The control and health penalty are optional and can be disabled using the `include_ctrl_cost` and `include_health_penalty` environment arguments.
 
 ## How to use
 

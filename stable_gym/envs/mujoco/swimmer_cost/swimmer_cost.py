@@ -27,7 +27,8 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
 
         -   The objective was changed to a velocity-tracking task. To do this, the reward
             is replaced with a cost. This cost is the squared difference between the
-            swimmer's forward velocity and a reference value (error).
+            swimmer's forward velocity and a reference value (error). Additionally, also
+            a control cost can be included in the cost.
 
         The rest of the environment is the same as the original Swimmer environment.
         Below, the modified cost is described. For more information about the environment
