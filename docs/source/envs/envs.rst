@@ -46,6 +46,7 @@ Environments that are based on the on `Mujoco`_ or `Mujoco gymnasium`_ environme
     ./mujoco/ant_cost.rst
     ./mujoco/half_cheetah_cost.rst
     ./mujoco/hopper_cost.rst
+    ./mujoco/humanoid_cost.rst
     ./mujoco/swimmer_cost.rst
     ./mujoco/walker2d_cost.rst
 
