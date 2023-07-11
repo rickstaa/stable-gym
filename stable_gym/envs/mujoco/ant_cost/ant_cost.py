@@ -11,6 +11,7 @@ import stable_gym  # NOTE: Required to register environments. # noqa: F401
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
+# TODO: Find correct control cost weight.
 # TODO: Update solving criteria after training.
 class AntCost(AntEnv, utils.EzPickle):
     """Custom Ant gymnasium environment.
