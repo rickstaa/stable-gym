@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.0](https://github.com/rickstaa/stable-gym/compare/v0.10.2...v0.11.0) (2023-07-11)
+
+
+### Features
+
+* add mujoco envs health penalty ([#197](https://github.com/rickstaa/stable-gym/issues/197)) ([4065435](https://github.com/rickstaa/stable-gym/commit/406543588df94224117e5aa5f0356c5f3657fafa))
+
 ## [0.10.2](https://github.com/rickstaa/stable-gym/compare/v0.10.1...v0.10.2) (2023-07-11)
 
 
