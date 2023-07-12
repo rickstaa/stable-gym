@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.12.0](https://github.com/rickstaa/stable-gym/compare/v0.11.0...v0.12.0) (2023-07-12)
+
+
+### Features
+
+* improve env '__main__' plots ([#201](https://github.com/rickstaa/stable-gym/issues/201)) ([fd9a84d](https://github.com/rickstaa/stable-gym/commit/fd9a84da446e12fa91b20968e7659908bfc43f60))
+
 ## [0.11.0](https://github.com/rickstaa/stable-gym/compare/v0.10.2...v0.11.0) (2023-07-11)
 
 
