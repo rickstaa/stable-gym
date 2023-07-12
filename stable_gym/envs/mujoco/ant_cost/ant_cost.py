@@ -118,7 +118,6 @@ class AntCost(AntEnv, utils.EzPickle):
         self._health_penalty_size = health_penalty_size
 
         self.state = None
-        self.t = 0.0
 
         # Initialize the AntEnv class.
         super().__init__(
@@ -217,7 +216,6 @@ class AntCost(AntEnv, utils.EzPickle):
         obs, _, terminated, truncated, info = super().step(action)
 
         self.state = obs
-        self.t = self.t + self.dt
 
         cost, cost_info = self.cost(info["x_velocity"], -info["reward_ctrl"])
 
@@ -249,7 +247,6 @@ class AntCost(AntEnv, utils.EzPickle):
         observation, info = super().reset(seed=seed, options=options)
 
         self.state = observation
-        self.t = 0.0
 
         return observation, info
 
@@ -259,6 +256,11 @@ class AntCost(AntEnv, utils.EzPickle):
         other gymnasium environments.
         """
         return self.dt
+
+    @property
+    def t(self):
+        """Make simulation time available as a property."""
+        return self.unwrapped.data.time
 
 
 if __name__ == "__main__":

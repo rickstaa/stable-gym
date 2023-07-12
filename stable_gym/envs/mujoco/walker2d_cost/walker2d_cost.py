@@ -110,7 +110,6 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         self._health_penalty_size = health_penalty_size
 
         self.state = None
-        self.t = 0.0
 
         # Initialize the Walker2dEnv class.
         super().__init__(
@@ -200,7 +199,6 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         obs, _, terminated, truncated, info = super().step(action)
 
         self.state = obs
-        self.t = self.t + self.dt
 
         ctrl_cost = super().control_cost(action)
         cost, cost_info = self.cost(info["x_velocity"], ctrl_cost)
@@ -232,7 +230,6 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         observation, info = super().reset(seed=seed, options=options)
 
         self.state = observation
-        self.t = 0.0
 
         return observation, info
 
@@ -242,6 +239,11 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         other gymnasium environments.
         """
         return self.dt
+
+    @property
+    def t(self):
+        """Make simulation time available as a property."""
+        return self.unwrapped.data.time
 
 
 if __name__ == "__main__":

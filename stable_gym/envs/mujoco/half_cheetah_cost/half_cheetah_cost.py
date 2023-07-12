@@ -95,7 +95,6 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         self._include_ctrl_cost = include_ctrl_cost
 
         self.state = None
-        self.t = 0.0
 
         # Initialize the HalfCheetahEnv class.
         super().__init__(
@@ -165,7 +164,6 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         obs, _, terminated, truncated, info = super().step(action)
 
         self.state = obs
-        self.t = self.t + self.dt
 
         cost, cost_info = self.cost(info["x_velocity"], -info["reward_ctrl"])
 
@@ -196,7 +194,6 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         observation, info = super().reset(seed=seed, options=options)
 
         self.state = observation
-        self.t = 0.0
 
         return observation, info
 
@@ -206,6 +203,11 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         other gymnasium environments.
         """
         return self.dt
+
+    @property
+    def t(self):
+        """Make simulation time available as a property."""
+        return self.unwrapped.data.time
 
 
 if __name__ == "__main__":
