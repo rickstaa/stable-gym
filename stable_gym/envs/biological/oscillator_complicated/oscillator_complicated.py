@@ -15,6 +15,7 @@ if __name__ == "__main__":
 else:
     from .oscillator_complicated_disturber import OscillatorComplicatedDisturber
 
+EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
@@ -521,45 +522,61 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
 
 
 if __name__ == "__main__":
-    print("Setting up oscillator environment.")
-    env = gym.make("Oscillator")
+    print("Setting up 'OscillatorComplicated' environment.")
+    env = gym.make("OscillatorComplicated")
 
-    # Take T steps in the environment.
-    T = 60000
-    path = []
-    t1 = []
-    s = env.reset()
-    print(f"Taking {T} steps in the oscillator environment.")
-    for i in range(int(T / env.dt)):
+    # Run episodes.
+    episode = 0
+    path, paths = [], []
+    reference, references = [], []
+    s, info = env.reset()
+    path.append(s)
+    reference.append(info["reference"])
+    print(f"\nPerforming '{EPISODES}' in the 'OscillatorComplicated' environment...\n")
+    print(f"Episode: {episode}")
+    while episode <= EPISODES:
         action = (
             env.action_space.sample()
             if RANDOM_STEP
             else np.zeros(env.action_space.shape)
         )
         s, r, terminated, truncated, info = env.step(action)
-        if terminated:
-            env.reset()
         path.append(s)
-        t1.append(i * env.dt)
-    print("Finished oscillator environment simulation.")
+        reference.append(info["reference"])
+        if terminated or truncated:
+            paths.append(path)
+            references.append(reference)
+            episode += 1
+            path, reference = [], []
+            s, info = env.reset()
+            path.append(s)
+            reference.append(info["reference"])
+            print(f"Episode: {episode}")
+    print("\nFinished 'OscillatorComplicated' environment simulation.")
 
-    # Plot results.
-    print("Plot results.")
-    fig = plt.figure(figsize=(9, 6))
-    ax = fig.add_subplot(111)
-    # ax.plot(t1, np.array(path)[:, 0], color="orange", label="mRNA1")
-    # ax.plot(t1, np.array(path)[:, 1], color="magenta", label="mRNA2")
-    # ax.plot(t1, np.array(path)[:, 2], color="sienna", label="mRNA3")
-    ax.plot(t1, np.array(path)[:, 3], color="blue", label="protein1")
-    # ax.plot(t1, np.array(path)[:, 4], color="cyan", label="protein2")
-    # ax.plot(t1, np.array(path)[:, 5], color="green", label="protein3")
-    # ax.plot(t1, np.array(path)[:, 0:3], color="blue", label="mRNA")
-    # ax.plot(t1, np.array(path)[:, 3:6], color="blue", label="protein")
-    ax.plot(t1, np.array(path)[:, 6], color="yellow", label="reference")
-    ax.plot(t1, np.array(path)[:, 7], color="red", label="error")
-    handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles, labels, loc=2, fancybox=False, shadow=False)
-    plt.ioff()
-    plt.show()
+    # Plot results per episode.
+    print("\nPlotting episode data...")
+    for i in range(len(paths)):
+        path = paths[i]
+        fig, ax = plt.subplots()
+        print(f"\nEpisode: {i}")
+        path = np.array(path)
+        t = np.linspace(0, path.shape[0] * env.dt, path.shape[0])
+        for j in range(path.shape[1]):  # NOTE: Change if you want to plot less states.
+            ax.plot(t, path[:, j], label=f"State {j}")
+        ax.set_xlabel("Time (s)")
+        ax.set_title(f"OscillatorComplicated episode '{i}'")
 
-    print("done")
+        # Plot reference signal.
+        ax.plot(
+            t,
+            np.array(references[i]),
+            color="black",
+            linestyle="--",
+            label="Reference",
+        )
+        ax.legend()
+        print("Close plot to see next episode...")
+        plt.show()
+
+    print("\nDone")
