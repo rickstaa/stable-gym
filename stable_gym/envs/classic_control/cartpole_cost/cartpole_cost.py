@@ -15,6 +15,7 @@ if __name__ == "__main__":
 else:
     from .cartpole_cost_disturber import CartPoleDisturber
 
+EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
@@ -751,45 +752,61 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
 
 if __name__ == "__main__":
-    print("Setting up CartPoleCost environment.")
-    env = gym.make("CartPoleCost", render_mode="human", max_cost=-1)
+    print("Setting up 'CartPoleCost' environment.")
+    env = gym.make("CartPoleCost", render_mode="human")
 
-    # Take T steps in the environment.
-    T = 1000
-    path = []
-    t1 = []
-    s = env.reset(
-        options={
-            "low": [-2, -0.2, -0.2, -0.2],
-            "high": [2, 0.2, 0.2, 0.2],
-        }
-    )
-    print(f"Taking {T} steps in the CartPoleCost environment.")
-    for i in range(int(T / env.dt)):
+    # Run episodes.
+    episode = 0
+    path, paths = [], []
+    reference, references = [], []
+    s, info = env.reset()
+    path.append(s)
+    reference.append(info["reference"])
+    print(f"\nPerforming '{EPISODES}' in the 'CartPoleCost' environment...\n")
+    print(f"Episode: {episode}")
+    while episode <= EPISODES:
         action = (
             env.action_space.sample()
             if RANDOM_STEP
             else np.zeros(env.action_space.shape)
         )
         s, r, terminated, truncated, info = env.step(action)
-        if terminated:
-            env.reset()
         path.append(s)
-        t1.append(i * env.dt)
-    print("Finished CartPoleCost environment simulation.")
+        reference.append(info["reference"])
+        if terminated or truncated:
+            paths.append(path)
+            references.append(reference)
+            episode += 1
+            path, reference = [], []
+            s, info = env.reset()
+            path.append(s)
+            reference.append(info["reference"])
+            print(f"Episode: {episode}")
+    print("\nFinished 'CartPoleCost' environment simulation.")
 
-    # Plot results.
-    print("Plot results.")
-    fig = plt.figure(figsize=(9, 6))
-    ax = fig.add_subplot(111)
-    ax.plot(t1, np.array(path)[:, 0], color="orange", label="x")
-    ax.plot(t1, np.array(path)[:, 1], color="magenta", label="x_dot")
-    ax.plot(t1, np.array(path)[:, 2], color="sienna", label="theta")
-    ax.plot(t1, np.array(path)[:, 3], color="blue", label=" theat_dot1")
+    # Plot results per episode.
+    print("\nPlotting episode data...")
+    for i in range(len(paths)):
+        path = paths[i]
+        fig, ax = plt.subplots()
+        print(f"\nEpisode: {i}")
+        path = np.array(path)
+        t = np.linspace(0, path.shape[0] * env.dt, path.shape[0])
+        for j in range(path.shape[1]):  # NOTE: Change if you want to plot less states.
+            ax.plot(t, path[:, j], label=f"State {j}")
+        ax.set_xlabel("Time (s)")
+        ax.set_title(f"CartPoleCost episode '{i}'")
 
-    handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles, labels, loc=2, fancybox=False, shadow=False)
-    plt.ioff()
-    plt.show()
+        # Plot reference signal.
+        ax.plot(
+            t,
+            np.array(references[i]),
+            color="black",
+            linestyle="--",
+            label="Reference",
+        )
+        ax.legend()
+        print("Close plot to see next episode...")
+        plt.show()
 
-    print("done")
+    print("\nDone")

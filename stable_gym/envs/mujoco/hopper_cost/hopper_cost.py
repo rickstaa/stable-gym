@@ -8,6 +8,7 @@ from gymnasium.envs.mujoco.hopper_v4 import HopperEnv
 
 import stable_gym  # NOTE: Required to register environments. # noqa: F401
 
+EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
@@ -249,45 +250,47 @@ class HopperCost(HopperEnv, utils.EzPickle):
 
 
 if __name__ == "__main__":
-    print("Setting up HopperCost environment.")
+    print("Setting up 'HopperCost' environment.")
     env = gym.make("HopperCost", render_mode="human")
 
-    # Take T steps in the environment.
-    T = 1000
-    path = []
-    t1 = []
-    s = env.reset(
-        options={
-            "low": [-2, -0.2, -0.2, -0.2],
-            "high": [2, 0.2, 0.2, 0.2],
-        }
-    )
-    print(f"Taking {T} steps in the HopperCost environment.")
-    for i in range(int(T / env.dt)):
+    # Run episodes.
+    episode = 0
+    path, paths = [], []
+    s, _ = env.reset()
+    path.append(s)
+    print(f"\nPerforming '{EPISODES}' in the 'HopperCost' environment...\n")
+    print(f"Episode: {episode}")
+    while episode <= EPISODES:
         action = (
             env.action_space.sample()
             if RANDOM_STEP
             else np.zeros(env.action_space.shape)
         )
-        s, r, terminated, truncated, info = env.step(action)
-        if terminated:
-            env.reset()
+        s, r, terminated, truncated, _ = env.step(action)
         path.append(s)
-        t1.append(i * env.dt)
-    print("Finished HopperCost environment simulation.")
+        if terminated or truncated:
+            paths.append(path)
+            episode += 1
+            path, reference = [], []
+            s, _ = env.reset()
+            path.append(s)
+            print(f"Episode: {episode}")
+    print("\nFinished 'HopperCost' environment simulation.")
 
-    # Plot results.
-    print("Plot results.")
-    fig = plt.figure(figsize=(9, 6))
-    ax = fig.add_subplot(111)
-    ax.plot(t1, np.array(path)[:, 0], color="orange", label="x")
-    ax.plot(t1, np.array(path)[:, 1], color="magenta", label="x_dot")
-    ax.plot(t1, np.array(path)[:, 2], color="sienna", label="theta")
-    ax.plot(t1, np.array(path)[:, 3], color="blue", label=" theat_dot1")
+    # Plot results per episode.
+    print("\nPlotting episode data...")
+    for i in range(len(paths)):
+        path = paths[i]
+        fig, ax = plt.subplots()
+        print(f"\nEpisode: {i}")
+        path = np.array(path)
+        t = np.linspace(0, path.shape[0] * env.dt, path.shape[0])
+        for j in range(path.shape[1]):  # NOTE: Change if you want to plot less states.
+            ax.plot(t, path[:, j], label=f"State {j}")
+        ax.set_xlabel("Time (s)")
+        ax.set_title(f"HopperCost episode '{i}'")
+        ax.legend()
+        print("Close plot to see next episode...")
+        plt.show()
 
-    handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles, labels, loc=2, fancybox=False, shadow=False)
-    plt.ioff()
-    plt.show()
-
-    print("done")
+    print("\nDone")
