@@ -113,7 +113,6 @@ class HopperCost(HopperEnv, utils.EzPickle):
         self._health_penalty_size = health_penalty_size
 
         self.state = None
-        self.t = 0.0
 
         # Initialize the HopperEnv class.
         super().__init__(
@@ -205,7 +204,6 @@ class HopperCost(HopperEnv, utils.EzPickle):
         obs, _, terminated, truncated, info = super().step(action)
 
         self.state = obs
-        self.t = self.t + self.dt
 
         ctrl_cost = super().control_cost(action)
         cost, cost_info = self.cost(info["x_velocity"], ctrl_cost)
@@ -237,7 +235,6 @@ class HopperCost(HopperEnv, utils.EzPickle):
         observation, info = super().reset(seed=seed, options=options)
 
         self.state = observation
-        self.t = 0.0
 
         return observation, info
 
@@ -247,6 +244,11 @@ class HopperCost(HopperEnv, utils.EzPickle):
         other gymnasium environments.
         """
         return self.dt
+
+    @property
+    def t(self):
+        """Make simulation time available as a property."""
+        return self.unwrapped.data.time
 
 
 if __name__ == "__main__":
