@@ -477,7 +477,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                         "You are calling 'step()' even though this "
                         "environment has already returned terminated = True. You "
                         "should always call 'reset()' once you receive 'terminated = "
-                        "True' -- any further steps are undefined behavior."
+                        "True' -- any further steps are undefined behaviour."
                     )
                 self.steps_beyond_terminated += 1
 
@@ -607,7 +607,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         """Render one frame of the environment."""
         if self.render_mode is None:
             assert self.spec is not None
-            gym.logger.warn(
+            logger.warn(
                 "You are calling render method without specifying any render mode. "
                 "You can specify the render_mode at initialization, "
                 f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'

@@ -6,6 +6,7 @@ import stable_gym  # noqa: F401
 ENV_NAME = "Oscillator-v1"
 # ENV_NAME = "CartPoleCost-v1"
 # ENV_NAME = "SwimmerCost-v1"
+# ENV_NAME = "FetchReachCost-v1"
 
 if __name__ == "__main__":
     env = gym.make(ENV_NAME, render_mode="human")

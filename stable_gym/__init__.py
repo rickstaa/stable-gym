@@ -58,6 +58,11 @@ ENVS = {
         "max_step": 250,
         "reward_threshold": 300,
     },
+    "FetchReachCost-v1": {
+        "module": "stable_gym.envs.robotics.fetch.fetch_reach_cost.fetch_reach_cost:FetchReachCost",
+        "max_step": 50,
+        "reward_threshold": 300,
+    },
 }
 
 for env, val in ENVS.items():

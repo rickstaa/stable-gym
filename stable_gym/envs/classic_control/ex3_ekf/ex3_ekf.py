@@ -73,7 +73,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
     Attributes:
         state (numpy.ndarray): The current system state.
         t (float): The current time step.
-        dt (float): The environment step size.
+        dt (float): The environment step size. Also available as :attr:`.tau`.
         sigma (float): The variance of the system noise.
     """  # noqa: E501, W605
 

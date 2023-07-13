@@ -19,7 +19,7 @@ class HumanoidCost(HumanoidEnv, utils.EzPickle):
 
     .. note::
         Can also be used in a vectorized manner. See the
-        :gymnasium:`gym.vector <api/vector>`w documentation.
+        :gymnasium:`gym.vector <api/vector>` documentation.
 
     Source:
         This is a modified version of the Humanoid Mujoco environment in v0.28.1 of the
@@ -55,8 +55,7 @@ class HumanoidCost(HumanoidEnv, utils.EzPickle):
 
     Attributes:
         state (numpy.ndarray): The current system state.
-        t (float): The current time step.
-        dt (float): The environment step size.
+        dt (float): The environment step size. Also available as :attr:`.tau`.
         reference_forward_velocity (float): The forward velocity that the agent should
             try to track.
     """  # noqa: E501, W605
