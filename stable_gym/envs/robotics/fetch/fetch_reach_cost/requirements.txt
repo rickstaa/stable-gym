@@ -1,0 +1,2 @@
+gymnasium-robotics==1.2.2
+matplotlib==3.7.0

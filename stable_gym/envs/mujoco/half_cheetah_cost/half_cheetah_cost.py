@@ -55,8 +55,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
 
     Attributes:
         state (numpy.ndarray): The current system state.
-        t (float): The current time step.
-        dt (float): The environment step size.
+        dt (float): The environment step size. Also available as :attr:`.tau`.
         reference_forward_velocity (float): The forward velocity that the agent should
             try to track.
     """  # noqa: E501, W605

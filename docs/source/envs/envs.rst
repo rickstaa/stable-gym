@@ -56,6 +56,11 @@ Environments that are based on the on `Mujoco`_ or `Mujoco gymnasium`_ environme
 Robotics environment
 --------------------
 
+.. toctree::
+    :maxdepth: 1
+
+    ./robotics/fetch_reach_cost.rst
+
 .. note::
 
     The ROS robotics environments of the Stable Gym package were moved into a separate package called :ros_gazebo_gym:`Ros Gazebo Gym <>`.

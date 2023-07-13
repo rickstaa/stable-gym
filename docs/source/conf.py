@@ -92,6 +92,7 @@ html_context = {
 extlinks = {
     "stable_gym": ("https://github.com/rickstaa/stable-gym/%s", None),
     "gymnasium": ("https://gymnasium.farama.org/%s", None),
+    "gymnasium-robotics": ("https://robotics.farama.org/%s", None),
     "stable_learning_control": (
         "https://github.com/rickstaa/stable-learning-control/%s",
         None,
