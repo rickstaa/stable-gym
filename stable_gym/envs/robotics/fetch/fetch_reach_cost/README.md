@@ -16,12 +16,12 @@ The rest of the environment is the same as the original FetchReach environment. 
 The cost function of this environment is designed in such a way that it tries to minimize the error between FetchReach's end-effector position and the desired goal position. It is defined as the Euclidean distance between the achieved goal position and the desired goal:
 
 $$
-cost = -reward_{original}
-cost = \left \| p - p_{goal} \right \|
+cost = \left | r_{original} \right | = \left \| p - p_{goal} \right \| 
 $$
 
 Where:
 
+*   $r{original}$ is the original reward coming from the FetchReach environment.
 *   $p$ is the achieved goal position (i.e. the end-effector positio in Cartesian space).
 *   $p_{goal}$ is the desired goal position in Cartesian space.
 

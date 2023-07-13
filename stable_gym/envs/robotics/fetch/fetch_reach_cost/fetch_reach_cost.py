@@ -38,7 +38,7 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
     Modified cost:
         .. math::
 
-            cost = \abs{reward}
+            cost = \\left | reward \\right |
 
     Solved Requirements:
         Considered solved when the average cost is less than or equal to 50 over
