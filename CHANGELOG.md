@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://github.com/rickstaa/stable-gym/compare/v0.12.0...v0.13.0) (2023-07-13)
+
+
+### Features
+
+* add 'FetchReachCost' environment ([#204](https://github.com/rickstaa/stable-gym/issues/204)) ([69d15e7](https://github.com/rickstaa/stable-gym/commit/69d15e78e1f0656c44a33aff2df30b2f2a4d0a2c))
+
+
+### Documentation
+
+* **fetchreachcost:** fix math equations ([7a3b485](https://github.com/rickstaa/stable-gym/commit/7a3b485dacb941b523a403d17b604908f72c83c9))
+
 ## [0.12.0](https://github.com/rickstaa/stable-gym/compare/v0.11.0...v0.12.0) (2023-07-12)
 
 
