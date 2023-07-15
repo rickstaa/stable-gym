@@ -16,12 +16,12 @@ The rest of the environment is the same as the original Swimmer environment. Bel
 The cost function of this environment is designed in such a way that it tries to minimize the error between the Swimmer's forward velocity and a reference value. The cost function is defined as:
 
 $$
-cost = w_{forward} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl}
+cost = w_{forward\_velocity} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl}
 $$
 
 Where:
 
-*   $w_{forward}$ - is the weight of the forward velocity error.
+*   $w_{forward\_velocity}$ - is the weight of the forward velocity error.
 *   $x_{velocity}$ - is the Swimmer's forward velocity.
 *   $x_{reference\_x\_velocity}$ is the reference forward velocity.
 *   $w_{ctrl}$ is the weight of the control cost (**optional**).
