@@ -5,7 +5,7 @@ import numpy as np
 from gymnasium import utils
 from gymnasium.envs.mujoco.half_cheetah_v4 import HalfCheetahEnv
 
-import stable_gym  # NOTE: Ensure envs are found in __main__. # noqa: F401
+import stable_gym  # NOTE: Ensure env is found in __main__. # noqa: F401
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
