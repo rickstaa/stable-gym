@@ -1,0 +1,396 @@
+# serializer version: 1
+# name: TestHalfCheetahCostEqual.test_snapshot
+  -0.012224312049589542
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.1
+  0.07171958398227649
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.10
+  0.07777919354289484
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.100
+  False
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.101
+  dict({
+    'cost_ctrl': 0.00023542020320892334,
+    'cost_velocity': 3.2083988759235957,
+    'x_position': -0.016837079339510876,
+    'x_velocity': -0.7912004008272207,
+  })
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.102
+  -0.12454853349809387
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.103
+  -0.025713747222351247
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.104
+  0.3559939676627254
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.105
+  0.006771715744486817
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.106
+  0.12539293076072483
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.107
+  -0.45300254095264975
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.108
+  0.022034629411396736
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.109
+  0.14325763169105285
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.11
+  0.006603069756121605
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.110
+  -0.16566942240825305
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.111
+  0.17458417791094272
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.112
+  2.861020828424744
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.113
+  1.2959991241860132
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.114
+  -6.7111759673482645
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.115
+  -4.075213459534094
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.116
+  -3.2094301356235517
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.117
+  -10.886497949362548
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.118
+  7.281018089359993
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.119
+  1.574816228046094
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.12
+  0.11272412069680329
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.120
+  False
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.121
+  False
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.122
+  dict({
+    'cost_ctrl': 0.0002131952524185181,
+    'cost_velocity': 1.574816228046094,
+    'x_position': -0.029582920397825133,
+    'x_velocity': -0.2549168211662851,
+  })
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.13
+  0.046750934225204564
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.14
+  -0.08592924628832382
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.15
+  0.036875078408249884
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.16
+  -0.0958882600828999
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.17
+  dict({
+  })
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.18
+  -0.02986636462696342
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.19
+  0.07635280935788477
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.2
+  0.039473605811872786
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.20
+  0.15698173526010348
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.21
+  -0.11491253293410986
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.22
+  0.28095868622709
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.23
+  0.22179130641608383
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.24
+  -0.2907833210526689
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.25
+  0.24743796810009244
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.26
+  0.3241605163146541
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.27
+  -0.6264623227604865
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.28
+  -0.02491543859613643
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.29
+  3.2190612683933004
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.3
+  -0.0811645304224701
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.30
+  -0.45613153535625744
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.31
+  4.529667805541006
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.32
+  4.081167405359173
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.33
+  -8.261650910871076
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.34
+  8.781504182819518
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.35
+  0.5921120688999686
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.36
+  False
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.37
+  False
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.38
+  dict({
+    'cost_ctrl': 0.00025489721298217776,
+    'cost_velocity': 0.5921120688999686,
+    'x_position': 0.06631680039474024,
+    'x_velocity': 0.23051181367095136,
+  })
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.39
+  -0.07707025400374824
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.4
+  0.09512447032735119
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.40
+  0.026668862780630118
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.41
+  0.2848368619083788
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.42
+  0.19453704763019108
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.43
+  -0.1574191080156087
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.44
+  0.13569857349548878
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.45
+  -0.2795610438590243
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.46
+  0.541750624674746
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.47
+  -0.2650591492794566
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.48
+  -1.0928018141487887
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.49
+  -1.1610168205906501
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.5
+  0.052227940398070605
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.50
+  2.3001047514992754
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.51
+  7.516875686967678
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.52
+  -12.063398855021548
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.53
+  -4.24322714295268
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.54
+  4.251792379477341
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.55
+  -0.5224426462462581
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.56
+  1.1220046025499617
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.57
+  False
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.58
+  False
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.59
+  dict({
+    'cost_ctrl': 0.00019584369659423828,
+    'cost_velocity': 1.1220046025499617,
+    'x_position': 0.06335444105931311,
+    'x_velocity': -0.059247186708542565,
+  })
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.6
+  0.05721286105539078
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.60
+  -0.11552470142257361
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.61
+  -0.027285689061942002
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.62
+  0.24025734970945167
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.63
+  0.4513826365584502
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.64
+  -0.2643086395990012
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.65
+  -0.1453566443448924
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.66
+  -0.007572006826729351
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.67
+  0.01844293726263599
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.68
+  -1.1549401878628935
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.69
+  -0.2737402533148571
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.7
+  -0.07437727346489083
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.70
+  -1.5737471692480973
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.71
+  -2.1386079246239853
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.72
+  2.649014740643151
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.73
+  2.950270415254381
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.74
+  -3.159400622952283
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.75
+  2.0276044550317565
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.76
+  -13.829202390798548
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.77
+  3.2856275428179225
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.78
+  False
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.79
+  False
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.8
+  -0.08530439275735802
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.80
+  dict({
+    'cost_ctrl': 0.00015828311443328859,
+    'cost_velocity': 3.2856275428179225,
+    'x_position': 0.02272294070185016,
+    'x_velocity': -0.8126300071492589,
+  })
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.81
+  -0.1290411613823614
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.82
+  -0.10181969257542624
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.83
+  0.2876863027724879
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.84
+  0.2513647523582115
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.85
+  0.19212944873789428
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.86
+  -0.3243471283503268
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.87
+  0.31780336348914634
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.88
+  -0.1790805859763481
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.89
+  -0.6212294793517181
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.9
+  0.08793979748628286
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.90
+  -0.3906684901968401
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.91
+  -1.523971353336832
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.92
+  2.394305850680926
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.93
+  -5.989641083835947
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.94
+  9.530529347674888
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.95
+  -2.722407274740522
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.96
+  6.966329501727748
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.97
+  2.3464246398027298
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.98
+  3.2083988759235957
+# ---
+# name: TestHalfCheetahCostEqual.test_snapshot.99
+  False
+# ---

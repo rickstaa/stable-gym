@@ -55,3 +55,20 @@ class TestCartPoleCostEqual:
             assert np.allclose(
                 observation, observation_cost
             ), f"{observation} != {observation_cost}"
+
+    def test_snapshot(self, snapshot):
+        """Test if the 'CartPoleCost' environment is still equal snapshot."""
+        observation, info = self.env_cost.reset(seed=42)
+        assert (observation == snapshot).all()
+        assert info == snapshot
+        self.env_cost.action_space.seed(42)
+        for _ in range(5):
+            action = self.env_cost.action_space.sample()
+            observation, reward, terminated, truncated, info = self.env_cost.step(
+                action
+            )
+            assert (observation == snapshot).all()
+            assert reward == snapshot
+            assert terminated == snapshot
+            assert truncated == snapshot
+            assert info == snapshot

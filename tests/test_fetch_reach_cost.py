@@ -1,4 +1,4 @@
-"""Test if the AntCost environment still behaves like the original Ant
+"""Test if the FetchReachCost environment still behaves like the original FetchReach
 environment when the same environment parameters are used.
 """
 import gymnasium as gym
@@ -10,17 +10,22 @@ import stable_gym  # noqa: F401
 gym.logger.set_level(ERROR)
 
 
-class TestAntCostEqual:
-    # Make original Ant environment.
-    env = gym.make("Ant")
-    # Make AntCost environment.
-    env_cost = gym.make("AntCost")
+class TestFetchReachCostEqual:
+    # Make original FetchReach environment.
+    env = gym.make("FetchReach")
+    # Make FetchReachCost environment.
+    env_cost = gym.make("FetchReachCost")
 
     def test_equal_reset(self):
         """Test if reset behaves the same."""
         # Perform reset and check if observations are equal.
         observation, _ = self.env.reset(seed=42)
         observation_cost, _ = self.env_cost.reset(seed=42)
+        observation = gym.spaces.flatten(self.env.observation_space, observation)
+        observation_cost = gym.spaces.flatten(
+            self.env_cost.observation_space, observation_cost
+        )
+
         assert np.allclose(
             observation, observation_cost
         ), f"{observation} != {observation_cost}"
@@ -34,13 +39,19 @@ class TestAntCostEqual:
             action = self.env.action_space.sample()
             observation, _, _, _, _ = self.env.step(action)
             observation_cost, _, _, _, _ = self.env_cost.step(action)
+            observation = gym.spaces.flatten(self.env.observation_space, observation)
+            observation_cost = gym.spaces.flatten(
+                self.env_cost.observation_space, observation_cost
+            )
+
             assert np.allclose(
                 observation, observation_cost
             ), f"{observation} != {observation_cost}"
 
     def test_snapshot(self, snapshot):
-        """Test if the 'AntCost' environment is still equal snapshot."""
+        """Test if the 'FetchReachCost' environment is still equal snapshot."""
         observation, info = self.env_cost.reset(seed=42)
+        observation = gym.spaces.flatten(self.env.observation_space, observation)
         assert (observation == snapshot).all()
         assert info == snapshot
         self.env_cost.action_space.seed(42)
@@ -49,6 +60,7 @@ class TestAntCostEqual:
             observation, reward, terminated, truncated, info = self.env_cost.step(
                 action
             )
+            observation = gym.spaces.flatten(self.env.observation_space, observation)
             assert (observation == snapshot).all()
             assert reward == snapshot
             assert terminated == snapshot
