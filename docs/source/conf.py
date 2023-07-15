@@ -37,6 +37,7 @@ extensions = [
     "sphinx.ext.autodoc",  # Include documentation from docstrings.
 ]
 autoapi_dirs = ["../../stable_gym"]
+autoapi_python_class_content = "both"
 myst_heading_anchors = 2  # Add anchors to headings.
 myst_enable_extensions = ["dollarmath", "html_image"]
 

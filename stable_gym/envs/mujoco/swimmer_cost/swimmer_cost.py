@@ -1,12 +1,11 @@
 """The SwimmerCost gymnasium environment."""
-
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import utils
 from gymnasium.envs.mujoco.swimmer_v4 import SwimmerEnv
 
-import stable_gym  # NOTE: Required to register environments. # noqa: F401
+import stable_gym  # NOTE: Ensure envs are found in __main__. # noqa: F401
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
@@ -39,7 +38,7 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
     Modified cost:
         .. math::
 
-            cost = w_{forward} \\times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \\times c_{ctrl}
+            cost = w_{forward\_velocity} \\times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \\times c_{ctrl}
 
     Solved Requirements:
         Considered solved when the average cost is less than or equal to 50 over
@@ -69,7 +68,7 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
         exclude_current_positions_from_observation=True,
         **kwargs,
     ):
-        """Constructs all the necessary attributes for the SwimmerCost instance.
+        """Initialise a new SwimmerCost environment instance.
 
         Args:
             reference_forward_velocity (float, optional): The forward velocity that the
@@ -86,6 +85,8 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
                 the x- and y-coordinates of the front tip from observations. Excluding
                 the position can serve as an inductive bias to induce position-agnostic
                 behaviour in policies. Defaults to ``True``.
+            **kwargs: Extra keyword arguments to pass to the
+                :class:`~gymnasium.envs.mujoco.swimmer_v4.SwimmerEnv` class.
         """
         self.reference_forward_velocity = reference_forward_velocity
         self._forward_velocity_weight = forward_velocity_weight
@@ -93,7 +94,7 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
 
         self.state = None
 
-        # Initialize the SwimmerEnv class.
+        # Initialise the SwimmerEnv class.
         super().__init__(
             ctrl_cost_weight=ctrl_cost_weight,
             reset_noise_scale=reset_noise_scale,
@@ -125,8 +126,8 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
         Returns:
             (tuple): tuple containing:
 
-                - cost (float): The cost of the action.
-                - info (:obj:`dict`): Additional information about the cost.
+                -   cost (float): The cost of the action.
+                -   info (:obj:`dict`): Additional information about the cost.
         """
         velocity_cost = self._forward_velocity_weight * np.square(
             x_velocity - self.reference_forward_velocity
@@ -150,13 +151,13 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
         Returns:
             (tuple): tuple containing:
 
-                - obs (:obj:`np.ndarray`): Environment observation.
-                - cost (:obj:`float`): Cost of the action.
-                - terminated (:obj`bool`): Whether the episode is terminated.
-                - truncated (:obj:`bool`): Whether the episode was truncated. This value
-                    is set by wrappers when for example a time limit is reached or the
-                    agent goes out of bounds.
-                - info (:obj`dict`): Additional information about the environment.
+                -   obs (:obj:`np.ndarray`): Environment observation.
+                -   cost (:obj:`float`): Cost of the action.
+                -   terminated (:obj:`bool`): Whether the episode is terminated.
+                -   truncated (:obj:`bool`): Whether the episode was truncated. This
+                    value is set by wrappers when for example a time limit is reached
+                    or the agent goes out of bounds.
+                -   info (:obj:`dict`): Additional information about the environment.
         """
         obs, _, terminated, truncated, info = super().step(action)
 
@@ -166,8 +167,7 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
 
         # Update info.
         del info["reward_fwd"], info["reward_ctrl"], info["forward_reward"]
-        info["cost_velocity"] = cost_info["cost_velocity"]
-        info["cost_ctrl"] = cost_info["cost_ctrl"]
+        info.update(cost_info)
 
         return obs, cost, terminated, truncated, info
 
@@ -184,15 +184,14 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
         Returns:
             (tuple): tuple containing:
 
-                - observation (:obj:`numpy.ndarray`): Array containing the current
-                  observation.
-                - info (:obj:`dict`): Dictionary containing additional information.
+                -   obs (:obj:`numpy.ndarray`): Initial environment observation.
+                -   info (:obj:`dict`): Dictionary containing additional information.
         """
-        observation, info = super().reset(seed=seed, options=options)
+        obs, info = super().reset(seed=seed, options=options)
 
-        self.state = observation
+        self.state = obs
 
-        return observation, info
+        return obs, info
 
     @property
     def tau(self):

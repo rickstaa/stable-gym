@@ -126,7 +126,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         reference_constraint_position=20.0,
         clip_action=True,
     ):
-        """Constructs all the necessary attributes for the oscillator instance.
+        """Initialise a new Oscillator environment instance.
 
         Args:
             render_mode (str, optional): The render mode you want to use. Defaults to
@@ -233,13 +233,13 @@ class Oscillator(gym.Env, OscillatorDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - obs (:obj:`np.ndarray`): Environment observation.
-                - cost (:obj:`float`): Cost of the action.
-                - terminated (:obj`bool`): Whether the episode is terminated.
-                - truncated (:obj:`bool`): Whether the episode was truncated. This value
-                    is set by wrappers when for example a time limit is reached or the
-                    agent goes out of bounds.
-                - info (:obj`dict`): Additional information about the environment.
+                -   obs (:obj:`np.ndarray`): Environment observation.
+                -   cost (:obj:`float`): Cost of the action.
+                -   terminated (:obj:`bool`): Whether the episode is terminated.
+                -   truncated (:obj:`bool`): Whether the episode was truncated. This
+                    value is set by wrappers when for example a time limit is reached or
+                    the agent goes out of bounds.
+                -   info (:obj:`dict`): Additional information about the environment.
         """
         # Clip action if needed.
         if self._clip_action:
@@ -325,7 +325,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
 
         # Retrieve state.
         self.state = np.array([m1, m2, m3, p1, p2, p3])
-        self.t = self.t + self.dt  # Increment time step.
+        self.t = self.t + self.dt
 
         # Calculate cost.
         r1 = self.reference(self.t)
@@ -372,13 +372,12 @@ class Oscillator(gym.Env, OscillatorDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - observation (:obj:`numpy.ndarray`): Array containing the current
-                  observation.
-                - info (:obj:`dict`): Dictionary containing additional information.
+                -   obs (:obj:`numpy.ndarray`): Initial environment observation.
+                -   info (:obj:`dict`): Dictionary containing additional information.
         """
         super().reset(seed=seed)
 
-        # Initialize custom bounds while ensuring that the bounds are valid.
+        # Initialise custom bounds while ensuring that the bounds are valid.
         # NOTE: If you use custom reset bounds, it may lead to out-of-bound
         # state/observations.
         low = np.array(

@@ -1,12 +1,11 @@
 """The Walker2dCost gymnasium environment."""
-
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import utils
 from gymnasium.envs.mujoco.walker2d_v4 import Walker2dEnv
 
-import stable_gym  # NOTE: Required to register environments. # noqa: F401
+import stable_gym  # NOTE: Ensure envs are found in __main__. # noqa: F401
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
@@ -39,7 +38,7 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
     Modified cost:
         .. math::
 
-            cost = w_{forward} \\times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \\times c_{ctrl} + p_{health}
+            cost = w_{forward\_velocity} \\times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \\times c_{ctrl} + p_{health}
 
     Solved Requirements:
         Considered solved when the average cost is less than or equal to 50 over
@@ -74,7 +73,7 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         exclude_current_positions_from_observation=True,
         **kwargs,
     ):
-        """Constructs all the necessary attributes for the Walker2dCost instance.
+        """Initialise a new Walker2dCost environment instance.
 
         Args:
             reference_forward_velocity (float, optional): The forward velocity that the
@@ -101,6 +100,8 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
                 the x- and y-coordinates of the front tip from observations. Excluding
                 the position can serve as an inductive bias to induce position-agnostic
                 behaviour in policies. Defaults to ``True``.
+            **kwargs: Extra keyword arguments to pass to the
+                :class:`~gymnasium.envs.mujoco.walker2d_v4.Walker2dEnv` class.
         """
         self.reference_forward_velocity = reference_forward_velocity
         self._forward_velocity_weight = forward_velocity_weight
@@ -110,7 +111,7 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
 
         self.state = None
 
-        # Initialize the Walker2dEnv class.
+        # Initialise the Walker2dEnv class.
         super().__init__(
             ctrl_cost_weight=ctrl_cost_weight,
             terminate_when_unhealthy=terminate_when_unhealthy,
@@ -150,8 +151,8 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         Returns:
             (tuple): tuple containing:
 
-                - cost (float): The cost of the action.
-                - info (:obj:`dict`): Additional information about the cost.
+                -   cost (float): The cost of the action.
+                -   info (:obj:`dict`): Additional information about the cost.
         """
         velocity_cost = self._forward_velocity_weight * np.square(
             x_velocity - self.reference_forward_velocity
@@ -187,13 +188,13 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         Returns:
             (tuple): tuple containing:
 
-                - obs (:obj:`np.ndarray`): Environment observation.
-                - cost (:obj:`float`): Cost of the action.
-                - terminated (:obj`bool`): Whether the episode is terminated.
-                - truncated (:obj:`bool`): Whether the episode was truncated. This value
-                    is set by wrappers when for example a time limit is reached or the
-                    agent goes out of bounds.
-                - info (:obj`dict`): Additional information about the environment.
+                -   obs (:obj:`np.ndarray`): Environment observation.
+                -   cost (:obj:`float`): Cost of the action.
+                -   terminated (:obj:`bool`): Whether the episode is terminated.
+                -   truncated (:obj:`bool`): Whether the episode was truncated. This
+                    value is set by wrappers when for example a time limit is reached or
+                    the agent goes out of bounds.
+                -   info (:obj:`dict`): Additional information about the environment.
         """
         obs, _, terminated, truncated, info = super().step(action)
 
@@ -203,9 +204,7 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         cost, cost_info = self.cost(info["x_velocity"], ctrl_cost)
 
         # Update info.
-        info["cost_velocity"] = cost_info["cost_velocity"]
-        info["cost_ctrl"] = cost_info["cost_ctrl"]
-        info["penalty_health"] = cost_info["penalty_health"]
+        info.update(cost_info)
 
         return obs, cost, terminated, truncated, info
 
@@ -222,15 +221,14 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         Returns:
             (tuple): tuple containing:
 
-                - observation (:obj:`numpy.ndarray`): Array containing the current
-                  observation.
-                - info (:obj:`dict`): Dictionary containing additional information.
+                -   obs (:obj:`numpy.ndarray`): Initial environment observation.
+                -   info (:obj:`dict`): Dictionary containing additional information.
         """
-        observation, info = super().reset(seed=seed, options=options)
+        obs, info = super().reset(seed=seed, options=options)
 
-        self.state = observation
+        self.state = obs
 
-        return observation, info
+        return obs, info
 
     @property
     def tau(self):

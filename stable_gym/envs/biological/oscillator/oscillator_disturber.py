@@ -39,7 +39,7 @@ class OscillatorDisturber(Disturber):
     """
 
     def __init__(self, *args, **kwargs):
-        """Initiate CartPoleDisturber object
+        """Initialise CartPoleDisturber object
 
         Args:
             *args: All args to pass to the parent :meth:`__init__` method.

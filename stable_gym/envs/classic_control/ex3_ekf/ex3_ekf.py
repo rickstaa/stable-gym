@@ -82,7 +82,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         render_mode=None,
         clipped_action=True,
     ):
-        """Constructs all the necessary attributes for the Ex3EKF instance.
+        """Initialise new Ex3EKF environment instance.
 
         Args:
             render_mode (str, optional): The render mode you want to use. Defaults to
@@ -149,13 +149,13 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - obs (:obj:`np.ndarray`): Environment observation.
-                - cost (:obj:`float`): Cost of the action.
-                - terminated (:obj`bool`): Whether the episode is terminated.
-                - truncated (:obj:`bool`): Whether the episode was truncated. This value
-                    is set by wrappers when for example a time limit is reached or the
-                    agent goes out of bounds.
-                - info (:obj`dict`): Additional information about the environment.
+                -   obs (:obj:`np.ndarray`): Environment observation.
+                -   cost (:obj:`float`): Cost of the action.
+                -   terminated (:obj:`bool`): Whether the episode is terminated.
+                -   truncated (:obj:`bool`): Whether the episode was truncated. This
+                    value is set by wrappers when for example a time limit is reached or
+                    the agent goes out of bounds.
+                -   info (:obj:`dict`): Additional information about the environment.
         """
         # Clip action if needed.
         if self._clipped_action:
@@ -246,9 +246,8 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - observation (:obj:`numpy.ndarray`): Array containing the current
-                  observation.
-                - info (:obj:`dict`): Dictionary containing additional information.
+                -   obs (:obj:`numpy.ndarray`): Initial environment observation.
+                -   info (:obj:`dict`): Dictionary containing additional information.
         """
         if options is not None:
             logger.warn(

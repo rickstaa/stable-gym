@@ -126,7 +126,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         determine the new random state when ``random=True``.
 
     Attributes:
-        state (numpy.ndarray): Array containing the current state.
+        state (numpy.ndarray): The current state.
         t (float): Current time step.
         tau (float): The time step size. Also available as ``self.dt``.
         target_pos (float): The target position.
@@ -162,7 +162,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         max_cost=100.0,
         clip_action=True,
     ):
-        """Constructs all the necessary attributes for the CartPoleCost instance.
+        """Initialise a new CartPoleCost environment instance.
 
         Args:
             render_mode (str, optional): Gym rendering mode. By default ``None``.
@@ -182,7 +182,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
         """
-        super().__init__()  # NOTE: Initialize disturber superclass.
+        super().__init__()  # NOTE: Initialise disturber superclass.
 
         # Validate input arguments.
         if task_type.lower() not in ["stabilisation", "reference_tracking"]:
@@ -318,10 +318,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - length(:obj:`float`): The pole length.
-                - pole_mass (:obj:`float`): The pole mass.
-                - pole_mass (:obj:`float`): The cart mass.
-                - gravity (:obj:`float`): The gravity constant.
+                -   length(:obj:`float`): The pole length.
+                -   pole_mass (:obj:`float`): The pole mass.
+                -   pole_mass (:obj:`float`): The cart mass.
+                -   gravity (:obj:`float`): The gravity constant.
         """
         return self.length, self.masspole, self.masscart, self.gravity
 
@@ -357,9 +357,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - cost (float): The current cost.
-                - r_1 (float): The current position reference.
-                - r_2 (float): The cart_pole angle reference.
+                -   cost (float): The current cost.
+                -   r_1 (float): The current position reference.
+                -   r_2 (float): The cart_pole angle reference.
         """
         if self.task_type.lower() == "reference_tracking":
             # Calculate cost (reference tracking task).
@@ -389,13 +389,13 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - obs (:obj:`np.ndarray`): Environment observation.
-                - cost (:obj:`float`): Cost of the action.
-                - terminated (:obj`bool`): Whether the episode is terminated.
-                - truncated (:obj:`bool`): Whether the episode was truncated. This value
-                    is set by wrappers when for example a time limit is reached or the
-                    agent goes out of bounds.
-                - info (:obj`dict`): Additional information about the environment.
+                -   obs (:obj:`np.ndarray`): Environment observation.
+                -   cost (:obj:`float`): Cost of the action.
+                -   terminated (:obj:`bool`): Whether the episode is terminated.
+                -   truncated (:obj:`bool`): Whether the episode was truncated. This
+                    value is set by wrappers when for example a time limit is reached or
+                    the agent goes out of bounds.
+                -   info (:obj:`dict`): Additional information about the environment.
         """
         # Clip action if needed.
         # NOTE: This is not done in the original environment.
@@ -445,10 +445,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             theta = theta + self.tau * theta_dot
 
         self.state = (x, x_dot, theta, theta_dot)
-
-        # Increment time step.
-        # NOTE: This is not done in the original environment.
-        self.t = self.t + self.tau
+        self.t = self.t + self.tau  # NOTE: Not done in the original environment.
 
         # Calculate cost.
         # NOTE: Different cost function compared to the original.
@@ -487,7 +484,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # Create observation and info dict.
         # NOTE: When reference tracking add two extra observation states.
-        observation = (
+        obs = (
             np.append(
                 np.array(self.state, dtype=np.float32),
                 np.array([ref[0], x - ref[0]], dtype=np.float32),
@@ -506,7 +503,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # NOTE: The original returns an empty info dict.
         return (
-            observation,
+            obs,
             cost,
             terminated,
             False,
@@ -528,13 +525,12 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         Returns:
             (tuple): tuple containing:
 
-                - observation (:obj:`numpy.ndarray`): Array containing the current
-                  observation.
-                - info (:obj:`dict`): Dictionary containing additional information.
+                -   obs (:obj:`numpy.ndarray`): Initial environment observation.
+                -   info (:obj:`dict`): Dictionary containing additional information.
         """
         super().reset(seed=seed)
 
-        # Initialize custom bounds while ensuring that the bounds are valid.
+        # Initialise custom bounds while ensuring that the bounds are valid.
         # NOTE: If you use custom reset bounds, it may lead to out-of-bound
         # state/observations.
         low = np.array(
@@ -587,7 +583,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             reference_constraint_error=x - self.reference_constraint_pos,
             reference_constraint_violated=bool(abs(x) > self.reference_constraint_pos),
         )
-        observation = (
+        obs = (
             np.append(
                 np.array(self.state, dtype=np.float32),
                 np.array([ref[0], x - ref[0]], dtype=np.float32),
@@ -601,7 +597,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             self.render()
 
         # NOTE: The original returns an empty info dict.
-        return observation, info_dict
+        return obs, info_dict
 
     def render(self):
         """Render one frame of the environment."""

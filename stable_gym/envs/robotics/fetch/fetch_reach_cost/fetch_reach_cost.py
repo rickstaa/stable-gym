@@ -1,12 +1,11 @@
 """The FetchReachCost gymnasium environment."""
-
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import utils
 from gymnasium_robotics.envs.fetch.reach import MujocoFetchReachEnv
 
-import stable_gym  # NOTE: Required to register environments. # noqa: F401
+import stable_gym  # NOTE: Ensure envs are found in __main__. # noqa: F401
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
@@ -54,20 +53,30 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
     Attributes:
         state (numpy.ndarray): The current system state.
         dt (float): The environment step size. Also available as :attr:`.tau`.
-    """
+
+    ..  attention::
+        Accepts all arguments of the original :class:`~gymnasium_robotics.envs.fetch.reach.MujocoFetchReachEnv`
+        class except for the ``reward_type`` argument. This is because we require dense
+        rewards to calculate the cost.
+    """  # noqa: E501
 
     def __init__(
         self,
         **kwargs,
     ):
-        """Construts all necessary attributes for the FetchReachCost instance."""
+        """Initialise a new FetchReachCost environment instance.
+
+        Args:
+            **kwargs: Keyword arguments passed to the original
+                :class:`~gymnasium_robotics.envs.fetch.reach.MujocoFetchReachEnv` class.
+        """  # noqa: E501s
         assert "reward_type" not in kwargs, (
             "'reward_type' should not be passed to the 'FetchReachCost' environment as "
             "only 'dense' rewards are supported."
         )
         self.state = None
 
-        # Initialize the FetchReachEnv class.
+        # Initialise the FetchReachEnv class.
         super().__init__(
             reward_type="dense",  # NOTE: DONT CHANGE! This is required for the cost.
             **kwargs,
@@ -106,13 +115,13 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
         Returns:
             (tuple): tuple containing:
 
-                - obs (:obj:`np.ndarray`): Environment observation.
-                - cost (:obj:`float`): Cost of the action.
-                - terminated (:obj`bool`): Whether the episode is terminated.
-                - truncated (:obj:`bool`): Whether the episode was truncated. This value
-                    is set by wrappers when for example a time limit is reached or the
-                    agent goes out of bounds.
-                - info (:obj`dict`): Additional information about the environment.
+                -   obs (:obj:`np.ndarray`): Environment observation.
+                -   cost (:obj:`float`): Cost of the action.
+                -   terminated (:obj:`bool`): Whether the episode is terminated.
+                -   truncated (:obj:`bool`): Whether the episode was truncated. This
+                    value is set by wrappers when for example a time limit is reached or
+                    the agent goes out of bounds.
+                -   info (:obj:`dict`): Additional information about the environment.
         """
         obs, reward, terminated, truncated, info = super().step(action)
 
@@ -133,20 +142,14 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
         Returns:
             (tuple): tuple containing:
 
-                - observation (:obj:`numpy.ndarray`): Array containing the current
-                  observation.
-                - info (:obj:`dict`): Dictionary containing additional information.
+                -   obs (:obj:`numpy.ndarray`): Initial environment observation.
+                -   info (:obj:`dict`): Dictionary containing additional information.
         """
-        observation, info = super().reset(seed=seed, options=options)
+        obs, info = super().reset(seed=seed, options=options)
 
-        self.state = np.concatenate(
-            [
-                observation["observation"],
-                observation["desired_goal"],
-            ]
-        )
+        self.state = obs["observation"]
 
-        return observation, info
+        return obs, info
 
     @property
     def tau(self):

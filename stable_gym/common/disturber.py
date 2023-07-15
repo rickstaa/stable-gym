@@ -241,7 +241,7 @@ class Disturber:
     """  # noqa: E501
 
     def __init__(self, disturber_cfg=None):
-        """Initiate disturber object.
+        """Initialise disturber object.
 
         Args:
             disturber_cfg (dict, optional): A dictionary that describes the
@@ -1121,7 +1121,7 @@ class Disturber:
         disturber_cfg=None,
         include_baseline=True,
     ):  # IMPROVE: Can be removed when using gymnasium wrapper
-        """Initializes the environment/step disturber.
+        """Initialise the environment/step disturber.
 
         Args:
             disturbance_type (string): The disturbance type you want to use. Options are

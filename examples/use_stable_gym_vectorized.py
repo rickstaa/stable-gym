@@ -13,6 +13,7 @@ ENV_NAME = "Oscillator-v1"
 # ENV_NAME = "CartPoleCost-v1"
 # ENV_NAME = "SwimmerCost-v1"
 # ENV_NAME = "FetchReachCost-v1"
+# ENV_NAME = "MinitaurCost-v1"
 
 if __name__ == "__main__":
     envs = gym.vector.make(ENV_NAME, render_mode="human", num_envs=3)
