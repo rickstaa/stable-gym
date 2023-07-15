@@ -1,0 +1,178 @@
+# serializer version: 1
+# name: TestCartPoleCostEqual.test_snapshot
+  0.02739560604095459
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.1
+  -0.006112155970185995
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.10
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.11
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.12
+  dict({
+    'reference': 0.0,
+    'reference_constraint_error': -3.9727266378584947,
+    'reference_constraint_position': 4.0,
+    'reference_constraint_violated': False,
+    'reference_error': 0.027273362141505202,
+    'state_of_interest': 0.027273362141505202,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.13
+  0.03141682967543602
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.14
+  0.15895679593086243
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.15
+  0.03046562522649765
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.16
+  -0.2065114676952362
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.17
+  0.4233589569570663
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.18
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.19
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.2
+  0.03585979342460632
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.20
+  dict({
+    'reference': 0.0,
+    'reference_constraint_error': -3.9685831714438327,
+    'reference_constraint_position': 4.0,
+    'reference_constraint_violated': False,
+    'reference_error': 0.03141682855616748,
+    'state_of_interest': 0.03141682855616748,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.21
+  0.03459596633911133
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.22
+  0.4383837580680847
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.23
+  0.026335395872592926
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.24
+  -0.6165018677711487
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.25
+  0.31643005730946416
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.26
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.27
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.28
+  dict({
+    'reference': 0.0,
+    'reference_constraint_error': -3.9654040354536884,
+    'reference_constraint_position': 4.0,
+    'reference_constraint_violated': False,
+    'reference_error': 0.034595964546311656,
+    'state_of_interest': 0.034595964546311656,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.29
+  0.04336363822221756
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.3
+  0.01973680406808853
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.30
+  0.5920515656471252
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.31
+  0.014005357399582863
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.32
+  -0.8391819000244141
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.33
+  0.08976015310589762
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.34
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.35
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.36
+  dict({
+    'reference': 0.0,
+    'reference_constraint_error': -3.9566363604590937,
+    'reference_constraint_position': 4.0,
+    'reference_constraint_violated': False,
+    'reference_error': 0.0433636395409062,
+    'state_of_interest': 0.0433636395409062,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.37
+  0.05520467087626457
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.38
+  0.2751252353191376
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.39
+  -0.0027782809920608997
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.4
+  dict({
+    'reference': 0.0,
+    'reference_constraint_error': -3.9726043947361775,
+    'reference_constraint_position': 4.0,
+    'reference_constraint_violated': False,
+    'reference_error': 0.02739560526382266,
+    'state_of_interest': 0.02739560526382266,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.40
+  -0.35972166061401367
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.41
+  0.004048460993187186
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.42
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.43
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.44
+  dict({
+    'reference': 0.0,
+    'reference_constraint_error': -3.9447953296374747,
+    'reference_constraint_position': 4.0,
+    'reference_constraint_violated': False,
+    'reference_error': 0.05520467036252527,
+    'state_of_interest': 0.05520467036252527,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.5
+  0.02727336250245571
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.6
+  0.20717331767082214
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.7
+  0.036254528909921646
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.8
+  -0.2894452214241028
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.9
+  0.5994195002721167
+# ---

@@ -1,0 +1,293 @@
+# serializer version: 1
+# name: TestHopperCostEqual.test_snapshot
+  1.2493887843975204
+# ---
+# name: TestHopperCostEqual.test_snapshot.1
+  0.003585979199113825
+# ---
+# name: TestHopperCostEqual.test_snapshot.10
+  0.004267649888486018
+# ---
+# name: TestHopperCostEqual.test_snapshot.11
+  dict({
+  })
+# ---
+# name: TestHopperCostEqual.test_snapshot.12
+  1.2490195421183792
+# ---
+# name: TestHopperCostEqual.test_snapshot.13
+  0.0032904703060435167
+# ---
+# name: TestHopperCostEqual.test_snapshot.14
+  0.00197372137714542
+# ---
+# name: TestHopperCostEqual.test_snapshot.15
+  -0.004937660081069037
+# ---
+# name: TestHopperCostEqual.test_snapshot.16
+  0.008947511525957146
+# ---
+# name: TestHopperCostEqual.test_snapshot.17
+  0.004736045565360293
+# ---
+# name: TestHopperCostEqual.test_snapshot.18
+  -0.09516270835680339
+# ---
+# name: TestHopperCostEqual.test_snapshot.19
+  -0.0702136651181154
+# ---
+# name: TestHopperCostEqual.test_snapshot.2
+  0.001973680290593639
+# ---
+# name: TestHopperCostEqual.test_snapshot.20
+  0.00038906812257593823
+# ---
+# name: TestHopperCostEqual.test_snapshot.21
+  -0.21822184023036487
+# ---
+# name: TestHopperCostEqual.test_snapshot.22
+  1.0422772172484762
+# ---
+# name: TestHopperCostEqual.test_snapshot.23
+  0.992650521800909
+# ---
+# name: TestHopperCostEqual.test_snapshot.24
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.25
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.26
+  dict({
+    'cost_ctrl': 0.0008295210003852844,
+    'cost_velocity': 0.992650521800909,
+    'penalty_health': 0.0,
+    'x_position': 0.002769012612592671,
+    'x_velocity': 0.003681515879129678,
+  })
+# ---
+# name: TestHopperCostEqual.test_snapshot.27
+  1.2478734637622353
+# ---
+# name: TestHopperCostEqual.test_snapshot.28
+  0.0007473623983213589
+# ---
+# name: TestHopperCostEqual.test_snapshot.29
+  0.00195616941435449
+# ---
+# name: TestHopperCostEqual.test_snapshot.3
+  -0.0040582265211235044
+# ---
+# name: TestHopperCostEqual.test_snapshot.30
+  -0.011294319461684032
+# ---
+# name: TestHopperCostEqual.test_snapshot.31
+  0.022963563189578196
+# ---
+# name: TestHopperCostEqual.test_snapshot.32
+  -0.07170457105951061
+# ---
+# name: TestHopperCostEqual.test_snapshot.33
+  -0.19187600830924648
+# ---
+# name: TestHopperCostEqual.test_snapshot.34
+  -0.5645819546370114
+# ---
+# name: TestHopperCostEqual.test_snapshot.35
+  -0.0041240950861380875
+# ---
+# name: TestHopperCostEqual.test_snapshot.36
+  -1.3696122179244263
+# ---
+# name: TestHopperCostEqual.test_snapshot.37
+  2.459741860781004
+# ---
+# name: TestHopperCostEqual.test_snapshot.38
+  1.0682078858675719
+# ---
+# name: TestHopperCostEqual.test_snapshot.39
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.4
+  0.004756223516367559
+# ---
+# name: TestHopperCostEqual.test_snapshot.40
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.41
+  dict({
+    'cost_ctrl': 0.0017194511890411377,
+    'cost_velocity': 1.0682078858675719,
+    'penalty_health': 0.0,
+    'x_position': 0.002500681179012822,
+    'x_velocity': -0.0335414291974811,
+  })
+# ---
+# name: TestHopperCostEqual.test_snapshot.42
+  1.2460813448300183
+# ---
+# name: TestHopperCostEqual.test_snapshot.43
+  -0.0023728504876157947
+# ---
+# name: TestHopperCostEqual.test_snapshot.44
+  0.0019227697227254838
+# ---
+# name: TestHopperCostEqual.test_snapshot.45
+  -0.01893195381209992
+# ---
+# name: TestHopperCostEqual.test_snapshot.46
+  0.0381241843118047
+# ---
+# name: TestHopperCostEqual.test_snapshot.47
+  -0.01926801618744545
+# ---
+# name: TestHopperCostEqual.test_snapshot.48
+  -0.2557058156073734
+# ---
+# name: TestHopperCostEqual.test_snapshot.49
+  -0.2156856493060678
+# ---
+# name: TestHopperCostEqual.test_snapshot.5
+  0.00261139701990353
+# ---
+# name: TestHopperCostEqual.test_snapshot.50
+  -0.0041141080578631995
+# ---
+# name: TestHopperCostEqual.test_snapshot.51
+  -0.5408218391424062
+# ---
+# name: TestHopperCostEqual.test_snapshot.52
+  1.331997939551574
+# ---
+# name: TestHopperCostEqual.test_snapshot.53
+  1.0929881370075174
+# ---
+# name: TestHopperCostEqual.test_snapshot.54
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.55
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.56
+  dict({
+    'cost_ctrl': 0.0011533048152923583,
+    'cost_velocity': 1.0929881370075174,
+    'penalty_health': 0.0,
+    'x_position': 0.002136995342703503,
+    'x_velocity': -0.045460729538664875,
+  })
+# ---
+# name: TestHopperCostEqual.test_snapshot.57
+  1.2436302637431755
+# ---
+# name: TestHopperCostEqual.test_snapshot.58
+  -0.005111902273450946
+# ---
+# name: TestHopperCostEqual.test_snapshot.59
+  0.0013772975400127994
+# ---
+# name: TestHopperCostEqual.test_snapshot.6
+  0.0028606430527695374
+# ---
+# name: TestHopperCostEqual.test_snapshot.60
+  -0.02483301107683125
+# ---
+# name: TestHopperCostEqual.test_snapshot.61
+  0.05372425050070511
+# ---
+# name: TestHopperCostEqual.test_snapshot.62
+  -0.036538866722199165
+# ---
+# name: TestHopperCostEqual.test_snapshot.63
+  -0.35723467751828075
+# ---
+# name: TestHopperCostEqual.test_snapshot.64
+  -0.4689519331625341
+# ---
+# name: TestHopperCostEqual.test_snapshot.65
+  -0.13207530919533367
+# ---
+# name: TestHopperCostEqual.test_snapshot.66
+  -0.9338398830570084
+# ---
+# name: TestHopperCostEqual.test_snapshot.67
+  2.5663967617418484
+# ---
+# name: TestHopperCostEqual.test_snapshot.68
+  1.0565735148444018
+# ---
+# name: TestHopperCostEqual.test_snapshot.69
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.7
+  -0.003718863673244541
+# ---
+# name: TestHopperCostEqual.test_snapshot.70
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.71
+  dict({
+    'cost_ctrl': 0.000805132269859314,
+    'cost_velocity': 1.0565735148444018,
+    'penalty_health': 0.0,
+    'x_position': 0.0019138143918766449,
+    'x_velocity': -0.027897618853357294,
+  })
+# ---
+# name: TestHopperCostEqual.test_snapshot.72
+  1.2404466290930847
+# ---
+# name: TestHopperCostEqual.test_snapshot.73
+  -0.007009570713653675
+# ---
+# name: TestHopperCostEqual.test_snapshot.74
+  0.0006386887437600041
+# ---
+# name: TestHopperCostEqual.test_snapshot.75
+  -0.028814222975504244
+# ---
+# name: TestHopperCostEqual.test_snapshot.76
+  0.07333600038273734
+# ---
+# name: TestHopperCostEqual.test_snapshot.77
+  0.042321939906795655
+# ---
+# name: TestHopperCostEqual.test_snapshot.78
+  -0.4383895229336065
+# ---
+# name: TestHopperCostEqual.test_snapshot.79
+  -0.011325669503669061
+# ---
+# name: TestHopperCostEqual.test_snapshot.8
+  -0.0004961406210443288
+# ---
+# name: TestHopperCostEqual.test_snapshot.80
+  -0.05914303586957975
+# ---
+# name: TestHopperCostEqual.test_snapshot.81
+  -0.061818286446394116
+# ---
+# name: TestHopperCostEqual.test_snapshot.82
+  2.3370497467744413
+# ---
+# name: TestHopperCostEqual.test_snapshot.83
+  0.9938026662047765
+# ---
+# name: TestHopperCostEqual.test_snapshot.84
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.85
+  False
+# ---
+# name: TestHopperCostEqual.test_snapshot.86
+  dict({
+    'cost_ctrl': 0.0005122967958450318,
+    'cost_velocity': 0.9938026662047765,
+    'penalty_health': 0.0,
+    'x_position': 0.0019386422534770163,
+    'x_velocity': 0.0031034827000464243,
+  })
+# ---
+# name: TestHopperCostEqual.test_snapshot.9
+  -0.0012920197576741879
+# ---
