@@ -83,7 +83,7 @@ class AntCost(AntEnv, utils.EzPickle):
         reset_noise_scale=0.1,
         exclude_current_positions_from_observation=True,
         exclude_x_velocity_from_observation=False,
-        exclude_reference_error_from_observation=False,
+        exclude_reference_error_from_observation=True,
         **kwargs,
     ):
         """Initialise a new AntCost environment instance.
