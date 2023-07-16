@@ -29,6 +29,10 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
             is replaced with a cost. This cost is the squared difference between the
             swimmer's forward velocity and a reference value (error). Additionally, also
             a control cost can be included in the cost.
+        -   Three **optional** variables were added to the observation space; The reference velocity, the reference error
+            (i.e. the difference between the swimmer's forward velocity and the reference) and the swimmer's forward velocity.
+            These variables can be enabled using the ``exclude_reference_from_observation``,
+            ``exclude_reference_error_from_observation`` and ``exclude_velocity_from_observation`` environment arguments.
 
         The rest of the environment is the same as the original Swimmer environment.
         Below, the modified cost is described. For more information about the environment
@@ -61,11 +65,16 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
     def __init__(
         self,
         reference_forward_velocity=1.0,
+        randomise_reference_forward_velocity=False,
+        randomise_reference_forward_velocity_range=(0.5, 1.5),
         forward_velocity_weight=1.0,
         include_ctrl_cost=False,
         ctrl_cost_weight=1e-4,
         reset_noise_scale=0.1,
         exclude_current_positions_from_observation=True,
+        exclude_reference_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
+        exclude_reference_error_from_observation=True,
+        exclude_x_velocity_from_observation=False,
         **kwargs,
     ):
         """Initialise a new SwimmerCost environment instance.
@@ -73,6 +82,10 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
         Args:
             reference_forward_velocity (float, optional): The forward velocity that the
                 agent should try to track. Defaults to ``1.0``.
+            randomise_reference_forward_velocity (bool, optional): Whether to randomize
+                the reference forward velocity. Defaults to ``False``.
+            randomise_reference_forward_velocity_range (tuple, optional): The range of
+                the random reference forward velocity. Defaults to ``(0.5, 1.5)``.
             forward_velocity_weight (float, optional): The weight used to scale the
                 forward velocity error. Defaults to ``1.0``.
             include_ctrl_cost (bool, optional): Whether you also want to penalize the
@@ -85,12 +98,38 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
                 the x- and y-coordinates of the front tip from observations. Excluding
                 the position can serve as an inductive bias to induce position-agnostic
                 behaviour in policies. Defaults to ``True``.
+            exclude_reference_from_observation (bool, optional): Whether the reference
+                should be excluded from the observation. Defaults to ``False``. Can only
+                be set to ``True`` if ``randomise_reference_forward_velocity`` is set to
+                ``False``.
+            exclude_reference_error_from_observation (bool, optional): Whether the error
+                should be excluded from the observation. Defaults to ``True``.
+            exclude_x_velocity_from_observation (bool, optional): Whether to omit the
+                x- component of the velocity from observations. Defaults to ``False``.
             **kwargs: Extra keyword arguments to pass to the
                 :class:`~gymnasium.envs.mujoco.swimmer_v4.SwimmerEnv` class.
         """
         self.reference_forward_velocity = reference_forward_velocity
+        self.randomise_reference_forward_velocity = randomise_reference_forward_velocity
+        self.randomise_reference_forward_velocity_range = (
+            randomise_reference_forward_velocity_range
+        )
         self._forward_velocity_weight = forward_velocity_weight
         self._include_ctrl_cost = include_ctrl_cost
+        self._exclude_reference_from_observation = exclude_reference_from_observation
+        self._exclude_reference_error_from_observation = (
+            exclude_reference_error_from_observation
+        )
+        self._exclude_x_velocity_from_observation = exclude_x_velocity_from_observation
+
+        # Validate input arguments.
+        assert (
+            not randomise_reference_forward_velocity
+            or not exclude_reference_from_observation
+        ), (
+            "The reference can only be excluded from the observation if the forward "
+            "velocity is not randomised."
+        )
 
         self.state = None
 
@@ -102,17 +141,36 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
             **kwargs,
         )
 
+        # Extend observation space if necessary.
+        low = self.observation_space.low
+        high = self.observation_space.high
+        if not self._exclude_reference_from_observation:
+            low = np.append(low, -np.inf)
+            high = np.append(high, np.inf)
+        if not self._exclude_reference_error_from_observation:
+            low = np.append(low, -np.inf)
+            high = np.append(high, np.inf)
+        if not self._exclude_x_velocity_from_observation:
+            low = np.append(low, -np.inf)
+            high = np.append(high, np.inf)
+        self.observation_space = gym.spaces.Box(low, high, dtype=np.float32)
+
         # Reinitialize the EzPickle class.
         # NOTE: Done to ensure the args of the SwimmerCost class are also pickled.
         # NOTE: Ensure that all args are passed to the EzPickle class!
         utils.EzPickle.__init__(
             self,
             reference_forward_velocity,
+            randomise_reference_forward_velocity,
+            randomise_reference_forward_velocity_range,
             forward_velocity_weight,
             include_ctrl_cost,
             ctrl_cost_weight,
             reset_noise_scale,
             exclude_current_positions_from_observation,
+            exclude_reference_from_observation,
+            exclude_reference_error_from_observation,
+            exclude_x_velocity_from_observation,
             **kwargs,
         )
 
@@ -165,6 +223,15 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
 
         cost, cost_info = self.cost(info["x_velocity"], -info["reward_ctrl"])
 
+        # Add reference, x velocity and reference error to observation.
+        obs = np.append(obs, self.reference_forward_velocity).astype(np.float32)
+        if not self._exclude_x_velocity_from_observation:
+            obs = np.append(obs, info["x_velocity"]).astype(np.float32)
+        if not self._exclude_reference_error_from_observation:
+            obs = np.append(
+                obs, info["x_velocity"] - self.reference_forward_velocity
+            ).astype(np.float32)
+
         # Update info.
         del info["reward_fwd"], info["reward_ctrl"], info["forward_reward"]
         info.update(cost_info)
@@ -188,6 +255,22 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
                 -   info (:obj:`dict`): Dictionary containing additional information.
         """
         obs, info = super().reset(seed=seed, options=options)
+
+        # Randomize the reference forward velocity if requested.
+        if self.randomise_reference_forward_velocity:
+            self.reference_forward_velocity = self.np_random.uniform(
+                *self.randomise_reference_forward_velocity_range
+            )
+
+        # Add reference, x velocity and reference error to observation.
+        if not self._exclude_reference_from_observation:
+            obs = np.append(obs, self.reference_forward_velocity).astype(np.float32)
+        if not self._exclude_reference_error_from_observation:
+            obs = np.append(obs, 0.0 - self.reference_forward_velocity).astype(
+                np.float32
+            )
+        if not self._exclude_x_velocity_from_observation:
+            obs = np.append(obs, 0.0).astype(np.float32)
 
         self.state = obs
 

@@ -143,6 +143,7 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         reference_frequency=200,
         reference_constraint_position=20.0,
         clip_action=True,
+        exclude_reference_from_observation=False,  # NOTE: False in Han et al. 2018. # noqa: E501
         exclude_reference_error_from_observation=True,  # NOTE: False in Han et al. 2018. # noqa: E501
     ):
         """Initialise a new OscillatorComplicated environment instance.
@@ -163,12 +164,16 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
                 dict.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
+            exclude_reference_from_observation (bool, optional): Whether the reference
+                should be excluded from the observation. Defaults to ``False``. Can only
+                be set to ``True`` if ``reference_type`` is ``constant``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``.
         """
         super().__init__()  # Setup disturber.
         self._action_clip_warning = False
         self._clip_action = clip_action
+        self._exclude_reference_from_observation = exclude_reference_from_observation
         self._exclude_reference_error_from_observation = (
             exclude_reference_error_from_observation
         )
@@ -178,6 +183,14 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
             raise ValueError(
                 "The reference type must be either 'constant' or 'periodic'."
             )
+        assert (
+            reference_type.lower() == "periodic"
+            or reference_type.lower() == "constant"
+            and not exclude_reference_from_observation
+        ), (
+            "The reference can only be excluded from the observation if the reference "
+            "type is constant."
+        )
 
         self.reference_type = reference_type
         self.t = 0.0
@@ -227,13 +240,14 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         self.delta7 = 0.0  # p3 noise.
         self.delta8 = 0.0  # p4 noise.
 
-        obs_low = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0], dtype=np.float32)
-        obs_high = np.array(
-            [100, 100, 100, 100, 100, 100, 100, 100, 100], dtype=np.float32
-        )
+        obs_low = np.array([0, 0, 0, 0, 0, 0, 0, 0], dtype=np.float32)
+        obs_high = np.array([100, 100, 100, 100, 100, 100, 100, 100], dtype=np.float32)
+        if not self._exclude_reference_from_observation:
+            obs_low = np.append(obs_low, 0.0).astype(np.float32)
+            obs_high = np.append(obs_high, 100.0).astype(np.float32)
         if not self._exclude_reference_error_from_observation:
-            obs_low = np.append(obs_low, np.float32(-100))
-            obs_high = np.append(obs_high, np.float32(100))
+            obs_low = np.append(obs_low, -100).astype(np.float32)
+            obs_high = np.append(obs_high, 100).astype(np.float32)
         self.action_space = spaces.Box(
             low=np.array([-5.0, -5.0, -5.0, -5.0], dtype=np.float32),
             high=np.array([5.0, 5.0, 5.0, 5.0], dtype=np.float32),
@@ -251,7 +265,7 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         self.steps_beyond_done = None
 
         # Reference target and constraint positions.
-        self.reference_target_pos = reference_target_position  # Reference target.
+        self.reference_target_pos = reference_target_position
         self.reference_amplitude = reference_amplitude
         self.reference_frequency = reference_frequency
         self.reference_constraint_pos = (
@@ -407,9 +421,11 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         terminated = bool(cost > self.cost_range.high or cost < self.cost_range.low)
 
         # Create observation.
-        obs = np.array([m1, m2, m3, m4, p1, p2, p3, p4, r1], dtype=np.float32)
+        obs = np.array([m1, m2, m3, m4, p1, p2, p3, p4], dtype=np.float32)
+        if not self._exclude_reference_from_observation:
+            obs = np.append(obs, r1).astype(np.float32)
         if not self._exclude_reference_error_from_observation:
-            obs = np.append(obs, np.float32(p1 - r1))
+            obs = np.append(obs, p1 - r1).astype(np.float32)
 
         # Return state, cost, terminated, truncated and info_dict
         return (
@@ -474,7 +490,7 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
                 np.append(
                     low,
                     np.zeros(
-                        1 if self._exclude_reference_error_from_observation else 2,
+                        self.observation_space.shape[0] - low.shape[0],
                         dtype=np.float32,
                     ),
                 )
@@ -484,7 +500,7 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
                 np.append(
                     high,
                     np.zeros(
-                        1 if self._exclude_reference_error_from_observation else 2,
+                        self.observation_space.shape[0] - low.shape[0],
                         dtype=np.float32,
                     ),
                 )
@@ -503,9 +519,11 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         self.t = 0.0
         m1, m2, m3, m4, p1, p2, p3, p4 = self.state
         r1 = self.reference(self.t)
-        obs = np.array([m1, m2, m3, m4, p1, p2, p3, p4, r1], dtype=np.float32)
+        obs = np.array([m1, m2, m3, m4, p1, p2, p3, p4], dtype=np.float32)
+        if not self._exclude_reference_from_observation:
+            obs = np.append(obs, r1).astype(np.float32)
         if not self._exclude_reference_error_from_observation:
-            obs = np.append(obs, np.float32(p1 - r1))
+            obs = np.append(obs, p1 - r1).astype(np.float32)
 
         # Return initial observation and info_dict.
         return obs, dict(

@@ -7,10 +7,8 @@
 
 An actuated 8-jointed half cheetah. This environment corresponds to the [HalfCheetah-v4](https://gymnasium.farama.org/environments/mujoco/half_cheetah) environment included in the [gymnasium package](https://gymnasium.farama.org/). It is different in the fact that:
 
-*   The objective was changed to a velocity-tracking task. To do this, the reward is replaced with a cost. This cost is the squared
-    difference between the HalfCheetah's forward velocity and a reference value (error).
--   The reference velocity was added to the observation space.
--   Two **optional** variables were added to the observation space. These are the cheetah's forward velocity and the error (difference between the cheetah's forward velocity and the reference velocity). These variables can be enabled using the `exclude_velocity_from_observation` and `exclude_reference_error_from_observation` environment arguments.
+*   The objective was changed to a velocity-tracking task. To do this, the reward is replaced with a cost. This cost is the squared difference between the HalfCheetah's forward velocity and a reference value (error).
+*   Three **optional** variables were added to the observation space; The reference velocity, the reference error (i.e. the difference between the cheetah's forward velocity and the reference) and the cheetah's forward velocity. These variables can be enabled using the `exclude_reference_from_observation`, `exclude_reference_error_from_observation` and `exclude_velocity_from_observation` environment arguments.
 
 The rest of the environment is the same as the original HalfCheetah environment. Below, the modified cost is described. For more information about the environment (e.g. observation space, action space, episode termination, etc.), please refer to the [gymnasium library](https://gymnasium.farama.org/environments/mujoco/half_cheetah/).
 

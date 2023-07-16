@@ -9,6 +9,8 @@ An actuated 8-jointed 2D walker. This environment corresponds to the [Walker2d-v
 
 *   The objective was changed to a velocity-tracking task. To do this, the reward is replaced with a cost. This cost is the squared
     difference between the Walker2d's forward velocity and a reference value (error).
+*   The reference velocity was added to the observation space.
+*   Three **optional** variables were added to the observation space; The reference velocity, the reference error (i.e. the difference between the walker2d's forward velocity and the reference) and the walker2d's forward velocity. These variables can be enabled using the `exclude_reference_from_observation`, `exclude_reference_error_from_observation` and `exclude_velocity_from_observation` environment arguments.
 
 The rest of the environment is the same as the original Walker2d environment. Below, the modified cost is described. For more information about the environment (e.g. observation space, action space, episode termination, etc.), please refer to the [gymnasium library](https://gymnasium.farama.org/environments/mujoco/walker2d/).
 

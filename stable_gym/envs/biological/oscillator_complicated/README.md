@@ -14,11 +14,14 @@ By default, the environment returns the following observation:
 *   $p_2$ - The tetR (repressor) protein concentration (Inhibits transcription of CI gene).
 *   $p_3$ - The CI (repressor) protein concentration (Inhibits transcription of extra protein gene).
 *   $p_4$ - Extra protein concentration (Inhibits transcription of lacI gene).
+
+Extra variables will be returned if the `exclude_reference_from_observation` and `exclude_reference_error_from_observation`
+flag are set to `False`:
+
 *   $r$ - The reference we want to follow.
-
-An extra variable will be returned if the `exclude_reference_error_from_observation` flag is set to `False`:
-
 *   $r_{error}$ - The error between the state of interest (i.e. $p_1$) and the reference.
+
+The reference can not be excluded when `reference_type` is set to `periodic`.
 
 ## Action space
 

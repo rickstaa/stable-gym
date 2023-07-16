@@ -38,11 +38,14 @@ By default, for the reference tracking task the environment returns the followin
 *   $x_{dot}$ - Cart Velocity.
 *   $w$ - Pole angle.
 *   $w_{dot}$ - Pole angle velocity.
+
+Extra variables will be returned if the `exclude_reference_from_observation` and `exclude_reference_error_from_observation`
+flag are set to `False`:
+
 *   $x_{ref}$ - The cart position reference.
-
-An extra variable will be returned if the `exclude_reference_error_from_observation` flag is set to `False`:
-
 *   $x_{ref\_error}$ - The reference tracking error.
+
+The reference can not be excluded when `reference_type` is set to `periodic`.
 
 ## Action space
 

@@ -163,6 +163,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         reference_constraint_position=4.0,
         max_cost=100.0,
         clip_action=True,
+        exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,
     ):
         """Initialise a new CartPoleCost environment instance.
@@ -188,6 +189,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 terminated. Defaults to ``100.0``.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
+            exclude_reference_from_observation (bool, optional): Whether the reference
+                should be excluded from the observation. Defaults to ``False``. Can only
+                be set to ``True`` if ``reference_type`` is ``constant``. Only
+                used when ``task_type`` is ``reference_tracking``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``. Only
                 used when ``task_type`` is ``reference_tracking``.
@@ -204,6 +209,14 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             raise ValueError(
                 "Invalid reference type. Options are 'constant' and 'periodic'."
             )
+        assert (
+            reference_type.lower() == "periodic"
+            or reference_type.lower() == "constant"
+            and not exclude_reference_from_observation
+        ), (
+            "The reference can only be excluded from the observation if the reference "
+            "type is constant."
+        )
 
         # NOTE: Compared to the original I store the initial values for the reset
         # function and replace the `self.total_mass` and `self.polemass_length` with
@@ -232,6 +245,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # Create observation space bounds.
         # Angle limit set to 2 * theta_threshold_radians so failing observation
         # is still within bounds.
+        self._exclude_reference_from_observation = exclude_reference_from_observation
         self._exclude_reference_error_from_observation = (
             exclude_reference_error_from_observation
         )
@@ -246,13 +260,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         )
         # NOTE: When reference tracking add two extra observation states.
         if task_type.lower() == "reference_tracking":
-            high = np.append(
-                high,
-                np.repeat(
-                    self.x_threshold * 2,
-                    1 if self._exclude_reference_error_from_observation else 2,
-                ),
-            ).astype(np.float32)
+            if not self._exclude_reference_from_observation:
+                high = np.append(high, self.x_threshold * 2).astype(np.float32)
+            if not self._exclude_reference_error_from_observation:
+                high = np.append(high, self.x_threshold * 2).astype(np.float32)
 
         self.action_space = spaces.Box(
             low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float32
