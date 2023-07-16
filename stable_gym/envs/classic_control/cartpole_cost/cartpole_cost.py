@@ -163,6 +163,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         reference_constraint_position=4.0,
         max_cost=100.0,
         clip_action=True,
+        exclude_reference_error_from_observation=True,
     ):
         """Initialise a new CartPoleCost environment instance.
 
@@ -187,6 +188,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 terminated. Defaults to ``100.0``.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
+            exclude_reference_error_from_observation (bool, optional): Whether the error
+                should be excluded from the observation. Defaults to ``True``. Only
+                used when ``task_type`` is ``reference_tracking``.
         """
         super().__init__()  # NOTE: Initialise disturber superclass.
 
@@ -228,6 +232,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # Create observation space bounds.
         # Angle limit set to 2 * theta_threshold_radians so failing observation
         # is still within bounds.
+        self._exclude_reference_error_from_observation = (
+            exclude_reference_error_from_observation
+        )
         high = np.array(
             [
                 self.x_threshold * 2,
@@ -239,9 +246,13 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         )
         # NOTE: When reference tracking add two extra observation states.
         if task_type.lower() == "reference_tracking":
-            high = np.append(high, np.repeat(self.x_threshold * 2, 2)).astype(
-                np.float32
-            )
+            high = np.append(
+                high,
+                np.repeat(
+                    self.x_threshold * 2,
+                    1 if self._exclude_reference_error_from_observation else 2,
+                ),
+            ).astype(np.float32)
 
         self.action_space = spaces.Box(
             low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float32
@@ -497,7 +508,12 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         obs = (
             np.append(
                 np.array(self.state, dtype=np.float32),
-                np.array([ref[0], x - ref[0]], dtype=np.float32),
+                np.array(
+                    [ref[0]]
+                    if self._exclude_reference_error_from_observation
+                    else [ref[0], x - ref[0]],
+                    dtype=np.float32,
+                ),
             )
             if self.task_type.lower() == "reference_tracking"
             else np.array(self.state, dtype=np.float32)
@@ -557,13 +573,25 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         )
         assert (
             self.observation_space.contains(
-                np.append(low, np.zeros(2, dtype=np.float32))
+                np.append(
+                    low,
+                    np.zeros(
+                        1 if self._exclude_reference_error_from_observation else 2,
+                        dtype=np.float32,
+                    ),
+                )
                 if self.task_type.lower() == "reference_tracking"
                 else low
             )
         ) and (
             self.observation_space.contains(
-                np.append(high, np.zeros(2, dtype=np.float32))
+                np.append(
+                    high,
+                    np.zeros(
+                        1 if self._exclude_reference_error_from_observation else 2,
+                        dtype=np.float32,
+                    ),
+                )
                 if self.task_type.lower() == "reference_tracking"
                 else high
             )
@@ -596,7 +624,12 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         obs = (
             np.append(
                 np.array(self.state, dtype=np.float32),
-                np.array([ref[0], x - ref[0]], dtype=np.float32),
+                np.array(
+                    [ref[0]]
+                    if self._exclude_reference_error_from_observation
+                    else [ref[0], x - ref[0]],
+                    dtype=np.float32,
+                ),
             )
             if self.task_type.lower() == "reference_tracking"
             else np.array(self.state, dtype=np.float32)
@@ -759,7 +792,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
 if __name__ == "__main__":
     print("Setting up 'CartPoleCost' environment.")
-    env = gym.make("CartPoleCost", render_mode="human")
+    env = gym.make("CartPoleCost", render_mode="human", task_type="reference_tracking")
 
     # Run episodes.
     episode = 0

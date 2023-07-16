@@ -23,19 +23,26 @@ This modification was first described in [Han et al. 2019](https://arxiv.org/abs
 
 ## stabilisation task (original)
 
-*   **x**: Cart Position.
-*   **x\_dot**: Cart Velocity.
-*   **w**: Pole angle.
-*   **w\_dot**: Pole angle velocity.
+For the stabilisation task the environment returns the following observation:
+
+*   $x$ - Cart Position.
+*   $x_{dot}$ - Cart Velocity.
+*   $w$ - Pole angle.
+*   $w_{dot}$ - Pole angle velocity.
 
 ## Reference tracking task
 
-*   **x**: Cart Position.
-*   **x\_dot**: Cart Velocity.
-*   **w**: Pole angle.
-*   **w\_dot**: Pole angle velocity.
-*   **x\_ref**: The cart position reference.
-*   **x\_ref\_error**: The reference tracking error.
+By default, for the reference tracking task the environment returns the following observation:
+
+*   $x$ - Cart Position.
+*   $x_{dot}$ - Cart Velocity.
+*   $w$ - Pole angle.
+*   $w_{dot}$ - Pole angle velocity.
+*   $x_{ref}$ - The cart position reference.
+
+An extra variable will be returned if the `exclude_reference_error_from_observation` flag is set to `False`:
+
+*   $x_{ref\_error}$ - The reference tracking error.
 
 ## Action space
 
