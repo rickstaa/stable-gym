@@ -127,8 +127,8 @@ class Oscillator(gym.Env, OscillatorDisturber):
         reference_frequency=200,
         reference_constraint_position=20.0,
         clip_action=True,
-        exclude_reference_from_observation=False,  # NOTE: False in Han et al. 2018. # noqa: E501
-        exclude_reference_error_from_observation=True,  # NOTE: False in Han et al. 2018. # noqa: E501
+        exclude_reference_from_observation=False,
+        exclude_reference_error_from_observation=False,
     ):
         """Initialise a new Oscillator environment instance.
 
@@ -152,7 +152,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 should be excluded from the observation. Defaults to ``False``. Can only
                 be set to ``True`` if ``reference_type`` is ``constant``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
-                should be excluded from the observation. Defaults to ``True``.
+                should be excluded from the observation. Defaults to ``False``.
         """
         super().__init__()  # Setup disturber.
         self._action_clip_warning = False

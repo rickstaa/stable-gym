@@ -78,7 +78,7 @@ class HopperCost(HopperEnv, utils.EzPickle):
         healthy_angle_range=(-0.2, 0.2),
         reset_noise_scale=5e-3,
         exclude_current_positions_from_observation=True,
-        exclude_reference_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
+        exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,
         exclude_x_velocity_from_observation=False,
         **kwargs,

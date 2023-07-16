@@ -75,7 +75,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         exclude_current_positions_from_observation=True,
         exclude_reference_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
         exclude_reference_error_from_observation=True,
-        exclude_x_velocity_from_observation=False,
+        exclude_x_velocity_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
         **kwargs,
     ):
         """Initialise a new HalfCheetahCost environment instance.

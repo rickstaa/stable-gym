@@ -77,7 +77,7 @@ class HumanoidCost(HumanoidEnv, utils.EzPickle):
         healthy_z_range=(1.0, 2.0),
         reset_noise_scale=1e-2,
         exclude_current_positions_from_observation=True,
-        exclude_reference_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
+        exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,
         exclude_x_velocity_from_observation=False,
         **kwargs,

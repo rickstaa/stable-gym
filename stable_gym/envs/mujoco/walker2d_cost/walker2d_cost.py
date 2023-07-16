@@ -77,7 +77,7 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         healthy_angle_range=(-1.0, 1.0),
         reset_noise_scale=5e-3,
         exclude_current_positions_from_observation=True,
-        exclude_reference_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
+        exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,
         exclude_x_velocity_from_observation=False,
         **kwargs,
@@ -116,7 +116,7 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
             exclude_reference_from_observation (bool, optional): Whether the reference
                 should be excluded from the observation. Defaults to ``False``. Can only
                 be set to ``True`` if ``randomise_reference_forward_velocity`` is set to
-                ``False``
+                ``False``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``.
             exclude_x_velocity_from_observation (bool, optional): Whether to omit the
@@ -301,13 +301,14 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
             )
 
         # Add reference, x velocity and reference error to observation.
-        obs = np.append(obs, self.reference_forward_velocity).astype(np.float32)
-        if not self._exclude_x_velocity_from_observation:
-            obs = np.append(obs, 0.0).astype(np.float32)
+        if not self._exclude_reference_from_observation:
+            obs = np.append(obs, self.reference_forward_velocity).astype(np.float32)
         if not self._exclude_reference_error_from_observation:
             obs = np.append(obs, 0.0 - self.reference_forward_velocity).astype(
                 np.float32
             )
+        if not self._exclude_x_velocity_from_observation:
+            obs = np.append(obs, 0.0).astype(np.float32)
 
         self.state = obs
 

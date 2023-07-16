@@ -74,7 +74,7 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
         exclude_current_positions_from_observation=True,
         exclude_reference_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
         exclude_reference_error_from_observation=True,
-        exclude_x_velocity_from_observation=False,
+        exclude_x_velocity_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
         **kwargs,
     ):
         """Initialise a new SwimmerCost environment instance.
@@ -224,13 +224,14 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
         cost, cost_info = self.cost(info["x_velocity"], -info["reward_ctrl"])
 
         # Add reference, x velocity and reference error to observation.
-        obs = np.append(obs, self.reference_forward_velocity).astype(np.float32)
-        if not self._exclude_x_velocity_from_observation:
-            obs = np.append(obs, info["x_velocity"]).astype(np.float32)
+        if not self._exclude_reference_from_observation:
+            obs = np.append(obs, self.reference_forward_velocity).astype(np.float32)
         if not self._exclude_reference_error_from_observation:
             obs = np.append(
                 obs, info["x_velocity"] - self.reference_forward_velocity
             ).astype(np.float32)
+        if not self._exclude_x_velocity_from_observation:
+            obs = np.append(obs, info["x_velocity"]).astype(np.float32)
 
         # Update info.
         del info["reward_fwd"], info["reward_ctrl"], info["forward_reward"]
