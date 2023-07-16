@@ -4,23 +4,28 @@ A more challenging (i.e. complicated) version of the [Oscillator environment](ht
 
 ## Observation space
 
-*   **m1:** Lacl mRNA transcripts concentration.
-*   **m2:** tetR mRNA transcripts concentration.
-*   **m3:** CI mRNA transcripts concentration.
-*   **m4:** Extra protein mRNA transcripts concentration.
-*   **p1:** lacI (repressor) protein concentration (Inhibits transcription of tetR gene).
-*   **p2:** tetR (repressor) protein concentration (Inhibits transcription of CI gene).
-*   **p3:** CI (repressor) protein concentration (Inhibits transcription of extra protein gene).
-*   **p4:** Extra protein concentration (Inhibits transcription of lacI gene).
-*   **ref:** The reference we want to follow.
-*   **ref\_error:** The error between the state of interest (i.e. p1) and the reference.
+By default, the environment returns the following observations:
+
+*   $m_1$ - The lacl mRNA transcripts concentration.
+*   $m_2$ - The tetR mRNA transcripts concentration.
+*   $m_3$ - The CI mRNA transcripts concentration.
+*   $m_4$ - Extra protein mRNA transcripts concentration.
+*   $p_1$ - The lacI (repressor) protein concentration (Inhibits transcription of tetR gene).
+*   $p_2$ - The tetR (repressor) protein concentration (Inhibits transcription of CI gene).
+*   $p_3$ - The CI (repressor) protein concentration (Inhibits transcription of extra protein gene).
+*   $p_4$ - Extra protein concentration (Inhibits transcription of lacI gene).
+*   $r$ - The reference we want to follow.
+
+An extra observation will be returned if the `exclude_reference_error_from_observation` flag is set to `False`:
+
+*   $r_{error}$ - The error between the state of interest (i.e. $p_1$) and the reference.
 
 ## Action space
 
-*   **u1:** Relative intensity of the light signal that induces the Lacl mRNA gene expression.
-*   **u2:** Relative intensity of the light signal that induces the tetR mRNA gene expression.
-*   **u3:** Relative intensity of the light signal that induces the expression of the CI mRNA gene.
-*   **u4:** Relative intensity of the light signal that induces the expression of the extra protein mRNA gene.
+*   $u_1$ - Relative intensity of the light signal that induces the Lacl mRNA gene expression.
+*   $u_2$ - Relative intensity of the light signal that induces the tetR mRNA gene expression.
+*   $u_3$ - Relative intensity of the light signal that induces the expression of the CI mRNA gene.
+*   $u_4$ - Relative intensity of the light signal that induces the expression of the extra protein mRNA gene.
 
 ## Episode Termination
 
