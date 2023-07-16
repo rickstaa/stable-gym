@@ -139,6 +139,8 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         render_mode=None,
         reference_type="periodic",
         reference_target_position=8.0,
+        reference_amplitude=7.0,
+        reference_frequency=200,
         reference_constraint_position=20.0,
         clip_action=True,
         exclude_reference_error_from_observation=True,  # NOTE: False in Han et al. 2018. # noqa: E501
@@ -152,6 +154,10 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
                 (``constant`` or ``periodic``), by default ``periodic``.
             reference_target_position: The reference target position, by default
                 ``8.0`` (i.e. the mean of the reference signal).
+            reference_amplitude: The reference amplitude, by default ``7.0``. Only used
+                if ``reference_type`` is ``periodic``.
+            reference_frequency: The reference frequency, by default ``200``. Only used
+                if ``reference_type`` is ``periodic``.
             reference_constraint_position: The reference constraint position, by
                 default ``20.0``. Not used in the environment but used for the info
                 dict.
@@ -246,6 +252,8 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
 
         # Reference target and constraint positions.
         self.reference_target_pos = reference_target_position  # Reference target.
+        self.reference_amplitude = reference_amplitude
+        self.reference_frequency = reference_frequency
         self.reference_constraint_pos = (
             reference_constraint_position  # Reference constraint.
         )
@@ -520,7 +528,9 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
             float: The current reference value.
         """
         if self.reference_type == "periodic":
-            return self.reference_target_pos + 7 * np.sin((2 * np.pi) * t / 200)
+            return self.reference_target_pos + self.reference_amplitude * np.sin(
+                (2 * np.pi) * t / self.reference_frequency
+            )
         else:
             return self.reference_target_pos
 
