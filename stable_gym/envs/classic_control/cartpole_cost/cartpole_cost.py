@@ -158,6 +158,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         task_type="stabilisation",
         reference_type="constant",
         reference_target_position=0.0,
+        reference_amplitude=7.0,
+        reference_frequency=200,
         reference_constraint_position=4.0,
         max_cost=100.0,
         clip_action=True,
@@ -175,6 +177,10 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             reference_target_position: The reference target position, by default
                 ``0.0`` (i.e. the mean of the reference signal). Only used
                 when ``task_type`` is ``reference_tracking``.
+            reference_amplitude: The reference amplitude, by default ``7.0``. Only used
+                if ``reference_type`` is ``periodic``.
+            reference_frequency: The reference frequency, by default ``200``. Only used
+                if ``reference_type`` is ``periodic``.
             reference_constraint_position: The reference constraint position, by
                 default ``4.0``. Not used in the environment but used for the info dict.
             max_cost (float, optional): The maximum cost allowed before the episode is
@@ -283,6 +289,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # Reference target and constraint positions.
         self.reference_target_pos = reference_target_position
+        self.reference_amplitude = reference_amplitude
+        self.reference_frequency = reference_frequency
         self.reference_constraint_pos = reference_constraint_position
 
         # Print vectorization debug info.
@@ -343,7 +351,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             float: The current reference value.
         """
         if self.reference_type == "periodic":
-            return self.reference_target_pos + 7 * np.sin((2 * np.pi) * t / 200)
+            return self.reference_target_pos + self.reference_amplitude * np.sin(
+                (2 * np.pi) * t / self.reference_frequency
+            )
         else:
             return self.reference_target_pos
 
