@@ -40,7 +40,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
     .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 
     Observation:
-        **Type**: Box(7)
+        **Type**: Box(7) or Box(8) depending on the ``exclude_reference_error_from_observation`` argument.
 
         +-----+-----------------------------------------------+-------------------+-------------------+
         | Num | Observation                                   | Min               | Max               |
@@ -62,8 +62,8 @@ class Oscillator(gym.Env, OscillatorDisturber):
         +-----+-----------------------------------------------+-------------------+-------------------+
         | 6   | The reference we want to follow               | 0                 | 100               |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 7   || The error between the current value of       | -100              | 100               |
-        |     || protein 1 and the reference                  |                   |                   |
+        | 7   || **Optional** - The error between the current | -100              | 100               |
+        |     || value of protein 1 and the reference         |                   |                   |
         +-----+-----------------------------------------------+-------------------+-------------------+
 
     Actions:
@@ -125,6 +125,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         reference_target_position=8.0,
         reference_constraint_position=20.0,
         clip_action=True,
+        exclude_reference_error_from_observation=True,  # NOTE: False in Han et al. 2018. # noqa: E501
     ):
         """Initialise a new Oscillator environment instance.
 
@@ -140,10 +141,15 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 dict.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
+            exclude_reference_error_from_observation (bool, optional): Whether the error
+                should be excluded from the observation. Defaults to ``True``.
         """
         super().__init__()  # Setup disturber.
         self._action_clip_warning = False
         self._clip_action = clip_action
+        self._exclude_reference_error_from_observation = (
+            exclude_reference_error_from_observation
+        )
 
         # Validate input arguments.
         if reference_type.lower() not in ["constant", "periodic"]:
@@ -191,13 +197,16 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.delta5 = 0.0  # p2 noise.
         self.delta6 = 0.0  # p3 noise.
 
-        obs_low = np.array([0, 0, 0, 0, 0, 0, 0, -100], dtype=np.float32)
-        obs_high = np.array([100, 100, 100, 100, 100, 100, 100, 100], dtype=np.float32)
+        obs_low = np.array([0, 0, 0, 0, 0, 0, 0], dtype=np.float32)
+        obs_high = np.array([100, 100, 100, 100, 100, 100, 100], dtype=np.float32)
+        if not self._exclude_reference_error_from_observation:
+            obs_low = np.append(obs_low, np.float32(-100.0))
+            obs_high = np.append(obs_high, np.float32(100.0))
         self.action_space = spaces.Box(
             low=np.array([-5.0, -5.0, -5.0], dtype=np.float32),
             high=np.array([5.0, 5.0, 5.0], dtype=np.float32),
             dtype=np.float32,
-        )  # QUESTION: Should we use a absolute action space (i.e. 0-10)?
+        )
         self.observation_space = spaces.Box(obs_low, obs_high, dtype=np.float32)
         self.cost_range = spaces.Box(
             np.array([0.0], dtype=np.float32),
@@ -334,9 +343,14 @@ class Oscillator(gym.Env, OscillatorDisturber):
         # Define stopping criteria.
         terminated = bool(cost > self.cost_range.high or cost < self.cost_range.low)
 
+        # Create observation.
+        obs = np.array([m1, m2, m3, p1, p2, p3, r1], dtype=np.float32)
+        if not self._exclude_reference_error_from_observation:
+            obs = np.append(obs, np.float32(p1 - r1))
+
         # Return state, cost, terminated, truncated and info_dict
         return (
-            np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1], dtype=np.float32),
+            obs,
             cost,
             terminated,
             False,
@@ -394,18 +408,30 @@ class Oscillator(gym.Env, OscillatorDisturber):
         )
         assert (
             self.observation_space.contains(
-                np.append(low, np.zeros(2, dtype=np.float32))
+                np.append(
+                    low,
+                    np.zeros(
+                        1 if self._exclude_reference_error_from_observation else 2,
+                        dtype=np.float32,
+                    ),
+                )
             )
         ) and (
             self.observation_space.contains(
-                np.append(high, np.zeros(2, dtype=np.float32))
+                np.append(
+                    high,
+                    np.zeros(
+                        1 if self._exclude_reference_error_from_observation else 2,
+                        dtype=np.float32,
+                    ),
+                )
             )
         ), (
             "Reset bounds must be within the observation space bounds "
             f"({self.observation_space})."
         )
 
-        # Set initial state, reset time and return initial observation.
+        # Set initial state, reset time and retrieve initial observation.
         self.state = (
             self.np_random.uniform(low=low, high=high, size=(6,))
             if random
@@ -414,7 +440,12 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.t = 0.0
         m1, m2, m3, p1, p2, p3 = self.state
         r1 = self.reference(self.t)
-        return np.array([m1, m2, m3, p1, p2, p3, r1, p1 - r1], dtype=np.float32), dict(
+        obs = np.array([m1, m2, m3, p1, p2, p3, r1], dtype=np.float32)
+        if not self._exclude_reference_error_from_observation:
+            obs = np.append(obs, np.float32(p1 - r1))
+
+        # Return initial observation and info_dict.
+        return obs, dict(
             reference=r1,
             state_of_interest=p1,
             reference_error=p1 - r1,
