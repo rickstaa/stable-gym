@@ -4,7 +4,7 @@ A gymnasium environment for a synthetic oscillatory network of transcriptional r
 
 ## Observation space
 
-By default, the environment returns the following observations:
+By default, the environment returns the following observation:
 
 *   $m_1$ - The lacl mRNA transcripts concentration.
 *   $m_2$ - The tetR mRNA transcripts concentration.
@@ -14,7 +14,7 @@ By default, the environment returns the following observations:
 *   $p_3$ - The CI (repressor) protein concentration (Inhibits transcription of lacI gene).
 *   $r$ - The reference we want to follow.
 
-An extra observation will be returned if the `exclude_reference_error_from_observation` flag is set to `False`:
+An extra variable will be returned if the `exclude_reference_error_from_observation` flag is set to `False`:
 
 *   $r_{error}$ - The error between the state of interest (i.e. $p_1$) and the reference.
 
