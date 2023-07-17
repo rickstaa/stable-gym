@@ -322,3 +322,26 @@ def convert_gym_box_to_gymnasium_box(gym_box_space):
         dtype=gym_box_space.dtype,
         seed=gym_box_space.np_random,
     )
+
+
+def change_precision(input_value, precision=8):
+    """Changes the precision of a value.
+
+    Args:
+        input_value (object): The input value.
+        precision (int, optional): The precision (i.e. number of decimals) to use.
+            Defaults to ``8``.
+
+    Returns:
+        object: The input value with the new precision.
+    """
+    if isinstance(input_value, dict):
+        for key, value in input_value.items():
+            input_value[key] = change_precision(value, precision)
+    elif isinstance(input_value, np.ndarray):
+        input_value = np.around(input_value, decimals=precision)
+    elif isinstance(input_value, float):
+        input_value = round(input_value, precision)
+    else:
+        pass
+    return input_value

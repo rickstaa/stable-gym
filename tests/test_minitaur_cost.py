@@ -5,16 +5,14 @@ environment when the same environment parameters are used.
 
 import gymnasium as gym
 import numpy as np
-
-# import pytest
 from gym.logger import ERROR as ERROR_ORG
 from gymnasium.logger import ERROR
+
+from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)
 
 import gym as gym_orig  # noqa: E402
-
-import stable_gym  # noqa: F401, E402
 
 gym_orig.logger.set_level(
     ERROR_ORG
@@ -32,6 +30,8 @@ gym.register(
     disable_env_checker=True,
     apply_api_compatibility=True,
 )
+
+PRECISION = 16
 
 
 class TestMinitaurCostEqual:
@@ -68,30 +68,28 @@ class TestMinitaurCostEqual:
                 observation, observation_cost
             ), f"{observation} != {observation_cost}"
 
-    # # Skip snapshot test during CI.
-    # # NOTE: Done because the snapshot can differ between python versions and systems.
-    # @pytest.mark.skipif(
-    #     os.getenv("CI", False).lower() == "true",
-    #     reason="no way to test snapshot in CI",
-    # )
-    # def test_snapshot(self, snapshot):
-    #     """Test if the 'MinitaurCost' environment is still equal to snapshot."""
-    #     self.env_cost = gym.make(
-    #         "MinitaurCost",
-    #         env_randomizer=None,
-    #         exclude_reference_error_from_observation=False,
-    #     )  # Check full observation.
-    #     observation, info = self.env_cost.reset(seed=42)
-    #     assert (observation == snapshot).all()
-    #     assert info == snapshot
-    #     self.env_cost.action_space.seed(42)
-    #     for _ in range(5):
-    #         action = self.env_cost.action_space.sample()
-    #         observation, reward, terminated, truncated, info = self.env_cost.step(
-    #             action
-    #         )
-    #         assert (observation == snapshot).all()
-    #         assert reward == snapshot
-    #         assert terminated == snapshot
-    #         assert truncated == snapshot
-    #         assert info == snapshot
+    # NOTE: We decrease the test precision to 16 decimals to ignore numerical
+    # differences due to hardware or library differences.
+    def test_snapshot(self, snapshot):
+        """Test if the 'MinitaurCost' environment is still equal to snapshot."""
+        self.env_cost = gym.make(
+            "MinitaurCost",
+            env_randomizer=None,
+            exclude_reference_error_from_observation=False,
+        )  # Check full observation.
+        observation, info = self.env_cost.reset(seed=42)
+        assert (change_precision(observation, precision=PRECISION) == snapshot).all()
+        assert change_precision(info, precision=PRECISION) == snapshot
+        self.env_cost.action_space.seed(42)
+        for _ in range(5):
+            action = self.env_cost.action_space.sample()
+            observation, reward, terminated, truncated, info = self.env_cost.step(
+                action
+            )
+            assert (
+                change_precision(observation, precision=PRECISION) == snapshot
+            ).all()
+            assert change_precision(reward, precision=PRECISION) == snapshot
+            assert terminated == snapshot
+            assert truncated == snapshot
+            assert change_precision(info, precision=PRECISION) == snapshot

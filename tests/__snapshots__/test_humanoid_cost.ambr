@@ -1,0 +1,6932 @@
+# serializer version: 1
+# name: TestHumanoidCostEqual.test_snapshot
+  1.4071719583982276
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1
+  0.9999089125565546
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.10
+  0.0028773024016133
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.100
+  -0.1570387311825669
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1000
+  1.569315017328424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1001
+  0.1436008556030246
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1002
+  -2.428277352098532
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1003
+  11.577429601821587
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1004
+  8.241748928685903
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1005
+  7.942279634236902
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1006
+  1.569315017328424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1007
+  0.1436008556030246
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1008
+  -2.2427157479196707
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1009
+  0.488859489326728
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.101
+  -0.0691525299334535
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1010
+  1.551114086078263
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1011
+  -0.7256561211951307
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1012
+  -1.1234629535245726
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1013
+  -0.7319017078853262
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1014
+  -2.1677420454996477
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1015
+  -0.4270936125564435
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1016
+  2.525711525178013
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1017
+  -0.7472495674444997
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1018
+  -1.265740108106025
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1019
+  -0.8639564981909033
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.102
+  -0.2786686760262894
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1020
+  2.2148308882757646
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1021
+  -1.7367109591349088
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1022
+  -1.1823557216565521
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1023
+  0.267223846797562
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1024
+  1.1156424970851806
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1025
+  -1.0577083534427631
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1026
+  2.216771820033548
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1027
+  -0.5453590740270342
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1028
+  -0.0082508485225881
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1029
+  0.2971354854783286
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.103
+  -1.54724398247368
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1030
+  0.9231019458390494
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1031
+  -0.8623889254386694
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1032
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1033
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1034
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1035
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1036
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1037
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1038
+  26.210492849349976
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1039
+  -34.8946213722229
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.104
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1040
+  10.533151775598526
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1041
+  20.647019147872925
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1042
+  -11.637922376394272
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1043
+  112.96752691268921
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1044
+  62.899380922317505
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1045
+  22.270679473876953
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1046
+  -24.428904056549072
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1047
+  -7.986959069967271
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1048
+  -72.99140095710754
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1049
+  -6.914210319519043
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.105
+  1.0480262389261943
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1050
+  3.660979121923446
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1051
+  4.895243048667908
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1052
+  9.350194782018661
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1053
+  -3.4834928810596466
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1054
+  -2.5908058509230614
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1055
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1056
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1057
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1058
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1059
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.106
+  1.0296415629514635
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1060
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1061
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1062
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1063
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1064
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1065
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1066
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1067
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1068
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1069
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.107
+  0.0245790481313907
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1070
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1071
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1072
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1073
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1074
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1075
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1076
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1077
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1078
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1079
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.108
+  -0.0046498940635057
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1080
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1081
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1082
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1083
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1084
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1085
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1086
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1087
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1088
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1089
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.109
+  -0.0337102887119311
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1090
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1091
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1092
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1093
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1094
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1095
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1096
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1097
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1098
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1099
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.11
+  0.0064552322654166
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.110
+  -0.141324165848724
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1100
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1101
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1102
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1103
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1104
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1105
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1106
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1107
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1108
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1109
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.111
+  -0.044272163911675
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1110
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1111
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1112
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1113
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1114
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1115
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1116
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1117
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1118
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1119
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.112
+  -0.1856028789489722
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1120
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1121
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1122
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1123
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1124
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1125
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1126
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1127
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1128
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1129
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.113
+  -1.3455632643850621
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1130
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1131
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1132
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1133
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1134
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1135
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1136
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1137
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1138
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1139
+  1.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.114
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1140
+  -0.9942637360145906
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1141
+  0.0057362639854094
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1142
+  0.9885603767536916
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1143
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1144
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1145
+  dict({
+    'cost_ctrl': 0.0001047926643911,
+    'cost_velocity': 0.9885603767536916,
+    'distance_from_origin': 0.0166509579422059,
+    'penalty_health': 0.0,
+    'x_position': 0.0139890622884513,
+    'x_velocity': 0.0057362639854094,
+    'y_position': -0.009031087237035,
+    'y_velocity': -0.0112393263836581,
+  })
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1146
+  1.3927617098360636
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1147
+  0.998825109004133
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1148
+  -0.0213549577104885
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1149
+  0.0343812625265599
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.115
+  0.2719989793487872
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1150
+  0.0266513825372151
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1151
+  0.0853198276739914
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1152
+  -0.2021169652653168
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1153
+  0.0394971892468293
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1154
+  -0.0440030649670914
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1155
+  -0.1719182457699714
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1156
+  0.2256573776494045
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1157
+  -0.0252283641810055
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1158
+  0.0119470522407721
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1159
+  -0.0993599642886954
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.116
+  0.2349757843930648
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1160
+  -0.008969234897158
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1161
+  -0.4205339944118328
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1162
+  -0.0163056901496505
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1163
+  0.0136793905991606
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1164
+  0.0561229475131553
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1165
+  0.0538124978487905
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1166
+  -0.1325299197135145
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1167
+  -0.0723414931202397
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1168
+  -0.2946111021017728
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1169
+  -0.0193801289249398
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.117
+  0.0518787727102471
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1170
+  -0.5934918056228313
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1171
+  -0.4228239734079695
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1172
+  -0.0300516581430285
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1173
+  2.730511426896296
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1174
+  -0.5631881802908859
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1175
+  -2.4527409151775914
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1176
+  0.3090955758032954
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1177
+  -0.9726057949754386
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1178
+  -3.4828069343263577
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1179
+  3.817488276500786
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.118
+  0.0115289100990638
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1180
+  -2.810363201030559
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1181
+  0.7000007561011498
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1182
+  2.8085952646479284
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1183
+  -0.736985441009077
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1184
+  -7.670813697336278
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1185
+  -0.7306609520136937
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1186
+  -1.9994305752950563
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1187
+  1.5523881884637116
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1188
+  -0.1073841074780407
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1189
+  -4.922715267368679
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.119
+  -0.0230544548370342
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1190
+  -4.499980400316845
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1191
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1192
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1193
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1194
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1195
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1196
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1197
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1198
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1199
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.12
+  -0.0011317160234534
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.120
+  0.076386359567238
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1200
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1201
+  2.266955311998202
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1202
+  2.252188686246191
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1203
+  0.0473170494662901
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1204
+  0.002149672822502
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1205
+  0.0803696103645634
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1206
+  -0.0429338992061722
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1207
+  -0.1912926804331602
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1208
+  0.0777354296376056
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1209
+  4.319088986876281
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.121
+  -0.1254706176207639
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1210
+  8.907462370478262
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1211
+  0.0932481205321032
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1212
+  0.0902713195836912
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1213
+  0.0127696845663071
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1214
+  0.0006056241187679
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1215
+  0.0155436367231383
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1216
+  0.0014834746289741
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1217
+  -0.0810584989211039
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1218
+  -0.0066182471710312
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1219
+  0.4345803214147718
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.122
+  0.4370605003298766
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1220
+  2.261946710584651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1221
+  0.0563005104003663
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1222
+  0.0367891808881649
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1223
+  0.0598947343640954
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1224
+  0.0030137167044522
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1225
+  0.0057624913492914
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1226
+  0.0006590816776119
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1227
+  -0.2219117647791512
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1228
+  -0.0297908777579933
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1229
+  0.1713157033447554
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.123
+  -0.8633091598485045
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1230
+  6.616194128460103
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1231
+  0.2744931411090406
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1232
+  0.2306995641176006
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1233
+  0.053596636579551
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1234
+  -0.0037068282152643
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1235
+  -0.0126383709020518
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1236
+  -0.0821356893477666
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1237
+  -0.0392219486606044
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1238
+  -0.4601673177029321
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1239
+  -0.859431569288833
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.124
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1240
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1241
+  0.9287912196538473
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1242
+  0.9088870974910506
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1243
+  0.0347930180437246
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1244
+  -0.0119366453042257
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1245
+  -0.0723873412560768
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1246
+  -0.1500949318265161
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1247
+  -0.1230813433991018
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1248
+  -0.2663779900544612
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1249
+  -1.549071277453083
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.125
+  0.9288622020855486
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1250
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1251
+  1.0445005807150542
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1252
+  1.034974654548743
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1253
+  0.0291533889543401
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1254
+  -0.0116528291348479
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1255
+  -0.0894820437465403
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1256
+  -0.1332430317199527
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1257
+  -0.1175973630524072
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1258
+  -0.1751080833575676
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1259
+  -1.3446545035588242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.126
+  0.9132464112271058
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1260
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1261
+  0.268730205910064
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1262
+  0.2266864839718812
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1263
+  0.0534170685811872
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1264
+  -0.0011121898787197
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1265
+  0.0123550051365914
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1266
+  0.0803798916555051
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1267
+  0.0131384331345021
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1268
+  0.4551805664183425
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1269
+  -0.8490581553463596
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.127
+  0.0236157936442162
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1270
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1271
+  0.8902223954826176
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1272
+  0.8748445328414017
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1273
+  0.0230220220411915
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1274
+  0.0013983583738266
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1275
+  -0.0216181615775513
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1276
+  0.1186110851191275
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1277
+  -0.0258068102553762
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1278
+  0.2189164616731762
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1279
+  -1.5234406970550587
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.128
+  0.0065686648125691
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1280
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1281
+  0.9922212855197778
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1282
+  0.9919891017276188
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1283
+  0.0174989711071192
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1284
+  0.0067604497484373
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1285
+  -0.0807560283227678
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1286
+  0.0821546941893841
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1287
+  -0.1083665577719358
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1288
+  0.1102434282494254
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1289
+  -1.3168978019794535
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.129
+  -0.0462991872624819
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1290
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1291
+  0.4236735764971788
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1292
+  0.3372102138812142
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1293
+  0.1150382848725995
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1294
+  0.0337124412181869
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1295
+  -0.0477370776141356
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1296
+  0.169038793880476
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1297
+  0.1203682288572229
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1298
+  -0.3977726377461076
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1299
+  0.7261463447553619
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.13
+  -0.0054552255643045
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.130
+  0.1253038387741533
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1300
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1301
+  0.3036217703653768
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1302
+  0.3366360616662986
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1303
+  0.15739154832666
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1304
+  0.0670970221624532
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1305
+  -0.1508880495343252
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1306
+  0.1108445339516886
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1307
+  0.3350597271419674
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1308
+  -0.2628128056746218
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1309
+  0.5402303871166735
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.131
+  -0.081322738440603
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1310
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1311
+  0.4241052038030549
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1312
+  0.3198070092363296
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1313
+  0.127994036094808
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1314
+  -0.0302119819757904
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1315
+  -0.0366075851252385
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1316
+  -0.178644532394991
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1317
+  0.0972498596129483
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1318
+  0.4289896805297103
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1319
+  0.7093483696090467
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.132
+  0.2227979697577617
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1320
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1321
+  0.3247197199665501
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1322
+  0.3437701895480093
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1323
+  0.1817607787926032
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1324
+  -0.0813066050221236
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1325
+  -0.1554133442960169
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1326
+  -0.1313643217568666
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1327
+  0.3425207185262002
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1328
+  0.3075823929564551
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1329
+  0.5418438915647268
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.133
+  -1.5556926136157485
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1330
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1331
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1332
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1333
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1334
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1335
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1336
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1337
+  -0.2347752574059959
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1338
+  0.0679699189428442
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1339
+  2.754138034858975
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.134
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1340
+  -0.3049321499688436
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1341
+  -0.0663753943564233
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1342
+  -0.5931630692128321
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1343
+  0.0707063173181328
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1344
+  -2.3800704493664235
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1345
+  2.276294904623879
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1346
+  0.323926388913481
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1347
+  -0.0093674672849076
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1348
+  -0.4831960389744078
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1349
+  0.3736811972103524
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.135
+  1.047434105080511
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1350
+  -2.3358831150304704
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1351
+  2.3184710192813975
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1352
+  0.3181148199181672
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1353
+  0.0304730317274608
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1354
+  -0.4831885947521896
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1355
+  0.0285408917927712
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1356
+  1.267220657445729
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1357
+  -1.3215073662683776
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1358
+  0.7218998536849723
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1359
+  0.0559932602448748
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.136
+  1.038612812704457
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1360
+  -0.4962135232572564
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1361
+  0.1155246365998204
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1362
+  4.078398137371918
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1363
+  -1.365396344657475
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1364
+  1.8313152951693952
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1365
+  0.0206501395115549
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1366
+  -0.5612566282352851
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1367
+  0.1155246365998204
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1368
+  4.078398137371918
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1369
+  -1.365396344657475
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.137
+  0.0164526071413026
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1370
+  1.8313152951693952
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1371
+  0.0206501395115549
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1372
+  -0.5612566282352851
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1373
+  0.2470672935870289
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1374
+  -3.120805232248474
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1375
+  -0.5510376174954634
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1376
+  0.0278656453189152
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1377
+  -0.0343116761534627
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1378
+  -0.4526605350105401
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1379
+  -1.5926281631718437
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.138
+  0.004411591979786
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1380
+  4.3240855625603345
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1381
+  -0.7142379346663275
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1382
+  2.9109178639027524
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1383
+  0.6875825836396436
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1384
+  -0.0207627136481809
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1385
+  -1.5926281631718437
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1386
+  4.3240855625603345
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1387
+  -0.7142379346663275
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1388
+  2.9109178639027524
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1389
+  0.6875825836396436
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.139
+  -0.0434462981406964
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1390
+  -0.0207627136481809
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1391
+  -0.9876491450350036
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1392
+  1.0573801446198452
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1393
+  1.0218978587840895
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1394
+  -0.5398642136306171
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1395
+  -0.4692863482163662
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1396
+  -0.7211880421649487
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1397
+  -0.8677000037464373
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1398
+  0.0245045223861302
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1399
+  2.176984743655586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.14
+  0.0010916957403167
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.140
+  0.1048727419540801
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1400
+  -0.5831974988967581
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1401
+  -0.6285968519680841
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1402
+  -0.8591431582874591
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1403
+  -0.2411371154765117
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1404
+  -3.3629897037687355
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1405
+  -0.7788180501934705
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1406
+  0.7864286914929887
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1407
+  -0.1633074443647136
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1408
+  -0.500994681293804
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1409
+  -0.3224507088500946
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.141
+  -0.0568301688703043
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1410
+  -0.1909881428525413
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1411
+  2.414437657395224
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1412
+  0.8718219627399935
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1413
+  -0.716851961337775
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1414
+  0.0510399401181139
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1415
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1416
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1417
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1418
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1419
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.142
+  0.1371793660265732
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1420
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1421
+  -24.842292070388794
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1422
+  -2.435535192489624
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1423
+  -29.606279730796814
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1424
+  -1.9436059519648552
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1425
+  -21.847252547740936
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1426
+  40.75536131858826
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1427
+  -10.055693238973618
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1428
+  26.61425471305847
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1429
+  16.021208465099335
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.143
+  -1.350971636191814
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1430
+  -45.03200501203537
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1431
+  53.1615674495697
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1432
+  6.095287203788757
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1433
+  -2.2504324093461037
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1434
+  -4.233438149094582
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1435
+  3.6499101668596263
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1436
+  -7.204950600862503
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1437
+  -6.001836061477661
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1438
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1439
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.144
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1440
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1441
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1442
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1443
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1444
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1445
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1446
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1447
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1448
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1449
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.145
+  0.4243593170654247
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1450
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1451
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1452
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1453
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1454
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1455
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1456
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1457
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1458
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1459
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.146
+  0.3368540814337826
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1460
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1461
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1462
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1463
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1464
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1465
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1466
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1467
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1468
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1469
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.147
+  0.1167213447837302
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1470
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1471
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1472
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1473
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1474
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1475
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1476
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1477
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1478
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1479
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.148
+  0.0345504227123957
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1480
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1481
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1482
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1483
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1484
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1485
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1486
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1487
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1488
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1489
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.149
+  -0.0489078505807185
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1490
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1491
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1492
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1493
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1494
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1495
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1496
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1497
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1498
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1499
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.15
+  -0.0087236548779165
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.150
+  0.1700284142719643
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1500
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1501
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1502
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1503
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1504
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1505
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1506
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1507
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1508
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1509
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.151
+  0.1232237604516592
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1510
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1511
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1512
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1513
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1514
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1515
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1516
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1517
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1518
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1519
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.152
+  -0.4006500960897488
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1520
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1521
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1522
+  1.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1523
+  -0.9943269411839796
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1524
+  0.0056730588160205
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1525
+  0.9886860659642892
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1526
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1527
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1528
+  dict({
+    'cost_ctrl': 6.66968042236e-05,
+    'cost_velocity': 0.9886860659642892,
+    'distance_from_origin': 0.0168113366950051,
+    'penalty_health': 0.0,
+    'x_position': 0.0140741581706917,
+    'x_velocity': 0.0056730588160205,
+    'y_position': -0.0091945153901214,
+    'y_velocity': -0.0108952102057559,
+  })
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1529
+  1.382340396379701
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.153
+  0.7252358947390025
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1530
+  0.9983435427690724
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1531
+  -0.0245514531560207
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1532
+  0.038807789323198
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1533
+  0.0346605286611606
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1534
+  0.0806367948472976
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1535
+  -0.2607764981210019
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1536
+  0.0393351651637793
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1537
+  -0.0250654430896792
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1538
+  -0.1271312310470111
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1539
+  0.2857740836702518
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.154
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1540
+  -0.0702225293129407
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1541
+  -0.0061542905681945
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1542
+  -0.1488194064433212
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1543
+  0.0153559260344054
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1544
+  -0.5055191157786836
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1545
+  -0.0163642949769901
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1546
+  0.0223045264795963
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1547
+  0.0631857339363645
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1548
+  0.0785334430141198
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1549
+  -0.1818207064989084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.155
+  0.3138530552380406
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1550
+  -0.1195253938935984
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1551
+  -0.338692129878488
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1552
+  -0.0748634149934479
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1553
+  -0.7938560049122342
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1554
+  -0.503850528507348
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1555
+  0.938533370825617
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1556
+  -0.1839451993943644
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1557
+  0.4695029674987243
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1558
+  -4.725812691822876
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1559
+  -0.1910506833853548
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.156
+  0.3481280401225872
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1560
+  2.5357622589044957
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1561
+  5.087575763342547
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1562
+  4.184905451684554
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1563
+  -2.9749935582268914
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1564
+  -2.461480403938494
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1565
+  -5.729400795874718
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1566
+  2.9737809833062636
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1567
+  -4.427468196486171
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1568
+  0.6172829134153958
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1569
+  2.3883610984256043
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.157
+  0.1719226747074452
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1570
+  -0.1823318546023936
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1571
+  2.9225456033877286
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1572
+  -2.009876559390304
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1573
+  -2.199584648628962
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1574
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1575
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1576
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1577
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1578
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1579
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.158
+  0.0748638056694749
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1580
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1581
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1582
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1583
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1584
+  2.2434261276713836
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1585
+  2.230912394352913
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1586
+  0.0495512295567098
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1587
+  0.0025832717077066
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1588
+  0.0989401489562116
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1589
+  -0.0419049512398243
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.159
+  -0.1581366789455627
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1590
+  -0.2331085125518002
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1591
+  0.0741912996716516
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1592
+  4.29508094527034
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1593
+  8.907462370478262
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1594
+  0.0916203587897008
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1595
+  0.0892316557471228
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1596
+  0.0133786112549157
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1597
+  0.000482829956889
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1598
+  0.0168471924270122
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1599
+  0.0023182145004542
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.16
+  0.0065526234398516
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.160
+  0.1196473203761379
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1600
+  -0.0887568475760891
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1601
+  -0.0109140521410623
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1602
+  0.4302898270715267
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1603
+  2.261946710584651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1604
+  0.0557619441855816
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1605
+  0.0344065217686175
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1606
+  0.058027774203947
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1607
+  0.0032388566166401
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1608
+  0.0046190553764353
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1609
+  0.0010024554167972
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.161
+  0.3479449608817906
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1610
+  -0.1902936253514225
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1611
+  -0.0395707942687684
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1612
+  0.1608232071927698
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1613
+  6.616194128460103
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1614
+  0.2730273780244878
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1615
+  0.2295242211750022
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1616
+  0.0531158129762311
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1617
+  -0.0012160818584539
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1618
+  -0.0091221841376322
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1619
+  -0.0810193456015646
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.162
+  -0.2803163444124902
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1620
+  -0.014257476122364
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1621
+  -0.4580654794358032
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1622
+  -0.8570124670867691
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1623
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1624
+  0.9200254536059932
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1625
+  0.90418937653483
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1626
+  0.0358397683191224
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1627
+  -0.0135937432214052
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1628
+  -0.0857945305227036
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1629
+  -0.1449359252294228
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.163
+  0.5439022234306239
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1630
+  -0.144549283120059
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1631
+  -0.2584606076911926
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1632
+  -1.54302408128448
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1633
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1634
+  1.0329724510541607
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1635
+  1.0299866175014587
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1636
+  0.0330647118805501
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1637
+  -0.0144674929347557
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1638
+  -0.1149805852023244
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1639
+  -0.127456119346687
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.164
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1640
+  -0.1518674675103005
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1641
+  -0.1683452735069284
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1642
+  -1.3379262150784517
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1643
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1644
+  0.2698113051432018
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1645
+  0.2276786914796421
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1646
+  0.0558780141887232
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1647
+  -0.0055833540513183
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1648
+  0.0218121535790177
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1649
+  0.0826953088671517
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.165
+  0.4268197623465412
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1650
+  0.0572944809666068
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1651
+  0.4618584333711745
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1652
+  -0.8499639207102063
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1653
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1654
+  0.8775366741239709
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1655
+  0.8630651283020634
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1656
+  0.0233086106398043
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1657
+  -0.0003972708442063
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1658
+  -0.0134141165303418
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1659
+  0.1150584449108062
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.166
+  0.3233297515008804
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1660
+  -0.0088449020125401
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1661
+  0.2156160093857074
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1662
+  -1.513135525659761
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1663
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1664
+  0.9711979687668618
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1665
+  0.9734371148766892
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1666
+  0.0166046334182077
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1667
+  0.0062142302729826
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1668
+  -0.0845669346404198
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1669
+  0.0706926234013921
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.167
+  0.1288524358779288
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1670
+  -0.1146154373531754
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1671
+  0.0958112763959781
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1672
+  -1.3038567276820654
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1673
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1674
+  0.419959111082038
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1675
+  0.3349422884950523
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1676
+  0.1138769455406022
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1677
+  0.0334724823932414
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1678
+  -0.0473236276097352
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1679
+  0.1674400933272921
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.168
+  -0.0336070791310475
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1680
+  0.1200629743883538
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1681
+  -0.3953929625022007
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1682
+  0.723405991050227
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1683
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1684
+  0.2985037404109201
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1685
+  0.332954135159754
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1686
+  0.1528206501302545
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1687
+  0.0645190504194246
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1688
+  -0.1490362698919769
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1689
+  0.1068163942610591
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.169
+  -0.043177813346225
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1690
+  0.3326506831194038
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1691
+  -0.254982195558301
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1692
+  0.5378587771012174
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1693
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1694
+  0.4244307197208372
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1695
+  0.319819466324463
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1696
+  0.1276812631132495
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1697
+  -0.0287187110189178
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1698
+  -0.03392620686411
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1699
+  -0.1790883078381127
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.17
+  0.0026332879824413
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.170
+  -0.1785709520261663
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1700
+  0.0906293300175979
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1701
+  0.4289098330513772
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1702
+  0.7102875473704108
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1703
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1704
+  0.3301232077189432
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1705
+  0.3503253046581988
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1706
+  0.184519681617555
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1707
+  -0.0825376299431225
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1708
+  -0.1583233275237642
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1709
+  -0.1335814026729568
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.171
+  0.1121896522260502
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1710
+  0.3456560831057888
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1711
+  0.3093445132283677
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1712
+  0.5471726424452533
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1713
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1714
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1715
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1716
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1717
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1718
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1719
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.172
+  0.4287922915777365
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1720
+  -0.5817545221804197
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1721
+  0.8927414485808882
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1722
+  -0.1880856301499437
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1723
+  -0.7395221958211952
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1724
+  -0.3401547122087365
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1725
+  -0.8134240642560397
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1726
+  0.1658472703018172
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1727
+  -3.753795996220707
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1728
+  0.4651997507717219
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1729
+  0.4385326526115982
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.173
+  0.711413176830988
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1730
+  -0.1167029040980955
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1731
+  -0.5722411421130736
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1732
+  -0.0195130651953972
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1733
+  -3.783573805618991
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1734
+  0.4299168911252958
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1735
+  0.442492205392369
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1736
+  -0.1410847105695657
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1737
+  -0.572465252234775
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1738
+  1.3708930511788262
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1739
+  0.7797316416379347
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.174
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1740
+  5.909625681685708
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1741
+  -0.0572147984047747
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1742
+  -0.2321360641764278
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1743
+  -0.3698466725245662
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1744
+  1.28356289196209
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1745
+  3.7547306294836287
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1746
+  5.90223836587053
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1747
+  1.1106919826863553
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1748
+  -0.1980498375354678
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1749
+  -0.4493065739752953
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.175
+  0.3173239701921517
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1750
+  1.28356289196209
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1751
+  3.7547306294836287
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1752
+  5.90223836587053
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1753
+  1.1106919826863553
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1754
+  -0.1980498375354678
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1755
+  -0.4493065739752953
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1756
+  0.4306801159753056
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1757
+  -0.7547767558970127
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1758
+  6.464600775728123
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1759
+  1.0624849311382347
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.176
+  0.3340200391445922
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1760
+  -0.0383132764430312
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1761
+  -0.6702981006944465
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1762
+  -0.903114965743803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1763
+  3.462259187805668
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1764
+  6.363458452848118
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1765
+  2.6915251987362128
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1766
+  0.4850632753876681
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1767
+  -0.3312527501407742
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1768
+  -0.903114965743803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1769
+  3.462259187805668
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.177
+  0.1808759340356228
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1770
+  6.363458452848118
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1771
+  2.6915251987362128
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1772
+  0.4850632753876681
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1773
+  -0.3312527501407742
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1774
+  0.146628335212894
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1775
+  -0.3840334995720956
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1776
+  1.7961890476142117
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1777
+  -0.3985045982936602
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1778
+  0.0541441088088293
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1779
+  -0.6848937314795562
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.178
+  -0.0810276532032048
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1780
+  0.1292584805963651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1781
+  -0.2629838017071219
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1782
+  1.6589878145099999
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1783
+  -0.3930648636619244
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1784
+  0.0722725526069407
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1785
+  -0.6695880727962793
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1786
+  2.0389708636833426
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1787
+  -1.4665708379385154
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1788
+  -0.5795935670407224
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1789
+  0.3684251458333418
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.179
+  -0.1515825399542305
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1790
+  0.9552445730259314
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1791
+  -1.2032647564790129
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1792
+  1.961787645952644
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1793
+  0.056868539180789
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1794
+  1.0033217293972025
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1795
+  0.4186700661331353
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1796
+  0.6679296987781139
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1797
+  -0.9242954024786588
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1798
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1799
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.18
+  0.0051617548017075
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.180
+  -0.1296310633302722
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1800
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1801
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1802
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1803
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1804
+  22.953949868679047
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1805
+  -39.411020278930664
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1806
+  13.188068568706512
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1807
+  16.413231194019318
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1808
+  22.45832234621048
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1809
+  -9.860213845968246
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.181
+  0.3396939162359354
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1810
+  10.998591780662537
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1811
+  -28.816241025924683
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1812
+  -30.837595462799072
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1813
+  40.41671007871628
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1814
+  -4.624607041478157
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1815
+  1.304722111672163
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1816
+  5.299977213144302
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1817
+  2.6943664997816086
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1818
+  1.0715880431234837
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1819
+  1.1841432191431522
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.182
+  0.3090464238229858
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1820
+  -3.920998051762581
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1821
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1822
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1823
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1824
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1825
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1826
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1827
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1828
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1829
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.183
+  0.5324807623708476
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1830
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1831
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1832
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1833
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1834
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1835
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1836
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1837
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1838
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1839
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.184
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1840
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1841
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1842
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1843
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1844
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1845
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1846
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1847
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1848
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1849
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.185
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1850
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1851
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1852
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1853
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1854
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1855
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1856
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1857
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1858
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1859
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.186
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1860
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1861
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1862
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1863
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1864
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1865
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1866
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1867
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1868
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1869
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.187
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1870
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1871
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1872
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1873
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1874
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1875
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1876
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1877
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1878
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1879
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.188
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1880
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1881
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1882
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1883
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1884
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1885
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1886
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1887
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1888
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1889
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.189
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1890
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1891
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1892
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1893
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1894
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1895
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1896
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1897
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1898
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1899
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.19
+  -0.0029094806374026
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.190
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1900
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1901
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1902
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1903
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1904
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1905
+  1.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1906
+  -0.9944145300353716
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1907
+  0.0055854699646285
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1908
+  0.9888602575454688
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1909
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.191
+  -0.0089797526344703
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1910
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1911
+  dict({
+    'cost_ctrl': 5.91665599336e-05,
+    'cost_velocity': 0.9888602575454688,
+    'distance_from_origin': 0.0169718226940542,
+    'penalty_health': 0.0,
+    'x_position': 0.0141579402201611,
+    'x_velocity': 0.0055854699646285,
+    'y_position': -0.0093592464590243,
+    'y_velocity': -0.0109820712601959,
+  })
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1912
+  1.369513259146829
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1913
+  0.9980550194201018
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1914
+  -0.0258448426007444
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1915
+  0.046577917461487
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1916
+  0.0323839455013492
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1917
+  0.0562896641628092
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1918
+  -0.3157597355792994
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1919
+  0.0386538925035623
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.192
+  -0.0069469027811972
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1920
+  0.0136771471587728
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1921
+  -0.0394291325222924
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1922
+  0.2565172352425502
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1923
+  -0.2780310516428423
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1924
+  -0.0385257140471379
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1925
+  -0.2293842591933624
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1926
+  0.0526497493115111
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1927
+  -0.5472923351398836
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1928
+  -0.0073076199233384
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1929
+  0.0631355482693621
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.193
+  0.0039445729613626
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1930
+  0.0574657999007434
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1931
+  0.1228380718531176
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1932
+  -0.213243800883375
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1933
+  -0.1666209735559452
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1934
+  -0.3264178832631248
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1935
+  -0.081610434594878
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1936
+  -0.967021606904327
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1937
+  0.1694115152774963
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1938
+  1.2985802398735613
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1939
+  -0.5551457842736237
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.194
+  0.0087553030153801
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1940
+  -3.0073229966360167
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1941
+  -3.2942456342626594
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1942
+  0.4413808458476488
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1943
+  1.866983110735672
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1944
+  5.656271960707126
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1945
+  -6.227276950926602
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1946
+  -22.26977658894805
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1947
+  -1.5742180174299245
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1948
+  -5.063288755186549
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1949
+  2.5677039170423774
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.195
+  -0.0101566519144699
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1950
+  -1.1988453680443514
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1951
+  0.5871532357269548
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1952
+  3.443671497598856
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1953
+  -0.7238643349799281
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1954
+  3.4943641535807153
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1955
+  -2.1814753205325728
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1956
+  -3.9355468901851705
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1957
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1958
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1959
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.196
+  -0.0005405506106178
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1960
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1961
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1962
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1963
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1964
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1965
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1966
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1967
+  2.2180588391992933
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1968
+  2.208240930476782
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1969
+  0.0521303232731487
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.197
+  -0.0090591760796369
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1970
+  0.0024741340535157
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1971
+  0.1148481891662915
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1972
+  -0.0388287168087135
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1973
+  -0.2718894112412414
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1974
+  0.0675847516320686
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1975
+  4.269263121907393
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1976
+  8.907462370478262
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1977
+  0.090072788063293
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1978
+  0.08856876703115
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1979
+  0.0144342640245245
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.198
+  0.0024802773945742
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1980
+  9.81509613385e-05
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1981
+  0.0189670885884115
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1982
+  0.0029900401043975
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1983
+  -0.1008898863455542
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1984
+  -0.0144820674559664
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1985
+  0.4259714483213526
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1986
+  2.261946710584651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1987
+  0.0557028065827989
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1988
+  0.0332804996805631
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1989
+  0.0576872520869022
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.199
+  0.0086892026628294
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1990
+  0.0022690924940065
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1991
+  0.0041482400069598
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1992
+  0.0013152439981162
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1993
+  -0.1816363797993081
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1994
+  -0.0503829139172013
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1995
+  0.1518693503944333
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1996
+  6.616194128460103
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1997
+  0.2739184793842116
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1998
+  0.2304342975759716
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.1999
+  0.0524779276169588
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2
+  -0.0080838040458529
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.20
+  0.0094139604878981
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.200
+  0.0063253816349507
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2000
+  0.0037246224897656
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2001
+  0.0044813195079322
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2002
+  -0.0795875844485819
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2003
+  0.0377746182693801
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2004
+  -0.4559291675048835
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2005
+  -0.8590478089871668
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2006
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2007
+  0.9028149287218487
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2008
+  0.8901784670747512
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2009
+  0.0356745075550271
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.201
+  -0.0100716090250917
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2010
+  -0.0128701509304181
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2011
+  -0.0867906018492637
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2012
+  -0.1388777812218074
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2013
+  -0.1408983061259106
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2014
+  -0.2493083445899152
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2015
+  -1.5308058712148462
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2016
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2017
+  1.002820335599577
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2018
+  1.0096083080090437
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2019
+  0.0414779203241158
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.202
+  -0.0007501997151722
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2020
+  -0.0184412011072045
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2021
+  -0.1475778965653633
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2022
+  -0.122895690502911
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2023
+  -0.1978213369784262
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2024
+  -0.1647359826232857
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2025
+  -1.3183192169990978
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2026
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2027
+  0.271151870020146
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2028
+  0.2294294738230378
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2029
+  0.0574299791652053
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.203
+  -0.0125421870210579
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2030
+  -0.0086640709377094
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2031
+  0.0273494660158911
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2032
+  0.0844167325375737
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2033
+  0.0866215580287241
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2034
+  0.4646983140439557
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2035
+  -0.852419292757824
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2036
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2037
+  0.8713271295301175
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2038
+  0.8574490750153737
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2039
+  0.0236098342781649
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.204
+  0.0024237787615093
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2040
+  -0.0013242337375874
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2041
+  -0.0099647579726451
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2042
+  0.112726454049706
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2043
+  -0.0015180561452827
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2044
+  0.2133208376762588
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2045
+  -1.508230981502211
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2046
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2047
+  0.9589810237034526
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2048
+  0.962895259580198
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2049
+  0.0160373925039139
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.205
+  0.0087020491987511
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2050
+  0.00570425411833
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2051
+  -0.0871540371911689
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2052
+  0.0622387047736404
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2053
+  -0.1188089379659802
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2054
+  0.0848441983050632
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2055
+  -1.2963157428020153
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2056
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2057
+  0.4140083008481195
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2058
+  0.3310706282515908
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2059
+  0.1116050859650299
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.206
+  0.0063327472536681
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2060
+  0.0324254400515905
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2061
+  -0.0454813918700944
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2062
+  0.1649222699266257
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2063
+  0.1169254243758494
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2064
+  -0.3915491670964537
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2065
+  0.7190548015062074
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2066
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2067
+  0.2935089088937692
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2068
+  0.3301128219919206
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2069
+  0.147654106927008
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.207
+  -0.0105237188519061
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2070
+  0.0616362516517121
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2071
+  -0.1474824161198726
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2072
+  0.1022890955642122
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2073
+  0.330297196514584
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2074
+  -0.2456491891747564
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2075
+  0.5362192045069228
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2076
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2077
+  0.4268241776499046
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2078
+  0.3215153524879258
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2079
+  0.1287239789607994
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.208
+  -0.0007415636615651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2080
+  -0.0286655197790588
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2081
+  -0.033638936075928
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2082
+  -0.1804879583577697
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2083
+  0.0891942681608161
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2084
+  0.4302498478539208
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2085
+  0.7126552838173239
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2086
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2087
+  0.333444986886432
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2088
+  0.356837380508524
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2089
+  0.1898778831074652
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.209
+  -0.0149805303306778
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2090
+  -0.0846902246744969
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2091
+  -0.1621969146360853
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2092
+  -0.1353657709554082
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2093
+  0.35264924925235
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2094
+  0.311338882851195
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2095
+  0.5501057038095319
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2096
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2097
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2098
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2099
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.21
+  0.007862422426444
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.210
+  -0.0038376593662875
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2100
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2101
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2102
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2103
+  0.0312849921338564
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2104
+  1.273401663804142
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2105
+  -0.6302391753416505
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2106
+  -0.8961098325871824
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2107
+  -0.0872627032508347
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2108
+  -1.0067505720435852
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2109
+  0.1727684857703755
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.211
+  0.008224100961065
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2110
+  -2.152407708565484
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2111
+  -3.4813937922584155
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2112
+  -0.0184697912740838
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2113
+  -0.2203400859236792
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2114
+  -0.803299899614388
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2115
+  0.5971868449596192
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2116
+  -2.0954929910528803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2117
+  -3.382899488542955
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2118
+  -0.0263089501255727
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2119
+  -0.1643369289863694
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.212
+  0.0063281329820827
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2120
+  -0.8018817558740625
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2121
+  1.7534863907964322
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2122
+  -8.270002139224562
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2123
+  2.4495285267280873
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2124
+  -0.6959285153784287
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2125
+  -0.2583458712374922
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2126
+  -0.7686500169244627
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2127
+  -0.3951853124393536
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2128
+  13.900510868280374
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2129
+  2.8152396870828875
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.213
+  -0.0105140097788084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2130
+  7.997545407607839
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2131
+  0.5871066668313849
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2132
+  -0.9455521144227874
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2133
+  -0.3951853124393536
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2134
+  13.900510868280374
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2135
+  2.8152396870828875
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2136
+  7.997545407607839
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2137
+  0.5871066668313849
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2138
+  -0.9455521144227874
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2139
+  0.1037293465341326
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.214
+  -0.0008452183637345
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2140
+  0.1893894892989709
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2141
+  1.8529373006928884
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2142
+  0.4991096714076941
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2143
+  -0.0935498243297894
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2144
+  -0.7832540661141693
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2145
+  -0.3236555301545844
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2146
+  1.3108390379794679
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2147
+  1.8289330543605145
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2148
+  0.9328964908702386
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2149
+  0.0740505795888987
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.215
+  -0.0151642484348316
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2150
+  -0.676544988369166
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2151
+  -0.3236555301545844
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2152
+  1.3108390379794679
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2153
+  1.8289330543605145
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2154
+  0.9328964908702386
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2155
+  0.0740505795888987
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2156
+  -0.676544988369166
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2157
+  0.884579386652051
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2158
+  -0.722761288324838
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2159
+  2.1040648445349843
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.216
+  0.0035602187143852
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2160
+  -0.3113466826825063
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2161
+  0.3891258650293122
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2162
+  -0.8414528986325189
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2163
+  0.8066019878701847
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2164
+  -0.2443203995138632
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2165
+  1.5678409704263543
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2166
+  -0.293881085312185
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2167
+  0.4576368486122268
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2168
+  -0.7828644329849596
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2169
+  3.1813213136869516
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.217
+  0.0080795864393956
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2170
+  -1.3460144887378698
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2171
+  -1.0367240519471017
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2172
+  0.3305075658169615
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2173
+  1.4600364870600828
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2174
+  -1.4720351254887414
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2175
+  3.015726573432179
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2176
+  1.277925498622517
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2177
+  1.892454210830214
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2178
+  0.4777202756419195
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2179
+  0.9131707035506544
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.218
+  0.0092385631195273
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2180
+  -0.973833747286665
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2181
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2182
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2183
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2184
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2185
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2186
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2187
+  -5.062608793377876
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2188
+  -37.534573674201965
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2189
+  -22.83322662115097
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.219
+  -0.0104457150799813
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2190
+  -7.317708432674408
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2191
+  28.272247314453125
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2192
+  -63.85452300310135
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2193
+  -70.67156434059143
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2194
+  -17.48928874731064
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2195
+  -16.512499749660492
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2196
+  38.85996490716934
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2197
+  9.12514477968216
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2198
+  5.67796416580677
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2199
+  3.286270797252655
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.22
+  0.0055676699414752
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.220
+  -0.001049093042235
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2200
+  -1.872262731194496
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2201
+  6.280408054590225
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2202
+  -6.660541892051697
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2203
+  -9.545758366584778
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2204
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2205
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2206
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2207
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2208
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2209
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.221
+  -0.0151642484348316
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2210
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2211
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2212
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2213
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2214
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2215
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2216
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2217
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2218
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2219
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.222
+  0.0035602187143852
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2220
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2221
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2222
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2223
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2224
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2225
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2226
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2227
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2228
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2229
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.223
+  0.0080795864393956
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2230
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2231
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2232
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2233
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2234
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2235
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2236
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2237
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2238
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2239
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.224
+  0.0092385631195273
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2240
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2241
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2242
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2243
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2244
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2245
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2246
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2247
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2248
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2249
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.225
+  -0.0104457150799813
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2250
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2251
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2252
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2253
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2254
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2255
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2256
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2257
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2258
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2259
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.226
+  -0.001049093042235
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2260
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2261
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2262
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2263
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2264
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2265
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2266
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2267
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2268
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2269
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.227
+  -0.0121114190448368
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2270
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2271
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2272
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2273
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2274
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2275
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2276
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2277
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2278
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2279
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.228
+  0.0059135536415123
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2280
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2281
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2282
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2283
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2284
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2285
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2286
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2287
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2288
+  1.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2289
+  -0.994380026545217
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.229
+  0.0141076133772843
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2290
+  0.0056199734547831
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2291
+  0.9887916371920664
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2292
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2293
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.2294
+  dict({
+    'cost_ctrl': 8.82105779828e-05,
+    'cost_velocity': 0.9887916371920664,
+    'distance_from_origin': 0.0171341715703656,
+    'penalty_health': 0.0,
+    'x_position': 0.0142422398219828,
+    'x_velocity': 0.0056199734547831,
+    'y_position': -0.0095256726930884,
+    'y_velocity': -0.0110950822709392,
+  })
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.23
+  -0.0061072258429606
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.230
+  0.0069127215401221
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.231
+  -0.0103896282802537
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.232
+  -0.0008743491090276
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.233
+  -0.0121387323836419
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.234
+  0.0071700611053899
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.235
+  0.0140877263132651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.236
+  0.0074068444216179
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.237
+  -0.0103793932581036
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.238
+  -0.0009063178274118
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.239
+  -0.0121387323836419
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.24
+  -0.0006655799254593
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.240
+  0.0071700611053899
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.241
+  0.0140877263132651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.242
+  0.0074068444216179
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.243
+  -0.0103793932581036
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.244
+  -0.0009063178274118
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.245
+  -0.0034275067506524
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.246
+  -0.0069320069557142
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.247
+  0.0093745546413426
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.248
+  0.0078705467958352
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.249
+  -0.0072549407915208
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.25
+  -0.0091239246842554
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.250
+  0.0003561670916929
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.251
+  -0.0035196432884642
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.252
+  -0.0043078963554912
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.253
+  0.0066934978864976
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.254
+  0.0079033202261198
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.255
+  -0.0068202343780352
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.256
+  0.0007805139747486
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.257
+  -0.0034296945107094
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.258
+  -0.0051700754693999
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.259
+  0.0108257716372019
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.26
+  -0.006914210158649
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.260
+  0.0090735345413675
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.261
+  -0.0072538418469782
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.262
+  -0.0015467700210867
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.263
+  -0.0034128079264419
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.264
+  -0.0035494416175018
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.265
+  0.0123870873758097
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.266
+  0.009107390443393
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.267
+  -0.0075032066517421
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.268
+  -0.0012882974241925
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.269
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.27
+  0.0036609790648491
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.270
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.271
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.272
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.273
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.274
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.275
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.276
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.277
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.278
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.279
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.28
+  0.0048952431181563
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.280
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.281
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.282
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.283
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.284
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.285
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.286
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.287
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.288
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.289
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.29
+  0.0093501946486842
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.290
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.291
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.292
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.293
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.294
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.295
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.296
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.297
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.298
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.299
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.3
+  0.0094741825535033
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.30
+  -0.003483492837237
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.300
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.301
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.302
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.303
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.304
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.305
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.306
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.307
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.308
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.309
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.31
+  -0.0025908058793026
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.310
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.311
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.312
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.313
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.314
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.315
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.316
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.317
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.318
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.319
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.32
+  -0.0006088837744838
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.320
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.321
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.322
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.323
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.324
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.325
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.326
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.327
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.328
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.329
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.33
+  -0.0062105728183143
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.330
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.331
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.332
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.333
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.334
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.335
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.336
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.337
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.338
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.339
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.34
+  -0.0074015698932906
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.340
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.341
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.342
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.343
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.344
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.345
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.346
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.347
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.348
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.349
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.35
+  -0.0004859014754813
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.350
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.351
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.352
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.353
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.354
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.355
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.356
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.357
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.358
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.359
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.36
+  -0.0054618130189823
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.360
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.361
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.362
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.363
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.364
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.365
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.366
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.367
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.368
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.369
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.37
+  0.0033962798936502
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.370
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.371
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.372
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.373
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.374
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.375
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.376
+  1.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.377
+  -1.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.378
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.379
+  dict({
+  })
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.38
+  -0.0012569616225534
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.380
+  1.4060213295028718
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.381
+  0.999835026036154
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.382
+  -0.0106563453319647
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.383
+  0.0118486100488902
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.384
+  0.0087162753145403
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.385
+  0.0132740730575785
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.386
+  -0.0329206046163626
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.387
+  0.0148344879150697
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.388
+  -0.0148292579763093
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.389
+  -0.0635812343035572
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.39
+  0.0066535639211567
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.390
+  0.0370094902004943
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.391
+  0.0045174936556963
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.392
+  0.009373552252176
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.393
+  -0.0594000438191654
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.394
+  0.0115587890753649
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.395
+  -0.0433125663755681
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.396
+  0.0104730525809468
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.397
+  -0.0002840506205093
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.398
+  0.0142283977908137
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.399
+  -0.0009376871627747
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.4
+  0.0052017849878375
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.40
+  0.004005302040045
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.400
+  -0.0103815354842131
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.401
+  -0.0019920629353682
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.402
+  -0.2075744985288542
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.403
+  0.0049534425417686
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.404
+  -0.1584527580605474
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.405
+  -0.645237232559128
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.406
+  0.3356609698774003
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.407
+  0.8969426133563662
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.408
+  0.8315386881376823
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.409
+  -2.6715251438495646
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.41
+  -0.0037526671723592
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.410
+  1.861491524880272
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.411
+  -1.5550634259100078
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.412
+  -6.544168733966487
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.413
+  3.9764749545917937
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.414
+  -0.2161760700581442
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.415
+  1.078512631399333
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.416
+  -5.018319565880763
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.417
+  0.8887093198616949
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.418
+  -4.599039663166895
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.419
+  0.666041128222074
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.42
+  0.006645196027904
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.420
+  -0.528070624737004
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.421
+  1.1624575738740137
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.422
+  0.0746136457237546
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.423
+  -2.322450160194724
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.424
+  -1.1928920399156802
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.425
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.426
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.427
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.428
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.429
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.43
+  0.006095287149936
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.430
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.431
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.432
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.433
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.434
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.435
+  2.305927101036597
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.436
+  2.2876134997809543
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.437
+  0.0433766189520762
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.438
+  0.0010763748011019
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.439
+  0.0450671688078236
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.44
+  -0.0022504324193965
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.440
+  -0.0388724287724004
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.441
+  -0.1055953236896542
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.442
+  0.0743558507814886
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.443
+  4.3582426560398355
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.444
+  8.907462370478262
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.445
+  0.0958107493098322
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.446
+  0.091022860203104
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.447
+  0.0111725450428588
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.448
+  0.0002949065185378
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.449
+  0.0106219556653312
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.45
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.450
+  -0.0007309481631564
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.451
+  -0.0545093579401147
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.452
+  0.0044019764705022
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.453
+  0.4409371891113558
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.454
+  2.261946710584651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.455
+  0.0581021443561694
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.456
+  0.0417889706789483
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.457
+  0.0639484157365464
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.458
+  0.0007149320191034
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.459
+  0.0082140930261392
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.46
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.460
+  0.0002800023016471
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.461
+  -0.2773837487294392
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.462
+  -0.0037668730481639
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.463
+  0.1960489886276808
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.464
+  6.616194128460103
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.465
+  0.2739391327649258
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.466
+  0.2301377182078912
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.467
+  0.0563906128078748
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.468
+  -0.0099472599411218
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.469
+  -0.0194141923327067
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.47
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.470
+  -0.0831939031229999
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.471
+  -0.1012572005990129
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.472
+  -0.467400147944378
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.473
+  -0.8527520352850684
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.474
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.475
+  0.9322487936777986
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.476
+  0.9064378615364111
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.477
+  0.0332988695668534
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.478
+  -0.0077465172197133
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.479
+  -0.0436575999964732
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.48
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.480
+  -0.1566531407325762
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.481
+  -0.0768351111878744
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.482
+  -0.2775231502299978
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.483
+  -1.549882565597997
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.484
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.485
+  1.0503719476014204
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.486
+  1.0327394120450968
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.487
+  0.0249825744688993
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.488
+  -0.0057089091615179
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.489
+  -0.0416252042831254
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.49
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.490
+  -0.1408638276973304
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.491
+  -0.0545998201779783
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.492
+  -0.1847712172063478
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.493
+  -1.3472170329315687
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.494
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.495
+  0.2701120405099894
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.496
+  0.2321731572330074
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.497
+  0.0511847496400193
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.498
+  0.0100732603393751
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.499
+  -0.0191361903092193
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.5
+  0.0057212861055391
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.50
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.500
+  0.0759993388934854
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.501
+  -0.1090917238336634
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.502
+  0.4376674715449347
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.503
+  -0.8578012038204824
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.504
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.505
+  0.9246451068079214
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.506
+  0.9089769123417438
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.507
+  0.0231540185346667
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.508
+  0.0061028318634132
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.509
+  -0.0440170953115253
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.51
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.510
+  0.1241828575471205
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.511
+  -0.0761950836082277
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.512
+  0.2215044029957088
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.513
+  -1.5521702375732722
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.514
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.515
+  1.043289728758664
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.516
+  1.0351496083323275
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.517
+  0.0164784226469774
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.518
+  0.0047446563642851
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.519
+  -0.047374547180532
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.52
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.520
+  0.1030556641910184
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.521
+  -0.0620833558529453
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.522
+  0.135052298194036
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.523
+  -1.3484730992940253
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.524
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.525
+  0.4240977136157796
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.526
+  0.3371958648470955
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.527
+  0.1158411918532646
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.528
+  0.034220183587774
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.529
+  -0.0485760503817967
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.53
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.530
+  0.1694996031684112
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.531
+  0.1224305484261737
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.532
+  -0.399198450554513
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.533
+  0.7257125090554964
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.534
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.535
+  0.3114776436877189
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.536
+  0.345799433090193
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.537
+  0.1689967822808105
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.538
+  0.0733069586838671
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.539
+  -0.1567473921253538
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.54
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.540
+  0.1178071475712654
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.541
+  0.3455656910038544
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.542
+  -0.2767477283273298
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.543
+  0.5429336831883057
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.544
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.545
+  0.4258411874259782
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.546
+  0.3225416311599132
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.547
+  0.1283494648911974
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.548
+  -0.0330080266610664
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.549
+  -0.0420813705400562
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.55
+  2.3062345220579163
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.550
+  -0.1782662605070468
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.551
+  0.1098580562844519
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.552
+  0.4282966869952698
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.553
+  0.7107504215785483
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.554
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.555
+  0.3179154060929802
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.556
+  0.3350911817196623
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.557
+  0.1803586699420072
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.558
+  -0.080804431522619
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.559
+  -0.151932521531339
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.56
+  2.2876072524401296
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.560
+  -0.1295233499218749
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.561
+  0.3396964299044302
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.562
+  0.3081288803287902
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.563
+  0.5336707269012002
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.564
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.565
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.566
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.567
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.568
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.569
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.57
+  0.0429244188395686
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.570
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.571
+  -0.6299609145743033
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.572
+  0.3449383265344556
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.573
+  0.9047649089087396
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.574
+  -0.3575481390051589
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.575
+  -0.2722494575961396
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.576
+  -0.1571315127640252
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.577
+  -0.5309911341234068
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.578
+  -2.3097604295167358
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.579
+  1.7923130551199769
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.58
+  0.0008334142914994
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.580
+  0.3353608042245121
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.581
+  -0.2243653263973674
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.582
+  -0.0911735162384639
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.583
+  1.3300641321757645
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.584
+  -2.2514899574367315
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.585
+  1.823472756945002
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.586
+  0.3278073980169934
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.587
+  0.0182160494398264
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.588
+  -0.0936775481219844
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.589
+  0.0187032160890111
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.59
+  0.0385723439015767
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.590
+  1.5425172405722076
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.591
+  -4.838657264148612
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.592
+  1.0305321021915805
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.593
+  -0.090285873525572
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.594
+  -0.2937911430729376
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.595
+  0.0257395744394152
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.596
+  1.7585951895786895
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.597
+  -4.842924339520475
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.598
+  1.1157540368259888
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.599
+  -0.0931555407503552
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.6
+  -0.0074377273464891
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.60
+  -0.0367867897999131
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.600
+  -0.2985765605029889
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.601
+  0.0257395744394152
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.602
+  1.7585951895786895
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.603
+  -4.842924339520475
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.604
+  1.1157540368259888
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.605
+  -0.0931555407503552
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.606
+  -0.2985765605029889
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.607
+  0.0846216406753292
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.608
+  -1.3232414933028105
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.609
+  6.818895324310606
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.61
+  -0.0910636875353007
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.610
+  0.8361486881609758
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.611
+  0.1532446937362669
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.612
+  0.0079694505852719
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.613
+  -0.3303350258780004
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.614
+  3.2553387048398497
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.615
+  6.743773579984237
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.616
+  2.6311221517707915
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.617
+  0.3148938978235342
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.618
+  -0.0547601914642649
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.619
+  -0.3303350258780004
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.62
+  0.0713534724980562
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.620
+  3.2553387048398497
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.621
+  6.743773579984237
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.622
+  2.6311221517707915
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.623
+  0.3148938978235342
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.624
+  -0.0547601914642649
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.625
+  -0.1038484379679148
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.626
+  0.9994698628723846
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.627
+  0.7803173199392655
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.628
+  -0.6766452924729999
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.629
+  -0.0003655261911786
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.63
+  4.358543526167957
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.630
+  -0.0761688061137415
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.631
+  -0.0630175685224577
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.632
+  0.1884851530337644
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.633
+  1.6121129849766573
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.634
+  -0.6870663973091146
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.635
+  -0.1305584712834138
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.636
+  -0.2025928660694924
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.637
+  -0.5778177741155561
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.638
+  -1.3630736380481727
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.639
+  -0.6713408943880891
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.64
+  8.907462370478262
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.640
+  0.2332510064137414
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.641
+  -0.2640890802272788
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.642
+  -0.1464291217153545
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.643
+  -0.5722885955766931
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.644
+  -0.5009551751024881
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.645
+  0.1533901517117211
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.646
+  0.2479487789770078
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.647
+  -0.3971124567098153
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.648
+  -0.0074739522667261
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.649
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.65
+  0.0957776731454303
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.650
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.651
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.652
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.653
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.654
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.655
+  -4.889724776148796
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.656
+  21.916484832763672
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.657
+  28.68783473968506
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.658
+  15.789443254470825
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.659
+  -32.46581256389618
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.66
+  0.090824188555685
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.660
+  114.14936184883118
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.661
+  41.782352328300476
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.662
+  22.885145246982574
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.663
+  -29.7509104013443
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.664
+  -11.907375231385231
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.665
+  -20.67231684923172
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.666
+  8.535300195217133
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.667
+  2.8773024678230286
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.668
+  6.455232203006744
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.669
+  -1.1317159980535507
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.67
+  0.0110453228364418
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.670
+  -5.455225706100464
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.671
+  1.0916957631707191
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.672
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.673
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.674
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.675
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.676
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.677
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.678
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.679
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.68
+  0.000261482351161
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.680
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.681
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.682
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.683
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.684
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.685
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.686
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.687
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.688
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.689
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.69
+  0.010029789186379
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.690
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.691
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.692
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.693
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.694
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.695
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.696
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.697
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.698
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.699
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.7
+  -0.0009922812420887
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.70
+  -0.0012906281796315
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.700
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.701
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.702
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.703
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.704
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.705
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.706
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.707
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.708
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.709
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.71
+  -0.051474902982555
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.710
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.711
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.712
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.713
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.714
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.715
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.716
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.717
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.718
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.719
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.72
+  0.0071234186156193
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.720
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.721
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.722
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.723
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.724
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.725
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.726
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.727
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.728
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.729
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.73
+  0.4408059187278472
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.730
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.731
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.732
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.733
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.734
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.735
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.736
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.737
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.738
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.739
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.74
+  2.261946710584651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.740
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.741
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.742
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.743
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.744
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.745
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.746
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.747
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.748
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.749
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.75
+  0.0582573645587591
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.750
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.751
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.752
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.753
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.754
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.755
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.756
+  1.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.757
+  -0.9942959683958335
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.758
+  0.0057040316041665
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.759
+  0.9886244727682082
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.76
+  0.0430805457183428
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.760
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.761
+  False
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.762
+  dict({
+    'cost_ctrl': 8.52675026216e-05,
+    'cost_velocity': 0.9886244727682082,
+    'distance_from_origin': 0.0164875036852623,
+    'penalty_health': 0.0,
+    'x_position': 0.0139030183286702,
+    'x_velocity': 0.0057040316041665,
+    'y_position': -0.0088624973412802,
+    'y_velocity': -0.0111525333438341,
+  })
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.763
+  1.401229603949866
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.764
+  0.9994473810560554
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.765
+  -0.016410077867313
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.766
+  0.0258916907392183
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.767
+  0.0128554344634998
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.768
+  0.0606900729180905
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.769
+  -0.1276355943349401
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.77
+  0.0651060843889918
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.770
+  0.0341811283834657
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.771
+  -0.0335492937372902
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.772
+  -0.1242152169266745
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.773
+  0.1393037506853652
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.774
+  0.0020241831021497
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.775
+  0.0125618061094487
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.776
+  -0.115324068032526
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.777
+  0.0099130130803341
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.778
+  -0.2269512896541062
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.779
+  0.0016174417451995
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.78
+  0.0004755652922273
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.780
+  0.0184846707105994
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.781
+  0.0314556047837494
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.782
+  0.0307466399300508
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.783
+  -0.0611244794084653
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.784
+  -0.0223857932240898
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.785
+  -0.4796976736179105
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.786
+  -0.0431696922711148
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.787
+  -0.5185590428250895
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.788
+  -0.9721342183135884
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.789
+  2.811916261499114
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.79
+  0.0087155518873526
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.790
+  0.477112990048014
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.791
+  4.701415750573748
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.792
+  -8.720540770908617
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.793
+  0.5920546731947969
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.794
+  -0.6869244605642042
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.795
+  -2.7358532930317025
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.796
+  8.832488317134073
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.797
+  -0.1495177151241407
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.798
+  -0.829712416993357
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.799
+  -3.047976448568359
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.8
+  -0.0025840395153484
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.80
+  0.0004614621808248
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.800
+  -1.2739355392815281
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.801
+  -18.813881904026253
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.802
+  -1.6380598769616022
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.803
+  2.3229170844014817
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.804
+  1.3407650293468008
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.805
+  3.8243610578302785
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.806
+  -4.365225127018674
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.807
+  -1.6736205952815217
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.808
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.809
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.81
+  -0.2909669125366216
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.810
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.811
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.812
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.813
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.814
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.815
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.816
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.817
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.818
+  2.292894062411823
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.819
+  2.276077794709908
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.82
+  0.0004533676954087
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.820
+  0.0451093418080017
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.821
+  0.0014228450290483
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.822
+  0.0609419067327013
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.823
+  -0.0414804938935275
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.824
+  -0.1459331355749117
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.825
+  0.0770890598051485
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.826
+  4.345343888864718
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.827
+  8.907462370478262
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.828
+  0.0951363651693138
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.829
+  0.0912568296611404
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.83
+  0.198355763625331
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.830
+  0.0119798848392544
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.831
+  0.0004828019996373
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.832
+  0.0134692096019236
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.833
+  0.0004713647815772
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.834
+  -0.0694281458058906
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.835
+  -0.001513755394123
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.836
+  0.4393275268897918
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.837
+  2.261946710584651
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.838
+  0.057373034302288
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.839
+  0.0391858319459977
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.84
+  6.616194128460103
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.840
+  0.061770942691871
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.841
+  0.001827522273144
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.842
+  0.0070271637275168
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.843
+  0.000368784769529
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.844
+  -0.2494480716688946
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.845
+  -0.0179648212348778
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.846
+  0.1860574359084564
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.847
+  6.616194128460103
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.848
+  0.274863751104339
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.849
+  0.2306581361425816
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.85
+  0.272472892704323
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.850
+  0.0549323403392291
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.851
+  -0.0068681848096014
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.852
+  -0.0163797775426396
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.853
+  -0.0829564645476092
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.854
+  -0.070721420175237
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.855
+  -0.4646899547680704
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.856
+  -0.857281885829039
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.857
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.858
+  0.9326455358818128
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.859
+  0.9092021558815748
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.86
+  0.2289278350555624
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.860
+  0.0337836782435494
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.861
+  -0.0097363972442828
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.862
+  -0.0567800735107291
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.863
+  -0.154046204994614
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.864
+  -0.0980854258089046
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.865
+  -0.272825234826025
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.866
+  -1.5511375702087216
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.867
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.868
+  1.0500766529524395
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.869
+  1.0353846290943067
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.87
+  0.0571058254865313
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.870
+  0.0262378613125251
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.871
+  -0.0083625866543078
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.872
+  -0.0623653100422742
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.873
+  -0.1377944243868068
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.874
+  -0.0817828490014074
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.875
+  -0.1806969386542493
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.876
+  -1.3475759437490538
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.877
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.878
+  0.2688241775192184
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.879
+  0.2278179707017194
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.88
+  -0.0110889355309637
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.880
+  0.0510620871911533
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.881
+  0.0047750045033361
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.882
+  -0.0036177028192829
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.883
+  0.0778032937900514
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.884
+  -0.0491509245402426
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.885
+  0.4459687188495442
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.886
+  -0.851043007110337
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.887
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.888
+  0.9119148479090576
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.889
+  0.8957711553801706
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.89
+  -0.0205407520043377
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.890
+  0.0227196607206763
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.891
+  0.004079414704463
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.892
+  -0.034228175871269
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.893
+  0.1223812718015628
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.894
+  -0.0534294146860166
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.895
+  0.2212825349104764
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.896
+  -1.541410816842743
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.897
+  2.7556961671836424
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.898
+  1.0251370268436804
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.899
+  1.0205946527156917
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.9
+  0.008535299776972
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.90
+  -0.0829690913060777
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.900
+  0.0171014815352227
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.901
+  0.0061571716302194
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.902
+  -0.0659121867345582
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.903
+  0.0945662974115713
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.904
+  -0.087084627206949
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.905
+  0.1249430668958575
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.906
+  -1.337508721700962
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.907
+  1.7671458676442586
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.908
+  0.4247101398889842
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.909
+  0.3380183728646736
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.91
+  -0.1124985679641585
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.910
+  0.1149090346865329
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.911
+  0.0334617762946314
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.912
+  -0.0473943619190691
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.913
+  0.1693551663325196
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.914
+  0.1194933422068211
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.915
+  -0.3980092554325978
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.916
+  0.727141553141757
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.917
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.918
+  0.3081236599992654
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.919
+  0.3416493447118852
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.92
+  -0.4685688148465169
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.920
+  0.1627047239161971
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.921
+  0.0699724146329909
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.922
+  -0.1538052335919158
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.923
+  0.1144222444254297
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.924
+  0.339714232115175
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.925
+  -0.2695919555324014
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.926
+  0.5424158053088826
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.927
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.928
+  0.4250671881334132
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.929
+  0.321082393682703
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.93
+  -0.8479566093777864
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.930
+  0.128647366375891
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.931
+  -0.0321736727460811
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.932
+  -0.0402332736784559
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.933
+  -0.1785594675491148
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.934
+  0.1057194276238944
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.935
+  0.4292432984151024
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.936
+  0.7096754370468034
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.937
+  1.6610804848382084
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.938
+  0.3193140736869554
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.939
+  0.3372258837018442
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.94
+  4.751750928806242
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.940
+  0.1799949625642614
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.941
+  -0.0804953434143369
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.942
+  -0.1527007980652711
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.943
+  -0.1294803622432476
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.944
+  0.3401370125225636
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.945
+  0.3067652369662158
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.946
+  0.5359962982804579
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.947
+  1.2295401928310803
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.948
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.949
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.95
+  0.929521179639078
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.950
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.951
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.952
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.953
+  0.0
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.954
+  -1.020811915004182
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.955
+  2.803229309518073
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.956
+  0.4352288152866774
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.957
+  -1.7466872163884453
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.958
+  -0.4989277228222224
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.959
+  -0.5546400430720339
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.96
+  0.9030650473458148
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.960
+  -0.0389618570485412
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.961
+  -5.727847127278833
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.962
+  5.385612051150216
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.963
+  0.4667217713849616
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.964
+  -0.0670397759034306
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.965
+  -0.2493640124361907
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.966
+  0.5498056567996825
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.967
+  -5.67497617512899
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.968
+  5.433888370178398
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.969
+  0.4597756402872174
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.97
+  0.0331167070105131
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.970
+  0.0104073396539035
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.971
+  -0.2494685440905107
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.972
+  0.4185793655974368
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.973
+  3.033705928597227
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.974
+  2.4975142041721616
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.975
+  0.8459003781867103
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.976
+  -0.0047621827051659
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.977
+  -0.3117141077868726
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.978
+  0.4240462956434562
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.979
+  3.182898379397718
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.98
+  -0.0069929028934043
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.980
+  2.4947939000809582
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.981
+  0.9048171085776838
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.982
+  -0.0069836200498896
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.983
+  -0.3151431502242964
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.984
+  0.4240462956434562
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.985
+  3.182898379397718
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.986
+  2.4947939000809582
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.987
+  0.9048171085776838
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.988
+  -0.0069836200498896
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.989
+  -0.3151431502242964
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.99
+  -0.0388210531472737
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.990
+  1.3809933785338764
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.991
+  -6.845755391804273
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.992
+  8.560394715993201
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.993
+  0.758492562756251
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.994
+  0.0762131083164163
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.995
+  -0.3042408020046221
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.996
+  -2.428277352098532
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.997
+  11.577429601821587
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.998
+  8.241748928685903
+# ---
+# name: TestHumanoidCostEqual.test_snapshot.999
+  7.942279634236902
+# ---
