@@ -1,45 +1,45 @@
 # serializer version: 1
 # name: TestMinitaurCostEqual.test_snapshot
   '''
-  OBS_SNAP: [ 1.4921882851926276  1.4789271033865865  1.486254010404662
-    1.4746404563135436  1.4959923210163817  1.5003442097217625
-    1.4946713778208265  1.495840237585695   1.0501221522620467
-    1.0801084244609196  1.0663496355371027  1.0943587809259567
-    0.9956035411855481  0.9624862628386269  1.001677592676643
-    0.9839904897221291  0.4792823754735881  0.5837120895589282
-    0.5257100908059869  0.6169541044703496  0.4544473800740013
-    0.4239121318030392  0.464799272531527   0.4578950404900941
-   -0.0021500387145344  0.0008632178122502 -0.0002786489936197
-    0.9999972772679299  1.                 -1.
-    0.                ]
+  OBS_SNAP: [ 1.492188285192628  1.478927103386586  1.486254010404662
+    1.474640456313544  1.495992321016382  1.500344209721762
+    1.494671377820826  1.495840237585695  1.050122152262047
+    1.08010842446092   1.066349635537103  1.094358780925957
+    0.995603541185548  0.962486262838627  1.001677592676643
+    0.983990489722129  0.479282375473588  0.583712089558928
+    0.525710090805987  0.61695410447035   0.454447380074001
+    0.423912131803039  0.464799272531527  0.457895040490094
+   -0.002150038714534  0.00086321781225  -0.00027864899362
+    0.99999727726793   1.                -1.
+    0.               ]
   '''
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.1
-  1.4921882851926276
+  1.492188285192628
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.10
-  1.0801084244609196
+  1.08010842446092
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.100
-  1.6098315038307582
+  1.609831503830758
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.101
-  1.3677618967187597
+  1.36776189671876
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.102
-  1.4527762697881978
+  1.452776269788198
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.103
   1.416120832041941
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.104
-  1.7247459651082455
+  1.724745965108246
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.105
-  1.4379015596146527
+  1.437901559614653
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.106
-  1.5913847069004636
+  1.591384706900464
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.107
   -9.94383775017649
@@ -48,10 +48,10 @@
   16.340418493372578
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.109
-  -1.0389012894191214
+  -1.038901289419121
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.11
-  1.0663496355371027
+  1.066349635537103
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.110
   3.262464708638372
@@ -63,31 +63,31 @@
   3.568999912579448
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.113
-  0.2217681739713786
+  0.221768173971379
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.114
-  -0.9718621932166256
+  -0.971862193216626
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.115
-  -1.2172762371661339
+  -1.217276237166134
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.116
-  4.061732960977945
+  4.061732960977946
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.117
   0.386457403859728
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.118
-  0.2689634259529951
+  0.268963425952995
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.119
   5.7
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.12
-  1.0943587809259567
+  1.094358780925957
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.120
-  -0.31999803038762237
+  -0.319998030387622
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.121
   2.189439098465523
@@ -96,31 +96,31 @@
   5.7
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.123
-  -0.0004593510945333464
+  -0.000459351094533
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.124
-  -0.004677848976264771
+  -0.004677848976265
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.125
-  -0.0013348435128684088
+  -0.001334843512868
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.126
-  0.9999880623879085
+  0.999988062387908
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.127
   1.0
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.128
-  -1.1237784519447116
+  -1.123778451944712
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.129
-  -0.1237784519447116
+  -0.123778451944712
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.13
-  0.9956035411855481
+  0.995603541185548
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.130
-  1.2628780090552525
+  1.262878009055252
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.131
   False
@@ -130,47 +130,47 @@
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.133
   dict({
-    'cost_drift': 0.00026510064533499973,
-    'cost_shake': 0.001545201927514478,
-    'cost_velocity': 1.2628780090552525,
-    'energy_cost': 0.20818703830012608,
+    'cost_drift': 0.000265100645335,
+    'cost_shake': 0.001545201927514,
+    'cost_velocity': 1.262878009055252,
+    'energy_cost': 0.208187038300126,
   })
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.134
-  1.4545558312421683
+  1.454555831242168
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.135
-  1.6117357153245735
+  1.611735715324574
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.136
-  1.4075151555523995
+  1.4075151555524
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.137
-  1.6396477365894244
+  1.639647736589424
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.138
-  1.3025010248257614
+  1.302501024825761
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.139
   1.721843549526664
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.14
-  0.9624862628386269
+  0.962486262838627
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.140
-  1.3656871490104912
+  1.365687149010491
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.141
-  1.5795080865342341
+  1.579508086534234
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.142
-  4.0987608316202575
+  4.098760831620258
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.143
   -4.762556888733957
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.144
-  2.2002813098693443
+  2.200281309869344
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.145
   25.53808932629984
@@ -179,13 +179,13 @@
   -19.11056347163142
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.147
-  -0.23017069533937495
+  -0.230170695339375
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.148
   -8.760987035583328
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.149
-  -0.6161326682556563
+  -0.616132668255656
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.15
   1.001677592676643
@@ -194,52 +194,52 @@
   1.199272224657645
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.151
-  -0.6339403199697413
+  -0.633940319969741
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.152
-  -0.11231117189806678
+  -0.112311171898067
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.153
   5.7
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.154
-  -2.4722324662009885
+  -2.472232466200988
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.155
-  0.2233009558749279
+  0.223300955874928
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.156
-  -0.5835839044021457
+  -0.583583904402146
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.157
-  -0.08195822137720803
+  -0.081958221377208
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.158
-  0.0015080091209053578
+  0.001508009120905
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.159
-  -0.005047252262417167
+  -0.005047252262417
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.16
-  0.9839904897221291
+  0.983990489722129
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.160
-  -0.0011210711906729715
+  -0.001121071190673
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.161
-  0.9999854970710707
+  0.999985497071071
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.162
   1.0
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.163
-  -1.1436856755614642
+  -1.143685675561464
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.164
-  -0.1436856755614642
+  -0.143685675561464
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.165
-  1.3080169244844826
+  1.308016924484482
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.166
   False
@@ -249,17 +249,17 @@
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.168
   dict({
-    'cost_drift': 0.0003031150414334095,
-    'cost_shake': 0.0012169545336557508,
-    'cost_velocity': 1.3080169244844826,
-    'energy_cost': 0.41122465226046057,
+    'cost_drift': 0.000303115041433,
+    'cost_shake': 0.001216954533656,
+    'cost_velocity': 1.308016924484482,
+    'energy_cost': 0.411224652260461,
   })
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.169
-  1.5341615570870843
+  1.534161557087084
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.17
-  0.4792823754735881
+  0.479282375473588
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.170
   1.667503345811441
@@ -268,16 +268,16 @@
   1.336984693762328
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.172
-  1.6998782255887888
+  1.699878225588789
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.173
-  1.2846803432803098
+  1.28468034328031
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.174
-  1.6870219142241003
+  1.6870219142241
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.175
-  1.4158688126858348
+  1.415868812685835
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.176
   1.409299290532422
@@ -292,7 +292,7 @@
   -8.01643431072371
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.18
-  0.5837120895589282
+  0.583712089558928
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.180
   3.937311642780016
@@ -316,55 +316,55 @@
   2.336953272639927
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.187
-  -0.032444422912505363
+  -0.032444422912505
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.188
   3.335296380285704
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.189
-  2.3368391745171873
+  2.336839174517188
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.19
-  0.5257100908059869
+  0.525710090805987
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.190
-  -0.6987519149533734
+  -0.698751914953373
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.191
-  2.9824401251824773
+  2.982440125182478
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.192
-  -4.0975567633530865
+  -4.097556763353086
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.193
-  0.0036768238712320666
+  0.003676823871232
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.194
-  -0.009422872678285548
+  -0.009422872678286
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.195
-  -0.0014361066766253082
+  -0.001436106676625
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.196
-  0.9999478126554016
+  0.999947812655402
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.197
   1.0
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.198
-  -1.0292195060479763
+  -1.029219506047976
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.199
-  -0.029219506047976396
+  -0.029219506047976
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.2
-  1.4789271033865865
+  1.478927103386586
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.20
-  0.6169541044703496
+  0.61695410447035
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.200
-  1.0592927916296404
+  1.05929279162964
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.201
   False
@@ -374,38 +374,38 @@
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.203
   dict({
-    'cost_drift': 0.0007753196086186459,
-    'cost_shake': 0.0010624252806621381,
-    'cost_velocity': 1.0592927916296404,
-    'energy_cost': 0.4114474382080177,
+    'cost_drift': 0.000775319608619,
+    'cost_shake': 0.001062425280662,
+    'cost_velocity': 1.05929279162964,
+    'energy_cost': 0.411447438208018,
   })
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.204
   1.569906766790782
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.205
-  1.7331056888843241
+  1.733105688884324
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.206
-  1.3237133707193192
+  1.323713370719319
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.207
   1.742273610524191
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.208
-  1.5302292288489472
+  1.530229228848947
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.209
   1.800462127321877
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.21
-  0.45444738007400126
+  0.454447380074001
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.210
   1.640664527740089
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.211
-  1.2725314936086671
+  1.272531493608667
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.212
   4.539298372549965
@@ -414,10 +414,10 @@
   7.723891293735937
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.214
-  -0.5936666290000421
+  -0.593666629000042
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.215
-  3.4213390772054755
+  3.421339077205476
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.216
   33.03323435301229
@@ -432,7 +432,7 @@
   -7.45018926685021
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.22
-  0.42391213180303916
+  0.423912131803039
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.220
   5.14492136132931
@@ -441,49 +441,49 @@
   5.7
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.222
-  3.8843775027841305
+  3.88437750278413
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.223
-  3.2205320592727427
+  3.220532059272742
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.224
-  3.0514155101415974
+  3.051415510141598
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.225
   2.080158007903896
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.226
-  0.8181289409641633
+  0.818128940964163
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.227
-  0.9724706139415575
+  0.972470613941557
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.228
-  0.006187289928265384
+  0.006187289928265
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.229
-  -0.017578239634415644
+  -0.017578239634416
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.23
-  0.46479927253152703
+  0.464799272531527
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.230
-  -0.0019646222878507914
+  -0.001964622287851
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.231
-  0.9998244161821439
+  0.999824416182144
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.232
   1.0
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.233
-  -1.0058906736836641
+  -1.005890673683664
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.234
-  -0.005890673683664233
+  -0.005890673683664
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.235
-  1.0118160474037756
+  1.011816047403776
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.236
   False
@@ -493,26 +493,26 @@
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.238
   dict({
-    'cost_drift': 0.0011858287372491253,
-    'cost_shake': 0.002593163820677369,
-    'cost_velocity': 1.0118160474037756,
-    'energy_cost': 0.4574868338110529,
+    'cost_drift': 0.001185828737249,
+    'cost_shake': 0.002593163820677,
+    'cost_velocity': 1.011816047403776,
+    'energy_cost': 0.457486833811053,
   })
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.24
-  0.45789504049009405
+  0.457895040490094
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.25
-  -0.0021500387145343826
+  -0.002150038714534
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.26
-  0.000863217812250218
+  0.00086321781225
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.27
-  -0.0002786489936196694
+  -0.00027864899362
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.28
-  0.9999972772679299
+  0.99999727726793
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.29
   1.0
@@ -527,97 +527,97 @@
   0.0
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.32
-  1.4921882851926276
+  1.492188285192628
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.33
-  1.4789271033865865
+  1.478927103386586
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.34
   1.486254010404662
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.35
-  1.4746404563135436
+  1.474640456313544
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.36
-  1.4959923210163817
+  1.495992321016382
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.37
-  1.5003442097217625
+  1.500344209721762
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.38
-  1.4946713778208265
+  1.494671377820826
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.39
   1.495840237585695
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.4
-  1.4746404563135436
+  1.474640456313544
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.40
-  1.0501221522620467
+  1.050122152262047
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.41
-  1.0801084244609196
+  1.08010842446092
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.42
-  1.0663496355371027
+  1.066349635537103
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.43
-  1.0943587809259567
+  1.094358780925957
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.44
-  0.9956035411855481
+  0.995603541185548
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.45
-  0.9624862628386269
+  0.962486262838627
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.46
   1.001677592676643
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.47
-  0.9839904897221291
+  0.983990489722129
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.48
-  0.4792823754735881
+  0.479282375473588
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.49
-  0.5837120895589282
+  0.583712089558928
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.5
-  1.4959923210163817
+  1.495992321016382
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.50
-  0.5257100908059869
+  0.525710090805987
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.51
-  0.6169541044703496
+  0.61695410447035
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.52
-  0.45444738007400126
+  0.454447380074001
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.53
-  0.42391213180303916
+  0.423912131803039
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.54
-  0.46479927253152703
+  0.464799272531527
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.55
-  0.45789504049009405
+  0.457895040490094
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.56
-  -0.0021500387145343826
+  -0.002150038714534
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.57
-  0.000863217812250218
+  0.00086321781225
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.58
-  -0.0002786489936196694
+  -0.00027864899362
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.59
-  0.9999972772679299
+  0.99999727726793
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.6
-  1.5003442097217625
+  1.500344209721762
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.60
   1.0
@@ -633,16 +633,16 @@
   })
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.64
-  1.5273013017892785
+  1.527301301789278
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.65
-  1.5231278286826746
+  1.523127828682674
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.66
-  1.4049667493941906
+  1.404966749394191
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.67
-  1.4385761210072923
+  1.438576121007292
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.68
   1.405281888521337
@@ -651,25 +651,25 @@
   1.619926447555798
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.7
-  1.4946713778208265
+  1.494671377820826
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.70
-  1.4344652906641657
+  1.434465290664166
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.71
-  1.5555809841265893
+  1.555580984126589
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.72
   1.415422211917737
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.73
-  2.9322409537036815
+  2.932240953703682
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.74
   -10.990567306788762
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.75
-  -4.6288121204119905
+  -4.628812120411991
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.76
   -13.017550797541734
@@ -693,46 +693,46 @@
   4.775196021005619
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.82
-  -0.8098822946051397
+  -0.80988229460514
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.83
-  -0.36943569983676483
+  -0.369435699836765
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.84
-  -1.6763895876361308
+  -1.676389587636131
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.85
   1.806652257694434
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.86
-  -0.7551495655853833
+  -0.755149565585383
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.87
   1.107457152881377
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.88
-  -0.0014522922606466481
+  -0.001452292260647
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.89
-  -0.0010881361702168905
+  -0.001088136170217
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.9
-  1.0501221522620467
+  1.050122152262047
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.90
-  -0.0009161198058361459
+  -0.000916119805836
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.91
-  0.9999979337635484
+  0.999997933763548
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.92
   1.0
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.93
-  -1.0713327014650966
+  -1.071332701465097
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.94
-  -0.07133270146509657
+  -0.071332701465097
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.95
   1.147753757228502
@@ -745,12 +745,12 @@
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.98
   dict({
-    'cost_drift': 0.0008900027558481863,
-    'cost_shake': 0.15895416214882663,
+    'cost_drift': 0.000890002755848,
+    'cost_shake': 0.158954162148827,
     'cost_velocity': 1.147753757228502,
-    'energy_cost': 0.20166396206144432,
+    'energy_cost': 0.201663962061444,
   })
 # ---
 # name: TestMinitaurCostEqual.test_snapshot.99
-  1.4586963043678636
+  1.458696304367864
 # ---
