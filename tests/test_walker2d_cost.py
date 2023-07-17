@@ -1,6 +1,10 @@
 """Test if the Walker2dCost environment still behaves like the original Walker2d
 environment when the same environment parameters are used.
 """
+import os
+
+import pytest
+
 import gymnasium as gym
 import numpy as np
 from gymnasium.logger import ERROR
@@ -42,6 +46,12 @@ class TestWalker2dCostEqual:
                 observation, observation_cost
             ), f"{observation} != {observation_cost}"
 
+    # Skip snapshot test during CI.
+    # NOTE: Done because the snapshot can differ between python versions and systems.
+    @pytest.mark.skipif(
+        os.getenv("CI", False).lower() == "true",
+        reason="no way to test snapshot in CI",
+    )
     def test_snapshot(self, snapshot):
         """Test if the 'Walker2dCost' environment is still equal to snapshot."""
         self.env_cost = gym.make(

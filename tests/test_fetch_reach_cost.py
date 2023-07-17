@@ -1,8 +1,11 @@
 """Test if the FetchReachCost environment still behaves like the original FetchReach
 environment when the same environment parameters are used.
 """
+import os
+
 import gymnasium as gym
 import numpy as np
+import pytest
 from gymnasium.logger import ERROR
 
 import stable_gym  # noqa: F401
@@ -48,6 +51,12 @@ class TestFetchReachCostEqual:
                 observation, observation_cost
             ), f"{observation} != {observation_cost}"
 
+    # Skip snapshot test during CI.
+    # NOTE: Done because the snapshot can differ between python versions and systems.
+    @pytest.mark.skipif(
+        os.getenv("CI", False).lower() == "true",
+        reason="no way to test snapshot in CI",
+    )
     def test_snapshot(self, snapshot):
         """Test if the 'FetchReachCost' environment is still equal to snapshot."""
         observation, info = self.env_cost.reset(seed=42)

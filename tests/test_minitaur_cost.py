@@ -1,22 +1,24 @@
 """Test if the MinitaurCost environment still behaves like the original Minitaur
 environment when the same environment parameters are used.
 """
+import os
+
 import gymnasium as gym
 import numpy as np
-from gymnasium.logger import ERROR
+import pytest
 from gym.logger import ERROR as ERROR_ORG
+from gymnasium.logger import ERROR
 
 gym.logger.set_level(ERROR)
 
-import stable_gym  # noqa: F401, E402
-
 import gym as gym_orig  # noqa: E402
+
+import stable_gym  # noqa: F401, E402
 
 gym_orig.logger.set_level(
     ERROR_ORG
 )  # TODO: Can be removed when https://github.com/bulletphysics/bullet3/issues/4369 is resoled. # noqa: E501
 import pybullet_envs  # noqa: F401, E402
-
 
 # Register Minitaur environment. Needed because the original Minitaur environment
 # is registered under 'gym' instead of 'gymnasium'.
@@ -65,6 +67,12 @@ class TestMinitaurCostEqual:
                 observation, observation_cost
             ), f"{observation} != {observation_cost}"
 
+    # Skip snapshot test during CI.
+    # NOTE: Done because the snapshot can differ between python versions and systems.
+    @pytest.mark.skipif(
+        os.getenv("CI", False).lower() == "true",
+        reason="no way to test snapshot in CI",
+    )
     def test_snapshot(self, snapshot):
         """Test if the 'MinitaurCost' environment is still equal to snapshot."""
         self.env_cost = gym.make(
