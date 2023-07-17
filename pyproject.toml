@@ -33,7 +33,7 @@ dependencies = [
     "gymnasium-robotics>=1.2.2",
     "matplotlib>=3.7.1",
     "iteration_utilities>=0.11.0",
-    "mujoco==2.3.3", # TODO: Remove when https://github.com/Farama-Foundation/Gymnasium/issues/597 is resolved.
+    "mujoco==2.3.3", # TODO: Remove when gymnasium is updated to v0.29.0.
     "pybullet>=3.2.5",
 ]
 requires-python = ">=3.8"
