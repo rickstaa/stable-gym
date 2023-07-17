@@ -132,8 +132,10 @@ class AntCost(AntEnv, utils.EzPickle):
                 :class:`~gymnasium.envs.mujoco.ant_v4.AntEnv` class.
         """
         self.reference_forward_velocity = reference_forward_velocity
-        self.randomise_reference_forward_velocity = randomise_reference_forward_velocity
-        self.randomise_reference_forward_velocity_range = (
+        self._randomise_reference_forward_velocity = (
+            randomise_reference_forward_velocity
+        )
+        self._randomise_reference_forward_velocity_range = (
             randomise_reference_forward_velocity_range
         )
         self._forward_velocity_weight = forward_velocity_weight
@@ -183,7 +185,12 @@ class AntCost(AntEnv, utils.EzPickle):
         if not self._exclude_x_velocity_from_observation:
             low = np.append(low, -np.inf)
             high = np.append(high, np.inf)
-        self.observation_space = gym.spaces.Box(low, high, dtype=np.float32)
+        self.observation_space = gym.spaces.Box(
+            low,
+            high,
+            dtype=self.observation_space.dtype,
+            seed=self.observation_space.np_random,
+        )
 
         # Reinitialize the EzPickle class.
         # NOTE: Done to ensure the args of the AntCost class are also pickled.
@@ -279,13 +286,11 @@ class AntCost(AntEnv, utils.EzPickle):
 
         # Add reference, x velocity and reference error to observation.
         if not self._exclude_reference_from_observation:
-            obs = np.append(obs, self.reference_forward_velocity).astype(np.float32)
+            obs = np.append(obs, self.reference_forward_velocity)
         if not self._exclude_reference_error_from_observation:
-            obs = np.append(
-                obs, info["x_velocity"] - self.reference_forward_velocity
-            ).astype(np.float32)
+            obs = np.append(obs, info["x_velocity"] - self.reference_forward_velocity)
         if not self._exclude_x_velocity_from_observation:
-            obs = np.append(obs, info["x_velocity"]).astype(np.float32)
+            obs = np.append(obs, info["x_velocity"])
 
         # Update info.
         info.update(cost_info)
@@ -311,20 +316,18 @@ class AntCost(AntEnv, utils.EzPickle):
         obs, info = super().reset(seed=seed, options=options)
 
         # Randomize the reference forward velocity if requested.
-        if self.randomise_reference_forward_velocity:
+        if self._randomise_reference_forward_velocity:
             self.reference_forward_velocity = self.np_random.uniform(
-                *self.randomise_reference_forward_velocity_range
+                *self._randomise_reference_forward_velocity_range
             )
 
         # Add reference, x velocity and reference error to observation.
         if not self._exclude_reference_from_observation:
-            obs = np.append(obs, self.reference_forward_velocity).astype(np.float32)
+            obs = np.append(obs, self.reference_forward_velocity)
         if not self._exclude_reference_error_from_observation:
-            obs = np.append(obs, 0.0 - self.reference_forward_velocity).astype(
-                np.float32
-            )
+            obs = np.append(obs, 0.0 - self.reference_forward_velocity)
         if not self._exclude_x_velocity_from_observation:
-            obs = np.append(obs, 0.0).astype(np.float32)
+            obs = np.append(obs, 0.0)
 
         self.state = obs
 

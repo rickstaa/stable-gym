@@ -14,11 +14,15 @@ class TestWalker2dCostEqual:
     # Make original Walker2d environment.
     env = gym.make("Walker2d")
     # Make Walker2dCost environment.
-    env_cost = gym.make("Walker2dCost")
+    env_cost = gym.make(
+        "Walker2dCost",
+        exclude_reference_from_observation=True,
+        exclude_x_velocity_from_observation=True,
+    )
 
     def test_equal_reset(self):
         """Test if reset behaves the same."""
-        # Perform reset and check if observations are equal.
+        # Perform reset and check if observations are equal.bl
         observation, _ = self.env.reset(seed=42)
         observation_cost, _ = self.env_cost.reset(seed=42)
         assert np.allclose(
@@ -39,7 +43,10 @@ class TestWalker2dCostEqual:
             ), f"{observation} != {observation_cost}"
 
     def test_snapshot(self, snapshot):
-        """Test if the 'Walker2dCost' environment is still equal snapshot."""
+        """Test if the 'Walker2dCost' environment is still equal to snapshot."""
+        self.env_cost = gym.make(
+            "Walker2dCost", exclude_reference_error_from_observation=False
+        )  # Check full observation.
         observation, info = self.env_cost.reset(seed=42)
         assert (observation == snapshot).all()
         assert info == snapshot

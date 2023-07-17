@@ -14,7 +14,11 @@ class TestAntCostEqual:
     # Make original Ant environment.
     env = gym.make("Ant")
     # Make AntCost environment.
-    env_cost = gym.make("AntCost")
+    env_cost = gym.make(
+        "AntCost",
+        exclude_reference_from_observation=True,
+        exclude_x_velocity_from_observation=True,
+    )
 
     def test_equal_reset(self):
         """Test if reset behaves the same."""
@@ -39,7 +43,10 @@ class TestAntCostEqual:
             ), f"{observation} != {observation_cost}"
 
     def test_snapshot(self, snapshot):
-        """Test if the 'AntCost' environment is still equal snapshot."""
+        """Test if the 'AntCost' environment is still equal to snapshot."""
+        self.env_cost = gym.make(
+            "AntCost", exclude_reference_error_from_observation=False
+        )  # Check full observation.
         observation, info = self.env_cost.reset(seed=42)
         assert (observation == snapshot).all()
         assert info == snapshot

@@ -6,39 +6,58 @@
   0.039473605811872786
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.10
-  0.06490097884753185
+  0.0
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.11
-  -0.1030793695707376
+  dict({
+  })
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.12
-  0.02676761966202401
+  0.05869306180007719
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.13
-  0.7977753109453727
+  0.06490097884753185
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.14
-  -0.6946564587215142
+  -0.1030793695707376
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.15
-  1.3203403932370403
+  0.02676761966202401
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.16
-  -1.0667011828424493
+  0.7977753109453727
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.17
-  0.8839000888553616
+  -0.6946564587215142
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.18
-  False
+  1.3203403932370403
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.19
-  False
+  -1.0667011828424493
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.2
   -0.0811645304224701
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.20
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.21
+  -0.940159608181165
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.22
+  0.05984039181883508
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.23
+  0.8839000888553616
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.24
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.25
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.26
   dict({
     'cost_ctrl': 3.1515109539031985e-05,
     'cost_velocity': 0.8839000888553616,
@@ -49,43 +68,55 @@
     'y_velocity': 0.43186657679938273,
   })
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.21
+# name: TestSwimmerCostEqual.test_snapshot.27
   0.018475259776969916
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.22
+# name: TestSwimmerCostEqual.test_snapshot.28
   0.13464915217553713
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.23
-  -0.14570529921583691
-# ---
-# name: TestSwimmerCostEqual.test_snapshot.24
-  0.011608170523165175
-# ---
-# name: TestSwimmerCostEqual.test_snapshot.25
-  1.3275948136464797
-# ---
-# name: TestSwimmerCostEqual.test_snapshot.26
-  -1.2872296796028666
-# ---
-# name: TestSwimmerCostEqual.test_snapshot.27
-  2.124422100938903
-# ---
-# name: TestSwimmerCostEqual.test_snapshot.28
-  -1.050781983705994
-# ---
 # name: TestSwimmerCostEqual.test_snapshot.29
-  0.970320330780977
+  -0.14570529921583691
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.3
   0.09512447032735119
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.30
-  False
+  0.011608170523165175
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.31
-  False
+  1.3275948136464797
 # ---
 # name: TestSwimmerCostEqual.test_snapshot.32
+  -1.2872296796028666
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.33
+  2.124422100938903
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.34
+  -1.050781983705994
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.35
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.36
+  -0.9850483900707503
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.37
+  0.014951609929249668
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.38
+  0.970320330780977
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.39
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.4
+  0.052227940398070605
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.40
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.41
   dict({
     'cost_ctrl': 6.70186460018158e-05,
     'cost_velocity': 0.970320330780977,
@@ -96,43 +127,52 @@
     'y_velocity': 1.0762085709235305,
   })
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.33
+# name: TestSwimmerCostEqual.test_snapshot.42
   -0.001365456293707465
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.34
+# name: TestSwimmerCostEqual.test_snapshot.43
   0.15296123326678657
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.35
+# name: TestSwimmerCostEqual.test_snapshot.44
   -0.12066297398943926
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.36
+# name: TestSwimmerCostEqual.test_snapshot.45
   0.15039080029363497
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.37
+# name: TestSwimmerCostEqual.test_snapshot.46
   -0.2945187732354072
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.38
+# name: TestSwimmerCostEqual.test_snapshot.47
   0.2554889787617607
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.39
+# name: TestSwimmerCostEqual.test_snapshot.48
   -1.1301376727439139
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.4
-  0.052227940398070605
-# ---
-# name: TestSwimmerCostEqual.test_snapshot.40
+# name: TestSwimmerCostEqual.test_snapshot.49
   2.220792926335492
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.41
+# name: TestSwimmerCostEqual.test_snapshot.5
+  0.05721286105539078
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.50
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.51
+  -0.9105297197687561
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.52
+  0.08947028023124394
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.53
   0.8290643705821694
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.42
+# name: TestSwimmerCostEqual.test_snapshot.54
   False
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.43
+# name: TestSwimmerCostEqual.test_snapshot.55
   False
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.44
+# name: TestSwimmerCostEqual.test_snapshot.56
   dict({
     'cost_ctrl': 0.00015636346340179444,
     'cost_velocity': 0.8290643705821694,
@@ -143,43 +183,55 @@
     'y_velocity': 0.49740174002520143,
   })
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.45
+# name: TestSwimmerCostEqual.test_snapshot.57
   0.0003841448162947168
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.46
+# name: TestSwimmerCostEqual.test_snapshot.58
   0.11788280333711998
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.47
+# name: TestSwimmerCostEqual.test_snapshot.59
   -0.02882044561020532
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.48
+# name: TestSwimmerCostEqual.test_snapshot.6
+  -0.07437727346489083
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.60
   0.11558741188116389
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.49
+# name: TestSwimmerCostEqual.test_snapshot.61
   0.048651914229101464
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.5
-  0.05721286105539078
-# ---
-# name: TestSwimmerCostEqual.test_snapshot.50
+# name: TestSwimmerCostEqual.test_snapshot.62
   -0.16303166399031088
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.51
+# name: TestSwimmerCostEqual.test_snapshot.63
   -0.624124384806579
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.52
+# name: TestSwimmerCostEqual.test_snapshot.64
   2.350761838731597
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.53
+# name: TestSwimmerCostEqual.test_snapshot.65
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.66
+  -0.8667111829722601
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.67
+  0.1332888170277399
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.68
   0.7511882746891746
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.54
+# name: TestSwimmerCostEqual.test_snapshot.69
   False
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.55
+# name: TestSwimmerCostEqual.test_snapshot.7
+  -0.009922812420886579
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.70
   False
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.56
+# name: TestSwimmerCostEqual.test_snapshot.71
   dict({
     'cost_ctrl': 6.0010683536529546e-05,
     'cost_velocity': 0.7511882746891746,
@@ -190,43 +242,52 @@
     'y_velocity': -0.12053855163183143,
   })
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.57
+# name: TestSwimmerCostEqual.test_snapshot.72
   0.011791559466868322
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.58
+# name: TestSwimmerCostEqual.test_snapshot.73
   0.0658718157028656
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.59
+# name: TestSwimmerCostEqual.test_snapshot.74
   0.07215976482750784
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.6
-  -0.07437727346489083
-# ---
-# name: TestSwimmerCostEqual.test_snapshot.60
+# name: TestSwimmerCostEqual.test_snapshot.75
   0.10988159864310194
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.61
+# name: TestSwimmerCostEqual.test_snapshot.76
   -0.7852810350118694
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.62
+# name: TestSwimmerCostEqual.test_snapshot.77
   0.712476930243054
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.63
+# name: TestSwimmerCostEqual.test_snapshot.78
   -1.9431447627877874
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.64
+# name: TestSwimmerCostEqual.test_snapshot.79
   2.6880029820455054
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.65
+# name: TestSwimmerCostEqual.test_snapshot.8
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.80
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.81
+  -0.8864606174497422
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.82
+  0.11353938255025779
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.83
   0.7858124262893783
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.66
+# name: TestSwimmerCostEqual.test_snapshot.84
   False
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.67
+# name: TestSwimmerCostEqual.test_snapshot.85
   False
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.68
+# name: TestSwimmerCostEqual.test_snapshot.86
   dict({
     'cost_ctrl': 5.6304413080215455e-05,
     'cost_velocity': 0.7858124262893783,
@@ -237,13 +298,6 @@
     'y_velocity': -0.37926103693126223,
   })
 # ---
-# name: TestSwimmerCostEqual.test_snapshot.7
-  -0.009922812420886579
-# ---
-# name: TestSwimmerCostEqual.test_snapshot.8
-  dict({
-  })
-# ---
 # name: TestSwimmerCostEqual.test_snapshot.9
-  0.05869306180007719
+  -1.0
 # ---

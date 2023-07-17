@@ -14,7 +14,11 @@ class TestHumanoidCostEqual:
     # Make original Humanoid environment.
     env = gym.make("Humanoid")
     # Make HumanoidCost environment.
-    env_cost = gym.make("HumanoidCost")
+    env_cost = gym.make(
+        "HumanoidCost",
+        exclude_reference_from_observation=True,
+        exclude_x_velocity_from_observation=True,
+    )
 
     def test_equal_reset(self):
         """Test if reset behaves the same."""
@@ -39,7 +43,7 @@ class TestHumanoidCostEqual:
             ), f"{observation} != {observation_cost}"
 
     def test_snapshot(self, snapshot):
-        """Test if the 'HumanoidCost' environment is still equal snapshot."""
+        """Test if the 'HumanoidCost' environment is still equal to snapshot."""
         observation, info = self.env_cost.reset(seed=42)
         assert (observation == snapshot).all()
         assert info == snapshot
