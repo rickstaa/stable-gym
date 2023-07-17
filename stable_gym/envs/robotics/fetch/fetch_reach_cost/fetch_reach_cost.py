@@ -198,7 +198,9 @@ if __name__ == "__main__":
         path = paths[i]
         fig, ax = plt.subplots()
         print(f"\nEpisode: {i}")
-        path = np.array(path)
+        path = np.array(
+            [gym.spaces.flatten(env.observation_space, obs) for obs in path]
+        )
         t = np.linspace(0, path.shape[0] * env.dt, path.shape[0])
         for j in range(path.shape[1]):  # NOTE: Change if you want to plot less states.
             ax.plot(t, path[:, j], label=f"State {j}")

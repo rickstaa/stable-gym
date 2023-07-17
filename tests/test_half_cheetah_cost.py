@@ -14,7 +14,11 @@ class TestHalfCheetahCostEqual:
     # Make original HalfCheetah environment.
     env = gym.make("HalfCheetah")
     # Make HalfCheetahCost environment.
-    env_cost = gym.make("HalfCheetahCost")
+    env_cost = gym.make(
+        "HalfCheetahCost",
+        exclude_reference_from_observation=True,
+        exclude_x_velocity_from_observation=True,
+    )
 
     def test_equal_reset(self):
         """Test if reset behaves the same."""
@@ -39,7 +43,10 @@ class TestHalfCheetahCostEqual:
             ), f"{observation} != {observation_cost}"
 
     def test_snapshot(self, snapshot):
-        """Test if the 'HalfCheetahCost' environment is still equal snapshot."""
+        """Test if the 'HalfCheetahCost' environment is still equal to snapshot."""
+        self.env_cost = gym.make(
+            "HalfCheetahCost", exclude_reference_error_from_observation=False
+        )  # Check full observation.
         observation, info = self.env_cost.reset(seed=42)
         assert (observation == snapshot).all()
         assert info == snapshot

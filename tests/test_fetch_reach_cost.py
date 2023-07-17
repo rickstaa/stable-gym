@@ -49,7 +49,7 @@ class TestFetchReachCostEqual:
             ), f"{observation} != {observation_cost}"
 
     def test_snapshot(self, snapshot):
-        """Test if the 'FetchReachCost' environment is still equal snapshot."""
+        """Test if the 'FetchReachCost' environment is still equal to snapshot."""
         observation, info = self.env_cost.reset(seed=42)
         observation = gym.spaces.flatten(self.env.observation_space, observation)
         assert (observation == snapshot).all()
