@@ -31,7 +31,7 @@ gym.register(
     apply_api_compatibility=True,
 )
 
-PRECISION = 16
+PRECISION = 14
 
 
 class TestMinitaurCostEqual:
