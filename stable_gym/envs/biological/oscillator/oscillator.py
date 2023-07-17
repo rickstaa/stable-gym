@@ -128,7 +128,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         reference_constraint_position=20.0,
         clip_action=True,
         exclude_reference_from_observation=False,
-        exclude_reference_error_from_observation=False,
+        exclude_reference_error_from_observation=True,
     ):
         """Initialise a new Oscillator environment instance.
 
@@ -152,7 +152,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 should be excluded from the observation. Defaults to ``False``. Can only
                 be set to ``True`` if ``reference_type`` is ``constant``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
-                should be excluded from the observation. Defaults to ``False``.
+                should be excluded from the observation. Defaults to ``True``.
         """
         super().__init__()  # Setup disturber.
         self._action_clip_warning = False
@@ -168,8 +168,8 @@ class Oscillator(gym.Env, OscillatorDisturber):
                 "The reference type must be either 'constant' or 'periodic'."
             )
         assert (
-            reference_type.lower() == "periodic"
-            or reference_type.lower() == "constant"
+            reference_type.lower() == "constant"
+            or reference_type.lower() == "periodic"
             and not exclude_reference_from_observation
         ), (
             "The reference can only be excluded from the observation if the reference "
@@ -216,25 +216,21 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.delta5 = 0.0  # p2 noise.
         self.delta6 = 0.0  # p3 noise.
 
-        obs_low = np.array([0, 0, 0, 0, 0, 0], dtype=np.float32)
-        obs_high = np.array([100, 100, 100, 100, 100, 100], dtype=np.float32)
+        obs_low = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+        obs_high = np.array([100.0, 100.0, 100.0, 100.0, 100.0, 100.0])
         if not self._exclude_reference_from_observation:
-            obs_low = np.append(obs_low, 0.0).astype(np.float32)
-            obs_high = np.append(obs_high, 100.0).astype(np.float32)
+            obs_low = np.append(obs_low, 0.0)
+            obs_high = np.append(obs_high, 100.0)
         if not self._exclude_reference_error_from_observation:
-            obs_low = np.append(obs_low, -100.0).astype(np.float32)
-            obs_high = np.append(obs_high, 100.0).astype(np.float32)
+            obs_low = np.append(obs_low, -100.0)
+            obs_high = np.append(obs_high, 100.0)
         self.action_space = spaces.Box(
-            low=np.array([-5.0, -5.0, -5.0], dtype=np.float32),
-            high=np.array([5.0, 5.0, 5.0], dtype=np.float32),
-            dtype=np.float32,
+            low=np.array([-5.0, -5.0, -5.0]),
+            high=np.array([5.0, 5.0, 5.0]),
+            dtype=np.float64,
         )
-        self.observation_space = spaces.Box(obs_low, obs_high, dtype=np.float32)
-        self.cost_range = spaces.Box(
-            np.array([0.0], dtype=np.float32),
-            np.array([100], dtype=np.float32),
-            dtype=np.float32,
-        )
+        self.observation_space = spaces.Box(obs_low, obs_high, dtype=np.float64)
+        self.reward_range = (0.0, 100.0)
 
         self.viewer = None
         self.state = None
@@ -365,14 +361,14 @@ class Oscillator(gym.Env, OscillatorDisturber):
         cost = np.square(p1 - r1)
 
         # Define stopping criteria.
-        terminated = bool(cost > self.cost_range.high or cost < self.cost_range.low)
+        terminated = cost < self.reward_range[0] or cost > self.reward_range[1]
 
         # Create observation.
-        obs = np.array([m1, m2, m3, p1, p2, p3], dtype=np.float32)
+        obs = np.array([m1, m2, m3, p1, p2, p3])
         if not self._exclude_reference_from_observation:
-            obs = np.append(obs, r1).astype(np.float32)
+            obs = np.append(obs, r1)
         if not self._exclude_reference_error_from_observation:
-            obs = np.append(obs, p1 - r1).astype(np.float32)
+            obs = np.append(obs, p1 - r1)
 
         # Return state, cost, terminated, truncated and info_dict
         return (
@@ -423,33 +419,25 @@ class Oscillator(gym.Env, OscillatorDisturber):
         low = np.array(
             options["low"]
             if options is not None and "low" in options
-            else self._init_state_range["low"],
-            dtype=np.float32,
+            else self._init_state_range["low"]
         )
         high = np.array(
             options["high"]
             if options is not None and "high" in options
-            else self._init_state_range["high"],
-            dtype=np.float32,
+            else self._init_state_range["high"]
         )
         assert (
             self.observation_space.contains(
                 np.append(
                     low,
-                    np.zeros(
-                        self.observation_space.shape[0] - low.shape[0],
-                        dtype=np.float32,
-                    ),
+                    np.zeros(self.observation_space.shape[0] - low.shape[0]),
                 )
             )
         ) and (
             self.observation_space.contains(
                 np.append(
                     high,
-                    np.zeros(
-                        self.observation_space.shape[0] - low.shape[0],
-                        dtype=np.float32,
-                    ),
+                    np.zeros(self.observation_space.shape[0] - high.shape[0]),
                 )
             )
         ), (
@@ -466,11 +454,11 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.t = 0.0
         m1, m2, m3, p1, p2, p3 = self.state
         r1 = self.reference(self.t)
-        obs = np.array([m1, m2, m3, p1, p2, p3], dtype=np.float32)
+        obs = np.array([m1, m2, m3, p1, p2, p3])
         if not self._exclude_reference_from_observation:
-            obs = np.append(obs, r1).astype(np.float32)
+            obs = np.append(obs, r1)
         if not self._exclude_reference_error_from_observation:
-            obs = np.append(obs, p1 - r1).astype(np.float32)
+            obs = np.append(obs, p1 - r1)
 
         # Return initial observation and info_dict.
         return obs, dict(

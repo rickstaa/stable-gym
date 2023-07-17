@@ -210,8 +210,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 "Invalid reference type. Options are 'constant' and 'periodic'."
             )
         assert (
-            reference_type.lower() == "periodic"
-            or reference_type.lower() == "constant"
+            reference_type.lower() == "constant"
+            or reference_type.lower() == "periodic"
             and not exclude_reference_from_observation
         ), (
             "The reference can only be excluded from the observation if the reference "
@@ -256,28 +256,23 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 self.theta_threshold_radians * 2,
                 self.max_w,
             ],
-            dtype=np.float32,
         )
         # NOTE: When reference tracking add two extra observation states.
         if task_type.lower() == "reference_tracking":
             if not self._exclude_reference_from_observation:
-                high = np.append(high, self.x_threshold * 2).astype(np.float32)
+                high = np.append(high, self.x_threshold * 2)
             if not self._exclude_reference_error_from_observation:
-                high = np.append(high, self.x_threshold * 2).astype(np.float32)
+                high = np.append(high, self.x_threshold * 2)
 
         self.action_space = spaces.Box(
-            low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float32
+            low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float64
         )  # NOTE: Original uses discrete version.
-        self.observation_space = spaces.Box(-high, high, dtype=np.float32)
+        self.observation_space = spaces.Box(-high, high, dtype=np.float64)
 
         # Clip the reward.
         # NOTE: Original does not do this. Here this is done because we want to decrease
         # the cost.
-        self._cost_range = spaces.Box(
-            np.array([0.0], dtype=np.float32),
-            np.array([self.max_cost], dtype=np.float32),
-            dtype=np.float32,
-        )
+        self.reward_range = (0.0, 100.0)
 
         self.render_mode = render_mode
 
@@ -487,8 +482,8 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         terminated = bool(
             abs(x) > self.x_threshold
             or abs(theta) > self.theta_threshold_radians
-            or cost > self._cost_range.high  # NOTE: Added compared to original.
-            or cost < self._cost_range.low  # NOTE: Added compared to original.
+            or cost < self.reward_range[0]  # NOTE: Added compared to original.
+            or cost > self.reward_range[1]  # NOTE: Added compared to original.
         )
 
         # Handle termination.
@@ -518,16 +513,15 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # NOTE: When reference tracking add two extra observation states.
         obs = (
             np.append(
-                np.array(self.state, dtype=np.float32),
+                np.array(self.state),
                 np.array(
                     [ref[0]]
                     if self._exclude_reference_error_from_observation
-                    else [ref[0], x - ref[0]],
-                    dtype=np.float32,
+                    else [ref[0], x - ref[0]]
                 ),
             )
             if self.task_type.lower() == "reference_tracking"
-            else np.array(self.state, dtype=np.float32)
+            else np.array(self.state)
         )
         info_dict = dict(
             reference=ref[0],
@@ -573,38 +567,26 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         low = np.array(
             options["low"]
             if options is not None and "low" in options
-            else self._init_state_range["low"],
-            dtype=np.float32,
+            else self._init_state_range["low"]
         )
         high = np.array(
             options["high"]
             if options is not None and "high" in options
-            else self._init_state_range["high"],
-            dtype=np.float32,
+            else self._init_state_range["high"]
         )
         assert (
             self.observation_space.contains(
                 np.append(
                     low,
-                    np.zeros(
-                        1 if self._exclude_reference_error_from_observation else 2,
-                        dtype=np.float32,
-                    ),
+                    np.zeros(self.observation_space.shape[0] - low.shape[0]),
                 )
-                if self.task_type.lower() == "reference_tracking"
-                else low
             )
         ) and (
             self.observation_space.contains(
                 np.append(
                     high,
-                    np.zeros(
-                        1 if self._exclude_reference_error_from_observation else 2,
-                        dtype=np.float32,
-                    ),
+                    np.zeros(self.observation_space.shape[0] - low.shape[0]),
                 )
-                if self.task_type.lower() == "reference_tracking"
-                else high
             )
         ), (
             "Reset bounds must be within the observation space bounds "
@@ -634,16 +616,15 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         )
         obs = (
             np.append(
-                np.array(self.state, dtype=np.float32),
+                np.array(self.state),
                 np.array(
                     [ref[0]]
                     if self._exclude_reference_error_from_observation
-                    else [ref[0], x - ref[0]],
-                    dtype=np.float32,
+                    else [ref[0], x - ref[0]]
                 ),
             )
             if self.task_type.lower() == "reference_tracking"
-            else np.array(self.state, dtype=np.float32)
+            else np.array(self.state)
         )
 
         # Render environment reset if requested.
@@ -803,7 +784,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
 if __name__ == "__main__":
     print("Setting up 'CartPoleCost' environment.")
-    env = gym.make("CartPoleCost", render_mode="human", task_type="reference_tracking")
+    env = gym.make("CartPoleCost", render_mode="human")
 
     # Run episodes.
     episode = 0
