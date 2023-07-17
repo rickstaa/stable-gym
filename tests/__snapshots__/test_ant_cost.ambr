@@ -3,22 +3,22 @@
   0.8217195839822765
 # ---
 # name: TestAntCostEqual.test_snapshot.1
-  0.9916088870480808
+  0.9916088870480806
 # ---
 # name: TestAntCostEqual.test_snapshot.10
-  0.0287730240161329
+  0.02877302401613291
 # ---
 # name: TestAntCostEqual.test_snapshot.100
   0.9942783641856467
 # ---
 # name: TestAntCostEqual.test_snapshot.101
-  -0.0859368466278043
+  -0.08593684662780433
 # ---
 # name: TestAntCostEqual.test_snapshot.102
-  0.0607630578607972
+  0.060763057860797214
 # ---
 # name: TestAntCostEqual.test_snapshot.103
-  0.0182549638013644
+  0.018254963801364432
 # ---
 # name: TestAntCostEqual.test_snapshot.104
   0.5721321075810565
@@ -27,7 +27,7 @@
   1.305099251586962
 # ---
 # name: TestAntCostEqual.test_snapshot.106
-  -0.4646644569286908
+  -0.46466445692869085
 # ---
 # name: TestAntCostEqual.test_snapshot.107
   -0.601339741376164
@@ -42,28 +42,28 @@
   0.064552322654166
 # ---
 # name: TestAntCostEqual.test_snapshot.110
-  0.1698415308856424
+  0.16984153088564236
 # ---
 # name: TestAntCostEqual.test_snapshot.111
   1.0606087742013692
 # ---
 # name: TestAntCostEqual.test_snapshot.112
-  -0.0778399534204618
+  -0.07783995342046181
 # ---
 # name: TestAntCostEqual.test_snapshot.113
-  -0.0074122827265534
+  -0.007412282726553351
 # ---
 # name: TestAntCostEqual.test_snapshot.114
   -1.4813785484872442
 # ---
 # name: TestAntCostEqual.test_snapshot.115
-  -0.191461178270048
+  -0.19146117827004797
 # ---
 # name: TestAntCostEqual.test_snapshot.116
   0.4418971258235626
 # ---
 # name: TestAntCostEqual.test_snapshot.117
-  -0.1658221424291745
+  -0.16582214242917448
 # ---
 # name: TestAntCostEqual.test_snapshot.118
   0.0920255602309421
@@ -72,7 +72,7 @@
   -2.457212293528775
 # ---
 # name: TestAntCostEqual.test_snapshot.12
-  -0.0113171602345338
+  -0.011317160234533774
 # ---
 # name: TestAntCostEqual.test_snapshot.120
   0.3740353790349211
@@ -99,13 +99,13 @@
   -1.1331687498528507
 # ---
 # name: TestAntCostEqual.test_snapshot.128
-  -0.1331687498528507
+  -0.13316874985285068
 # ---
 # name: TestAntCostEqual.test_snapshot.129
   1.2840714156430724
 # ---
 # name: TestAntCostEqual.test_snapshot.13
-  -0.0859292462883238
+  -0.08592924628832382
 # ---
 # name: TestAntCostEqual.test_snapshot.130
   False
@@ -116,18 +116,18 @@
 # name: TestAntCostEqual.test_snapshot.132
   dict({
     'cost_contact': 0.0,
-    'cost_ctrl': 0.0003127141475677,
+    'cost_ctrl': 0.00031271414756774905,
     'cost_velocity': 1.2840714156430724,
-    'distance_from_origin': 0.0397462617329449,
-    'forward_reward': -0.1331687498528507,
+    'distance_from_origin': 0.039746261732944946,
+    'forward_reward': -0.13316874985285068,
     'penalty_health': 0.0,
-    'reward_ctrl': -0.0003127141475677,
-    'reward_forward': -0.1331687498528507,
+    'reward_ctrl': -0.00031271414756774905,
+    'reward_forward': -0.13316874985285068,
     'reward_survive': 1.0,
-    'x_position': 0.0380389826985347,
-    'x_velocity': -0.1331687498528507,
-    'y_position': -0.0115239366973417,
-    'y_velocity': 0.0179008221775986,
+    'x_position': 0.03803898269853474,
+    'x_velocity': -0.13316874985285068,
+    'y_position': -0.011523936697341676,
+    'y_velocity': 0.01790082217759864,
   })
 # ---
 # name: TestAntCostEqual.test_snapshot.133
@@ -137,13 +137,13 @@
   0.995515223073717
 # ---
 # name: TestAntCostEqual.test_snapshot.135
-  -0.0725082991554824
+  -0.07250829915548242
 # ---
 # name: TestAntCostEqual.test_snapshot.136
-  0.0577641749761766
+  0.05776417497617656
 # ---
 # name: TestAntCostEqual.test_snapshot.137
-  0.0188490655309077
+  0.018849065530907715
 # ---
 # name: TestAntCostEqual.test_snapshot.138
   0.5287432731470202
@@ -152,7 +152,7 @@
   1.0434176471790408
 # ---
 # name: TestAntCostEqual.test_snapshot.14
-  0.0368750784082499
+  0.036875078408249884
 # ---
 # name: TestAntCostEqual.test_snapshot.140
   -0.548686034880311
@@ -167,7 +167,7 @@
   -1.187663480279202
 # ---
 # name: TestAntCostEqual.test_snapshot.144
-  0.2386847809496931
+  0.23868478094969311
 # ---
 # name: TestAntCostEqual.test_snapshot.145
   1.0054166144382228
@@ -188,10 +188,10 @@
   -0.0958882600828999
 # ---
 # name: TestAntCostEqual.test_snapshot.150
-  -0.060830609728925
+  -0.06083060972892503
 # ---
 # name: TestAntCostEqual.test_snapshot.151
-  -0.4617778365279562
+  -0.4617778365279563
 # ---
 # name: TestAntCostEqual.test_snapshot.152
   -1.1591599788878681
@@ -203,7 +203,7 @@
   -0.7825743516323485
 # ---
 # name: TestAntCostEqual.test_snapshot.155
-  0.146750513160343
+  0.14675051316034304
 # ---
 # name: TestAntCostEqual.test_snapshot.156
   -0.8775617312033328
@@ -218,7 +218,7 @@
   -3.3303330857523914
 # ---
 # name: TestAntCostEqual.test_snapshot.16
-  0.0878450301307272
+  0.08784503013072725
 # ---
 # name: TestAntCostEqual.test_snapshot.160
   1.0
@@ -241,17 +241,17 @@
 # name: TestAntCostEqual.test_snapshot.166
   dict({
     'cost_contact': 0.0,
-    'cost_ctrl': 0.0003245847940445,
+    'cost_ctrl': 0.00032458479404449465,
     'cost_velocity': 2.400532615782733,
-    'distance_from_origin': 0.0674606834370258,
+    'distance_from_origin': 0.06746068343702584,
     'forward_reward': -0.5493652299515223,
     'penalty_health': 0.0,
-    'reward_ctrl': -0.0003245847940445,
+    'reward_ctrl': -0.00032458479404449465,
     'reward_forward': -0.5493652299515223,
     'reward_survive': 1.0,
-    'x_position': 0.0105707212009586,
+    'x_position': 0.010570721200958626,
     'x_velocity': -0.5493652299515223,
-    'y_position': -0.0666273492124834,
+    'y_position': -0.06662734921248344,
     'y_velocity': -1.1020682503028352,
   })
 # ---
@@ -259,22 +259,22 @@
   0.711804146583538
 # ---
 # name: TestAntCostEqual.test_snapshot.168
-  0.9963505762429838
+  0.9963505762429837
 # ---
 # name: TestAntCostEqual.test_snapshot.169
-  -0.0601545204158196
+  -0.060154520415819604
 # ---
 # name: TestAntCostEqual.test_snapshot.17
-  -0.0049925910986253
+  -0.00499259109862529
 # ---
 # name: TestAntCostEqual.test_snapshot.170
-  0.058621346438584
+  0.05862134643858404
 # ---
 # name: TestAntCostEqual.test_snapshot.171
-  0.0151822473812187
+  0.015182247381218665
 # ---
 # name: TestAntCostEqual.test_snapshot.172
-  0.461192022926435
+  0.46119202292643496
 # ---
 # name: TestAntCostEqual.test_snapshot.173
   0.5218558172778258
@@ -289,7 +289,7 @@
   0.4081626405583841
 # ---
 # name: TestAntCostEqual.test_snapshot.177
-  -0.8945362267959178
+  -0.8945362267959179
 # ---
 # name: TestAntCostEqual.test_snapshot.178
   0.3408814031878626
@@ -298,7 +298,7 @@
   0.7955419578424723
 # ---
 # name: TestAntCostEqual.test_snapshot.18
-  -0.0184862363545261
+  -0.018486236354526057
 # ---
 # name: TestAntCostEqual.test_snapshot.180
   -0.4446585428755358
@@ -313,7 +313,7 @@
   0.6082945225158629
 # ---
 # name: TestAntCostEqual.test_snapshot.184
-  0.0047557074669356
+  0.004755707466935599
 # ---
 # name: TestAntCostEqual.test_snapshot.185
   0.4510491407033329
@@ -325,13 +325,13 @@
   -10.256484879948953
 # ---
 # name: TestAntCostEqual.test_snapshot.188
-  0.3301126332473398
+  0.33011263324733986
 # ---
 # name: TestAntCostEqual.test_snapshot.189
-  -0.209683618871645
+  -0.20968361887164502
 # ---
 # name: TestAntCostEqual.test_snapshot.19
-  -0.0680929544403941
+  -0.06809295444039414
 # ---
 # name: TestAntCostEqual.test_snapshot.190
   -4.78987517526913
@@ -367,42 +367,42 @@
   -0.0774271412280302
 # ---
 # name: TestAntCostEqual.test_snapshot.20
-  0.122254133867403
+  0.12225413386740304
 # ---
 # name: TestAntCostEqual.test_snapshot.200
   dict({
     'cost_contact': 0.0,
-    'cost_ctrl': 0.0001541744112968,
+    'cost_ctrl': 0.0001541744112968445,
     'cost_velocity': 2.4002850772702193,
-    'distance_from_origin': 0.134075711510765,
+    'distance_from_origin': 0.13407571151076497,
     'forward_reward': -0.5492853440442207,
     'penalty_health': 0.0,
-    'reward_ctrl': -0.0001541744112968,
+    'reward_ctrl': -0.0001541744112968445,
     'reward_forward': -0.5492853440442207,
     'reward_survive': 1.0,
-    'x_position': -0.0168935460012524,
+    'x_position': -0.01689354600125241,
     'x_velocity': -0.5492853440442207,
-    'y_position': -0.1330071596592508,
+    'y_position': -0.13300715965925083,
     'y_velocity': -1.327596208935348,
   })
 # ---
 # name: TestAntCostEqual.test_snapshot.21
-  -0.0154529482068802
+  -0.015452948206880215
 # ---
 # name: TestAntCostEqual.test_snapshot.22
-  -0.0428327822163107
+  -0.042832782216310726
 # ---
 # name: TestAntCostEqual.test_snapshot.23
-  -0.035213355048823
+  -0.03521335504882296
 # ---
 # name: TestAntCostEqual.test_snapshot.24
-  0.0532309185553349
+  0.05323091855533488
 # ---
 # name: TestAntCostEqual.test_snapshot.25
-  0.0365444064364078
+  0.036544406436407835
 # ---
 # name: TestAntCostEqual.test_snapshot.26
-  0.0412732611595988
+  0.04127326115959884
 # ---
 # name: TestAntCostEqual.test_snapshot.27
   1.0
@@ -414,7 +414,7 @@
   0.0
 # ---
 # name: TestAntCostEqual.test_snapshot.3
-  0.0907442667374609
+  0.09074426673746092
 # ---
 # name: TestAntCostEqual.test_snapshot.30
   dict({
@@ -427,28 +427,28 @@
   0.9932166193724318
 # ---
 # name: TestAntCostEqual.test_snapshot.33
-  -0.0748386089532564
+  -0.07483860895325636
 # ---
 # name: TestAntCostEqual.test_snapshot.34
-  0.0811227423697824
+  0.08112274236978242
 # ---
 # name: TestAntCostEqual.test_snapshot.35
   0.0365927627099295
 # ---
 # name: TestAntCostEqual.test_snapshot.36
-  0.1840199756409649
+  0.18401997564096487
 # ---
 # name: TestAntCostEqual.test_snapshot.37
   0.4405922118387234
 # ---
 # name: TestAntCostEqual.test_snapshot.38
-  -0.1562553652313192
+  -0.15625536523131922
 # ---
 # name: TestAntCostEqual.test_snapshot.39
   -0.3810127897954648
 # ---
 # name: TestAntCostEqual.test_snapshot.4
-  0.0498229965257216
+  0.04982299652572164
 # ---
 # name: TestAntCostEqual.test_snapshot.40
   0.1785463166038994
@@ -457,7 +457,7 @@
   -0.3834662217311874
 # ---
 # name: TestAntCostEqual.test_snapshot.42
-  0.1663164406876887
+  0.16631644068768867
 # ---
 # name: TestAntCostEqual.test_snapshot.43
   0.4140176816545653
@@ -466,13 +466,13 @@
   -0.1962819434245767
 # ---
 # name: TestAntCostEqual.test_snapshot.45
-  -0.1776013961969666
+  -0.17760139619696663
 # ---
 # name: TestAntCostEqual.test_snapshot.46
-  0.1297716660354011
+  0.12977166603540113
 # ---
 # name: TestAntCostEqual.test_snapshot.47
-  0.1572714241521136
+  0.15727142415211362
 # ---
 # name: TestAntCostEqual.test_snapshot.48
   -0.8041248650060641
@@ -481,7 +481,7 @@
   -1.0253112328541807
 # ---
 # name: TestAntCostEqual.test_snapshot.5
-  0.0572128610553908
+  0.05721286105539078
 # ---
 # name: TestAntCostEqual.test_snapshot.50
   5.103576027721423
@@ -514,10 +514,10 @@
   -1.0857372691250815
 # ---
 # name: TestAntCostEqual.test_snapshot.6
-  -0.0743772734648908
+  -0.07437727346489083
 # ---
 # name: TestAntCostEqual.test_snapshot.60
-  -0.0857372691250814
+  -0.08573726912508142
 # ---
 # name: TestAntCostEqual.test_snapshot.61
   1.1788254175671897
@@ -531,37 +531,37 @@
 # name: TestAntCostEqual.test_snapshot.64
   dict({
     'cost_contact': 0.0,
-    'cost_ctrl': 0.0003149079084396,
+    'cost_ctrl': 0.00031490790843963625,
     'cost_velocity': 1.1788254175671897,
-    'distance_from_origin': 0.0524015029022745,
-    'forward_reward': -0.0857372691250814,
+    'distance_from_origin': 0.052401502902274535,
+    'forward_reward': -0.08573726912508142,
     'penalty_health': 0.0,
-    'reward_ctrl': -0.0003149079084396,
-    'reward_forward': -0.0857372691250814,
+    'reward_ctrl': -0.00031490790843963625,
+    'reward_forward': -0.08573726912508142,
     'reward_survive': 1.0,
     'x_position': 0.0505043462549386,
-    'x_velocity': -0.0857372691250814,
-    'y_position': -0.0139724198254403,
-    'y_velocity': -0.0349621555170149,
+    'x_velocity': -0.08573726912508142,
+    'y_position': -0.013972419825440289,
+    'y_velocity': -0.034962155517014905,
   })
 # ---
 # name: TestAntCostEqual.test_snapshot.65
   0.8276472520968416
 # ---
 # name: TestAntCostEqual.test_snapshot.66
-  0.9952936880306066
+  0.9952936880306067
 # ---
 # name: TestAntCostEqual.test_snapshot.67
-  -0.0725265342150993
+  -0.07252653421509932
 # ---
 # name: TestAntCostEqual.test_snapshot.68
-  0.0570854913858921
+  0.057085491385892105
 # ---
 # name: TestAntCostEqual.test_snapshot.69
-  0.0295232632751063
+  0.029523263275106286
 # ---
 # name: TestAntCostEqual.test_snapshot.7
-  -0.0099228124208866
+  -0.009922812420886579
 # ---
 # name: TestAntCostEqual.test_snapshot.70
   0.3864590962855272
@@ -582,25 +582,25 @@
   -0.8484633293460893
 # ---
 # name: TestAntCostEqual.test_snapshot.76
-  0.2256946462582859
+  0.22569464625828592
 # ---
 # name: TestAntCostEqual.test_snapshot.77
   0.8366010116440885
 # ---
 # name: TestAntCostEqual.test_snapshot.78
-  -0.0470909127009032
+  -0.04709091270090322
 # ---
 # name: TestAntCostEqual.test_snapshot.79
-  0.2059221908710316
+  0.20592219087103156
 # ---
 # name: TestAntCostEqual.test_snapshot.8
-  -0.0258403951534838
+  -0.025840395153483756
 # ---
 # name: TestAntCostEqual.test_snapshot.80
   -0.7042417608831626
 # ---
 # name: TestAntCostEqual.test_snapshot.81
-  -0.0649533640184198
+  -0.06495336401841977
 # ---
 # name: TestAntCostEqual.test_snapshot.82
   -0.8870544293366875
@@ -627,13 +627,13 @@
   -11.081676080943627
 # ---
 # name: TestAntCostEqual.test_snapshot.9
-  0.0853529977697204
+  0.08535299776972036
 # ---
 # name: TestAntCostEqual.test_snapshot.90
   -1.583948806863844
 # ---
 # name: TestAntCostEqual.test_snapshot.91
-  7.876496394579283
+  7.876496394579284
 # ---
 # name: TestAntCostEqual.test_snapshot.92
   1.0
@@ -642,7 +642,7 @@
   -1.1161385212752264
 # ---
 # name: TestAntCostEqual.test_snapshot.94
-  -0.1161385212752264
+  -0.11613852127522639
 # ---
 # name: TestAntCostEqual.test_snapshot.95
   1.245765198674449
@@ -656,18 +656,18 @@
 # name: TestAntCostEqual.test_snapshot.98
   dict({
     'cost_contact': 0.0,
-    'cost_ctrl': 0.0002168221950531,
+    'cost_ctrl': 0.0002168221950531006,
     'cost_velocity': 1.245765198674449,
-    'distance_from_origin': 0.0463906281645128,
-    'forward_reward': -0.1161385212752264,
+    'distance_from_origin': 0.04639062816451278,
+    'forward_reward': -0.11613852127522639,
     'penalty_health': 0.0,
-    'reward_ctrl': -0.0002168221950531,
-    'reward_forward': -0.1161385212752264,
+    'reward_ctrl': -0.0002168221950531006,
+    'reward_forward': -0.11613852127522639,
     'reward_survive': 1.0,
-    'x_position': 0.0446974201911773,
-    'x_velocity': -0.1161385212752264,
-    'y_position': -0.0124189778062216,
-    'y_velocity': 0.0310688403843736,
+    'x_position': 0.04469742019117728,
+    'x_velocity': -0.11613852127522639,
+    'y_position': -0.012418977806221608,
+    'y_velocity': 0.031068840384373582,
   })
 # ---
 # name: TestAntCostEqual.test_snapshot.99

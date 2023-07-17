@@ -3,22 +3,22 @@
   1.2493887843975204
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.1
-  0.0035859791991138
+  0.003585979199113825
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.10
-  0.004267649888486
+  0.004267649888486018
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.100
   0.5190036491608933
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.101
-  0.0838522837867309
+  0.08385228378673092
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.102
   -0.7241097457481626
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.103
-  -3.5112607068532453
+  -3.511260706853245
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.104
   -5.412825067012064
@@ -30,7 +30,7 @@
   5.50964809681505
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.107
-  -7.0880715166391255
+  -7.088071516639125
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.108
   5.917406577464348
@@ -39,7 +39,7 @@
   10.0
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.11
-  0.0014386512008066
+  0.0014386512008066456
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.110
   1.0
@@ -48,7 +48,7 @@
   -1.059650300484363
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.112
-  -0.0596503004843629
+  -0.05965030048436288
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.113
   1.1228587593166006
@@ -61,36 +61,36 @@
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.116
   dict({
-    'cost_ctrl': 0.0023542020320892,
+    'cost_ctrl': 0.0023542020320892333,
     'cost_velocity': 1.1228587593166006,
     'penalty_health': 0.0,
-    'x_position': -0.0042550019217864,
-    'x_velocity': -0.0596503004843629,
+    'x_position': -0.004255001921786417,
+    'x_velocity': -0.05965030048436288,
   })
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.117
   1.2299030840166414
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.118
-  -0.1112805756758281
+  -0.11128057567582811
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.119
-  -0.1379186821533198
+  -0.13791868215331976
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.12
-  0.0032276161327083
+  0.003227616132708299
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.120
-  0.025757335605593
+  0.025757335605593037
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.121
-  0.1550798246959895
+  0.15507982469598947
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.122
-  -0.1180593980963543
+  -0.11805939809635431
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.123
-  -0.03681523193161
+  -0.03681523193160995
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.124
   0.7128916088656503
@@ -102,7 +102,7 @@
   -0.8200092360486002
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.127
-  -3.9673631842788706
+  -3.967363184278871
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.128
   -2.6229158007054005
@@ -111,7 +111,7 @@
   -3.3910122288092293
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.13
-  -0.0005658580117267
+  -0.0005658580117266889
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.130
   6.998204175299952
@@ -132,7 +132,7 @@
   -1.1103496119933074
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.136
-  -0.1103496119933073
+  -0.11034961199330728
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.137
   1.2328762608536883
@@ -144,22 +144,22 @@
   False
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.14
-  -0.0027276127821522
+  -0.0027276127821522314
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.140
   dict({
-    'cost_ctrl': 0.0021319525241852,
+    'cost_ctrl': 0.002131952524185181,
     'cost_velocity': 1.2328762608536883,
     'penalty_health': 0.0,
-    'x_position': -0.0051377988177329,
-    'x_velocity': -0.1103496119933073,
+    'x_position': -0.005137798817732875,
+    'x_velocity': -0.11034961199330728,
   })
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.15
-  0.0005458478701583
+  0.0005458478701583476
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.16
-  -0.0043618274389582
+  -0.004361827438958247
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.17
   1.0
@@ -171,7 +171,7 @@
   0.0
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.2
-  0.0019736802905936
+  0.001973680290593639
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.20
   dict({
@@ -181,31 +181,31 @@
   1.2478585798438653
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.22
-  -0.0035312871534252
+  -0.0035312871534251638
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.23
-  0.0021170446609177
+  0.002117044660917723
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.24
-  -0.0200646536392043
+  -0.020064653639204295
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.25
-  0.0524665427093673
+  0.05246654270936734
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.26
-  0.0044084126700425
+  0.0044084126700424985
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.27
-  -0.0191205995445392
+  -0.019120599544539183
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.28
-  0.0589070856162812
+  0.058907085616281246
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.29
   -0.3881458631163919
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.3
-  -0.0040582265211235
+  -0.0040582265211235044
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.30
   -0.3854872259051809
@@ -214,7 +214,7 @@
   -1.794439380166033
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.32
-  0.0244432771579401
+  0.024443277157940122
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.33
   -3.9821193166624673
@@ -238,10 +238,10 @@
   -1.1946965455826988
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.4
-  0.0047562235163676
+  0.004756223516367559
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.40
-  -0.1946965455826988
+  -0.19469654558269886
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.41
   1.4272998360272335
@@ -254,45 +254,45 @@
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.44
   dict({
-    'cost_ctrl': 0.0025489721298218,
+    'cost_ctrl': 0.0025489721298217775,
     'cost_velocity': 1.4272998360272335,
     'penalty_health': 0.0,
-    'x_position': 0.001181988120898,
-    'x_velocity': -0.1946965455826988,
+    'x_position': 0.0011819881208980426,
+    'x_velocity': -0.19469654558269886,
   })
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.45
   1.2443219366355809
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.46
-  -0.0199955869357439
+  -0.019995586935743857
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.47
-  -0.0083688925724794
+  -0.008368892572479442
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.48
-  -0.0330460138174527
+  -0.03304601381745273
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.49
-  0.1033628211963386
+  0.10336282119633855
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.5
-  0.0026113970199035
+  0.00261139701990353
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.50
-  0.006901119838132
+  0.006901119838132038
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.51
-  -0.0674420086230867
+  -0.06744200862308668
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.52
-  0.2255092259843572
+  0.22550922598435721
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.53
   -0.3198592257932882
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.54
-  -0.4977352823978933
+  -0.49773528239789333
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.55
   -2.291441882082046
@@ -307,10 +307,10 @@
   0.9656776567938218
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.59
-  0.2372714118547602
+  0.23727141185476014
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.6
-  0.0028606430527695
+  0.0028606430527695374
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.60
   -6.564057865555236
@@ -328,7 +328,7 @@
   -0.3552705654562779
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.65
-  1.8367583055921792
+  1.836758305592179
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.66
   False
@@ -338,10 +338,10 @@
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.68
   dict({
-    'cost_ctrl': 0.0019584369659424,
-    'cost_velocity': 1.8367583055921792,
+    'cost_ctrl': 0.001958436965942383,
+    'cost_velocity': 1.836758305592179,
     'penalty_health': 0.0,
-    'x_position': -0.0016601764027522,
+    'x_position': -0.0016601764027521805,
     'x_velocity': -0.3552705654562779,
   })
 # ---
@@ -349,40 +349,40 @@
   1.240700631469758
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.7
-  -0.0037188636732445
+  -0.0037188636732445415
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.70
-  -0.0481902135462762
+  -0.04819021354627624
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.71
-  -0.0511606791406723
+  -0.05116067914067232
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.72
-  -0.006856235948593
+  -0.006856235948592974
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.73
-  0.0953234404978929
+  0.09532344049789286
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.74
-  -0.0150635431003983
+  -0.015063543100398298
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.75
-  -0.095228108115872
+  -0.09522810811587203
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.76
   0.3801470250260088
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.77
-  -0.210483596746153
+  -0.21048359674615297
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.78
-  -0.416028233145401
+  -0.41602823314540105
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.79
   -4.742702022671022
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.8
-  -0.0004961406210443
+  -0.0004961406210443288
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.80
   -8.071098484092534
@@ -409,13 +409,13 @@
   -1.2647028893949166
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.88
-  -0.2647028893949166
+  -0.26470288939491665
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.89
   1.5994733984438507
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.9
-  -0.0012920197576742
+  -0.0012920197576741879
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.90
   False
@@ -425,30 +425,30 @@
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.92
   dict({
-    'cost_ctrl': 0.0015828311443329,
+    'cost_ctrl': 0.0015828311443328857,
     'cost_velocity': 1.5994733984438507,
     'penalty_health': 0.0,
-    'x_position': -0.0037777995179115,
-    'x_velocity': -0.2647028893949166,
+    'x_position': -0.003777799517911514,
+    'x_velocity': -0.26470288939491665,
   })
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.93
   1.236108450596554
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.94
-  -0.0813931344284066
+  -0.08139313442840664
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.95
-  -0.1058091992897845
+  -0.10580919928978448
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.96
-  0.0283841775660101
+  0.02838417756601008
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.97
-  0.1048036882095252
+  0.10480368820952524
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.98
-  -0.0664185006968984
+  -0.06641850069689842
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.99
   -0.074234164316944

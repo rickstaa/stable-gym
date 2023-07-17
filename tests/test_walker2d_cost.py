@@ -9,7 +9,7 @@ from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)
 
-PRECISION = 16
+PRECISION = 100
 
 
 class TestWalker2dCostEqual:

@@ -1,12 +1,12 @@
 # serializer version: 1
 # name: TestHalfCheetahCostEqual.test_snapshot
-  -0.0122243120495895
+  -0.012224312049589542
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.1
-  0.0717195839822765
+  0.07171958398227649
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.10
-  0.0777791935428948
+  0.07777919354289484
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.100
   -0.1790805859763481
@@ -39,13 +39,13 @@
   2.3464246398027298
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.11
-  0.0066030697561216
+  0.006603069756121605
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.110
   1.0
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.111
-  -1.7912004008272207
+  -1.7912004008272204
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.112
   -0.7912004008272207
@@ -61,44 +61,44 @@
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.116
   dict({
-    'cost_ctrl': 0.0002354202032089,
+    'cost_ctrl': 0.00023542020320892334,
     'cost_velocity': 3.2083988759235957,
-    'x_position': -0.0168370793395109,
+    'x_position': -0.016837079339510876,
     'x_velocity': -0.7912004008272207,
   })
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.117
-  -0.1245485334980939
+  -0.12454853349809386
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.118
-  -0.0257137472223512
+  -0.025713747222351247
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.119
   0.3559939676627254
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.12
-  0.1127241206968033
+  0.11272412069680329
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.120
-  0.0067717157444868
+  0.006771715744486817
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.121
-  0.1253929307607248
+  0.12539293076072483
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.122
   -0.4530025409526497
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.123
-  0.0220346294113967
+  0.022034629411396736
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.124
-  0.1432576316910528
+  0.14325763169105285
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.125
-  -0.165669422408253
+  -0.16566942240825305
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.126
-  0.1745841779109427
+  0.17458417791094272
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.127
   2.861020828424744
@@ -110,7 +110,7 @@
   -6.7111759673482645
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.13
-  0.0467509342252046
+  0.046750934225204564
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.130
   -4.075213459534094
@@ -122,7 +122,7 @@
   -10.886497949362548
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.133
-  7.281018089359992
+  7.281018089359994
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.134
   1.0
@@ -143,18 +143,18 @@
   False
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.14
-  -0.0859292462883238
+  -0.08592924628832382
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.140
   dict({
-    'cost_ctrl': 0.0002131952524185,
+    'cost_ctrl': 0.0002131952524185181,
     'cost_velocity': 1.574816228046094,
-    'x_position': -0.0295829203978251,
+    'x_position': -0.029582920397825133,
     'x_velocity': -0.2549168211662851,
   })
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.15
-  0.0368750784082499
+  0.036875078408249884
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.16
   -0.0958882600828999
@@ -169,35 +169,35 @@
   0.0
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.2
-  0.0394736058118728
+  0.039473605811872786
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.20
   dict({
   })
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.21
-  -0.0298663646269634
+  -0.02986636462696342
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.22
-  0.0763528093578848
+  0.07635280935788477
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.23
-  0.1569817352601035
+  0.15698173526010348
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.24
-  -0.1149125329341098
+  -0.11491253293410986
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.25
   0.28095868622709
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.26
-  0.2217913064160838
+  0.22179130641608386
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.27
   -0.2907833210526689
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.28
-  0.2474379681000924
+  0.24743796810009247
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.29
   0.3241605163146541
@@ -209,13 +209,13 @@
   -0.6264623227604865
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.31
-  -0.0249154385961364
+  -0.02491543859613643
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.32
   3.2190612683933004
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.33
-  -0.4561315353562574
+  -0.45613153535625744
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.34
   4.529667805541006
@@ -236,10 +236,10 @@
   -0.7694881863290486
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.4
-  0.0951244703273512
+  0.09512447032735119
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.40
-  0.2305118136709514
+  0.23051181367095136
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.41
   0.5921120688999686
@@ -252,32 +252,32 @@
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.44
   dict({
-    'cost_ctrl': 0.0002548972129822,
+    'cost_ctrl': 0.00025489721298217776,
     'cost_velocity': 0.5921120688999686,
-    'x_position': 0.0663168003947402,
-    'x_velocity': 0.2305118136709514,
+    'x_position': 0.06631680039474024,
+    'x_velocity': 0.23051181367095136,
   })
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.45
-  -0.0770702540037482
+  -0.07707025400374824
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.46
-  0.0266688627806301
+  0.026668862780630118
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.47
   0.2848368619083788
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.48
-  0.1945370476301911
+  0.19453704763019108
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.49
   -0.1574191080156087
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.5
-  0.0522279403980706
+  0.052227940398070605
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.50
-  0.1356985734954888
+  0.13569857349548878
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.51
   -0.2795610438590243
@@ -307,7 +307,7 @@
   -4.24322714295268
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.6
-  0.0572128610553908
+  0.05721286105539078
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.60
   4.251792379477341
@@ -322,7 +322,7 @@
   -1.0592471867085425
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.64
-  -0.0592471867085426
+  -0.05924718670854257
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.65
   1.1220046025499617
@@ -335,23 +335,23 @@
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.68
   dict({
-    'cost_ctrl': 0.0001958436965942,
+    'cost_ctrl': 0.00019584369659423828,
     'cost_velocity': 1.1220046025499617,
-    'x_position': 0.0633544410593131,
-    'x_velocity': -0.0592471867085426,
+    'x_position': 0.06335444105931311,
+    'x_velocity': -0.05924718670854257,
   })
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.69
-  -0.1155247014225736
+  -0.11552470142257361
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.7
-  -0.0743772734648908
+  -0.07437727346489083
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.70
-  -0.027285689061942
+  -0.027285689061942002
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.71
-  0.2402573497094516
+  0.24025734970945167
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.72
   0.4513826365584502
@@ -363,22 +363,22 @@
   -0.1453566443448924
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.75
-  -0.0075720068267294
+  -0.007572006826729352
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.76
-  0.018442937262636
+  0.01844293726263599
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.77
   -1.1549401878628935
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.78
-  -0.273740253314857
+  -0.2737402533148571
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.79
   -1.5737471692480973
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.8
-  -0.085304392757358
+  -0.08530439275735802
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.80
   -2.1386079246239853
@@ -411,7 +411,7 @@
   3.2856275428179225
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.9
-  0.0879397974862829
+  0.08793979748628286
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.90
   False
@@ -421,9 +421,9 @@
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.92
   dict({
-    'cost_ctrl': 0.0001582831144333,
+    'cost_ctrl': 0.00015828311443328859,
     'cost_velocity': 3.2856275428179225,
-    'x_position': 0.0227229407018502,
+    'x_position': 0.02272294070185016,
     'x_velocity': -0.8126300071492589,
   })
 # ---
@@ -431,7 +431,7 @@
   -0.1290411613823614
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.94
-  -0.1018196925754262
+  -0.10181969257542624
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.95
   0.2876863027724879
@@ -440,11 +440,11 @@
   0.2513647523582115
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.97
-  0.1921294487378943
+  0.19212944873789428
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.98
   -0.3243471283503268
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.99
-  0.3178033634891464
+  0.31780336348914634
 # ---
