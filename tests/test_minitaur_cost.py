@@ -1,21 +1,44 @@
-"""Test if the Walker2dCost environment still behaves like the original Walker2d
+"""Test if the MinitaurCost environment still behaves like the original Minitaur
 environment when the same environment parameters are used.
 """
 import gymnasium as gym
 import numpy as np
 from gymnasium.logger import ERROR
-
-import stable_gym  # noqa: F401
+from gym.logger import ERROR as ERROR_ORG
 
 gym.logger.set_level(ERROR)
 
+import stable_gym  # noqa: F401, E402
 
-class TestWalker2dCostEqual:
-    # Make original Walker2d environment.
-    env = gym.make("Walker2d")
-    # Make Walker2dCost environment.
+import gym as gym_orig  # noqa: E402
+
+gym_orig.logger.set_level(
+    ERROR_ORG
+)  # TODO: Can be removed when https://github.com/bulletphysics/bullet3/issues/4369 is resoled. # noqa: E501
+import pybullet_envs  # noqa: F401, E402
+
+
+# Register Minitaur environment. Needed because the original Minitaur environment
+# is registered under 'gym' instead of 'gymnasium'.
+# TODO: Can be removed when https://github.com/bulletphysics/bullet3/issues/4369 is resoled. # noqa: E501
+gym.register(
+    id="MinitaurBulletEnv-v0",
+    entry_point="pybullet_envs.bullet.minitaur_gym_env:MinitaurBulletEnv",
+    max_episode_steps=500,
+    reward_threshold=300,
+    disable_env_checker=True,
+    apply_api_compatibility=True,
+)
+
+
+class TestMinitaurCostEqual:
+    # NOTE: The env randomizer is disabled because it is not deterministic.
+    # Make original Minitaur environment.
+    env = gym.make("MinitaurBulletEnv-v0", env_randomizer=None)
+    # Make MinitaurCost environment.
     env_cost = gym.make(
-        "Walker2dCost",
+        "MinitaurCost",
+        env_randomizer=None,
         exclude_reference_from_observation=True,
         exclude_x_velocity_from_observation=True,
     )
@@ -43,9 +66,11 @@ class TestWalker2dCostEqual:
             ), f"{observation} != {observation_cost}"
 
     def test_snapshot(self, snapshot):
-        """Test if the 'Walker2dCost' environment is still equal to snapshot."""
+        """Test if the 'MinitaurCost' environment is still equal to snapshot."""
         self.env_cost = gym.make(
-            "Walker2dCost", exclude_reference_error_from_observation=False
+            "MinitaurCost",
+            env_randomizer=None,
+            exclude_reference_error_from_observation=False,
         )  # Check full observation.
         observation, info = self.env_cost.reset(seed=42)
         assert (observation == snapshot).all()

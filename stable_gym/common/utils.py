@@ -2,6 +2,7 @@
 import re
 
 import numpy as np
+import gymnasium as gym
 from gymnasium.utils import colorize as gym_colorize
 
 
@@ -289,3 +290,35 @@ def maybe_parse_reset_bounds(options, default_low, default_high):
         )
 
     return low, high
+
+
+def change_dict_key(d, old_key, new_key, default_value=None):
+    """Changes the key of a dictionary.
+
+    Args:
+        d (dict): The dictionary.
+        old_key (str): The old key.
+        new_key (str): The new key.
+        default_value (any, optional): The default value to use if the old key is not
+            present in the dictionary. Defaults to ``None``.
+    """
+    d[new_key] = d.pop(old_key, default_value)
+    return d
+
+
+def convert_gym_box_to_gymnasium_box(gym_box_space):
+    """Converts a gym box space to a gymnasium box space.
+
+    Args:
+        gym_box_space (gym.spaces.Box): The gym box space.
+
+    Returns:
+        gymnasium.spaces.Box: The gymnasium box space.
+    """
+    return gym.spaces.Box(
+        low=gym_box_space.low,
+        high=gym_box_space.high,
+        shape=gym_box_space.shape,
+        dtype=gym_box_space.dtype,
+        seed=gym_box_space.np_random,
+    )
