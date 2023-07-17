@@ -1,5 +1,5 @@
-"""Stable Gym gymnasium environments that are based on the environments found in the
-:gymnasium-robotics:`Gymnasium Robotics <>` package.
+"""Stable Gym gymnasium environments that are based on robotics environments found in
+the :gymnasium-robotics:`Gymnasium Robotics <>` and `Pybullet`_ packages.
 
 .. note::
 
@@ -14,4 +14,6 @@
     method to return a :obj:`np.ndarray` instead of a dictionary, you can use the
     :class:`gym.wrappers.FlattenObservation` wrapper to flatten the dictionary into a
     single :obj:`np.ndarray`.
+
+.. _`Pybullet`: https://pybullet.org/
 """
