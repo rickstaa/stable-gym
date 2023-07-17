@@ -1,0 +1,303 @@
+# serializer version: 1
+# name: TestSwimmerCostEqual.test_snapshot
+  0.0717195839822765
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.1
+  0.0394736058118728
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.10
+  0.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.11
+  dict({
+  })
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.12
+  0.0586930618000772
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.13
+  0.0649009788475318
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.14
+  -0.1030793695707376
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.15
+  0.026767619662024
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.16
+  0.7977753109453727
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.17
+  -0.6946564587215142
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.18
+  1.3203403932370403
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.19
+  -1.0667011828424493
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.2
+  -0.0811645304224701
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.20
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.21
+  -0.940159608181165
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.22
+  0.0598403918188351
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.23
+  0.8839000888553616
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.24
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.25
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.26
+  dict({
+    'cost_ctrl': 3.1515109539e-05,
+    'cost_velocity': 0.8839000888553616,
+    'distance_from_origin': 0.0574074063134864,
+    'x_position': 0.0571848253839461,
+    'x_velocity': 0.0598403918188351,
+    'y_position': 0.0050503510223858,
+    'y_velocity': 0.4318665767993828,
+  })
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.27
+  0.0184752597769699
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.28
+  0.1346491521755371
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.29
+  -0.1457052992158369
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.3
+  0.0951244703273512
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.30
+  0.0116081705231652
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.31
+  1.3275948136464797
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.32
+  -1.2872296796028666
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.33
+  2.124422100938903
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.34
+  -1.050781983705994
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.35
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.36
+  -0.9850483900707502
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.37
+  0.0149516099292497
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.38
+  0.970320330780977
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.39
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.4
+  0.0522279403980706
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.40
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.41
+  dict({
+    'cost_ctrl': 6.70186460018e-05,
+    'cost_velocity': 0.970320330780977,
+    'distance_from_origin': 0.0751820903036745,
+    'x_position': 0.0577828897811161,
+    'x_velocity': 0.0149516099292497,
+    'y_position': 0.048098693859327,
+    'y_velocity': 1.0762085709235305,
+  })
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.42
+  -0.0013654562937075
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.43
+  0.1529612332667866
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.44
+  -0.1206629739894392
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.45
+  0.150390800293635
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.46
+  -0.2945187732354072
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.47
+  0.2554889787617607
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.48
+  -1.1301376727439139
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.49
+  2.220792926335492
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.5
+  0.0572128610553908
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.50
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.51
+  -0.910529719768756
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.52
+  0.0894702802312439
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.53
+  0.8290643705821694
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.54
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.55
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.56
+  dict({
+    'cost_ctrl': 0.0001563634634018,
+    'cost_velocity': 0.8290643705821694,
+    'distance_from_origin': 0.0915890070175345,
+    'x_position': 0.0613617009903658,
+    'x_velocity': 0.0894702802312439,
+    'y_position': 0.067994763460335,
+    'y_velocity': 0.4974017400252014,
+  })
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.57
+  0.0003841448162947
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.58
+  0.11788280333712
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.59
+  -0.0288204456102053
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.6
+  -0.0743772734648908
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.60
+  0.1155874118811639
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.61
+  0.0486519142291015
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.62
+  -0.1630316639903109
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.63
+  -0.624124384806579
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.64
+  2.350761838731597
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.65
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.66
+  -0.8667111829722601
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.67
+  0.1332888170277399
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.68
+  0.7511882746891746
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.69
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.7
+  -0.0099228124208866
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.70
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.71
+  dict({
+    'cost_ctrl': 6.00106835365e-05,
+    'cost_velocity': 0.7511882746891746,
+    'distance_from_origin': 0.0918631916858829,
+    'x_position': 0.0666932536714754,
+    'x_velocity': 0.1332888170277399,
+    'y_position': 0.0631732213950618,
+    'y_velocity': -0.1205385516318314,
+  })
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.72
+  0.0117915594668683
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.73
+  0.0658718157028656
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.74
+  0.0721597648275078
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.75
+  0.1098815986431019
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.76
+  -0.7852810350118694
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.77
+  0.712476930243054
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.78
+  -1.9431447627877871
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.79
+  2.6880029820455054
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.8
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.80
+  1.0
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.81
+  -0.8864606174497422
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.82
+  0.1135393825502578
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.83
+  0.7858124262893783
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.84
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.85
+  False
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.86
+  dict({
+    'cost_ctrl': 5.63044130802e-05,
+    'cost_velocity': 0.7858124262893783,
+    'distance_from_origin': 0.0858991719326769,
+    'x_position': 0.0712348289734857,
+    'x_velocity': 0.1135393825502578,
+    'y_position': 0.0480027799178113,
+    'y_velocity': -0.3792610369312622,
+  })
+# ---
+# name: TestSwimmerCostEqual.test_snapshot.9
+  -1.0
+# ---
