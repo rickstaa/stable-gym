@@ -1,2 +1,4 @@
 gymnasium==0.29.0
 gymnasium[classic-control]==0.29.0
+gymnasium[mujoco]==0.29.0
+pybullet==3.2.5
