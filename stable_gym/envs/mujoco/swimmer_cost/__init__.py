@@ -1,4 +1,4 @@
-"""Modified version of the swimmer Mujoco environment in v0.28.1 of the
+"""Modified version of the swimmer Mujoco environment found in the
 :gymnasium:`gymnasium library <environments/mujoco/swimmer>`. This modification was
 first described by `Han et al. 2020`_. In this modified version:
 

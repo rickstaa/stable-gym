@@ -21,7 +21,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         :gymnasium:`gym.vector <api/vector>` documentation.
 
     Source:
-        This is a modified version of the HalfCheetah Mujoco environment in v0.28.1 of the
+        This is a modified version of the HalfCheetah Mujoco environment found in the
         :gymnasium:`gymnasium library <environments/mujoco/half_cheetah>`. This modification
         was first described by `Han et al. 2020 <https://arxiv.org/abs/2004.14288>`_.
         Compared to the original HalfCheetah environment in this modified version:

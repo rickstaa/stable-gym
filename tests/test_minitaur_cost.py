@@ -1,4 +1,4 @@
-"""Test if the MinitaurCost environment still behaves like the original Minitaur
+"""Test if the MinitaurBulletCost environment still behaves like the original Minitaur
 environment when the same environment parameters are used.
 """
 # import os
@@ -34,13 +34,13 @@ gym.register(
 PRECISION = 15
 
 
-class TestMinitaurCostEqual:
+class TestMinitaurBulletCostEqual:
     # NOTE: The env randomizer is disabled because it is not deterministic.
     # Make original Minitaur environment.
     env = gym.make("MinitaurBulletEnv-v0", env_randomizer=None)
-    # Make MinitaurCost environment.
+    # Make MinitaurBulletCost environment.
     env_cost = gym.make(
-        "MinitaurCost",
+        "MinitaurBulletCost",
         env_randomizer=None,
         exclude_reference_from_observation=True,
         exclude_x_velocity_from_observation=True,
@@ -71,9 +71,9 @@ class TestMinitaurCostEqual:
     # NOTE: We decrease the test precision to 16 decimals to ignore numerical
     # differences due to hardware or library differences.
     def test_snapshot(self, snapshot):
-        """Test if the 'MinitaurCost' environment is still equal to snapshot."""
+        """Test if the 'MinitaurBulletCost' environment is still equal to snapshot."""
         self.env_cost = gym.make(
-            "MinitaurCost",
+            "MinitaurBulletCost",
             env_randomizer=None,
             exclude_reference_error_from_observation=False,
         )  # Check full observation.

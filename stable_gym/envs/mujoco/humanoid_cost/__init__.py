@@ -1,4 +1,4 @@
-"""Modified version of the Humanoid Mujoco environment in v0.28.1 of the
+"""Modified version of the Humanoid Mujoco environment found in the
 :gymnasium:`gymnasium library <environments/mujoco/humanoid>`. This modification was
 first described by `Han et al. 2020`. In this modified version:
 

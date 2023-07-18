@@ -1,4 +1,4 @@
-"""Modified version of the Walker2d Mujoco environment in v0.28.1 of the
+"""Modified version of the Walker2d Mujoco environment found in the
 :gymnasium:`gymnasium library <environments/mujoco/walker2d>`. This modification was
 first described by `Han et al. 2020`_. In this modified version:
 

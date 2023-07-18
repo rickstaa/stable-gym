@@ -1,4 +1,4 @@
-"""Modified version of the FetchReach Mujoco environment in v1.2.2 of the
+"""Modified version of the FetchReach Mujoco environment found in the
 :gymnasium-robotics:`Gymnasium Robotics library <envs/fetch/>`. This modification was
 first described by `Han et al. 2020`_. In this modified version:
 

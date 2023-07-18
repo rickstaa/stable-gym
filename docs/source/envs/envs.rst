@@ -60,6 +60,7 @@ Robotics environment
     :maxdepth: 1
 
     ./robotics/fetch_reach_cost.rst
+    ./robotics/minitaur_bullet_cost.rst
 
 .. note::
 

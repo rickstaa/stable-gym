@@ -1,7 +1,7 @@
-# MinitaurCost gymnasium environment
+# MinitaurBulletCost gymnasium environment
 
 <div align="center">
-    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/541b3e99-a4f3-44af-a3e4-8b9b478a54b9" alt="Minitaur Cost environment" width="200px">
+    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/541b3e99-a4f3-44af-a3e4-8b9b478a54b9" alt="Minitaur Bullet Cost environment" width="200px">
 </div>
 </br>
 
@@ -44,7 +44,8 @@ The Minitaur should walk forward with a certain velocity.
 The cost function of this environment is designed in such a way that it tries to minimize the error between the Minitaur's forward velocity and a reference value. The cost function is defined as:
 
 $$
-cost = w_{forward\_velocity} \\times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{energy} \\times c_{energy} + w_{shake} \\times c_{shake} + w_{drift} \\times c_{drift} + p_{health}
+cost = w_{forward\_velocity} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{energy} \times c_{energy} + \\
+w_{shake} \times c_{shake} + w_{drift} \times c_{drift} + p_{health}
 $$
 
 Where:
@@ -64,4 +65,4 @@ The energy, shake, drift, and health penalty are optional and can be disabled us
 
 ## How to use
 
-This environment is part of the [Stable Gym package](https://github.com/rickstaa/stable-gym). It is therefore registered as the `stable_gym:MinitaurCost-v1` gymnasium environment when you import the Stable Gym package. If you want to use the environment in stand-alone mode, you can register it yourself.
+This environment is part of the [Stable Gym package](https://github.com/rickstaa/stable-gym). It is therefore registered as the `stable_gym:MinitaurBulletCost-v1` gymnasium environment when you import the Stable Gym package. If you want to use the environment in stand-alone mode, you can register it yourself.

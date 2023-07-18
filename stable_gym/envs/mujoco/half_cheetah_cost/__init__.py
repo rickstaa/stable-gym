@@ -1,4 +1,4 @@
-"""Modified version of the HalfCheetah Mujoco environment in v0.28.1 of the
+"""Modified version of the HalfCheetah Mujoco environment found in the
 :gymnasiumL`gymnasium library <environments/mujoco/half_cheetah>`. This modification was
 first described by `Han et al. 2020`_. In this modified version:
 

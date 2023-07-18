@@ -1,4 +1,4 @@
-"""The MinitaurCost gymnasium environment."""
+"""The MinitaurBulletCost gymnasium environment."""
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
@@ -12,15 +12,15 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 # TODO: Update solving criteria after training.
-class MinitaurCost(MinitaurBulletEnv, utils.EzPickle):
-    """Custom Minitaur gymnasium environment.
+class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
+    """Custom Minitaur Bullet gymnasium environment.
 
     .. note::
         Can also be used in a vectorized manner. See the
         :gymnasium:`gym.vector <api/vector>` documentation.
 
     Source:
-        Modified version of the `Minitaur environment`_ in v3.2.5 of the
+        Modified version of the `Minitaur environment`_ found in the
         `pybullet package`_. This modification was first described by
         `Han et al. 2020`_. In this modified version:
 
@@ -77,7 +77,7 @@ class MinitaurCost(MinitaurBulletEnv, utils.EzPickle):
 
             import stable_gym
             import gymnasium as gym
-            env = gym.make("MinitaurCost-v1")
+            env = gym.make("MinitaurBulletCost-v1")
 
     Attributes:
         state (numpy.ndarray): The current system state.
@@ -122,7 +122,7 @@ class MinitaurCost(MinitaurBulletEnv, utils.EzPickle):
         exclude_x_velocity_from_observation=False,
         **kwargs,
     ):
-        """Initialise a new MinitaurCost environment instance.
+        """Initialise a new MinitaurBulletCost environment instance.
 
         Args:
             reference_forward_velocity (float, optional): The forward velocity that the
@@ -247,7 +247,7 @@ class MinitaurCost(MinitaurBulletEnv, utils.EzPickle):
         )
 
         # Reinitialize the EzPickle class.
-        # NOTE: Done to ensure the args of the MinitaurCost class are also pickled.
+        # NOTE: Done to ensure the args of the MinitaurBulletCost class are also pickled.
         # NOTE: Ensure that all args are passed to the EzPickle class!
         utils.EzPickle.__init__(
             self,
@@ -472,15 +472,15 @@ class MinitaurCost(MinitaurBulletEnv, utils.EzPickle):
 
 
 if __name__ == "__main__":
-    print("Setting up 'MinitaurCost' environment.")
-    env = gym.make("MinitaurCost", render=True)
+    print("Setting up 'MinitaurBulletCost' environment.")
+    env = gym.make("MinitaurBulletCost", render=True)
 
     # Run episodes.
     episode = 0
     path, paths = [], []
     s, _ = env.reset()
     path.append(s)
-    print(f"\nPerforming '{EPISODES}' in the 'MinitaurCost' environment...\n")
+    print(f"\nPerforming '{EPISODES}' in the 'MinitaurBulletCost' environment...\n")
     print(f"Episode: {episode}")
     while episode <= EPISODES:
         action = (
@@ -497,7 +497,7 @@ if __name__ == "__main__":
             s, _ = env.reset()
             path.append(s)
             print(f"Episode: {episode}")
-    print("\nFinished 'MinitaurCost' environment simulation.")
+    print("\nFinished 'MinitaurBulletCost' environment simulation.")
 
     # Plot results per episode.
     print("\nPlotting episode data...")
@@ -510,7 +510,7 @@ if __name__ == "__main__":
         for j in range(path.shape[1]):  # NOTE: Change if you want to plot less states.
             ax.plot(t, path[:, j], label=f"State {j}")
         ax.set_xlabel("Time (s)")
-        ax.set_title(f"MinitaurCost episode '{i}'")
+        ax.set_title(f"MinitaurBulletCost episode '{i}'")
         ax.legend()
         print("Close plot to see next episode...")
         plt.show()

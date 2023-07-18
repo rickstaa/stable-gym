@@ -20,7 +20,7 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         :gymnasium:`gym.vector <api/vector>` documentation.
 
     Source:
-        This is a modified version of the Walker2d Mujoco environment in v0.28.1 of the
+        This is a modified version of the Walker2d Mujoco environment found in the
         :gymnasium:`gymnasium library <environments/mujoco/walker2d>`. This modification
         was first described by `Han et al. 2020 <https://arxiv.org/abs/2004.14288>`_.
         Compared to the original Walker2d environment in this modified version:

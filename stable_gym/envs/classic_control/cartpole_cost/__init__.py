@@ -1,4 +1,4 @@
-"""Modified version of the cart-pole environment in v0.28.1 of the `gymnasium library`_.
+"""Modified version of the cart-pole environment found in the `gymnasium library`_.
 This modification was first described by `Han et al. 2020`_. In this modified version:
 
 -   The action space is continuous, wherein the original version it is discrete.

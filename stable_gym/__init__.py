@@ -69,8 +69,8 @@ ENVS = {
     },
     # NOTE: The Minitaur environment is not compatible with gymnasium. See
     # https://github.com/bulletphysics/bullet3/issues/4369 for more details.
-    "MinitaurCost-v1": {
-        "entry_point": "stable_gym.envs.robotics.minitaur_cost.minitaur_cost:MinitaurCost",
+    "MinitaurBulletCost-v1": {
+        "entry_point": "stable_gym.envs.robotics.minitaur.minitaur_bullet_cost.minitaur_bullet_cost:MinitaurBulletCost",
         "reward_threshold": 300,
         "max_episode_steps": 500,
         "compatible": False,

@@ -20,7 +20,7 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
         :gymnasium:`gym.vector <api/vector>` documentation.
 
     Source:
-        Modified version of the FetchReach Mujoco environment in v1.2.2 of the
+        Modified version of the FetchReach Mujoco environment found in the
         `Gymnasium Robotics library <https://robotics.farama.org/envs/fetch/>`_.
         This modification was first described by
         `Han et al. 2020 <https://arxiv.org/abs/2004.14288>`_. In this modified version:
