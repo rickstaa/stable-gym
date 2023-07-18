@@ -5,15 +5,10 @@ import numpy as np
 from gymnasium import utils
 from pybullet_envs.bullet.minitaur_gym_env import MinitaurBulletEnv
 
-from stable_gym import ENVS  # noqa: F401
 from stable_gym.common.utils import change_dict_key, convert_gym_box_to_gymnasium_box
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
-
-# Retrieve max episode steps from the ENVS dict.
-# NOTE: Needed for default health penalty size.
-MAX_EPISODE_STEPS = ENVS["MinitaurCost-v1"]["max_episode_steps"]
 
 
 # TODO: Update solving criteria after training.
@@ -363,12 +358,18 @@ class MinitaurCost(MinitaurBulletEnv, utils.EzPickle):
         info.update(cost_info)
 
         # Add optional health penalty at the end of the episode if requested.
+        time_limit_max_episode_steps = (
+            self._time_limit_max_episode_steps
+            if hasattr(self, "_time_limit_max_episode_steps")
+            and self._time_limit_max_episode_steps is not None
+            else gym.registry[self.spec.id].max_episode_steps
+        )
         if self._include_health_penalty:
             if terminated:
                 if self._health_penalty_size is not None:
                     cost += self._health_penalty_size
                 else:  # If not set add unperformed steps to the cost.
-                    cost += MAX_EPISODE_STEPS - self._env_step_counter
+                    cost += time_limit_max_episode_steps - self._env_step_counter
 
         return obs, cost, terminated, info
 
@@ -467,7 +468,7 @@ class MinitaurCost(MinitaurBulletEnv, utils.EzPickle):
         """Alias for the environment step size. Done for compatibility with the
         other gymnasium environments.
         """
-        return self._time_step
+        return self.dt
 
 
 if __name__ == "__main__":
