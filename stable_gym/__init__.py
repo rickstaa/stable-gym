@@ -2,6 +2,10 @@
 import gymnasium as gym
 from gymnasium.envs.registration import register
 
+from stable_gym.common.inject_max_episode_steps_wrapper import (
+    MaxEpisodeStepsInjectionWrapper,
+)
+
 # Make entry_point version available.
 from .version import __version__, __version_tuple__
 
@@ -70,6 +74,7 @@ ENVS = {
         "reward_threshold": 300,
         "max_episode_steps": 500,
         "compatible": False,
+        "additional_wrappers": (MaxEpisodeStepsInjectionWrapper.wrapper_spec(),),
     },
 }
 
@@ -81,4 +86,7 @@ for env, val in ENVS.items():
         max_episode_steps=val["max_episode_steps"],
         disable_env_checker=not val["compatible"] if "compatible" in val else False,
         apply_api_compatibility=not val["compatible"] if "compatible" in val else False,
+        additional_wrappers=val["additional_wrappers"]
+        if "additional_wrappers" in val
+        else (),
     )
