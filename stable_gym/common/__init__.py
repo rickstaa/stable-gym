@@ -2,6 +2,6 @@
 environments.
 """
 from stable_gym.common.disturber import Disturber
-from stable_gym.common.inject_max_episode_steps_wrapper import (
+from stable_gym.common.max_episode_steps_injection_wrapper import (
     MaxEpisodeStepsInjectionWrapper,
 )
