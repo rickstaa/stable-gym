@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.14.0](https://github.com/rickstaa/stable-gym/compare/v0.13.1...v0.14.0) (2023-07-18)
+
+
+### Features
+
+* add 'MinitaurCost' environment ([#222](https://github.com/rickstaa/stable-gym/issues/222)) ([0f787f5](https://github.com/rickstaa/stable-gym/commit/0f787f5784d6ba1def7f8103088498beacfbbca3))
+* add velocity randomize and exclude reference arguments ([#215](https://github.com/rickstaa/stable-gym/issues/215)) ([c32b4ee](https://github.com/rickstaa/stable-gym/commit/c32b4ee6fe80afcd9992ff2937c91e745de3285f))
+* fix 'reward_range' name and space accuracy ([#220](https://github.com/rickstaa/stable-gym/issues/220)) ([d11416e](https://github.com/rickstaa/stable-gym/commit/d11416eb157c046048c19856db884fb94c4a4dda))
+* increase spaces accuracy to float64 ([#221](https://github.com/rickstaa/stable-gym/issues/221)) ([fd212c6](https://github.com/rickstaa/stable-gym/commit/fd212c6c7cc2a034546752ca4ab1d9b028f56203))
+
+
+### Bug Fixes
+
+* **minitaurcost:** fix 'MinitaurCost' health penalty calculation ([#225](https://github.com/rickstaa/stable-gym/issues/225)) ([345d8a4](https://github.com/rickstaa/stable-gym/commit/345d8a43d9598edecc8c407836e906dcbd87fc23))
+
 ## [0.13.1](https://github.com/rickstaa/stable-gym/compare/v0.13.0...v0.13.1) (2023-07-15)
 
 
