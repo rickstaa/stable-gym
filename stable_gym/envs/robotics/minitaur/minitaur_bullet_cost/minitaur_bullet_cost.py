@@ -13,7 +13,7 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 # TODO: Update solving criteria after training.
 class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
-    """Custom Minitaur Bullet gymnasium environment.
+    r"""Custom Minitaur Bullet gymnasium environment.
 
     .. note::
         Can also be used in a vectorized manner. See the
@@ -56,7 +56,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
     Modified cost:
         .. math::
 
-            cost = w_{forward\_velocity} \\times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \\times c_{ctrl} + p_{health}
+            cost = w_{forward\_velocity} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl} + p_{health}
 
     Starting State:
         The robot always starts at the same position and orientation, with zero
@@ -90,7 +90,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         :class:`gym.wrappers.EnvCompatibility` wrapper is used. This has the
         side effect that the ``render_mode`` argument is not working. Instead,
         the ``render`` argument should be used.
-    """  # noqa: E501, W605
+    """  # noqa: E501
 
     # Replace deprecated metadata keys with new ones.
     # See https://github.com/openai/gym/pull/2654.
@@ -358,18 +358,12 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         info.update(cost_info)
 
         # Add optional health penalty at the end of the episode if requested.
-        time_limit_max_episode_steps = (
-            self._time_limit_max_episode_steps
-            if hasattr(self, "_time_limit_max_episode_steps")
-            and self._time_limit_max_episode_steps is not None
-            else gym.registry[self.spec.id].max_episode_steps
-        )
         if self._include_health_penalty:
             if terminated:
                 if self._health_penalty_size is not None:
                     cost += self._health_penalty_size
                 else:  # If not set add unperformed steps to the cost.
-                    cost += time_limit_max_episode_steps - self._env_step_counter
+                    cost += self.time_limit_max_episode_steps - self._env_step_counter
 
         return obs, cost, terminated, info
 
@@ -447,6 +441,23 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
             < self._fall_criteria_up_rotation
             or pos[2] < self._fall_criteria_z_position
         )
+
+    @property
+    def time_limit_max_episode_steps(self):
+        """The maximum number of steps that the environment can take before it is
+        truncated by the :class:`gymnasium.wrappers.TimeLimit` wrapper.
+        """
+        time_limit_max_episode_steps = (
+            self._time_limit_max_episode_steps
+            if hasattr(self, "_time_limit_max_episode_steps")
+            and self._time_limit_max_episode_steps is not None
+            else gym.registry[self.spec.id].max_episode_steps
+        )
+        assert self._time_limit_max_episode_steps is not None, (
+            f"The '{self.__class__.__name__}' environment requires the "
+            "'max_episode_steps' to be set during environment registration or creation."
+        )  # NOTE: This should never happen.
+        return time_limit_max_episode_steps
 
     @property
     def base_velocity(self):

@@ -14,7 +14,7 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 # TODO: Find correct control cost weight.
 # TODO: Update solving criteria after training.
 class HumanoidCost(HumanoidEnv, utils.EzPickle):
-    """Custom Humanoid gymnasium environment.
+    r"""Custom Humanoid gymnasium environment.
 
     .. note::
         Can also be used in a vectorized manner. See the
@@ -43,7 +43,7 @@ class HumanoidCost(HumanoidEnv, utils.EzPickle):
     Modified cost:
         .. math::
 
-            cost = w_{forward\_velocity} \\times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \\times c_{ctrl} + p_{health}
+            cost = w_{forward\_velocity} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl} + p_{health}
 
     Solved Requirements:
         Considered solved when the average cost is less than or equal to 50 over
@@ -61,7 +61,7 @@ class HumanoidCost(HumanoidEnv, utils.EzPickle):
         dt (float): The environment step size. Also available as :attr:`.tau`.
         reference_forward_velocity (float): The forward velocity that the agent should
             try to track.
-    """  # noqa: E501, W605
+    """  # noqa: E501
 
     def __init__(
         self,
