@@ -75,7 +75,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         t (float): The current time step.
         dt (float): The environment step size. Also available as :attr:`.tau`.
         sigma (float): The variance of the system noise.
-    """  # noqa: E501, W605
+    """  # noqa: E501
 
     def __init__(
         self,
@@ -289,8 +289,9 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
             mode (str, optional): Gym rendering mode. The default mode will do something
                 human friendly, such as pop up a window.
 
-        NotImplementedError: Will throw a NotImplimented error since the render method
-            has not yet been implemented.
+        Raises:
+            NotImplementedError: Will throw a NotImplimented error since the render
+                method has not yet been implemented.
 
         Note:
             This currently is not yet implemented.
