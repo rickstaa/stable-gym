@@ -140,7 +140,8 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         reference_type="periodic",
         reference_target_position=8.0,
         reference_amplitude=7.0,
-        reference_frequency=200,
+        reference_frequency=(1 / 200),  # NOTE: Han et al. 2020 uses a period of 200.
+        reference_phase_shift=0.0,
         reference_constraint_position=20.0,
         clip_action=True,
         exclude_reference_from_observation=False,
@@ -159,6 +160,8 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
                 if ``reference_type`` is ``periodic``.
             reference_frequency: The reference frequency, by default ``200``. Only used
                 if ``reference_type`` is ``periodic``.
+            reference_phase_shift: The reference phase shift, by default ``0.0``. Only
+                used if ``reference_type`` is ``periodic``.
             reference_constraint_position: The reference constraint position, by
                 default ``20.0``. Not used in the environment but used for the info
                 dict.
@@ -264,6 +267,7 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         self.reference_target_pos = reference_target_position
         self.reference_amplitude = reference_amplitude
         self.reference_frequency = reference_frequency
+        self.phase_shift = reference_phase_shift
         self.reference_constraint_pos = (
             reference_constraint_position  # Reference constraint.
         )
@@ -524,7 +528,7 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         )
 
     def reference(self, t):
-        """Returns the current value of the periodic reference signal that is tracked by
+        r"""Returns the current value of the periodic reference signal that is tracked by
         the Synthetic oscillatory network.
 
         Args:
@@ -532,10 +536,30 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
 
         Returns:
             float: The current reference value.
+
+        .. note::
+
+            This uses the general form of a periodic signal:
+
+            .. math::
+
+                y(t) = A \sin(\omega t + \phi) + C \\
+                y(t) = A \sin(2 \pi f t + \phi) + C \\
+                y(t) = A \sin(\frac{2 \pi}{T} t + \phi) + C
+
+            Where:
+
+            -   :math:`t` is the time.
+            -   :math:`A` is the amplitude of the signal.
+            -   :math:`\omega` is the frequency of the signal.
+            -   :math:`f` is the frequency of the signal.
+            -   :math:`T` is the period of the signal.
+            -   :math:`\phi` is the phase of the signal.
+            -   :math:`C` is the offset of the signal.
         """
         if self.reference_type == "periodic":
             return self.reference_target_pos + self.reference_amplitude * np.sin(
-                (2 * np.pi) * t / self.reference_frequency
+                ((2 * np.pi) * self.reference_frequency * t) - self.phase_shift
             )
         else:
             return self.reference_target_pos
@@ -547,8 +571,9 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
             mode (str, optional): Gym rendering mode. The default mode will do something
                 human friendly, such as pop up a window.
 
-        NotImplementedError: Will throw a NotImplimented error since the render method
-            has not yet been implemented.
+        Raises:
+            NotImplementedError: Will throw a NotImplimented error since the render
+                method has not yet been implemented.
 
         Note:
             This currently is not yet implemented.
