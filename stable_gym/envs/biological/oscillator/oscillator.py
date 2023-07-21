@@ -62,7 +62,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
         +-----+-----------------------------------------------+-------------------+-------------------+
         | 6   | The reference we want to follow               | 0                 | 100               |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 7   || **Optional** - The error between the current | -100              | 100               |
+        | (7) || **Optional** - The error between the current | -100              | 100               |
         |     || value of protein 1 and the reference         |                   |                   |
         +-----+-----------------------------------------------+-------------------+-------------------+
 
@@ -121,7 +121,6 @@ class Oscillator(gym.Env, OscillatorDisturber):
     def __init__(
         self,
         render_mode=None,
-        reference_type="periodic",
         reference_target_position=8.0,
         reference_amplitude=7.0,
         reference_frequency=(1 / 200),  # NOTE: Han et al. 2020 uses a period of 200.
@@ -136,24 +135,18 @@ class Oscillator(gym.Env, OscillatorDisturber):
         Args:
             render_mode (str, optional): The render mode you want to use. Defaults to
                 ``None``. Not used in this environment.
-            reference_type (str, optional): The type of reference you want to use
-                (``constant`` or ``periodic``), by default ``periodic``.
             reference_target_position: The reference target position, by default
                 ``8.0`` (i.e. the mean of the reference signal).
-            reference_amplitude: The reference amplitude, by default ``7.0``. Only used
-                if ``reference_type`` is ``periodic``.
-            reference_frequency: The reference frequency, by default ``200``. Only used
-                if ``reference_type`` is ``periodic``.
-            reference_phase_shift: The reference phase shift, by default ``0.0``. Only
-                used if ``reference_type`` is ``periodic``.
+            reference_amplitude: The reference amplitude, by default ``7.0``.
+            reference_frequency: The reference frequency, by default ``200``.
+            reference_phase_shift: The reference phase shift, by default ``0.0``.
             reference_constraint_position: The reference constraint position, by
                 default ``20.0``. Not used in the environment but used for the info
                 dict.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
             exclude_reference_from_observation (bool, optional): Whether the reference
-                should be excluded from the observation. Defaults to ``False``. Can only
-                be set to ``True`` if ``reference_type`` is ``constant``.
+                should be excluded from the observation. Defaults to ``False``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``.
         """
@@ -166,20 +159,17 @@ class Oscillator(gym.Env, OscillatorDisturber):
         )
 
         # Validate input arguments.
-        if reference_type.lower() not in ["constant", "periodic"]:
-            raise ValueError(
-                "The reference type must be either 'constant' or 'periodic'."
-            )
-        assert (
-            reference_type.lower() == "constant"
-            or reference_type.lower() == "periodic"
-            and not exclude_reference_from_observation
+        assert not (
+            exclude_reference_from_observation
+            and exclude_reference_error_from_observation
         ), (
-            "The reference can only be excluded from the observation if the reference "
-            "type is constant."
+            "The agent needs to observe either the reference or the reference error "
+            "for it to be able to learn."
         )
+        assert (
+            reference_frequency >= 0
+        ), "The reference frequency must be greater than or equal to zero."
 
-        self.reference_type = reference_type
         self.t = 0.0
         self.dt = 1.0
         self._init_state = np.array(
@@ -252,10 +242,6 @@ class Oscillator(gym.Env, OscillatorDisturber):
         self.__class__.instances += 1
         self.instance_id = self.__class__.instances
         logger.debug(f"Oscillator instance '{self.instance_id}' created.")
-        logger.debug(
-            f"Oscillator instance '{self.instance_id}' uses a '{reference_type}' "
-            "reference."
-        )
 
     def step(self, action):
         """Take step into the environment.
@@ -504,12 +490,9 @@ class Oscillator(gym.Env, OscillatorDisturber):
             -   :math:`\phi` is the phase of the signal.
             -   :math:`C` is the offset of the signal.
         """
-        if self.reference_type == "periodic":
-            return self.reference_target_pos + self.reference_amplitude * np.sin(
-                ((2 * np.pi) * self.reference_frequency * t) - self.phase_shift
-            )
-        else:
-            return self.reference_target_pos
+        return self.reference_target_pos + self.reference_amplitude * np.sin(
+            ((2 * np.pi) * self.reference_frequency * t) - self.phase_shift
+        )
 
     def render(self, mode="human"):
         """Render one frame of the environment.
@@ -535,6 +518,11 @@ class Oscillator(gym.Env, OscillatorDisturber):
         other gymnasium environments.
         """
         return self.dt
+
+    @property
+    def physics_time(self):
+        """Returns the physics time. Alias for :attr:`.t`."""
+        return self.t
 
 
 if __name__ == "__main__":
