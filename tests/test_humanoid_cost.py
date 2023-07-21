@@ -48,18 +48,16 @@ class TestHumanoidCostEqual:
     # differences due to hardware or library differences.
     def test_snapshot(self, snapshot):
         """Test if the 'HumanoidCost' environment is still equal to snapshot."""
-        self.env_cost = gym.make(
+        env_cost = gym.make(
             "HumanoidCost", exclude_reference_error_from_observation=False
         )  # Check full observation.
-        observation, info = self.env_cost.reset(seed=42)
+        observation, info = env_cost.reset(seed=42)
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
-        self.env_cost.action_space.seed(42)
+        env_cost.action_space.seed(42)
         for _ in range(5):
-            action = self.env_cost.action_space.sample()
-            observation, reward, terminated, truncated, info = self.env_cost.step(
-                action
-            )
+            action = env_cost.action_space.sample()
+            observation, reward, terminated, truncated, info = env_cost.step(action)
             assert (
                 change_precision(observation, precision=PRECISION) == snapshot
             ).all()
