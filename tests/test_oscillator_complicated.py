@@ -32,30 +32,3 @@ class TestOscillatorComplicated:
             assert terminated == snapshot
             assert truncated == snapshot
             assert info == snapshot
-
-    def test_constant_snapshot(self, snapshot):
-        """Test if the 'CartPoleCost' environment with 'constant' reference is still
-        equal to snapshot.
-        """
-        env_cost_reference_tracking = gym.make(
-            "CartPoleCost",
-            reference_type="constant",
-        )
-        observation, info = env_cost_reference_tracking.reset(seed=42)
-        assert (observation == snapshot).all()
-        assert info == snapshot
-        env_cost_reference_tracking.action_space.seed(42)
-        for _ in range(5):
-            action = env_cost_reference_tracking.action_space.sample()
-            (
-                observation,
-                reward,
-                terminated,
-                truncated,
-                info,
-            ) = env_cost_reference_tracking.step(action)
-            assert (observation == snapshot).all()
-            assert reward == snapshot
-            assert terminated == snapshot
-            assert truncated == snapshot
-            assert info == snapshot
