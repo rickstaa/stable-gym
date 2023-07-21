@@ -32,7 +32,6 @@ environments found in the :gymnasium:`gymnasium <>` library.
     ./classic_control/ex3_ekf.rst
     ./classic_control/cartpole_cost.rst
 
-
 .. _`classical control gymnasium environments`: https://gymnasium.farama.org/environments/classic_control
 
 Mujoco environments
