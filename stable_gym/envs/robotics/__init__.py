@@ -17,3 +17,9 @@ the :gymnasium-robotics:`Gymnasium Robotics <>` and `Pybullet`_ packages.
 
 .. _`Pybullet`: https://pybullet.org/
 """
+from stable_gym.envs.robotics.fetch.fetch_reach_cost.fetch_reach_cost import (
+    FetchReachCost,
+)
+from stable_gym.envs.robotics.minitaur.minitaur_bullet_cost.minitaur_bullet_cost import (
+    MinitaurBulletCost,
+)
