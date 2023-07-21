@@ -72,38 +72,18 @@ class TestMinitaurBulletCostEqual:
     # differences due to hardware or library differences.
     def test_snapshot(self, snapshot):
         """Test if the 'MinitaurBulletCost' environment is still equal to snapshot."""
-        self.env_cost = gym.make(
+        env_cost = gym.make(
             "MinitaurBulletCost",
             env_randomizer=None,
             exclude_reference_error_from_observation=False,
         )  # Check full observation.
-        observation, info = self.env_cost.reset(seed=42)
-        np.set_printoptions(precision=16, suppress=True)
-        print("OBS_PREC: %s" % change_precision(observation, precision=PRECISION))
-        print(
-            "OBS_PREC_SHAPE: %s"
-            % change_precision(observation, precision=PRECISION).shape
-        )
-        print(
-            "OBS_PREC_DTYPE: %s"
-            % change_precision(observation, precision=PRECISION).dtype
-        )
-        print(
-            "OBS_SNAP: %s" % change_precision(observation, precision=PRECISION)
-            == snapshot
-        )
-        print(
-            "OBS_SNAP_ALL: %s"
-            % (change_precision(observation, precision=PRECISION) == snapshot).all()
-        )
+        observation, info = env_cost.reset(seed=42)
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
-        self.env_cost.action_space.seed(42)
+        env_cost.action_space.seed(42)
         for _ in range(5):
-            action = self.env_cost.action_space.sample()
-            observation, reward, terminated, truncated, info = self.env_cost.step(
-                action
-            )
+            action = env_cost.action_space.sample()
+            observation, reward, terminated, truncated, info = env_cost.step(action)
             assert (
                 change_precision(observation, precision=PRECISION) == snapshot
             ).all()
