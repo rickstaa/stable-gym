@@ -141,7 +141,6 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         reference_amplitude=7.0,
         reference_frequency=(1 / 200),  # NOTE: Han et al. 2020 uses a period of 200.
         reference_phase_shift=0.0,
-        reference_constraint_position=20.0,
         clip_action=True,
         exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,
@@ -156,9 +155,6 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
             reference_amplitude: The reference amplitude, by default ``7.0``.
             reference_frequency: The reference frequency, by default ``200``.
             reference_phase_shift: The reference phase shift, by default ``0.0``.
-            reference_constraint_position: The reference constraint position, by
-                default ``20.0``. Not used in the environment but used for the info
-                dict.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
             exclude_reference_from_observation (bool, optional): Whether the reference
@@ -253,14 +249,11 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         self.state = None
         self.steps_beyond_done = None
 
-        # Reference target and constraint positions.
+        # Reference target, amplitude, frequency and phase shift.
         self.reference_target_pos = reference_target_position
         self.reference_amplitude = reference_amplitude
         self.reference_frequency = reference_frequency
         self.phase_shift = reference_phase_shift
-        self.reference_constraint_pos = (
-            reference_constraint_position  # Reference constraint.
-        )
 
         # Print vectorization debug info.
         self.__class__.instances += 1
@@ -423,11 +416,6 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
                 reference=r1,
                 state_of_interest=p1,
                 reference_error=p1 - r1,
-                reference_constraint_position=self.reference_constraint_pos,
-                reference_constraint_error=p1 - self.reference_constraint_pos,
-                reference_constraint_violated=bool(
-                    abs(p1) > self.reference_constraint_pos
-                ),
             ),
         )
 
@@ -508,9 +496,6 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
             reference=r1,
             state_of_interest=p1,
             reference_error=p1 - r1,
-            reference_constraint_position=self.reference_constraint_pos,
-            reference_constraint_error=p1 - self.reference_constraint_pos,
-            reference_constraint_violated=bool(abs(p1) > self.reference_constraint_pos),
         )
 
     def reference(self, t):
