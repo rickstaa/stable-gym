@@ -36,8 +36,8 @@ class TestCartPoleCostEqual:
         observation, _ = self.env.reset(seed=42)
         observation_cost, _ = self.env_cost.reset(seed=42)
         assert np.allclose(
-            observation, observation_cost
-        ), f"{observation} != {observation_cost}"
+            observation, observation_cost[:-1]
+        ), f"{observation} != {observation_cost[:-1]}"
 
     def test_equal_steps(self):
         """Test if steps behave the same."""
@@ -51,20 +51,21 @@ class TestCartPoleCostEqual:
             observation, _, _, _, _ = self.env.step(discrete_action)
             observation_cost, _, _, _, _ = self.env_cost.step(continuous_action)
             assert np.allclose(
-                observation, observation_cost
-            ), f"{observation} != {observation_cost}"
+                observation, observation_cost[:-1]
+            ), f"{observation} != {observation_cost[:-1]}"
 
     def test_snapshot(self, snapshot):
         """Test if the 'CartPoleCost' environment is still equal to snapshot."""
-        observation, info = self.env_cost.reset(seed=42)
+        env_cost = gym.make(
+            "CartPoleTrackingCost", exclude_reference_error_from_observation=False
+        )
+        observation, info = env_cost.reset(seed=42)
         assert (observation == snapshot).all()
         assert info == snapshot
-        self.env_cost.action_space.seed(42)
+        env_cost.action_space.seed(42)
         for _ in range(5):
-            action = self.env_cost.action_space.sample()
-            observation, reward, terminated, truncated, info = self.env_cost.step(
-                action
-            )
+            action = env_cost.action_space.sample()
+            observation, reward, terminated, truncated, info = env_cost.step(action)
             assert (observation == snapshot).all()
             assert reward == snapshot
             assert terminated == snapshot

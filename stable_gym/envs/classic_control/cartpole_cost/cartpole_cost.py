@@ -287,10 +287,9 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
                 -   cost (float): The current cost.
         """
-        # Calculate cost (stabilisation task).
         cost = np.square(x / self.x_threshold) + 20 * np.square(
             theta / self.theta_threshold_radians
-        )  # stabilisation task.
+        )
 
         return cost
 

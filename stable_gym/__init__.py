@@ -28,7 +28,7 @@ ENVS = {
         "max_episode_steps": 250,
     },
     "CartPoleTrackingCost-v1": {
-        "entry_point": "stable_gym.envs.classic_control.cartpole_tracking_cost.cartpole_tracking_cost:CartPoleCost",
+        "entry_point": "stable_gym.envs.classic_control.cartpole_tracking_cost.cartpole_tracking_cost:CartPoleTrackingCost",
         "reward_threshold": 300,
         "max_episode_steps": 250,
     },

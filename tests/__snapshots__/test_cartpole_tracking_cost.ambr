@@ -1,0 +1,196 @@
+# serializer version: 1
+# name: TestCartPoleCostEqual.test_snapshot
+  0.10958241942238534
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.1
+  -0.024448624099179084
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.10
+  -0.19298094228082074
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.11
+  -6.858022075225178e-15
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.12
+  0.10909344694040861
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.13
+  0.031078671178727986
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.14
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.15
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.16
+  dict({
+    'reference': -6.858022075225178e-15,
+    'reference_error': 0.10909344694040861,
+    'state_of_interest': 0.10909344694040175,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.17
+  0.11283397455824112
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.18
+  0.1373521677359711
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.19
+  0.14115849335141145
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.2
+  0.14343916796455297
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.20
+  -0.07676570293056856
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.21
+  -1.3716044150450356e-14
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.22
+  0.11283397455825483
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.23
+  0.030901583856177618
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.24
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.25
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.26
+  dict({
+    'reference': -1.3716044150450356e-14,
+    'reference_error': 0.11283397455825483,
+    'state_of_interest': 0.11283397455824112,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.27
+  0.11558101791296055
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.28
+  0.41483476162456334
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.29
+  0.13962317929280008
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.3
+  0.07894721162374557
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.30
+  -0.44748678167775646
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.31
+  -2.0574066225675533e-14
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.32
+  0.11558101791298113
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.33
+  0.03113594458058202
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.34
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.35
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.36
+  dict({
+    'reference': -2.0574066225675533e-14,
+    'reference_error': 0.11558101791298113,
+    'state_of_interest': 0.11558101791296055,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.37
+  0.12387771314545182
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.38
+  0.5667135704060806
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.39
+  0.13067344365924494
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.4
+  0.0
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.40
+  -0.6321720124467993
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.41
+  -2.743208830090071e-14
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.42
+  0.12387771314547925
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.43
+  0.030916721226894112
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.44
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.45
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.46
+  dict({
+    'reference': -2.743208830090071e-14,
+    'reference_error': 0.12387771314547925,
+    'state_of_interest': 0.12387771314545182,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.47
+  0.13521198455357342
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.48
+  0.24856720024803347
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.49
+  0.11803000341030895
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.5
+  0.10958241942238534
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.50
+  -0.12071230469371952
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.51
+  6.518587263028813e-14
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.52
+  0.13521198455350822
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.53
+  0.030985903956850833
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.54
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.55
+  False
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.56
+  dict({
+    'reference': 6.518587263028813e-14,
+    'reference_error': 0.13521198455350822,
+    'state_of_interest': 0.13521198455357342,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.6
+  dict({
+    'reference': 0.0,
+    'reference_error': 0.10958241942238534,
+    'state_of_interest': 0.10958241942238534,
+  })
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.7
+  0.10909344694040175
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.8
+  0.18702638089196827
+# ---
+# name: TestCartPoleCostEqual.test_snapshot.9
+  0.14501811219702787
+# ---

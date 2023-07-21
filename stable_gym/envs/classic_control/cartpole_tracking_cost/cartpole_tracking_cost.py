@@ -549,9 +549,6 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
             reference=ref[0],
             state_of_interest=x,
             reference_error=x - ref[0],
-            reference_constraint_position=self.reference_constraint_pos,
-            reference_constraint_error=x - self.reference_constraint_pos,
-            reference_constraint_violated=bool(abs(x) > self.reference_constraint_pos),
         )
         obs = np.append(
             np.array(self.state),
