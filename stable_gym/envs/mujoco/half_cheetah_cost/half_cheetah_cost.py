@@ -127,12 +127,12 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         self._exclude_x_velocity_from_observation = exclude_x_velocity_from_observation
 
         # Validate input arguments.
-        assert (
-            not randomise_reference_forward_velocity
-            or not exclude_reference_from_observation
+        assert not randomise_reference_forward_velocity or not (
+            exclude_reference_from_observation
+            and exclude_reference_error_from_observation
         ), (
-            "The reference can only be excluded from the observation if the forward "
-            "velocity is not randomised."
+            "You cannot exclude the reference and reference error from the observation "
+            "if you randomize the reference forward velocity."
         )
 
         self.state = None
@@ -291,8 +291,13 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
 
     @property
     def t(self):
-        """Make simulation time available as a property."""
+        """Environment time."""
         return self.unwrapped.data.time
+
+    @property
+    def physics_time(self):
+        """Returns the physics time."""
+        return self.t
 
 
 if __name__ == "__main__":
