@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.15.1](https://github.com/rickstaa/stable-gym/compare/v0.15.0...v0.15.1) (2023-07-21)
+
+
+### Documentation
+
+* improve cartpole docs ([#242](https://github.com/rickstaa/stable-gym/issues/242)) ([0519d69](https://github.com/rickstaa/stable-gym/commit/0519d69b4444a978e67e45a86a8e6172a441ce33))
+
 ## [0.15.0](https://github.com/rickstaa/stable-gym/compare/v0.14.0...v0.15.0) (2023-07-21)
 
 
