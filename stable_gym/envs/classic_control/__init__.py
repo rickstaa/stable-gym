@@ -4,4 +4,7 @@
 .. _`classical control`: https://gymnasium.farama.org/environments/classic_control
 """  # noqa: E501
 from stable_gym.envs.classic_control.cartpole_cost.cartpole_cost import CartPoleCost
+from stable_gym.envs.classic_control.cartpole_tracking_cost.cartpole_tracking_cost import (
+    CartPoleTrackingCost,
+)
 from stable_gym.envs.classic_control.ex3_ekf.ex3_ekf import Ex3EKF
