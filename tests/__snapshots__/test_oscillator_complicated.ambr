@@ -8,9 +8,6 @@
 # name: TestOscillatorComplicated.test_reset.10
   dict({
     'reference': 8.0,
-    'reference_constraint_error': -19.52911326056175,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -7.529113260561752,
     'state_of_interest': 0.47088673943824766,
   })
@@ -57,9 +54,6 @@
 # name: TestOscillatorComplicated.test_step.13
   dict({
     'reference': 8.219875313546899,
-    'reference_constraint_error': -18.938201626083277,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -7.158076939630176,
     'state_of_interest': 1.0617983739167234,
   })
@@ -109,9 +103,6 @@
 # name: TestOscillatorComplicated.test_step.27
   dict({
     'reference': 8.439533636705194,
-    'reference_constraint_error': -18.02791664191915,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -6.467450278624343,
     'state_of_interest': 1.972083358080852,
   })
@@ -164,9 +155,6 @@
 # name: TestOscillatorComplicated.test_step.41
   dict({
     'reference': 8.6587581932296,
-    'reference_constraint_error': -17.9639886943237,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -6.622746887553299,
     'state_of_interest': 2.0360113056763014,
   })
@@ -216,9 +204,6 @@
 # name: TestOscillatorComplicated.test_step.55
   dict({
     'reference': 8.877332634950129,
-    'reference_constraint_error': -18.086149372664277,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -6.963482007614406,
     'state_of_interest': 1.9138506273357234,
   })
@@ -268,9 +253,6 @@
 # name: TestOscillatorComplicated.test_step.69
   dict({
     'reference': 9.095041255281616,
-    'reference_constraint_error': -17.96303148109747,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -7.058072736379087,
     'state_of_interest': 2.0369685189025293,
   })

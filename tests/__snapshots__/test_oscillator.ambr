@@ -26,9 +26,6 @@
 # name: TestOscillator.test_reset.8
   dict({
     'reference': 8.0,
-    'reference_constraint_error': -16.51315985470318,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -4.513159854703181,
     'state_of_interest': 3.4868401452968194,
   })
@@ -45,9 +42,6 @@
 # name: TestOscillator.test_step.11
   dict({
     'reference': 8.219875313546899,
-    'reference_constraint_error': -16.10320542457622,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -4.323080738123117,
     'state_of_interest': 3.896794575423781,
   })
@@ -91,9 +85,6 @@
 # name: TestOscillator.test_step.23
   dict({
     'reference': 8.439533636705194,
-    'reference_constraint_error': -15.368260700246287,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -3.8077943369514813,
     'state_of_interest': 4.631739299753713,
   })
@@ -137,9 +128,6 @@
 # name: TestOscillator.test_step.35
   dict({
     'reference': 8.6587581932296,
-    'reference_constraint_error': -14.507734438286333,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -3.1664926315159327,
     'state_of_interest': 5.492265561713667,
   })
@@ -183,9 +171,6 @@
 # name: TestOscillator.test_step.47
   dict({
     'reference': 8.877332634950129,
-    'reference_constraint_error': -13.456905172732803,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -2.334237807682933,
     'state_of_interest': 6.543094827267196,
   })
@@ -229,9 +214,6 @@
 # name: TestOscillator.test_step.59
   dict({
     'reference': 9.095041255281616,
-    'reference_constraint_error': -12.765426136835544,
-    'reference_constraint_position': 20.0,
-    'reference_constraint_violated': False,
     'reference_error': -1.860467392117159,
     'state_of_interest': 7.234573863164457,
   })

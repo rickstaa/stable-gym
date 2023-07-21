@@ -27,6 +27,11 @@ ENVS = {
         "reward_threshold": 300,
         "max_episode_steps": 250,
     },
+    "CartPoleTrackingCost-v1": {
+        "entry_point": "stable_gym.envs.classic_control.cartpole_tracking_cost.cartpole_tracking_cost:CartPoleTrackingCost",
+        "reward_threshold": 300,
+        "max_episode_steps": 250,
+    },
     "Ex3EKF-v1": {
         "entry_point": "stable_gym.envs.classic_control.ex3_ekf.ex3_ekf:Ex3EKF",
         "reward_threshold": 300,
@@ -83,7 +88,9 @@ for env, val in ENVS.items():
         id=env,
         entry_point=val["entry_point"],
         reward_threshold=val["reward_threshold"],
-        max_episode_steps=val["max_episode_steps"],
+        max_episode_steps=val["max_episode_steps"]
+        if "max_episode_steps" in val
+        else None,
         disable_env_checker=not val["compatible"] if "compatible" in val else False,
         apply_api_compatibility=not val["compatible"] if "compatible" in val else False,
         additional_wrappers=val["additional_wrappers"]

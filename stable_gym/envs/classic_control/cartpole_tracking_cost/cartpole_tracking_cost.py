@@ -1,4 +1,4 @@
-"""The CartPoleCost gymnasium environment."""
+"""The CartPoleTrackingCost gymnasium environment."""
 # NOTE: You can find the changes by searching for the ``NOTE:`` keyword.
 import math
 
@@ -20,7 +20,7 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 # TODO: Update solving criteria after training.
-class CartPoleCost(gym.Env, CartPoleDisturber):
+class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
     """Custom cartPole gymnasium environment.
 
     .. note::
@@ -40,23 +40,32 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         that:
 
             -   The action space is continuous, wherein the original version it is discrete.
-            -   The reward is replaced with a cost (i.e. negated reward).
+            -   The reward is replaced with a cost. This cost is defined as the difference between a
+                state variable and a reference value (error).
+            -   The stabilization task was replaced with a reference tracking task.
+            -   Two additional observations are returned to enable reference tracking.
             -   Some of the environment parameters were changed slightly.
+            -   The info dictionary returns extra information about the reference tracking task.
 
     Observation:
         **Type**: Box(4) or Box(6)
 
-        +-----+------------------------------+-----------------------+---------------------+
-        | Num | Observation                  | Min                   | Max                 |
-        +=====+==============================+=======================+=====================+
-        | 0   | Cart Position                | -20                   | 20                  |
-        +-----+------------------------------+-----------------------+---------------------+
-        | 1   | Cart Velocity                | -50                   | 50                  |
-        +-----+------------------------------+-----------------------+---------------------+
-        | 2   | Pole Angle                   | ~ -.698 rad (-40 deg) | ~ .698 rad (40 deg) |
-        +-----+------------------------------+-----------------------+---------------------+
-        | 3   | Pole Angular Velocity        | -50rad                | 50rad               |
-        +-----+------------------------------+-----------------------+---------------------+
+        +-----+-------------------------------+-----------------------+---------------------+
+        | Num | Observation                   | Min                   | Max                 |
+        +=====+===============================+=======================+=====================+
+        | 0   | Cart Position                 | -20                   | 20                  |
+        +-----+-------------------------------+-----------------------+---------------------+
+        | 1   | Cart Velocity                 | -50                   | 50                  |
+        +-----+-------------------------------+-----------------------+---------------------+
+        | 2   | Pole Angle                    | ~ -.698 rad (-40 deg) | ~ .698 rad (40 deg) |
+        +-----+-------------------------------+-----------------------+---------------------+
+        | 3   | Pole Angular Velocity         | -50rad                | 50rad               |
+        +-----+-------------------------------+-----------------------+---------------------+
+        | 4   | The cart position reference   | -20                   | 20                  |
+        +-----+-------------------------------+-----------------------+---------------------+
+        | (5) || **Optional** - The reference | -20                   | 20                  |
+        |     || tracking error               |                       |                     |
+        +-----+-------------------------------+-----------------------+---------------------+
 
         .. note::
             While the ranges above denote the possible values for observation space of
@@ -85,15 +94,16 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             the pole varies the amount of energy needed to move the cart underneath it.
 
     Cost:
-        A cost, computed using the :meth:`CartPoleCost.cost` method, is given for each
-        simulation step, including the terminal step. This cost is the error
-        between the cart position and angle and the zero position and angle.
+        A cost, computed using the :meth:`CartPoleTrackingCost.cost` method, is given for each
+        simulation step, including the terminal step. This cost is defined as a error
+        between a state variable and a reference value. The exact cost depends on the
+        task type. The cost is set to the maximum cost when the episode is terminated.
 
     Starting State:
         All observations are assigned a uniform random value in ``[-0.2..0.2]``.
 
     Episode Termination:
-        -   Pole Angle is more than 20 degrees.
+        -   Pole Angle is more than 60 degrees.
         -   Cart Position is more than 10 m (center of the cart reaches the edge of the
             display).
         -   Episode length is greater than 200.
@@ -109,7 +119,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
             import stable_gym
             import gymnasium as gym
-            env = gym.make("CartPoleCost-v1")
+            env = gym.make("CartPoleTrackingCost-v1")
 
         On reset, the ``options`` parameter allows the user to change the bounds used to
         determine the new random state when ``random=True``.
@@ -144,21 +154,44 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self,
         render_mode=None,
         # NOTE: Custom environment arguments.
+        reference_target_position=0.0,
+        reference_amplitude=7.0,
+        reference_frequency=200,
         max_cost=100.0,
         clip_action=True,
         exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,
     ):
-        """Initialise a new CartPoleCost environment instance.
+        """Initialise a new CartPoleTrackingCost environment instance.
 
         Args:
             render_mode (str, optional): Gym rendering mode. By default ``None``.
+            reference_target_position: The reference target position, by default
+                ``0.0`` (i.e. the mean of the reference signal).
+            reference_amplitude: The reference amplitude, by default ``7.0``.
+            reference_frequency: The reference frequency, by default ``200``.
             max_cost (float, optional): The maximum cost allowed before the episode is
                 terminated. Defaults to ``100.0``.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
+            exclude_reference_from_observation (bool, optional): Whether the reference
+                should be excluded from the observation. Defaults to ``False``.
+            exclude_reference_error_from_observation (bool, optional): Whether the error
+                should be excluded from the observation. Defaults to ``True``.
         """
         super().__init__()  # NOTE: Initialise disturber superclass.
+
+        # Validate input arguments.
+        assert not (
+            exclude_reference_from_observation
+            and exclude_reference_error_from_observation
+        ), (
+            "The agent needs to observe either the reference or the reference error "
+            "for it to be able to learn."
+        )
+        assert (
+            reference_frequency > 0
+        ), "The reference frequency must be greater than 0."
 
         # NOTE: Compared to the original I store the initial values for the reset
         # function and replace the `self.total_mass` and `self.polemass_length` with
@@ -175,7 +208,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # Position and angle at which to fail the episode.
         self.theta_threshold_radians = (
-            20 * 2 * math.pi / 360
+            60 * 2 * math.pi / 360
         )  # NOTE: Original uses 12 degrees.
         self.x_threshold = 10  # NOTE: original uses 2.4.
         self.max_v = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
@@ -198,6 +231,11 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
                 self.max_w,
             ],
         )
+        if not self._exclude_reference_from_observation:
+            high = np.append(high, self.x_threshold * 2)
+        if not self._exclude_reference_error_from_observation:
+            high = np.append(high, self.x_threshold * 2)
+
         self.action_space = spaces.Box(
             low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float64
         )  # NOTE: Original uses discrete version.
@@ -236,10 +274,15 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         #     "high": np.repeat(0.05, 4),
         # }
 
+        # Reference target, amplitude and frequency.
+        self.reference_target_pos = reference_target_position
+        self.reference_amplitude = reference_amplitude
+        self.reference_frequency = reference_frequency
+
         # Print vectorization debug info.
         self.__class__.instances += 1
         self.instance_id = self.__class__.instances
-        logger.debug(f"CartPoleCost instance '{self.instance_id}' created.")
+        logger.debug(f"CartPoleTrackingCost instance '{self.instance_id}' created.")
 
     def set_params(self, length, mass_of_cart, mass_of_pole, gravity):
         """Sets the most important system parameters.
@@ -275,6 +318,20 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.masscart = self._mass_cart_init
         self.gravity = self._gravity_init
 
+    def reference(self, t):
+        """Returns the current value of the periodic cart reference signal that is
+        tracked by the cart-pole system.
+
+        Args:
+            t (float): The current time step.
+
+        Returns:
+            float: The current reference value.
+        """
+        return self.reference_target_pos + self.reference_amplitude * np.sin(
+            ((2 * np.pi) * self.reference_frequency * t)
+        )
+
     def cost(self, x, theta):
         """Returns the cost for a given cart position (x) and a pole angle (theta).
 
@@ -286,12 +343,17 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             (tuple): tuple containing:
 
                 -   cost (float): The current cost.
+                -   r_1 (float): The current position reference.
+                -   r_2 (float): The cart_pole angle reference.
         """
-        cost = np.square(x / self.x_threshold) + 20 * np.square(
-            theta / self.theta_threshold_radians
-        )
+        # TODO: Fine-tune cost function. The current one is a initial test.
+        ref = [self.reference(self.t), 0.0]
+        ref_cost = np.square(x - ref[0])
+        stab_cost = np.square(theta / self.theta_threshold_radians)
 
-        return cost
+        cost = stab_cost + ref_cost
+
+        return cost, ref
 
     def step(self, action):
         """Take step into the environment.
@@ -362,7 +424,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # Calculate cost.
         # NOTE: Different cost function compared to the original.
-        cost = self.cost(x, theta)
+        cost, ref = self.cost(x, theta)
 
         # Define stopping criteria.
         terminated = bool(
@@ -396,7 +458,19 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             self.render()
 
         # Create observation and info dict.
-        obs = np.array(self.state)
+        obs = np.append(
+            np.array(self.state),
+            np.array(
+                [ref[0]]
+                if self._exclude_reference_error_from_observation
+                else [ref[0], x - ref[0]]
+            ),
+        )
+        info_dict = dict(
+            reference=ref[0],
+            state_of_interest=x,
+            reference_error=x - ref[0],
+        )
 
         # NOTE: The original returns an empty info dict.
         return (
@@ -404,7 +478,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             cost,
             terminated,
             False,
-            {},
+            info_dict,
         )
 
     def reset(self, seed=None, options=None, random=True):
@@ -469,14 +543,28 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.t = 0.0
 
         # Create info dict and observation.
-        obs = np.array(self.state)
+        x, _, theta, _ = self.state
+        _, ref = self.cost(x, theta)
+        info_dict = dict(
+            reference=ref[0],
+            state_of_interest=x,
+            reference_error=x - ref[0],
+        )
+        obs = np.append(
+            np.array(self.state),
+            np.array(
+                [ref[0]]
+                if self._exclude_reference_error_from_observation
+                else [ref[0], x - ref[0]]
+            ),
+        )
 
         # Render environment reset if requested.
         if self.render_mode == "human":
             self.render()
 
         # NOTE: The original returns an empty info dict.
-        return obs, {}
+        return obs, info_dict
 
     def render(self):
         """Render one frame of the environment."""
@@ -632,15 +720,17 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
 
 if __name__ == "__main__":
-    print("Setting up 'CartPoleCost' environment.")
-    env = gym.make("CartPoleCost", render_mode="human")
+    print("Setting up 'CartPoleTrackingCost' environment.")
+    env = gym.make("CartPoleTrackingCost", render_mode="human")
 
     # Run episodes.
     episode = 0
     path, paths = [], []
+    reference, references = [], []
     s, info = env.reset()
     path.append(s)
-    print(f"\nPerforming '{EPISODES}' in the 'CartPoleCost' environment...\n")
+    reference.append(info["reference"])
+    print(f"\nPerforming '{EPISODES}' in the 'CartPoleTrackingCost' environment...\n")
     print(f"Episode: {episode}")
     while episode <= EPISODES:
         action = (
@@ -650,14 +740,17 @@ if __name__ == "__main__":
         )
         s, r, terminated, truncated, info = env.step(action)
         path.append(s)
+        reference.append(info["reference"])
         if terminated or truncated:
             paths.append(path)
+            references.append(reference)
             episode += 1
-            path = []
+            path, reference = [], []
             s, info = env.reset()
             path.append(s)
+            reference.append(info["reference"])
             print(f"Episode: {episode}")
-    print("\nFinished 'CartPoleCost' environment simulation.")
+    print("\nFinished 'CartPoleTrackingCost' environment simulation.")
 
     # Plot results per episode.
     print("\nPlotting episode data...")
@@ -670,7 +763,16 @@ if __name__ == "__main__":
         for j in range(path.shape[1]):  # NOTE: Change if you want to plot less states.
             ax.plot(t, path[:, j], label=f"State {j}")
         ax.set_xlabel("Time (s)")
-        ax.set_title(f"CartPoleCost episode '{i}'")
+        ax.set_title(f"CartPoleTrackingCost episode '{i}'")
+
+        # Plot reference signal.
+        ax.plot(
+            t,
+            np.array(references[i]),
+            color="black",
+            linestyle="--",
+            label="Reference",
+        )
         ax.legend()
         print("Close plot to see next episode...")
         plt.show()

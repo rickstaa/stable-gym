@@ -307,6 +307,11 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
         """
         return self.dt
 
+    @property
+    def physics_time(self):
+        """Returns the physics time. Alias for :attr:`.t`."""
+        return self.t
+
 
 if __name__ == "__main__":
     print("Setting up 'Ex3EKF' environment.")
