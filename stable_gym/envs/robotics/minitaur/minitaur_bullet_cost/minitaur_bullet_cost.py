@@ -202,12 +202,12 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         self._exclude_x_velocity_from_observation = exclude_x_velocity_from_observation
 
         # Validate input arguments.
-        assert (
-            not randomise_reference_forward_velocity
-            or not exclude_reference_from_observation
+        assert not randomise_reference_forward_velocity or not (
+            exclude_reference_from_observation
+            and exclude_reference_error_from_observation
         ), (
-            "The reference can only be excluded from the observation if the forward "
-            "velocity is not randomised."
+            "You cannot exclude the reference and reference error from the observation "
+            "if you randomize the reference forward velocity."
         )
 
         # Initialise the MinitaurBulletEnv class.
@@ -247,7 +247,8 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         )
 
         # Reinitialize the EzPickle class.
-        # NOTE: Done to ensure the args of the MinitaurBulletCost class are also pickled.
+        # NOTE: Done to ensure the args of the MinitaurBulletCost class are also
+        # pickled.
         # NOTE: Ensure that all args are passed to the EzPickle class!
         utils.EzPickle.__init__(
             self,
@@ -346,7 +347,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         # Retrieve original rew5ards and base velocity.
         # NOTE: Han et al. 2018 used the squared error for the drift reward. We use the
         # version found in the original Minitaur environment (i.e. absolute distance).
-        objectives = self.get_objectives()
+        objectives = super().get_objectives()
         last_rewards = objectives[-1]
         _, energy_reward, drift_reward, shake_reward = last_rewards
         drift_cost, shake_cost = -drift_reward, -shake_reward
@@ -480,6 +481,16 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         other gymnasium environments.
         """
         return self.dt
+
+    @property
+    def physics_time(self):
+        """Returns the physics time.
+
+        .. note::
+            The Minitaur uses 100 steps to setup the system. This is why we add 100 time
+            steps.
+        """  # noqa: E501
+        return self.t + self._time_step * 100
 
 
 if __name__ == "__main__":
