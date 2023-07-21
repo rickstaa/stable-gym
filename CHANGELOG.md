@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.15.0](https://github.com/rickstaa/stable-gym/compare/v0.14.0...v0.15.0) (2023-07-21)
+
+
+### Features
+
+* **oscillator:** simplify oscillator environments ([#231](https://github.com/rickstaa/stable-gym/issues/231)) ([da9b589](https://github.com/rickstaa/stable-gym/commit/da9b589fb1950a8cee19b934b5bf6f1571016dc3))
+
+
+### Bug Fixes
+
+* fix oscillator reference formula ([#227](https://github.com/rickstaa/stable-gym/issues/227)) ([c3011b4](https://github.com/rickstaa/stable-gym/commit/c3011b4f11c54831d1c2b52eeed2b0f912ae0d39))
+
+
+### Documentation
+
+* fix markdown admonitions ([#232](https://github.com/rickstaa/stable-gym/issues/232)) ([fb8ab33](https://github.com/rickstaa/stable-gym/commit/fb8ab335ae133cd9d07b29946a8d192a9f757e22))
+* update admonitions to new GFM specification ([5905366](https://github.com/rickstaa/stable-gym/commit/5905366154abf2af84e0ec6464ae35ff9faa4dc1))
+
 ## [0.14.0](https://github.com/rickstaa/stable-gym/compare/v0.13.1...v0.14.0) (2023-07-18)
 
 
