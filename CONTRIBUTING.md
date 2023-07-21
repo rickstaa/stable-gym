@@ -30,7 +30,7 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 8.  Create a pull request to pull the changes of your development branch onto the `main` branch.
 9.  Ensure that all the [pull request checks](https://github.com/rickstaa/stable-gym/actions) were successful.
 
-> **Note**
+> [!NOTE]\
 > When working on different machines, the snapshots could be slightly different. This is because the random seeds are sometimes dependent on the machine architecture. To fix this, please temporarily [stash your changes](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning) or return to the latest upstream commit and run the `npm run test:update:snapshots` command. You can then add your change again and run the tests.
 
 ### Report bugs using Github's [issues](https://github.com/rickstaa/stable-gym/issues)
