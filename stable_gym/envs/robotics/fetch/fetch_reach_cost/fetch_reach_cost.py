@@ -160,7 +160,12 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
 
     @property
     def t(self):
-        """Make simulation time available as a property."""
+        """Environment time."""
+        return self.unwrapped.data.time - self.initial_time
+
+    @property
+    def physics_time(self):
+        """Returns the physics time."""
         return self.unwrapped.data.time
 
 
