@@ -1,4 +1,4 @@
-.. include:: ../../../../stable_gym/envs/classic_control/cartpole_cost/README.md
+.. include:: ../../../../stable_gym/envs/classic_control/cartpole_tracking_cost/README.md
     :parser: myst_parser.sphinx_
 
 .. warning::

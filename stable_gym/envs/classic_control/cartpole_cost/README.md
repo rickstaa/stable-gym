@@ -46,7 +46,7 @@ The goal is similar to the original `CartPole-v1` environment. The pendulum star
 The cost function of this environment is designed in such a way that it tries to minimize the error between the current cart position and angle and the zero position and angle:
 
 $$
-cost = (x / x_{threshold})^2 + 20 * (theta / theta_{threshold})^2
+cost = (x / x_{threshold})^2 + 20 * (\theta / \theta_{threshold})^2
 $$
 
 The exact definition of these tasks can be found in the environment's `stable_gym.envs.classical_control.cartpole_cost.cartpole_cost.CartPoleCost.cost` method. The cost is between `0` and a set threshold value in both tasks, and the maximum cost is used when the episode is terminated.
