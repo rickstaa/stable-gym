@@ -61,6 +61,9 @@ Robotics environment
 
     ./robotics/fetch_reach_cost.rst
     ./robotics/minitaur_bullet_cost.rst
+    ./robotics/quadx_hover_cost.rst
+    ./robotics/quadx_tracking_cost.rst
+    ./robotics/quadx_waypoints_cost.rst
 
 .. note::
 

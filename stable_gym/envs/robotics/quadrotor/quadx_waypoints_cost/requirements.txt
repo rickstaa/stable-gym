@@ -1,0 +1,3 @@
+gymnasium-robotics==1.2.2
+matplotlib==3.7.0
+PyFlyt==0.7.8
