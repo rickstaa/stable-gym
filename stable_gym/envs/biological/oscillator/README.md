@@ -15,7 +15,7 @@ By default, the environment returns the following observation:
 *   $r$ - The reference we want to follow.
 *   $r_{error}$ - The error between the state of interest (i.e. $p_1$) and the reference.
 
-The last two variables can be excluded from the observation space by setting the `exclude_reference_from_observation` and `exclude_reference_error_from_observation` environment arguments to `True`. Please note that the environment needs the reference or the reference error to be included in the observation space to function correctly. If both are excluded, the environment will raise an error.
+The last two variables can be excluded from the observation space by setting the `exclude_reference_from_observation` and `exclude_reference_error_from_observation` environment arguments to `True`. Please note that the environment needs the reference or the reference error to be included in the observation space when the reference signal is not constant to function correctly. If both are excluded, the environment will raise an error.
 
 ## Action space
 

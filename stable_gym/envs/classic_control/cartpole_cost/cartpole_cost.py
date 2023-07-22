@@ -146,8 +146,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # NOTE: Custom environment arguments.
         max_cost=100.0,
         clip_action=True,
-        exclude_reference_from_observation=False,
-        exclude_reference_error_from_observation=True,
     ):
         """Initialise a new CartPoleCost environment instance.
 
@@ -186,10 +184,6 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         # Create observation space bounds.
         # Angle limit set to 2 * theta_threshold_radians so failing observation
         # is still within bounds.
-        self._exclude_reference_from_observation = exclude_reference_from_observation
-        self._exclude_reference_error_from_observation = (
-            exclude_reference_error_from_observation
-        )
         high = np.array(
             [
                 self.x_threshold * 2,

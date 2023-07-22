@@ -137,7 +137,7 @@ class Oscillator(gym.Env, OscillatorDisturber):
             reference_target_position: The reference target position, by default
                 ``8.0`` (i.e. the mean of the reference signal).
             reference_amplitude: The reference amplitude, by default ``7.0``.
-            reference_frequency: The reference frequency, by default ``200``.
+            reference_frequency: The reference frequency, by default ``0.005``.
             reference_phase_shift: The reference phase shift, by default ``0.0``.
             clip_action (str, optional): Whether the actions should be clipped if
                 they are greater than the set action limit. Defaults to ``True``.
@@ -154,13 +154,13 @@ class Oscillator(gym.Env, OscillatorDisturber):
             exclude_reference_error_from_observation
         )
 
-        # Validate input arguments.
-        assert not (
+        # Validate input arguments.s
+        assert (reference_amplitude == 0 or reference_frequency == 0) or not (
             exclude_reference_from_observation
             and exclude_reference_error_from_observation
         ), (
             "The agent needs to observe either the reference or the reference error "
-            "for it to be able to learn."
+            "for it to be able to learn when the reference is not constant."
         )
         assert (
             reference_frequency >= 0
