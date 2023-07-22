@@ -156,7 +156,7 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
         # NOTE: Custom environment arguments.
         reference_target_position=0.0,
         reference_amplitude=7.0,
-        reference_frequency=200,
+        reference_frequency=0.005,
         max_cost=100.0,
         clip_action=True,
         exclude_reference_from_observation=False,
@@ -169,7 +169,7 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
             reference_target_position: The reference target position, by default
                 ``0.0`` (i.e. the mean of the reference signal).
             reference_amplitude: The reference amplitude, by default ``7.0``.
-            reference_frequency: The reference frequency, by default ``200``.
+            reference_frequency: The reference frequency, by default ``0.005``.
             max_cost (float, optional): The maximum cost allowed before the episode is
                 terminated. Defaults to ``100.0``.
             clip_action (str, optional): Whether the actions should be clipped if
@@ -182,12 +182,12 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
         super().__init__()  # NOTE: Initialise disturber superclass.
 
         # Validate input arguments.
-        assert not (
+        assert (reference_amplitude == 0 or reference_frequency == 0) or not (
             exclude_reference_from_observation
             and exclude_reference_error_from_observation
         ), (
             "The agent needs to observe either the reference or the reference error "
-            "for it to be able to learn."
+            "for it to be able to learn when the reference is not constant."
         )
         assert (
             reference_frequency > 0

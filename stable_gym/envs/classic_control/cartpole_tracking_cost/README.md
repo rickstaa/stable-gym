@@ -28,7 +28,7 @@ By default, the environment returns the following observation:
 *   $x_{ref}$ - The cart position reference.
 *   $x_{ref\_error}$ - The reference tracking error.
 
-The last two variables can be excluded from the observation space by setting the `exclude_reference_from_observation` and `exclude_reference_error_from_observation` environment arguments to `True`. Please note that the environment needs the reference or the reference error to be included in the observation space to function correctly. If both are excluded, the environment will raise an error.
+The last two variables can be excluded from the observation space by setting the `exclude_reference_from_observation` and `exclude_reference_error_from_observation` environment arguments to `True`. Please note that the environment needs the reference or the reference error to be included in the observation space when the reference signal is not constant to function correctly. If both are excluded, the environment will raise an error.
 
 ## Action space
 
