@@ -19,6 +19,6 @@ for more information.
 .. _`Tai et al. 2023`: https://arxiv.org/abs/2304.01305
 .. _`article of Tai et al. 2023`: https://arxiv.org/abs/2304.01305
 """  # noqa: E501
-from stable_gym.envs.robotics.quadrotor.quadx_waypoints_cost.quadx_waypoints_cost import (
-    QuadXWaypointsCost,
-)
+# from stable_gym.envs.robotics.quadrotor.quadx_waypoints_cost.quadx_waypoints_cost import (
+#     QuadXWaypointsCost,
+# )

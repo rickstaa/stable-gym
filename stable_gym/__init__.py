@@ -72,21 +72,21 @@ ENVS = {
         "reward_threshold": 300,
         "max_episode_steps": 50,
     },
-    "QuadXHoverCost-v1": {
-        "entry_point": "stable_gym.envs.robotics.quadrotor.quadx_hover_cost.quadx_hover_cost:QuadXHoverCost",
-        "reward_threshold": 300,
-        "max_episode_steps": 400,
-    },
-    "QuadXTrackingCost-v1": {
-        "entry_point": "stable_gym.envs.robotics.quadrotor.quadx_tracking_cost.quadx_tracking_cost:QuadXTrackingCost",
-        "reward_threshold": 300,
-        "max_episode_steps": 400,
-    },
-    "QuadXWaypointsCost-v1": {
-        "entry_point": "stable_gym.envs.robotics.quadrotor.quadx_waypoints_cost.quadx_waypoints_cost:QuadXWaypointsCost",
-        "reward_threshold": 300,
-        "max_episode_steps": 400,
-    },
+    # "QuadXHoverCost-v1": {
+    #     "entry_point": "stable_gym.envs.robotics.quadrotor.quadx_hover_cost.quadx_hover_cost:QuadXHoverCost",
+    #     "reward_threshold": 300,
+    #     "max_episode_steps": 400,
+    # },
+    # "QuadXTrackingCost-v1": {
+    #     "entry_point": "stable_gym.envs.robotics.quadrotor.quadx_tracking_cost.quadx_tracking_cost:QuadXTrackingCost",
+    #     "reward_threshold": 300,
+    #     "max_episode_steps": 400,
+    # },
+    # "QuadXWaypointsCost-v1": {
+    #     "entry_point": "stable_gym.envs.robotics.quadrotor.quadx_waypoints_cost.quadx_waypoints_cost:QuadXWaypointsCost",
+    #     "reward_threshold": 300,
+    #     "max_episode_steps": 400,
+    # },
     # NOTE: The Minitaur environment is not compatible with gymnasium. See
     # https://github.com/bulletphysics/bullet3/issues/4369 for more details.
     "MinitaurBulletCost-v1": {
