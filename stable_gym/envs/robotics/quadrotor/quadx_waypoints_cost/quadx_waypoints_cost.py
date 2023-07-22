@@ -91,7 +91,7 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
         health_penalty_size=None,
         exclude_waypoint_targets_from_observation=False,
         only_observe_immediate_waypoint=True,
-        exclude_waypoint_target_deltas_from_observation=False,
+        exclude_waypoint_target_deltas_from_observation=True,
         only_observe_immediate_waypoint_target_delta=True,
         **kwargs,
     ):
@@ -129,7 +129,7 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
                 the immediate waypoint target. Defaults to ``True``.
             exclude_waypoint_target_deltas_from_observation (bool, optional): Whether
                 to exclude the waypoint target deltas from the observation. Defaults to
-                ``False``.
+                ``True``.
             only_observe_immediate_waypoint_target_delta (bool, optional): Whether to
                 only observe the immediate waypoint target delta. Defaults to
                 ``True``.

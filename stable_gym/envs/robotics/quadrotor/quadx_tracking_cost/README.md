@@ -1,7 +1,7 @@
 # QuadXTrackingCost gymnasium environment
 
 <div align="center">
-    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/24c894c3-a7df-430d-91d7-37a0517fbce4" alt="QuadX Tracking Cost environment" width="500px">
+    <img src="https://github.com/rickstaa/stable-gym/assets/17570430/948e5e9a-3739-478b-b5fb-452c571d096e" alt="QuadX Tracking Cost environment" width="500px">
 </div>
 </br>
 
