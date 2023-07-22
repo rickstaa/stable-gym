@@ -9,13 +9,13 @@
   -0.19298094228082074
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.11
-  -6.858022075225178e-15
+  0.004398229425633801
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.12
-  0.10909344694040861
+  0.10469521751476796
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.13
-  0.031078671178727986
+  0.030138379583852813
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.14
   False
@@ -25,8 +25,8 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.16
   dict({
-    'reference': -6.858022075225178e-15,
-    'reference_error': 0.10909344694040861,
+    'reference': 0.004398229425633801,
+    'reference_error': 0.10469521751476796,
     'state_of_interest': 0.10909344694040175,
   })
 # ---
@@ -46,13 +46,13 @@
   -0.07676570293056856
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.21
-  -1.3716044150450356e-14
+  0.00879645711491628
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.22
-  0.11283397455825483
+  0.10403751744332485
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.23
-  0.030901583856177618
+  0.02899388307733484
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.24
   False
@@ -62,8 +62,8 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.26
   dict({
-    'reference': -1.3716044150450356e-14,
-    'reference_error': 0.11283397455825483,
+    'reference': 0.00879645711491628,
+    'reference_error': 0.10403751744332485,
     'state_of_interest': 0.11283397455824112,
   })
 # ---
@@ -83,13 +83,13 @@
   -0.44748678167775646
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.31
-  -2.0574066225675533e-14
+  0.013194681331496797
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.32
-  0.11558101791298113
+  0.10238633658146375
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.33
-  0.03113594458058202
+  0.028259934797353933
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.34
   False
@@ -99,8 +99,8 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.36
   dict({
-    'reference': -2.0574066225675533e-14,
-    'reference_error': 0.11558101791298113,
+    'reference': 0.013194681331496797,
+    'reference_error': 0.10238633658146375,
     'state_of_interest': 0.11558101791296055,
   })
 # ---
@@ -120,13 +120,13 @@
   -0.6321720124467993
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.41
-  -2.743208830090071e-14
+  0.01759290033902609
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.42
-  0.12387771314547925
+  0.10628481280642572
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.43
-  0.030916721226894112
+  0.026867494846037426
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.44
   False
@@ -136,8 +136,8 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.46
   dict({
-    'reference': -2.743208830090071e-14,
-    'reference_error': 0.12387771314547925,
+    'reference': 0.01759290033902609,
+    'reference_error': 0.10628481280642572,
     'state_of_interest': 0.12387771314545182,
   })
 # ---
@@ -157,13 +157,13 @@
   -0.12071230469371952
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.51
-  6.518587263028813e-14
+  0.021991112401156948
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.52
-  0.13521198455350822
+  0.11322087215241647
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.53
-  0.030985903956850833
+  0.025522589080906523
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.54
   False
@@ -173,8 +173,8 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.56
   dict({
-    'reference': 6.518587263028813e-14,
-    'reference_error': 0.13521198455350822,
+    'reference': 0.021991112401156948,
+    'reference_error': 0.11322087215241647,
     'state_of_interest': 0.13521198455357342,
   })
 # ---
