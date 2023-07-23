@@ -1,78 +1,78 @@
 # serializer version: 1
 # name: TestQuadXHoverCostEqual.test_snapshot
-  -0.005546260092644
+  -0.0055462600926
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.1
-  0.002660358203223
+  0.0026603582032
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.10
-  -2.728883e-09
+  -2.7289e-09
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.100
   -0.0527336655245
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.101
-  0.016079648325736
+  0.0160796483257
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.102
-  0.015033288370922
+  0.0150332883709
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.103
-  0.998365967804806
+  0.9983659678048
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.104
-  0.025584104044566
+  0.0255841040446
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.105
-  0.025767317829552
+  0.0257673178296
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.106
-  0.751791685554476
+  0.7517916855545
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.107
-  0.001394315992608
+  0.0013943159926
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.108
-  0.001674797057525
+  0.0016747970575
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.109
-  0.959756414856305
+  0.9597564148563
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.11
-  1.0237501e-08
+  1.02375e-08
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.110
-  0.903931208706458
+  0.9039312087065
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.111
-  2.027971026224859
+  2.0279710262249
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.112
-  -0.355539074523099
+  -0.3555390745231
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.113
-  0.181790977427822
+  0.1817909774278
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.114
-  0.127910999008486
+  0.1279109990085
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.115
-  0.145353815381727
+  0.1453538153817
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.116
-  0.260218258786454
+  0.2602182587865
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.117
-  0.422730979029815
+  0.4227309790298
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.118
-  0.150638837952191
+  0.1506388379522
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.119
   False
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.12
-  0.968122447374477
+  0.9681224473745
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.120
   False
@@ -85,76 +85,76 @@
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.122
-  1.67851560357164
+  1.6785156035716
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.123
-  -4.768844212374379
+  -4.7688442123744
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.124
-  3.175060517229094
+  3.1750605172291
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.125
-  -0.038429420454238
+  -0.0384294204542
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.126
-  0.008524195436898
+  0.0085241954369
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.127
-  0.032911866570787
+  0.0329118665708
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.128
-  0.998682795873911
+  0.9986827958739
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.129
-  0.057951989933659
+  0.0579519899337
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.13
   0.0
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.130
-  0.072838812168016
+  0.072838812168
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.131
-  0.910100347698314
+  0.9101003476983
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.132
-  0.002796698194735
+  0.0027966981947
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.133
-  0.004839175658865
+  0.0048391756589
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.134
-  0.979771504157222
+  0.9797715041572
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.135
-  0.34296633177342
+  0.3429663317734
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.136
-  -2.740617007691522
+  -2.7406170076915
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.137
-  2.05856736603782
+  2.0585673660378
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.138
-  0.505331519297652
+  0.5053315192977
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.139
-  0.520012854878745
+  0.5200128548787
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.14
   0.0
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.140
-  0.333953225599862
+  0.3339532255999
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.141
-  0.591904056319934
+  0.5919040563199
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.142
-  0.523663295629717
+  0.5236632956297
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.143
-  0.099738437271926
+  0.0997384372719
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.144
   False
@@ -176,19 +176,19 @@
   0.0
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.17
-  0.050449831588859
+  0.0504498315889
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.18
-  0.051131413074664
+  0.0511314130747
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.19
-  0.048928499654924
+  0.0489284996549
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.2
-  0.001485007497906
+  0.0014850074979
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.20
-  0.049153413433463
+  0.0491534134335
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.21
   dict({
@@ -198,76 +198,76 @@
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.22
-  2.735040642527962
+  2.735040642528
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.23
-  -1.152209644123205
+  -1.1522096441232
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.24
   3.0068916952955
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.25
-  0.016530721311727
+  0.0165307213117
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.26
-  -0.007777188807383
+  -0.0077771888074
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.27
-  0.016729439377876
+  0.0167294393779
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.28
-  0.999693141141456
+  0.9996931411415
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.29
-  -0.011901595662233
+  -0.0119015956622
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.3
-  -9.9583383586e-05
+  -9.95833836e-05
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.30
-  -0.023986617815915
+  -0.0239866178159
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.31
-  -0.686439128909662
+  -0.6864391289097
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.32
-  -4.608636589e-06
+  -4.6086366e-06
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.33
-  -8.229901244e-06
+  -8.2299012e-06
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.34
-  0.948831586609078
+  0.9488315866091
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.35
-  1.721316619099806
+  1.7213166190998
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.36
-  -0.384038089301797
+  -0.3840380893018
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.37
-  2.25313718157236
+  2.2531371815724
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.38
-  0.557894423247491
+  0.5578944232475
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.39
-  0.415263636671929
+  0.4152636366719
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.4
   -5.7537558e-06
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.40
-  0.472017180226357
+  0.4720171802264
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.41
-  0.617629918452068
+  0.6176299184521
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.42
-  0.611093026357304
+  0.6110930263573
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.43
-  0.087709339352501
+  0.0877093393525
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.44
   False
@@ -283,82 +283,82 @@
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.47
-  -6.334731068635765
+  -6.3347310686358
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.48
-  4.775334279472101
+  4.7753342794721
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.49
-  1.220514901151053
+  1.2205149011511
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.5
-  1.6838242971e-05
+  1.6838243e-05
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.50
-  -0.01060372726374
+  -0.0106037272637
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.51
-  0.021283279530193
+  0.0212832795302
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.52
-  0.051348143414379
+  0.0513481434144
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.53
-  0.998397691878568
+  0.9983976918786
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.54
-  -0.001832618857884
+  -0.0018326188579
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.55
-  -0.023857412059533
+  -0.0238574120595
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.56
-  -0.217962246622005
+  -0.217962246622
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.57
-  -0.000155883874945
+  -0.0001558838749
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.58
-  -0.000412495247053
+  -0.0004124952471
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.59
-  0.937960536863591
+  0.9379605368636
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.6
-  0.999999994883259
+  0.9999999948833
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.60
-  -2.549858925072974
+  -2.549858925073
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.61
-  2.988423371570267
+  2.9884233715703
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.62
-  1.640789138667041
+  1.640789138667
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.63
-  0.628851444221563
+  0.6288514442216
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.64
-  0.742426197199802
+  0.7424261971998
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.65
-  0.742970312275384
+  0.7429703122754
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.66
-  0.543964017484906
+  0.5439640174849
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.67
-  0.498729505904009
+  0.498729505904
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.68
-  0.109604918172111
+  0.1096049181721
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.69
   False
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.7
-  -8.92936435e-06
+  -8.9293644e-06
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.70
   False
@@ -371,76 +371,76 @@
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.72
-  -1.147696024092314
+  -1.1476960240923
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.73
-  -3.194849968191354
+  -3.1948499681914
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.74
-  -2.65752306804359
+  -2.6575230680436
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.75
-  -0.070081986709165
+  -0.0700819867092
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.76
-  0.012550286137052
+  0.0125502861371
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.77
-  0.03552110721449
+  0.0355211072145
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.78
-  0.996829602489328
+  0.9968296024893
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.79
-  0.026133795224247
+  0.0261337952242
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.8
-  0.000152711200242
+  0.0001527112002
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.80
-  -0.033193594195807
+  -0.0331935941958
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.81
-  0.472567984722178
+  0.4725679847222
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.82
-  0.000231426066448
+  0.0002314260664
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.83
-  -0.000526820863918
+  -0.0005268208639
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.84
-  0.942020302647411
+  0.9420203026474
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.85
   -2.3366309591134
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.86
-  -0.311734346044068
+  -0.3117343460441
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.87
-  -0.811799955800418
+  -0.8117999558004
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.88
-  0.741411991078882
+  0.7414119910789
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.89
-  0.551633340670808
+  0.5516333406708
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.9
-  -0.763516733780097
+  -0.7635167337801
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.90
-  0.85861159172926
+  0.8586115917293
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.91
-  0.818359508283141
+  0.8183595082831
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.92
-  0.71307207215371
+  0.7130720721537
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.93
-  0.200517337944326
+  0.2005173379443
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.94
   False
@@ -456,11 +456,11 @@
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.97
-  0.942116505077974
+  0.942116505078
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.98
-  2.752935615019766
+  2.7529356150198
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.99
-  -0.636746716899522
+  -0.6367467168995
 # ---

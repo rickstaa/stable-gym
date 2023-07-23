@@ -83,7 +83,7 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
         reference_target_position=(0.0, 0.0, 1.0),
         reference_amplitude=(1.0, 1.0, 0.25),
         reference_frequency=(0.25, 0.25, 0.10),
-        reference_phase_shift=(0.0, -np.pi / 2, 0.0),
+        reference_phase_shift=(0.0, -np.pi / 2.0, 0.0),
         include_health_penalty=True,
         health_penalty_size=None,
         exclude_reference_from_observation=False,

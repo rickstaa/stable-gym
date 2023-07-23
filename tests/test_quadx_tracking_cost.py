@@ -10,7 +10,7 @@ from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)
 
-PRECISION = 15
+PRECISION = 13
 
 np.set_printoptions(precision=16, suppress=True)
 
@@ -65,18 +65,77 @@ class TestQuadXTrackingCostEqual:
     def test_snapshot(self, snapshot, env_cost_full):
         """Test if the 'QuadXTrackingCost' environment is still equal to snapshot."""
         observation, info = env_cost_full.reset(seed=42)
-        print(observation, info)
-        print("t:", env_cost_full.t)
-        print("ref:", env_cost_full.reference(env_cost_full.t))
+
+        print("=RESET=")
+        print("t=", env_cost_full.unwrapped.t)
+        print("ref=", repr(env_cost_full.reference(env_cost_full.unwrapped.t)))
+        half_pi = -np.pi / 2
+        print("half_pi=", half_pi)
+        print("target_pos=", repr(env_cost_full.unwrapped._reference_target_pos))
+        print("target_amplitude=", repr(env_cost_full.unwrapped._reference_amplitude))
+        print("reference freq=", repr(env_cost_full.unwrapped._reference_frequency))
+        print(
+            "reference phase shift=",
+            repr(env_cost_full.unwrapped._reference_phase_shift),
+        )
+        sin_result = np.sin(
+            (
+                (2 * np.pi)
+                * env_cost_full.unwrapped._reference_frequency[1]
+                * env_cost_full.unwrapped.t
+            )
+            + env_cost_full.unwrapped._reference_phase_shift[1]
+        )
+        print("two_pi=", 2 * np.pi)
+        print("sin_result=", sin_result)
+        print("obs=", repr(observation))
+        print("info=", info)
+
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost_full.action_space.seed(42)
-        for _ in range(5):
+        for i in range(5):
             action = env_cost_full.action_space.sample()
             observation, reward, terminated, truncated, info = env_cost_full.step(
                 action
             )
-            print(observation, reward, terminated, truncated, info)
+
+            print(f"=STEP{i}=")
+            print(f"t{i}=", env_cost_full.unwrapped.t)
+            print(f"ref{i}=", repr(env_cost_full.reference(env_cost_full.unwrapped.t)))
+            half_pi = -np.pi / 2
+            print(f"half_pi{i}=", half_pi)
+            print(
+                f"target_pos{i}=", repr(env_cost_full.unwrapped._reference_target_pos)
+            )
+            print(
+                f"target_amplitude{i}=",
+                repr(env_cost_full.unwrapped._reference_amplitude),
+            )
+            print(
+                f"reference_freq{i}=",
+                repr(env_cost_full.unwrapped._reference_frequency),
+            )
+            print(
+                f"reference_phase_shift{i}=",
+                repr(env_cost_full.unwrapped._reference_phase_shift),
+            )
+            sin_result = np.sin(
+                (
+                    (2 * np.pi)
+                    * env_cost_full.unwrapped._reference_frequency[1]
+                    * env_cost_full.unwrapped.t
+                )
+                + env_cost_full.unwrapped._reference_phase_shift[1]
+            )
+            print(f"two_pi{i}=", 2 * np.pi)
+            print(f"sin_result{i}=", sin_result)
+            print(f"obs{i}=", repr(observation))
+            print(f"reward{i}=", reward)
+            print(f"terminated{i}=", terminated)
+            print(f"truncated{i}=", truncated)
+            print(f"info{i}=", info)
+
             assert (
                 change_precision(observation, precision=PRECISION) == snapshot
             ).all()

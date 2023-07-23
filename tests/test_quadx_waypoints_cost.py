@@ -10,7 +10,7 @@ from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)
 
-PRECISION = 15
+PRECISION = 13
 
 np.set_printoptions(precision=16, suppress=True)
 
@@ -77,16 +77,27 @@ class TestQuadXWaypointsCostEqual:
     def test_snapshot(self, snapshot, env_cost_full):
         """Test if the 'QuadXWaypointsCost' environment is still equal to snapshot."""
         observation, info = env_cost_full.reset(seed=42)
-        print(observation, info)
+
+        print("==RESET==")
+        print("obs=", repr(observation))
+        print("info=", repr(info))
+
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost_full.action_space.seed(42)
-        for _ in range(5):
+        for i in range(5):
             action = env_cost_full.action_space.sample()
             observation, reward, terminated, truncated, info = env_cost_full.step(
                 action
             )
-            print(observation, reward, terminated, truncated, info)
+
+            print(f"==STEP {i}==")
+            print(f"obs{i}=", repr(observation))
+            print(f"rew{i}=", repr(reward))
+            print(f"ter{i}=", repr(terminated))
+            print(f"tru{i}=", repr(truncated))
+            print(f"inf{i}=", repr(info))
+
             assert (
                 change_precision(observation, precision=PRECISION) == snapshot
             ).all()

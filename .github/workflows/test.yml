@@ -82,14 +82,15 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
           cache-dependency-path: pyproject.toml
-      # NOTE: We need to install numpy first on some python versions for pybullet to install correctly.
-      - name: Ensure pybullet is installed with numpy
-        run: |
-          pip install numpy==1.23.5 --no-cache-dir
-          pip install pybullet --no-cache-dir
       - name: Install the stable_gym package with its dependencies
         run: |
           pip install .[dev]
+      # NOTE: See https://github.com/bulletphysics/bullet3/issues/1411#issuecomment-340301636)
+      - name: Reinstall pybullet so that it uses numpy
+        run: |
+          pip uninstall pybullet -y
+          pip install numpy
+          pip install pybullet --no-cache-dir
       - name: Test with Pytest
         run: |
           set -o pipefail
