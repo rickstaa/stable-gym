@@ -20,7 +20,13 @@ The rest of the environment is the same as the original Minitaur environment. Pl
 
 ## Observation space
 
-The observation space contains all eight motors' angles, velocities and torques.
+The original observation space of the [MinitaurBulletEnv-v0](https://github.com/bulletphysics/bullet3/blob/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py) environment contains all eight motors' angles, velocities and torques. In this modified version, the observation space has been extended to add three additional observations:
+
+*   $r$: The velocity reference signal that needs to be tracked.
+*   $r_{error}$: The difference between the current and reference velocities.
+*   $v_{x}$: The Minitaur's forward velocity.
+
+These observations **optional** and can be excluded from the observation space by setting the `exclude_reference_from_observation`, `exclude_reference_error_from_observation` and `exclude_x_velocity_from_observation` environment arguments to `True`.
 
 ## Action space
 
