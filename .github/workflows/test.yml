@@ -84,6 +84,7 @@ jobs:
           cache-dependency-path: pyproject.toml
       - name: Install the stable_gym package with its dependencies
         run: |
+          pip install numpy
           pip install .[dev]
       - name: Test with Pytest
         run: |

@@ -33,7 +33,7 @@ dependencies = [
     "gymnasium-robotics>=1.2.2",
     "matplotlib>=3.7.1",
     "iteration_utilities>=0.11.0",
-    "numpy>=1.23.5", # NOTE: Install explicitly to ensure pybullet works.
+    "numpy>=1.23.5",
     "pybullet>=3.2.5",
     "PyFlyt>=0.8.2"
 ]
