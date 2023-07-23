@@ -41,6 +41,11 @@ class HumanoidCost(HumanoidEnv, utils.EzPickle):
         to the :gymnasium:`gymnasium library <environments/mujoco/humanoid>`.
 
     Modified cost:
+        A cost, computed using the :meth:`HumanoidCost.cost` method, is given for each
+        simulation step, including the terminal step. This cost is defined as the error
+        between the Humanoid's forward velocity and a reference value. A control
+        cost and health penalty can also be included in the cost. The cost is computed as:
+
         .. math::
 
             cost = w_{forward\_velocity} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl} + p_{health}
@@ -112,9 +117,7 @@ class HumanoidCost(HumanoidEnv, utils.EzPickle):
                 the position can serve as an inductive bias to induce position-agnostic
                 behaviour in policies. Defaults to ``True``.
             exclude_reference_from_observation (bool, optional): Whether the reference
-                should be excluded from the observation. Defaults to ``False``. Can only
-                be set to ``True`` if ``randomise_reference_forward_velocity`` is set to
-                ``False``.
+                should be excluded from the observation. Defaults to ``False``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``.
             exclude_x_velocity_from_observation (bool, optional): Whether to omit the
@@ -347,7 +350,7 @@ if __name__ == "__main__":
     path.append(s)
     print(f"\nPerforming '{EPISODES}' in the 'HumanoidCost' environment...\n")
     print(f"Episode: {episode}")
-    while episode <= EPISODES:
+    while episode + 1 <= EPISODES:
         action = (
             env.action_space.sample()
             if RANDOM_STEP
@@ -369,13 +372,13 @@ if __name__ == "__main__":
     for i in range(len(paths)):
         path = paths[i]
         fig, ax = plt.subplots()
-        print(f"\nEpisode: {i}")
+        print(f"\nEpisode: {i+1}")
         path = np.array(path)
         t = np.linspace(0, path.shape[0] * env.dt, path.shape[0])
         for j in range(path.shape[1]):  # NOTE: Change if you want to plot less states.
-            ax.plot(t, path[:, j], label=f"State {j}")
+            ax.plot(t, path[:, j], label=f"State {j+1}")
         ax.set_xlabel("Time (s)")
-        ax.set_title(f"HumanoidCost episode '{i}'")
+        ax.set_title(f"HumanoidCost episode '{i+1}'")
         ax.legend()
         print("Close plot to see next episode...")
         plt.show()
