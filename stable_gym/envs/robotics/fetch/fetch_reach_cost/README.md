@@ -21,9 +21,9 @@ $$
 
 Where:
 
-*   $r{original}$ is the original reward coming from the FetchReach environment.
-*   $p$ is the achieved goal position (i.e. the end-effector positio in Cartesian space).
-*   $p_{goal}$ is the desired goal position in Cartesian space.
+*   $r{original}$ - is the original reward coming from the FetchReach environment.
+*   $p$ - is the achieved goal position (i.e. the end-effector position in Cartesian space).
+*   $p_{goal}$ - is the desired goal position in Cartesian space.
 
 ## How to use
 
