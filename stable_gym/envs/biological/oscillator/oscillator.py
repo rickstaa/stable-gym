@@ -548,13 +548,13 @@ if __name__ == "__main__":
     for i in range(len(paths)):
         path = paths[i]
         fig, ax = plt.subplots()
-        print(f"\nEpisode: {i}")
+        print(f"\nEpisode: {i+1}")
         path = np.array(path)
         t = np.linspace(0, path.shape[0] * env.dt, path.shape[0])
         for j in range(path.shape[1]):  # NOTE: Change if you want to plot less states.
-            ax.plot(t, path[:, j], label=f"State {j}")
+            ax.plot(t, path[:, j], label=f"State {j+1}")
         ax.set_xlabel("Time (s)")
-        ax.set_title(f"Oscillator episode '{i}'")
+        ax.set_title(f"Oscillator episode '{i+1}'")
 
         # Plot reference signal.
         ax.plot(
