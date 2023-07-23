@@ -66,6 +66,8 @@ class TestQuadXTrackingCostEqual:
         """Test if the 'QuadXTrackingCost' environment is still equal to snapshot."""
         observation, info = env_cost_full.reset(seed=42)
         print(observation, info)
+        print("t:", env_cost_full.t)
+        print("ref:", env_cost_full.reference(env_cost_full.t))
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost_full.action_space.seed(42)
