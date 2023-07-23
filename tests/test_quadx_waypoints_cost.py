@@ -12,6 +12,8 @@ gym.logger.set_level(ERROR)
 
 PRECISION = 15
 
+np.set_printoptions(precision=16, suppress=True)
+
 
 class TestQuadXWaypointsCostEqual:
     @pytest.fixture
@@ -48,6 +50,7 @@ class TestQuadXWaypointsCostEqual:
             [observation["attitude"], observation["target_deltas"].flatten()]
         )  # Flatten and concatenate observation dictionary.
         observation_cost, _ = env_cost.reset(seed=42)
+        print(observation, observation_cost)
         assert np.allclose(
             observation, observation_cost
         ), f"{observation} != {observation_cost}"
@@ -64,6 +67,7 @@ class TestQuadXWaypointsCostEqual:
                 [observation["attitude"], observation["target_deltas"].flatten()]
             )  # Flatten and concatenate observation dictionary.
             observation_cost, _, _, _, _ = env_cost.step(action)
+            print(observation, observation_cost)
             assert np.allclose(
                 observation, observation_cost
             ), f"{observation} != {observation_cost}"
@@ -73,6 +77,7 @@ class TestQuadXWaypointsCostEqual:
     def test_snapshot(self, snapshot, env_cost_full):
         """Test if the 'QuadXWaypointsCost' environment is still equal to snapshot."""
         observation, info = env_cost_full.reset(seed=42)
+        print(observation, info)
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost_full.action_space.seed(42)
@@ -81,6 +86,7 @@ class TestQuadXWaypointsCostEqual:
             observation, reward, terminated, truncated, info = env_cost_full.step(
                 action
             )
+            print(observation, reward, terminated, truncated, info)
             assert (
                 change_precision(observation, precision=PRECISION) == snapshot
             ).all()
