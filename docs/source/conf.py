@@ -49,6 +49,7 @@ intersphinx_mapping = {
     "gymnasium": ("https://www.gymlibrary.dev/", None),
     "python3": ("https://docs.python.org/3", None),
     "numpy": ("https://numpy.org/doc/stable", None),
+    "PyFlyt": (" https://jjshoots.github.io/PyFlyt", None),
 }
 
 # Add any paths that contain templates here, relative to this directory.
@@ -94,11 +95,13 @@ extlinks = {
     "stable_gym": ("https://github.com/rickstaa/stable-gym/%s", None),
     "gymnasium": ("https://gymnasium.farama.org/%s", None),
     "gymnasium-robotics": ("https://robotics.farama.org/%s", None),
+    "PyFlyt": ("https://jjshoots.github.io/PyFlyt/documentation%s", None),
     "stable_learning_control": (
         "https://github.com/rickstaa/stable-learning-control/%s",
         None,
     ),
     "ros_gazebo_gym": ("https://github.com/rickstaa/ros-gazebo-gym/%s", None),
+    "pybullet": ("https://pybullet.org/%s", None),
 }
 
 
