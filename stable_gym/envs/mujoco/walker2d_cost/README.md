@@ -14,6 +14,16 @@ An actuated 8-jointed 2D walker. This environment corresponds to the [Walker2d-v
 
 The rest of the environment is the same as the original Walker2d environment. Below, the modified cost is described. For more information about the environment (e.g. observation space, action space, episode termination, etc.), please refer to the [gymnasium library](https://gymnasium.farama.org/environments/mujoco/walker2d/).
 
+## Observation space
+
+The original observation space of the [Walker2d-v4](https://gymnasium.farama.org/environments/mujoco/walker2d) environment contains all eight motors' angles, velocities and torques. In this modified version, the observation space has been extended to add three additional observations:
+
+*   $r$: The velocity reference signal that needs to be tracked.
+*   $r_{error}$: The difference between the current and reference velocities.
+*   $v_{x}$: The Walker's forward velocity.
+
+These observations **optional** and can be excluded from the observation space by setting the `exclude_reference_from_observation`, `exclude_reference_error_from_observation` and `exclude_x_velocity_from_observation` environment arguments to `True`.
+
 ## Cost function
 
 The cost function of this environment is designed in such a way that it tries to minimize the error between the Walker2d's forward velocity and a reference value. The cost function is defined as:
