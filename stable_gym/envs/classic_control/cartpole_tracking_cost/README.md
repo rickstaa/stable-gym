@@ -56,7 +56,7 @@ $$
 cost = (x - x_{ref})^2 + (\theta / \theta_{threshold})^2
 $$
 
-The exact definition of these tasks can be found in the environment's `stable_gym.envs.classical_control.cartpole_tracking_cost.cartpole_tracking_cost.CartPoleTrackingCost.cost` method. The cost is between `0` and a set threshold value in both tasks, and the maximum cost is used when the episode is terminated.
+The cost is between `0` and a set threshold value in both tasks, and the maximum cost is used when the episode is terminated.
 
 ## Environment step return
 
@@ -71,9 +71,6 @@ The info dictionary contains the following keys:
 *   **reference**: The set cart position reference.
 *   **state\_of\_interest**: The state that should track the reference (SOI).
 *   **reference\_error**: The error between SOI and the reference.
-*   **reference\_constraint\_position**: A user-specified constraint they want to watch.
-*   **reference\_constraint\_error**: The error between the SOI and the set reference constraint.
-*   **reference\_constraint\_violated**: Whether the reference constraint was violated.
 
 ## How to use
 
