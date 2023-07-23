@@ -87,7 +87,12 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
     Cost:
         A cost, computed using the :meth:`CartPoleCost.cost` method, is given for each
         simulation step, including the terminal step. This cost is the error
-        between the cart position and angle and the zero position and angle.
+        between the cart position and angle and the zero position and angle. The cost
+        is set to the maximum cost when the episode is terminated.The cost is defined as:
+
+        .. math::
+
+            cost = (x / x_{threshold})^2 + 20 * (\theta / \theta_{threshold})^2
 
     Starting State:
         All observations are assigned a uniform random value in ``[-0.2..0.2]``.
@@ -636,7 +641,7 @@ if __name__ == "__main__":
     path.append(s)
     print(f"\nPerforming '{EPISODES}' in the 'CartPoleCost' environment...\n")
     print(f"Episode: {episode}")
-    while episode <= EPISODES:
+    while episode + 1 <= EPISODES:
         action = (
             env.action_space.sample()
             if RANDOM_STEP
@@ -658,13 +663,13 @@ if __name__ == "__main__":
     for i in range(len(paths)):
         path = paths[i]
         fig, ax = plt.subplots()
-        print(f"\nEpisode: {i}")
+        print(f"\nEpisode: {i+1}")
         path = np.array(path)
         t = np.linspace(0, path.shape[0] * env.dt, path.shape[0])
         for j in range(path.shape[1]):  # NOTE: Change if you want to plot less states.
-            ax.plot(t, path[:, j], label=f"State {j}")
+            ax.plot(t, path[:, j], label=f"State {j+1}")
         ax.set_xlabel("Time (s)")
-        ax.set_title(f"CartPoleCost episode '{i}'")
+        ax.set_title(f"CartPoleCost episode '{i+1}'")
         ax.legend()
         print("Close plot to see next episode...")
         plt.show()
