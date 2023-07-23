@@ -81,7 +81,7 @@
   })
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.17
-  1.357925981658545
+  1.357925981658544
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.18
   0.745317639669828
@@ -102,7 +102,7 @@
   0.642286322210547
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.23
-  1.357925981658545
+  1.357925981658544
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.24
   0.745317639669828
@@ -117,7 +117,7 @@
   0.0
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.28
-  0.013848829223197
+  0.013848829223198
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.29
   -0.003211350722573
@@ -149,10 +149,10 @@
   })
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.37
-  1.334797814577838
+  1.334797814577837
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.38
-  0.773849916163387
+  0.773849916163388
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.39
   0.574411103108031
@@ -170,10 +170,10 @@
   0.642286322210547
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.43
-  1.334797814577838
+  1.334797814577837
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.44
-  0.773849916163387
+  0.773849916163388
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.45
   0.574411103108031
@@ -321,7 +321,7 @@
   0.0
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.88
-  0.00934155716146
+  0.009341557161459
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.89
   0.017523006535174
