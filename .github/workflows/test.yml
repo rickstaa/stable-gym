@@ -82,16 +82,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
           cache-dependency-path: pyproject.toml
+      # NOTE: The following is needed because PyFlyt requires pybullet to be build with numpy. See https://jjshoots.github.io/PyFlyt/documentation.html#installation.
+      - name: Install numpy before pybullet to ensure pybullet is built with numpy.
+        run: |
+          pip install numpy
       - name: Install the stable_gym package with its dependencies
         run: |
           pip install .[dev]
-      # NOTE: See https://github.com/bulletphysics/bullet3/issues/1411#issuecomment-340301636.
-      - name: Post re-install pybullet on python 3.10 to avoid issues numpy.
-        if: ${{ matrix.python-version == '3.10' }}
-        run: |
-          pip uninstall pybullet numpy -y 
-          pip install numpy
-          pip install pybullet --no-cache-dir
       - name: Test with Pytest
         run: |
           set -o pipefail

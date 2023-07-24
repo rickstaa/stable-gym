@@ -65,6 +65,16 @@ Robotics environment
     ./robotics/quadx_tracking_cost.rst
     ./robotics/quadx_waypoints_cost.rst
 
+.. attention::
+
+    To utilize the Quadrotor environments, it is essential to have the :pybullet:`PyBullet <>`
+    package installed with `numpy`_ support. To avoid potential issues, ensure that `numpy`_
+    is installed before adding the :stable_gym:`Stable Gym package <>`. Please refer to the
+    :PyFlyt:`PyFlyt <.html#installation>` documentation for more information.
+
+.. _`numpy`: https://numpy.org/
+
 .. note::
 
-    The ROS robotics environments of the Stable Gym package were moved into a separate package called :ros_gazebo_gym:`Ros Gazebo Gym <>`.
+    The ROS robotics environments of the Stable Gym package were moved into a separate package 
+    called :ros_gazebo_gym:`Ros Gazebo Gym <>`.

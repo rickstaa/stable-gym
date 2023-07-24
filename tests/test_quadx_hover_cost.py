@@ -3,6 +3,7 @@ environment when the same environment parameters are used.
 """
 import gymnasium as gym
 import numpy as np
+import pybullet
 from gymnasium.logger import ERROR
 
 import pytest
@@ -15,6 +16,14 @@ PRECISION = 13
 np.set_printoptions(precision=16, suppress=True)
 
 
+# TODO: Can be removed if https://github.com/jjshoots/PyFlyt/issues/1 is resolved.
+@pytest.mark.skipif(
+    not pybullet.isNumpyEnabled(),
+    reason=(
+        "pybullet was not built with numpy support. Please rebuild pybullet "
+        "with numpy enabled."
+    ),
+)
 class TestQuadXHoverCostEqual:
     @pytest.fixture
     def env_original(self):
