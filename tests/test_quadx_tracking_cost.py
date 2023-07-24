@@ -13,8 +13,6 @@ gym.logger.set_level(ERROR)
 
 PRECISION = 13
 
-np.set_printoptions(precision=16, suppress=True)
-
 
 # TODO: Can be removed if https://github.com/jjshoots/PyFlyt/issues/1 is resolved.
 @pytest.mark.skipif(
@@ -50,7 +48,6 @@ class TestQuadXTrackingCostEqual:
         # Perform reset and check if observations are equal.
         observation, _ = env_original.reset(seed=42)
         observation_cost, _ = env_cost.reset(seed=42)
-        print(observation, observation_cost)
         assert np.allclose(
             observation, observation_cost[:-3]
         ), f"{observation} != {observation_cost}"
@@ -64,7 +61,6 @@ class TestQuadXTrackingCostEqual:
             action = env_original.action_space.sample()
             observation, _, _, _, _ = env_original.step(action)
             observation_cost, _, _, _, _ = env_cost.step(action)
-            print(observation, observation_cost)
             assert np.allclose(
                 observation, observation_cost[:-3]
             ), f"{observation} != {observation_cost}"
@@ -74,19 +70,6 @@ class TestQuadXTrackingCostEqual:
     def test_snapshot(self, snapshot, env_cost_full):
         """Test if the 'QuadXTrackingCost' environment is still equal to snapshot."""
         observation, info = env_cost_full.reset(seed=42)
-
-        print("=RESET=")
-        print("t=", env_cost_full.unwrapped.t)
-        print("ref=", repr(env_cost_full.reference(env_cost_full.unwrapped.t)))
-        half_pi = -np.pi / 2
-        print("half_pi=", half_pi)
-        print("target_pos=", repr(env_cost_full.unwrapped._reference_target_pos))
-        print("target_amplitude=", repr(env_cost_full.unwrapped._reference_amplitude))
-        print("reference freq=", repr(env_cost_full.unwrapped._reference_frequency))
-        print(
-            "reference phase shift=",
-            repr(env_cost_full.unwrapped._reference_phase_shift),
-        )
         sin_result = np.sin(
             (
                 (2 * np.pi)
@@ -95,11 +78,6 @@ class TestQuadXTrackingCostEqual:
             )
             + env_cost_full.unwrapped._reference_phase_shift[1]
         )
-        print("two_pi=", 2 * np.pi)
-        print("sin_result=", sin_result)
-        print("obs=", repr(observation))
-        print("info=", info)
-
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost_full.action_space.seed(42)
@@ -107,27 +85,6 @@ class TestQuadXTrackingCostEqual:
             action = env_cost_full.action_space.sample()
             observation, reward, terminated, truncated, info = env_cost_full.step(
                 action
-            )
-
-            print(f"=STEP{i}=")
-            print(f"t{i}=", env_cost_full.unwrapped.t)
-            print(f"ref{i}=", repr(env_cost_full.reference(env_cost_full.unwrapped.t)))
-            half_pi = -np.pi / 2
-            print(f"half_pi{i}=", half_pi)
-            print(
-                f"target_pos{i}=", repr(env_cost_full.unwrapped._reference_target_pos)
-            )
-            print(
-                f"target_amplitude{i}=",
-                repr(env_cost_full.unwrapped._reference_amplitude),
-            )
-            print(
-                f"reference_freq{i}=",
-                repr(env_cost_full.unwrapped._reference_frequency),
-            )
-            print(
-                f"reference_phase_shift{i}=",
-                repr(env_cost_full.unwrapped._reference_phase_shift),
             )
             sin_result = np.sin(
                 (
