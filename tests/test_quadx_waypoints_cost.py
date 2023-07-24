@@ -13,8 +13,6 @@ gym.logger.set_level(ERROR)
 
 PRECISION = 13
 
-np.set_printoptions(precision=16, suppress=True)
-
 
 # TODO: Can be removed if https://github.com/jjshoots/PyFlyt/issues/1 is resolved.
 @pytest.mark.skipif(
@@ -76,7 +74,6 @@ class TestQuadXWaypointsCostEqual:
                 [observation["attitude"], observation["target_deltas"].flatten()]
             )  # Flatten and concatenate observation dictionary.
             observation_cost, _, _, _, _ = env_cost.step(action)
-            print(observation, observation_cost)
             assert np.allclose(
                 observation, observation_cost
             ), f"{observation} != {observation_cost}"
@@ -86,11 +83,6 @@ class TestQuadXWaypointsCostEqual:
     def test_snapshot(self, snapshot, env_cost_full):
         """Test if the 'QuadXWaypointsCost' environment is still equal to snapshot."""
         observation, info = env_cost_full.reset(seed=42)
-
-        print("==RESET==")
-        print("obs=", repr(observation))
-        print("info=", repr(info))
-
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost_full.action_space.seed(42)
@@ -99,14 +91,6 @@ class TestQuadXWaypointsCostEqual:
             observation, reward, terminated, truncated, info = env_cost_full.step(
                 action
             )
-
-            print(f"==STEP {i}==")
-            print(f"obs{i}=", repr(observation))
-            print(f"rew{i}=", repr(reward))
-            print(f"ter{i}=", repr(terminated))
-            print(f"tru{i}=", repr(truncated))
-            print(f"inf{i}=", repr(info))
-
             assert (
                 change_precision(observation, precision=PRECISION) == snapshot
             ).all()

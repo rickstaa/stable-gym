@@ -13,8 +13,6 @@ gym.logger.set_level(ERROR)
 
 PRECISION = 13
 
-np.set_printoptions(precision=16, suppress=True)
-
 
 # TODO: Can be removed if https://github.com/jjshoots/PyFlyt/issues/1 is resolved.
 @pytest.mark.skipif(
@@ -56,7 +54,6 @@ class TestQuadXHoverCostEqual:
             action = env_original.action_space.sample()
             observation, _, _, _, _ = env_original.step(action)
             observation_cost, _, _, _, _ = env_cost.step(action)
-            print(observation, observation_cost)
             assert np.allclose(
                 observation, observation_cost
             ), f"{observation} != {observation_cost}"
@@ -66,25 +63,12 @@ class TestQuadXHoverCostEqual:
     def test_snapshot(self, snapshot, env_cost):
         """Test if the 'QuadXHoverCost' environment is still equal to snapshot."""
         observation, info = env_cost.reset(seed=42)
-
-        print("==RESET==")
-        print("obs=", repr(observation))
-        print("info=", repr(info))
-
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost.action_space.seed(42)
         for i in range(5):
             action = env_cost.action_space.sample()
             observation, reward, terminated, truncated, info = env_cost.step(action)
-
-            print(f"==STEP {i}==")
-            print(f"obs{i}=", repr(observation))
-            print(f"rew{i}=", repr(reward))
-            print(f"ter{i}=", repr(terminated))
-            print(f"tru{i}=", repr(truncated))
-            print(f"inf{i}=", repr(info))
-
             assert (
                 change_precision(observation, precision=PRECISION) == snapshot
             ).all()
