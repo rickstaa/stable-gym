@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.16.0](https://github.com/rickstaa/stable-gym/compare/v0.15.1...v0.16.0) (2023-07-24)
+
+
+### Features
+
+* add new quadcopter cost environments ([#246](https://github.com/rickstaa/stable-gym/issues/246)) ([382c9fd](https://github.com/rickstaa/stable-gym/commit/382c9fd9edf831e7ef68f8259475175dad20d846))
+
 ## [0.15.1](https://github.com/rickstaa/stable-gym/compare/v0.15.0...v0.15.1) (2023-07-21)
 
 
