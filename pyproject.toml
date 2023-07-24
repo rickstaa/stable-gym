@@ -27,13 +27,13 @@ classifiers = [
     "Topic :: Scientific/Engineering"
 ]
 dependencies = [
+    "numpy>=1.23.5",
     "gymnasium>=0.29.0",
     "gymnasium[classic_control]>=0.29.0",
     "gymnasium[mujoco]>=0.29.0",
     "gymnasium-robotics>=1.2.2",
     "matplotlib>=3.7.1",
     "iteration_utilities>=0.11.0",
-    "numpy>=1.23.5",
     "pybullet>=3.2.5",
     "PyFlyt>=0.8.2"
 ]
