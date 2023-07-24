@@ -1,7 +1,6 @@
 # NOTE: Ensure you have pip>=21.3.1 when you want to install this package in editable mode.
-# NOTE: Numpy is set as a build dependency to ensure it is installed before pybullet (see https://github.com/bulletphysics/bullet3/issues/1411#issuecomment-340301636)
 [build-system]
-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "numpy>=1.23.5"]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 # Project configuration.
@@ -34,6 +33,7 @@ dependencies = [
     "gymnasium-robotics>=1.2.2",
     "matplotlib>=3.7.1",
     "iteration_utilities>=0.11.0",
+    "numpy>=1.23.5",
     "pybullet>=3.2.5",
     "PyFlyt>=0.8.2"
 ]

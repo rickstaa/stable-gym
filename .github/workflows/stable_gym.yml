@@ -64,10 +64,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
           cache-dependency-path: pyproject.toml
-      # NOTE: See https://github.com/bulletphysics/bullet3/issues/1411#issuecomment-340301636.
-      - name: Pre-install numpy
+      - name: Install numpy and wheel before pybullet to avoid issues.
         run: |
-          pip install numpy
+          pip install numpy wheel
       - name: Install the stable_gym package with its dependencies
         run: |
           pip install .[dev]
