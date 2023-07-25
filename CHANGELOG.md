@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.16.2](https://github.com/rickstaa/stable-gym/compare/v0.16.1...v0.16.2) (2023-07-25)
+
+
+### Documentation
+
+* fix broken numpy links ([#259](https://github.com/rickstaa/stable-gym/issues/259)) ([20a5f45](https://github.com/rickstaa/stable-gym/commit/20a5f45d4d04f9087e8ad2d30733bbcbb06294dd))
+
 ## [0.16.1](https://github.com/rickstaa/stable-gym/compare/v0.16.0...v0.16.1) (2023-07-25)
 
 
