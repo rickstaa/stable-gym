@@ -1,11 +1,13 @@
 """The QuadXTrackingCost gymnasium environment."""
+from pathlib import PurePath
+
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gymnasium import utils
 import PyFlyt
-from pathlib import PurePath
+from gymnasium import utils
 from PyFlyt.gym_envs.quadx_envs.quadx_hover_env import QuadXHoverEnv
+
 from stable_gym import ENVS  # noqa: F401
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
@@ -32,6 +34,8 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
             parameter of the :class:`gym.wrappers.TimeLimit` wrapper is used to limit
             the episode duration.
         -   The objective has been changed to track a periodic reference trajectory.
+        -   The info dictionary has been extended with the reference, state of interest
+            (i.e. the state to track) and reference error.
 
         The rest of the environment is the same as the original QuadXHover environment.
         Please refer to the `original codebase <https://github.com/jjshoots/PyFlyt>`__,
@@ -367,6 +371,14 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
 
         self.state = obs
 
+        # Add reference, state_of_interest and reference_error to info.
+        info_dict = dict(
+            reference=ref,
+            state_of_interest=self.env.state(0)[-1],
+            reference_error=self.env.state(0)[-1] - ref,
+        )
+        info.update(info_dict)
+
         return obs, cost, terminated, truncated, info
 
     def reset(self, seed=None, options=None):
@@ -410,6 +422,14 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
             self.visualize_reference()
 
         self.state = obs
+
+        # Add reference, state_of_interest and reference_error to info.
+        info_dict = dict(
+            reference=ref,
+            state_of_interest=self.env.state(0)[-1],
+            reference_error=self.env.state(0)[-1] - ref,
+        )
+        info.update(info_dict)
 
         return obs, info
 

@@ -11,6 +11,7 @@ An actuated multirotor unmanned aerial vehicle (UAV) in the Quad-X configuration
 *   A health penalty has been added. This penalty is applied when the quadrotor moves outside the flight dome or crashes. The penalty equals the maximum episode steps minus the steps taken or a user-defined penalty.
 *   The `max_duration_seconds` has been removed. Instead, the `max_episode_steps` parameter of the [gym.wrappers.TimeLimit](https://gymnasium.farama.org/api/wrappers/misc_wrappers/#gymnasium.wrappers.TimeLimit) wrapper is used to limit the episode duration.
 *   The objective has been changed to track a periodic reference trajectory.
+*   The info dictionary has been extended with the reference, state of interest (i.e. the state to track) and reference error.
 
 The rest of the environment is the same as the original QuadXHover environment. Below, the modified cost and observation space is described. For more information about the environment (e.g. observation space, action space, episode termination, etc.), please refer to the [PyFlyt package documentation](https://jjshoots.github.io/PyFlyt/index.html).
 
@@ -38,6 +39,20 @@ Where:
 *   $p_{health}$ is a penalty for being unhealthy (i.e. if the Quadrotor moves outside the flight dome or crashes).
 
 The health penalty is optional and can be disabled using the `include_health_penalty` environment arguments.
+
+## Environment step return
+
+In addition to the observations, the cost and a termination and truncation boolean, the environment also returns an info dictionary:
+
+```python
+[observation, cost, termination, truncation, info_dict]
+```
+
+Compared to the original [QuadXHover-v1](https://jjshoots.github.io/PyFlyt/documentation/gym_envs/quadx_envs/quadx_hover_env.html) environment, the following keys were added to this info dictionary:
+
+*   **reference**: The set cart position reference.
+*   **state\_of\_interest**: The state that should track the reference (SOI).
+*   **reference\_error**: The error between SOI and the reference.
 
 ## How to use
 

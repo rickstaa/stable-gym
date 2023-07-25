@@ -10,6 +10,8 @@ This environment was first described by `Tai et al. 2023`_. In this modified ver
     parameter of the :class:`gym.wrappers.TimeLimit` wrapper is used to limit
     the episode duration.
 -   The objective has been changed to track a periodic reference trajectory.
+-   The info dictionary has been extended with the reference, state of interest
+    (i.e. the state to track) and reference error.
 
 The rest of the environment is the same as the original QuadXHover environment. For more
 information about the original environment, please refer the
