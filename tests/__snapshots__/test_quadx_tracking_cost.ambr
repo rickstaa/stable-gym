@@ -79,6 +79,9 @@
     'collision': False,
     'env_complete': False,
     'out_of_bounds': False,
+    'reference': array([ 0.1175374 , -0.99306846,  1.01177661]),
+    'reference_error': array([-0.11730597,  0.99254164, -0.06975631]),
+    'state_of_interest': array([ 2.31426066e-04, -5.26820864e-04,  9.42020303e-01]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.121
@@ -185,6 +188,9 @@
     'collision': False,
     'env_complete': False,
     'out_of_bounds': False,
+    'reference': array([ 0.15643447, -0.98768834,  1.01569763]),
+    'reference_error': array([-0.15504015,  0.98936314, -0.05594122]),
+    'state_of_interest': array([0.00139432, 0.0016748 , 0.95975641]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.152
@@ -291,6 +297,9 @@
     'collision': False,
     'env_complete': False,
     'out_of_bounds': False,
+    'reference': array([ 0.19509032, -0.98078528,  1.01961477]),
+    'reference_error': array([-0.19229362,  0.98562446, -0.03984327]),
+    'state_of_interest': array([0.0027967 , 0.00483918, 0.9797715 ]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.19
@@ -325,6 +334,9 @@
     'collision': False,
     'env_complete': False,
     'out_of_bounds': False,
+    'reference': array([ 0., -1.,  1.]),
+    'reference_error': array([-2.72890000e-09,  1.00000001e+00, -3.18775526e-02]),
+    'state_of_interest': array([-2.72890000e-09,  1.02375000e-08,  9.68122447e-01]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.28
@@ -431,6 +443,9 @@
     'collision': False,
     'env_complete': False,
     'out_of_bounds': False,
+    'reference': array([ 0.03925982, -0.99922904,  1.00392683]),
+    'reference_error': array([-0.03926442,  0.99922081, -0.05509524]),
+    'state_of_interest': array([-4.60863660e-06, -8.22990120e-06,  9.48831587e-01]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.59
@@ -537,6 +552,9 @@
     'collision': False,
     'env_complete': False,
     'out_of_bounds': False,
+    'reference': array([ 0.0784591 , -0.99691733,  1.00785269]),
+    'reference_error': array([-0.07861498,  0.99650484, -0.06989215]),
+    'state_of_interest': array([-1.55883875e-04, -4.12495247e-04,  9.37960537e-01]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.9
