@@ -11,3 +11,5 @@
     package installed with `numpy`_ support. To avoid potential issues, ensure that `numpy`_
     is installed before adding the :stable_gym:`Stable Gym package <>`. Please refer to the
     :PyFlyt:`PyFlyt <.html#installation>` documentation for more information.
+
+.. _`numpy`: https://numpy.org/
