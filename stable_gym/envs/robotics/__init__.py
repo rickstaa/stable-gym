@@ -16,23 +16,18 @@
 
 .. _`Pybullet`: https://pybullet.org/
 """
-import pybullet
-
 from stable_gym.envs.robotics.fetch.fetch_reach_cost.fetch_reach_cost import (
     FetchReachCost,
 )
 from stable_gym.envs.robotics.minitaur.minitaur_bullet_cost.minitaur_bullet_cost import (
     MinitaurBulletCost,
 )
-
-# TODO: Can be removed if https://github.com/jjshoots/PyFlyt/issues/1 is resolved.
-if pybullet.isNumpyEnabled():
-    from stable_gym.envs.robotics.quadrotor.quadx_hover_cost.quadx_hover_cost import (
-        QuadXHoverCost,
-    )
-    from stable_gym.envs.robotics.quadrotor.quadx_tracking_cost.quadx_tracking_cost import (
-        QuadXTrackingCost,
-    )
-    from stable_gym.envs.robotics.quadrotor.quadx_waypoints_cost.quadx_waypoints_cost import (
-        QuadXWaypointsCost,
-    )
+from stable_gym.envs.robotics.quadrotor.quadx_hover_cost.quadx_hover_cost import (
+    QuadXHoverCost,
+)
+from stable_gym.envs.robotics.quadrotor.quadx_tracking_cost.quadx_tracking_cost import (
+    QuadXTrackingCost,
+)
+from stable_gym.envs.robotics.quadrotor.quadx_waypoints_cost.quadx_waypoints_cost import (
+    QuadXWaypointsCost,
+)
