@@ -4,7 +4,7 @@
 Environments
 ============
 
-The :stable_gym:`Stable Gym package <>` provides a variety of environments for training and testing 
+The :stable_gym:`Stable Gym package <>` provides a variety of environments for training and testing
 :stable_learning_control:`(stable) reinforcement learning (RL) algorithms <>`.
 
 Biological environments
@@ -21,7 +21,7 @@ Gym environments that are based on Biological systems.
 Classic control environments
 ----------------------------
 
-Environments that are based on classical control problems or `classical control`_ 
+Environments that are based on classical control problems or `classical control`_
 environments found in the :gymnasium:`gymnasium <>` library.
 
 .. _`classical control`: https://gymnasium.farama.org/environments/classic_control
@@ -65,16 +65,7 @@ Robotics environment
     ./robotics/quadx_tracking_cost.rst
     ./robotics/quadx_waypoints_cost.rst
 
-.. attention::
-
-    To utilize the Quadrotor environments, it is essential to have the :pybullet:`PyBullet <>`
-    package installed with `numpy`_ support. To avoid potential issues, ensure that `numpy`_
-    is installed before adding the :stable_gym:`Stable Gym package <>`. Please refer to the
-    :PyFlyt:`PyFlyt <.html#installation>` documentation for more information.
-
-.. _`numpy`: https://numpy.org/
-
 .. note::
 
-    The ROS robotics environments of the Stable Gym package were moved into a separate package 
+    The ROS robotics environments of the Stable Gym package were moved into a separate package
     called :ros_gazebo_gym:`Ros Gazebo Gym <>`.

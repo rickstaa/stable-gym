@@ -37,7 +37,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
-          cache: 'pip'
+          cache: "pip"
           cache-dependency-path: pyproject.toml
       - name: Install the stable_gym package with its dependencies
         run: |
@@ -54,7 +54,7 @@ jobs:
     strategy:
       fail-fast: false # Run all matrix jobs.
       matrix:
-        python-version: [3.8, 3.9, '3.10'] # Supported python versions.
+        python-version: [3.8, 3.9, "3.10"] # Supported python versions.
     steps:
       - name: Checkout stable-gym repository
         uses: actions/checkout@v3
@@ -62,12 +62,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'pip'
+          cache: "pip"
           cache-dependency-path: pyproject.toml
-      # NOTE: The following is needed because PyFlyt requires pybullet to be build with numpy. See https://jjshoots.github.io/PyFlyt/documentation.html#installation.
-      - name: Install numpy before pybullet to ensure pybullet is built with numpy.
-        run: |
-          pip install numpy
       - name: Install the stable_gym package with its dependencies
         run: |
           pip install .[dev]
@@ -78,5 +74,5 @@ jobs:
           set +o pipefail
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
-        env: 
+        env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

@@ -1,22 +1,22 @@
 name: Docs
-on: 
+on:
   push:
     tags:
       - v*.*.*
     paths:
-      - 'docs/**'
+      - "docs/**"
   workflow_dispatch:
 permissions:
-    contents: write
+  contents: write
 jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
-        with: 
+        with:
           python-version: 3.8
-          cache: 'pip'
+          cache: "pip"
           cache-dependency-path: pyproject.toml
       - name: Install dependencies
         run: |

@@ -33,9 +33,6 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 > \[!NOTE]\
 > When working on different machines, the snapshots could be slightly different. This is because the random seeds are sometimes dependent on the machine architecture. To fix this, please temporarily [stash your changes](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning) or return to the latest upstream commit and run the `npm run test:update:snapshots` command. You can then add your change again and run the tests.
 
-> \[!NOTE]\
-> On some systems, the Quadrotor tests fail because [PyBullet](https://pybullet.org/wordpress/) is installed without [numpy](https://numpy.org/) support. If you run into problems, please remove [PyBullet](https://pybullet.org/wordpress/) package, ensure [numpy](https://numpy.org/) is installed, and reinstall [PyBullet](https://pybullet.org/wordpress/) using the `--no-cache-dir` flag (see the [PyFlyt documentation](https://jjshoots.github.io/PyFlyt/documentation.html#installation) for more information).
-
 ### Report bugs using Github's [issues](https://github.com/rickstaa/stable-gym/issues)
 
 <!--alex ignore easy-->
