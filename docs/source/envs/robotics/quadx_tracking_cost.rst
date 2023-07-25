@@ -4,5 +4,3 @@
 .. warning::
     This environment is new and has not been thoroughly tested. As a result it may contain bugs
     and the cost function might be updated in the future.
-
-.. _`numpy`: https://numpy.org/
