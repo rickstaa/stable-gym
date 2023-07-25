@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.17.0](https://github.com/rickstaa/stable-gym/compare/v0.16.2...v0.17.0) (2023-07-25)
+
+
+### Features
+
+* **quadxtrackingcost:** add extra keys to environment step info dictionary ([#263](https://github.com/rickstaa/stable-gym/issues/263)) ([9743330](https://github.com/rickstaa/stable-gym/commit/974333037454fe9667691ec489ae716602e20fdb))
+
 ## [0.16.2](https://github.com/rickstaa/stable-gym/compare/v0.16.1...v0.16.2) (2023-07-25)
 
 
