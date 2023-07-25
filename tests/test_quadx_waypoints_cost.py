@@ -4,9 +4,8 @@ QuadXWaypoints environment when the same environment parameters are used.
 import gymnasium as gym
 import numpy as np
 import pybullet
-from gymnasium.logger import ERROR
-
 import pytest
+from gymnasium.logger import ERROR
 from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)

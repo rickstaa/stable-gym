@@ -1,8 +1,8 @@
 """Utility functions that are used in multiple Stable Gym gymnasium environments."""
 import re
 
-import numpy as np
 import gymnasium as gym
+import numpy as np
 from gymnasium.utils import colorize as gym_colorize
 
 
@@ -10,13 +10,14 @@ def colorize(string, color, bold=False, highlight=False):
     """Colorize a string.
 
     .. seealso::
-        This function wraps the :meth:`gymnasium.utils.colorize` function to make sure
-        that it also works with empty empty color strings.
+        This function wraps the :meth:`gym.utils.colorize` function to make sure that it
+        also works with empty color strings.
 
     Args:
         string (str): The string you want to colorize.
         color (str): The color you want to use.
-        bold (bool, optional): Whether you want the text to be bold text has to be bold.
+        bold (bool, optional): Whether you want the text to be bold. Defaults to
+            ``False``.
         highlight (bool, optional):  Whether you want to highlight the text. Defaults to
             ``False``.
 
