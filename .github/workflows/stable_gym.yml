@@ -64,6 +64,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
           cache-dependency-path: pyproject.toml
+      # NOTE: The following is needed because PyFlyt requires pybullet to be build with numpy. See https://jjshoots.github.io/PyFlyt/documentation.html#installation.
+      - name: Install numpy before pybullet to ensure pybullet is built with numpy.
+        run: |
+          pip install numpy
       - name: Install the stable_gym package with its dependencies
         run: |
           pip install .[dev]
