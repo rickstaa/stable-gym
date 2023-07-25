@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.16.1](https://github.com/rickstaa/stable-gym/compare/v0.16.0...v0.16.1) (2023-07-25)
+
+
+### Documentation
+
+* update quadx docs ([#257](https://github.com/rickstaa/stable-gym/issues/257)) ([8f4745b](https://github.com/rickstaa/stable-gym/commit/8f4745b856b48321fc2220c636ed2727b3fcb4e4))
+
 ## [0.16.0](https://github.com/rickstaa/stable-gym/compare/v0.15.1...v0.16.0) (2023-07-24)
 
 
