@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.17.1](https://github.com/rickstaa/stable-gym/compare/v0.17.0...v0.17.1) (2023-07-25)
+
+
+### Bug Fixes
+
+* add tempory PyFlyt RuntimeWarning fix ([#265](https://github.com/rickstaa/stable-gym/issues/265)) ([432f857](https://github.com/rickstaa/stable-gym/commit/432f85758e84cbf33bf15edf7287357fc0b7ea30))
+
 ## [0.17.0](https://github.com/rickstaa/stable-gym/compare/v0.16.2...v0.17.0) (2023-07-25)
 
 
