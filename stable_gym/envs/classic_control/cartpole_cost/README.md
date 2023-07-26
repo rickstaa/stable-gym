@@ -59,7 +59,11 @@ In addition to the observations, the cost and a termination and truncation boole
 [observation, cost, termination, truncation, info_dict]
 ```
 
-The info dictionary currently is empty.
+The info dictionary contains the following keys:
+
+*   **reference**: The set cart position and angle reference (i.e. the zero position and angle).
+*   **state\_of\_interest**: The state that should track the reference (SOI).
+*   **reference\_error**: The error between SOI and the reference.
 
 ## How to use
 
