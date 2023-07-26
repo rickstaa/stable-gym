@@ -396,6 +396,11 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
 
         # Create observation and info dict.
         obs = np.array(self.state)
+        info_dict = dict(
+            reference=np.array([0.0, 0.0]),
+            state_of_interest=np.array([x, theta]),
+            reference_error=np.array([-x, -theta]),
+        )
 
         # NOTE: The original returns an empty info dict.
         return (
@@ -403,7 +408,7 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
             cost,
             terminated,
             False,
-            {},
+            info_dict,
         )
 
     def reset(self, seed=None, options=None, random=True):
@@ -467,15 +472,21 @@ class CartPoleCost(gym.Env, CartPoleDisturber):
         self.steps_beyond_terminated = None
         self.t = 0.0
 
-        # Create info dict and observation.
+        # Retrieve observation and info_dict.
         obs = np.array(self.state)
+        x, _, theta, _ = self.state
+        info_dict = dict(
+            reference=np.array([0.0, 0.0]),
+            state_of_interest=np.array([x, theta]),
+            reference_error=np.array([-x, -theta]),
+        )
 
         # Render environment reset if requested.
         if self.render_mode == "human":
             self.render()
 
         # NOTE: The original returns an empty info dict.
-        return obs, {}
+        return obs, info_dict
 
     def render(self):
         """Render one frame of the environment."""

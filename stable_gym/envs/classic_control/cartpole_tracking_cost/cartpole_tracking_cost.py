@@ -348,11 +348,10 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
 
                 -   cost (float): The current cost.
                 -   r_1 (float): The current position reference.
-                -   r_2 (float): The cart_pole angle reference.
         """
         # TODO: Fine-tune cost function. The current one is a initial test.
-        ref = [self.reference(self.t), 0.0]
-        ref_cost = np.square(x - ref[0])
+        ref = self.reference(self.t)
+        ref_cost = np.square(x - ref)
         stab_cost = np.square(theta / self.theta_threshold_radians)
 
         cost = stab_cost + ref_cost
@@ -465,15 +464,15 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
         obs = np.append(
             np.array(self.state),
             np.array(
-                [ref[0]]
+                [ref]
                 if self._exclude_reference_error_from_observation
-                else [ref[0], x - ref[0]]
+                else [ref, x - ref]
             ),
         )
         info_dict = dict(
-            reference=ref[0],
+            reference=ref,
             state_of_interest=x,
-            reference_error=x - ref[0],
+            reference_error=x - ref,
         )
 
         # NOTE: The original returns an empty info dict.
@@ -546,20 +545,20 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
         self.steps_beyond_terminated = None
         self.t = 0.0
 
-        # Create info dict and observation.
+        # Retrieve observation and info_dict.
         x, _, theta, _ = self.state
         _, ref = self.cost(x, theta)
         info_dict = dict(
-            reference=ref[0],
+            reference=ref,
             state_of_interest=x,
-            reference_error=x - ref[0],
+            reference_error=x - ref,
         )
         obs = np.append(
             np.array(self.state),
             np.array(
-                [ref[0]]
+                [ref]
                 if self._exclude_reference_error_from_observation
-                else [ref[0], x - ref[0]]
+                else [ref, x - ref]
             ),
         )
 
