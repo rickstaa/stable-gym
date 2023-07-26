@@ -34,6 +34,7 @@ dependencies = [
     "iteration_utilities>=0.11.0",
     "pybullet>=3.2.5",
     "PyFlyt>=0.8.4",
+    "gym==0.25.1",        # TODO: Can be removed when https://github.com/bulletphysics/bullet3/issues/4369 is resoled. # noqa: E501
 ]
 requires-python = ">=3.8"
 
@@ -46,7 +47,6 @@ dev = [
     "syrupy>=4.0.2",
     "flake8>=6.0.0",
     "black>=23.3.0",
-    "gym==0.25.1",        # TODO: Can be removed when https://github.com/bulletphysics/bullet3/issues/4369 is resoled. # noqa: E501
 ]
 docs = [
     "sphinx>=6.2.1",
