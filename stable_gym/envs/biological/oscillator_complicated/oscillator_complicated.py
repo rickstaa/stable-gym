@@ -399,24 +399,25 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         # Define stopping criteria.
         terminated = cost < self.reward_range[0] or cost > self.reward_range[1]
 
-        # Create observation.
+        # Create observation and info_dict.
         obs = np.array([m1, m2, m3, m4, p1, p2, p3, p4])
         if not self._exclude_reference_from_observation:
             obs = np.append(obs, r1)
         if not self._exclude_reference_error_from_observation:
             obs = np.append(obs, p1 - r1)
+        info_dict = dict(
+            reference=r1,
+            state_of_interest=p1,
+            reference_error=p1 - r1,
+        )
 
-        # Return state, cost, terminated, truncated and info_dict
+        # Return state, cost, terminated, truncated and info_dict.
         return (
             obs,
             cost,
             terminated,
             False,
-            dict(
-                reference=r1,
-                state_of_interest=p1,
-                reference_error=p1 - r1,
-            ),
+            info_dict,
         )
 
     def reset(
@@ -476,7 +477,7 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
             f"({self.observation_space})."
         )
 
-        # Set initial state, reset time and retrieve initial observation.
+        # Set initial state, reset time, retrieve initial observation and info_dict.
         self.state = (
             self.np_random.uniform(low=low, high=high, size=(8,))
             if random
@@ -490,13 +491,14 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
             obs = np.append(obs, r1)
         if not self._exclude_reference_error_from_observation:
             obs = np.append(obs, p1 - r1)
-
-        # Return initial observation and info_dict.
-        return obs, dict(
+        info_dict = dict(
             reference=r1,
             state_of_interest=p1,
             reference_error=p1 - r1,
         )
+
+        # Return initial observation and info_dict.
+        return obs, info_dict
 
     def reference(self, t):
         r"""Returns the current value of the periodic reference signal that is tracked by
