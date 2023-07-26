@@ -17,6 +17,9 @@
     'cost_shake': 0.001545201927514,
     'cost_velocity': 1.262878009055252,
     'energy_cost': 0.208187038300126,
+    'reference': 1.0,
+    'reference_error': -1.123778451944712,
+    'state_of_interest': -0.123778451944712,
   })
 # ---
 # name: TestMinitaurBulletCostEqual.test_snapshot.102
@@ -136,6 +139,9 @@
     'cost_shake': 0.001216954533656,
     'cost_velocity': 1.308016924484482,
     'energy_cost': 0.411224652260461,
+    'reference': 1.0,
+    'reference_error': -1.143685675561464,
+    'state_of_interest': -0.143685675561464,
   })
 # ---
 # name: TestMinitaurBulletCostEqual.test_snapshot.137
@@ -258,6 +264,9 @@
     'cost_shake': 0.001062425280662,
     'cost_velocity': 1.05929279162964,
     'energy_cost': 0.411447438208018,
+    'reference': 1.0,
+    'reference_error': -1.029219506047976,
+    'state_of_interest': -0.029219506047976,
   })
 # ---
 # name: TestMinitaurBulletCostEqual.test_snapshot.172
@@ -380,6 +389,9 @@
     'cost_shake': 0.002593163820677,
     'cost_velocity': 1.011816047403776,
     'energy_cost': 0.457486833811053,
+    'reference': 1.0,
+    'reference_error': -1.005890673683664,
+    'state_of_interest': -0.005890673683664,
   })
 # ---
 # name: TestMinitaurBulletCostEqual.test_snapshot.21
@@ -536,6 +548,9 @@
     'cost_shake': 0.158954162148827,
     'cost_velocity': 1.147753757228502,
     'energy_cost': 0.201663962061444,
+    'reference': 1.0,
+    'reference_error': -1.071332701465097,
+    'state_of_interest': -0.071332701465097,
   })
 # ---
 # name: TestMinitaurBulletCostEqual.test_snapshot.67
