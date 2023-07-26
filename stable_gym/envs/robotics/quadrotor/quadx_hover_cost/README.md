@@ -30,6 +30,20 @@ Where:
 
 The health penalty is optional and can be disabled using the `include_health_penalty` environment arguments.
 
+## Environment step return
+
+In addition to the observations, the cost and a termination and truncation boolean, the environment also returns an info dictionary:
+
+```python
+[observation, cost, termination, truncation, info_dict]
+```
+
+Compared to the original [QuadXHover-v1](https://jjshoots.github.io/PyFlyt/documentation/gym_envs/quadx_envs/quadx_hover_env.html) environment, the following keys were added to this info dictionary:
+
+*   **reference**: The reference that the quadrotor is tracking (i.e. the desired hover position $p=x_{x,y,z}=[0,0,1]$).
+*   **state\_of\_interest**: The state that should track the reference (SOI).
+*   **reference\_error**: The error between SOI and the reference.
+
 ## How to use
 
 This environment is part of the [Stable Gym package](https://github.com/rickstaa/stable-gym). It is therefore registered as the `stable_gym:QuadXHover-v1` gymnasium environment when you import the Stable Gym package. If you want to use the environment in stand-alone mode, you can register it yourself.

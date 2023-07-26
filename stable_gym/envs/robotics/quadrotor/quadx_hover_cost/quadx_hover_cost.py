@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import utils
 from PyFlyt.gym_envs.quadx_envs.quadx_hover_env import QuadXHoverEnv
+
 from stable_gym import ENVS  # noqa: F401
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
@@ -147,7 +148,11 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
         """Compute the cost of the current state.
 
         Returns:
-            (float): The cost.
+            (tuple): tuple containing:
+
+                -   cost (:obj:`float`): The cost.
+                -   info (:obj:`dict`): Dictionary containing additional information
+                    about the cost.
         """
         # Euclidean distance from [0, 0, 1] hover point.
         linear_distance = np.linalg.norm(
@@ -157,7 +162,10 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
         # How far are we from 0 roll and pitch.
         angular_distance = np.linalg.norm(self.env.state(0)[1][:2])
 
-        return linear_distance + angular_distance
+        return linear_distance + angular_distance, {
+            "linear_distance": linear_distance,
+            "angular_distance": angular_distance,
+        }
 
     def step(self, action):
         """Take step into the environment.
@@ -184,7 +192,7 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
         obs, _, terminated, truncated, info = super().step(action)
 
         # Calculate the cost.
-        cost = self.cost()
+        cost, cost_info = self.cost()
 
         # Add optional health penalty at the end of the episode if requested.
         if self._include_health_penalty:
@@ -195,6 +203,23 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
                     cost += self.time_limit_max_episode_steps - self.step_count
 
         self.state = obs
+
+        # Update info dictionary.
+        info.update(cost_info)
+        info.update(
+            {
+                "reference": np.array([0.0, 0.0, 1.0, 0.0, 0.0]),
+                "state_of_interest": np.concatenate(
+                    (self.env.state(0)[-1], self.env.state(0)[1][:2])
+                ),
+                "reference_error": np.concatenate(
+                    (
+                        self.env.state(0)[-1] - np.array([0.0, 0.0, 1.0]),
+                        -self.env.state(0)[1][:2],
+                    )
+                ),
+            }
+        )
 
         return obs, cost, terminated, truncated, info
 
@@ -223,10 +248,29 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
 
         obs, info = super().reset(seed=seed, options=options)
 
+        _, cost_info = self.cost()
+
         # Store simulation startup time.
         self.initial_physics_time = self.env.elapsed_time
 
         self.state = obs
+
+        # Update info dictionary.
+        info.update(cost_info)
+        info.update(
+            {
+                "reference": np.array([0.0, 0.0, 1.0, 0.0, 0.0]),
+                "state_of_interest": np.concatenate(
+                    (self.env.state(0)[-1], self.env.state(0)[1][:2])
+                ),
+                "reference_error": np.concatenate(
+                    (
+                        self.env.state(0)[-1] - np.array([0.0, 0.0, 1.0]),
+                        -self.env.state(0)[1][:2],
+                    )
+                ),
+            }
+        )
 
         return obs, info
 

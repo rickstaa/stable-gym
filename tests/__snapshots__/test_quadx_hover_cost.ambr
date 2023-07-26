@@ -79,9 +79,14 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.121
   dict({
+    'angular_distance': 0.110336292034,
     'collision': False,
     'env_complete': False,
+    'linear_distance': 0.0403025459182,
     'out_of_bounds': False,
+    'reference': array([0., 0., 1., 0., 0.]),
+    'reference_error': array([ 0.00139432,  0.0016748 , -0.04024359,  0.10506426, -0.03369865]),
+    'state_of_interest': array([ 0.00139432,  0.0016748 ,  0.95975641, -0.10506426,  0.03369865]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.122
@@ -164,9 +169,14 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.146
   dict({
+    'angular_distance': 0.0787519848344,
     'collision': False,
     'env_complete': False,
+    'linear_distance': 0.0209864524375,
     'out_of_bounds': False,
+    'reference': array([0., 0., 1., 0., 0.]),
+    'reference_error': array([ 0.0027967 ,  0.00483918, -0.0202285 ,  0.07628505, -0.01955675]),
+    'state_of_interest': array([ 0.0027967 ,  0.00483918,  0.9797715 , -0.07628505,  0.01955675]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.15
@@ -192,9 +202,16 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.21
   dict({
+    'angular_distance': 0.0001994989326,
     'collision': False,
     'env_complete': False,
+    'linear_distance': 0.0318775526255,
     'out_of_bounds': False,
+    'reference': array([0., 0., 1., 0., 0.]),
+    'reference_error': array([-2.72890000e-09,  1.02375000e-08, -3.18775526e-02,  1.99166961e-04,
+          1.15041579e-05]),
+    'state_of_interest': array([-2.72890000e-09,  1.02375000e-08,  9.68122447e-01, -1.99166961e-04,
+         -1.15041579e-05]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.22
@@ -277,9 +294,16 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.46
   dict({
+    'angular_distance': 0.0365409250922,
     'collision': False,
     'env_complete': False,
+    'linear_distance': 0.0511684142603,
     'out_of_bounds': False,
+    'reference': array([0., 0., 1., 0., 0.]),
+    'reference_error': array([-4.60863660e-06, -8.22990120e-06, -5.11684134e-02, -3.28012151e-02,
+          1.61034000e-02]),
+    'state_of_interest': array([-4.60863660e-06, -8.22990120e-06,  9.48831587e-01,  3.28012151e-02,
+         -1.61034000e-02]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.47
@@ -365,9 +389,15 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.71
   dict({
+    'angular_distance': 0.0475638878908,
     'collision': False,
     'env_complete': False,
+    'linear_distance': 0.0620410302813,
     'out_of_bounds': False,
+    'reference': array([0., 0., 1., 0., 0.]),
+    'reference_error': array([-0.00015588, -0.0004125 , -0.06203946,  0.01900697, -0.04360113]),
+    'state_of_interest': array([-1.55883875e-04, -4.12495247e-04,  9.37960537e-01, -1.90069670e-02,
+          4.36011311e-02]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.72
@@ -450,9 +480,15 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.96
   dict({
+    'angular_distance': 0.1425347853673,
     'collision': False,
     'env_complete': False,
+    'linear_distance': 0.057982552577,
     'out_of_bounds': False,
+    'reference': array([0., 0., 1., 0., 0.]),
+    'reference_error': array([ 0.00023143, -0.00052682, -0.0579797 ,  0.13934098, -0.03000427]),
+    'state_of_interest': array([ 2.31426066e-04, -5.26820864e-04,  9.42020303e-01, -1.39340979e-01,
+          3.00042747e-02]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.97
