@@ -64,6 +64,9 @@
     'cost_ctrl': 0.002354202032089,
     'cost_velocity': 1.122858759316601,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.059650300484363,
+    'state_of_interest': -0.059650300484363,
     'x_position': -0.004255001921786,
     'x_velocity': -0.059650300484363,
   })
@@ -151,6 +154,9 @@
     'cost_ctrl': 0.002131952524185,
     'cost_velocity': 1.232876260853688,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.110349611993307,
+    'state_of_interest': -0.110349611993307,
     'x_position': -0.005137798817733,
     'x_velocity': -0.110349611993307,
   })
@@ -175,6 +181,12 @@
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.20
   dict({
+    'cost_ctrl': 0.0,
+    'cost_velocity': 1.0,
+    'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.0,
+    'state_of_interest': 0.0,
   })
 # ---
 # name: TestWalker2dCostEqual.test_snapshot.21
@@ -257,6 +269,9 @@
     'cost_ctrl': 0.002548972129822,
     'cost_velocity': 1.427299836027234,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.194696545582699,
+    'state_of_interest': -0.194696545582699,
     'x_position': 0.001181988120898,
     'x_velocity': -0.194696545582699,
   })
@@ -341,6 +356,9 @@
     'cost_ctrl': 0.001958436965942,
     'cost_velocity': 1.836758305592179,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.355270565456278,
+    'state_of_interest': -0.355270565456278,
     'x_position': -0.001660176402752,
     'x_velocity': -0.355270565456278,
   })
@@ -428,6 +446,9 @@
     'cost_ctrl': 0.001582831144333,
     'cost_velocity': 1.599473398443851,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.264702889394916,
+    'state_of_interest': -0.264702889394917,
     'x_position': -0.003777799517912,
     'x_velocity': -0.264702889394917,
   })
