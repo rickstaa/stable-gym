@@ -132,6 +132,15 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
 
         self.state = obs
 
+        # Update info dictionary.
+        info.update(
+            {
+                "reference": obs["desired_goal"],
+                "state_of_interest": obs["observation"][:3],
+                "reference_error": obs["observation"][:3] - obs["desired_goal"],
+            }
+        )
+
         return obs, self.cost(reward), terminated, truncated, info
 
     def reset(self, seed=None, options=None):
@@ -153,6 +162,15 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
         obs, info = super().reset(seed=seed, options=options)
 
         self.state = obs["observation"]
+
+        # Update info dictionary.
+        info.update(
+            {
+                "reference": obs["desired_goal"],
+                "state_of_interest": obs["observation"][:3],
+                "reference_error": obs["observation"][:3] - obs["desired_goal"],
+            }
+        )
 
         return obs, info
 
