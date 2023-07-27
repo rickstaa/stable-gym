@@ -1,6 +1,6 @@
 {
   "name": "stable-gym",
-  "version": "0.17.1",
+  "version": "0.18.0",
   "description": "Contains several gymnasium environments with cost functions compatible with (stable) RL agents (i.e. positive definite).",
   "keywords": [
     "reinforcement-learning",
