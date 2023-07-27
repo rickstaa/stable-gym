@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.18.0](https://github.com/rickstaa/stable-gym/compare/v0.17.1...v0.18.0) (2023-07-27)
+
+
+### Features
+
+* add reference info to step/reset return ([#275](https://github.com/rickstaa/stable-gym/issues/275)) ([7d715bd](https://github.com/rickstaa/stable-gym/commit/7d715bdcbe5fff797cde70a6a4ba621e64cd786e))
+* **classicalcontrol:** add additional info to step/reset return ([#274](https://github.com/rickstaa/stable-gym/issues/274)) ([021d846](https://github.com/rickstaa/stable-gym/commit/021d846af2422230c4481e228e0d1810daae6153))
+* **fetchreachcost:** add reference info to step/reset return ([#277](https://github.com/rickstaa/stable-gym/issues/277)) ([20eb94d](https://github.com/rickstaa/stable-gym/commit/20eb94d6f0e452f791a1a48e021dad5eba8299f4))
+* **minitaur:** add minitaur step/reset reference info return ([be01019](https://github.com/rickstaa/stable-gym/commit/be010196f605ad2b65639de8a02a5215e0135307))
+* **minitaur:** add minitaur step/reset reference info return ([#276](https://github.com/rickstaa/stable-gym/issues/276)) ([bdde77c](https://github.com/rickstaa/stable-gym/commit/bdde77caaf9f3668eee73b5fdd27d06962722983))
+* **quadxhover:** add extra information to step/reset info ([#272](https://github.com/rickstaa/stable-gym/issues/272)) ([91b979d](https://github.com/rickstaa/stable-gym/commit/91b979db8a6350e35631dd4000155b71e3d9b44a))
+
+
+### Bug Fixes
+
+* **quadxwaypointscost:** fix directional penalty and add extra step info keys ([#269](https://github.com/rickstaa/stable-gym/issues/269)) ([0afc098](https://github.com/rickstaa/stable-gym/commit/0afc0985fd0357c48fa43b9ff9ba29240a1f324a))
+
+
+### Documentation
+
+* add missing step return info dict keys ([#278](https://github.com/rickstaa/stable-gym/issues/278)) ([016695f](https://github.com/rickstaa/stable-gym/commit/016695fef7cbf4f5f71bda4424fef70287ff0a20))
+
 ## [0.17.1](https://github.com/rickstaa/stable-gym/compare/v0.17.0...v0.17.1) (2023-07-25)
 
 
