@@ -349,7 +349,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         self.state = obs
         self.t = self.t + self.dt
 
-        # Retrieve original rew5ards and base velocity.
+        # Retrieve original rewards.
         # NOTE: Han et al. 2018 used the squared error for the drift reward. We use the
         # version found in the original Minitaur environment (i.e. absolute distance).
         objectives = super().get_objectives()
@@ -359,9 +359,16 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
 
         # Compute the cost and update the info dict.
         cost, cost_info = self.cost(
-            self.base_velocity, energy_reward, drift_cost, shake_cost
+            base_velocity, energy_reward, drift_cost, shake_cost
         )
         info.update(cost_info)
+        info.update(
+            {
+                "reference": self.reference_forward_velocity,
+                "state_of_interest": base_velocity,
+                "reference_error": base_velocity - self.reference_forward_velocity,
+            }
+        )
 
         # Add optional health penalty at the end of the episode if requested.
         if self._include_health_penalty:

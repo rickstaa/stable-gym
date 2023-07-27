@@ -268,20 +268,62 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
             num_targets_reached (int): The number of targets reached.
 
         Returns:
-            (float): The cost.
+            (tuple): tuple containing:
+
+                -  cost (:obj:`float`): The cost of the current state.
+                -  cost_info (:obj:`dict`): Dictionary containing additional cost
+                    information.
         """
         # Check if target was reached or if the environment was completed.
         if env_completed or num_targets_reached > self._previous_num_targets_reached:
             self._previous_num_targets_reached = num_targets_reached
-            return 0.0
+            return 0.0, {"cost_direction": 0.0, "cost_distance": 0.0}
 
         # Calculate step cost.
-        cost = -min(
-            3.0 * self.waypoints.progress_to_target(), 0.0
+        cost_direction = abs(
+            min(3.0 * self.waypoints.progress_to_target(), 0.0)
         )  # Penalize moving away from target.
-        cost += 0.1 / self.distance_to_immediate
+        cost_distance = 0.1 / self.distance_to_immediate
+        cost = cost_direction + cost_distance
 
-        return cost
+        return cost, {"cost_direction": cost_direction, "cost_distance": cost_distance}
+
+    def compute_target_deltas(self, ang_pos, lin_pos, quarternion):
+        """Compute the waypoints target deltas.
+
+        .. note::
+            Needed because the `~PyFlyt.gym_envs.quadx_envs.quadx_waypoints_env.QuadXWaypointsEnv`
+            removes the immediate waypoint from the waypoint targets list when it is
+            reached and doesn't expose the old value.
+
+        Args:
+            ang_pos (np.ndarray): The current angular position.
+            lin_pos (np.ndarray): The current position.
+            quarternion (np.ndarray): The current quarternion.
+
+        Returns:
+            (np.ndarray): The waypoints target deltas.
+        """  # noqa: E501
+
+        # Store waypoints targets, distances and yaw error scalar.
+        waypoints_targets = copy.copy(self.waypoints.targets)
+        old_waypoints_distance = copy.copy(self.waypoints.old_distance)
+        new_waypoints_distance = copy.copy(self.waypoints.new_distance)
+        if self.waypoints.use_yaw_targets:
+            yaw_error_scalar = copy.copy(self.waypoints.yaw_error_scalar)
+
+        # Change waypoints to include all waypoints and calculate target deltas.
+        self.waypoints.targets = self._episode_waypoint_targets
+        target_deltas = self.waypoints.distance_to_target(ang_pos, lin_pos, quarternion)
+
+        # Restore waypoints targets, distances and yaw error scalar.
+        self.waypoints.targets = waypoints_targets
+        self.waypoints.old_distance = old_waypoints_distance
+        self.waypoints.new_distance = new_waypoints_distance
+        if self.waypoints.use_yaw_targets:
+            self.yaw_error_scalar = yaw_error_scalar
+
+        return target_deltas
 
     def step(self, action):
         """Take step into the environment.
@@ -311,7 +353,8 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
         # NOTE: Done since the QuadXWaypointsEnv environment removes the immediate
         # waypoint from the waypoints.targets list when it is reached and doesn't
         # expose the old value.
-        target_deltas = self.compute_target_deltas()
+        _, ang_pos, _, lin_pos, quarternion = super().compute_attitude()
+        target_deltas = self.compute_target_deltas(ang_pos, lin_pos, quarternion)
 
         # Flatten observation by combining attitude, waypoints and/or reference error.
         obs_flatten = copy.copy(obs["attitude"])
@@ -330,7 +373,7 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
         obs = obs_flatten
 
         # Calculate the cost.
-        cost = self.cost(
+        cost, cost_info = self.cost(
             env_completed=info["env_complete"],
             num_targets_reached=info["num_targets_reached"],
         )
@@ -343,32 +386,23 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
                 else:  # If not set add unperformed steps to the cost.
                     cost += self.time_limit_max_episode_steps - self.step_count
 
+        self.state = obs
+
+        # Update info dictionary.
+        ref = self._current_immediate_waypoint_target
+        info.update(cost_info)
+        info.update(
+            {
+                "reference": ref,
+                "state_of_interest": lin_pos,
+                "reference_error": lin_pos - ref,
+            }
+        )
+
         self._previous_num_targets_reached = info["num_targets_reached"]
         self._current_immediate_waypoint_target = copy.copy(self.waypoints.targets[0])
 
-        self.state = obs
-
         return obs, cost, terminated, truncated, info
-
-    def compute_target_deltas(self):
-        """Compute the waypoints target deltas.
-
-        .. note::
-            Needed because the `~PyFlyt.gym_envs.quadx_envs.quadx_waypoints_env.QuadXWaypointsEnv`
-            removes the immediate waypoint from the waypoint targets list when it is
-            reached and doesn't expose the old value.
-
-        Returns:
-            (np.ndarray): The waypoints target deltas.
-        """  # noqa: E501
-        _, ang_pos, _, lin_pos, quarternion = super().compute_attitude()
-
-        new_waypoints_targets = copy.copy(self.waypoints.targets)
-        self.waypoints.targets = self._episode_waypoint_targets
-        target_deltas = self.waypoints.distance_to_target(ang_pos, lin_pos, quarternion)
-        self.waypoints.targets = new_waypoints_targets
-
-        return target_deltas
 
     def reset(self, seed=None, options=None):
         """Reset gymnasium environment.
@@ -405,7 +439,8 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
         # NOTE: Done since the QuadXWaypointsEnv environment removes the immediate
         # waypoint from the waypoints.targets list when it is reached and doesn't
         # expose the old value.
-        target_deltas = self.compute_target_deltas()
+        _, ang_pos, _, lin_pos, quarternion = super().compute_attitude()
+        target_deltas = self.compute_target_deltas(ang_pos, lin_pos, quarternion)
 
         # Flatten observation by combining attitude, waypoints and/or reference error.
         obs_flatten = copy.copy(obs["attitude"])
@@ -423,7 +458,24 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
                 obs_flatten = np.append(obs_flatten, target_deltas)
         obs = obs_flatten
 
+        # Calculate the cost.
+        _, cost_info = self.cost(
+            env_completed=info["env_complete"],
+            num_targets_reached=info["num_targets_reached"],
+        )
+
         self.state = obs
+
+        # Update info dictionary.
+        ref = self._current_immediate_waypoint_target
+        info.update(cost_info)
+        info.update(
+            {
+                "reference": ref,
+                "state_of_interest": lin_pos,
+                "reference_error": lin_pos - ref,
+            }
+        )
 
         return obs, info
 

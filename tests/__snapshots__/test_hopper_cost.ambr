@@ -25,6 +25,9 @@
     'cost_ctrl': 0.000512296795845,
     'cost_velocity': 0.993802666204776,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -0.996896517299954,
+    'state_of_interest': 0.003103482700046,
     'x_position': 0.001938642253477,
     'x_velocity': 0.003103482700046,
   })
@@ -40,6 +43,12 @@
 # ---
 # name: TestHopperCostEqual.test_snapshot.14
   dict({
+    'cost_ctrl': 0.0,
+    'cost_velocity': 1.0,
+    'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.0,
+    'state_of_interest': 0.0,
   })
 # ---
 # name: TestHopperCostEqual.test_snapshot.15
@@ -104,6 +113,9 @@
     'cost_ctrl': 0.000829521000385,
     'cost_velocity': 0.992650521800909,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -0.99631848412087,
+    'state_of_interest': 0.00368151587913,
     'x_position': 0.002769012612593,
     'x_velocity': 0.00368151587913,
   })
@@ -170,6 +182,9 @@
     'cost_ctrl': 0.001719451189041,
     'cost_velocity': 1.068207885867572,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.033541429197481,
+    'state_of_interest': -0.033541429197481,
     'x_position': 0.002500681179013,
     'x_velocity': -0.033541429197481,
   })
@@ -233,6 +248,9 @@
     'cost_ctrl': 0.001153304815292,
     'cost_velocity': 1.092988137007517,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.045460729538665,
+    'state_of_interest': -0.045460729538665,
     'x_position': 0.002136995342704,
     'x_velocity': -0.045460729538665,
   })
@@ -299,6 +317,9 @@
     'cost_ctrl': 0.000805132269859,
     'cost_velocity': 1.056573514844402,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.027897618853357,
+    'state_of_interest': -0.027897618853357,
     'x_position': 0.001913814391877,
     'x_velocity': -0.027897618853357,
   })

@@ -152,9 +152,14 @@
 # name: TestQuadXWaypointsCostEqual.test_snapshot.143
   dict({
     'collision': False,
+    'cost_direction': 0.0,
+    'cost_distance': 0.1176939007526,
     'env_complete': False,
     'num_targets_reached': 0,
     'out_of_bounds': False,
+    'reference': array([ 0.12114929, -0.79878245,  1.20213368]),
+    'reference_error': array([-0.12150615,  0.79761319, -0.26641033]),
+    'state_of_interest': array([-3.56867320e-04, -1.16926617e-03,  9.35723347e-01]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.144
@@ -319,9 +324,14 @@
 # name: TestQuadXWaypointsCostEqual.test_snapshot.192
   dict({
     'collision': False,
+    'cost_direction': 0.0,
+    'cost_distance': 0.1184372588129,
     'env_complete': False,
     'num_targets_reached': 0,
     'out_of_bounds': False,
+    'reference': array([ 0.12114929, -0.79878245,  1.20213368]),
+    'reference_error': array([-0.12040818,  0.79811885, -0.24778913]),
+    'state_of_interest': array([ 7.41108238e-04, -6.63602930e-04,  9.54344544e-01]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.193
@@ -489,9 +499,14 @@
 # name: TestQuadXWaypointsCostEqual.test_snapshot.241
   dict({
     'collision': False,
+    'cost_direction': 0.0,
+    'cost_distance': 0.1194560838987,
     'env_complete': False,
     'num_targets_reached': 0,
     'out_of_bounds': False,
+    'reference': array([ 0.12114929, -0.79878245,  1.20213368]),
+    'reference_error': array([-0.11811294,  0.80260758, -0.20652661]),
+    'state_of_interest': array([0.00303635, 0.00382512, 0.99560706]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.242
@@ -656,9 +671,14 @@
 # name: TestQuadXWaypointsCostEqual.test_snapshot.290
   dict({
     'collision': False,
+    'cost_direction': 0.0,
+    'cost_distance': 0.119940052153,
     'env_complete': False,
     'num_targets_reached': 0,
     'out_of_bounds': False,
+    'reference': array([ 0.12114929, -0.79878245,  1.20213368]),
+    'reference_error': array([-0.11495111,  0.80939908, -0.16370148]),
+    'state_of_interest': array([0.00619818, 0.01061663, 1.0384322 ]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.3
@@ -715,9 +735,14 @@
 # name: TestQuadXWaypointsCostEqual.test_snapshot.45
   dict({
     'collision': False,
+    'cost_direction': 2.523376009453,
+    'cost_distance': 0.1188883459604,
     'env_complete': False,
     'num_targets_reached': 0,
     'out_of_bounds': False,
+    'reference': array([ 0.12114929, -0.79878245,  1.20213368]),
+    'reference_error': array([-0.12114929,  0.79878246, -0.23401123]),
+    'state_of_interest': array([-2.72890000e-09,  1.02375000e-08,  9.68122447e-01]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.46
@@ -871,7 +896,7 @@
   -0.2374694422034
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.91
-  0.1178975156052
+  0.1224165607462
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.92
   False
@@ -882,9 +907,14 @@
 # name: TestQuadXWaypointsCostEqual.test_snapshot.94
   dict({
     'collision': False,
+    'cost_direction': 0.0045190451409,
+    'cost_distance': 0.1178975156052,
     'env_complete': False,
     'num_targets_reached': 0,
     'out_of_bounds': False,
+    'reference': array([ 0.12114929, -0.79878245,  1.20213368]),
+    'reference_error': array([-0.12117407,  0.7987328 , -0.25841114]),
+    'state_of_interest': array([-2.47790283e-05, -4.96531636e-05,  9.43722535e-01]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.95

@@ -78,6 +78,9 @@
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.16
   dict({
+    'reference': array([1.42404184, 0.73076404, 0.64228632]),
+    'reference_error': 3.0,
+    'state_of_interest': 1.341854859091886,
   })
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.17

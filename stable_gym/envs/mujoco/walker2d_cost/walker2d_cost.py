@@ -266,8 +266,6 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         """
         obs, _, terminated, truncated, info = super().step(action)
 
-        self.state = obs
-
         ctrl_cost = super().control_cost(action)
         cost, cost_info = self.cost(info["x_velocity"], ctrl_cost)
 
@@ -279,8 +277,17 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         if not self._exclude_x_velocity_from_observation:
             obs = np.append(obs, info["x_velocity"])
 
-        # Update info.
+        self.state = obs
+
+        # Update info dictionary.
         info.update(cost_info)
+        info.update(
+            {
+                "reference": self.reference_forward_velocity,
+                "state_of_interest": info["x_velocity"],
+                "reference_error": info["x_velocity"] - self.reference_forward_velocity,
+            }
+        )
 
         return obs, cost, terminated, truncated, info
 
@@ -302,6 +309,8 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
         """
         obs, info = super().reset(seed=seed, options=options)
 
+        _, cost_info = self.cost(0.0, 0.0)
+
         # Randomize the reference forward velocity if requested.
         if self._randomise_reference_forward_velocity:
             self.reference_forward_velocity = self.np_random.uniform(
@@ -317,6 +326,16 @@ class Walker2dCost(Walker2dEnv, utils.EzPickle):
             obs = np.append(obs, 0.0)
 
         self.state = obs
+
+        # Update info dictionary.
+        info.update(cost_info)
+        info.update(
+            {
+                "reference": self.reference_forward_velocity,
+                "state_of_interest": 0.0,
+                "reference_error": 0.0 - self.reference_forward_velocity,
+            }
+        )
 
         return obs, info
 

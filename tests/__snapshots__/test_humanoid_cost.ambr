@@ -497,6 +497,9 @@
     'cost_velocity': 0.988560376753692,
     'distance_from_origin': 0.016650957942206,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -0.994263736014591,
+    'state_of_interest': 0.005736263985409,
     'x_position': 0.013989062288451,
     'x_velocity': 0.005736263985409,
     'y_position': -0.009031087237035,
@@ -1781,6 +1784,9 @@
     'cost_velocity': 0.988686065964289,
     'distance_from_origin': 0.016811336695005,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -0.99432694118398,
+    'state_of_interest': 0.00567305881602,
     'x_position': 0.014074158170692,
     'x_velocity': 0.00567305881602,
     'y_position': -0.009194515390121,
@@ -3068,6 +3074,9 @@
     'cost_velocity': 0.988860257545469,
     'distance_from_origin': 0.016971822694054,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -0.994414530035372,
+    'state_of_interest': 0.005585469964629,
     'x_position': 0.014157940220161,
     'x_velocity': 0.005585469964629,
     'y_position': -0.009359246459024,
@@ -4352,6 +4361,9 @@
     'cost_velocity': 0.988791637192066,
     'distance_from_origin': 0.017134171570366,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -0.994380026545217,
+    'state_of_interest': 0.005619973454783,
     'x_position': 0.014242239821983,
     'x_velocity': 0.005619973454783,
     'y_position': -0.009525672693088,
@@ -4855,6 +4867,12 @@
 # ---
 # name: TestHumanoidCostEqual.test_snapshot.379
   dict({
+    'cost_ctrl': 0.0,
+    'cost_velocity': 1.0,
+    'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -1.0,
+    'state_of_interest': 0.0,
   })
 # ---
 # name: TestHumanoidCostEqual.test_snapshot.38
@@ -6138,6 +6156,9 @@
     'cost_velocity': 0.988624472768208,
     'distance_from_origin': 0.016487503685262,
     'penalty_health': 0.0,
+    'reference': 1.0,
+    'reference_error': -0.994295968395834,
+    'state_of_interest': 0.005704031604167,
     'x_position': 0.01390301832867,
     'x_velocity': 0.005704031604167,
     'y_position': -0.00886249734128,

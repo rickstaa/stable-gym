@@ -63,6 +63,9 @@
   dict({
     'cost_ctrl': 0.000235420203209,
     'cost_velocity': 3.208398875923596,
+    'reference': 1.0,
+    'reference_error': -1.791200400827221,
+    'state_of_interest': -0.791200400827221,
     'x_position': -0.016837079339511,
     'x_velocity': -0.791200400827221,
   })
@@ -149,6 +152,9 @@
   dict({
     'cost_ctrl': 0.000213195252419,
     'cost_velocity': 1.574816228046094,
+    'reference': 1.0,
+    'reference_error': -1.254916821166285,
+    'state_of_interest': -0.254916821166285,
     'x_position': -0.029582920397825,
     'x_velocity': -0.254916821166285,
   })
@@ -173,6 +179,11 @@
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.20
   dict({
+    'cost_ctrl': 0.0,
+    'cost_velocity': 1.0,
+    'reference': 1.0,
+    'reference_error': -1.0,
+    'state_of_interest': 0.0,
   })
 # ---
 # name: TestHalfCheetahCostEqual.test_snapshot.21
@@ -254,6 +265,9 @@
   dict({
     'cost_ctrl': 0.000254897212982,
     'cost_velocity': 0.592112068899969,
+    'reference': 1.0,
+    'reference_error': -0.769488186329049,
+    'state_of_interest': 0.230511813670951,
     'x_position': 0.06631680039474,
     'x_velocity': 0.230511813670951,
   })
@@ -337,6 +351,9 @@
   dict({
     'cost_ctrl': 0.000195843696594,
     'cost_velocity': 1.122004602549962,
+    'reference': 1.0,
+    'reference_error': -1.059247186708542,
+    'state_of_interest': -0.059247186708543,
     'x_position': 0.063354441059313,
     'x_velocity': -0.059247186708543,
   })
@@ -423,6 +440,9 @@
   dict({
     'cost_ctrl': 0.000158283114433,
     'cost_velocity': 3.285627542817922,
+    'reference': 1.0,
+    'reference_error': -1.812630007149259,
+    'state_of_interest': -0.812630007149259,
     'x_position': 0.02272294070185,
     'x_velocity': -0.812630007149259,
   })

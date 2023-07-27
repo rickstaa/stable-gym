@@ -13,6 +13,9 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.12
   dict({
+    'reference': array([0., 0.]),
+    'reference_error': array([-0.10909345, -0.14501811]),
+    'state_of_interest': array([0.10909345, 0.14501811]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.13
@@ -41,6 +44,9 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.20
   dict({
+    'reference': array([0., 0.]),
+    'reference_error': array([-0.11283397, -0.14115849]),
+    'state_of_interest': array([0.11283397, 0.14115849]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.21
@@ -66,6 +72,9 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.28
   dict({
+    'reference': array([0., 0.]),
+    'reference_error': array([-0.11558102, -0.13962318]),
+    'state_of_interest': array([0.11558102, 0.13962318]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.29
@@ -94,6 +103,9 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.36
   dict({
+    'reference': array([0., 0.]),
+    'reference_error': array([-0.12387771, -0.13067344]),
+    'state_of_interest': array([0.12387771, 0.13067344]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.37
@@ -107,6 +119,9 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.4
   dict({
+    'reference': array([0., 0.]),
+    'reference_error': array([-0.10958242, -0.14343917]),
+    'state_of_interest': array([0.10958242, 0.14343917]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.40
@@ -123,6 +138,9 @@
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.44
   dict({
+    'reference': array([0., 0.]),
+    'reference_error': array([-0.13521198, -0.11803   ]),
+    'state_of_interest': array([0.13521198, 0.11803   ]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.5
