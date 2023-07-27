@@ -62,6 +62,9 @@
 # name: TestFetchReachCostEqual.test_snapshot.116
   dict({
     'is_success': 0.0,
+    'reference': array([1.42404184, 0.73076404, 0.64228632]),
+    'reference_error': array([-0.1037502 ,  0.03696915, -0.05933302]),
+    'state_of_interest': array([1.32029164, 0.76773319, 0.58295331]),
   })
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.12
@@ -79,8 +82,8 @@
 # name: TestFetchReachCostEqual.test_snapshot.16
   dict({
     'reference': array([1.42404184, 0.73076404, 0.64228632]),
-    'reference_error': 3.0,
-    'state_of_interest': 1.341854859091886,
+    'reference_error': array([-0.08218698,  0.01833647, -0.10757912]),
+    'state_of_interest': array([1.34185486, 0.74910051, 0.5347072 ]),
   })
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.17
@@ -149,6 +152,9 @@
 # name: TestFetchReachCostEqual.test_snapshot.36
   dict({
     'is_success': 0.0,
+    'reference': array([1.42404184, 0.73076404, 0.64228632]),
+    'reference_error': array([-0.06611585,  0.0145536 , -0.08569325]),
+    'state_of_interest': array([1.35792598, 0.74531764, 0.55659307]),
   })
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.37
@@ -217,6 +223,9 @@
 # name: TestFetchReachCostEqual.test_snapshot.56
   dict({
     'is_success': 0.0,
+    'reference': array([1.42404184, 0.73076404, 0.64228632]),
+    'reference_error': array([-0.08924402,  0.04308588, -0.06787522]),
+    'state_of_interest': array([1.33479781, 0.77384992, 0.5744111 ]),
   })
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.57
@@ -285,6 +294,9 @@
 # name: TestFetchReachCostEqual.test_snapshot.76
   dict({
     'is_success': 0.0,
+    'reference': array([1.42404184, 0.73076404, 0.64228632]),
+    'reference_error': array([-0.11442367,  0.04261431, -0.0745017 ]),
+    'state_of_interest': array([1.30961817, 0.77337835, 0.56778462]),
   })
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.77
@@ -353,6 +365,9 @@
 # name: TestFetchReachCostEqual.test_snapshot.96
   dict({
     'is_success': 0.0,
+    'reference': array([1.42404184, 0.73076404, 0.64228632]),
+    'reference_error': array([-0.10781631,  0.06190539, -0.0790086 ]),
+    'state_of_interest': array([1.31622552, 0.79266943, 0.56327773]),
   })
 # ---
 # name: TestFetchReachCostEqual.test_snapshot.97
