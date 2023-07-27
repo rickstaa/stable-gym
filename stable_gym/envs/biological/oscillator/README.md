@@ -52,9 +52,6 @@ The info dictionary contains the following keys:
 *   **reference**: The set cart position reference.
 *   **state\_of\_interest**: The state that should track the reference (SOI).
 *   **reference\_error**: The error between SOI and the reference.
-*   **reference\_constraint\_position**: A user-specified constraint they want to watch.
-*   **reference\_constraint\_error**: The error between the SOI and the set reference constraint.
-*   **reference\_constraint\_violated**: Whether the reference constraint was violated.
 
 ## How to use
 
