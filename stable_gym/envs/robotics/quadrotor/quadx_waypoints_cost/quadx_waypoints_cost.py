@@ -194,14 +194,18 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
         high = self.observation_space.spaces["attitude"].high
         if not self._exclude_waypoint_targets_from_observation:
             waypoints_low = (
-                self.observation_space.spaces["target_deltas"].feature_space.low[-1]
+                self.observation_space.spaces["target_deltas"].feature_space.low
                 if self._only_observe_immediate_waypoint
-                else self.observation_space.spaces["target_deltas"].feature_space.low
+                else np.repeat(
+                    self.observation_space.spaces["target_deltas"].feature_space.low, 4
+                )
             ) / 2
             waypoints_high = (
-                self.observation_space.spaces["target_deltas"].feature_space.high[-1]
+                self.observation_space.spaces["target_deltas"].feature_space.high
                 if self._only_observe_immediate_waypoint
-                else self.observation_space.spaces["target_deltas"].feature_space.high
+                else np.repeat(
+                    self.observation_space.spaces["target_deltas"].feature_space.high, 4
+                )
             ) / 2
             low = np.append(
                 low,
@@ -213,14 +217,18 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
             )
         if not self._exclude_waypoint_target_deltas_from_observation:
             reference_error_low = (
-                self.observation_space.spaces["target_deltas"].feature_space.low[-1]
+                self.observation_space.spaces["target_deltas"].feature_space.low
                 if self._only_observe_immediate_waypoint_target_delta
-                else self.observation_space.spaces["target_deltas"].feature_space.low
+                else np.repeat(
+                    self.observation_space.spaces["target_deltas"].feature_space.low, 4
+                )
             )
             reference_error_high = (
-                self.observation_space.spaces["target_deltas"].feature_space.high[-1]
+                self.observation_space.spaces["target_deltas"].feature_space.high
                 if self._only_observe_immediate_waypoint_target_delta
-                else self.observation_space.spaces["target_deltas"].feature_space.high
+                else np.repeat(
+                    self.observation_space.spaces["target_deltas"].feature_space.high, 4
+                )
             )
             low = np.append(
                 low,
