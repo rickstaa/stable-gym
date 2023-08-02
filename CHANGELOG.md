@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.19.0](https://github.com/rickstaa/stable-gym/compare/v0.18.0...v0.19.0) (2023-08-02)
+
+
+### Features
+
+* **disturber:** remove disturber class ([#280](https://github.com/rickstaa/stable-gym/issues/280)) ([a057f91](https://github.com/rickstaa/stable-gym/commit/a057f91a58044540beff900a24a22606cd7e1658))
+
 ## [0.18.0](https://github.com/rickstaa/stable-gym/compare/v0.17.1...v0.18.0) (2023-07-27)
 
 
