@@ -4,24 +4,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import logger, spaces
 
-if __name__ == "__main__":
-    from ex3_ekf_disturber import Ex3EKFDisturber
-else:
-    from .ex3_ekf_disturber import Ex3EKFDisturber
-
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
-class Ex3EKF(gym.Env, Ex3EKFDisturber):
+class Ex3EKF(gym.Env):
     """Noisy master slave system
-
-    .. note::
-        This gymnasium environment inherits from the
-        :class:`~stable_gym.common.disturber.Disturber`
-        in order to be able to use it with the Robustness Evaluation tool of the
-        Stable Learning Control package (SLC). For more information see
-        `the SLC documentation <https://rickstaa.dev/stable-learning-control/utils/tester.html#robustness-eval-utility>`_.
 
     Description:
         The goal of the agent in the Ex3EKF environment is to act in such a way that
@@ -97,7 +85,7 @@ class Ex3EKF(gym.Env, Ex3EKFDisturber):
                 "environment."
             )
 
-        super().__init__()  # Setup disturber.
+        super().__init__()
         self._action_clip_warning = False
 
         self.t = 0.0

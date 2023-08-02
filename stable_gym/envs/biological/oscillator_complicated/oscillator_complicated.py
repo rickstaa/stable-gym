@@ -8,19 +8,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 from gymnasium import logger, spaces
 
-if __name__ == "__main__":
-    from stable_gym.envs.biological.oscillator_complicated.oscillator_complicated_disturber import (  # noqa: E501, F401
-        OscillatorComplicatedDisturber,
-    )
-else:
-    from .oscillator_complicated_disturber import OscillatorComplicatedDisturber
-
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 # TODO: Update solving criteria after training.
-class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
+class OscillatorComplicated(gym.Env):
     """Challenging (i.e. complicated) oscillatory network environment. This environment
     class is based on the :class:`~stable_gym.envs.biological.oscillator.oscillator.Oscillator`
     environment class but has an additional protein, mRNA transcription and light input.
@@ -28,13 +21,6 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
     .. Note::
         Can also be used in a vectorized manner. See the
         :gymnasium:`gym.vector <api/vector>` documentation.
-
-    .. note::
-        This gymnasium environment inherits from the
-        :class:`~stable_gym.common.disturber.Disturber`
-        in order to be able to use it with the Robustness Evaluation tool of the
-        Stable Learning Control package (SLC). For more information see
-        `the SLC documentation <https://rickstaa.dev/stable-learning-control/utils/tester.html#robustness-eval-utility>`_.
 
     Description:
         The goal of the agent in the oscillator environment is to act in such a way that
@@ -132,8 +118,6 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         sigma (float): The variance of the system noise.
     """  # noqa: E501
 
-    instances = 0  # Number of instances created.
-
     def __init__(
         self,
         render_mode=None,
@@ -162,7 +146,7 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``.
         """
-        super().__init__()  # Setup disturber.
+        super().__init__()
         self._action_clip_warning = False
         self._clip_action = clip_action
         self._exclude_reference_from_observation = exclude_reference_from_observation
@@ -254,11 +238,6 @@ class OscillatorComplicated(gym.Env, OscillatorComplicatedDisturber):
         self.reference_amplitude = reference_amplitude
         self.reference_frequency = reference_frequency
         self.phase_shift = reference_phase_shift
-
-        # Print vectorization debug info.
-        self.__class__.instances += 1
-        self.instance_id = self.__class__.instances
-        logger.debug(f"Oscillator instance '{self.instance_id}' created.")
 
     def step(self, action):
         """Take step into the environment.

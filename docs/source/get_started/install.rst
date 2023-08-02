@@ -14,7 +14,7 @@ Installing Python
 
 You are recommended to install Python through Anaconda. Anaconda is a library that includes Python and many valuable packages for
 Python, as well as an environment manager called Conda, makes package management simple. To install Anaconda, please follow the 
-installation instructions on the `official website <https://docs.continuum.io/anaconda/install/>`_. After downloading and 
+installation instructions on the `official website <https://docs.continuum.io/free/anaconda/install//>`_. After downloading and 
 installing Anaconda3 (at the time of writing, `Anaconda3-2023.3.1`_), create a Conda Python env for organizing packages used 
 in the ``stable_gym`` package:
 

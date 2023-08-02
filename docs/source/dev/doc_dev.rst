@@ -25,10 +25,15 @@ To build the `HTML`_ documentation, go into the :stable_gym:`docs/ <tree/main/do
 ``make html`` command. This command will generate the html documentation inside the ``docs/build/html`` directory. If the
 documentation is successfully built, you can also use the ``make linkcheck`` command to check for broken links.
 
-.. note::
+.. attention::
 
     Make sure you are in the Conda environment in which you installed the :stable_gym:`stable_gym <>` package
     with it's dependencies.
+
+.. note::
+
+    Sometimes the ``make linkcheck`` command doesn't show the results on the stdout. You can also find the results
+    in the ``docs/build/linkcheck`` folder. 
 
 .. _HTML: https://www.w3schools.com/html/
 
