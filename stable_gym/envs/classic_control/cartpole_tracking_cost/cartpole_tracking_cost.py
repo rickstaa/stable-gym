@@ -8,31 +8,17 @@ import numpy as np
 from gymnasium import logger, spaces
 from gymnasium.error import DependencyNotInstalled
 
-if __name__ == "__main__":
-    from stable_gym.envs.classic_control.cartpole_cost.cartpole_cost_disturber import (
-        CartPoleDisturber,
-    )
-else:
-    from .cartpole_cost_disturber import CartPoleDisturber
-
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 # TODO: Update solving criteria after training.
-class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
+class CartPoleTrackingCost(gym.Env):
     """Custom cartPole gymnasium environment.
 
     .. note::
         Can also be used in a vectorized manner. See the
         :gymnasium:`gym.vector <api/vector>` documentation.
-
-    .. note::
-        This gymnasium environment inherits from the
-        :class:`~stable_gym.common.disturber.Disturber`
-        in order to be able to use it with the Robustness Evaluation tool of the
-        Stable Learning Control package (SLC). For more information see
-        `the SLC documentation <https://rickstaa.dev/stable-learning-control/utils/tester.html#robustness-eval-utility>`_.
 
     Source:
         This environment corresponds to the version that is included in the Farama
@@ -152,7 +138,6 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
         "render_modes": ["human", "rgb_array"],
         "render_fps": 50,
     }  # Not used during training but in other gymnasium utilities.
-    instances = 0  # Number of instances created.
 
     def __init__(
         self,
@@ -183,7 +168,7 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``.
         """
-        super().__init__()  # NOTE: Initialise disturber superclass.
+        super().__init__()
 
         # Validate input arguments.
         assert (reference_amplitude == 0 or reference_frequency == 0) or not (
@@ -282,11 +267,6 @@ class CartPoleTrackingCost(gym.Env, CartPoleDisturber):
         self.reference_target_pos = reference_target_position
         self.reference_amplitude = reference_amplitude
         self.reference_frequency = reference_frequency
-
-        # Print vectorization debug info.
-        self.__class__.instances += 1
-        self.instance_id = self.__class__.instances
-        logger.debug(f"CartPoleTrackingCost instance '{self.instance_id}' created.")
 
     def set_params(self, length, mass_of_cart, mass_of_pole, gravity):
         """Sets the most important system parameters.
