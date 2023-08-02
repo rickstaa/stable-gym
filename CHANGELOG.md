@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.19.1](https://github.com/rickstaa/stable-gym/compare/v0.19.0...v0.19.1) (2023-08-02)
+
+
+### Bug Fixes
+
+* **quadxwaypointscost:** fix quadxwaypointscost observation space shape bug ([#282](https://github.com/rickstaa/stable-gym/issues/282)) ([0bf6ebd](https://github.com/rickstaa/stable-gym/commit/0bf6ebdee79accb45a4bc38f5e0752b7a18d4824))
+
 ## [0.19.0](https://github.com/rickstaa/stable-gym/compare/v0.18.0...v0.19.0) (2023-08-02)
 
 
