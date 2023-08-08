@@ -325,17 +325,19 @@ def convert_gym_box_to_gymnasium_box(gym_box_space):
     )
 
 
-def change_precision(input_value, precision=8):
+def change_precision(input_value, precision=16):
     """Changes the precision of a value.
 
     Args:
         input_value (object): The input value.
         precision (int, optional): The precision (i.e. number of decimals) to use.
-            Defaults to ``8``.
+            Defaults to ``16``. If ``None``, the input value is returned as is.
 
     Returns:
         object: The input value with the new precision.
     """
+    if precision is None:
+        return input_value
     if isinstance(input_value, dict):
         for key, value in input_value.items():
             input_value[key] = change_precision(value, precision)
