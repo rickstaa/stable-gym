@@ -66,6 +66,5 @@ Robotics environment
     ./robotics/quadx_waypoints_cost.rst
 
 .. note::
-
     The ROS robotics environments of the Stable Gym package were moved into a separate package
     called :ros_gazebo_gym:`Ros Gazebo Gym <>`.

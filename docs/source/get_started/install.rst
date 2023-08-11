@@ -29,7 +29,6 @@ To use Python from the environment you just created, activate the environment wi
     conda activate stable_gym
 
 .. note::
-
     Alternatively, you can use Python's `venv <https://docs.python.org/3/library/venv.html>`_ package to create a virtual environment. 
 
 .. _`Anaconda3-2023.3.1`: https://repo.anaconda.com/archive/
