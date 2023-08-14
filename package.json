@@ -6,10 +6,11 @@
     "reinforcement-learning",
     "simulation",
     "stability",
+    "gymnasium",
+    "gymnasium-environments",
     "openai-gym",
     "gym-environments",
-    "gymnasium",
-    "gymnasium-environments"
+    "gym"
   ],
   "homepage": "https://github.com/rickstaa/stable-gym#stable-gym",
   "bugs": {
