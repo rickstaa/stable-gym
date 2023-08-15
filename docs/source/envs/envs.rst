@@ -4,7 +4,7 @@
 Environments
 ============
 
-The :stable_gym:`Stable Gym package <>` provides a variety of environments for training and testing
+The :stable-gym:`Stable Gym package <>` provides a variety of environments for training and testing
 :stable_learning_control:`(stable) reinforcement learning (RL) algorithms <>`.
 
 Biological environments
@@ -67,4 +67,4 @@ Robotics environment
 
 .. note::
     The ROS robotics environments of the Stable Gym package were moved into a separate package
-    called :ros_gazebo_gym:`Ros Gazebo Gym <>`.
+    called :ros-gazebo-gym:`Ros Gazebo Gym <>`.

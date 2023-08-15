@@ -92,7 +92,7 @@ html_context = {
 # -- External links dictionary -----------------------------------------------
 # Here you will find some often used global url definitions.
 extlinks = {
-    "stable_gym": ("https://github.com/rickstaa/stable-gym/%s", None),
+    "stable-gym": ("https://github.com/rickstaa/stable-gym/%s", None),
     "gymnasium": ("https://gymnasium.farama.org/%s", None),
     "gymnasium-robotics": ("https://robotics.farama.org/%s", None),
     "PyFlyt": ("https://jjshoots.github.io/PyFlyt/documentation%s", None),
@@ -100,7 +100,7 @@ extlinks = {
         "https://github.com/rickstaa/stable-learning-control/%s",
         None,
     ),
-    "ros_gazebo_gym": ("https://github.com/rickstaa/ros-gazebo-gym/%s", None),
+    "ros-gazebo-gym": ("https://github.com/rickstaa/ros-gazebo-gym/%s", None),
     "pybullet": ("https://pybullet.org/%s", None),
 }
 
