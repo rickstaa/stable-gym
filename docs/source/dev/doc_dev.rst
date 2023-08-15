@@ -7,7 +7,7 @@ Build the documentation
 Install requirements
 --------------------
 
-Building the :stable_gym:`Stable Gym <>` documentation requires `sphinx`_,
+Building the :stable-gym:`Stable Gym <>` documentation requires `sphinx`_,
 the ``stable_gym`` python package and several plugins. All of the above can be
 installed using the following `pip`_ command inside the ``./stable_gym`` folder:
 
@@ -21,12 +21,12 @@ installed using the following `pip`_ command inside the ``./stable_gym`` folder:
 Build the documentation
 -----------------------
 
-To build the `HTML`_ documentation, go into the :stable_gym:`docs/ <tree/main/docs>` directory and run the
+To build the `HTML`_ documentation, go into the :stable-gym:`docs/ <tree/main/docs>` directory and run the
 ``make html`` command. This command will generate the html documentation inside the ``docs/build/html`` directory. If the
 documentation is successfully built, you can also use the ``make linkcheck`` command to check for broken links.
 
 .. attention::
-    Make sure you are in the Conda environment in which you installed the :stable_gym:`stable_gym <>` package
+    Make sure you are in the Conda environment in which you installed the :stable-gym:`stable_gym <>` package
     with it's dependencies.
 
 .. note::

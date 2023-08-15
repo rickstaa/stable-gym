@@ -108,14 +108,14 @@ class Ex3EKF(gym.Env):
         self.sigma = 0
 
         # Displacement limit set to be [-high, high]
-        high = np.array([10000, 10000, 10000, 10000], dtype=np.float32)
+        high = np.array([10000, 10000, 10000, 10000], dtype=np.float64)
 
         self.action_space = spaces.Box(
-            low=np.array([-10.0, -10.0], dtype=np.float32),
-            high=np.array([10.0, 10.0], dtype=np.float32),
-            dtype=np.float32,
+            low=np.array([-10.0, -10.0], dtype=np.float64),
+            high=np.array([10.0, 10.0], dtype=np.float64),
+            dtype=np.float64,
         )
-        self.observation_space = spaces.Box(-high, high, dtype=np.float32)
+        self.observation_space = spaces.Box(-high, high, dtype=np.float64)
         self.reward_range = (0.0, 100.0)
 
         self._clipped_action = clipped_action
