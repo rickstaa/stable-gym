@@ -9,11 +9,12 @@ import gymnasium as gym
 
 import stable_gym  # noqa: F401
 
-ENV_NAME = "Oscillator-v1"
+# ENV_NAME = "Oscillator-v1"
 # ENV_NAME = "CartPoleCost-v1"
 # ENV_NAME = "SwimmerCost-v1"
 # ENV_NAME = "FetchReachCost-v1"
 # ENV_NAME = "MinitaurBulletCost-v1"
+ENV_NAME = "QuadXHoverCost-v1"
 
 if __name__ == "__main__":
     envs = gym.vector.make(ENV_NAME, render_mode="human", num_envs=3)

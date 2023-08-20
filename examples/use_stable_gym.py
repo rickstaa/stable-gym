@@ -3,22 +3,15 @@ import gymnasium as gym
 
 import stable_gym  # noqa: F401
 
-ENV_NAME = "Oscillator-v1"
+# ENV_NAME = "Oscillator-v1"
 # ENV_NAME = "CartPoleCost-v1"
 # ENV_NAME = "SwimmerCost-v1"
-# ENV_NAME = "FetchReachCost-v1"
+ENV_NAME = "FetchReachCost-v1"
 # ENV_NAME = "MinitaurBulletCost-v1"
-ENV_NAME = "QuadXWaypointsCost-v1"
-
+# ENV_NAME = "QuadXHoverCost-v1"
 
 if __name__ == "__main__":
-    env = gym.make(
-        ENV_NAME,
-        render_mode="human",
-        only_observe_immediate_waypoint=False,
-        exclude_waypoint_target_deltas_from_observation=False,
-        only_observe_immediate_waypoint_target_delta=False,
-    )
+    env = gym.make(ENV_NAME, render_mode="human")
 
     # Define a policy function.
     # NOTE: Can be any function that takes an observation and returns an action.
