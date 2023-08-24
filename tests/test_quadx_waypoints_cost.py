@@ -47,7 +47,6 @@ class TestQuadXWaypointsCostEqual:
             [observation["attitude"], observation["target_deltas"].flatten()]
         )  # Flatten and concatenate observation dictionary.
         observation_cost, _ = env_cost.reset(seed=42)
-        print(observation, observation_cost)
         assert np.allclose(
             observation, observation_cost
         ), f"{observation} != {observation_cost}"
@@ -76,7 +75,7 @@ class TestQuadXWaypointsCostEqual:
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost_full.action_space.seed(42)
-        for i in range(5):
+        for _ in range(5):
             action = env_cost_full.action_space.sample()
             observation, reward, terminated, truncated, info = env_cost_full.step(
                 action
