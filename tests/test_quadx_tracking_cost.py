@@ -63,7 +63,7 @@ class TestQuadXTrackingCostEqual:
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost_full.action_space.seed(42)
-        for i in range(5):
+        for _ in range(5):
             action = env_cost_full.action_space.sample()
             observation, reward, terminated, truncated, info = env_cost_full.step(
                 action
