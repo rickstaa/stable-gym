@@ -30,7 +30,6 @@ class TestQuadXHoverCostEqual:
         # Perform reset and check if observations are equal.
         observation, _ = env_original.reset(seed=42)
         observation_cost, _ = env_cost.reset(seed=42)
-        print(observation, observation_cost)
         assert np.allclose(
             observation, observation_cost
         ), f"{observation} != {observation_cost}"
@@ -56,7 +55,7 @@ class TestQuadXHoverCostEqual:
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost.action_space.seed(42)
-        for i in range(5):
+        for _ in range(5):
             action = env_cost.action_space.sample()
             observation, reward, terminated, truncated, info = env_cost.step(action)
             assert (

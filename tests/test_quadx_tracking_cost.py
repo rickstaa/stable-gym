@@ -60,14 +60,6 @@ class TestQuadXTrackingCostEqual:
     def test_snapshot(self, snapshot, env_cost_full):
         """Test if the 'QuadXTrackingCost' environment is still equal to snapshot."""
         observation, info = env_cost_full.reset(seed=42)
-        sin_result = np.sin(
-            (
-                (2 * np.pi)
-                * env_cost_full.unwrapped._reference_frequency[1]
-                * env_cost_full.unwrapped.t
-            )
-            + env_cost_full.unwrapped._reference_phase_shift[1]
-        )
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost_full.action_space.seed(42)
@@ -76,22 +68,6 @@ class TestQuadXTrackingCostEqual:
             observation, reward, terminated, truncated, info = env_cost_full.step(
                 action
             )
-            sin_result = np.sin(
-                (
-                    (2 * np.pi)
-                    * env_cost_full.unwrapped._reference_frequency[1]
-                    * env_cost_full.unwrapped.t
-                )
-                + env_cost_full.unwrapped._reference_phase_shift[1]
-            )
-            print(f"two_pi{i}=", 2 * np.pi)
-            print(f"sin_result{i}=", sin_result)
-            print(f"obs{i}=", repr(observation))
-            print(f"reward{i}=", reward)
-            print(f"terminated{i}=", terminated)
-            print(f"truncated{i}=", truncated)
-            print(f"info{i}=", info)
-
             assert (
                 change_precision(observation, precision=PRECISION) == snapshot
             ).all()
