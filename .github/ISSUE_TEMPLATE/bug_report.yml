@@ -36,7 +36,6 @@ body:
       description: "Please complete the following information."
       value: |
         - OS: [e.g. Windows, Mac, Linux, iOS, android]
-        - Browser [e.g. chrome, safari, brave, firefox]
         - Version [e.g. 22]
   - type: textarea
     attributes:
