@@ -27,7 +27,7 @@ These observations **optional** and can be excluded from the observation space b
 The cost function of this environment is designed in such a way that it tries to minimize the error between the Swimmer's forward velocity and a reference value. The cost function is defined as:
 
 $$
-cost = w_{forward\_velocity} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl} + p_{health}
+cost = w_{forward\_velocity} \times (x_{velocity} - x_{reference\_x\_velocity})^2 + w_{ctrl} \times c_{ctrl}
 $$
 
 Where:
@@ -37,7 +37,6 @@ Where:
 *   $x_{reference\_x\_velocity}$ is the reference forward velocity.
 *   $w_{ctrl}$ is the weight of the control cost (**optional**).
 *   $c_{ctrl}$ is the control cost (**optional**).
-*   $p_{health}$ is a penalty for being unhealthy (i.e. if the swimmer).
 
 The control cost is optional and can be disabled using the `include_ctrl_cost` environment arguments.
 
