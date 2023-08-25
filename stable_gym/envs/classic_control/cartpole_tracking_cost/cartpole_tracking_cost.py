@@ -109,7 +109,7 @@ class CartPoleTrackingCost(gym.Env):
 
             import stable_gym
             import gymnasium as gym
-            env = gym.make("CartPoleTrackingCost-v1")
+            env = gym.make("stable_gym:CartPoleTrackingCost-v1")
 
         On reset, the ``options`` parameter allows the user to change the bounds used to
         determine the new random state when ``random=True``.
@@ -556,7 +556,7 @@ class CartPoleTrackingCost(gym.Env):
             logger.warn(
                 "You are calling render method without specifying any render mode. "
                 "You can specify the render_mode at initialization, "
-                f'e.g. gym.make("{self.spec.id}", render_mode="rgb_array")'
+                f'e.g. gym.make(stable_gym:"{self.spec.id}", render_mode="rgb_array")'
             )
             return
 
@@ -704,7 +704,7 @@ class CartPoleTrackingCost(gym.Env):
 
 if __name__ == "__main__":
     print("Setting up 'CartPoleTrackingCost' environment.")
-    env = gym.make("CartPoleTrackingCost", render_mode="human")
+    env = gym.make("stable_gym:CartPoleTrackingCost", render_mode="human")
 
     # Run episodes.
     episode = 0
@@ -761,3 +761,4 @@ if __name__ == "__main__":
         plt.show()
 
     print("\nDone")
+    env.close()

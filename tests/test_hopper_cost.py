@@ -6,6 +6,7 @@ import numpy as np
 from gymnasium.logger import ERROR
 
 import pytest
+import stable_gym  # NOTE: Ensures that the latest version of the environment is used. # noqa: F401, E501
 from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)
@@ -17,24 +18,30 @@ class TestHopperCostEqual:
     @pytest.fixture
     def env_original(self):
         """Create original Hopper environment."""
-        return gym.make("Hopper")
+        env = gym.make("Hopper")
+        yield env
+        env.close()
 
     @pytest.fixture
     def env_cost(self):
         """Create HopperCost environment."""
-        return gym.make(
+        env = gym.make(
             "HopperCost",
             exclude_reference_from_observation=True,
             exclude_x_velocity_from_observation=True,
         )
+        yield env
+        env.close()
 
     @pytest.fixture
     def env_cost_full(self):
         """Create HopperCost environment with all observations."""
-        return gym.make(
+        env = gym.make(
             "HopperCost",
             exclude_reference_error_from_observation=False,
         )
+        yield env
+        env.close()
 
     def test_equal_reset(self, env_original, env_cost):
         """Test if reset behaves the same."""

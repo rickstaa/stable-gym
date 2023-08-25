@@ -92,7 +92,7 @@ class Oscillator(gym.Env):
 
             import stable_gym
             import gymnasium as gym
-            env = gym.make("CartPoleCost-v1")
+            env = gym.make("stable_gym:Oscillator-v1")
 
         On reset, the ``options`` parameter allows the user to change the bounds used to
         determine the new random state when ``random=True``.
@@ -495,7 +495,7 @@ class Oscillator(gym.Env):
 
 if __name__ == "__main__":
     print("Setting up 'Oscillator' environment.")
-    env = gym.make("Oscillator")
+    env = gym.make("stable_gym:Oscillator")
 
     # Run episodes.
     episode = 0
@@ -552,3 +552,4 @@ if __name__ == "__main__":
         plt.show()
 
     print("\nDone")
+    env.close()

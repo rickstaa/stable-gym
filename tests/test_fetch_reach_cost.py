@@ -6,6 +6,7 @@ import numpy as np
 from gymnasium.logger import ERROR
 
 import pytest
+import stable_gym  # NOTE: Ensures that the latest version of the environment is used. # noqa: F401, E501
 from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)
@@ -17,14 +18,18 @@ class TestFetchReachCostEqual:
     @pytest.fixture
     def env_original(self):
         """Create original FetchReach environment."""
-        return gym.make("FetchReach")
+        env = gym.make("FetchReach")
+        yield env
+        env.close()
 
     @pytest.fixture
     def env_cost(self):
         """Create FetchReachCost environment."""
-        return gym.make(
+        env = gym.make(
             "FetchReachCost",
         )
+        yield env
+        env.close()
 
     def test_equal_reset(self, env_original, env_cost):
         """Test if reset behaves the same."""

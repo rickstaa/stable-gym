@@ -5,8 +5,6 @@ import numpy as np
 from gymnasium import utils
 from gymnasium.envs.mujoco.half_cheetah_v4 import HalfCheetahEnv
 
-import stable_gym  # NOTE: Ensure env is found in __main__. # noqa: F401
-
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
@@ -59,7 +57,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
 
             import stable_gym
             import gymnasium as gym
-            env = gym.make("HalfCheetahCost-v1")
+            env = gym.make("stable_gym:HalfCheetahCost-v1")
 
     Attributes:
         state (numpy.ndarray): The current system state.
@@ -324,7 +322,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
 
 if __name__ == "__main__":
     print("Setting up 'HalfCheetahCost' environment.")
-    env = gym.make("HalfCheetahCost", render_mode="human")
+    env = gym.make("stable_gym:HalfCheetahCost", render_mode="human")
 
     # Run episodes.
     episode = 0
@@ -367,3 +365,4 @@ if __name__ == "__main__":
         plt.show()
 
     print("\nDone")
+    env.close()

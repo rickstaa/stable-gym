@@ -3,8 +3,10 @@ environment when the same environment parameters are used.
 """
 import gymnasium as gym
 import numpy as np
-import pytest
 from gymnasium.logger import ERROR
+
+import pytest
+import stable_gym  # NOTE: Ensures that the latest version of the environment is used. # noqa: F401, E501
 from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)
@@ -16,14 +18,18 @@ class TestQuadXHoverCostEqual:
     @pytest.fixture
     def env_original(self):
         """Create original QuadX-Hover environment."""
-        return gym.make("PyFlyt.gym_envs:PyFlyt/QuadX-Hover")
+        env = gym.make("PyFlyt.gym_envs:PyFlyt/QuadX-Hover")
+        yield env
+        env.close()
 
     @pytest.fixture
     def env_cost(self):
         """Create QuadXHoverCost environment."""
-        return gym.make(
+        env = gym.make(
             "QuadXHoverCost",
         )
+        yield env
+        env.close()
 
     def test_equal_reset(self, env_original, env_cost):
         """Test if reset behaves the same."""

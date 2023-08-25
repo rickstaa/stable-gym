@@ -303,7 +303,7 @@ class Ex3EKF(gym.Env):
 
 if __name__ == "__main__":
     print("Setting up 'Ex3EKF' environment.")
-    env = gym.make("Ex3EKF")
+    env = gym.make("stable_gym:Ex3EKF")
 
     # Run episodes.
     episode = 0
@@ -360,3 +360,4 @@ if __name__ == "__main__":
         plt.show()
 
     print("\nDone")
+    env.close()

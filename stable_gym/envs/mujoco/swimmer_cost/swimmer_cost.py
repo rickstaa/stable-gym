@@ -5,8 +5,6 @@ import numpy as np
 from gymnasium import utils
 from gymnasium.envs.mujoco.swimmer_v4 import SwimmerEnv
 
-import stable_gym  # NOTE: Ensure env is found in __main__. # noqa: F401
-
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
@@ -58,7 +56,7 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
 
             import stable_gym
             import gymnasium as gym
-            env = gym.make("SwimmerCost-v1")
+            env = gym.make("stable_gym:SwimmerCost-v1")
 
     Attributes:
         state (numpy.ndarray): The current system state.
@@ -322,7 +320,7 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
 
 if __name__ == "__main__":
     print("Setting up 'SwimmerCost' environment.")
-    env = gym.make("SwimmerCost", render_mode="human")
+    env = gym.make("stable_gym:SwimmerCost", render_mode="human")
 
     # Run episodes.
     episode = 0
@@ -365,3 +363,4 @@ if __name__ == "__main__":
         plt.show()
 
     print("\nDone")
+    env.close()
