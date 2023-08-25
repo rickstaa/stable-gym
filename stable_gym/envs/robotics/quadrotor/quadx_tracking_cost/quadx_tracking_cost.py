@@ -8,8 +8,6 @@ import PyFlyt
 from gymnasium import utils
 from PyFlyt.gym_envs.quadx_envs.quadx_hover_env import QuadXHoverEnv
 
-from stable_gym import ENVS  # noqa: F401
-
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
 RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
@@ -68,7 +66,7 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
 
             import stable_gym
             import gymnasium as gym
-            env = gym.make("QuadXTrackingCost-v1")
+            env = gym.make("stable_gym:QuadXTrackingCost-v1")
 
     Attributes:
         state (numpy.ndarray): The current system state.
@@ -511,7 +509,7 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
 
 if __name__ == "__main__":
     print("Setting up 'QuadXTrackingCost' environment.")
-    env = gym.make("QuadXTrackingCost", render_mode="human")
+    env = gym.make("stable_gym:QuadXTrackingCost", render_mode="human")
 
     # Run episodes.
     episode = 0
@@ -554,3 +552,4 @@ if __name__ == "__main__":
         plt.show()
 
     print("\nDone")
+    env.close()

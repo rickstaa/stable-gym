@@ -5,7 +5,7 @@ import gymnasium as gym
 from gymnasium.logger import ERROR
 
 import pytest
-import stable_gym  # noqa: F401
+import stable_gym  # NOTE: Ensures that the latest version of the environment is used. # noqa: F401, E501
 
 gym.logger.set_level(ERROR)
 
@@ -14,9 +14,11 @@ class TestOscillatorComplicated:
     @pytest.fixture
     def env(self):
         """Create OscillatorComplicated environment."""
-        return gym.make(
+        env = gym.make(
             "OscillatorComplicated", exclude_reference_error_from_observation=False
         )
+        yield env
+        env.close()
 
     def test_reset(self, snapshot, env):
         """Test if reset is still equal to the last snapshot."""

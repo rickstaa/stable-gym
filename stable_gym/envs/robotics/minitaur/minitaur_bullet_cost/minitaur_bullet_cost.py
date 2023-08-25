@@ -83,7 +83,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
 
             import stable_gym
             import gymnasium as gym
-            env = gym.make("MinitaurBulletCost-v1")
+            env = gym.make("stable_gym:MinitaurBulletCost-v1")
 
     Attributes:
         state (numpy.ndarray): The current system state.
@@ -507,7 +507,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
 
 if __name__ == "__main__":
     print("Setting up 'MinitaurBulletCost' environment.")
-    env = gym.make("MinitaurBulletCost", render=True)
+    env = gym.make("stable_gym:MinitaurBulletCost", render=True)
 
     # Run episodes.
     episode = 0
@@ -550,3 +550,4 @@ if __name__ == "__main__":
         plt.show()
 
     print("\nDone")
+    env.close()

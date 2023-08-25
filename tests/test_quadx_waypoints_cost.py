@@ -5,6 +5,7 @@ import gymnasium as gym
 import numpy as np
 import pytest
 from gymnasium.logger import ERROR
+import stable_gym  # NOTE: Ensures that the latest version of the environment is used. # noqa: F401, E501
 from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)
@@ -16,28 +17,34 @@ class TestQuadXWaypointsCostEqual:
     @pytest.fixture
     def env_original(self):
         """Create original QuadX-Hover environment."""
-        return gym.make("PyFlyt.gym_envs:PyFlyt/QuadX-Waypoints")
+        env = gym.make("PyFlyt.gym_envs:PyFlyt/QuadX-Waypoints")
+        yield env
+        env.close()
 
     @pytest.fixture
     def env_cost(self):
         """Create QuadXWaypointsCost environment."""
-        return gym.make(
+        env = gym.make(
             "QuadXWaypointsCost",
             exclude_waypoint_targets_from_observation=True,
             exclude_waypoint_target_deltas_from_observation=False,
             only_observe_immediate_waypoint_target_delta=False,
         )
+        yield env
+        env.close()
 
     @pytest.fixture
     def env_cost_full(self):
         """Create QuadXTrackingCost environment with all observations."""
-        return gym.make(
+        env = gym.make(
             "QuadXWaypointsCost",
             exclude_waypoint_targets_from_observation=False,
             only_observe_immediate_waypoint=False,
             exclude_waypoint_target_deltas_from_observation=False,
             only_observe_immediate_waypoint_target_delta=False,
         )
+        yield env
+        env.close()
 
     def test_equal_reset(self, env_original, env_cost):
         """Test if reset behaves the same."""

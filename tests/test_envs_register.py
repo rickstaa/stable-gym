@@ -1,9 +1,9 @@
 """This script is used to test whether the gymnasium environments were successfully
 registered.
 """
-import pytest
 from gymnasium import envs
 
+import pytest
 from stable_gym import ENVS
 
 

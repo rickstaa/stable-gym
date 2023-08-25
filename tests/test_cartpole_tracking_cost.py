@@ -9,7 +9,7 @@ import numpy as np
 from gymnasium.logger import ERROR
 
 import pytest
-import stable_gym  # noqa: F401
+import stable_gym  # NOTE: Ensures that the latest version of the environment is used. # noqa: F401, E501
 
 gym.logger.set_level(ERROR)
 
@@ -18,7 +18,9 @@ class TestCartPoleCostEqual:
     @pytest.fixture
     def env_original(self):
         """Create original CartPole environment."""
-        return gym.make("CartPole")
+        env = gym.make("CartPole")
+        yield env
+        env.close()
 
     @pytest.fixture
     def env_cost_aligned(self):
@@ -39,15 +41,18 @@ class TestCartPoleCostEqual:
             "low": [-0.05, -0.05, -0.05, -0.05],
             "high": [0.05, 0.05, 0.05, 0.05],
         }
-        return env_cost
+        yield env_cost
+        env_cost.close()
 
     @pytest.fixture
     def env_cost(self):
         """Create CartPoleCost environment."""
-        return gym.make(
+        env = gym.make(
             "CartPoleTrackingCost",
             exclude_reference_error_from_observation=False,
         )
+        yield env
+        env.close()
 
     def test_equal_reset(self, env_original, env_cost_aligned):
         """Test if reset behaves the same."""

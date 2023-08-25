@@ -1,14 +1,12 @@
 """A simple example on how to use the Stable Gym gymnasium environments."""
 import gymnasium as gym
 
-import stable_gym  # noqa: F401
-
-# ENV_NAME = "Oscillator-v1"
-# ENV_NAME = "CartPoleCost-v1"
-# ENV_NAME = "SwimmerCost-v1"
-ENV_NAME = "FetchReachCost-v1"
-# ENV_NAME = "MinitaurBulletCost-v1"
-# ENV_NAME = "QuadXHoverCost-v1"
+# ENV_NAME = "stable_gym:Oscillator-v1"
+# ENV_NAME = "stable_gym:CartPoleCost-v1"
+# ENV_NAME = "stable_gym:SwimmerCost-v1"
+# ENV_NAME = "stable_gym:FetchReachCost-v1"
+# ENV_NAME = "stable_gym:MinitaurBulletCost-v1"
+ENV_NAME = "stable_gym:QuadXHoverCost-v1"
 
 if __name__ == "__main__":
     env = gym.make(ENV_NAME, render_mode="human")
