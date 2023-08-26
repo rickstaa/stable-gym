@@ -20,3 +20,6 @@ Please see the accompanying [documentation](https://rickstaa.dev/stable-gym) for
 ## Contributing
 
 We use  [husky](https://github.com/typicode/husky) pre-commit hooks and github actions to enforce high code quality. Before contributing to this repository, please check the [contribution guidelines](CONTRIBUTING.md).
+
+> \[!NOTE]\
+> We used [husky](https://github.com/typicode/husky) instead of [pre-commit](https://pre-commit.com/), which is more commonly used with Python projects. This was done because only some tools we wanted to use were possible to integrate the Please feel free to open a [PR](https://github.com/rickstaa/stable-gym/pulls) if you want to switch to pre-commit if this is no longer the case.
