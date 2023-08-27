@@ -2,7 +2,7 @@
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gymnasium import utils
+from gymnasium import logger, utils
 from gymnasium_robotics.envs.fetch.reach import MujocoFetchReachEnv
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
@@ -65,11 +65,17 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
 
     def __init__(
         self,
+        action_space_dtype=np.float32,
+        observation_space_dtype=np.float64,
         **kwargs,
     ):
         """Initialise a new FetchReachCost environment instance.
 
         Args:
+            action_space_dtype (union[numpy.dtype, str], optional): The data type of the
+                action space. Defaults to ``np.float32``.
+            observation_space_dtype (union[numpy.dtype, str], optional): The data type
+                of the observation space. Defaults to ``np.float64``.
             **kwargs: Keyword arguments passed to the original
                 :class:`~gymnasium_robotics.envs.fetch.reach.MujocoFetchReachEnv` class.
         """  # noqa: E501s
@@ -78,6 +84,9 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
             "only 'dense' rewards are supported."
         )
         self.state = None
+        self._action_space_dtype = action_space_dtype
+        self._observation_space_dtype = observation_space_dtype
+        self._action_dtype_conversion_warning = False
 
         # Initialise the FetchReachEnv class.
         super().__init__(
@@ -85,11 +94,28 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
             **kwargs,
         )
 
+        # Change action and observation space data types.
+        # obs = self._get_obs()
+        self.action_space = gym.spaces.Box(
+            low=self.action_space.low.astype(action_space_dtype),
+            high=self.action_space.high.astype(action_space_dtype),
+            dtype=self._action_space_dtype,
+            seed=self.action_space.np_random,
+        )
+        self.observation_space["observation"] = gym.spaces.Box(
+            low=self.observation_space["observation"].low,
+            high=self.observation_space["observation"].high,
+            dtype=self._observation_space_dtype,
+            seed=self.observation_space["observation"].np_random,
+        )
+
         # Reinitialize the EzPickle class.
         # NOTE: Done to ensure the args of the FetchReachCost class are also pickled.
         # NOTE: Ensure that all args are passed to the EzPickle class!
         utils.EzPickle.__init__(
             self,
+            action_space_dtype=action_space_dtype,
+            observation_space_dtype=observation_space_dtype,
             **kwargs,
         )
 
@@ -126,11 +152,25 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
                     the agent goes out of bounds.
                 -   info (:obj:`dict`): Additional information about the environment.
         """
+        # Convert action to correct data type if needed.
+        if action.dtype != self._action_space_dtype:
+            if not self._action_dtype_conversion_warning:
+                logger.warn(
+                    "The data type of the action that is supplied to the "
+                    f"'ros_gazebo_gym:{self.spec.id}' environment ({action.dtype}) "
+                    "does not match the data type of the action space "
+                    f"({self._action_space_dtype.__name__}). The action data type will "
+                    "be converted to the action space data type."
+                )
+                self._action_dtype_conversion_warning = True
+            action = action.astype(self._action_space_dtype)
+
         obs, reward, terminated, truncated, info = super().step(action)
 
         self.state = obs
 
-        # Update info dictionary.
+        # Update info dictionary and change observation dtype.
+        obs["observation"] = obs["observation"].astype(self._observation_space_dtype)
         info.update(
             {
                 "reference": obs["desired_goal"],
@@ -161,7 +201,8 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
 
         self.state = obs["observation"]
 
-        # Update info dictionary.
+        # Update info dictionary and change observation dtype.
+        obs["observation"] = obs["observation"].astype(self._observation_space_dtype)
         info.update(
             {
                 "reference": obs["desired_goal"],

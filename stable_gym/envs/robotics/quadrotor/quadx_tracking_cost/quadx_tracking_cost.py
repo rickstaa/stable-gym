@@ -5,7 +5,7 @@ import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
 import PyFlyt
-from gymnasium import utils
+from gymnasium import logger, utils
 from PyFlyt.gym_envs.quadx_envs.quadx_hover_env import QuadXHoverEnv
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
@@ -90,6 +90,8 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
         health_penalty_size=None,
         exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,
+        action_space_dtype=np.float64,
+        observation_space_dtype=np.float64,
         **kwargs,
     ):
         """Initialise a new QuadXTrackingCost environment instance.
@@ -122,6 +124,10 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
                 should be excluded from the observation. Defaults to ``False``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``.
+            action_space_dtype (union[numpy.dtype, str], optional): The data type of the
+                action space. Defaults to ``np.float64``.
+            observation_space_dtype (union[numpy.dtype, str], optional): The data type
+                of the observation space. Defaults to ``np.float64``.
             **kwargs: Additional keyword arguments passed to the
                 :class:`~PyFlyt.gym_envs.quadx_envs.quadx_hover_env.QuadXHoverEnv`
         """
@@ -212,6 +218,9 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
         self._exclude_reference_error_from_observation = (
             exclude_reference_error_from_observation
         )
+        self._action_space_dtype = action_space_dtype
+        self._observation_space_dtype = observation_space_dtype
+        self._action_dtype_conversion_warning = False
 
         # Get reference target urdf file from PyFlyt.
         PyFlyt_dir = PyFlyt.__path__[0]
@@ -228,6 +237,15 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
             render_resolution=render_resolution,
             **kwargs,
         )
+
+        # Change action space dtype if necessary.
+        if self._action_space_dtype != self.action_space.dtype:
+            self.action_space = gym.spaces.Box(
+                self.action_space.low,
+                self.action_space.high,
+                dtype=self._action_space_dtype,
+                seed=self.action_space.np_random,
+            )
 
         # Extend observation space if necessary.
         low = self.observation_space.low
@@ -251,7 +269,7 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
         self.observation_space = gym.spaces.Box(
             low,
             high,
-            dtype=self.observation_space.dtype,
+            dtype=self._observation_space_dtype,
             seed=self.observation_space.np_random,
         )
 
@@ -272,6 +290,8 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
             health_penalty_size,
             exclude_reference_from_observation,
             exclude_reference_error_from_observation,
+            action_space_dtype=action_space_dtype,
+            observation_space_dtype=observation_space_dtype,
             **kwargs,
         )
 
@@ -343,6 +363,19 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
                     or the agent goes out of bounds.
                 -   info (:obj:`dict`): Additional information about the environment.
         """
+        # Convert action to correct data type if needed.
+        if action.dtype != self._action_space_dtype:
+            if not self._action_dtype_conversion_warning:
+                logger.warn(
+                    "The data type of the action that is supplied to the "
+                    f"'ros_gazebo_gym:{self.spec.id}' environment ({action.dtype}) "
+                    "does not match the data type of the action space "
+                    f"({self._action_space_dtype.__name__}). The action data type will "
+                    "be converted to the action space data type."
+                )
+                self._action_dtype_conversion_warning = True
+            action = action.astype(self._action_space_dtype)
+
         obs, _, terminated, truncated, info = super().step(action)
 
         # Calculate the cost.
@@ -369,13 +402,14 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
 
         self.state = obs
 
-        # Add reference, state_of_interest and reference_error to info.
+        # Update info dictionary and change observation dtype.
         info_dict = dict(
             reference=ref,
             state_of_interest=self.env.state(0)[-1],
             reference_error=self.env.state(0)[-1] - ref,
         )
         info.update(info_dict)
+        obs = obs.astype(self._observation_space_dtype)
 
         return obs, cost, terminated, truncated, info
 
@@ -421,13 +455,14 @@ class QuadXTrackingCost(QuadXHoverEnv, utils.EzPickle):
 
         self.state = obs
 
-        # Add reference, state_of_interest and reference_error to info.
+        # Update info dictionary and change observation dtype.
         info_dict = dict(
             reference=ref,
             state_of_interest=self.env.state(0)[-1],
             reference_error=self.env.state(0)[-1] - ref,
         )
         info.update(info_dict)
+        obs = obs.astype(self._observation_space_dtype)
 
         return obs, info
 

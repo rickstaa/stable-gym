@@ -2,7 +2,7 @@
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gymnasium import utils
+from gymnasium import logger, utils
 from pybullet_envs.bullet.minitaur_gym_env import MinitaurBulletEnv
 
 from stable_gym.common.utils import change_dict_key, convert_gym_box_to_gymnasium_box
@@ -127,6 +127,8 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,  # NOTE: False in Han et al. 2018. # noqa: E501
         exclude_x_velocity_from_observation=False,
+        action_space_dtype=np.float32,
+        observation_space_dtype=np.float64,
         **kwargs,
     ):
         """Initialise a new MinitaurBulletCost environment instance.
@@ -176,6 +178,10 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
                 should be excluded from the observation. Defaults to ``True``.
             exclude_x_velocity_from_observation (bool, optional): Whether to omit the
                 x- component of the velocity from observations. Defaults to ``False``.
+            action_space_dtype (union[numpy.dtype, str], optional): The data type of the
+                action space. Defaults to ``np.float32``.
+            observation_space_dtype (union[numpy.dtype, str], optional): The data type
+                of the observation space. Defaults to ``np.float64``.
             **kwargs: Extra keyword arguments to pass to the :class:`MinitaurBulletEnv`
                 class.
         """  # noqa: E501
@@ -205,6 +211,9 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
             exclude_reference_error_from_observation
         )
         self._exclude_x_velocity_from_observation = exclude_x_velocity_from_observation
+        self._action_space_dtype = action_space_dtype
+        self._observation_space_dtype = observation_space_dtype
+        self._action_dtype_conversion_warning = False
 
         # Validate input arguments.
         assert not randomise_reference_forward_velocity or not (
@@ -230,7 +239,9 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         self.observation_space = convert_gym_box_to_gymnasium_box(
             self.observation_space
         )
-        self.action_space = convert_gym_box_to_gymnasium_box(self.action_space)
+        self.action_space = convert_gym_box_to_gymnasium_box(
+            self.action_space, dtype=self._action_space_dtype
+        )
 
         # Extend observation space if necessary.
         low = self.observation_space.low
@@ -247,7 +258,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         self.observation_space = gym.spaces.Box(
             low,
             high,
-            dtype=self.observation_space.dtype,
+            dtype=self._observation_space_dtype,
             seed=self.observation_space.np_random,
         )
 
@@ -275,6 +286,8 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
             exclude_reference_from_observation,
             exclude_reference_error_from_observation,
             exclude_x_velocity_from_observation,
+            action_space_dtype=action_space_dtype,
+            observation_space_dtype=observation_space_dtype,
             **kwargs,
         )
 
@@ -335,6 +348,19 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
                     the agent goes out of bounds.
                 -   info (:obj:`dict`): Additional information about the environment.
         """
+        # Convert action to correct data type if needed.
+        if action.dtype != self._action_space_dtype:
+            if not self._action_dtype_conversion_warning:
+                logger.warn(
+                    "The data type of the action that is supplied to the "
+                    f"'ros_gazebo_gym:{self.spec.id}' environment ({action.dtype}) "
+                    "does not match the data type of the action space "
+                    f"({self._action_space_dtype.__name__}). The action data type will "
+                    "be converted to the action space data type."
+                )
+                self._action_dtype_conversion_warning = True
+            action = action.astype(self._action_space_dtype)
+
         obs, _, terminated, info = super().step(action)
 
         # Add reference, x velocity and reference error to observation.
@@ -357,7 +383,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         _, energy_reward, drift_reward, shake_reward = last_rewards
         drift_cost, shake_cost = -drift_reward, -shake_reward
 
-        # Compute the cost and update the info dict.
+        # Compute the cost and update the info dict and change observation dtype.
         cost, cost_info = self.cost(
             base_velocity, energy_reward, drift_cost, shake_cost
         )
@@ -369,6 +395,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
                 "reference_error": base_velocity - self.reference_forward_velocity,
             }
         )
+        obs = obs.astype(self._observation_space_dtype)
 
         # Add optional health penalty at the end of the episode if requested.
         if self._include_health_penalty:
@@ -404,6 +431,9 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
 
         self.state = obs
         self.t = 0.0
+
+        # Change observation dtype.
+        obs = obs.astype(self._observation_space_dtype)
 
         return obs
 

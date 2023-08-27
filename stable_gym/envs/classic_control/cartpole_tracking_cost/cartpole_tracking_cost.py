@@ -150,6 +150,8 @@ class CartPoleTrackingCost(gym.Env):
         clip_action=True,
         exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,
+        action_space_dtype=np.float64,
+        observation_space_dtype=np.float64,
     ):
         """Initialise a new CartPoleTrackingCost environment instance.
 
@@ -167,8 +169,19 @@ class CartPoleTrackingCost(gym.Env):
                 should be excluded from the observation. Defaults to ``False``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``.
+            action_space_dtype (union[numpy.dtype, str], optional): The data type of the
+                action space. Defaults to ``np.float64``.
+            observation_space_dtype (union[numpy.dtype, str], optional): The data type
+                of the observation space. Defaults to ``np.float64``.
         """
         super().__init__()
+        self.render_mode = render_mode
+        assert max_cost > 0, "The maximum cost must be greater than 0."
+        self.max_cost = max_cost
+        self._clip_action = clip_action
+        self._action_space_dtype = action_space_dtype
+        self._observation_space_dtype = observation_space_dtype
+        self._action_dtype_conversion_warning = False
 
         # Validate input arguments.
         assert (reference_amplitude == 0 or reference_frequency == 0) or not (
@@ -202,8 +215,6 @@ class CartPoleTrackingCost(gym.Env):
         self.x_threshold = 10  # NOTE: original uses 2.4.
         self.max_v = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
         self.max_w = 50  # NOTE: Original uses np.finfo(np.float32).max (i.e. inf).
-        assert max_cost > 0, "The maximum cost must be greater than 0."
-        self.max_cost = max_cost
 
         # Create observation space bounds.
         # Angle limit set to 2 * theta_threshold_radians so failing observation
@@ -226,16 +237,19 @@ class CartPoleTrackingCost(gym.Env):
             high = np.append(high, self.x_threshold * 2)
 
         self.action_space = spaces.Box(
-            low=-self.force_mag, high=self.force_mag, shape=(1,), dtype=np.float64
+            low=-self.force_mag,
+            high=self.force_mag,
+            shape=(1,),
+            dtype=self._action_space_dtype,
         )  # NOTE: Original uses discrete version.
-        self.observation_space = spaces.Box(-high, high, dtype=np.float64)
+        self.observation_space = spaces.Box(
+            -high, high, dtype=self._observation_space_dtype
+        )
 
         # Clip the reward.
         # NOTE: Original does not do this. Here this is done because we want to decrease
         # the cost.
         self.reward_range = (0.0, 100.0)
-
-        self.render_mode = render_mode
 
         self.screen_width = 600
         self.screen_height = 400
@@ -249,9 +263,8 @@ class CartPoleTrackingCost(gym.Env):
         # NOTE: custom parameters that are not found in the original environment.
         self.t = 0
         self._action_clip_warning = False
-        self._clip_action = clip_action
         self._init_state = np.array(
-            [0.1, 0.2, 0.3, 0.1]
+            [0.1, 0.2, 0.3, 0.1], dtype=self._observation_space_dtype
         )  # Used when random is disabled in reset.
         self._init_state_range = {
             "low": [-0.2, -0.2, -0.2, -0.2],
@@ -355,6 +368,19 @@ class CartPoleTrackingCost(gym.Env):
                     the agent goes out of bounds.
                 -   info (:obj:`dict`): Additional information about the environment.
         """
+        # Convert action to correct data type if needed.
+        if action.dtype != self._action_space_dtype:
+            if not self._action_dtype_conversion_warning:
+                logger.warn(
+                    "The data type of the action that is supplied to the "
+                    f"'ros_gazebo_gym:{self.spec.id}' environment ({action.dtype}) "
+                    "does not match the data type of the action space "
+                    f"({self._action_space_dtype.__name__}). The action data type will "
+                    "be converted to the action space data type."
+                )
+                self._action_dtype_conversion_warning = True
+            action = action.astype(self._action_space_dtype)
+
         # Clip action if needed.
         # NOTE: This is not done in the original environment.
         if self._clip_action:
@@ -441,12 +467,15 @@ class CartPoleTrackingCost(gym.Env):
             self.render()
 
         # Create observation and info dict.
+        x = x.astype(self._observation_space_dtype)
+        ref = ref.astype(self._observation_space_dtype)
         obs = np.append(
-            np.array(self.state),
+            np.array(self.state, dtype=self._observation_space_dtype),
             np.array(
                 [ref]
                 if self._exclude_reference_error_from_observation
-                else [ref, x - ref]
+                else [ref, x - ref],
+                dtype=self._observation_space_dtype,
             ),
         )
         info_dict = dict(
@@ -490,25 +519,33 @@ class CartPoleTrackingCost(gym.Env):
         low = np.array(
             options["low"]
             if options is not None and "low" in options
-            else self._init_state_range["low"]
+            else self._init_state_range["low"],
+            dtype=self._observation_space_dtype,
         )
         high = np.array(
             options["high"]
             if options is not None and "high" in options
-            else self._init_state_range["high"]
+            else self._init_state_range["high"],
+            dtype=self._observation_space_dtype,
         )
         assert (
             self.observation_space.contains(
                 np.append(
                     low,
-                    np.zeros(self.observation_space.shape[0] - low.shape[0]),
+                    np.zeros(
+                        self.observation_space.shape[0] - low.shape[0],
+                        dtype=self._observation_space_dtype,
+                    ),
                 )
             )
         ) and (
             self.observation_space.contains(
                 np.append(
                     high,
-                    np.zeros(self.observation_space.shape[0] - low.shape[0]),
+                    np.zeros(
+                        self.observation_space.shape[0] - low.shape[0],
+                        dtype=self._observation_space_dtype,
+                    ),
                 )
             )
         ), (
@@ -526,19 +563,21 @@ class CartPoleTrackingCost(gym.Env):
         self.t = 0.0
 
         # Retrieve observation and info_dict.
-        x, _, theta, _ = self.state
+        x, _, theta, _ = self.state.astype(self._observation_space_dtype)
         _, ref = self.cost(x, theta)
+        ref = ref.astype(self._observation_space_dtype)
         info_dict = dict(
             reference=ref,
             state_of_interest=x,
             reference_error=x - ref,
         )
         obs = np.append(
-            np.array(self.state),
+            np.array(self.state, dtype=self._observation_space_dtype),
             np.array(
                 [ref]
                 if self._exclude_reference_error_from_observation
-                else [ref, x - ref]
+                else [ref, x - ref],
+                dtype=self._observation_space_dtype,
             ),
         )
 
