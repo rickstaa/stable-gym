@@ -2,7 +2,7 @@
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gymnasium import utils
+from gymnasium import logger, utils
 from gymnasium.envs.mujoco.half_cheetah_v4 import HalfCheetahEnv
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
@@ -79,6 +79,8 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         exclude_reference_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
         exclude_reference_error_from_observation=True,
         exclude_x_velocity_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
+        action_space_dtype=np.float32,
+        observation_space_dtype=np.float64,
         **kwargs,
     ):
         """Initialise a new HalfCheetahCost environment instance.
@@ -109,6 +111,10 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
                 should be excluded from the observation. Defaults to ``True``.
             exclude_x_velocity_from_observation (bool, optional): Whether to omit the
                 x- component of the velocity from observations. Defaults to ``False``.
+            action_space_dtype (union[numpy.dtype, str], optional): The data type of the
+                action space. Defaults to ``np.float32``.
+            observation_space_dtype (union[numpy.dtype, str], optional): The data type
+                of the observation space. Defaults to ``np.float64``.
             **kwargs: Extra keyword arguments to pass to the
                 :class:`~gymnasium.envs.mujoco.half_cheetah_v4.HalfCheetahEnv` class.
         """
@@ -126,6 +132,9 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
             exclude_reference_error_from_observation
         )
         self._exclude_x_velocity_from_observation = exclude_x_velocity_from_observation
+        self._action_space_dtype = action_space_dtype
+        self._observation_space_dtype = observation_space_dtype
+        self._action_dtype_conversion_warning = False
 
         # Validate input arguments.
         assert not randomise_reference_forward_velocity or not (
@@ -146,6 +155,15 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
             **kwargs,
         )
 
+        # Change action space dtype if necessary.
+        if self._action_space_dtype != self.action_space.dtype:
+            self.action_space = gym.spaces.Box(
+                self.action_space.low,
+                self.action_space.high,
+                dtype=self._action_space_dtype,
+                seed=self.action_space.np_random,
+            )
+
         # Extend observation space if necessary.
         low = self.observation_space.low
         high = self.observation_space.high
@@ -161,7 +179,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         self.observation_space = gym.spaces.Box(
             low,
             high,
-            dtype=self.observation_space.dtype,
+            dtype=self._observation_space_dtype,
             seed=self.observation_space.np_random,
         )
 
@@ -181,6 +199,8 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
             exclude_reference_from_observation,
             exclude_reference_error_from_observation,
             exclude_x_velocity_from_observation,
+            action_space_dtype=action_space_dtype,
+            observation_space_dtype=observation_space_dtype,
             **kwargs,
         )
 
@@ -227,6 +247,19 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
                     the agent goes out of bounds.
                 -   info (:obj:`dict`): Additional information about the environment.
         """
+        # Convert action to correct data type if needed.
+        if action.dtype != self._action_space_dtype:
+            if not self._action_dtype_conversion_warning:
+                logger.warn(
+                    "The data type of the action that is supplied to the "
+                    f"'ros_gazebo_gym:{self.spec.id}' environment ({action.dtype}) "
+                    "does not match the data type of the action space "
+                    f"({self._action_space_dtype.__name__}). The action data type will "
+                    "be converted to the action space data type."
+                )
+                self._action_dtype_conversion_warning = True
+            action = action.astype(self._action_space_dtype)
+
         obs, _, terminated, truncated, info = super().step(action)
 
         cost, cost_info = self.cost(info["x_velocity"], -info["reward_ctrl"])
@@ -241,7 +274,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
 
         self.state = obs
 
-        # Update info dictionary.
+        # Update info dictionary and change observation dtype.
         del info["reward_run"], info["reward_ctrl"]
         info.update(cost_info)
         info.update(
@@ -251,6 +284,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
                 "reference_error": info["x_velocity"] - self.reference_forward_velocity,
             }
         )
+        obs = obs.astype(self._observation_space_dtype)
 
         return obs, cost, terminated, truncated, info
 
@@ -290,7 +324,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
 
         self.state = obs
 
-        # Update info dictionary.
+        # Update info dictionary and change observation dtype.
         info.update(cost_info)
         info.update(
             {
@@ -299,6 +333,7 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
                 "reference_error": 0.0 - self.reference_forward_velocity,
             }
         )
+        obs = obs.astype(self._observation_space_dtype)
 
         return obs, info
 

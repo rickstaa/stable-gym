@@ -307,21 +307,29 @@ def change_dict_key(d, old_key, new_key, default_value=None):
     return d
 
 
-def convert_gym_box_to_gymnasium_box(gym_box_space):
+def convert_gym_box_to_gymnasium_box(gym_box_space, **kwargs):
     """Converts a gym box space to a gymnasium box space.
 
     Args:
         gym_box_space (gym.spaces.Box): The gym box space.
+        **kwargs: Additional keyword arguments that are passed to the gymnasium box
+            space.
 
     Returns:
         gymnasium.spaces.Box: The gymnasium box space.
     """
+    low = kwargs.pop("low", gym_box_space.low)
+    high = kwargs.pop("high", gym_box_space.high)
+    shape = kwargs.pop("shape", gym_box_space.shape)
+    dtype = kwargs.pop("dtype", gym_box_space.dtype)
+    seed = kwargs.pop("seed", gym_box_space.np_random)
+
     return gym.spaces.Box(
-        low=gym_box_space.low,
-        high=gym_box_space.high,
-        shape=gym_box_space.shape,
-        dtype=gym_box_space.dtype,
-        seed=gym_box_space.np_random,
+        low=low,
+        high=high,
+        shape=shape,
+        dtype=dtype,
+        seed=seed,
     )
 
 

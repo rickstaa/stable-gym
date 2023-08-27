@@ -4,7 +4,7 @@ import copy
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gymnasium import utils
+from gymnasium import logger, utils
 from PyFlyt.gym_envs.quadx_envs.quadx_waypoints_env import QuadXWaypointsEnv
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
@@ -91,6 +91,8 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
         only_observe_immediate_waypoint=True,
         exclude_waypoint_target_deltas_from_observation=True,
         only_observe_immediate_waypoint_target_delta=True,
+        action_space_dtype=np.float64,
+        observation_space_dtype=np.float64,
         **kwargs,
     ):
         """Initialise a new QuadXWaypointsCost environment instance.
@@ -131,6 +133,10 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
             only_observe_immediate_waypoint_target_delta (bool, optional): Whether to
                 only observe the immediate waypoint target delta. Defaults to
                 ``True``.
+            action_space_dtype (union[numpy.dtype, str], optional): The data type of the
+                action space. Defaults to ``np.float64``.
+            observation_space_dtype (union[numpy.dtype, str], optional): The data type
+                of the observation space. Defaults to ``np.float64``.
             **kwargs: Additional keyword arguments passed to the
                 :class:`~PyFlyt.gym_envs.quadx_envs.quadx_waypoints_env.QuadXWaypointsEnv`
         """
@@ -171,6 +177,9 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
         self._only_observe_immediate_waypoint_target_delta = (
             only_observe_immediate_waypoint_target_delta
         )
+        self._action_space_dtype = action_space_dtype
+        self._observation_space_dtype = observation_space_dtype
+        self._action_dtype_conversion_warning = False
 
         super().__init__(
             num_targets=num_targets,
@@ -184,6 +193,15 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
             render_resolution=render_resolution,
             **kwargs,
         )
+
+        # Change action space dtype if necessary.
+        if self._action_space_dtype != self.action_space.dtype:
+            self.action_space = gym.spaces.Box(
+                self.action_space.low,
+                self.action_space.high,
+                dtype=self._action_space_dtype,
+                seed=self.action_space.np_random,
+            )
 
         # Create a flat observation space.
         # NOTE: The original observation space uses gym.spaces.Sequence for the
@@ -239,7 +257,7 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
         self.observation_space = gym.spaces.Box(
             low,
             high,
-            dtype=self.observation_space.spaces["attitude"].dtype,
+            dtype=self._observation_space_dtype,
             seed=self.observation_space.spaces["attitude"].np_random,
         )
 
@@ -263,6 +281,8 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
             only_observe_immediate_waypoint,
             exclude_waypoint_target_deltas_from_observation,
             only_observe_immediate_waypoint_target_delta,
+            action_space_dtype=action_space_dtype,
+            observation_space_dtype=observation_space_dtype,
             **kwargs,
         )
 
@@ -353,6 +373,19 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
                     or the agent goes out of bounds.
                 -   info (:obj:`dict`): Additional information about the environment.
         """
+        # Convert action to correct data type if needed.
+        if action.dtype != self._action_space_dtype:
+            if not self._action_dtype_conversion_warning:
+                logger.warn(
+                    "The data type of the action that is supplied to the "
+                    f"'ros_gazebo_gym:{self.spec.id}' environment ({action.dtype}) "
+                    "does not match the data type of the action space "
+                    f"({self._action_space_dtype.__name__}). The action data type will "
+                    "be converted to the action space data type."
+                )
+                self._action_dtype_conversion_warning = True
+            action = action.astype(self._action_space_dtype)
+
         obs, _, terminated, truncated, info = super().step(action)
 
         # Re-calculate target deltas.
@@ -394,7 +427,7 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
 
         self.state = obs
 
-        # Update info dictionary.
+        # Update info dictionary and change observation dtype.
         ref = self._current_immediate_waypoint_target
         info.update(cost_info)
         info.update(
@@ -404,6 +437,7 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
                 "reference_error": lin_pos - ref,
             }
         )
+        obs = obs.astype(self._observation_space_dtype)
 
         self._previous_num_targets_reached = info["num_targets_reached"]
         self._current_immediate_waypoint_target = copy.copy(self.waypoints.targets[0])
@@ -472,7 +506,7 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
 
         self.state = obs
 
-        # Update info dictionary.
+        # Update info dictionary and change observation dtype.
         ref = self._current_immediate_waypoint_target
         info.update(cost_info)
         info.update(
@@ -482,6 +516,7 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
                 "reference_error": lin_pos - ref,
             }
         )
+        obs = obs.astype(self._observation_space_dtype)
 
         return obs, info
 

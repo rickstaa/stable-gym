@@ -128,6 +128,8 @@ class OscillatorComplicated(gym.Env):
         clip_action=True,
         exclude_reference_from_observation=False,
         exclude_reference_error_from_observation=True,
+        action_space_dtype=np.float64,
+        observation_space_dtype=np.float64,
     ):
         """Initialise a new OscillatorComplicated environment instance.
 
@@ -145,6 +147,10 @@ class OscillatorComplicated(gym.Env):
                 should be excluded from the observation. Defaults to ``False``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
                 should be excluded from the observation. Defaults to ``True``.
+            action_space_dtype (union[numpy.dtype, str], optional): The data type of the
+                action space. Defaults to ``np.float64``.
+            observation_space_dtype (union[numpy.dtype, str], optional): The data type
+                of the observation space. Defaults to ``np.float64``.
         """
         super().__init__()
         self._action_clip_warning = False
@@ -153,6 +159,9 @@ class OscillatorComplicated(gym.Env):
         self._exclude_reference_error_from_observation = (
             exclude_reference_error_from_observation
         )
+        self._action_space_dtype = action_space_dtype
+        self._observation_space_dtype = observation_space_dtype
+        self._action_dtype_conversion_warning = False
 
         # Validate input arguments.
         assert (reference_amplitude == 0 or reference_frequency == 0) or not (
@@ -169,7 +178,7 @@ class OscillatorComplicated(gym.Env):
         self.t = 0.0
         self.dt = 1.0
         self._init_state = np.array(
-            [0.8, 1.5, 0.5, 0.3, 3.3, 3, 3, 2.8]
+            [0.8, 1.5, 0.5, 0.3, 3.3, 3, 3, 2.8], dtype=self._observation_space_dtype
         )  # Used when random is disabled in reset.
         self._init_state_range = {
             "low": [0, 0, 0, 0, 0, 0, 0, 0],
@@ -224,9 +233,11 @@ class OscillatorComplicated(gym.Env):
         self.action_space = spaces.Box(
             low=np.array([-5.0, -5.0, -5.0, -5.0]),
             high=np.array([5.0, 5.0, 5.0, 5.0]),
-            dtype=np.float64,
+            dtype=self._action_space_dtype,
         )
-        self.observation_space = spaces.Box(obs_low, obs_high, dtype=np.float64)
+        self.observation_space = spaces.Box(
+            obs_low, obs_high, dtype=self._observation_space_dtype
+        )
         self.reward_range = (0.0, 100.0)
 
         self.viewer = None
@@ -256,6 +267,19 @@ class OscillatorComplicated(gym.Env):
                     the agent goes out of bounds.
                 -   info (:obj:`dict`): Additional information about the environment.
         """
+        # Convert action to correct data type if needed.
+        if action.dtype != self._action_space_dtype:
+            if not self._action_dtype_conversion_warning:
+                logger.warn(
+                    "The data type of the action that is supplied to the "
+                    f"'ros_gazebo_gym:{self.spec.id}' environment ({action.dtype}) "
+                    "does not match the data type of the action space "
+                    f"({self._action_space_dtype.__name__}). The action data type will "
+                    "be converted to the action space data type."
+                )
+                self._action_dtype_conversion_warning = True
+            action = action.astype(self._action_space_dtype)
+
         # Clip action if needed.
         if self._clip_action:
             # Throw warning if clipped and not already thrown.
@@ -372,14 +396,17 @@ class OscillatorComplicated(gym.Env):
         self.t = self.t + self.dt
 
         # Calculate cost.
-        r1 = self.reference(self.t)
+        r1 = self.reference(self.t).astype(self._observation_space_dtype)
         cost = np.square(p1 - r1)
 
         # Define stopping criteria.
         terminated = cost < self.reward_range[0] or cost > self.reward_range[1]
 
         # Create observation and info_dict.
-        obs = np.array([m1, m2, m3, m4, p1, p2, p3, p4])
+        obs = np.array(
+            [m1, m2, m3, m4, p1, p2, p3, p4], dtype=self._observation_space_dtype
+        )
+        p1 = p1.astype(self._observation_space_dtype)
         if not self._exclude_reference_from_observation:
             obs = np.append(obs, r1)
         if not self._exclude_reference_error_from_observation:
@@ -430,25 +457,33 @@ class OscillatorComplicated(gym.Env):
         low = np.array(
             options["low"]
             if options is not None and "low" in options
-            else self._init_state_range["low"]
+            else self._init_state_range["low"],
+            dtype=self._observation_space_dtype,
         )
         high = np.array(
             options["high"]
             if options is not None and "high" in options
-            else self._init_state_range["high"]
+            else self._init_state_range["high"],
+            dtype=self._observation_space_dtype,
         )
         assert (
             self.observation_space.contains(
                 np.append(
                     low,
-                    np.zeros(self.observation_space.shape[0] - low.shape[0]),
+                    np.zeros(
+                        self.observation_space.shape[0] - low.shape[0],
+                        dtype=self._observation_space_dtype,
+                    ),
                 )
             )
         ) and (
             self.observation_space.contains(
                 np.append(
                     high,
-                    np.zeros(self.observation_space.shape[0] - high.shape[0]),
+                    np.zeros(
+                        self.observation_space.shape[0] - high.shape[0],
+                        dtype=self._observation_space_dtype,
+                    ),
                 )
             )
         ), (
@@ -463,9 +498,9 @@ class OscillatorComplicated(gym.Env):
             else self._init_state
         )
         self.t = 0.0
-        m1, m2, m3, m4, p1, p2, p3, p4 = self.state
-        r1 = self.reference(self.t)
-        obs = np.array([m1, m2, m3, m4, p1, p2, p3, p4])
+        _, _, _, _, p1, _, _, _ = self.state.astype(self._observation_space_dtype)
+        obs = self.state.astype(self._observation_space_dtype)
+        r1 = self.reference(self.t).astype(self._observation_space_dtype)
         if not self._exclude_reference_from_observation:
             obs = np.append(obs, r1)
         if not self._exclude_reference_error_from_observation:

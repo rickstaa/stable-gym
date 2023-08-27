@@ -2,7 +2,7 @@
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
-from gymnasium import utils
+from gymnasium import logger, utils
 from PyFlyt.gym_envs.quadx_envs.quadx_hover_env import QuadXHoverEnv
 
 EPISODES = 10  # Number of env episodes to run when __main__ is called.
@@ -80,6 +80,8 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
         render_resolution=(480, 480),
         include_health_penalty=True,
         health_penalty_size=None,
+        action_space_dtype=np.float64,
+        observation_space_dtype=np.float64,
         **kwargs,
     ):
         """Initialise a new QuadXHoverCost environment instance.
@@ -100,6 +102,10 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
             health_penalty_size (int, optional): The size of the unhealthy penalty.
                 Defaults to ``None``. Meaning the penalty is equal to the max episode
                 steps and the steps taken.
+            action_space_dtype (union[numpy.dtype, str], optional): The data type of the
+                action space. Defaults to ``np.float64``.
+            observation_space_dtype (union[numpy.dtype, str], optional): The data type
+                of the observation space. Defaults to ``np.float64``.
             **kwargs: Additional keyword arguments passed to the
                 :class:`~PyFlyt.gym_envs.quadx_envs.quadx_hover_env.QuadXHoverEnv`
         """
@@ -118,6 +124,9 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
         self.agent_hz = agent_hz
         self._include_health_penalty = include_health_penalty
         self._health_penalty_size = health_penalty_size
+        self._action_space_dtype = action_space_dtype
+        self._observation_space_dtype = observation_space_dtype
+        self._action_dtype_conversion_warning = False
 
         super().__init__(
             flight_dome_size=flight_dome_size,
@@ -127,6 +136,22 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
             render_resolution=render_resolution,
             **kwargs,
         )
+
+        # Change action and observation space dtype if necessary.
+        if self._action_space_dtype != self.action_space.dtype:
+            self.action_space = gym.spaces.Box(
+                self.action_space.low,
+                self.action_space.high,
+                dtype=self._action_space_dtype,
+                seed=self.action_space.np_random,
+            )
+        if self._observation_space_dtype != self.observation_space.dtype:
+            self.observation_space = gym.spaces.Box(
+                self.observation_space.low,
+                self.observation_space.high,
+                dtype=self._observation_space_dtype,
+                seed=self.observation_space.np_random,
+            )
 
         # NOTE: Done to ensure the args of the QuadXHoverCost class are also pickled.
         # NOTE: Ensure that all args are passed to the EzPickle class!
@@ -139,6 +164,8 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
             render_resolution,
             include_health_penalty,
             health_penalty_size,
+            action_space_dtype=action_space_dtype,
+            observation_space_dtype=observation_space_dtype,
             **kwargs,
         )
 
@@ -187,6 +214,19 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
                     or the agent goes out of bounds.
                 -   info (:obj:`dict`): Additional information about the environment.
         """
+        # Convert action to correct data type if needed.
+        if action.dtype != self._action_space_dtype:
+            if not self._action_dtype_conversion_warning:
+                logger.warn(
+                    "The data type of the action that is supplied to the "
+                    f"'ros_gazebo_gym:{self.spec.id}' environment ({action.dtype}) "
+                    "does not match the data type of the action space "
+                    f"({self._action_space_dtype.__name__}). The action data type will "
+                    "be converted to the action space data type."
+                )
+                self._action_dtype_conversion_warning = True
+            action = action.astype(self._action_space_dtype)
+
         obs, _, terminated, truncated, info = super().step(action)
 
         # Calculate the cost.
@@ -202,7 +242,7 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
 
         self.state = obs
 
-        # Update info dictionary.
+        # Update info dictionary and change observation dtype.
         info.update(cost_info)
         info.update(
             {
@@ -218,6 +258,7 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
                 ),
             }
         )
+        obs = obs.astype(self._observation_space_dtype)
 
         return obs, cost, terminated, truncated, info
 
@@ -253,7 +294,7 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
 
         self.state = obs
 
-        # Update info dictionary.
+        # Update info dictionary and change observation dtype.
         info.update(cost_info)
         info.update(
             {
@@ -269,6 +310,7 @@ class QuadXHoverCost(QuadXHoverEnv, utils.EzPickle):
                 ),
             }
         )
+        obs = obs.astype(self._observation_space_dtype)
 
         return obs, info
 
