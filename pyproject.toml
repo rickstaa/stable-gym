@@ -47,6 +47,7 @@ dev = [
     "syrupy>=4.0.2",
     "flake8>=6.0.0",
     "black>=23.3.0",
+    "isort>=5.12.0",
 ]
 docs = [
     "sphinx>=6.2.1",

@@ -25,6 +25,7 @@
   "scripts": {
     "prepare": "husky install",
     "sort": "sort-package-json",
+    "sort:py": "isort .",
     "test": "pytest --cov=stable_gym --cov-report=term-missing",
     "test:update:snapshots": "pytest --snapshot-update"
   },
