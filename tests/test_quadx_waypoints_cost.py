@@ -3,8 +3,9 @@ QuadXWaypoints environment when the same environment parameters are used.
 """
 import gymnasium as gym
 import numpy as np
-import pytest
 from gymnasium.logger import ERROR
+
+import pytest
 import stable_gym  # NOTE: Ensures that the latest version of the environment is used. # noqa: F401, E501
 from stable_gym.common.utils import change_precision
 
