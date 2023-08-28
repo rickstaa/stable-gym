@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.20.0](https://github.com/rickstaa/stable-gym/compare/v0.19.3...v0.20.0) (2023-08-28)
+
+
+### Features
+
+* add environment observation and action dtype arg ([#304](https://github.com/rickstaa/stable-gym/issues/304)) ([b76c5dd](https://github.com/rickstaa/stable-gym/commit/b76c5dddf99cd6608831352f249f35ef13dde6ac))
+
+
+### Bug Fixes
+
+* ensure gymnasium environments are closed ([#301](https://github.com/rickstaa/stable-gym/issues/301)) ([7ae3b68](https://github.com/rickstaa/stable-gym/commit/7ae3b68cb4fb550fdeeba994038a00f959e09ad2))
+
 ## [0.19.3](https://github.com/rickstaa/stable-gym/compare/v0.19.2...v0.19.3) (2023-08-15)
 
 
