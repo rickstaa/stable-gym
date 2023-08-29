@@ -7,7 +7,8 @@
 Welcome to Stable Gym's documentation
 =====================================
 
-.. image:: ./images/cart_pole_header.jpeg
+.. image:: /images/cart_pole_header.jpeg
+   :alt: Stable Gym
    :width: 80%
    :align: center
 
