@@ -1,21 +1,21 @@
 # serializer version: 1
 # name: TestQuadXTrackingCostEqual.test_snapshot
-  -0.00555
+  -0.00694
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.1
-  0.00266
+  0.00377
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.10
   -0.0
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.100
-  0.00023
+  3e-05
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.101
-  -0.00053
+  -0.00065
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.102
-  0.94202
+  0.94116
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.103
   -2.33663
@@ -30,19 +30,19 @@
   0.74141
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.107
-  0.55163
+  0.50635
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.108
-  0.85861
+  0.9573
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.109
-  0.81836
+  0.62436
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.11
   0.0
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.110
-  0.71307
+  0.68393
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.111
   0.11754
@@ -54,16 +54,16 @@
   1.01178
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.114
-  -0.11731
+  -0.11751
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.115
-  0.99254
+  0.99242
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.116
-  -0.06976
+  -0.07061
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.117
-  1.00188
+  1.00184
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.118
   False
@@ -80,51 +80,51 @@
     'env_complete': False,
     'out_of_bounds': False,
     'reference': array([ 0.11754, -0.99307,  1.01178]),
-    'reference_error': array([-0.11731,  0.99254, -0.06976]),
-    'state_of_interest': array([ 2.3000e-04, -5.3000e-04,  9.4202e-01]),
+    'reference_error': array([-0.11751,  0.99242, -0.07061]),
+    'state_of_interest': array([ 3.0000e-05, -6.5000e-04,  9.4116e-01]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.121
-  0.94212
+  0.19853
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.122
-  2.75294
+  4.56861
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.123
-  -0.63675
+  -0.95996
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.124
-  -0.05273
+  -0.0448
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.125
-  0.01608
+  0.03629
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.126
-  0.01503
+  0.02058
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.127
-  0.99837
+  0.99812
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.128
-  0.02558
+  -0.01416
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.129
-  0.02577
+  0.05325
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.13
   0.0
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.130
-  0.75179
+  0.57109
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.131
-  0.00139
+  0.00062
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.132
-  0.00167
+  0.00159
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.133
-  0.95976
+  0.95474
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.134
   0.90393
@@ -139,19 +139,19 @@
   0.18179
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.138
-  0.12791
+  0.4062
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.139
-  0.14535
+  0.12139
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.14
   0.0
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.140
-  0.26022
+  0.40993
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.141
-  0.42273
+  0.41551
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.142
   0.15643
@@ -163,16 +163,16 @@
   1.0157
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.145
-  -0.15504
+  -0.15582
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.146
-  0.98936
+  0.98927
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.147
-  -0.05594
+  -0.06096
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.148
-  1.003
+  1.00332
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.149
   False
@@ -189,51 +189,51 @@
     'env_complete': False,
     'out_of_bounds': False,
     'reference': array([ 0.15643, -0.98769,  1.0157 ]),
-    'reference_error': array([-0.15504,  0.98936, -0.05594]),
-    'state_of_interest': array([0.00139, 0.00167, 0.95976]),
+    'reference_error': array([-0.15582,  0.98927, -0.06096]),
+    'state_of_interest': array([6.2000e-04, 1.5900e-03, 9.5474e-01]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.152
-  1.67852
+  1.98316
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.153
-  -4.76884
+  -8.03441
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.154
-  3.17506
+  4.72693
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.155
-  -0.03843
+  -0.03233
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.156
-  0.00852
+  -0.00232
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.157
-  0.03291
+  0.0492
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.158
-  0.99868
+  0.99826
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.159
-  0.05795
+  0.06956
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.16
   0.0
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.160
-  0.07284
+  0.08918
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.161
-  0.9101
+  0.74959
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.162
-  0.0028
+  0.00163
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.163
-  0.00484
+  0.00473
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.164
-  0.97977
+  0.97094
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.165
   0.34297
@@ -248,19 +248,19 @@
   0.50533
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.169
-  0.52001
+  0.45205
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.17
-  0.05045
+  0.05062
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.170
-  0.33395
+  0.51745
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.171
-  0.5919
+  0.40869
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.172
-  0.52366
+  0.59069
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.173
   0.19509
@@ -272,19 +272,19 @@
   1.01961
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.176
-  -0.19229
+  -0.19346
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.177
-  0.98562
+  0.98551
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.178
-  -0.03984
+  -0.04867
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.179
-  1.005
+  1.0055
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.18
-  0.05113
+  0.05138
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.180
   False
@@ -298,15 +298,15 @@
     'env_complete': False,
     'out_of_bounds': False,
     'reference': array([ 0.19509, -0.98079,  1.01961]),
-    'reference_error': array([-0.19229,  0.98562, -0.03984]),
-    'state_of_interest': array([0.0028 , 0.00484, 0.97977]),
+    'reference_error': array([-0.19346,  0.98551, -0.04867]),
+    'state_of_interest': array([0.00163, 0.00473, 0.97094]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.19
-  0.04893
+  0.04902
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.2
-  0.00149
+  0.00239
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.20
   0.04915
@@ -340,40 +340,40 @@
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.28
-  2.73504
+  3.28953
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.29
-  -1.15221
+  -1.31055
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.3
-  -0.0001
+  -0.00013
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.30
-  3.00689
+  4.41863
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.31
-  0.01653
+  0.0213
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.32
-  -0.00778
+  -0.00978
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.33
-  0.01673
+  0.02634
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.34
-  0.99969
+  0.99938
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.35
-  -0.0119
+  -0.01542
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.36
-  -0.02399
+  -0.03097
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.37
-  -0.68644
+  -0.6897
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.38
-  -0.0
+  -1e-05
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.39
   -1e-05
@@ -382,7 +382,7 @@
   -1e-05
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.40
-  0.94883
+  0.94881
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.41
   1.72132
@@ -397,22 +397,22 @@
   0.55789
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.45
-  0.41526
+  0.48063
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.46
-  0.47202
+  0.51729
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.47
-  0.61763
+  0.53341
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.48
-  0.61109
+  0.58372
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.49
   0.03926
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.5
-  2e-05
+  3e-05
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.50
   -0.99923
@@ -421,13 +421,13 @@
   1.00393
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.52
-  -0.03926
+  -0.03927
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.53
   0.99922
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.54
-  -0.0551
+  -0.05512
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.55
   1.00151
@@ -444,54 +444,54 @@
     'env_complete': False,
     'out_of_bounds': False,
     'reference': array([ 0.03926, -0.99923,  1.00393]),
-    'reference_error': array([-0.03926,  0.99922, -0.0551 ]),
-    'state_of_interest': array([-0.0000e+00, -1.0000e-05,  9.4883e-01]),
+    'reference_error': array([-0.03927,  0.99922, -0.05512]),
+    'state_of_interest': array([-1.0000e-05, -1.0000e-05,  9.4881e-01]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.59
-  -6.33473
+  -8.05981
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.6
   1.0
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.60
-  4.77533
+  5.13947
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.61
-  1.22051
+  -1.55788
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.62
-  -0.0106
+  -0.02087
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.63
-  0.02128
+  0.02438
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.64
-  0.05135
+  0.04376
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.65
-  0.9984
+  0.99853
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.66
-  -0.00183
+  -0.00388
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.67
-  -0.02386
+  -0.02655
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.68
-  -0.21796
+  -0.18972
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.69
-  -0.00016
+  -0.0002
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.7
   -1e-05
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.70
-  -0.00041
+  -0.00053
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.71
-  0.93796
+  0.93836
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.72
   -2.54986
@@ -506,19 +506,19 @@
   0.62885
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.76
-  0.74243
+  0.60278
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.77
-  0.74297
+  0.66466
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.78
-  0.54396
+  0.74255
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.79
-  0.49873
+  0.52603
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.8
-  0.00015
+  0.0002
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.80
   0.07846
@@ -530,16 +530,16 @@
   1.00785
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.83
-  -0.07861
+  -0.07866
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.84
-  0.9965
+  0.99639
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.85
-  -0.06989
+  -0.0695
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.86
-  1.00204
+  1.0019
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.87
   False
@@ -553,40 +553,40 @@
     'env_complete': False,
     'out_of_bounds': False,
     'reference': array([ 0.07846, -0.99692,  1.00785]),
-    'reference_error': array([-0.07861,  0.9965 , -0.06989]),
-    'state_of_interest': array([-1.6000e-04, -4.1000e-04,  9.3796e-01]),
+    'reference_error': array([-0.07866,  0.99639, -0.0695 ]),
+    'state_of_interest': array([-2.0000e-04, -5.3000e-04,  9.3836e-01]),
   })
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.9
-  -0.76352
+  -0.76349
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.90
-  -1.1477
+  0.9553
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.91
-  -3.19485
+  -3.73369
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.92
-  -2.65752
+  -0.34569
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.93
-  -0.07008
+  -0.07798
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.94
-  0.01255
+  -0.00214
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.95
-  0.03552
+  0.04008
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.96
-  0.99683
+  0.99615
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.97
-  0.02613
+  0.02665
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.98
-  -0.03319
+  -0.01849
 # ---
 # name: TestQuadXTrackingCostEqual.test_snapshot.99
-  0.47257
+  0.36523
 # ---

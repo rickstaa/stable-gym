@@ -58,6 +58,7 @@ class TestQuadXHoverCostEqual:
     def test_snapshot(self, snapshot, env_cost):
         """Test if the 'QuadXHoverCost' environment is still equal to snapshot."""
         observation, info = env_cost.reset(seed=42)
+        print(change_precision(observation, precision=PRECISION))
         assert (change_precision(observation, precision=PRECISION) == snapshot).all()
         assert change_precision(info, precision=PRECISION) == snapshot
         env_cost.action_space.seed(42)

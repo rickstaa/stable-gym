@@ -1,27 +1,27 @@
 # serializer version: 1
 # name: TestQuadXWaypointsCostEqual.test_snapshot
-  -0.006
+  -0.007
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.1
-  0.003
+  0.004
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.10
   -0.0
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.100
-  0.057
+  0.052
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.101
-  0.997
+  0.996
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.102
-  -0.015
+  -0.009
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.103
-  -0.048
+  -0.039
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.104
-  0.048
+  -0.004
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.105
   -0.0
@@ -30,7 +30,7 @@
   -0.001
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.107
-  0.936
+  0.935
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.108
   -2.55
@@ -48,16 +48,16 @@
   0.629
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.112
-  0.487
+  0.317
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.113
-  0.667
+  0.568
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.114
-  0.832
+  0.909
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.115
-  0.508
+  0.44
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.116
   0.121
@@ -99,43 +99,43 @@
   0.953
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.128
-  0.014
+  0.021
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.129
-  -0.821
+  -0.831
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.13
   0.0
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.130
-  0.217
+  0.177
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.131
-  0.236
+  0.23
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.132
-  -0.288
+  -0.363
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.133
-  1.615
+  1.602
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.134
-  -1.183
+  -1.199
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.135
-  1.98
+  2.001
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.136
-  -0.734
+  -0.644
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.137
-  1.764
+  1.724
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.138
-  3.723
+  3.718
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.139
-  0.372
+  0.564
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.14
   0.0
@@ -158,51 +158,51 @@
     'num_targets_reached': 0,
     'out_of_bounds': False,
     'reference': array([ 0.121, -0.799,  1.202]),
-    'reference_error': array([-0.122,  0.798, -0.266]),
-    'state_of_interest': array([-0.   , -0.001,  0.936]),
+    'reference_error': array([-0.122,  0.798, -0.267]),
+    'state_of_interest': array([-0.   , -0.001,  0.935]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.144
-  -2.003
+  -1.492
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.145
-  -0.535
+  1.355
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.146
-  -2.364
+  -6.546
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.147
-  -0.061
+  -0.083
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.148
-  0.01
+  0.026
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.149
-  0.046
+  0.027
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.15
   0.0
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.150
-  0.997
+  0.996
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.151
-  0.042
+  0.004
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.152
-  -0.047
+  -0.002
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.153
-  1.009
+  0.717
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.154
-  0.001
+  0.0
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.155
-  -0.001
+  0.0
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.156
-  0.954
+  0.947
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.157
   -2.337
@@ -220,16 +220,16 @@
   0.741
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.161
-  0.694
+  0.635
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.162
-  0.71
+  0.322
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.163
-  0.583
+  0.729
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.164
-  0.942
+  0.9
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.165
   0.121
@@ -247,7 +247,7 @@
   -0.147
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.17
-  0.05
+  0.051
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.170
   2.546
@@ -271,43 +271,43 @@
   0.953
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.177
-  0.041
+  0.067
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.178
-  -0.83
+  -0.835
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.179
-  0.151
+  0.123
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.18
   0.051
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.180
-  0.308
+  0.265
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.181
-  -0.37
+  -0.429
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.182
   1.567
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.183
-  -1.257
+  -1.311
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.184
-  1.99
+  1.964
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.185
-  -0.592
+  -0.547
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.186
-  1.694
+  1.528
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.187
-  3.74
+  3.773
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.188
-  0.494
+  0.724
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.189
   0.118
@@ -330,54 +330,54 @@
     'num_targets_reached': 0,
     'out_of_bounds': False,
     'reference': array([ 0.121, -0.799,  1.202]),
-    'reference_error': array([-0.12 ,  0.798, -0.248]),
-    'state_of_interest': array([ 0.001, -0.001,  0.954]),
+    'reference_error': array([-0.121,  0.799, -0.255]),
+    'state_of_interest': array([0.   , 0.   , 0.947]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.193
-  0.191
+  0.669
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.194
-  1.147
+  1.093
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.195
-  0.234
+  2.293
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.196
-  -0.099
+  -0.133
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.197
-  0.047
+  0.043
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.198
-  0.032
+  0.029
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.199
-  0.993
+  0.99
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.2
-  0.001
+  0.002
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.20
   0.049
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.200
-  -0.039
+  -0.009
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.201
-  -0.091
+  -0.037
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.202
-  1.245
+  1.102
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.203
-  0.003
+  0.002
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.204
-  0.004
+  0.007
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.205
-  0.996
+  0.981
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.206
   0.904
@@ -395,16 +395,16 @@
   0.121
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.210
-  0.118
+  0.279
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.211
-  0.284
+  0.62
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.212
-  0.327
+  0.225
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.213
-  0.119
+  0.112
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.214
   0.121
@@ -446,46 +446,46 @@
   0.953
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.226
-  0.054
+  0.061
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.227
-  -0.834
+  -0.842
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.228
-  0.051
+  0.008
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.229
-  0.198
+  0.209
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.23
   1.202
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.230
-  -0.476
+  -0.581
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.231
-  1.514
+  1.492
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.232
-  -1.261
+  -1.284
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.233
-  2.004
+  2.019
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.234
-  -0.584
+  -0.429
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.235
-  1.546
+  1.513
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.236
-  3.733
+  3.676
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.237
-  0.858
+  1.114
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.238
-  0.119
+  0.118
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.239
   False
@@ -500,56 +500,56 @@
   dict({
     'collision': False,
     'cost_direction': 0.0,
-    'cost_distance': 0.119,
+    'cost_distance': 0.118,
     'env_complete': False,
     'num_targets_reached': 0,
     'out_of_bounds': False,
     'reference': array([ 0.121, -0.799,  1.202]),
-    'reference_error': array([-0.118,  0.803, -0.207]),
-    'state_of_interest': array([0.003, 0.004, 0.996]),
+    'reference_error': array([-0.119,  0.806, -0.222]),
+    'state_of_interest': array([0.002, 0.007, 0.981]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.242
-  0.326
+  -0.985
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.243
-  -5.353
+  -7.925
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.244
-  2.86
+  3.569
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.245
-  -0.076
+  -0.116
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.246
-  0.005
+  -0.01
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.247
-  0.063
+  0.051
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.248
-  0.995
+  0.992
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.249
-  0.116
+  0.172
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.25
   -0.147
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.250
-  0.021
+  0.071
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.251
-  1.418
+  1.348
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.252
   0.006
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.253
-  0.011
+  0.018
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.254
-  1.038
+  1.019
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.255
   0.343
@@ -564,19 +564,19 @@
   0.505
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.259
-  0.468
+  0.252
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.26
   2.546
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.260
-  0.519
+  0.543
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.261
-  0.398
+  0.49
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.262
-  0.617
+  0.735
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.263
   0.121
@@ -618,43 +618,43 @@
   0.953
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.275
-  0.01
+  0.032
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.276
-  -0.833
+  -0.844
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.277
-  0.04
+  -0.014
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.278
-  0.306
+  0.353
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.279
-  -0.426
+  -0.549
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.28
   1.779
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.280
-  1.467
+  1.436
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.281
-  -1.202
+  -1.268
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.282
-  2.049
+  2.047
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.283
-  -0.601
+  -0.384
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.284
-  1.814
+  1.733
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.285
-  3.669
+  3.651
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.286
-  0.506
+  0.787
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.287
   0.12
@@ -671,14 +671,14 @@
 # name: TestQuadXWaypointsCostEqual.test_snapshot.290
   dict({
     'collision': False,
-    'cost_direction': 0.0,
-    'cost_distance': 0.12,
+    'cost_direction': 0.002,
+    'cost_distance': 0.118,
     'env_complete': False,
     'num_targets_reached': 0,
     'out_of_bounds': False,
     'reference': array([ 0.121, -0.799,  1.202]),
-    'reference_error': array([-0.115,  0.809, -0.164]),
-    'state_of_interest': array([0.006, 0.011, 1.038]),
+    'reference_error': array([-0.115,  0.817, -0.183]),
+    'state_of_interest': array([0.006, 0.018, 1.019]),
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.3
@@ -746,37 +746,37 @@
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.46
-  2.548
+  2.144
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.47
-  -0.74
+  -0.523
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.48
-  3.539
+  3.533
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.49
-  0.028
+  0.032
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.5
   0.0
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.50
-  -0.011
+  -0.013
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.51
-  0.031
+  0.043
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.52
-  0.999
+  0.998
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.53
-  -0.018
+  -0.022
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.54
-  -0.038
+  -0.045
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.55
-  -0.586
+  -0.59
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.56
   -0.0
@@ -803,16 +803,16 @@
   0.558
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.63
-  0.563
+  0.672
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.64
-  0.558
+  0.637
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.65
-  0.473
+  0.354
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.66
-  0.596
+  0.53
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.67
   0.121
@@ -854,46 +854,46 @@
   0.953
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.79
-  0.078
+  0.06
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.8
   0.0
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.80
-  -0.79
+  -0.789
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.81
-  0.3
+  0.307
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.82
-  0.394
+  0.396
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.83
-  -0.082
+  -0.078
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.84
   1.6
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.85
-  -1.351
+  -1.311
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.86
-  1.822
+  1.845
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.87
-  -0.85
+  -0.863
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.88
-  1.582
+  1.67
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.89
-  3.813
+  3.773
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.9
-  -0.764
+  -0.763
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.90
-  -0.237
+  -0.274
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.91
   0.122
@@ -918,17 +918,17 @@
   })
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.95
-  -5.887
+  -7.672
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.96
-  3.272
+  0.758
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.97
-  0.354
+  2.75
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.98
-  -0.033
+  -0.058
 # ---
 # name: TestQuadXWaypointsCostEqual.test_snapshot.99
-  0.032
+  0.034
 # ---

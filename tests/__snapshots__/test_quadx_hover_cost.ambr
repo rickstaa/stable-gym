@@ -1,42 +1,42 @@
 # serializer version: 1
 # name: TestQuadXHoverCostEqual.test_snapshot
-  -0.00555
+  -0.00694
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.1
-  0.00266
+  0.00377
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.10
   -0.0
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.100
-  -0.05273
+  -0.0448
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.101
-  0.01608
+  0.03629
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.102
-  0.01503
+  0.02058
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.103
-  0.99837
+  0.99812
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.104
-  0.02558
+  -0.01416
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.105
-  0.02577
+  0.05325
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.106
-  0.75179
+  0.57109
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.107
-  0.00139
+  0.00062
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.108
-  0.00167
+  0.00159
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.109
-  0.95976
+  0.95474
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.11
   0.0
@@ -54,19 +54,19 @@
   0.18179
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.114
-  0.12791
+  0.4062
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.115
-  0.14535
+  0.12139
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.116
-  0.26022
+  0.40993
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.117
-  0.42273
+  0.41551
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.118
-  0.15064
+  0.16074
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.119
   False
@@ -79,57 +79,57 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.121
   dict({
-    'angular_distance': 0.11034,
+    'angular_distance': 0.11545,
     'collision': False,
     'env_complete': False,
-    'linear_distance': 0.0403,
+    'linear_distance': 0.04529,
     'out_of_bounds': False,
     'reference': array([0., 0., 1., 0., 0.]),
-    'reference_error': array([ 0.00139,  0.00167, -0.04024,  0.10506, -0.0337 ]),
-    'state_of_interest': array([ 0.00139,  0.00167,  0.95976, -0.10506,  0.0337 ]),
+    'reference_error': array([ 0.00062,  0.00159, -0.04526,  0.0883 , -0.07437]),
+    'state_of_interest': array([ 6.2000e-04,  1.5900e-03,  9.5474e-01, -8.8300e-02,  7.4370e-02]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.122
-  1.67852
+  1.98316
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.123
-  -4.76884
+  -8.03441
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.124
-  3.17506
+  4.72693
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.125
-  -0.03843
+  -0.03233
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.126
-  0.00852
+  -0.00232
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.127
-  0.03291
+  0.0492
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.128
-  0.99868
+  0.99826
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.129
-  0.05795
+  0.06956
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.13
   0.0
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.130
-  0.07284
+  0.08918
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.131
-  0.9101
+  0.74959
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.132
-  0.0028
+  0.00163
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.133
-  0.00484
+  0.00473
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.134
-  0.97977
+  0.97094
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.135
   0.34297
@@ -144,22 +144,22 @@
   0.50533
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.139
-  0.52001
+  0.45205
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.14
   0.0
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.140
-  0.33395
+  0.51745
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.141
-  0.5919
+  0.40869
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.142
-  0.52366
+  0.59069
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.143
-  0.09974
+  0.09432
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.144
   False
@@ -169,14 +169,14 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.146
   dict({
-    'angular_distance': 0.07875,
+    'angular_distance': 0.06484,
     'collision': False,
     'env_complete': False,
-    'linear_distance': 0.02099,
+    'linear_distance': 0.02948,
     'out_of_bounds': False,
     'reference': array([0., 0., 1., 0., 0.]),
-    'reference_error': array([ 0.0028 ,  0.00484, -0.02023,  0.07629, -0.01956]),
-    'state_of_interest': array([ 0.0028 ,  0.00484,  0.97977, -0.07629,  0.01956]),
+    'reference_error': array([ 0.00163,  0.00473, -0.02906,  0.06482,  0.00146]),
+    'state_of_interest': array([ 0.00163,  0.00473,  0.97094, -0.06482, -0.00146]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.15
@@ -186,73 +186,73 @@
   0.0
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.17
-  0.05045
+  0.05062
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.18
-  0.05113
+  0.05138
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.19
-  0.04893
+  0.04902
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.2
-  0.00149
+  0.00239
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.20
   0.04915
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.21
   dict({
-    'angular_distance': 0.0002,
+    'angular_distance': 0.00026,
     'collision': False,
     'env_complete': False,
     'linear_distance': 0.03188,
     'out_of_bounds': False,
     'reference': array([0., 0., 1., 0., 0.]),
-    'reference_error': array([-0.000e+00,  0.000e+00, -3.188e-02,  2.000e-04,  1.000e-05]),
-    'state_of_interest': array([-0.0000e+00,  0.0000e+00,  9.6812e-01, -2.0000e-04, -1.0000e-05]),
+    'reference_error': array([-0.000e+00,  0.000e+00, -3.188e-02,  2.600e-04,  1.000e-05]),
+    'state_of_interest': array([-0.0000e+00,  0.0000e+00,  9.6812e-01, -2.6000e-04, -1.0000e-05]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.22
-  2.73504
+  3.28953
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.23
-  -1.15221
+  -1.31055
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.24
-  3.00689
+  4.41863
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.25
-  0.01653
+  0.0213
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.26
-  -0.00778
+  -0.00978
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.27
-  0.01673
+  0.02634
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.28
-  0.99969
+  0.99938
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.29
-  -0.0119
+  -0.01542
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.3
-  -0.0001
+  -0.00013
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.30
-  -0.02399
+  -0.03097
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.31
-  -0.68644
+  -0.6897
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.32
-  -0.0
+  -1e-05
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.33
   -1e-05
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.34
-  0.94883
+  0.94881
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.35
   1.72132
@@ -267,22 +267,22 @@
   0.55789
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.39
-  0.41526
+  0.48063
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.4
   -1e-05
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.40
-  0.47202
+  0.51729
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.41
-  0.61763
+  0.53341
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.42
-  0.61109
+  0.58372
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.43
-  0.08771
+  0.09808
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.44
   False
@@ -292,57 +292,57 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.46
   dict({
-    'angular_distance': 0.03654,
+    'angular_distance': 0.04689,
     'collision': False,
     'env_complete': False,
-    'linear_distance': 0.05117,
+    'linear_distance': 0.05119,
     'out_of_bounds': False,
     'reference': array([0., 0., 1., 0., 0.]),
-    'reference_error': array([-0.000e+00, -1.000e-05, -5.117e-02, -3.280e-02,  1.610e-02]),
-    'state_of_interest': array([-0.0000e+00, -1.0000e-05,  9.4883e-01,  3.2800e-02, -1.6100e-02]),
+    'reference_error': array([-1.000e-05, -1.000e-05, -5.119e-02, -4.208e-02,  2.067e-02]),
+    'state_of_interest': array([-1.0000e-05, -1.0000e-05,  9.4881e-01,  4.2080e-02, -2.0670e-02]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.47
-  -6.33473
+  -8.05981
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.48
-  4.77533
+  5.13947
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.49
-  1.22051
+  -1.55788
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.5
-  2e-05
+  3e-05
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.50
-  -0.0106
+  -0.02087
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.51
-  0.02128
+  0.02438
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.52
-  0.05135
+  0.04376
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.53
-  0.9984
+  0.99853
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.54
-  -0.00183
+  -0.00388
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.55
-  -0.02386
+  -0.02655
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.56
-  -0.21796
+  -0.18972
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.57
-  -0.00016
+  -0.0002
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.58
-  -0.00041
+  -0.00053
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.59
-  0.93796
+  0.93836
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.6
   1.0
@@ -360,19 +360,19 @@
   0.62885
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.64
-  0.74243
+  0.60278
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.65
-  0.74297
+  0.66466
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.66
-  0.54396
+  0.74255
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.67
-  0.49873
+  0.52603
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.68
-  0.1096
+  0.12585
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.69
   False
@@ -385,57 +385,57 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.71
   dict({
-    'angular_distance': 0.04756,
+    'angular_distance': 0.0642,
     'collision': False,
     'env_complete': False,
-    'linear_distance': 0.06204,
+    'linear_distance': 0.06165,
     'out_of_bounds': False,
     'reference': array([0., 0., 1., 0., 0.]),
-    'reference_error': array([-0.00016, -0.00041, -0.06204,  0.01901, -0.0436 ]),
-    'state_of_interest': array([-1.6000e-04, -4.1000e-04,  9.3796e-01, -1.9010e-02,  4.3600e-02]),
+    'reference_error': array([-0.0002 , -0.00053, -0.06164,  0.0396 , -0.05053]),
+    'state_of_interest': array([-2.0000e-04, -5.3000e-04,  9.3836e-01, -3.9600e-02,  5.0530e-02]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.72
-  -1.1477
+  0.9553
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.73
-  -3.19485
+  -3.73369
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.74
-  -2.65752
+  -0.34569
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.75
-  -0.07008
+  -0.07798
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.76
-  0.01255
+  -0.00214
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.77
-  0.03552
+  0.04008
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.78
-  0.99683
+  0.99615
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.79
-  0.02613
+  0.02665
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.8
-  0.00015
+  0.0002
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.80
-  -0.03319
+  -0.01849
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.81
-  0.47257
+  0.36523
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.82
-  0.00023
+  3e-05
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.83
-  -0.00053
+  -0.00065
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.84
-  0.94202
+  0.94116
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.85
   -2.33663
@@ -450,22 +450,22 @@
   0.74141
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.89
-  0.55163
+  0.50635
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.9
-  -0.76352
+  -0.76349
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.90
-  0.85861
+  0.9573
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.91
-  0.81836
+  0.62436
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.92
-  0.71307
+  0.68393
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.93
-  0.20052
+  0.21501
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.94
   False
@@ -475,22 +475,22 @@
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.96
   dict({
-    'angular_distance': 0.14253,
+    'angular_distance': 0.15617,
     'collision': False,
     'env_complete': False,
-    'linear_distance': 0.05798,
+    'linear_distance': 0.05884,
     'out_of_bounds': False,
     'reference': array([0., 0., 1., 0., 0.]),
-    'reference_error': array([ 0.00023, -0.00053, -0.05798,  0.13934, -0.03   ]),
-    'state_of_interest': array([ 2.3000e-04, -5.3000e-04,  9.4202e-01, -1.3934e-01,  3.0000e-02]),
+    'reference_error': array([ 3.0000e-05, -6.5000e-04, -5.8840e-02,  1.5616e-01, -2.0000e-03]),
+    'state_of_interest': array([ 3.0000e-05, -6.5000e-04,  9.4116e-01, -1.5616e-01,  2.0000e-03]),
   })
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.97
-  0.94212
+  0.19853
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.98
-  2.75294
+  4.56861
 # ---
 # name: TestQuadXHoverCostEqual.test_snapshot.99
-  -0.63675
+  -0.95996
 # ---
