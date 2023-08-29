@@ -11,7 +11,7 @@ from stable_gym.common.utils import change_precision
 
 gym.logger.set_level(ERROR)
 
-PRECISION = 3
+PRECISION = 13
 
 
 class TestQuadXWaypointsCostEqual:
