@@ -44,7 +44,7 @@ $$
 In addition to the observations, the cost and a termination and truncation boolean, the environment also returns an info dictionary:
 
 ```python
-[observation, info_dict]
+[observation, cost, termination, truncation, info_dict]
 ```
 
 The info dictionary contains the following keys:

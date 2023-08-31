@@ -1,6 +1,6 @@
 # Stable Gym
 
-[![Stable Gym CI](https://github.com/rickstaa/stable-gym/actions/workflows/stable_gym.yml/badge.svg)](https://github.com/rickstaa/stable-gym/actions/workflows/stable_gym.yml)
+[![Stable Gym](https://github.com/rickstaa/stable-gym/actions/workflows/stable_gym.yml/badge.svg)](https://github.com/rickstaa/stable-gym/actions/workflows/stable_gym.yml)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/rickstaa/stable-gym)](https://github.com/rickstaa/stable-gym/releases)
 [![Python 3](https://img.shields.io/badge/Python->=3.8-brightgreen)](https://www.python.org/)
 [![codecov](https://codecov.io/gh/rickstaa/stable-gym/branch/main/graph/badge.svg?token=RFM3OELQ3L)](https://codecov.io/gh/rickstaa/stable-gym)
