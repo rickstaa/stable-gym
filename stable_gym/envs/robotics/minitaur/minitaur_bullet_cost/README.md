@@ -5,7 +5,7 @@
 </div>
 </br>
 
-An actuated 8-jointed Minitaur. This environment corresponds to the [MinitaurBulletEnv-v0](https://github.com/bulletphysics/bullet3/blob/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py) environment included in the [pybullet package](https://pybullet.org/). It is different in the fact that:
+An actuated 8-jointed Minitaur. This environment corresponds to the [MinitaurBulletEnv-v0](https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py) environment included in the [pybullet package](https://pybullet.org/). It is different in the fact that:
 
 *   The objective was changed to a velocity-tracking task. To do this, the
     reward is replaced with a cost. This cost is the squared difference between
@@ -16,11 +16,11 @@ An actuated 8-jointed Minitaur. This environment corresponds to the [MinitaurBul
 *   Users are given the option to modify the Minitaur fall criteria, and thus
     the episode termination criteria.
 
-The rest of the environment is the same as the original Minitaur environment. Please refer to the [original codebase](https://github.com/bulletphysics/bullet3/blob/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py) or [the article of Tan et al. 2018](https://arxiv.org/abs/1804.10332) on which the Minitaur environment is based for more information.
+The rest of the environment is the same as the original Minitaur environment. Please refer to the [original codebase](https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py) or [the article of Tan et al. 2018](https://arxiv.org/abs/1804.10332) on which the Minitaur environment is based for more information.
 
 ## Observation space
 
-The original observation space of the [MinitaurBulletEnv-v0](https://github.com/bulletphysics/bullet3/blob/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py) environment contains all eight motors' angles, velocities and torques. In this modified version, the observation space has been extended to add three additional observations:
+The original observation space of the [MinitaurBulletEnv-v0](https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py) environment contains all eight motors' angles, velocities and torques. In this modified version, the observation space has been extended to add three additional observations:
 
 *   $r$: The velocity reference signal that needs to be tracked.
 *   $r_{error}$: The difference between the current and reference velocities.
@@ -77,7 +77,7 @@ In addition to the observations, the cost and a termination and truncation boole
 [observation, cost, termination, truncation, info_dict]
 ```
 
-Compared to the original [MinitaurBulletEnv-v0](https://github.com/bulletphysics/bullet3/blob/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py) environment, the following keys were added to this info dictionary:
+Compared to the original [MinitaurBulletEnv-v0](https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py) environment, the following keys were added to this info dictionary:
 
 *   **reference**: The reference velocity.
 *   **state\_of\_interest**: The state that should track the reference (SOI).

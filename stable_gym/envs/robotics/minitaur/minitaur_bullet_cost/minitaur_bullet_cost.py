@@ -35,7 +35,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
 
         The rest of the environment is the same as the original Minitaur environment.
         Please refer to the
-        `original codebase <https://github.com/bulletphysics/bullet3/blob/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py>`__
+        `original codebase <https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py>`__
         or `the article of Tan et al. 2018`_ on which the Minitaur environment is based for more information.
 
     .. _`Minitaur environment`: https://arxiv.org/abs/1804.10332
