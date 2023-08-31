@@ -35,9 +35,9 @@ In addition to the observations, the cost and a termination and truncation boole
 
 Compared to the original [FetchReach-v2](https://robotics.farama.org/envs/fetch/reach/) environment, the following keys were added to this info dictionary:
 
-*   **reference**: The reference position (x,y,z) that the FetchReach is tracking.
-*   **state\_of\_interest**: The state that should track the reference (SOI).
-*   **reference\_error**: The error between SOI and the reference.
+*   **reference**: The reference position (x,y,z) that the FetchReach is tracking (i.e. the goal position).
+*   **state\_of\_interest**: The state that should track the reference (SOI) (i.e. the end-effector position).
+*   **reference\_error**: The error between SOI and the reference (i.e. the error between the end-effector position and the goal position).
 
 ## How to use
 
