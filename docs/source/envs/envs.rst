@@ -5,7 +5,7 @@ Environments
 ============
 
 The :stable-gym:`Stable Gym package <>` provides a variety of environments for training and testing
-:stable_learning_control:`(stable) reinforcement learning (RL) algorithms <>`.
+:stable-learning-control:`(stable) reinforcement learning (RL) algorithms <>`.
 
 Biological environments
 -----------------------
@@ -66,5 +66,7 @@ Robotics environment
     ./robotics/quadx_waypoints_cost.rst
 
 .. note::
-    The ROS robotics environments of the Stable Gym package were moved into a separate package
-    called :ros-gazebo-gym:`Ros Gazebo Gym <>`.
+    The ROS robotic environments from the Stable Gym package have been relocated to a
+    distinct package known as :ros-gazebo-gym:`Ros Gazebo Gym <>`. When integrating this package with 
+    stable RL agents, such as those available in the :stable-learning-control:`Stable Learning Control package <>`, 
+    it's crucial to configure the ``positive_reward`` argument as ``True``.

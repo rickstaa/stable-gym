@@ -14,9 +14,9 @@ Welcome to Stable Gym's documentation
 
 The :stable-gym:`Stable Gym <>` package contains several :gymnasium:`gymnasium environments <>` 
 with cost functions compatible with (stable) RL agents. It was initially created for the stable RL 
-algorithms in the :stable_learning_control:`Stable Learning Control <>` package but can be 
+algorithms in the :stable-learning-control:`Stable Learning Control <>` package but can be 
 used with any RL agent requiring a **positive definite cost function**. For more information about stable
-RL agents see the :stable_learning_control:`Stable Learning Control documentation <>`.
+RL agents see the :stable-learning-control:`Stable Learning Control documentation <>`.
 
 Contents
 ========

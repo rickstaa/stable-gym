@@ -94,7 +94,7 @@ extlinks = {
     "gymnasium": ("https://gymnasium.farama.org/%s", None),
     "gymnasium-robotics": ("https://robotics.farama.org/%s", None),
     "PyFlyt": ("https://jjshoots.github.io/PyFlyt/documentation%s", None),
-    "stable_learning_control": (
+    "stable-learning-control": (
         "https://github.com/rickstaa/stable-learning-control/%s",
         None,
     ),
