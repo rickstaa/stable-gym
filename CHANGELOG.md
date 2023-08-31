@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.20.4](https://github.com/rickstaa/stable-gym/compare/v0.20.3...v0.20.4) (2023-08-31)
+
+
+### Documentation
+
+* add ros-gazebo-gym positive reward comment ([#315](https://github.com/rickstaa/stable-gym/issues/315)) ([a29a1c9](https://github.com/rickstaa/stable-gym/commit/a29a1c9636b775ca8eb735691fdd233fbe52bb99))
+
 ## [0.20.3](https://github.com/rickstaa/stable-gym/compare/v0.20.2...v0.20.3) (2023-08-31)
 
 
