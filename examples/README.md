@@ -4,9 +4,9 @@ Contains examples of how to use the [Stable Gym](https://github.com/rickstaa/sta
 
 ## Dependencies
 
-*   [Python (>=3.7)](https://www.python.org/).
+* [Python (>=3.7)](https://www.python.org/).
 
 ## How to use
 
-1.  Install the Python dependencies using `pip install -r requirements.txt`.
-2.  Run the example using `python use_stable_gym.py`.
+1. Install the Python dependencies using `pip install -r requirements.txt`.
+2. Run the example using `python use_stable_gym.py`.

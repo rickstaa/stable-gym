@@ -4,15 +4,15 @@ A gymnasium environment for a noisy master-slave system. This environment can be
 
 ## Observation space
 
-*   **hat\_x\_1:** The estimated angle.
-*   **hat\_x\_2:** The estimated frequency.
-*   **x\_1:** Actual angle.
-*   **x\_2:** Actual frequency.
+* **hat\_x\_1:** The estimated angle.
+* **hat\_x\_2:** The estimated frequency.
+* **x\_1:** Actual angle.
+* **x\_2:** Actual frequency.
 
 ## Action space
 
-*   **u1:** First action coming from the RL Kalman filter.
-*   **u2:** Second action coming from the RL Kalman filter.
+* **u1:** First action coming from the RL Kalman filter.
+* **u2:** Second action coming from the RL Kalman filter.
 
 ## Episode termination
 

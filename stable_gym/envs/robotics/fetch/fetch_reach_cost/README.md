@@ -7,7 +7,7 @@
 
 An actuated 7-DOF [Fetch Mobile manipulator](https://fetchrobotics.com/). This environment corresponds to the [FetchReach-v2](https://robotics.farama.org/envs/fetch/reach/) environment included in the [gymnasium robotics package](https://robotics.farama.org/). It is different in the fact that:
 
-*   The reward was replaced with a cost. This was done by taking the absolute value of the reward.
+* The reward was replaced with a cost. This was done by taking the absolute value of the reward.
 
 The rest of the environment is the same as the original FetchReach environment. Below, the modified cost is described. For more information about the environment (e.g. observation space, action space, episode termination, etc.), please refer to the [gymnasium robotics library](https://robotics.farama.org/envs/fetch/reach/).
 
@@ -21,9 +21,9 @@ $$
 
 Where:
 
-*   $r{original}$ - is the original reward coming from the FetchReach environment.
-*   $p$ - is the achieved goal position (i.e. the end-effector position in Cartesian space).
-*   $p_{goal}$ - is the desired goal position in Cartesian space.
+* $r{original}$ - is the original reward coming from the FetchReach environment.
+* $p$ - is the achieved goal position (i.e. the end-effector position in Cartesian space).
+* $p_{goal}$ - is the desired goal position in Cartesian space.
 
 ## Environment step return
 
@@ -35,9 +35,9 @@ In addition to the observations, the cost and a termination and truncation boole
 
 Compared to the original [FetchReach-v2](https://robotics.farama.org/envs/fetch/reach/) environment, the following keys were added to this info dictionary:
 
-*   **reference**: The reference position (x,y,z) that the FetchReach is tracking (i.e. the goal position).
-*   **state\_of\_interest**: The state that should track the reference (SOI) (i.e. the end-effector position).
-*   **reference\_error**: The error between SOI and the reference (i.e. the error between the end-effector position and the goal position).
+* **reference**: The reference position (x,y,z) that the FetchReach is tracking (i.e. the goal position).
+* **state\_of\_interest**: The state that should track the reference (SOI) (i.e. the end-effector position).
+* **reference\_error**: The error between SOI and the reference (i.e. the error between the end-effector position and the goal position).
 
 ## How to use
 

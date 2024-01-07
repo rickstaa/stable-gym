@@ -8,12 +8,12 @@
 
 An unactuated joint attaches a pole to a cart, which moves along a frictionless track. This environment corresponds to the [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/) environment included in the gymnasium package. It is different in the fact that:
 
-*   The action space is continuous, wherein the original version it is discrete.
-*   The stabilization objective was replaced with a reference tracking task.
-*   The reward is replaced with a cost. This cost is the difference between a state variable and a reference value (error).
-*   Two additional observations are returned to enable reference tracking.
-*   Some of the environment parameters were changed slightly.
-*   The info dictionary returns extra information about the reference that should be tracked.
+* The action space is continuous, wherein the original version it is discrete.
+* The stabilization objective was replaced with a reference tracking task.
+* The reward is replaced with a cost. This cost is the difference between a state variable and a reference value (error).
+* Two additional observations are returned to enable reference tracking.
+* Some of the environment parameters were changed slightly.
+* The info dictionary returns extra information about the reference that should be tracked.
 
 This modification was first described in [Han et al. 2019](https://arxiv.org/abs/2004.14288).
 
@@ -21,28 +21,28 @@ This modification was first described in [Han et al. 2019](https://arxiv.org/abs
 
 By default, the environment returns the following observation:
 
-*   $x$ - Cart Position.
-*   $x_{dot}$ - Cart Velocity.
-*   $w$ - Pole angle.
-*   $w_{dot}$ - Pole angle velocity.
-*   $x_{ref}$ - The cart position reference.
-*   $x_{ref\_error}$ - The reference tracking error.
+* $x$ - Cart Position.
+* $x_{dot}$ - Cart Velocity.
+* $w$ - Pole angle.
+* $w_{dot}$ - Pole angle velocity.
+* $x_{ref}$ - The cart position reference.
+* $x_{ref\_error}$ - The reference tracking error.
 
 The last two variables can be excluded from the observation space by setting the `exclude_reference_from_observation` and `exclude_reference_error_from_observation` environment arguments to `True`. Please note that the environment needs the reference or the reference error to be included in the observation space when the reference signal is not constant to function correctly. If both are excluded, the environment will raise an error.
 
 ## Action space
 
-*   **u1:** The x-force applied on the cart.
+* **u1:** The x-force applied on the cart.
 
 ## Episode Termination
 
 An episode is terminated when:
 
-*   Pole Angle is more than 60 degrees.
-*   Cart Position is more than 10 m (center of the cart reaches the edge of the
-    display).
-*   Episode length is greater than 200.
-*   The cost is greater than a set threshold (100 by default). This threshold can be changed using the `max_cost` environment argument.
+* Pole Angle is more than 60 degrees.
+* Cart Position is more than 10 m (center of the cart reaches the edge of the
+  display).
+* Episode length is greater than 200.
+* The cost is greater than a set threshold (100 by default). This threshold can be changed using the `max_cost` environment argument.
 
 ## Environment goals
 
@@ -68,9 +68,9 @@ In addition to the observations, the cost and a termination and truncation boole
 
 The info dictionary contains the following keys:
 
-*   **reference**: The set cart position reference.
-*   **state\_of\_interest**: The state that should track the reference (SOI).
-*   **reference\_error**: The error between SOI and the reference.
+* **reference**: The set cart position reference.
+* **state\_of\_interest**: The state that should track the reference (SOI).
+* **reference\_error**: The error between SOI and the reference.
 
 ## How to use
 

@@ -8,9 +8,9 @@
 
 An unactuated joint attaches a pole to a cart, which moves along a frictionless track. This environment corresponds to the [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/) environment included in the gymnasium package. It is different in the fact that:
 
-*   The action space is continuous, wherein the original version it is discrete.
-*   The reward is replaced with a cost (i.e. negated reward).
-*   Some of the environment parameters were changed slightly.
+* The action space is continuous, wherein the original version it is discrete.
+* The reward is replaced with a cost (i.e. negated reward).
+* Some of the environment parameters were changed slightly.
 
 This modification was first described in [Han et al. 2019](https://arxiv.org/abs/2004.14288).
 
@@ -18,24 +18,24 @@ This modification was first described in [Han et al. 2019](https://arxiv.org/abs
 
 The environment returns the following observation:
 
-*   $x$ - Cart Position.
-*   $x_{dot}$ - Cart Velocity.
-*   $w$ - Pole angle.
-*   $w_{dot}$ - Pole angle velocity.
+* $x$ - Cart Position.
+* $x_{dot}$ - Cart Velocity.
+* $w$ - Pole angle.
+* $w_{dot}$ - Pole angle velocity.
 
 ## Action space
 
-*   **u1:** The x-force applied on the cart.
+* **u1:** The x-force applied on the cart.
 
 ## Episode Termination
 
 An episode is terminated when:
 
-*   Pole Angle is more than 20 degrees.
-*   Cart Position is more than 10 m (center of the cart reaches the edge of the
-    display).
-*   Episode length is greater than 200.
-*   The cost is greater than a set threshold (100 by default). This threshold can be changed using the `max_cost` environment argument.
+* Pole Angle is more than 20 degrees.
+* Cart Position is more than 10 m (center of the cart reaches the edge of the
+  display).
+* Episode length is greater than 200.
+* The cost is greater than a set threshold (100 by default). This threshold can be changed using the `max_cost` environment argument.
 
 ## Environment goals
 
@@ -61,9 +61,9 @@ In addition to the observations, the cost and a termination and truncation boole
 
 The info dictionary contains the following keys:
 
-*   **reference**: The set cart position and angle reference (i.e. the zero position and angle).
-*   **state\_of\_interest**: The state that should track the reference (SOI).
-*   **reference\_error**: The error between SOI and the reference.
+* **reference**: The set cart position and angle reference (i.e. the zero position and angle).
+* **state\_of\_interest**: The state that should track the reference (SOI).
+* **reference\_error**: The error between SOI and the reference.
 
 ## How to use
 
