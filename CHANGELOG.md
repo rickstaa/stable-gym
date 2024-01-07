@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.20.5](https://github.com/rickstaa/stable-gym/compare/v0.20.4...v0.20.5) (2023-10-27)
+
+
+### Bug Fixes
+
+* fix mujoco3 incompatibility ([252928a](https://github.com/rickstaa/stable-gym/commit/252928a9ca1c8140f012edd9aa50204a9e0b6af4))
+
 ## [0.20.4](https://github.com/rickstaa/stable-gym/compare/v0.20.3...v0.20.4) (2023-08-31)
 
 
