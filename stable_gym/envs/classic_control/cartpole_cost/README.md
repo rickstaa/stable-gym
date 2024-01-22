@@ -6,13 +6,29 @@
 
 <!--alex ignore joint-->
 
-An unactuated joint attaches a pole to a cart, which moves along a frictionless track. This environment corresponds to the [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/) environment included in the gymnasium package. It is different in the fact that:
+:::{attention}
+If you're using this environment to reproduce the results of [Han et al. (2020)](https://arxiv.org/abs/2004.14288), please note that slight differences may occur due to the modifications mentioned below. For an accurate reproduction, refer to the separate `han2020` branch, which mirrors the environment used in their study. It can be accessed [here](https://github.com/rickstaa/stable-gym/tree/han2020).
+:::
 
-* The action space is continuous, wherein the original version it is discrete.
-* The reward is replaced with a cost (i.e. negated reward).
-* Some of the environment parameters were changed slightly.
+An unactuated joint attaches a pole to a cart, which moves along a frictionless track. This environment is a modified version of the [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/) found in the Gymnasium package, with several key alterations:
 
-This modification was first described in [Han et al. 2019](https://arxiv.org/abs/2004.14288).
+* The action space is **continuous**, contrasting with the original **discrete** setting.
+* The **reward** function is replaced with a (positive definite) **cost** function (negated reward), in line with Lyapunov stability theory.
+* Maximum cart force is increased from `10` to `20`.
+* Episode length is reduced from `500` to `250`.
+* A termination cost of `c=100` is introduced for early episode termination, to promote cost minimization.
+* The terminal angle limit is expanded from the original `12` degrees to `20` degrees, enhancing recovery potential.
+* The terminal position limit is extended from `2.4` meters to `10` meters, broadening the recovery range.
+* Velocity limits are adjusted from ±∞ to ±50, accelerating training.
+* Angular velocity termination threshold is lowered from ±∞ to ±50, likely for improved training efficiency.
+* Random initial state range is modified from `[-0.05, 0.05]` to `[-5, 5]` for the cart position and `[-0.2, 0.2]` for all other states, allowing for expanded exploration.
+
+Additional modifications in our implementation:
+
+* An extra termination criterion for cumulative costs over `100` is added to hasten training.
+* The gravity constant is adjusted back from `10` to the real-world value of `9.8`, aligning it closer with the original CartPole environment.
+
+These modifications were first described in [Han et al. 2019](https://arxiv.org/abs/2004.14288) and further adapted in our version for enhanced training and exploration.
 
 ## Observation space
 

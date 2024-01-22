@@ -14,24 +14,49 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 # TODO: Update solving criteria after training.
 class CartPoleTrackingCost(gym.Env):
-    """Custom cartPole gymnasium environment.
+    r"""Custom CartPole Gymnasium environment.
 
     .. note::
-        Can also be used in a vectorized manner. See the
-        :gymnasium:`gym.vector <api/vector>` documentation.
+        This environment can be used in a vectorized manner. Refer to the
+        :gymnasium:`gym.vector <api/vector>` documentation for details.
 
     Source:
-        This environment corresponds to the version that is included in the Farama
-        Foundation gymnasium package. It is different from this version in the fact
-        that:
+        This environment is a modified version of the CartPole environment from the
+        Farma Foundation's :gymnasium:`Gymnasium <>` package, first used by `Han et al.`_
+        in 2020. Modifications made by Han et al. include:
 
-            -   The action space is continuous, wherein the original version it is discrete.
-            -   The reward is replaced with a cost. This cost is defined as the difference between a
-                state variable and a reference value (error).
-            -   The stabilization task was replaced with a reference tracking task.
-            -   Two additional observations are returned to enable reference tracking.
-            -   Some of the environment parameters were changed slightly.
-            -   The info dictionary returns extra information about the reference tracking task.
+            - The action space is **continuous**, contrasting with the original **discrete**
+              setting.
+            - The **reward** function is replaced with a (positive definite) **cost**
+              function (negated reward), in line with Lyapunov stability theory. This cost is the difference between a state variable and a reference value (error).
+            - Maximum cart force is increased from ``10`` to ``20``.
+            - Episode length is reduced from ``500`` to ``250``.
+            - A termination cost of :math:`c=100` is introduced for early episode
+              termination, to promote cost minimization.
+            - The terminal angle limit is expanded from the original ``12`` degrees to
+              ``20`` degrees, enhancing recovery potential.
+            - The terminal position limit is extended from ``2.4`` meters to ``10``
+              meters, broadening the recovery range.
+            - Velocity limits are adjusted from :math:`\pm \infty` to :math:`\pm 50`,
+              accelerating training.
+            - Angular velocity termination threshold is lowered from :math:`\pm \infty`
+              to :math:`\pm 50`, likely for improved training efficiency.
+            - Random initial state range is modified from ``[-0.05, 0.05]`` to ``[-5, 5]``
+              for the cart position and ``[-0.2, 0.2]`` for all other states, allowing
+              for expanded exploration.
+
+        Additional modifications in our implementation:
+
+            - An extra termination criterion for cumulative costs over ``100`` is added to
+              hasten training.
+            - The gravity constant is adjusted back from ``10`` to the real-world value of
+              ``9.8``, aligning it closer with the original CartPole environment.
+            - The stabilization objective is replaced with a **reference tracking task**
+              for enhanced control.
+            - Two additional observations are introduced, facilitating
+              **reference tracking**.
+            - The info dictionary now provides **extra information** about the reference
+              to be tracked.
 
     Observation:
         **Type**: Box(4) or Box(6)
@@ -90,7 +115,8 @@ class CartPoleTrackingCost(gym.Env):
             cost = (x - x_{ref})^2 + (\theta / \theta_{threshold})^2
 
     Starting State:
-        All observations are assigned a uniform random value in ``[-0.2..0.2]``.
+        The position is assigned a random value in ``[-5,5]`` and the other states are
+        assigned a uniform random value in ``[-0.2..0.2]``.
 
     Episode Termination:
         -   Pole Angle is more than 60 degrees.
@@ -131,7 +157,7 @@ class CartPoleTrackingCost(gym.Env):
         max_cost (float): The maximum cost.
 
     .. _`Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problem`: https://ieeexplore.ieee.org/document/6313077
-    .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
+    .. _`Han et al.`: https://arxiv.org/abs/2004.14288
     """  # noqa: E501
 
     metadata = {
@@ -198,7 +224,7 @@ class CartPoleTrackingCost(gym.Env):
         # NOTE: Compared to the original I store the initial values for the reset
         # function and replace the `self.total_mass` and `self.polemass_length` with
         # properties.
-        self.gravity = self._gravity_init = 9.8
+        self.gravity = self._gravity_init = 9.8  # NOTE: Han et al. 2020 uses 10.
         self.masscart = self._mass_cart_init = 1.0
         self.masspole = self._mass_pole_init = 0.1
         self.length = (
@@ -267,8 +293,8 @@ class CartPoleTrackingCost(gym.Env):
             [0.1, 0.2, 0.3, 0.1], dtype=self._observation_space_dtype
         )  # Used when random is disabled in reset.
         self._init_state_range = {
-            "low": [-0.2, -0.2, -0.2, -0.2],
-            "high": [0.2, 0.2, 0.2, 0.2],
+            "low": [-5, -0.2, -0.2, -0.2],
+            "high": [5, 0.2, 0.2, 0.2],
         }  # Used when random is enabled in reset.
         # NOTE: Original uses the following values in the reset function.
         # self._init_state_range = {
