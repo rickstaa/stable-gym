@@ -1,6 +1,7 @@
 {
     "allow": [
         "hooks",
-        "husky"
+        "husky",
+        "joint"
     ]
 }

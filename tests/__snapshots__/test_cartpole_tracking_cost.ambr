@@ -1,6 +1,6 @@
 # serializer version: 1
 # name: TestCartPoleCostEqual.test_snapshot
-  0.10958241942238534
+  2.7395604855596334
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.1
   -0.024448624099179084
@@ -12,10 +12,10 @@
   0.004398229425633801
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.12
-  0.10469521751476796
+  2.734673283652016
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.13
-  0.030138379583852813
+  7.497615259333488
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.14
   False
@@ -26,12 +26,12 @@
 # name: TestCartPoleCostEqual.test_snapshot.16
   dict({
     'reference': 0.004398229425633801,
-    'reference_error': 0.10469521751476796,
-    'state_of_interest': 0.10909344694040175,
+    'reference_error': 2.734673283652016,
+    'state_of_interest': 2.7390715130776497,
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.17
-  0.11283397455824112
+  2.742812040695489
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.18
   0.1373521677359711
@@ -49,10 +49,10 @@
   0.00879645711491628
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.22
-  0.10403751744332485
+  2.7340155835805726
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.23
-  0.02899388307733484
+  7.493011289302983
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.24
   False
@@ -63,12 +63,12 @@
 # name: TestCartPoleCostEqual.test_snapshot.26
   dict({
     'reference': 0.00879645711491628,
-    'reference_error': 0.10403751744332485,
-    'state_of_interest': 0.11283397455824112,
+    'reference_error': 2.7340155835805726,
+    'state_of_interest': 2.742812040695489,
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.27
-  0.11558101791296055
+  2.745559084050208
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.28
   0.41483476162456334
@@ -86,10 +86,10 @@
   0.013194681331496797
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.32
-  0.10238633658146375
+  2.7323644027187113
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.33
-  0.028259934797353933
+  7.483592202123162
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.34
   False
@@ -100,12 +100,12 @@
 # name: TestCartPoleCostEqual.test_snapshot.36
   dict({
     'reference': 0.013194681331496797,
-    'reference_error': 0.10238633658146375,
-    'state_of_interest': 0.11558101791296055,
+    'reference_error': 2.7323644027187113,
+    'state_of_interest': 2.745559084050208,
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.37
-  0.12387771314545182
+  2.7538557792826994
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.38
   0.5667135704060806
@@ -123,10 +123,10 @@
   0.01759290033902609
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.42
-  0.10628481280642572
+  2.7362628789436734
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.43
-  0.026867494846037426
+  7.502705576097861
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.44
   False
@@ -137,12 +137,12 @@
 # name: TestCartPoleCostEqual.test_snapshot.46
   dict({
     'reference': 0.01759290033902609,
-    'reference_error': 0.10628481280642572,
-    'state_of_interest': 0.12387771314545182,
+    'reference_error': 2.7362628789436734,
+    'state_of_interest': 2.7538557792826994,
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.47
-  0.13521198455357342
+  2.765190050690821
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.48
   0.24856720024803347
@@ -151,7 +151,7 @@
   0.11803000341030895
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.5
-  0.10958241942238534
+  2.7395604855596334
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.50
   -0.12071230469371952
@@ -160,10 +160,10 @@
   0.021991112401156948
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.52
-  0.11322087215241647
+  2.7431989382896638
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.53
-  0.025522589080906523
+  7.537844038223492
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.54
   False
@@ -174,19 +174,19 @@
 # name: TestCartPoleCostEqual.test_snapshot.56
   dict({
     'reference': 0.021991112401156948,
-    'reference_error': 0.11322087215241647,
-    'state_of_interest': 0.13521198455357342,
+    'reference_error': 2.7431989382896638,
+    'state_of_interest': 2.765190050690821,
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.6
   dict({
     'reference': 0.0,
-    'reference_error': 0.10958241942238534,
-    'state_of_interest': 0.10958241942238534,
+    'reference_error': 2.7395604855596334,
+    'state_of_interest': 2.7395604855596334,
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.7
-  0.10909344694040175
+  2.7390715130776497
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.8
   0.18702638089196827

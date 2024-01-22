@@ -1,6 +1,6 @@
 # serializer version: 1
 # name: TestCartPoleCostEqual.test_snapshot
-  0.10958241942238534
+  2.7395604855596334
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.1
   -0.024448624099179084
@@ -14,12 +14,12 @@
 # name: TestCartPoleCostEqual.test_snapshot.12
   dict({
     'reference': array([0., 0.]),
-    'reference_error': array([-0.10909345, -0.14501811]),
-    'state_of_interest': array([0.10909345, 0.14501811]),
+    'reference_error': array([-2.73907151, -0.14501811]),
+    'state_of_interest': array([2.73907151, 0.14501811]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.13
-  0.11283397455824112
+  2.742812040695489
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.14
   0.1373521677359711
@@ -31,7 +31,7 @@
   -0.07676570293056856
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.17
-  3.270741362539796
+  3.3458442263874915
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.18
   False
@@ -45,12 +45,12 @@
 # name: TestCartPoleCostEqual.test_snapshot.20
   dict({
     'reference': array([0., 0.]),
-    'reference_error': array([-0.11283397, -0.14115849]),
-    'state_of_interest': array([0.11283397, 0.14115849]),
+    'reference_error': array([-2.74281204, -0.14115849]),
+    'state_of_interest': array([2.74281204, 0.14115849]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.21
-  0.11558101791296055
+  2.745559084050208
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.22
   0.41483476162456334
@@ -62,7 +62,7 @@
   -0.44748678167775646
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.25
-  3.199988707897624
+  3.2752360650207124
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.26
   False
@@ -73,12 +73,12 @@
 # name: TestCartPoleCostEqual.test_snapshot.28
   dict({
     'reference': array([0., 0.]),
-    'reference_error': array([-0.11558102, -0.13962318]),
-    'state_of_interest': array([0.11558102, 0.13962318]),
+    'reference_error': array([-2.74555908, -0.13962318]),
+    'state_of_interest': array([2.74555908, 0.13962318]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.29
-  0.12387771314545182
+  2.7538557792826994
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.3
   0.07894721162374557
@@ -93,7 +93,7 @@
   -0.6321720124467993
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.33
-  2.8029394711714257
+  2.8786232308241715
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.34
   False
@@ -104,12 +104,12 @@
 # name: TestCartPoleCostEqual.test_snapshot.36
   dict({
     'reference': array([0., 0.]),
-    'reference_error': array([-0.12387771, -0.13067344]),
-    'state_of_interest': array([0.12387771, 0.13067344]),
+    'reference_error': array([-2.75385578, -0.13067344]),
+    'state_of_interest': array([2.75385578, 0.13067344]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.37
-  0.13521198455357342
+  2.765190050690821
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.38
   0.24856720024803347
@@ -120,15 +120,15 @@
 # name: TestCartPoleCostEqual.test_snapshot.4
   dict({
     'reference': array([0., 0.]),
-    'reference_error': array([-0.10958242, -0.14343917]),
-    'state_of_interest': array([0.10958242, 0.14343917]),
+    'reference_error': array([-2.73956049, -0.14343917]),
+    'state_of_interest': array([2.73956049, 0.14343917]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.40
   -0.12071230469371952
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.41
-  2.286834996999153
+  2.363114934355879
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.42
   False
@@ -139,12 +139,12 @@
 # name: TestCartPoleCostEqual.test_snapshot.44
   dict({
     'reference': array([0., 0.]),
-    'reference_error': array([-0.13521198, -0.11803   ]),
-    'state_of_interest': array([0.13521198, 0.11803   ]),
+    'reference_error': array([-2.76519005, -0.11803   ]),
+    'state_of_interest': array([2.76519005, 0.11803   ]),
   })
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.5
-  0.10909344694040175
+  2.7390715130776497
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.6
   0.18702638089196827
@@ -156,5 +156,5 @@
   -0.19298094228082074
 # ---
 # name: TestCartPoleCostEqual.test_snapshot.9
-  3.4520313962115345
+  3.526937509947416
 # ---
