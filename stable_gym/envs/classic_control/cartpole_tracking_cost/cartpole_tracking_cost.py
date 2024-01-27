@@ -47,10 +47,11 @@ class CartPoleTrackingCost(gym.Env):
 
         Additional modifications in our implementation:
 
-            - An extra termination criterion for cumulative costs over ``100`` is added to
-              hasten training.
-            - The gravity constant is adjusted back from ``10`` to the real-world value of
-              ``9.8``, aligning it closer with the original CartPole environment.
+            - Unlike the original environment's fixed cost threshold of ``100``, this
+              version allows users to adjust the maximum cost threshold via the
+              :obj:`max_cost` input, improving training adaptability.
+            - The gravity constant is adjusted back from ``10`` to the real-world value
+              of ``9.8``, aligning it closer with the original CartPole environment.
             - The stabilization objective is replaced with a **reference tracking task**
               for enhanced control.
             - Two additional observations are introduced, facilitating
@@ -275,7 +276,7 @@ class CartPoleTrackingCost(gym.Env):
         # Clip the reward.
         # NOTE: Original does not do this. Here this is done because we want to decrease
         # the cost.
-        self.reward_range = (0.0, 100.0)
+        self.reward_range = (0.0, max_cost)
 
         self.screen_width = 600
         self.screen_height = 400

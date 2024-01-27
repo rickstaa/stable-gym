@@ -21,6 +21,7 @@ An unactuated joint attaches a pole to a cart, which moves along a frictionless 
 
 Additional modifications in our implementation:
 
+* Unlike the original environment's fixed cost threshold of `100`, this version allows users to adjust the maximum cost threshold improving training adaptability.
 * An extra termination criterion for cumulative costs over `100` is added to hasten training.
 * The gravity constant is adjusted back from `10` to the real-world value of `9.8`, aligning it closer with the original CartPole environment.
 * The stabilization objective is replaced with a **reference tracking task** for enhanced control.
