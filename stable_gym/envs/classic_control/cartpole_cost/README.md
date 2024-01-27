@@ -25,7 +25,7 @@ An unactuated joint attaches a pole to a cart, which moves along a frictionless 
 
 Additional modifications in our implementation:
 
-* An extra termination criterion for cumulative costs over `100` is added to hasten training.
+* Unlike the original environment's fixed cost threshold of `100`, this version allows users to adjust the maximum cost threshold improving training adaptability.
 * The gravity constant is adjusted back from `10` to the real-world value of `9.8`, aligning it closer with the original CartPole environment.
 
 These modifications were first described in [Han et al. 2019](https://arxiv.org/abs/2004.14288) and further adapted in our version for enhanced training and exploration.
