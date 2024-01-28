@@ -64,7 +64,7 @@ class CartPoleCost(gym.Env):
             - The gravity constant is adjusted back from ``10`` to the real-world value
               of ``9.8``, aligning it closer with the original CartPole environment.
             - The data types for action and observation spaces are set to ``np.float64``,
-              diverging from the ``np.float32`` used by Han et al. (2020). This aligns
+              diverging from the ``np.float32`` used by Han et al. 2020. This aligns
               the Gymnasium implementation with the original CartPole environment.
 
     Observation:

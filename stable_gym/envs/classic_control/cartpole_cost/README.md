@@ -29,7 +29,7 @@ Additional modifications in our implementation:
 
 * Unlike the original environment's fixed cost threshold of `100`, this version allows users to adjust the maximum cost threshold improving training adaptability.
 * The gravity constant is adjusted back from `10` to the real-world value of `9.8`, aligning it closer with the original CartPole environment.
-* The data types for action and observation spaces are set to `np.float64`, diverging from the `np.float32` used by Han et al. (2020). This aligns the Gymnasium implementation with the original CartPole environment.
+* The data types for action and observation spaces are set to `np.float64`, diverging from the `np.float32` used by Han et al. 2020. This aligns the Gymnasium implementation with the original CartPole environment.
 
 These modifications were first described in [Han et al. 2020](https://arxiv.org/abs/2004.14288) and further adapted in our version for enhanced training and exploration.
 

@@ -28,7 +28,7 @@ Additional modifications in our implementation:
 * The stabilization objective is replaced with a **reference tracking task** for enhanced control.
 * Two additional observations are introduced, facilitating **reference tracking**.
 * The info dictionary now provides **extra information** about the reference to be tracked.
-* The data types for action and observation spaces are set to `np.float64`, diverging from the `np.float32` used by Han et al. (2020). This aligns the Gymnasium implementation with the original CartPole environment.
+* The data types for action and observation spaces are set to `np.float64`, diverging from the `np.float32` used by Han et al. 2020. This aligns the Gymnasium implementation with the original CartPole environment.
 
 These modifications were first described in [Han et al. 2020](https://arxiv.org/abs/2004.14288) and further adapted in our version for enhanced training and exploration.
 
