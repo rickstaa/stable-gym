@@ -27,6 +27,8 @@ class CartPoleTrackingCost(gym.Env):
 
             - The action space is **continuous**, contrasting with the original **discrete**
               setting.
+            - Offers an optional feature to confine actions within the defined action space,
+              preventing the agent from exceeding set boundaries when activated.
             - The **reward** function is replaced with a (positive definite) **cost**
               function (negated reward), in line with Lyapunov stability theory. This cost is the difference between a state variable and a reference value (error).
             - Maximum cart force is increased from ``10`` to ``20``.
@@ -58,6 +60,9 @@ class CartPoleTrackingCost(gym.Env):
               **reference tracking**.
             - The info dictionary now provides **extra information** about the reference
               to be tracked.
+            - The data types for action and observation spaces are set to ``np.float64``,
+              diverging from the ``np.float32`` used by Han et al. (2020). This aligns
+              the Gymnasium implementation with the original CartPole environment.
 
     Observation:
         **Type**: Box(4) or Box(6)

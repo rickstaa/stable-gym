@@ -125,7 +125,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         fall_criteria_up_rotation=0.85,
         fall_criteria_z_position=0.13,
         exclude_reference_from_observation=False,
-        exclude_reference_error_from_observation=True,  # NOTE: False in Han et al. 2018. # noqa: E501
+        exclude_reference_error_from_observation=True,  # NOTE: False in Han et al. 2020. # noqa: E501
         exclude_x_velocity_from_observation=False,
         action_space_dtype=np.float32,
         observation_space_dtype=np.float64,
@@ -376,7 +376,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         self.t = self.t + self.dt
 
         # Retrieve original rewards.
-        # NOTE: Han et al. 2018 used the squared error for the drift reward. We use the
+        # NOTE: Han et al. 2020 used the squared error for the drift reward. We use the
         # version found in the original Minitaur environment (i.e. absolute distance).
         objectives = super().get_objectives()
         last_rewards = objectives[-1]
@@ -447,7 +447,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         Returns:
             (bool): Boolean value that indicates whether the episode is terminated.
         """
-        # NOTE: Han et al. 2018 returns `FALSE` here. We use the original termination
+        # NOTE: Han et al. 2020 returns `FALSE` here. We use the original termination
         # criteria from the Minitaur environment + a minimum velocity criteria.
         terminated = super()._termination()
 
@@ -474,7 +474,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         Returns:
             (bool): Boolean value that indicates whether the minitaur has fallen.
         """
-        # NOTE: Han et al. 2018 doesn't use the z position criteria.
+        # NOTE: Han et al. 2020 doesn't use the z position criteria.
         orientation = self.minitaur.GetBaseOrientation()
         rot_mat = self._pybullet_client.getMatrixFromQuaternion(orientation)
         local_up = rot_mat[6:]

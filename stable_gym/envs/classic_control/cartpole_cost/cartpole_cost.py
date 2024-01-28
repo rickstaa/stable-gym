@@ -34,6 +34,8 @@ class CartPoleCost(gym.Env):
 
             - The action space is **continuous**, contrasting with the original **discrete**
               setting.
+            - Offers an optional feature to confine actions within the defined action space,
+              preventing the agent from exceeding set boundaries when activated.
             - The **reward** function is replaced with a (positive definite) **cost**
               function (negated reward), in line with Lyapunov stability theory.
             - Maximum cart force is increased from ``10`` to ``20``.
@@ -51,6 +53,8 @@ class CartPoleCost(gym.Env):
             - Random initial state range is modified from ``[-0.05, 0.05]`` to ``[-5, 5]``
               for the cart position and ``[-0.2, 0.2]`` for all other states, allowing
               for expanded exploration.
+            - The info dictionary is expanded to include the reference state, state of
+              interest, and reference error.
 
         Additional modifications in our implementation:
 
@@ -59,6 +63,9 @@ class CartPoleCost(gym.Env):
               :obj:`max_cost` input, improving training adaptability.
             - The gravity constant is adjusted back from ``10`` to the real-world value
               of ``9.8``, aligning it closer with the original CartPole environment.
+            - The data types for action and observation spaces are set to ``np.float64``,
+              diverging from the ``np.float32`` used by Han et al. (2020). This aligns
+              the Gymnasium implementation with the original CartPole environment.
 
     Observation:
         **Type**: Box(4) or Box(6)
@@ -169,8 +176,8 @@ class CartPoleCost(gym.Env):
         # NOTE: Custom environment arguments.
         max_cost=100.0,
         clip_action=True,
-        action_space_dtype=np.float64,
-        observation_space_dtype=np.float64,
+        action_space_dtype=np.float64,  # NOTE: Han et al. 2020 uses np.float32.
+        observation_space_dtype=np.float64,  # NOTE: Han et al. 2020 uses np.float32.
     ):
         """Initialise a new CartPoleCost environment instance.
 
