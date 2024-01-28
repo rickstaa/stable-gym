@@ -9,6 +9,7 @@
 An unactuated joint attaches a pole to a cart, which moves along a frictionless track. This environment is a modified version of the [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/) found in the Gymnasium package, with several key alterations:
 
 * The action space is **continuous**, contrasting with the original **discrete** setting.
+* Offers an optional feature to confine actions within the defined action space, preventing the agent from exceeding set boundaries when activated.
 * The **reward** function is replaced with a (positive definite) **cost** function (negated reward), in line with Lyapunov stability theory. This cost is the difference between a state variable and a reference value (error).
 * Maximum cart force is increased from `10` to `20`.
 * Episode length is reduced from `500` to `250`.
@@ -27,8 +28,9 @@ Additional modifications in our implementation:
 * The stabilization objective is replaced with a **reference tracking task** for enhanced control.
 * Two additional observations are introduced, facilitating **reference tracking**.
 * The info dictionary now provides **extra information** about the reference to be tracked.
+* The data types for action and observation spaces are set to `np.float64`, diverging from the `np.float32` used by Han et al. (2020). This aligns the Gymnasium implementation with the original CartPole environment.
 
-These modifications were first described in [Han et al. 2019](https://arxiv.org/abs/2004.14288) and further adapted in our version for enhanced training and exploration.
+These modifications were first described in [Han et al. 2020](https://arxiv.org/abs/2004.14288) and further adapted in our version for enhanced training and exploration.
 
 ## Observation space
 

@@ -13,6 +13,7 @@ If you're using this environment to reproduce the results of [Han et al. (2020)]
 An unactuated joint attaches a pole to a cart, which moves along a frictionless track. This environment is a modified version of the [CartPole-v1](https://gymnasium.farama.org/environments/classic_control/cart_pole/) found in the Gymnasium package, with several key alterations:
 
 * The action space is **continuous**, contrasting with the original **discrete** setting.
+* Offers an optional feature to confine actions within the defined action space, preventing the agent from exceeding set boundaries when activated.
 * The **reward** function is replaced with a (positive definite) **cost** function (negated reward), in line with Lyapunov stability theory.
 * Maximum cart force is increased from `10` to `20`.
 * Episode length is reduced from `500` to `250`.
@@ -22,13 +23,15 @@ An unactuated joint attaches a pole to a cart, which moves along a frictionless 
 * Velocity limits are adjusted from ±∞ to ±50, accelerating training.
 * Angular velocity termination threshold is lowered from ±∞ to ±50, likely for improved training efficiency.
 * Random initial state range is modified from `[-0.05, 0.05]` to `[-5, 5]` for the cart position and `[-0.2, 0.2]` for all other states, allowing for expanded exploration.
+* The info dictionary is expanded to include the reference state, state of interest, and reference error.
 
 Additional modifications in our implementation:
 
 * Unlike the original environment's fixed cost threshold of `100`, this version allows users to adjust the maximum cost threshold improving training adaptability.
 * The gravity constant is adjusted back from `10` to the real-world value of `9.8`, aligning it closer with the original CartPole environment.
+* The data types for action and observation spaces are set to `np.float64`, diverging from the `np.float32` used by Han et al. (2020). This aligns the Gymnasium implementation with the original CartPole environment.
 
-These modifications were first described in [Han et al. 2019](https://arxiv.org/abs/2004.14288) and further adapted in our version for enhanced training and exploration.
+These modifications were first described in [Han et al. 2020](https://arxiv.org/abs/2004.14288) and further adapted in our version for enhanced training and exploration.
 
 ## Observation space
 

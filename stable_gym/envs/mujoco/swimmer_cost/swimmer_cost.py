@@ -75,9 +75,9 @@ class SwimmerCost(SwimmerEnv, utils.EzPickle):
         ctrl_cost_weight=1e-4,
         reset_noise_scale=0.1,
         exclude_current_positions_from_observation=True,
-        exclude_reference_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
+        exclude_reference_from_observation=False,  # NOTE: True in Han et al. 2020. # noqa: E501
         exclude_reference_error_from_observation=True,
-        exclude_x_velocity_from_observation=False,  # NOTE: True in Han et al. 2018. # noqa: E501
+        exclude_x_velocity_from_observation=False,  # NOTE: True in Han et al. 2020. # noqa: E501
         action_space_dtype=np.float32,
         observation_space_dtype=np.float64,
         **kwargs,
