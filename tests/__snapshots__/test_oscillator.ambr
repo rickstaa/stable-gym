@@ -31,10 +31,10 @@
   })
 # ---
 # name: TestOscillator.test_step
-  6.054702492845994
+  7.184922250066178
 # ---
 # name: TestOscillator.test_step.1
-  1.3536723708128777
+  4.1592801720526165
 # ---
 # name: TestOscillator.test_step.10
   False
@@ -47,34 +47,34 @@
   })
 # ---
 # name: TestOscillator.test_step.12
-  7.115191374657359
+  9.577735825425492
 # ---
 # name: TestOscillator.test_step.13
-  0.0
+  4.063539001651491
 # ---
 # name: TestOscillator.test_step.14
-  12.87923968774058
+  13.595016665928995
 # ---
 # name: TestOscillator.test_step.15
-  4.631739299753713
+  4.812574460908943
 # ---
 # name: TestOscillator.test_step.16
-  0.9626996889912394
+  1.4115969371895978
 # ---
 # name: TestOscillator.test_step.17
-  6.316237850683443
+  6.429359514754337
 # ---
 # name: TestOscillator.test_step.18
   8.439533636705194
 # ---
 # name: TestOscillator.test_step.19
-  -3.8077943369514813
+  -3.6269591757962516
 # ---
 # name: TestOscillator.test_step.2
-  8.5017041586181
+  9.208714559061189
 # ---
 # name: TestOscillator.test_step.20
-  14.499297712519772
+  13.154832862892624
 # ---
 # name: TestOscillator.test_step.21
   False
@@ -85,27 +85,27 @@
 # name: TestOscillator.test_step.23
   dict({
     'reference': 8.439533636705194,
-    'reference_error': -3.8077943369514813,
-    'state_of_interest': 4.631739299753713,
+    'reference_error': -3.6269591757962516,
+    'state_of_interest': 4.812574460908943,
   })
 # ---
 # name: TestOscillator.test_step.24
-  8.62728249535218
+  11.888788905713866
 # ---
 # name: TestOscillator.test_step.25
-  2.931902989654285
+  7.409917060593791
 # ---
 # name: TestOscillator.test_step.26
-  7.930094036684647
+  12.595033248290306
 # ---
 # name: TestOscillator.test_step.27
-  5.492265561713667
+  6.056257725322485
 # ---
 # name: TestOscillator.test_step.28
-  0.904937707651765
+  1.9770673612224603
 # ---
 # name: TestOscillator.test_step.29
-  7.997941929680929
+  8.218800610417716
 # ---
 # name: TestOscillator.test_step.3
   3.896794575423781
@@ -114,10 +114,10 @@
   8.6587581932296
 # ---
 # name: TestOscillator.test_step.31
-  -3.1664926315159327
+  -2.602500467907115
 # ---
 # name: TestOscillator.test_step.32
-  10.026675585444696
+  6.773008685456752
 # ---
 # name: TestOscillator.test_step.33
   False
@@ -128,39 +128,39 @@
 # name: TestOscillator.test_step.35
   dict({
     'reference': 8.6587581932296,
-    'reference_error': -3.1664926315159327,
-    'state_of_interest': 5.492265561713667,
+    'reference_error': -2.602500467907115,
+    'state_of_interest': 6.056257725322485,
   })
 # ---
 # name: TestOscillator.test_step.36
-  6.77540453458308
+  12.261853445830182
 # ---
 # name: TestOscillator.test_step.37
-  1.2221184287656546
+  8.12078526069157
 # ---
 # name: TestOscillator.test_step.38
-  11.808575489982447
+  15.539598422713649
 # ---
 # name: TestOscillator.test_step.39
-  6.543094827267196
+  7.595088486717355
 # ---
 # name: TestOscillator.test_step.4
   0.7937362868735947
 # ---
 # name: TestOscillator.test_step.40
-  1.3197459235373448
+  3.0440300492441192
 # ---
 # name: TestOscillator.test_step.41
-  8.786880459769616
+  9.740877893519102
 # ---
 # name: TestOscillator.test_step.42
   8.877332634950129
 # ---
 # name: TestOscillator.test_step.43
-  -2.334237807682933
+  -1.282244148232774
 # ---
 # name: TestOscillator.test_step.44
-  5.448666142816425
+  1.6441500556771922
 # ---
 # name: TestOscillator.test_step.45
   False
@@ -171,39 +171,39 @@
 # name: TestOscillator.test_step.47
   dict({
     'reference': 8.877332634950129,
-    'reference_error': -2.334237807682933,
-    'state_of_interest': 6.543094827267196,
+    'reference_error': -1.282244148232774,
+    'state_of_interest': 7.595088486717355,
   })
 # ---
 # name: TestOscillator.test_step.48
-  7.1504489432514395
+  13.535969202627244
 # ---
 # name: TestOscillator.test_step.49
-  4.2907152128944634
+  10.96253172105578
 # ---
 # name: TestOscillator.test_step.5
   5.272303388621858
 # ---
 # name: TestOscillator.test_step.50
-  9.936918693702047
+  15.426186139778938
 # ---
 # name: TestOscillator.test_step.51
-  7.234573863164457
+  9.101279728847143
 # ---
 # name: TestOscillator.test_step.52
-  1.4361001167276088
+  4.160713888000123
 # ---
 # name: TestOscillator.test_step.53
-  10.149039710580631
+  11.64276096754214
 # ---
 # name: TestOscillator.test_step.54
   9.095041255281616
 # ---
 # name: TestOscillator.test_step.55
-  -1.860467392117159
+  0.0062384735655260926
 # ---
 # name: TestOscillator.test_step.56
-  3.461338917131223
+  3.891855242776784e-05
 # ---
 # name: TestOscillator.test_step.57
   False
@@ -214,8 +214,8 @@
 # name: TestOscillator.test_step.59
   dict({
     'reference': 9.095041255281616,
-    'reference_error': -1.860467392117159,
-    'state_of_interest': 7.234573863164457,
+    'reference_error': 0.0062384735655260926,
+    'state_of_interest': 9.101279728847143,
   })
 # ---
 # name: TestOscillator.test_step.6
