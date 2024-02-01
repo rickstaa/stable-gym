@@ -43,10 +43,10 @@ For the reset method validation, due to differences in seeding methods, temporar
 
 2. **Replace the seeding method**: Swap the seeding method in the `stable-gym` environment with the original OpenAI Gym version. To do this, add the `gym_v0_12_1_seeding.py` file to your `PYTHONPATH` and run the following code in the debug terminal:
 
-   ```python
-   from gym_v0_12_1_seeding import np_random
-   self.np_random = np_random(seed)[0]
-   ```
+```python
+from gym_v0_12_1_seeding import np_random
+self.np_random = np_random(seed)[0]
+```
 
 3. **Set a breakpoint in the original environment reset method**: Insert a breakpoint in the reset method of the original environment for comparison.
 
