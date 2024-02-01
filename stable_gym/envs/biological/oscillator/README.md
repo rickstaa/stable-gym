@@ -1,6 +1,13 @@
 # Oscillator gymnasium environment
 
-A gymnasium environment for a synthetic oscillatory network of transcriptional regulators called a repressilator. A repressilator is a three-gene regulatory network where the dynamics of mRNA and proteins follow an oscillatory behaviour. First presented by [Han et al. 2020](https://arxiv.org/abs/2004.14288).
+A gymnasium environment for a synthetic oscillatory network of transcriptional regulators called a repressilator. A repressilator is a three-gene regulatory network where the dynamics of mRNA and proteins follow an oscillatory behaviour. First presented by [Han et al. 2020](https://arxiv.org/abs/2004.14288). Compared to the original implementation, our version introduces several enhancements to the environment, making it more flexible and user-friendly:
+
+* We've added environment arguments that allow for the modification of reference signal parameters.
+* System parameters can now be individually tailored for each protein, instead of applying a uniform set of parameters across all proteins.
+* The reference can now be excluded from the observation if desired.
+* The reference error can be included in the 'info' dictionary for additional context.
+* The observation space was expanded to accurately reproduce the plots presented in [Han et al. 2020](https://arxiv.org/abs/2004.14288), which was not possible with the original code's observation space.
+* Introduced an adjustable `max_cost` variable for terminating episodes, defaulting to $100$ for consistency with the original environment.
 
 ## Observation space
 

@@ -1,6 +1,13 @@
 # Oscillator Complicated gymnasium environment
 
-A more challenging (i.e. complicated) version of the [Oscillator environment](https://rickstaa.dev/stable-gym/envs/biological/oscillator.html). This version adds an extra 4th protein and its accompanying mRNA transcription concentration to the environment. The light signal of an additional action input induces the mRNA transcription of this extra protein.
+A more challenging (i.e. complicated) version of the [Oscillator environment](https://rickstaa.dev/stable-gym/envs/biological/oscillator.html). This version adds an extra 4th protein and its accompanying mRNA transcription concentration to the environment. The light signal of an additional action input induces the mRNA transcription of this extra protein. First presented by [Han et al. 2020](https://arxiv.org/abs/2004.14288). Compared to the original implementation, our version introduces several enhancements to the environment, making it more flexible and user-friendly:
+
+* We've added environment arguments that allow for the modification of reference signal parameters.
+* System parameters can now be individually tailored for each protein, instead of applying a uniform set of parameters across all proteins.
+* The reference can now be excluded from the observation if desired.
+* The reference error can be included in the 'info' dictionary for additional context.
+* The observation space was expanded to accurately reproduce the plots presented in [Han et al. 2020](https://arxiv.org/abs/2004.14288), which was not possible with the original code's observation space.
+* Introduced an adjustable `max_cost` threshold for terminating episodes, defaulting to $\infty$ for consistency with the original environment.
 
 ## Observation space
 

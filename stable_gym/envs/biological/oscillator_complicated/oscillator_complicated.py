@@ -14,7 +14,7 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 # TODO: Update solving criteria after training.
 class OscillatorComplicated(gym.Env):
-    """Challenging (i.e. complicated) oscillatory network environment. This environment
+    r"""Challenging (i.e. complicated) oscillatory network environment. This environment
     class is based on the :class:`~stable_gym.envs.biological.oscillator.oscillator.Oscillator`
     environment class but has an additional protein, mRNA transcription and light input.
 
@@ -29,7 +29,20 @@ class OscillatorComplicated(gym.Env):
 
     Source:
         This environment corresponds to the Oscillator environment used in the paper
-        `Han et al. 2020`_.
+        `Han et al. 2020`_. In our implementation several additional features were added
+        to the environment to make it more flexible and easier to use:
+
+            - Environment arguments now allow for modification of the reference signal
+              parameters.
+            - System parameters can now be individually adjusted for each protein,
+              rather than applying the same parameters across all proteins.
+            - The reference can be omitted from the observation.
+            - Reference error can be included in the info dictionary.
+            - The observation space was expanded to accurately reproduce the plots
+              presented in `Han et al. 2020`_, which was not possible with the original
+              code's observation space.
+            - Added an adjustable ``max_cost`` threshold for episode termination,
+              defaulting to $\infty$ to match the original environment.
 
     .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 
@@ -39,29 +52,29 @@ class OscillatorComplicated(gym.Env):
         +-----+-------------------------------------------------+-------------------+-------------------+
         | Num | Observation                                     | Min               | Max               |
         +=====+=================================================+===================+===================+
-        | 0   | Lacl mRNA transcripts concentration             | 0                 | 100               |
+        | 0   | Lacl mRNA transcripts concentration             | 0                 | $\infty$               |
         +-----+-------------------------------------------------+-------------------+-------------------+
-        | 1   | tetR mRNA transcripts concentration             | 0                 | 100               |
+        | 1   | tetR mRNA transcripts concentration             | 0                 | $\infty$               |
         +-----+-------------------------------------------------+-------------------+-------------------+
-        | 2   | CI mRNA transcripts concentration               | 0                 | 100               |
+        | 2   | CI mRNA transcripts concentration               | 0                 | $\infty$               |
         +-----+-------------------------------------------------+-------------------+-------------------+
-        | 3   | Extra protein mRNA transcripts concentration    | 0                 | 100               |
+        | 3   | Extra protein mRNA transcripts concentration    | 0                 | $\infty$               |
         +-----+-------------------------------------------------+-------------------+-------------------+
-        | 4   || lacI (repressor) protein concentration         | 0                 | 100               |
+        | 4   || lacI (repressor) protein concentration         | 0                 | $\infty$               |
         |     || (Inhibits transcription of the tetR gene)      |                   |                   |
         +-----+-------------------------------------------------+-------------------+-------------------+
-        | 5   || tetR (repressor) protein concentration         | 0                 | 100               |
+        | 5   || tetR (repressor) protein concentration         | 0                 | $\infty$               |
         |     || (Inhibits transcription of CI gene)            |                   |                   |
         +-----+-------------------------------------------------+-------------------+-------------------+
-        | 6   || CI (repressor) protein concentration           | 0                 | 100               |
+        | 6   || CI (repressor) protein concentration           | 0                 | $\infty$               |
         |     || (Inhibits transcription of extra protein gene) |                   |                   |
         +-----+-------------------------------------------------+-------------------+-------------------+
-        | 7   || Extra (repressor) protein concentration        | 0                 | 100               |
+        | 7   || Extra (repressor) protein concentration        | 0                 | $\infty$               |
         |     || (Inhibits transcription of lacI gene)          |                   |                   |
         +-----+-------------------------------------------------+-------------------+-------------------+
-        | 8   | The reference we want to follow                 | 0                 | 100               |
+        | 8   | The reference we want to follow                 | 0                 | $\infty$               |
         +-----+-------------------------------------------------+-------------------+-------------------+
-        | (9) || **Optional** - The error between the current   | -100              | 100               |
+        | (9) || **Optional** - The error between the current   | -$\infty$              | $\infty$               |
         |     || value of protein 1 and the reference           |                   |                   |
         +-----+-------------------------------------------------+-------------------+-------------------+
 
@@ -71,16 +84,16 @@ class OscillatorComplicated(gym.Env):
         +-----+------------------------------------------------------------+---------+---------+
         | Num | Action                                                     | Min     |   Max   |
         +=====+============================================================+=========+=========+
-        | 0   || Relative intensity of light signal that induce the        | -5      | 5       |
+        | 0   || Relative intensity of light signal that induce the        | 0       | 1       |
         |     || expression of the Lacl mRNA gene.                         |         |         |
         +-----+------------------------------------------------------------+---------+---------+
-        | 1   || Relative intensity of light signal that induce the        | -5      | 5       |
+        | 1   || Relative intensity of light signal that induce the        | 0       | 1       |
         |     || expression of the tetR mRNA gene.                         |         |         |
         +-----+------------------------------------------------------------+---------+---------+
-        | 2   || Relative intensity of light signal that induce the        | -5      | 5       |
+        | 2   || Relative intensity of light signal that induce the        | 0       | 1       |
         |     || expression of the CI mRNA gene.                           |         |         |
         +-----+------------------------------------------------------------+---------+---------+
-        | 3   || Relative intensity of light signal that induce the        | -5      | 5       |
+        | 3   || Relative intensity of light signal that induce the        | 0       | 1       |
         |     || expression of the extra protein mRNA gene.                |         |         |
         +-----+------------------------------------------------------------+---------+---------+
 
@@ -95,8 +108,8 @@ class OscillatorComplicated(gym.Env):
         All observations are assigned a uniform random value in ``[0..5]``
 
     Episode Termination:
-        -   An episode is terminated when the maximum step limit is reached.
-        -   The step cost is greater than 100.
+        - An episode is terminated when the maximum step limit is reached.
+        - The step exceeds a threshold (default is $\infty$). This threshold can be adjusted using the `max_cost` environment argument.
 
     Solved Requirements:
         Considered solved when the average cost is lower than 300.
@@ -116,18 +129,21 @@ class OscillatorComplicated(gym.Env):
         t (float): The current time step.
         dt (float): The environment step size. Also available as :attr:`.tau`.
         sigma (float): The variance of the system noise.
+        max_cost (float): The maximum cost allowed before the episode is terminated.
     """  # noqa: E501
 
     def __init__(
         self,
         render_mode=None,
+        # NOTE: Custom environment arguments.
+        max_cost=np.inf,
         reference_target_position=8.0,
         reference_amplitude=7.0,
         reference_frequency=(1 / 200),  # NOTE: Han et al. 2020 uses a period of 200.
         reference_phase_shift=0.0,
         clip_action=True,
         exclude_reference_from_observation=False,
-        exclude_reference_error_from_observation=True,
+        exclude_reference_error_from_observation=False,
         action_space_dtype=np.float64,
         observation_space_dtype=np.float64,
     ):
@@ -136,6 +152,8 @@ class OscillatorComplicated(gym.Env):
         Args:
             render_mode (str, optional): The render mode you want to use. Defaults to
                 ``None``. Not used in this environment.
+            max_cost (float, optional): The maximum cost allowed before the episode is
+                terminated. Defaults to :attr:`np.inf`.
             reference_target_position: The reference target position, by default
                 ``8.0`` (i.e. the mean of the reference signal).
             reference_amplitude: The reference amplitude, by default ``7.0``.
@@ -146,13 +164,15 @@ class OscillatorComplicated(gym.Env):
             exclude_reference_from_observation (bool, optional): Whether the reference
                 should be excluded from the observation. Defaults to ``False``.
             exclude_reference_error_from_observation (bool, optional): Whether the error
-                should be excluded from the observation. Defaults to ``True``.
+                should be excluded from the observation. Defaults to ``False``.
             action_space_dtype (union[numpy.dtype, str], optional): The data type of the
                 action space. Defaults to ``np.float64``.
             observation_space_dtype (union[numpy.dtype, str], optional): The data type
                 of the observation space. Defaults to ``np.float64``.
         """
         super().__init__()
+        assert max_cost > 0, "The maximum cost must be greater than 0."
+        self.max_cost = max_cost
         self._action_clip_warning = False
         self._clip_action = clip_action
         self._exclude_reference_from_observation = exclude_reference_from_observation
@@ -206,10 +226,10 @@ class OscillatorComplicated(gym.Env):
         self.c2 = 0.06  # Protein degradation rate p2.
         self.c3 = 0.06  # Protein degradation rate p3.
         self.c4 = 0.06  # Protein degradation rate p4.
-        self.b1 = 1.0  # Control input gain u1.
-        self.b2 = 1.0  # Control input gain u2.
-        self.b3 = 1.0  # Control input gain u3.
-        self.b4 = 1.0  # Control input gain u4.
+        self.b1 = 5.0  # Control input gain u1.
+        self.b2 = 5.0  # Control input gain u2.
+        self.b3 = 5.0  # Control input gain u3.
+        self.b4 = 5.0  # Control input gain u4.
 
         # Set noise parameters.
         # NOTE: Zero during training.
@@ -222,23 +242,31 @@ class OscillatorComplicated(gym.Env):
         self.delta7 = 0.0  # p3 noise.
         self.delta8 = 0.0  # p4 noise.
 
-        obs_low = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-        obs_high = np.array([100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0])
+        # NOTE: Observation space was changed compared to the original codebase of
+        # Han et al. 2020 to match paper's plots.
+        obs_low = np.array(
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        )  # NOTE:  Han's original code used -1.0.
+        obs_high = np.array(
+            [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf]
+        )  # NOTE:  Han's original code used 1.0.
         if not self._exclude_reference_from_observation:
             obs_low = np.append(obs_low, 0.0)
-            obs_high = np.append(obs_high, 100.0)
+            obs_high = np.append(obs_high, np.inf)
         if not self._exclude_reference_error_from_observation:
-            obs_low = np.append(obs_low, -100.0)
-            obs_high = np.append(obs_high, 100.0)
+            obs_low = np.append(obs_low, -np.inf)
+            obs_high = np.append(obs_high, np.inf)
+        # NOTE: Han et al. 2020 did not clearly detail the action space in their paper.
+        # As a result the action space from their original code is used.
         self.action_space = spaces.Box(
-            low=np.array([-5.0, -5.0, -5.0, -5.0]),
-            high=np.array([5.0, 5.0, 5.0, 5.0]),
+            low=np.array([0.0, 0.0, 0.0, 0.0]),
+            high=np.array([1.0, 1.0, 1.0, 1.0]),
             dtype=self._action_space_dtype,
         )
         self.observation_space = spaces.Box(
             obs_low, obs_high, dtype=self._observation_space_dtype
         )
-        self.reward_range = (0.0, 100.0)
+        self.reward_range = (0.0, self.max_cost)
 
         self.viewer = None
         self.state = None
@@ -498,8 +526,8 @@ class OscillatorComplicated(gym.Env):
             else self._init_state
         )
         self.t = 0.0
-        _, _, _, _, p1, _, _, _ = self.state.astype(self._observation_space_dtype)
         obs = self.state.astype(self._observation_space_dtype)
+        p1 = obs[4]
         r1 = self.reference(self.t).astype(self._observation_space_dtype)
         if not self._exclude_reference_from_observation:
             obs = np.append(obs, r1)
