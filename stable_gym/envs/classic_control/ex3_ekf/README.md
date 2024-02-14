@@ -1,6 +1,6 @@
 # Ex3EKF gymnasium environment
 
-A gymnasium environment for a noisy master-slave system. This environment can be used to train an RL-based stationary Kalman filter.
+A gymnasium environment for a noisy master-slave system. This environment can be used to train an RL-based stationary Kalman filter. First presented by [Wu et al. 2023](https://www.sciencedirect.com/science/article/pii/S0005109823001528).
 
 ## Observation space
 

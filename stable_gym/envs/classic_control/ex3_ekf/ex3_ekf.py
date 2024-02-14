@@ -15,7 +15,7 @@ class Ex3EKF(gym.Env):
     Description:
         The goal of the agent in the Ex3EKF environment is to act in such a way that
         estimator perfectly estimated the original noisy system. By doing this it serves
-        as a RL based stationary Kalman filter.
+        as a RL based stationary Kalman filter. First presented by `Wu et al. 2023`_.
 
     Observation:
         **Type**: Box(4)
@@ -64,6 +64,8 @@ class Ex3EKF(gym.Env):
         t (float): The current time step.
         dt (float): The environment step size. Also available as :attr:`.tau`.
         sigma (float): The variance of the system noise.
+
+    .. _`Wu et al. 2023`: https://www.sciencedirect.com/science/article/pii/S0005109823001528
     """  # noqa: E501
 
     def __init__(
