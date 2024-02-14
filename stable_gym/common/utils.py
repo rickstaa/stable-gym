@@ -228,7 +228,7 @@ def inject_value(input_item, value, round_accuracy=2, order=False, axis=0):
     Returns:
         union[list,dict]: The list or dictionary that contains the value.
     """
-    order_op = lambda *args, **kwargs: (
+    order_op = lambda *args, **kwargs: (  # noqa: E731
         sorted(*args, **kwargs) if order else list(*args, **kwargs)
     )
     if isinstance(input_item, dict):
@@ -263,7 +263,7 @@ def verify_number_and_cast(x):
 
 
 def maybe_parse_reset_bounds(options, default_low, default_high):
-    """sThis function can be called during a reset() to customize the sampling
+    """This function can be called during a reset() to customize the sampling
     ranges for setting the initial state distributions.
 
     Args:

@@ -10,7 +10,7 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 
 class Ex3EKF(gym.Env):
-    """Noisy master slave system
+    r"""Noisy master slave system
 
     Description:
         The goal of the agent in the Ex3EKF environment is to act in such a way that
@@ -48,7 +48,7 @@ class Ex3EKF(gym.Env):
 
         .. math::
 
-            C = {(\\hat{x}_1 - x_1)}^2 + {(\\hat{x}_2 - x_2)}^2
+            C = {(\hat{x}_1 - x_1)}^2 + {(\hat{x}_2 - x_2)}^2
 
     Starting State:
         All observations are assigned a uniform random value in ``[-0.05..0.05]``

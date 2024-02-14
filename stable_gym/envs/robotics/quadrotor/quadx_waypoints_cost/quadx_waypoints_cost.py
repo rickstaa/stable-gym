@@ -331,7 +331,6 @@ class QuadXWaypointsCost(QuadXWaypointsEnv, utils.EzPickle):
         Returns:
             (np.ndarray): The waypoints target deltas.
         """  # noqa: E501
-
         # Store waypoints targets, distances and yaw error scalar.
         waypoints_targets = copy.copy(self.waypoints.targets)
         old_waypoints_distance = copy.copy(self.waypoints.old_distance)

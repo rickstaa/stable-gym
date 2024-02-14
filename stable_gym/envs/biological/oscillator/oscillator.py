@@ -37,7 +37,7 @@ class Oscillator(gym.Env):
               presented in `Han et al. 2020`_, which was not possible with the original
               code's observation space.
             - Added an adjustable ``max_cost`` threshold for episode termination,
-              defaulting to $100$ to match the original environment.
+              defaulting to 100 to match the original environment.
 
     .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 
@@ -47,24 +47,24 @@ class Oscillator(gym.Env):
         +-----+-----------------------------------------------+-------------------+-------------------+
         | Num | Observation                                   | Min               | Max               |
         +=====+===============================================+===================+===================+
-        | 0   | Lacl mRNA transcripts concentration           | 0                 | $\infty$          |
+        | 0   | Lacl mRNA transcripts concentration           | 0                 | :math:`\infty`    |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 1   | tetR mRNA transcripts concentration           | 0                 | $\infty$          |
+        | 1   | tetR mRNA transcripts concentration           | 0                 | :math:`\infty`    |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 2   | CI mRNA transcripts concentration             | 0                 | $\infty$          |
+        | 2   | CI mRNA transcripts concentration             | 0                 | :math:`\infty`    |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 3   || lacI (repressor) protein concentration       | 0                 | $\infty$          |
+        | 3   || lacI (repressor) protein concentration       | 0                 | :math:`\infty`    |
         |     || (Inhibits transcription of the tetR gene)    |                   |                   |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 4   || tetR (repressor) protein concentration       | 0                 | $\infty$          |
+        | 4   || tetR (repressor) protein concentration       | 0                 | :math:`\infty`    |
         |     || (Inhibits transcription of CI gene)          |                   |                   |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 5   || CI (repressor) protein concentration         | 0                 | $\infty$          |
+        | 5   || CI (repressor) protein concentration         | 0                 | :math:`\infty`    |
         |     || (Inhibits transcription of lacI gene)        |                   |                   |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | 6   | The reference we want to follow               | 0                 | $\infty$          |
+        | 6   | The reference we want to follow               | 0                 | :math:`\infty`    |
         +-----+-----------------------------------------------+-------------------+-------------------+
-        | (7) || **Optional** - The error between the current | $-\infty$         | $\infty$          |
+        | (7) || **Optional** - The error between the current | :math:`-\infty`   | :math:`\infty`    |
         |     || value of protein 1 and the reference         |                   |                   |
         +-----+-----------------------------------------------+-------------------+-------------------+
 
@@ -96,7 +96,8 @@ class Oscillator(gym.Env):
 
     Episode Termination:
         - An episode is terminated when the maximum step limit is reached.
-        - The step exceeds a threshold (default is $100$). This threshold can be adjusted using the `max_cost` environment argument.
+        - The step exceeds a threshold (default is 100). This threshold can be
+          adjusted using the `max_cost` environment argument.
 
     Solved Requirements:
         Considered solved when the average cost is lower than 300.

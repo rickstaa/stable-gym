@@ -12,7 +12,7 @@ RANDOM_STEP = True  # Use random action in __main__. Zero action otherwise.
 
 # TODO: Update solving criteria after training.
 class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
-    """Custom FetchReach gymnasium robotics environment.
+    r"""Custom FetchReach gymnasium robotics environment.
 
     .. note::
         Can also be used in a vectorized manner. See the
@@ -41,7 +41,7 @@ class FetchReachCost(MujocoFetchReachEnv, utils.EzPickle):
 
         .. math::
 
-            cost = \\left | reward \\right |
+            cost = \left | reward \right |
 
     Solved Requirements:
         Considered solved when the average cost is less than or equal to 50 over
