@@ -5,6 +5,7 @@ manner.
     For more information on vectorized environments, see the
     :gymnasium:`gym.vector <api/vector>` documentation.
 """
+
 import gymnasium as gym
 
 # ENV_NAME = "stable_gym:Oscillator-v1"

@@ -3,6 +3,7 @@
 
 .. _`Minitaur environments`: https://arxiv.org/abs/1804.10332
 """
+
 from stable_gym.envs.robotics.minitaur.minitaur_bullet_cost.minitaur_bullet_cost import (
     MinitaurBulletCost,
 )

@@ -1,4 +1,5 @@
 """The HopperCost gymnasium environment."""
+
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np

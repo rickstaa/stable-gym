@@ -1,6 +1,7 @@
 """Test if the CartPoleCost environment still behaves like the original CartPole
 environment when the same environment parameters are used.
 """
+
 import math
 import random
 

@@ -1,4 +1,5 @@
 """The oscillator gymnasium environment."""
+
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
@@ -430,15 +431,19 @@ class Oscillator(gym.Env):
         # NOTE: If you use custom reset bounds, it may lead to out-of-bound
         # state/observations.
         low = np.array(
-            options["low"]
-            if options is not None and "low" in options
-            else self._init_state_range["low"],
+            (
+                options["low"]
+                if options is not None and "low" in options
+                else self._init_state_range["low"]
+            ),
             dtype=self._observation_space_dtype,
         )
         high = np.array(
-            options["high"]
-            if options is not None and "high" in options
-            else self._init_state_range["high"],
+            (
+                options["high"]
+                if options is not None and "high" in options
+                else self._init_state_range["high"]
+            ),
             dtype=self._observation_space_dtype,
         )
         assert (

@@ -1,4 +1,5 @@
 """Utility functions that are used in multiple Stable Gym gymnasium environments."""
+
 import re
 
 import gymnasium as gym
@@ -145,12 +146,14 @@ def get_lowest_next_int(input_item):
     if isinstance(input_item, list):
         input_ints = [
             (
-                round(float(re.sub("[^0-9.]", "", item)))
-                if (re.sub("[^0-9.]", "", item) != "")
-                else ""
+                (
+                    round(float(re.sub("[^0-9.]", "", item)))
+                    if (re.sub("[^0-9.]", "", item) != "")
+                    else ""
+                )
+                if isinstance(item, str)
+                else item
             )
-            if isinstance(item, str)
-            else item
             for item in input_item
         ]  # Trim all non-numeric chars
         input_ints = [item for item in input_ints if item != ""]
@@ -225,10 +228,8 @@ def inject_value(input_item, value, round_accuracy=2, order=False, axis=0):
     Returns:
         union[list,dict]: The list or dictionary that contains the value.
     """
-    order_op = (
-        lambda *args, **kwargs: sorted(*args, **kwargs)
-        if order
-        else list(*args, **kwargs)
+    order_op = lambda *args, **kwargs: (
+        sorted(*args, **kwargs) if order else list(*args, **kwargs)
     )
     if isinstance(input_item, dict):
         return {

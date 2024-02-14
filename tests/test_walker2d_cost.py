@@ -1,6 +1,7 @@
 """Test if the Walker2dCost environment still behaves like the original Walker2d
 environment when the same environment parameters are used.
 """
+
 import gymnasium as gym
 import numpy as np
 from gymnasium.logger import ERROR

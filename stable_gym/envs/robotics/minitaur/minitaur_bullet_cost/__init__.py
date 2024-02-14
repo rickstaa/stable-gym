@@ -13,6 +13,7 @@ The version found here is based on the modification given by `Han et al. 2020`_.
 .. _`Tan et al. 2018`: https://arxiv.org/abs/1804.10332
 .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 """  # noqa: E501
+
 from stable_gym.envs.robotics.minitaur.minitaur_bullet_cost.minitaur_bullet_cost import (
     MinitaurBulletCost,
 )

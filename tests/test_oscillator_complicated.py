@@ -1,6 +1,7 @@
 """Test if the Oscillator environment still behaves like the previous Oscillator
 environment.
 """
+
 import gymnasium as gym
 from gymnasium.logger import ERROR
 

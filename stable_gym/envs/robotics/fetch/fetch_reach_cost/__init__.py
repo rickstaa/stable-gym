@@ -7,6 +7,7 @@ first described by `Han et al. 2020`_. In this modified version:
 
 .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 """  # noqa: E501
+
 from stable_gym.envs.robotics.fetch.fetch_reach_cost.fetch_reach_cost import (
     FetchReachCost,
 )

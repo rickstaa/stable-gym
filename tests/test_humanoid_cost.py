@@ -1,6 +1,7 @@
 """Test if the HumanoidCost environment still behaves like the original Humanoid
 environment when the same environment parameters are used.
 """
+
 import gymnasium as gym
 import numpy as np
 from gymnasium.logger import ERROR

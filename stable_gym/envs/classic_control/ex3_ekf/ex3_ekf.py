@@ -1,4 +1,5 @@
 """The noisy master slave system (Ex3EKF) gymnasium environment."""
+
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np

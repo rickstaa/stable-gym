@@ -16,6 +16,7 @@
 
 .. _`Pybullet`: https://pybullet.org/
 """
+
 from stable_gym.envs.robotics.fetch.fetch_reach_cost.fetch_reach_cost import (
     FetchReachCost,
 )

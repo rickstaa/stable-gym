@@ -1,4 +1,5 @@
 """Entry_point that register the Stable Gym gymnasium environments."""
+
 import gymnasium as gym
 from gymnasium.envs.registration import register
 
@@ -103,12 +104,12 @@ for env, val in ENVS.items():
         id=env,
         entry_point=val["entry_point"],
         reward_threshold=val["reward_threshold"],
-        max_episode_steps=val["max_episode_steps"]
-        if "max_episode_steps" in val
-        else None,
+        max_episode_steps=(
+            val["max_episode_steps"] if "max_episode_steps" in val else None
+        ),
         disable_env_checker=not val["compatible"] if "compatible" in val else False,
         apply_api_compatibility=not val["compatible"] if "compatible" in val else False,
-        additional_wrappers=val["additional_wrappers"]
-        if "additional_wrappers" in val
-        else (),
+        additional_wrappers=(
+            val["additional_wrappers"] if "additional_wrappers" in val else ()
+        ),
     )

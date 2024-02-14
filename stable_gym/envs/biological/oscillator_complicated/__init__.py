@@ -5,6 +5,7 @@ be used to induce the mRNA transcription of this extra protein.
 
 .. _`Oscillator gymnasium environment`: https://rickstaa.dev/stable-gym/envs/biological/oscillator.html
 """
+
 from stable_gym.envs.biological.oscillator_complicated.oscillator_complicated import (
     OscillatorComplicated,
 )

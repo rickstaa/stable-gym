@@ -11,4 +11,5 @@ first described by `Han et al. 2020`_. In this modified version:
 
 .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 """  # noqa: E501
+
 from stable_gym.envs.mujoco.half_cheetah_cost.half_cheetah_cost import HalfCheetahCost
