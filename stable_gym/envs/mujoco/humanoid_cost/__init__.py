@@ -11,4 +11,5 @@ first described by `Han et al. 2020`. In this modified version:
 
 .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 """  # noqa: E501
+
 from stable_gym.envs.mujoco.humanoid_cost.humanoid_cost import HumanoidCost

@@ -1,4 +1,5 @@
 """The CartPoleCost gymnasium environment."""
+
 # NOTE: You can find the changes by searching for the ``NOTE:`` keyword.
 import math
 
@@ -207,9 +208,9 @@ class CartPoleCost(gym.Env):
         self.gravity = self._gravity_init = 9.8  # NOTE: Han et al. 2020 uses 10.
         self.masscart = self._mass_cart_init = 1.0
         self.masspole = self._mass_pole_init = 0.1
-        self.length = (
-            self._length_init
-        ) = 1.0  # NOTE: The 0.5 of the original is moved to the `com_length` property.
+        self.length = self._length_init = (
+            1.0  # NOTE: The 0.5 of the original is moved to the `com_length` property.
+        )
         self.force_mag = 20  # NOTE: Original uses 10.
         self.tau = 0.02
         self.kinematics_integrator = "euler"
@@ -481,15 +482,19 @@ class CartPoleCost(gym.Env):
         # NOTE: If you use custom reset bounds, it may lead to out-of-bound
         # state/observations.
         low = np.array(
-            options["low"]
-            if options is not None and "low" in options
-            else self._init_state_range["low"],
+            (
+                options["low"]
+                if options is not None and "low" in options
+                else self._init_state_range["low"]
+            ),
             dtype=self._observation_space_dtype,
         )
         high = np.array(
-            options["high"]
-            if options is not None and "high" in options
-            else self._init_state_range["high"],
+            (
+                options["high"]
+                if options is not None and "high" in options
+                else self._init_state_range["high"]
+            ),
             dtype=self._observation_space_dtype,
         )
         assert (

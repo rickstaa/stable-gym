@@ -1,4 +1,5 @@
 """The QuadXWaypointsCost gymnasium environment."""
+
 import copy
 
 import gymnasium as gym

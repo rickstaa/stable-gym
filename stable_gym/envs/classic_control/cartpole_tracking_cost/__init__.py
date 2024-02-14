@@ -12,6 +12,7 @@ This modification was first described by `Han et al. 2020`_. In this modified ve
 .. _`gymnasium library`: https://gymnasium.farama.org/environments/classic_control/cart_pole
 .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 """
+
 from stable_gym.envs.classic_control.cartpole_tracking_cost.cartpole_tracking_cost import (
     CartPoleTrackingCost,
 )

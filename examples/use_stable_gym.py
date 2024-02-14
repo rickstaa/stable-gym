@@ -1,4 +1,5 @@
 """A simple example on how to use the Stable Gym gymnasium environments."""
+
 import gymnasium as gym
 
 # ENV_NAME = "stable_gym:Oscillator-v1"

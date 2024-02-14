@@ -19,6 +19,7 @@ information about the original environment, please refer the
 .. _`Tai et al. 2023`: https://arxiv.org/abs/2304.01305
 .. _`article of Tai et al. 2023`: https://arxiv.org/abs/2304.01305
 """  # noqa: E501
+
 from stable_gym.envs.robotics.quadrotor.quadx_hover_cost.quadx_hover_cost import (
     QuadXHoverCost,
 )

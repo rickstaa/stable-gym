@@ -1,6 +1,7 @@
 """Test if the MinitaurBulletCost environment still behaves like the original Minitaur
 environment when the same environment parameters are used.
 """
+
 # import os
 
 import gymnasium as gym

@@ -6,4 +6,5 @@ where the dynamics of mRNA and proteins follow an oscillatory behaviour (see
 .. _`Elowitch et al. 2000`: https://www-nature-com.tudelft.idm.oclc.org/articles/35002125
 .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
 """
+
 from stable_gym.envs.biological.oscillator.oscillator import Oscillator

@@ -1,6 +1,7 @@
 """This script is used to test whether the gymnasium environments were successfully
 registered.
 """
+
 from gymnasium import envs
 
 import pytest

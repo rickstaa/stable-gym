@@ -1,4 +1,5 @@
 """The QuadXTrackingCost gymnasium environment."""
+
 from pathlib import PurePath
 
 import gymnasium as gym

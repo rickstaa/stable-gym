@@ -16,6 +16,7 @@
     :class:`gym.wrappers.FlattenObservation` wrapper to flatten the dictionary into a
     single :obj:`np.ndarray`.
 """
+
 from stable_gym.envs.robotics.fetch.fetch_reach_cost.fetch_reach_cost import (
     FetchReachCost,
 )
