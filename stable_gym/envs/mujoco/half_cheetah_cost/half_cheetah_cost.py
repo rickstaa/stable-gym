@@ -39,6 +39,9 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         (e.g. observation space, action space, episode termination, etc.), please refer
         to the :gymnasium:`gymnasium library <environments/mujoco/half_cheetah>`.
 
+        .. important::
+            The original code from `Han et al. 2020 <han_code_>`_ terminates the episode if the cheetah's back thigh angle exceeds :math:`0.5 \pi` or falls below :math:`-0.5 \pi`. This condition, not mentioned in the paper, is not implemented here as it's not part of the original environment.
+
     Modified cost:
         A cost, computed using the :meth:`HalfCheetahCost.cost` method, is given for each
         simulation step, including the terminal step. This cost is defined as the error
@@ -65,6 +68,8 @@ class HalfCheetahCost(HalfCheetahEnv, utils.EzPickle):
         dt (float): The environment step size. Also available as :attr:`.tau`.
         reference_forward_velocity (float): The forward velocity that the agent should
             try to track.
+
+    .. _`han_code`: https://github.com/hithmh/Actor-critic-with-stability-guarantee/blob/8a90574fae550e98a9b628bbead6da7f91a51fff/ENV/env/mujoco/half_cheetah_cost.py#L23
     """  # noqa: E501
 
     def __init__(
