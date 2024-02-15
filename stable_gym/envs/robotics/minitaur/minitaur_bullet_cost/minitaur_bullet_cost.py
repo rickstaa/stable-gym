@@ -39,6 +39,12 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
         `original codebase <https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet/gym/pybullet_envs/bullet/minitaur_gym_env.py>`__
         or `the article of Tan et al. 2018`_ on which the Minitaur environment is based for more information.
 
+        .. important::
+            In `Han et al. 2020`_, the authors disabled the termination criteria. In our implementation, we have
+            kept them for consistency with the original Minitaur environment. The termination criteria can be
+            enabled by setting the :arg:`fall_criteria_up_rotation` and :arg:`fall_criteria_z_position` to
+            :obj:`np.inf`.
+
     .. _`Minitaur environment`: https://arxiv.org/abs/1804.10332
     .. _`Han et al. 2020`: https://arxiv.org/abs/2004.14288
     .. _`the article of Tan et al. 2018`: https://arxiv.org/abs/1804.10332
@@ -46,7 +52,7 @@ class MinitaurBulletCost(MinitaurBulletEnv, utils.EzPickle):
     Observation:
         **Type**: Box(28)
 
-        The angles, velocities and torques of all motors.
+        Contains angles, velocities, and torques of all motors. Optionally, it can also include the reference, reference error, and x velocity.
 
     Actions:
         **Type**: Box(8)
