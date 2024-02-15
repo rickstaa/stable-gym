@@ -12,6 +12,10 @@ An actuated 8-jointed half cheetah. This environment corresponds to the [HalfChe
 
 The rest of the environment is the same as the original HalfCheetah environment. Below, the modified cost is described. For more information about the environment (e.g. observation space, action space, episode termination, etc.), please refer to the [gymnasium library](https://gymnasium.farama.org/environments/mujoco/half_cheetah/).
 
+:::{important}
+The original code from [Han et al. 2020](https://github.com/hithmh/Actor-critic-with-stability-guarantee/blob/8a90574fae550e98a9b628bbead6da7f91a51fff/ENV/env/mujoco/half_cheetah_cost.py#L23) terminates the episode if the cheetah's back thigh angle exceeds $0.5 \pi$ or falls below $-0.5 \pi$. This condition, not mentioned in the paper, is not implemented here as it's not part of the original environment.
+:::
+
 ## Observation space
 
 The original observation space of the [HalfCheetah-v4](https://gymnasium.farama.org/environments/mujoco/half_cheetah) environment contains all eight motors' angles, velocities and torques. In this modified version, the observation space has been extended to add three additional observations:
