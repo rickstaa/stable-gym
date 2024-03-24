@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.20.7](https://github.com/rickstaa/stable-gym/compare/v0.20.6...v0.20.7) (2024-03-24)
+
+
+### Bug Fixes
+
+* **cartPole:** ensure reward range scales with max cost ([#353](https://github.com/rickstaa/stable-gym/issues/353)) ([28236fc](https://github.com/rickstaa/stable-gym/commit/28236fc1826fb795a4f224fb9f8591ff32a098c7))
+* **cartPole:** fix cartpole init range and improce docs ([#351](https://github.com/rickstaa/stable-gym/issues/351)) ([b3f650a](https://github.com/rickstaa/stable-gym/commit/b3f650a07e5a994c89dab9056d23a20ff953df82))
+* **oscillator:** fix minor oscillator environments bugs ([#360](https://github.com/rickstaa/stable-gym/issues/360)) ([1f928d7](https://github.com/rickstaa/stable-gym/commit/1f928d7ba3ecc265daf61f53f1b5e5a05d51cdd5))
+
+
+### Documentation
+
+* add unit test documentation ([df9d1b1](https://github.com/rickstaa/stable-gym/commit/df9d1b14722e0fc90fbbd227675d2bf1d7edba64))
+* **ex3EKF:** ddd reference to Original Ex3EKF env description ([a42922f](https://github.com/rickstaa/stable-gym/commit/a42922f348d285f221a5084fbe695ccc22be7f47))
+* fix minor docs typos ([#355](https://github.com/rickstaa/stable-gym/issues/355)) ([f33a6b1](https://github.com/rickstaa/stable-gym/commit/f33a6b101cdb2a06d9ac455d4509dc96c0e04ff8))
+* fix README formatting ([499ab98](https://github.com/rickstaa/stable-gym/commit/499ab98b37e8a091d65ed33d7d070fd296f0d67b))
+* **halfCheetahCost:** add Han et al. 2020 codebase difference comment ([#367](https://github.com/rickstaa/stable-gym/issues/367)) ([bfd1ed0](https://github.com/rickstaa/stable-gym/commit/bfd1ed079d91c60fa5f6e266c506693870e64aa6))
+* improve docs and docstrings ([#354](https://github.com/rickstaa/stable-gym/issues/354)) ([74bb1e2](https://github.com/rickstaa/stable-gym/commit/74bb1e21314a3ff0a965c5447d169a7fdf69e0b4))
+* **Minitaur:** improve docstring ([c2bd874](https://github.com/rickstaa/stable-gym/commit/c2bd874317c2265bfa4dcaa1d87743a4b7b1f25b))
+
 ## [0.20.6](https://github.com/rickstaa/stable-gym/compare/v0.20.5...v0.20.6) (2024-01-07)
 
 
