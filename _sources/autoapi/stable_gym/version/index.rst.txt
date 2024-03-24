@@ -1,0 +1,18 @@
+:py:mod:`stable_gym.version`
+============================
+
+.. py:module:: stable_gym.version
+
+
+Module Contents
+---------------
+
+.. py:data:: __version__
+   :value: '0.20.7'
+
+   
+
+.. py:data:: __version_tuple__
+
+   
+
